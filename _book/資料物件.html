@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 資料物件 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 3 資料物件 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 資料物件 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 3 資料物件 | R 資料科學與統計" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 資料物件 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 3 資料物件 | R 資料科學與統計" />
+  
+
+<meta name="author" content="Jeff Lin" />
+
+
+<meta name="date" content="2020-09-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="vector.html"/>
+<link rel="next" href="資料輸入與輸出.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>2</b> 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector.html"><a href="vector.html#向量"><i class="fa fa-check"></i><b>2.1</b> 向量</a></li>
+<li class="chapter" data-level="2.2" data-path="vector.html"><a href="vector.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a></li>
+<li class="chapter" data-level="2.3" data-path="vector.html"><a href="vector.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.3</b> 向量產生函式 <code>c()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="vector.html"><a href="vector.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.4</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.5" data-path="vector.html"><a href="vector.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.5</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector.html"><a href="vector.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.6</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.7" data-path="vector.html"><a href="vector.html#向量邏輯操作"><i class="fa fa-check"></i><b>2.7</b> 向量邏輯操作</a></li>
+<li class="chapter" data-level="2.8" data-path="vector.html"><a href="vector.html#向量元素命名"><i class="fa fa-check"></i><b>2.8</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.9" data-path="vector.html"><a href="vector.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.9</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.10" data-path="vector.html"><a href="vector.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.10</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.11" data-path="vector.html"><a href="vector.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.11</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="資料物件.html"><a href="資料物件.html"><i class="fa fa-check"></i><b>3</b> 資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="資料物件.html"><a href="資料物件.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="資料物件.html"><a href="資料物件.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="資料物件.html"><a href="資料物件.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="資料物件.html"><a href="資料物件.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="資料物件.html"><a href="資料物件.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.2.1</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="資料物件.html"><a href="資料物件.html#陣列物件-array"><i class="fa fa-check"></i><b>3.2.2</b> 陣列物件 Array</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="資料物件.html"><a href="資料物件.html#列表物件-list"><i class="fa fa-check"></i><b>3.3</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="資料物件.html"><a href="資料物件.html#列表函式-list"><i class="fa fa-check"></i><b>3.3.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="資料物件.html"><a href="資料物件.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.3.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="資料物件.html"><a href="資料物件.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.4</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.5" data-path="資料物件.html"><a href="資料物件.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.5</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="資料物件.html"><a href="資料物件.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.5.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="資料輸入與輸出.html"><a href="資料輸入與輸出.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="7" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>7</b> Temp</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="資料物件" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> 資料物件</h1>
+<p>{R} 是以物件導向為主的程式語言,
+在 {R} 中, 資料或運算指令以具有名稱的
+<strong>物件</strong>
+(<strong>object</strong>),
+形式儲存,
+資料物件可以是 向量 (vector),
+矩陣 (matrix),
+陣列 (array),
+列表 (Lists),
+或 資料框架 (data frames) 等.
+在 {R} 中, 資料分析基本上是產生資料物件,
+對物件命名, 使用函式對物件運算操作.
+透過指令, 很容易地對物件進行統計分析與統計繪圖.
+上一章討論向量的基本操作,
+本章進一步討論 {R} 的其他多維度資料物件,
+包含 矩陣 (matrix),
+陣列 (array),
+列表 (Lists),
+或資料框架 (data frames) 等.</p>
+<div id="矩陣物件-matrix" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 矩陣物件 Matrix</h2>
+<p><strong>矩陣</strong>
+(<strong>matrix</strong>)
+物件由包含相同的元素 (模式, mode) 組成的 <span class="math inline">\(2\)</span>-維度 (2-dimension) 資料物件,
+矩陣具有
+<strong>維度</strong>
+(<strong>dimension</strong>)
+之屬性,
+可以使用函式 <code>dim()</code> 檢視.
+可以將矩陣視為一個向量具二維結構,
+也可以將 矩陣 視為一個向量具 <span class="math inline">\(2\)</span>-維度的陣列 (array).</p>
+<div id="矩陣函式-matrix" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> 矩陣函式 matrix()</h3>
+<p>使用者若要輸入一個簡單的矩陣資料,
+列 <span class="math inline">\(\times\)</span> 欄
+(列 <span class="math inline">\(\times\)</span> 行),
+或希望以矩陣形式儲存資料,
+可以用 函式
+<code>matrix()</code>.</p>
+<pre><code>matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL)           </code></pre>
+<p>其中引數為</p>
+<ul>
+<li><code>nrow = r</code> 正整數, 設定 <code>列數</code> (row numbers).</li>
+<li><code>ncol = c</code> 正整數, 設定 <code>欄數</code> 或 <code>行數</code> (column number).</li>
+<li><code>byrow = FALSE</code>:
+在 {R} 中的自動設定,
+矩陣資料是以欄 (行) 位 (column) 優先填滿.
+要改變設定,
+可改成 <code>byrow = TRUE</code>.</li>
+<li><code>dimnames = obj.list</code> 輸入列表設定列位名與欄位名.</li>
+</ul>
+<p>使用函式
+<code>dim()</code>
+可以回傳具有維度數屬性的資料物件之維度大小.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="資料物件.html#cb47-1" aria-hidden="true"></a><span class="co">## numeric</span></span>
+<span id="cb47-2"><a href="資料物件.html#cb47-2" aria-hidden="true"></a>x.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="dt">nrow =</span> <span class="dv">2</span>) <span class="co"># one row first</span></span>
+<span id="cb47-3"><a href="資料物件.html#cb47-3" aria-hidden="true"></a>x.mat</span>
+<span id="cb47-4"><a href="資料物件.html#cb47-4" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb47-5"><a href="資料物件.html#cb47-5" aria-hidden="true"></a><span class="co">## [1,]    1    3    5</span></span>
+<span id="cb47-6"><a href="資料物件.html#cb47-6" aria-hidden="true"></a><span class="co">## [2,]    2    4    6</span></span>
+<span id="cb47-7"><a href="資料物件.html#cb47-7" aria-hidden="true"></a><span class="kw">dim</span>(x.mat)</span>
+<span id="cb47-8"><a href="資料物件.html#cb47-8" aria-hidden="true"></a><span class="co">## [1] 2 3</span></span>
+<span id="cb47-9"><a href="資料物件.html#cb47-9" aria-hidden="true"></a>y.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="dt">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb47-10"><a href="資料物件.html#cb47-10" aria-hidden="true"></a>y.mat</span>
+<span id="cb47-11"><a href="資料物件.html#cb47-11" aria-hidden="true"></a><span class="co">##      [,1] [,2]</span></span>
+<span id="cb47-12"><a href="資料物件.html#cb47-12" aria-hidden="true"></a><span class="co">## [1,]    1    4</span></span>
+<span id="cb47-13"><a href="資料物件.html#cb47-13" aria-hidden="true"></a><span class="co">## [2,]    2    5</span></span>
+<span id="cb47-14"><a href="資料物件.html#cb47-14" aria-hidden="true"></a><span class="co">## [3,]    3    6</span></span>
+<span id="cb47-15"><a href="資料物件.html#cb47-15" aria-hidden="true"></a>z.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T)</span>
+<span id="cb47-16"><a href="資料物件.html#cb47-16" aria-hidden="true"></a>z.mat</span>
+<span id="cb47-17"><a href="資料物件.html#cb47-17" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb47-18"><a href="資料物件.html#cb47-18" aria-hidden="true"></a><span class="co">## [1,]    1    2    3</span></span>
+<span id="cb47-19"><a href="資料物件.html#cb47-19" aria-hidden="true"></a><span class="co">## [2,]    4    5    6</span></span>
+<span id="cb47-20"><a href="資料物件.html#cb47-20" aria-hidden="true"></a>p.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T)</span>
+<span id="cb47-21"><a href="資料物件.html#cb47-21" aria-hidden="true"></a>p.mat</span>
+<span id="cb47-22"><a href="資料物件.html#cb47-22" aria-hidden="true"></a><span class="co">##      [,1] [,2]</span></span>
+<span id="cb47-23"><a href="資料物件.html#cb47-23" aria-hidden="true"></a><span class="co">## [1,]    1    2</span></span>
+<span id="cb47-24"><a href="資料物件.html#cb47-24" aria-hidden="true"></a><span class="co">## [2,]    3    4</span></span>
+<span id="cb47-25"><a href="資料物件.html#cb47-25" aria-hidden="true"></a><span class="co">## [3,]    5    6</span></span>
+<span id="cb47-26"><a href="資料物件.html#cb47-26" aria-hidden="true"></a>w.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">18</span>), <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb47-27"><a href="資料物件.html#cb47-27" aria-hidden="true"></a>w.mat</span>
+<span id="cb47-28"><a href="資料物件.html#cb47-28" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3] [,4] [,5] [,6]</span></span>
+<span id="cb47-29"><a href="資料物件.html#cb47-29" aria-hidden="true"></a><span class="co">## [1,]    1    4    7   10   13   16</span></span>
+<span id="cb47-30"><a href="資料物件.html#cb47-30" aria-hidden="true"></a><span class="co">## [2,]    2    5    8   11   14   17</span></span>
+<span id="cb47-31"><a href="資料物件.html#cb47-31" aria-hidden="true"></a><span class="co">## [3,]    3    6    9   12   15   18</span></span>
+<span id="cb47-32"><a href="資料物件.html#cb47-32" aria-hidden="true"></a><span class="kw">dim</span>(y.mat)</span>
+<span id="cb47-33"><a href="資料物件.html#cb47-33" aria-hidden="true"></a><span class="co">## [1] 3 2</span></span>
+<span id="cb47-34"><a href="資料物件.html#cb47-34" aria-hidden="true"></a><span class="co"># character</span></span>
+<span id="cb47-35"><a href="資料物件.html#cb47-35" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</span>
+<span id="cb47-36"><a href="資料物件.html#cb47-36" aria-hidden="true"></a>x.vec</span>
+<span id="cb47-37"><a href="資料物件.html#cb47-37" aria-hidden="true"></a><span class="co">## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot;</span></span>
+<span id="cb47-38"><a href="資料物件.html#cb47-38" aria-hidden="true"></a>y.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(x.vec, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="co"># byrow = F</span></span>
+<span id="cb47-39"><a href="資料物件.html#cb47-39" aria-hidden="true"></a>y.mat</span>
+<span id="cb47-40"><a href="資料物件.html#cb47-40" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb47-41"><a href="資料物件.html#cb47-41" aria-hidden="true"></a><span class="co">## [1,] &quot;a&quot;  &quot;c&quot;  &quot;e&quot; </span></span>
+<span id="cb47-42"><a href="資料物件.html#cb47-42" aria-hidden="true"></a><span class="co">## [2,] &quot;b&quot;  &quot;d&quot;  &quot;f&quot;</span></span>
+<span id="cb47-43"><a href="資料物件.html#cb47-43" aria-hidden="true"></a>y.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(x.vec,</span>
+<span id="cb47-44"><a href="資料物件.html#cb47-44" aria-hidden="true"></a>                <span class="dt">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb47-45"><a href="資料物件.html#cb47-45" aria-hidden="true"></a>                <span class="dt">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb47-46"><a href="資料物件.html#cb47-46" aria-hidden="true"></a>                <span class="dt">byrow =</span> T)</span>
+<span id="cb47-47"><a href="資料物件.html#cb47-47" aria-hidden="true"></a>y.mat</span>
+<span id="cb47-48"><a href="資料物件.html#cb47-48" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb47-49"><a href="資料物件.html#cb47-49" aria-hidden="true"></a><span class="co">## [1,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot; </span></span>
+<span id="cb47-50"><a href="資料物件.html#cb47-50" aria-hidden="true"></a><span class="co">## [2,] &quot;d&quot;  &quot;e&quot;  &quot;f&quot;</span></span>
+<span id="cb47-51"><a href="資料物件.html#cb47-51" aria-hidden="true"></a><span class="kw">dim</span>(y.mat)</span>
+<span id="cb47-52"><a href="資料物件.html#cb47-52" aria-hidden="true"></a><span class="co">## [1] 2 3</span></span>
+<span id="cb47-53"><a href="資料物件.html#cb47-53" aria-hidden="true"></a><span class="co"># dim</span></span>
+<span id="cb47-54"><a href="資料物件.html#cb47-54" aria-hidden="true"></a>m.vec.mat &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb47-55"><a href="資料物件.html#cb47-55" aria-hidden="true"></a><span class="kw">dim</span>(m.vec.mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb47-56"><a href="資料物件.html#cb47-56" aria-hidden="true"></a>m.vec.mat</span>
+<span id="cb47-57"><a href="資料物件.html#cb47-57" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3] [,4] [,5]</span></span>
+<span id="cb47-58"><a href="資料物件.html#cb47-58" aria-hidden="true"></a><span class="co">## [1,]    1    3    5    7    9</span></span>
+<span id="cb47-59"><a href="資料物件.html#cb47-59" aria-hidden="true"></a><span class="co">## [2,]    2    4    6    8   10</span></span>
+<span id="cb47-60"><a href="資料物件.html#cb47-60" aria-hidden="true"></a><span class="kw">dim</span>(m.vec.mat)</span>
+<span id="cb47-61"><a href="資料物件.html#cb47-61" aria-hidden="true"></a><span class="co">## [1] 2 5</span></span></code></pre></div>
+</div>
+<div id="矩陣命名-dimnames" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> 矩陣命名 dimnames()</h3>
+<p>矩陣的命名, 包含欄位名 (column name) 與列位名 (row name),
+可以使用函式
+<code>dimnames()</code> 分別給予矩陣命名.
+可以用函式 <code>dimnames()</code>
+同時檢視 matrix 之列位名與欄位名.
+若要對讀取或命名矩陣的
+<strong>列位名</strong>
+(<strong>row name</strong>)
+或
+<strong>欄位名</strong>
+(<strong>column name</strong>),
+也可以用函式指令
+<code>rownames()</code>
+與
+<code>colnames()</code>.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="資料物件.html#cb48-1" aria-hidden="true"></a><span class="co"># dimnames</span></span>
+<span id="cb48-2"><a href="資料物件.html#cb48-2" aria-hidden="true"></a>x.mat  &lt;-<span class="st">  </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb48-3"><a href="資料物件.html#cb48-3" aria-hidden="true"></a><span class="kw">dimnames</span>(x.mat) &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>),</span>
+<span id="cb48-4"><a href="資料物件.html#cb48-4" aria-hidden="true"></a>                        <span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>, <span class="st">&quot;B2&quot;</span>, <span class="st">&quot;B3&quot;</span>))</span>
+<span id="cb48-5"><a href="資料物件.html#cb48-5" aria-hidden="true"></a>x.mat</span>
+<span id="cb48-6"><a href="資料物件.html#cb48-6" aria-hidden="true"></a><span class="co">##    B1 B2 B3</span></span>
+<span id="cb48-7"><a href="資料物件.html#cb48-7" aria-hidden="true"></a><span class="co">## A1  1  3  5</span></span>
+<span id="cb48-8"><a href="資料物件.html#cb48-8" aria-hidden="true"></a><span class="co">## A2  2  4  6</span></span>
+<span id="cb48-9"><a href="資料物件.html#cb48-9" aria-hidden="true"></a><span class="kw">dim</span>(x.mat)</span>
+<span id="cb48-10"><a href="資料物件.html#cb48-10" aria-hidden="true"></a><span class="co">## [1] 2 3</span></span>
+<span id="cb48-11"><a href="資料物件.html#cb48-11" aria-hidden="true"></a><span class="kw">dimnames</span>(x.mat)</span>
+<span id="cb48-12"><a href="資料物件.html#cb48-12" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb48-13"><a href="資料物件.html#cb48-13" aria-hidden="true"></a><span class="co">## [1] &quot;A1&quot; &quot;A2&quot;</span></span>
+<span id="cb48-14"><a href="資料物件.html#cb48-14" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb48-15"><a href="資料物件.html#cb48-15" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb48-16"><a href="資料物件.html#cb48-16" aria-hidden="true"></a><span class="co">## [1] &quot;B1&quot; &quot;B2&quot; &quot;B3&quot;</span></span>
+<span id="cb48-17"><a href="資料物件.html#cb48-17" aria-hidden="true"></a><span class="kw">rownames</span>(x.mat)</span>
+<span id="cb48-18"><a href="資料物件.html#cb48-18" aria-hidden="true"></a><span class="co">## [1] &quot;A1&quot; &quot;A2&quot;</span></span>
+<span id="cb48-19"><a href="資料物件.html#cb48-19" aria-hidden="true"></a><span class="kw">colnames</span>(x.mat)</span>
+<span id="cb48-20"><a href="資料物件.html#cb48-20" aria-hidden="true"></a><span class="co">## [1] &quot;B1&quot; &quot;B2&quot; &quot;B3&quot;</span></span>
+<span id="cb48-21"><a href="資料物件.html#cb48-21" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb48-22"><a href="資料物件.html#cb48-22" aria-hidden="true"></a>m.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
+<span id="cb48-23"><a href="資料物件.html#cb48-23" aria-hidden="true"></a>  <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>),</span>
+<span id="cb48-24"><a href="資料物件.html#cb48-24" aria-hidden="true"></a>  <span class="dt">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb48-25"><a href="資料物件.html#cb48-25" aria-hidden="true"></a>  <span class="dt">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb48-26"><a href="資料物件.html#cb48-26" aria-hidden="true"></a>  <span class="dt">byrow =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb48-27"><a href="資料物件.html#cb48-27" aria-hidden="true"></a>  <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>),</span>
+<span id="cb48-28"><a href="資料物件.html#cb48-28" aria-hidden="true"></a>                  <span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>))</span>
+<span id="cb48-29"><a href="資料物件.html#cb48-29" aria-hidden="true"></a>)</span>
+<span id="cb48-30"><a href="資料物件.html#cb48-30" aria-hidden="true"></a>m.mat</span>
+<span id="cb48-31"><a href="資料物件.html#cb48-31" aria-hidden="true"></a><span class="co">##      C1 C2 C3</span></span>
+<span id="cb48-32"><a href="資料物件.html#cb48-32" aria-hidden="true"></a><span class="co">## row1  1  2  3</span></span>
+<span id="cb48-33"><a href="資料物件.html#cb48-33" aria-hidden="true"></a><span class="co">## row2 11 12 13</span></span>
+<span id="cb48-34"><a href="資料物件.html#cb48-34" aria-hidden="true"></a><span class="kw">dim</span>(m.mat)</span>
+<span id="cb48-35"><a href="資料物件.html#cb48-35" aria-hidden="true"></a><span class="co">## [1] 2 3</span></span>
+<span id="cb48-36"><a href="資料物件.html#cb48-36" aria-hidden="true"></a><span class="kw">dimnames</span>(m.mat)</span>
+<span id="cb48-37"><a href="資料物件.html#cb48-37" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb48-38"><a href="資料物件.html#cb48-38" aria-hidden="true"></a><span class="co">## [1] &quot;row1&quot; &quot;row2&quot;</span></span>
+<span id="cb48-39"><a href="資料物件.html#cb48-39" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb48-40"><a href="資料物件.html#cb48-40" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb48-41"><a href="資料物件.html#cb48-41" aria-hidden="true"></a><span class="co">## [1] &quot;C1&quot; &quot;C2&quot; &quot;C3&quot;</span></span>
+<span id="cb48-42"><a href="資料物件.html#cb48-42" aria-hidden="true"></a><span class="kw">rownames</span>(m.mat)</span>
+<span id="cb48-43"><a href="資料物件.html#cb48-43" aria-hidden="true"></a><span class="co">## [1] &quot;row1&quot; &quot;row2&quot;</span></span>
+<span id="cb48-44"><a href="資料物件.html#cb48-44" aria-hidden="true"></a><span class="kw">colnames</span>(m.mat)</span>
+<span id="cb48-45"><a href="資料物件.html#cb48-45" aria-hidden="true"></a><span class="co">## [1] &quot;C1&quot; &quot;C2&quot; &quot;C3&quot;</span></span></code></pre></div>
+</div>
+</div>
+<div id="矩陣的下標與索引-matrix-index" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 矩陣的下標與索引 Matrix Index</h2>
+<p>矩陣的
+<strong>下標</strong>
+或
+<strong>索引</strong>
+(<strong>index</strong>)
+操作,
+如同向量的下標與索引操作,
+矩陣具有 <span class="math inline">\(2\)</span>-維度下標向量,
+個別下標向量可以輸入正整數, 負數, 整數向量, 欄位名等等.
+例如, 可以使用
+<strong>中括號</strong>
+<code>matrix.name[i, j]</code>
+可存取矩陣中的第 <span class="math inline">\([i, j]\)</span> 元素;
+<code>matrix.name[i, ]</code>
+可存取矩陣中的第 <span class="math inline">\(i\)</span> 列 (<span class="math inline">\(i\)</span>th row),
+<code>matrix.name[ , j]</code>
+可存取矩陣中的第 <span class="math inline">\(j\)</span> 欄 (<span class="math inline">\(i\)</span>th column).
+在 {R} 中顯示矩陣物件,
+<code>[m, ]</code>
+出現在某特定元素左方時,
+表示某特定元素在該矩陣物件之第 <span class="math inline">\(m\)</span> 列 (row) 的位置;
+<code>[ , n]</code>
+出現在某特定元素上方時,
+表示某特定元素在該矩陣物件之第 <span class="math inline">\(n\)</span> 欄 (column) 的位置.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="資料物件.html#cb49-1" aria-hidden="true"></a><span class="co">## matrix index</span></span>
+<span id="cb49-2"><a href="資料物件.html#cb49-2" aria-hidden="true"></a>x.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb49-3"><a href="資料物件.html#cb49-3" aria-hidden="true"></a>x.mat</span>
+<span id="cb49-4"><a href="資料物件.html#cb49-4" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb49-5"><a href="資料物件.html#cb49-5" aria-hidden="true"></a><span class="co">## [1,]    1    4    7   10</span></span>
+<span id="cb49-6"><a href="資料物件.html#cb49-6" aria-hidden="true"></a><span class="co">## [2,]    2    5    8   11</span></span>
+<span id="cb49-7"><a href="資料物件.html#cb49-7" aria-hidden="true"></a><span class="co">## [3,]    3    6    9   12</span></span>
+<span id="cb49-8"><a href="資料物件.html#cb49-8" aria-hidden="true"></a>x.mat[<span class="dv">2</span>, <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">30</span></span>
+<span id="cb49-9"><a href="資料物件.html#cb49-9" aria-hidden="true"></a>x.mat</span>
+<span id="cb49-10"><a href="資料物件.html#cb49-10" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb49-11"><a href="資料物件.html#cb49-11" aria-hidden="true"></a><span class="co">## [1,]    1    4    7   10</span></span>
+<span id="cb49-12"><a href="資料物件.html#cb49-12" aria-hidden="true"></a><span class="co">## [2,]    2    5   30   11</span></span>
+<span id="cb49-13"><a href="資料物件.html#cb49-13" aria-hidden="true"></a><span class="co">## [3,]    3    6    9   12</span></span>
+<span id="cb49-14"><a href="資料物件.html#cb49-14" aria-hidden="true"></a>x.mat[<span class="dv">2</span>,]</span>
+<span id="cb49-15"><a href="資料物件.html#cb49-15" aria-hidden="true"></a><span class="co">## [1]  2  5 30 11</span></span>
+<span id="cb49-16"><a href="資料物件.html#cb49-16" aria-hidden="true"></a>x.mat[, <span class="dv">3</span>]</span>
+<span id="cb49-17"><a href="資料物件.html#cb49-17" aria-hidden="true"></a><span class="co">## [1]  7 30  9</span></span>
+<span id="cb49-18"><a href="資料物件.html#cb49-18" aria-hidden="true"></a>x.mat[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span>
+<span id="cb49-19"><a href="資料物件.html#cb49-19" aria-hidden="true"></a><span class="co">##      [,1] [,2]</span></span>
+<span id="cb49-20"><a href="資料物件.html#cb49-20" aria-hidden="true"></a><span class="co">## [1,]    4   10</span></span>
+<span id="cb49-21"><a href="資料物件.html#cb49-21" aria-hidden="true"></a><span class="co">## [2,]    6   12</span></span>
+<span id="cb49-22"><a href="資料物件.html#cb49-22" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb49-23"><a href="資料物件.html#cb49-23" aria-hidden="true"></a>m.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(</span>
+<span id="cb49-24"><a href="資料物件.html#cb49-24" aria-hidden="true"></a>  <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>),</span>
+<span id="cb49-25"><a href="資料物件.html#cb49-25" aria-hidden="true"></a>  <span class="dt">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb49-26"><a href="資料物件.html#cb49-26" aria-hidden="true"></a>  <span class="dt">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb49-27"><a href="資料物件.html#cb49-27" aria-hidden="true"></a>  <span class="dt">byrow =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb49-28"><a href="資料物件.html#cb49-28" aria-hidden="true"></a>  <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>),</span>
+<span id="cb49-29"><a href="資料物件.html#cb49-29" aria-hidden="true"></a>                  <span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>))</span>
+<span id="cb49-30"><a href="資料物件.html#cb49-30" aria-hidden="true"></a>)</span>
+<span id="cb49-31"><a href="資料物件.html#cb49-31" aria-hidden="true"></a>m.mat</span>
+<span id="cb49-32"><a href="資料物件.html#cb49-32" aria-hidden="true"></a><span class="co">##      C1 C2 C3</span></span>
+<span id="cb49-33"><a href="資料物件.html#cb49-33" aria-hidden="true"></a><span class="co">## row1  1  2  3</span></span>
+<span id="cb49-34"><a href="資料物件.html#cb49-34" aria-hidden="true"></a><span class="co">## row2 11 12 13</span></span>
+<span id="cb49-35"><a href="資料物件.html#cb49-35" aria-hidden="true"></a>m.mat[, <span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>)]</span>
+<span id="cb49-36"><a href="資料物件.html#cb49-36" aria-hidden="true"></a><span class="co">##      C1 C2</span></span>
+<span id="cb49-37"><a href="資料物件.html#cb49-37" aria-hidden="true"></a><span class="co">## row1  1  2</span></span>
+<span id="cb49-38"><a href="資料物件.html#cb49-38" aria-hidden="true"></a><span class="co">## row2 11 12</span></span>
+<span id="cb49-39"><a href="資料物件.html#cb49-39" aria-hidden="true"></a>m.mat[<span class="kw">c</span>(<span class="st">&quot;row2&quot;</span>),]</span>
+<span id="cb49-40"><a href="資料物件.html#cb49-40" aria-hidden="true"></a><span class="co">## C1 C2 C3 </span></span>
+<span id="cb49-41"><a href="資料物件.html#cb49-41" aria-hidden="true"></a><span class="co">## 11 12 13</span></span>
+<span id="cb49-42"><a href="資料物件.html#cb49-42" aria-hidden="true"></a>m.mat[<span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C3&quot;</span>)]</span>
+<span id="cb49-43"><a href="資料物件.html#cb49-43" aria-hidden="true"></a><span class="co">## C1 C3 </span></span>
+<span id="cb49-44"><a href="資料物件.html#cb49-44" aria-hidden="true"></a><span class="co">##  1  3</span></span></code></pre></div>
+<p>矩陣下標與索引若僅選取 1 列 或 1 欄,
+則會維度縮減產生向量, 若仍要產生矩陣, 則可加入參數
+<code>drop = FALSE</code>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="資料物件.html#cb50-1" aria-hidden="true"></a><span class="co">## dimension reduction</span></span>
+<span id="cb50-2"><a href="資料物件.html#cb50-2" aria-hidden="true"></a>x.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb50-3"><a href="資料物件.html#cb50-3" aria-hidden="true"></a>x.mat[<span class="dv">1</span>,] <span class="co"># reduces to a vector</span></span>
+<span id="cb50-4"><a href="資料物件.html#cb50-4" aria-hidden="true"></a><span class="co">## [1] 1 3 5 7</span></span>
+<span id="cb50-5"><a href="資料物件.html#cb50-5" aria-hidden="true"></a>x.mat[<span class="dv">1</span>, , drop =<span class="st"> </span><span class="ot">FALSE</span>] <span class="co"># remains as a matrix</span></span>
+<span id="cb50-6"><a href="資料物件.html#cb50-6" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb50-7"><a href="資料物件.html#cb50-7" aria-hidden="true"></a><span class="co">## [1,]    1    3    5    7</span></span></code></pre></div>
+<div id="向量與矩陣的合併-rbind-與-cbind" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> 向量與矩陣的合併: rbind() 與 cbind()</h3>
+<p>在 {R} 中向量並不具有
+<strong>沒有維度</strong>
+(<strong>no dimension</strong>),
+例如,
+向量可以視為 <span class="math inline">\(1 \times k\)</span> 的 向量/矩陣,
+也可以視為 <span class="math inline">\(k \times 1\)</span> 的 向量/矩陣,
+但是,
+當 向量 與 其它 向量/矩陣 進行運算時,
+向量 會受到與其進行運算的矩陣物件影響,
+{R} 如何處理 向量 與 其它 向量/矩陣 進行運算並沒有清楚的規則,
+有時視為 <span class="math inline">\(1 \times k\)</span>
+若任由 {R} 的內在設定,
+則將會有意想不到的運算結果,
+因此在進行線性代數相關的計算,
+若要避免混淆與錯誤,
+初學者可將數學的 <span class="math inline">\(1\)</span>-維度 <span class="math inline">\(k\)</span>-個元素的向量,
+重新定義成 {R} 的 <span class="math inline">\(1 \times k\)</span> 的矩陣 或是 <span class="math inline">\(k \times 1\)</span> 的矩陣,
+然後再進行線性代數相關的計算.
+同樣, 合併不同 列位數 (row number) 或 欄位數 (column number)
+的向量或矩陣, 因為使用 recycle 原則必須小心.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="資料物件.html#cb51-1" aria-hidden="true"></a><span class="co">## matrix cbind() and rbind()</span></span>
+<span id="cb51-2"><a href="資料物件.html#cb51-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb51-3"><a href="資料物件.html#cb51-3" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span>
+<span id="cb51-4"><a href="資料物件.html#cb51-4" aria-hidden="true"></a><span class="kw">rbind</span>(x.vec, y.vec)  <span class="co"># vector as row vector</span></span>
+<span id="cb51-5"><a href="資料物件.html#cb51-5" aria-hidden="true"></a><span class="co">##       [,1] [,2] [,3]</span></span>
+<span id="cb51-6"><a href="資料物件.html#cb51-6" aria-hidden="true"></a><span class="co">## x.vec    1    2    3</span></span>
+<span id="cb51-7"><a href="資料物件.html#cb51-7" aria-hidden="true"></a><span class="co">## y.vec    8    9   10</span></span>
+<span id="cb51-8"><a href="資料物件.html#cb51-8" aria-hidden="true"></a><span class="kw">cbind</span>(x.vec, y.vec)  <span class="co"># vector as col vector</span></span>
+<span id="cb51-9"><a href="資料物件.html#cb51-9" aria-hidden="true"></a><span class="co">##      x.vec y.vec</span></span>
+<span id="cb51-10"><a href="資料物件.html#cb51-10" aria-hidden="true"></a><span class="co">## [1,]     1     8</span></span>
+<span id="cb51-11"><a href="資料物件.html#cb51-11" aria-hidden="true"></a><span class="co">## [2,]     2     9</span></span>
+<span id="cb51-12"><a href="資料物件.html#cb51-12" aria-hidden="true"></a><span class="co">## [3,]     3    10</span></span>
+<span id="cb51-13"><a href="資料物件.html#cb51-13" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb51-14"><a href="資料物件.html#cb51-14" aria-hidden="true"></a>x.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">16</span>), <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb51-15"><a href="資料物件.html#cb51-15" aria-hidden="true"></a><span class="kw">rbind</span>(x.mat, x.vec) <span class="co"># vector as row vector</span></span>
+<span id="cb51-16"><a href="資料物件.html#cb51-16" aria-hidden="true"></a><span class="co">##       [,1] [,2] [,3]</span></span>
+<span id="cb51-17"><a href="資料物件.html#cb51-17" aria-hidden="true"></a><span class="co">##         11   13   15</span></span>
+<span id="cb51-18"><a href="資料物件.html#cb51-18" aria-hidden="true"></a><span class="co">##         12   14   16</span></span>
+<span id="cb51-19"><a href="資料物件.html#cb51-19" aria-hidden="true"></a><span class="co">## x.vec    1    2    3</span></span>
+<span id="cb51-20"><a href="資料物件.html#cb51-20" aria-hidden="true"></a><span class="kw">cbind</span>(x.mat, y.vec) <span class="co"># warning</span></span>
+<span id="cb51-21"><a href="資料物件.html#cb51-21" aria-hidden="true"></a><span class="co">## Warning in cbind(x.mat, y.vec): number of rows of result is</span></span>
+<span id="cb51-22"><a href="資料物件.html#cb51-22" aria-hidden="true"></a><span class="co">## not a multiple of vector length (arg 2)</span></span>
+<span id="cb51-23"><a href="資料物件.html#cb51-23" aria-hidden="true"></a><span class="co">##               y.vec</span></span>
+<span id="cb51-24"><a href="資料物件.html#cb51-24" aria-hidden="true"></a><span class="co">## [1,] 11 13 15     8</span></span>
+<span id="cb51-25"><a href="資料物件.html#cb51-25" aria-hidden="true"></a><span class="co">## [2,] 12 14 16     9</span></span>
+<span id="cb51-26"><a href="資料物件.html#cb51-26" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb51-27"><a href="資料物件.html#cb51-27" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb51-28"><a href="資料物件.html#cb51-28" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">9</span>)</span>
+<span id="cb51-29"><a href="資料物件.html#cb51-29" aria-hidden="true"></a><span class="kw">rbind</span>(x.vec, y.vec) <span class="co"># vector as row vector</span></span>
+<span id="cb51-30"><a href="資料物件.html#cb51-30" aria-hidden="true"></a><span class="co">##       [,1] [,2]</span></span>
+<span id="cb51-31"><a href="資料物件.html#cb51-31" aria-hidden="true"></a><span class="co">## x.vec    1    2</span></span>
+<span id="cb51-32"><a href="資料物件.html#cb51-32" aria-hidden="true"></a><span class="co">## y.vec    8    9</span></span>
+<span id="cb51-33"><a href="資料物件.html#cb51-33" aria-hidden="true"></a><span class="kw">cbind</span>(x.vec, y.vec) <span class="co"># vector as col vector</span></span>
+<span id="cb51-34"><a href="資料物件.html#cb51-34" aria-hidden="true"></a><span class="co">##      x.vec y.vec</span></span>
+<span id="cb51-35"><a href="資料物件.html#cb51-35" aria-hidden="true"></a><span class="co">## [1,]     1     8</span></span>
+<span id="cb51-36"><a href="資料物件.html#cb51-36" aria-hidden="true"></a><span class="co">## [2,]     2     9</span></span>
+<span id="cb51-37"><a href="資料物件.html#cb51-37" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb51-38"><a href="資料物件.html#cb51-38" aria-hidden="true"></a>x.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">14</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb51-39"><a href="資料物件.html#cb51-39" aria-hidden="true"></a>z.mat &lt;-<span class="st"> </span><span class="kw">rbind</span>(x.mat, x.vec) <span class="co"># vector as row vector</span></span>
+<span id="cb51-40"><a href="資料物件.html#cb51-40" aria-hidden="true"></a>z.mat</span>
+<span id="cb51-41"><a href="資料物件.html#cb51-41" aria-hidden="true"></a><span class="co">##       [,1] [,2]</span></span>
+<span id="cb51-42"><a href="資料物件.html#cb51-42" aria-hidden="true"></a><span class="co">##         11   13</span></span>
+<span id="cb51-43"><a href="資料物件.html#cb51-43" aria-hidden="true"></a><span class="co">##         12   14</span></span>
+<span id="cb51-44"><a href="資料物件.html#cb51-44" aria-hidden="true"></a><span class="co">## x.vec    1    2</span></span>
+<span id="cb51-45"><a href="資料物件.html#cb51-45" aria-hidden="true"></a><span class="kw">cbind</span>(x.mat, y.vec) <span class="co"># vector as col vector</span></span>
+<span id="cb51-46"><a href="資料物件.html#cb51-46" aria-hidden="true"></a><span class="co">##            y.vec</span></span>
+<span id="cb51-47"><a href="資料物件.html#cb51-47" aria-hidden="true"></a><span class="co">## [1,] 11 13     8</span></span>
+<span id="cb51-48"><a href="資料物件.html#cb51-48" aria-hidden="true"></a><span class="co">## [2,] 12 14     9</span></span>
+<span id="cb51-49"><a href="資料物件.html#cb51-49" aria-hidden="true"></a><span class="kw">rbind</span>(z.mat, y.vec) <span class="co"># vector as row vector</span></span>
+<span id="cb51-50"><a href="資料物件.html#cb51-50" aria-hidden="true"></a><span class="co">##       [,1] [,2]</span></span>
+<span id="cb51-51"><a href="資料物件.html#cb51-51" aria-hidden="true"></a><span class="co">##         11   13</span></span>
+<span id="cb51-52"><a href="資料物件.html#cb51-52" aria-hidden="true"></a><span class="co">##         12   14</span></span>
+<span id="cb51-53"><a href="資料物件.html#cb51-53" aria-hidden="true"></a><span class="co">## x.vec    1    2</span></span>
+<span id="cb51-54"><a href="資料物件.html#cb51-54" aria-hidden="true"></a><span class="co">## y.vec    8    9</span></span>
+<span id="cb51-55"><a href="資料物件.html#cb51-55" aria-hidden="true"></a><span class="kw">cbind</span>(z.mat, y.vec) <span class="co"># warning</span></span>
+<span id="cb51-56"><a href="資料物件.html#cb51-56" aria-hidden="true"></a><span class="co">## Warning in cbind(z.mat, y.vec): number of rows of result is</span></span>
+<span id="cb51-57"><a href="資料物件.html#cb51-57" aria-hidden="true"></a><span class="co">## not a multiple of vector length (arg 2)</span></span>
+<span id="cb51-58"><a href="資料物件.html#cb51-58" aria-hidden="true"></a><span class="co">##             y.vec</span></span>
+<span id="cb51-59"><a href="資料物件.html#cb51-59" aria-hidden="true"></a><span class="co">##       11 13     8</span></span>
+<span id="cb51-60"><a href="資料物件.html#cb51-60" aria-hidden="true"></a><span class="co">##       12 14     9</span></span>
+<span id="cb51-61"><a href="資料物件.html#cb51-61" aria-hidden="true"></a><span class="co">## x.vec  1  2     8</span></span></code></pre></div>
+</div>
+<div id="陣列物件-array" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> 陣列物件 Array</h3>
+<p><strong>陣列</strong>
+(<strong>array</strong>)
+物件也由包含相同模式 (mode) 的元素組成的 <span class="math inline">\(p\)</span>-維資料物件,
+也可以將陣列視為一個向量具 <span class="math inline">\(p\)</span>-維結構.
+使用函式
+<code>array()</code>
+產生陣列.</p>
+<p>{R} 顯示 <span class="math inline">\(3\)</span>-維陣列物件 <span class="math inline">\(m \times n \times k\)</span>,
+<code>[m,  , ]</code> 出現在某特定元素之前時,
+表示某特定元素在該陣列物件之第 <span class="math inline">\(m\)</span> 列 (row) 的位置;
+<code>[ , n, ]</code> 出現在某特定元素之前時,
+表示某特定元素在該陣列物件之第 <span class="math inline">\(n\)</span> 欄 (column) 的位置, 依此類推.
+<code>[ , , k]</code> 表示 <span class="math inline">\(3\)</span>-維陣列的第 1, 2-維度之矩陣.</p>
+<p>陣列的命名, 與矩陣類似,
+可以使用函式
+<code>dimnames()</code> 分別給予陣列命名.
+可以用函式 <code>dimnames()</code>
+同時檢視 array 之列位名與欄位名.
+陣列的
+<strong>下標</strong> 或
+<strong>索引</strong>
+(<strong>index</strong>)
+之操作,
+與矩陣下標或索引的操作類似,
+使用
+<strong>中括號</strong> (<code>[i, j, k]</code>).
+若要對讀取或命名陣列的第 1 維度
+(<strong>列位名</strong>,
+<strong>row name</strong>)
+{或<strong>
+第 2 維度
+(</strong>欄位名<strong>,
+</strong>column name**),
+也可以用函式指令
+<code>rownames()</code>
+與
+<code>colnames()</code>.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="資料物件.html#cb52-1" aria-hidden="true"></a><span class="co">## array()</span></span>
+<span id="cb52-2"><a href="資料物件.html#cb52-2" aria-hidden="true"></a>a.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">24</span></span>
+<span id="cb52-3"><a href="資料物件.html#cb52-3" aria-hidden="true"></a>a.vec</span>
+<span id="cb52-4"><a href="資料物件.html#cb52-4" aria-hidden="true"></a><span class="co">##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18</span></span>
+<span id="cb52-5"><a href="資料物件.html#cb52-5" aria-hidden="true"></a><span class="co">## [19] 19 20 21 22 23 24</span></span>
+<span id="cb52-6"><a href="資料物件.html#cb52-6" aria-hidden="true"></a>b.array &lt;-<span class="st"> </span><span class="kw">array</span>(a.vec, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb52-7"><a href="資料物件.html#cb52-7" aria-hidden="true"></a>                 <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;x4&quot;</span>),</span>
+<span id="cb52-8"><a href="資料物件.html#cb52-8" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;y1&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y3&quot;</span>),</span>
+<span id="cb52-9"><a href="資料物件.html#cb52-9" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;z1&quot;</span>, <span class="st">&quot;z2&quot;</span>)))</span>
+<span id="cb52-10"><a href="資料物件.html#cb52-10" aria-hidden="true"></a>b.array</span>
+<span id="cb52-11"><a href="資料物件.html#cb52-11" aria-hidden="true"></a><span class="co">## , , z1</span></span>
+<span id="cb52-12"><a href="資料物件.html#cb52-12" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-13"><a href="資料物件.html#cb52-13" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-14"><a href="資料物件.html#cb52-14" aria-hidden="true"></a><span class="co">## x1  1  5  9</span></span>
+<span id="cb52-15"><a href="資料物件.html#cb52-15" aria-hidden="true"></a><span class="co">## x2  2  6 10</span></span>
+<span id="cb52-16"><a href="資料物件.html#cb52-16" aria-hidden="true"></a><span class="co">## x3  3  7 11</span></span>
+<span id="cb52-17"><a href="資料物件.html#cb52-17" aria-hidden="true"></a><span class="co">## x4  4  8 12</span></span>
+<span id="cb52-18"><a href="資料物件.html#cb52-18" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-19"><a href="資料物件.html#cb52-19" aria-hidden="true"></a><span class="co">## , , z2</span></span>
+<span id="cb52-20"><a href="資料物件.html#cb52-20" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-21"><a href="資料物件.html#cb52-21" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-22"><a href="資料物件.html#cb52-22" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
+<span id="cb52-23"><a href="資料物件.html#cb52-23" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
+<span id="cb52-24"><a href="資料物件.html#cb52-24" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
+<span id="cb52-25"><a href="資料物件.html#cb52-25" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span>
+<span id="cb52-26"><a href="資料物件.html#cb52-26" aria-hidden="true"></a><span class="kw">mode</span>(b.array)</span>
+<span id="cb52-27"><a href="資料物件.html#cb52-27" aria-hidden="true"></a><span class="co">## [1] &quot;numeric&quot;</span></span>
+<span id="cb52-28"><a href="資料物件.html#cb52-28" aria-hidden="true"></a><span class="kw">dim</span>(b.array)</span>
+<span id="cb52-29"><a href="資料物件.html#cb52-29" aria-hidden="true"></a><span class="co">## [1] 4 3 2</span></span>
+<span id="cb52-30"><a href="資料物件.html#cb52-30" aria-hidden="true"></a><span class="kw">length</span>(b.array)</span>
+<span id="cb52-31"><a href="資料物件.html#cb52-31" aria-hidden="true"></a><span class="co">## [1] 24</span></span>
+<span id="cb52-32"><a href="資料物件.html#cb52-32" aria-hidden="true"></a><span class="kw">dimnames</span>(b.array)</span>
+<span id="cb52-33"><a href="資料物件.html#cb52-33" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb52-34"><a href="資料物件.html#cb52-34" aria-hidden="true"></a><span class="co">## [1] &quot;x1&quot; &quot;x2&quot; &quot;x3&quot; &quot;x4&quot;</span></span>
+<span id="cb52-35"><a href="資料物件.html#cb52-35" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-36"><a href="資料物件.html#cb52-36" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb52-37"><a href="資料物件.html#cb52-37" aria-hidden="true"></a><span class="co">## [1] &quot;y1&quot; &quot;y2&quot; &quot;y3&quot;</span></span>
+<span id="cb52-38"><a href="資料物件.html#cb52-38" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-39"><a href="資料物件.html#cb52-39" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb52-40"><a href="資料物件.html#cb52-40" aria-hidden="true"></a><span class="co">## [1] &quot;z1&quot; &quot;z2&quot;</span></span>
+<span id="cb52-41"><a href="資料物件.html#cb52-41" aria-hidden="true"></a><span class="kw">rownames</span>(b.array)</span>
+<span id="cb52-42"><a href="資料物件.html#cb52-42" aria-hidden="true"></a><span class="co">## [1] &quot;x1&quot; &quot;x2&quot; &quot;x3&quot; &quot;x4&quot;</span></span>
+<span id="cb52-43"><a href="資料物件.html#cb52-43" aria-hidden="true"></a><span class="kw">colnames</span>(b.array)</span>
+<span id="cb52-44"><a href="資料物件.html#cb52-44" aria-hidden="true"></a><span class="co">## [1] &quot;y1&quot; &quot;y2&quot; &quot;y3&quot;</span></span>
+<span id="cb52-45"><a href="資料物件.html#cb52-45" aria-hidden="true"></a><span class="co"># array index</span></span>
+<span id="cb52-46"><a href="資料物件.html#cb52-46" aria-hidden="true"></a>a.vec</span>
+<span id="cb52-47"><a href="資料物件.html#cb52-47" aria-hidden="true"></a><span class="co">##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18</span></span>
+<span id="cb52-48"><a href="資料物件.html#cb52-48" aria-hidden="true"></a><span class="co">## [19] 19 20 21 22 23 24</span></span>
+<span id="cb52-49"><a href="資料物件.html#cb52-49" aria-hidden="true"></a>b.array &lt;-<span class="st"> </span><span class="kw">array</span>(a.vec, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb52-50"><a href="資料物件.html#cb52-50" aria-hidden="true"></a>                 <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;x4&quot;</span>),</span>
+<span id="cb52-51"><a href="資料物件.html#cb52-51" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;y1&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y3&quot;</span>),</span>
+<span id="cb52-52"><a href="資料物件.html#cb52-52" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;z1&quot;</span>, <span class="st">&quot;z2&quot;</span>)))</span>
+<span id="cb52-53"><a href="資料物件.html#cb52-53" aria-hidden="true"></a>b.array</span>
+<span id="cb52-54"><a href="資料物件.html#cb52-54" aria-hidden="true"></a><span class="co">## , , z1</span></span>
+<span id="cb52-55"><a href="資料物件.html#cb52-55" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-56"><a href="資料物件.html#cb52-56" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-57"><a href="資料物件.html#cb52-57" aria-hidden="true"></a><span class="co">## x1  1  5  9</span></span>
+<span id="cb52-58"><a href="資料物件.html#cb52-58" aria-hidden="true"></a><span class="co">## x2  2  6 10</span></span>
+<span id="cb52-59"><a href="資料物件.html#cb52-59" aria-hidden="true"></a><span class="co">## x3  3  7 11</span></span>
+<span id="cb52-60"><a href="資料物件.html#cb52-60" aria-hidden="true"></a><span class="co">## x4  4  8 12</span></span>
+<span id="cb52-61"><a href="資料物件.html#cb52-61" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-62"><a href="資料物件.html#cb52-62" aria-hidden="true"></a><span class="co">## , , z2</span></span>
+<span id="cb52-63"><a href="資料物件.html#cb52-63" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-64"><a href="資料物件.html#cb52-64" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-65"><a href="資料物件.html#cb52-65" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
+<span id="cb52-66"><a href="資料物件.html#cb52-66" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
+<span id="cb52-67"><a href="資料物件.html#cb52-67" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
+<span id="cb52-68"><a href="資料物件.html#cb52-68" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span>
+<span id="cb52-69"><a href="資料物件.html#cb52-69" aria-hidden="true"></a>b.array[<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]</span>
+<span id="cb52-70"><a href="資料物件.html#cb52-70" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
+<span id="cb52-71"><a href="資料物件.html#cb52-71" aria-hidden="true"></a>b.array[<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb52-72"><a href="資料物件.html#cb52-72" aria-hidden="true"></a><span class="co">## [1] 24</span></span>
+<span id="cb52-73"><a href="資料物件.html#cb52-73" aria-hidden="true"></a>b.array[<span class="dv">2</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">1</span>]</span>
+<span id="cb52-74"><a href="資料物件.html#cb52-74" aria-hidden="true"></a><span class="co">## y1 y3 </span></span>
+<span id="cb52-75"><a href="資料物件.html#cb52-75" aria-hidden="true"></a><span class="co">##  2 10</span></span>
+<span id="cb52-76"><a href="資料物件.html#cb52-76" aria-hidden="true"></a>b.array[<span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">1</span>]</span>
+<span id="cb52-77"><a href="資料物件.html#cb52-77" aria-hidden="true"></a><span class="co">## y2 y3 </span></span>
+<span id="cb52-78"><a href="資料物件.html#cb52-78" aria-hidden="true"></a><span class="co">##  7 11</span></span>
+<span id="cb52-79"><a href="資料物件.html#cb52-79" aria-hidden="true"></a>b.array[<span class="dv">2</span>, ,]</span>
+<span id="cb52-80"><a href="資料物件.html#cb52-80" aria-hidden="true"></a><span class="co">##    z1 z2</span></span>
+<span id="cb52-81"><a href="資料物件.html#cb52-81" aria-hidden="true"></a><span class="co">## y1  2 14</span></span>
+<span id="cb52-82"><a href="資料物件.html#cb52-82" aria-hidden="true"></a><span class="co">## y2  6 18</span></span>
+<span id="cb52-83"><a href="資料物件.html#cb52-83" aria-hidden="true"></a><span class="co">## y3 10 22</span></span>
+<span id="cb52-84"><a href="資料物件.html#cb52-84" aria-hidden="true"></a>b.array[, <span class="dv">2</span>,]</span>
+<span id="cb52-85"><a href="資料物件.html#cb52-85" aria-hidden="true"></a><span class="co">##    z1 z2</span></span>
+<span id="cb52-86"><a href="資料物件.html#cb52-86" aria-hidden="true"></a><span class="co">## x1  5 17</span></span>
+<span id="cb52-87"><a href="資料物件.html#cb52-87" aria-hidden="true"></a><span class="co">## x2  6 18</span></span>
+<span id="cb52-88"><a href="資料物件.html#cb52-88" aria-hidden="true"></a><span class="co">## x3  7 19</span></span>
+<span id="cb52-89"><a href="資料物件.html#cb52-89" aria-hidden="true"></a><span class="co">## x4  8 20</span></span>
+<span id="cb52-90"><a href="資料物件.html#cb52-90" aria-hidden="true"></a>b.array[, , <span class="dv">2</span>]</span>
+<span id="cb52-91"><a href="資料物件.html#cb52-91" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-92"><a href="資料物件.html#cb52-92" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
+<span id="cb52-93"><a href="資料物件.html#cb52-93" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
+<span id="cb52-94"><a href="資料物件.html#cb52-94" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
+<span id="cb52-95"><a href="資料物件.html#cb52-95" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span></code></pre></div>
+</div>
+</div>
+<div id="列表物件-list" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> 列表物件 List</h2>
+<p><strong>列表</strong>
+(<strong>list</strong>)
+是一個特殊的 <strong>向量</strong>,
+這特殊的向量中的元素是物件.
+列表物件 元素的模式 (mode) 是
+<strong>複雜模式</strong>
+(<strong>complex mode</strong>)
+列表物件是由資料物件有順序組成,
+列表物中的 ``元素’’,
+稱作
+<strong>成份</strong>
+(<strong>component</strong>),
+是物件本身,
+列表物中的成份是有順序的
+(order sequence),
+成份物件的元素模式,
+沒有任合限制,
+每一個別成份的物件之原型模式可以不相同.
+列表的產生通常先決定每一個成分的物件,
+然後再組合成列表.</p>
+<div id="列表函式-list" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> 列表函式 list()</h3>
+<p>使用函式
+<code>list()</code>
+將個別成分組成列表.
+{R} 許多統計分析的結果常常包含
+不同物件, 例如, 迴歸模型分析包含 參數估計,
+變異數分析, 預測值與殘差,
+每一成分的長度與模式不一,
+模型分析產生的結果最後多以列表儲存.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="資料物件.html#cb53-1" aria-hidden="true"></a><span class="co">## list()</span></span>
+<span id="cb53-2"><a href="資料物件.html#cb53-2" aria-hidden="true"></a><span class="co">## list w/o component names</span></span>
+<span id="cb53-3"><a href="資料物件.html#cb53-3" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span></span>
+<span id="cb53-4"><a href="資料物件.html#cb53-4" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb53-5"><a href="資料物件.html#cb53-5" aria-hidden="true"></a>z.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb53-6"><a href="資料物件.html#cb53-6" aria-hidden="true"></a>xyz.list &lt;-<span class="st"> </span><span class="kw">list</span>(x.vec, y.vec, z.mat)</span>
+<span id="cb53-7"><a href="資料物件.html#cb53-7" aria-hidden="true"></a>xyz.list</span>
+<span id="cb53-8"><a href="資料物件.html#cb53-8" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb53-9"><a href="資料物件.html#cb53-9" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4</span></span>
+<span id="cb53-10"><a href="資料物件.html#cb53-10" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb53-11"><a href="資料物件.html#cb53-11" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb53-12"><a href="資料物件.html#cb53-12" aria-hidden="true"></a><span class="co">## [1] &quot;Male&quot;   &quot;Female&quot;</span></span>
+<span id="cb53-13"><a href="資料物件.html#cb53-13" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb53-14"><a href="資料物件.html#cb53-14" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb53-15"><a href="資料物件.html#cb53-15" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb53-16"><a href="資料物件.html#cb53-16" aria-hidden="true"></a><span class="co">## [1,]    1    4    7</span></span>
+<span id="cb53-17"><a href="資料物件.html#cb53-17" aria-hidden="true"></a><span class="co">## [2,]    2    5    8</span></span>
+<span id="cb53-18"><a href="資料物件.html#cb53-18" aria-hidden="true"></a><span class="co">## [3,]    3    6    9</span></span>
+<span id="cb53-19"><a href="資料物件.html#cb53-19" aria-hidden="true"></a><span class="kw">mode</span>(xyz.list)</span>
+<span id="cb53-20"><a href="資料物件.html#cb53-20" aria-hidden="true"></a><span class="co">## [1] &quot;list&quot;</span></span>
+<span id="cb53-21"><a href="資料物件.html#cb53-21" aria-hidden="true"></a><span class="kw">length</span>(xyz.list)</span>
+<span id="cb53-22"><a href="資料物件.html#cb53-22" aria-hidden="true"></a><span class="co">## [1] 3</span></span>
+<span id="cb53-23"><a href="資料物件.html#cb53-23" aria-hidden="true"></a><span class="kw">dim</span>(xyz.list)</span>
+<span id="cb53-24"><a href="資料物件.html#cb53-24" aria-hidden="true"></a><span class="co">## NULL</span></span>
+<span id="cb53-25"><a href="資料物件.html#cb53-25" aria-hidden="true"></a><span class="kw">names</span>(xyz.list)</span>
+<span id="cb53-26"><a href="資料物件.html#cb53-26" aria-hidden="true"></a><span class="co">## NULL</span></span>
+<span id="cb53-27"><a href="資料物件.html#cb53-27" aria-hidden="true"></a><span class="kw">class</span>(xyz.list)</span>
+<span id="cb53-28"><a href="資料物件.html#cb53-28" aria-hidden="true"></a><span class="co">## [1] &quot;list&quot;</span></span>
+<span id="cb53-29"><a href="資料物件.html#cb53-29" aria-hidden="true"></a><span class="co">## list w/ component names</span></span>
+<span id="cb53-30"><a href="資料物件.html#cb53-30" aria-hidden="true"></a>x.num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>)</span>
+<span id="cb53-31"><a href="資料物件.html#cb53-31" aria-hidden="true"></a>y.str &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;chocolate&quot;</span>, <span class="st">&quot;vanilla&quot;</span>, <span class="st">&quot;strawberry&quot;</span>)</span>
+<span id="cb53-32"><a href="資料物件.html#cb53-32" aria-hidden="true"></a>xy.list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x.num.var =</span> x.num, <span class="dt">y.str.var =</span> y.str)</span>
+<span id="cb53-33"><a href="資料物件.html#cb53-33" aria-hidden="true"></a>xy.list</span>
+<span id="cb53-34"><a href="資料物件.html#cb53-34" aria-hidden="true"></a><span class="co">## $x.num.var</span></span>
+<span id="cb53-35"><a href="資料物件.html#cb53-35" aria-hidden="true"></a><span class="co">## [1] 1 3 6</span></span>
+<span id="cb53-36"><a href="資料物件.html#cb53-36" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb53-37"><a href="資料物件.html#cb53-37" aria-hidden="true"></a><span class="co">## $y.str.var</span></span>
+<span id="cb53-38"><a href="資料物件.html#cb53-38" aria-hidden="true"></a><span class="co">## [1] &quot;chocolate&quot;  &quot;vanilla&quot;    &quot;strawberry&quot;</span></span>
+<span id="cb53-39"><a href="資料物件.html#cb53-39" aria-hidden="true"></a><span class="co"># list = data matrix</span></span>
+<span id="cb53-40"><a href="資料物件.html#cb53-40" aria-hidden="true"></a>id.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb53-41"><a href="資料物件.html#cb53-41" aria-hidden="true"></a>age.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">55</span>, <span class="dv">45</span>, <span class="dv">25</span>)</span>
+<span id="cb53-42"><a href="資料物件.html#cb53-42" aria-hidden="true"></a>sex.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb53-43"><a href="資料物件.html#cb53-43" aria-hidden="true"></a>disease.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb53-44"><a href="資料物件.html#cb53-44" aria-hidden="true"></a>x.list &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb53-45"><a href="資料物件.html#cb53-45" aria-hidden="true"></a>  <span class="dt">id  =</span> id.vec,</span>
+<span id="cb53-46"><a href="資料物件.html#cb53-46" aria-hidden="true"></a>  <span class="dt">age =</span> age.vec,</span>
+<span id="cb53-47"><a href="資料物件.html#cb53-47" aria-hidden="true"></a>  <span class="dt">sex =</span> sex.vec,</span>
+<span id="cb53-48"><a href="資料物件.html#cb53-48" aria-hidden="true"></a>  <span class="dt">disease =</span> disease.vec</span>
+<span id="cb53-49"><a href="資料物件.html#cb53-49" aria-hidden="true"></a>)</span>
+<span id="cb53-50"><a href="資料物件.html#cb53-50" aria-hidden="true"></a>x.list</span>
+<span id="cb53-51"><a href="資料物件.html#cb53-51" aria-hidden="true"></a><span class="co">## $id</span></span>
+<span id="cb53-52"><a href="資料物件.html#cb53-52" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4</span></span>
+<span id="cb53-53"><a href="資料物件.html#cb53-53" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb53-54"><a href="資料物件.html#cb53-54" aria-hidden="true"></a><span class="co">## $age</span></span>
+<span id="cb53-55"><a href="資料物件.html#cb53-55" aria-hidden="true"></a><span class="co">## [1] 35 55 45 25</span></span>
+<span id="cb53-56"><a href="資料物件.html#cb53-56" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb53-57"><a href="資料物件.html#cb53-57" aria-hidden="true"></a><span class="co">## $sex</span></span>
+<span id="cb53-58"><a href="資料物件.html#cb53-58" aria-hidden="true"></a><span class="co">## [1] &quot;Male&quot;   &quot;Male&quot;   &quot;Female&quot; &quot;Female&quot;</span></span>
+<span id="cb53-59"><a href="資料物件.html#cb53-59" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb53-60"><a href="資料物件.html#cb53-60" aria-hidden="true"></a><span class="co">## $disease</span></span>
+<span id="cb53-61"><a href="資料物件.html#cb53-61" aria-hidden="true"></a><span class="co">## [1] &quot;Yes&quot; &quot;No&quot;  &quot;No&quot;  &quot;Yes&quot;</span></span></code></pre></div>
+</div>
+<div id="列表的下標與索引-list-index" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> 列表的下標與索引 List Index</h3>
+<p>列表物件的
+<strong>下標</strong>
+或
+<strong>索引</strong>
+之操作,
+與矩陣 或 陣列之操作有所不同,
+若一個名字為 <code>List.Name</code> 的列表物件,
+要取得 list 其中的 第 <code>i.number</code> 成份,
+須使用
+<code>List.Name[[3]]</code>.
+注意, 在列表物件的下標操作,
+<code>[[i.number]]</code>
+與 <code>[i.number]</code>
+是不一樣的.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="資料物件.html#cb54-1" aria-hidden="true"></a><span class="co">## list index</span></span>
+<span id="cb54-2"><a href="資料物件.html#cb54-2" aria-hidden="true"></a><span class="co">## list w/o component names</span></span>
+<span id="cb54-3"><a href="資料物件.html#cb54-3" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span></span>
+<span id="cb54-4"><a href="資料物件.html#cb54-4" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb54-5"><a href="資料物件.html#cb54-5" aria-hidden="true"></a>z.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb54-6"><a href="資料物件.html#cb54-6" aria-hidden="true"></a>xyz.list &lt;-<span class="st"> </span><span class="kw">list</span>(x.vec, y.vec, z.mat)</span>
+<span id="cb54-7"><a href="資料物件.html#cb54-7" aria-hidden="true"></a>xyz.list</span>
+<span id="cb54-8"><a href="資料物件.html#cb54-8" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb54-9"><a href="資料物件.html#cb54-9" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4</span></span>
+<span id="cb54-10"><a href="資料物件.html#cb54-10" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb54-11"><a href="資料物件.html#cb54-11" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb54-12"><a href="資料物件.html#cb54-12" aria-hidden="true"></a><span class="co">## [1] &quot;Male&quot;   &quot;Female&quot;</span></span>
+<span id="cb54-13"><a href="資料物件.html#cb54-13" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb54-14"><a href="資料物件.html#cb54-14" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb54-15"><a href="資料物件.html#cb54-15" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb54-16"><a href="資料物件.html#cb54-16" aria-hidden="true"></a><span class="co">## [1,]    1    4    7</span></span>
+<span id="cb54-17"><a href="資料物件.html#cb54-17" aria-hidden="true"></a><span class="co">## [2,]    2    5    8</span></span>
+<span id="cb54-18"><a href="資料物件.html#cb54-18" aria-hidden="true"></a><span class="co">## [3,]    3    6    9</span></span>
+<span id="cb54-19"><a href="資料物件.html#cb54-19" aria-hidden="true"></a>xyz.list[<span class="dv">1</span>]</span>
+<span id="cb54-20"><a href="資料物件.html#cb54-20" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb54-21"><a href="資料物件.html#cb54-21" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4</span></span>
+<span id="cb54-22"><a href="資料物件.html#cb54-22" aria-hidden="true"></a>xyz.list[[<span class="dv">1</span>]]</span>
+<span id="cb54-23"><a href="資料物件.html#cb54-23" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4</span></span>
+<span id="cb54-24"><a href="資料物件.html#cb54-24" aria-hidden="true"></a>xyz.list[<span class="dv">2</span>]</span>
+<span id="cb54-25"><a href="資料物件.html#cb54-25" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb54-26"><a href="資料物件.html#cb54-26" aria-hidden="true"></a><span class="co">## [1] &quot;Male&quot;   &quot;Female&quot;</span></span>
+<span id="cb54-27"><a href="資料物件.html#cb54-27" aria-hidden="true"></a>xyz.list[[<span class="dv">3</span>]]</span>
+<span id="cb54-28"><a href="資料物件.html#cb54-28" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb54-29"><a href="資料物件.html#cb54-29" aria-hidden="true"></a><span class="co">## [1,]    1    4    7</span></span>
+<span id="cb54-30"><a href="資料物件.html#cb54-30" aria-hidden="true"></a><span class="co">## [2,]    2    5    8</span></span>
+<span id="cb54-31"><a href="資料物件.html#cb54-31" aria-hidden="true"></a><span class="co">## [3,]    3    6    9</span></span>
+<span id="cb54-32"><a href="資料物件.html#cb54-32" aria-hidden="true"></a>xyz.list[<span class="dv">3</span>]</span>
+<span id="cb54-33"><a href="資料物件.html#cb54-33" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb54-34"><a href="資料物件.html#cb54-34" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb54-35"><a href="資料物件.html#cb54-35" aria-hidden="true"></a><span class="co">## [1,]    1    4    7</span></span>
+<span id="cb54-36"><a href="資料物件.html#cb54-36" aria-hidden="true"></a><span class="co">## [2,]    2    5    8</span></span>
+<span id="cb54-37"><a href="資料物件.html#cb54-37" aria-hidden="true"></a><span class="co">## [3,]    3    6    9</span></span></code></pre></div>
+<p>若列表中的 成份 (component)
+有另外命名為 <code>comp.name</code>,
+可以使用函式
+<code>List.Name\$comp.name</code> 取得成份名字,
+會與使用函式
+<code>List.Name[[comp.name]]</code> 取得相同結果.
+在
+<code>List.Name\$comp.name</code>
+或
+<code>List.Name[[comp.name]]</code>
+加上 <strong>中括號</strong> 等,
+可以取得
+<code>List.Name\$comp.name</code> 中的元素.
+<code>[[i.number]]</code> 可以適用在計算指標,
+但 $ 僅能使用在有設定的成分名的列表.
+若列表的單一成份內有多維度物件
+可使用巢狀下標取出資料.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="資料物件.html#cb55-1" aria-hidden="true"></a><span class="co"># list w/ component names</span></span>
+<span id="cb55-2"><a href="資料物件.html#cb55-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span></span>
+<span id="cb55-3"><a href="資料物件.html#cb55-3" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb55-4"><a href="資料物件.html#cb55-4" aria-hidden="true"></a>z.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb55-5"><a href="資料物件.html#cb55-5" aria-hidden="true"></a>xyz.list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> x.vec,</span>
+<span id="cb55-6"><a href="資料物件.html#cb55-6" aria-hidden="true"></a>                 <span class="dt">gender =</span> y.vec,</span>
+<span id="cb55-7"><a href="資料物件.html#cb55-7" aria-hidden="true"></a>                 <span class="dt">score =</span> z.mat)</span>
+<span id="cb55-8"><a href="資料物件.html#cb55-8" aria-hidden="true"></a>xyz.list</span>
+<span id="cb55-9"><a href="資料物件.html#cb55-9" aria-hidden="true"></a><span class="co">## $class</span></span>
+<span id="cb55-10"><a href="資料物件.html#cb55-10" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4</span></span>
+<span id="cb55-11"><a href="資料物件.html#cb55-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb55-12"><a href="資料物件.html#cb55-12" aria-hidden="true"></a><span class="co">## $gender</span></span>
+<span id="cb55-13"><a href="資料物件.html#cb55-13" aria-hidden="true"></a><span class="co">## [1] &quot;Male&quot;   &quot;Female&quot;</span></span>
+<span id="cb55-14"><a href="資料物件.html#cb55-14" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb55-15"><a href="資料物件.html#cb55-15" aria-hidden="true"></a><span class="co">## $score</span></span>
+<span id="cb55-16"><a href="資料物件.html#cb55-16" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb55-17"><a href="資料物件.html#cb55-17" aria-hidden="true"></a><span class="co">## [1,]    1    4    7</span></span>
+<span id="cb55-18"><a href="資料物件.html#cb55-18" aria-hidden="true"></a><span class="co">## [2,]    2    5    8</span></span>
+<span id="cb55-19"><a href="資料物件.html#cb55-19" aria-hidden="true"></a><span class="co">## [3,]    3    6    9</span></span>
+<span id="cb55-20"><a href="資料物件.html#cb55-20" aria-hidden="true"></a>xyz.list<span class="op">$</span>class</span>
+<span id="cb55-21"><a href="資料物件.html#cb55-21" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4</span></span>
+<span id="cb55-22"><a href="資料物件.html#cb55-22" aria-hidden="true"></a>xyz.list[[<span class="st">&quot;class&quot;</span>]]</span>
+<span id="cb55-23"><a href="資料物件.html#cb55-23" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4</span></span>
+<span id="cb55-24"><a href="資料物件.html#cb55-24" aria-hidden="true"></a>xyz.list[[<span class="st">&quot;class&quot;</span>]][<span class="dv">2</span>]</span>
+<span id="cb55-25"><a href="資料物件.html#cb55-25" aria-hidden="true"></a><span class="co">## [1] 2</span></span>
+<span id="cb55-26"><a href="資料物件.html#cb55-26" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb55-27"><a href="資料物件.html#cb55-27" aria-hidden="true"></a>xyz.list<span class="op">$</span>gender</span>
+<span id="cb55-28"><a href="資料物件.html#cb55-28" aria-hidden="true"></a><span class="co">## [1] &quot;Male&quot;   &quot;Female&quot;</span></span>
+<span id="cb55-29"><a href="資料物件.html#cb55-29" aria-hidden="true"></a>xyz.list[[<span class="st">&quot;gender&quot;</span>]][<span class="dv">1</span>]</span>
+<span id="cb55-30"><a href="資料物件.html#cb55-30" aria-hidden="true"></a><span class="co">## [1] &quot;Male&quot;</span></span>
+<span id="cb55-31"><a href="資料物件.html#cb55-31" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb55-32"><a href="資料物件.html#cb55-32" aria-hidden="true"></a>xyz.list<span class="op">$</span>score</span>
+<span id="cb55-33"><a href="資料物件.html#cb55-33" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3]</span></span>
+<span id="cb55-34"><a href="資料物件.html#cb55-34" aria-hidden="true"></a><span class="co">## [1,]    1    4    7</span></span>
+<span id="cb55-35"><a href="資料物件.html#cb55-35" aria-hidden="true"></a><span class="co">## [2,]    2    5    8</span></span>
+<span id="cb55-36"><a href="資料物件.html#cb55-36" aria-hidden="true"></a><span class="co">## [3,]    3    6    9</span></span>
+<span id="cb55-37"><a href="資料物件.html#cb55-37" aria-hidden="true"></a>xyz.list[[<span class="st">&quot;score&quot;</span>]][<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb55-38"><a href="資料物件.html#cb55-38" aria-hidden="true"></a><span class="co">## [1] 8</span></span></code></pre></div>
+</div>
+</div>
+<div id="資料框架-data-frame" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> 資料框架 Data Frame</h2>
+<p>一組資料通常包含數字與文字,
+在 {R} 中的向量與矩陣物件,
+只允許相同的變數型式,
+若要同時存入數字變數與文字變數,
+{R} 可以使用
+<strong>列表</strong>
+(<strong>list</strong>)
+與 函式指令
+<code>list()</code>,
+列表資料內可包含不同屬性的變數值.</p>
+<p><strong>資料框架</strong>
+(<strong>data frame</strong>)
+是列表物件的一種特殊情境.
+在資料框架內的每個變數之觀測值數目 (向量長度) 都相等,
+類似矩陣型式, 但是每個變數的變數值不一定是相同的模式,
+因此資料框架對統計人員而言, 常稱為
+<strong>資料矩陣</strong>
+(<strong>data matrix</strong>),
+是一般統計資料分析常用的形式.
+注意: {R} 資料框架物件操作類似 {R} 矩陣物件,
+但 {R} 資料框架物件本質上為 {R} 列表物件.</p>
+</div>
+<div id="資料框架函式-data.frame" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> 資料框架函式 data.frame()</h2>
+<p>{R} 可以使用函式
+<code>data.frame()</code>
+將資料儲存成
+資料框架物件.
+輸入時須注意每個變數之觀測值數目 (向量長度) 都必須相等,
+若有缺失值, 須先將缺失值符號輸入在向量內.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="資料物件.html#cb56-1" aria-hidden="true"></a><span class="co">## data frame</span></span>
+<span id="cb56-2"><a href="資料物件.html#cb56-2" aria-hidden="true"></a>id.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb56-3"><a href="資料物件.html#cb56-3" aria-hidden="true"></a>age.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">55</span>, <span class="dv">45</span>, <span class="dv">25</span>)</span>
+<span id="cb56-4"><a href="資料物件.html#cb56-4" aria-hidden="true"></a>sex.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb56-5"><a href="資料物件.html#cb56-5" aria-hidden="true"></a>disease.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb56-6"><a href="資料物件.html#cb56-6" aria-hidden="true"></a>x.df  &lt;-<span class="st">  </span><span class="kw">data.frame</span>(</span>
+<span id="cb56-7"><a href="資料物件.html#cb56-7" aria-hidden="true"></a>  <span class="dt">id  =</span> id.vec,</span>
+<span id="cb56-8"><a href="資料物件.html#cb56-8" aria-hidden="true"></a>  <span class="dt">age =</span> age.vec,</span>
+<span id="cb56-9"><a href="資料物件.html#cb56-9" aria-hidden="true"></a>  <span class="dt">sex =</span> sex.vec,</span>
+<span id="cb56-10"><a href="資料物件.html#cb56-10" aria-hidden="true"></a>  <span class="dt">disease =</span> disease.vec</span>
+<span id="cb56-11"><a href="資料物件.html#cb56-11" aria-hidden="true"></a>)</span>
+<span id="cb56-12"><a href="資料物件.html#cb56-12" aria-hidden="true"></a><span class="kw">mode</span>(x.df)</span>
+<span id="cb56-13"><a href="資料物件.html#cb56-13" aria-hidden="true"></a><span class="co">## [1] &quot;list&quot;</span></span>
+<span id="cb56-14"><a href="資料物件.html#cb56-14" aria-hidden="true"></a><span class="kw">class</span>(x.df)</span>
+<span id="cb56-15"><a href="資料物件.html#cb56-15" aria-hidden="true"></a><span class="co">## [1] &quot;data.frame&quot;</span></span>
+<span id="cb56-16"><a href="資料物件.html#cb56-16" aria-hidden="true"></a>x.df</span>
+<span id="cb56-17"><a href="資料物件.html#cb56-17" aria-hidden="true"></a><span class="co">##   id age    sex disease</span></span>
+<span id="cb56-18"><a href="資料物件.html#cb56-18" aria-hidden="true"></a><span class="co">## 1  1  35   Male     Yes</span></span>
+<span id="cb56-19"><a href="資料物件.html#cb56-19" aria-hidden="true"></a><span class="co">## 2  2  55   Male      No</span></span>
+<span id="cb56-20"><a href="資料物件.html#cb56-20" aria-hidden="true"></a><span class="co">## 3  3  45 Female      No</span></span>
+<span id="cb56-21"><a href="資料物件.html#cb56-21" aria-hidden="true"></a><span class="co">## 4  4  25 Female     Yes</span></span>
+<span id="cb56-22"><a href="資料物件.html#cb56-22" aria-hidden="true"></a>x.df<span class="op">$</span>age</span>
+<span id="cb56-23"><a href="資料物件.html#cb56-23" aria-hidden="true"></a><span class="co">## [1] 35 55 45 25</span></span>
+<span id="cb56-24"><a href="資料物件.html#cb56-24" aria-hidden="true"></a>x.df<span class="op">$</span>disease</span>
+<span id="cb56-25"><a href="資料物件.html#cb56-25" aria-hidden="true"></a><span class="co">## [1] &quot;Yes&quot; &quot;No&quot;  &quot;No&quot;  &quot;Yes&quot;</span></span></code></pre></div>
+<div id="資料框架的下標與索引-data-frame-index" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> 資料框架的下標與索引 Data Frame Index</h3>
+<p>資料框架的
+<strong>下標</strong>
+或
+<strong>索引</strong>
+(<strong>index</strong>)
+操作,
+如同矩陣的下標與索引操作,
+可以輸入正整數, 負數, 整數向量, 欄位名等等.
+矩陣具有 <span class="math inline">\(2\)</span>-維度下標向量,
+例如, 可以使用
+<strong>中括號</strong>
+<code>dataframe.name[i, j]</code>
+可存取資料框中的第 <span class="math inline">\([i, j]\)</span> 元素;
+<code>dataframe.name[i, ]</code>
+可存取資料框中的第 <span class="math inline">\(i\)</span> 列 (<span class="math inline">\(i\)</span>th row),
+<code>dataframe.name[ , j]</code>
+可存取資料框中的第 <span class="math inline">\(j\)</span> 欄 (<span class="math inline">\(i\)</span>th column).</p>
+<p>資料框架是列表的特例,
+因此資料框架的
+<strong>下標</strong>
+或
+<strong>索引</strong>
+(<strong>index</strong>)
+操作,
+也可如同列表的下標與索引操作.
+若一個名為 <code>data.Name</code> 的資料框架,
+要取的其中的 第 `<code>i.number'' 變數 (成份), 須使用</code>data.Name[[3]]<code>. 注意, 在資料框架物件的下標操作,</code>[[i.number]]<code>與</code>[i.number]<code>是不一樣的. 若資料框架中的變數命名為</code>variable.name<code>, 可以使用函式</code>dataframe.Name$variable.name<code>取得變數資料, 會與使用函式</code>dataframe.Name[[variable.name]] 取得相同結果.
+在
+<code>dataframe.Name\$variable.name</code>
+或
+<code>dataframe.Name[[variable.name]]</code>
+加上 <strong>中括號</strong>
+<code>[i]</code> 等,
+可以取得
+<code>dataframe.Name\$variable.name</code> 中的元素.
+<code>[[i.number]]</code> 可以適用在計算指標,
+但 $ 僅能使用在有設定變數名的資料框架.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="資料物件.html#cb57-1" aria-hidden="true"></a><span class="co">## data frame index</span></span>
+<span id="cb57-2"><a href="資料物件.html#cb57-2" aria-hidden="true"></a><span class="kw">data</span>(Puromycin)</span>
+<span id="cb57-3"><a href="資料物件.html#cb57-3" aria-hidden="true"></a>Puromycin</span>
+<span id="cb57-4"><a href="資料物件.html#cb57-4" aria-hidden="true"></a><span class="co">##    conc rate     state</span></span>
+<span id="cb57-5"><a href="資料物件.html#cb57-5" aria-hidden="true"></a><span class="co">## 1  0.02   76   treated</span></span>
+<span id="cb57-6"><a href="資料物件.html#cb57-6" aria-hidden="true"></a><span class="co">## 2  0.02   47   treated</span></span>
+<span id="cb57-7"><a href="資料物件.html#cb57-7" aria-hidden="true"></a><span class="co">## 3  0.06   97   treated</span></span>
+<span id="cb57-8"><a href="資料物件.html#cb57-8" aria-hidden="true"></a><span class="co">## 4  0.06  107   treated</span></span>
+<span id="cb57-9"><a href="資料物件.html#cb57-9" aria-hidden="true"></a><span class="co">## 5  0.11  123   treated</span></span>
+<span id="cb57-10"><a href="資料物件.html#cb57-10" aria-hidden="true"></a><span class="co">## 6  0.11  139   treated</span></span>
+<span id="cb57-11"><a href="資料物件.html#cb57-11" aria-hidden="true"></a><span class="co">## 7  0.22  159   treated</span></span>
+<span id="cb57-12"><a href="資料物件.html#cb57-12" aria-hidden="true"></a><span class="co">## 8  0.22  152   treated</span></span>
+<span id="cb57-13"><a href="資料物件.html#cb57-13" aria-hidden="true"></a><span class="co">## 9  0.56  191   treated</span></span>
+<span id="cb57-14"><a href="資料物件.html#cb57-14" aria-hidden="true"></a><span class="co">## 10 0.56  201   treated</span></span>
+<span id="cb57-15"><a href="資料物件.html#cb57-15" aria-hidden="true"></a><span class="co">## 11 1.10  207   treated</span></span>
+<span id="cb57-16"><a href="資料物件.html#cb57-16" aria-hidden="true"></a><span class="co">## 12 1.10  200   treated</span></span>
+<span id="cb57-17"><a href="資料物件.html#cb57-17" aria-hidden="true"></a><span class="co">## 13 0.02   67 untreated</span></span>
+<span id="cb57-18"><a href="資料物件.html#cb57-18" aria-hidden="true"></a><span class="co">## 14 0.02   51 untreated</span></span>
+<span id="cb57-19"><a href="資料物件.html#cb57-19" aria-hidden="true"></a><span class="co">## 15 0.06   84 untreated</span></span>
+<span id="cb57-20"><a href="資料物件.html#cb57-20" aria-hidden="true"></a><span class="co">## 16 0.06   86 untreated</span></span>
+<span id="cb57-21"><a href="資料物件.html#cb57-21" aria-hidden="true"></a><span class="co">## 17 0.11   98 untreated</span></span>
+<span id="cb57-22"><a href="資料物件.html#cb57-22" aria-hidden="true"></a><span class="co">## 18 0.11  115 untreated</span></span>
+<span id="cb57-23"><a href="資料物件.html#cb57-23" aria-hidden="true"></a><span class="co">## 19 0.22  131 untreated</span></span>
+<span id="cb57-24"><a href="資料物件.html#cb57-24" aria-hidden="true"></a><span class="co">## 20 0.22  124 untreated</span></span>
+<span id="cb57-25"><a href="資料物件.html#cb57-25" aria-hidden="true"></a><span class="co">## 21 0.56  144 untreated</span></span>
+<span id="cb57-26"><a href="資料物件.html#cb57-26" aria-hidden="true"></a><span class="co">## 22 0.56  158 untreated</span></span>
+<span id="cb57-27"><a href="資料物件.html#cb57-27" aria-hidden="true"></a><span class="co">## 23 1.10  160 untreated</span></span>
+<span id="cb57-28"><a href="資料物件.html#cb57-28" aria-hidden="true"></a>Puromycin<span class="op">$</span>rate</span>
+<span id="cb57-29"><a href="資料物件.html#cb57-29" aria-hidden="true"></a><span class="co">##  [1]  76  47  97 107 123 139 159 152 191 201 207 200  67</span></span>
+<span id="cb57-30"><a href="資料物件.html#cb57-30" aria-hidden="true"></a><span class="co">## [14]  51  84  86  98 115 131 124 144 158 160</span></span>
+<span id="cb57-31"><a href="資料物件.html#cb57-31" aria-hidden="true"></a>Puromycin<span class="op">$</span>state</span>
+<span id="cb57-32"><a href="資料物件.html#cb57-32" aria-hidden="true"></a><span class="co">##  [1] treated   treated   treated   treated   treated  </span></span>
+<span id="cb57-33"><a href="資料物件.html#cb57-33" aria-hidden="true"></a><span class="co">##  [6] treated   treated   treated   treated   treated  </span></span>
+<span id="cb57-34"><a href="資料物件.html#cb57-34" aria-hidden="true"></a><span class="co">## [11] treated   treated   untreated untreated untreated</span></span>
+<span id="cb57-35"><a href="資料物件.html#cb57-35" aria-hidden="true"></a><span class="co">## [16] untreated untreated untreated untreated untreated</span></span>
+<span id="cb57-36"><a href="資料物件.html#cb57-36" aria-hidden="true"></a><span class="co">## [21] untreated untreated untreated</span></span>
+<span id="cb57-37"><a href="資料物件.html#cb57-37" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
+<span id="cb57-38"><a href="資料物件.html#cb57-38" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>]</span>
+<span id="cb57-39"><a href="資料物件.html#cb57-39" aria-hidden="true"></a><span class="co">##    conc</span></span>
+<span id="cb57-40"><a href="資料物件.html#cb57-40" aria-hidden="true"></a><span class="co">## 1  0.02</span></span>
+<span id="cb57-41"><a href="資料物件.html#cb57-41" aria-hidden="true"></a><span class="co">## 2  0.02</span></span>
+<span id="cb57-42"><a href="資料物件.html#cb57-42" aria-hidden="true"></a><span class="co">## 3  0.06</span></span>
+<span id="cb57-43"><a href="資料物件.html#cb57-43" aria-hidden="true"></a><span class="co">## 4  0.06</span></span>
+<span id="cb57-44"><a href="資料物件.html#cb57-44" aria-hidden="true"></a><span class="co">## 5  0.11</span></span>
+<span id="cb57-45"><a href="資料物件.html#cb57-45" aria-hidden="true"></a><span class="co">## 6  0.11</span></span>
+<span id="cb57-46"><a href="資料物件.html#cb57-46" aria-hidden="true"></a><span class="co">## 7  0.22</span></span>
+<span id="cb57-47"><a href="資料物件.html#cb57-47" aria-hidden="true"></a><span class="co">## 8  0.22</span></span>
+<span id="cb57-48"><a href="資料物件.html#cb57-48" aria-hidden="true"></a><span class="co">## 9  0.56</span></span>
+<span id="cb57-49"><a href="資料物件.html#cb57-49" aria-hidden="true"></a><span class="co">## 10 0.56</span></span>
+<span id="cb57-50"><a href="資料物件.html#cb57-50" aria-hidden="true"></a><span class="co">## 11 1.10</span></span>
+<span id="cb57-51"><a href="資料物件.html#cb57-51" aria-hidden="true"></a><span class="co">## 12 1.10</span></span>
+<span id="cb57-52"><a href="資料物件.html#cb57-52" aria-hidden="true"></a><span class="co">## 13 0.02</span></span>
+<span id="cb57-53"><a href="資料物件.html#cb57-53" aria-hidden="true"></a><span class="co">## 14 0.02</span></span>
+<span id="cb57-54"><a href="資料物件.html#cb57-54" aria-hidden="true"></a><span class="co">## 15 0.06</span></span>
+<span id="cb57-55"><a href="資料物件.html#cb57-55" aria-hidden="true"></a><span class="co">## 16 0.06</span></span>
+<span id="cb57-56"><a href="資料物件.html#cb57-56" aria-hidden="true"></a><span class="co">## 17 0.11</span></span>
+<span id="cb57-57"><a href="資料物件.html#cb57-57" aria-hidden="true"></a><span class="co">## 18 0.11</span></span>
+<span id="cb57-58"><a href="資料物件.html#cb57-58" aria-hidden="true"></a><span class="co">## 19 0.22</span></span>
+<span id="cb57-59"><a href="資料物件.html#cb57-59" aria-hidden="true"></a><span class="co">## 20 0.22</span></span>
+<span id="cb57-60"><a href="資料物件.html#cb57-60" aria-hidden="true"></a><span class="co">## 21 0.56</span></span>
+<span id="cb57-61"><a href="資料物件.html#cb57-61" aria-hidden="true"></a><span class="co">## 22 0.56</span></span>
+<span id="cb57-62"><a href="資料物件.html#cb57-62" aria-hidden="true"></a><span class="co">## 23 1.10</span></span>
+<span id="cb57-63"><a href="資料物件.html#cb57-63" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>][[<span class="dv">1</span>]]</span>
+<span id="cb57-64"><a href="資料物件.html#cb57-64" aria-hidden="true"></a><span class="co">##  [1] 0.02 0.02 0.06 0.06 0.11 0.11 0.22 0.22 0.56 0.56 1.10</span></span>
+<span id="cb57-65"><a href="資料物件.html#cb57-65" aria-hidden="true"></a><span class="co">## [12] 1.10 0.02 0.02 0.06 0.06 0.11 0.11 0.22 0.22 0.56 0.56</span></span>
+<span id="cb57-66"><a href="資料物件.html#cb57-66" aria-hidden="true"></a><span class="co">## [23] 1.10</span></span>
+<span id="cb57-67"><a href="資料物件.html#cb57-67" aria-hidden="true"></a>Puromycin<span class="op">$</span>state[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
+<span id="cb57-68"><a href="資料物件.html#cb57-68" aria-hidden="true"></a><span class="co">## [1] treated treated treated</span></span>
+<span id="cb57-69"><a href="資料物件.html#cb57-69" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
+<span id="cb57-70"><a href="資料物件.html#cb57-70" aria-hidden="true"></a>Puromycin[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
+<span id="cb57-71"><a href="資料物件.html#cb57-71" aria-hidden="true"></a><span class="co">##   conc rate</span></span>
+<span id="cb57-72"><a href="資料物件.html#cb57-72" aria-hidden="true"></a><span class="co">## 1 0.02   76</span></span>
+<span id="cb57-73"><a href="資料物件.html#cb57-73" aria-hidden="true"></a><span class="co">## 2 0.02   47</span></span>
+<span id="cb57-74"><a href="資料物件.html#cb57-74" aria-hidden="true"></a><span class="co">## 3 0.06   97</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vector.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="資料輸入與輸出.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": "family:cwming",
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r4biost.pdf", "r4biost.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

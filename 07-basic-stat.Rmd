@@ -1,0 +1,686 @@
+# 基本統計函式 {#basicstat}
+
+{R} 有許多統計函式,
+可以對向量物件進行統計分析,
+{R} 內建所有常見的基礎敘述統計量,
+例如累加與乘積函式,
+`sum()`,
+`cumsum()`,
+`diff()`,
+`prod()`,
+`cumprod()`;
+樣本統計量函式,
+例如,
+`mean()`,
+`median()`,
+`var()`,
+`sd()`,
+`range()`,
+`min()`,
+`max()`,
+`quantile()`,
+`sample()` 等.
+
+
+
+使用 {R} 的統計函式進行資料分析時,
+須可別注意缺失值,
+若資料物件中有缺失值,
+一些 {R} 的統計函式須另外做特別處裡,
+可以對資料物件中的缺失值,
+先使用函式
+`na.omit()`
+處理,
+然後再進行資料分析,
+例如,
+`mean(na.omit(x))`.
+另外,
+可使用統計函式內的通用引數,
+`na.rm = T`,
+例如,
+`mean(x, na.rm = T)`
+然後再進行資料分析,
+對矩陣或資料框架物件做運算,
+若資料物件中有缺失值,
+常會有不可預期的結果必須小心.
+
+
+| 格式           | 說明             |                                      |
+|----------------+------------------+--------------------------------------------|
+| `sum(x)`       | 加總和 (scalar) |  $y = \sum_i x_i$                    |
+| `cumsum(x)`    | 累計加總和 (vector) | $z_j = \sum_{i \le j} x_i$      |
+| `diff(x)`      | `x[i+1]-x[i]`  | $z_i = x_{i+1} - x_i$                  |
+| `lag(x, k)`    |  `x[i-k]`      | $z_i = x_{i-k}$, 對應 `x[i]` 回傳 `x[i-k]`            |
+| `lead(x, k)`  |  `x[i+k]`      | $z_i = x_{i+k}$, 對應 `x[i]` 回傳 `x[i+k]`            |
+`prod(x)`      | 乘積 (product) |  $y = \prod_i x_i$                   |
+| `cumprod(x)`   | 累計乘積  | $z_j = \prod_{i \le j} x_i                        |
+| `mean(x)`      | 平均值 (mean)   | $\bar{x} = \frac{1}{n} \sum_i x_i$)    |
+| `median(x)`    | 中位數 (median) |  $0.5$ quantile, $50^{th}$ percentile  |
+| `var(x)`       | 變異數, 共變異數 | $s^2 = \frac{1}{n-1} \sum_i (x_i - \bar{x})^2$    |
+| `sd(x)`        | 標準差 (SD) | $s = \sqrt{s^2}$                             |
+| `range(x)`     | 範圍 (range)  |  $(\min (x), \max (x))$                    |
+| `min(x)`       | 最小值 |   $\min (x)$                                        |
+| `max(x)`       | 最大值 |   $\max (x)$                                      |
+| `quantile(x)`  | 百分位數 |                                  |
+| `fivenum(x)`   | 五數摘要 | (five-number summary) $(\min, Q_1, \text{median}, Q_3, \max)$  |
+| `sample(x)`    | 隨機抽樣 |   random sample                            |
+
+Table: 基本統計函式
+
+
+## 敘述統計函式
+
+
+{R} 內建一些基本敘述統計, 如計算平均值與變異等.
+`z <- range(x)` 函式回傳一個向量,
+二個元素 $(\min(x), \max(x))$;
+極大值與極小值分別為 `min(x)`, `max(x)`;
+求取百分位值可以用 `quantile()`,
+如 `quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95)`.
+`fivenum(x)` 回傳 $\mathbf{x}$ 向量 $(\min, Q_1, \text{median}, Q_3, \max)$.
+```{r}
+## basic descriptive statistics
+x <- seq(-2, 3, 0.3)
+x
+sum(x)
+cumsum(x)
+diff(x)
+prod(x)
+cumprod(x)
+mean(x)
+median(x)
+var(x)
+sd(x)
+range(x)
+min(x)
+max(x)
+## quantile
+y <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))
+y
+# IQR: inter-quantile range
+iqr = y[4] - y[2]
+iqr
+## five numnber summary
+fivenum(x)
+# missing values
+x[3] <- NA
+x[7] <- NA
+x
+mean(x)
+mean(na.omit(x))
+mean(x, na.rm = T)
+var(x, na.rm = T)
+```
+
+
+
+## 類別資料表格函數
+
+
+在類別資料分析中,
+常常會使用到
+**列聯表**
+(**contingency table**),
+在 {R} 中, 一些函式用來製造或操作
+**列聯表**
+(**contingency table**),
+例如,
+`table()`,
+`xtabs()`,
+`as.table()`,
+`is.table()`;
+`ftable()`,
+`read.ftable()`,
+`wirte.ftable()`;
+`as.data.frame()`;
+`margin.table()`,
+`prop.table()`,
+`addmargins()`
+等.
+除此之外,
+{R} 還有一些關於列聯表的套件,
+例如,
+`xtable`,
+`vcd**,
+`reshape2`,
+`plyr`,
+`dplyr`,
+`tidyr`,
+`tidyverse`
+ 等,
+將資料產生或轉換成列聯表.
+{R} 本身有一些分析列聯表的函式,
+也有許多許多流行病學的套件與函式,
+對
+**列聯表**
+進行分析.
+例如,
+`Epi`,
+`epibasix`,
+`epiDisplay` (之前為 `epicalc`),
+`epifit`,
+`epiR`,
+`epitools`,
+`RCOR`,
+`pROC`
+等,
+可以進行流行病學分析,
+套件主要分析能力大至相同,
+但各別套件仍有其特徵.
+
+
+類別資料的輸入常見有 2 種型式,
+(a)
+**個別資料**
+(**individual data**,
+**micro data**,
+**case data**);
+(b)
+**聚集資料**
+(**aggregated data**,
+**macro data**,
+**summarized data**,
+**ecological data**).
+個別資料內包含每一位
+**個體**
+(**subject**,
+**individual**),
+研究者為目前的研究目的所蒐集的第一手資料,
+記錄著每一為個體的測量值,
+個別資料有時稱為
+**原始資料**
+(**raw data**,
+**primary data**,
+**original data**).
+資料只有摘要之後的結果,
+是由其他來源所得到的資料,
+沒有每一位個體的比變數觀測值,
+例如沒有每一位個體的性別, 年紀等觀測值,
+這種整理分析候的資料有時稱為
+**二手資料**
+或
+**次級資料**
+(**secondary data**).
+
+個別資料可以經過整理成為聚集資料形態,
+但是, 若遺失每一位個體的測量值, 只有聚集資料, 則無法回復原來的個別資料.
+因此, 研究盡量使用每一位個體的測量值, 但有些時候, 無法得到每一位個體的測量值,
+若資料內全是類別變數,
+則 個別資料 與 聚集資料 分析結論部會有差別,
+但資料內若有連續變數如年紀, BMI 等,
+將連續變數轉換成類別變數, 只呈現或分析聚集資料,
+則會造成所謂的
+**生態謬誤**
+(**ecological fallacy**),
+是指由 聚集資料 (團體) 所得到的推論,
+不能反應 個別資料 (個人的真實) 所得到的推論,
+所產生研究推論的誤導.
+
+
+### 列聯表函式: table(), xtabs() 
+
+
+使用函式
+`table()`,
+`xtabs()`,
+可以從任何向量, 矩陣, 陣列, 資料框架
+創造一個列聯表,
+回傳一個
+**列聯表**
+物件.
+函式
+`table()`
+回傳的物件稱為
+`_contingency table_`.
+這是一個 {R} 物件類別 (class)
+為
+`table`
+之特殊物件.
+使用函式
+`as.table()`
+可用來強制將 矩陣 或 資料框架 形成列聯表物件.
+`as.matrix()` 強制將 列聯表物件 形成 矩陣.
+`as.data.frame()` 強制將 列聯表物件 形成 資料框架.
+`as.data.frame()` 是 `xtabs()` 的反函式.
+使用函式
+`is.table()`
+可查看物件是否為列聯表物件.
+使用函式
+`table()` 
+須使用資料內個別變數或向量.
+使用函式
+`xtabs()`
+可以從資料框架中,
+利用統計模型公式 (model formula) 創造一個列聯表.
+函式 `as.data.frame()`
+則是函式
+`xtabs()`
+的反函式,
+從列聯表物件創造一個資料框架.
+```{r eval=FALSE}
+table(variable_name, ...)
+xtabs(formula, data)
+```
+其中常用引數如下.
+
+* `formula`: 使用統計模型公式輸入.
+* `data`: 資料框架名.
+* `na.action = "na.omit"`: 缺失值處理方式.
+* `exclude`: 排除類別水準的細項, 自動內設排除缺失值.	
+* `useNA`: 處理缺失值選項.
+  * `"no"`: 排除缺失值.
+  * `"ifany"`: 納入缺失值, 若類別水準的計數 (count) 為正整數.
+  * `"always"`: 永遠納入缺失值成為 1 類別水準.  即使類別水準的計數 (count) 為 0 仍然自成 1 個類別水準.
+
+
+Prentice (1973) 報告一個研究,
+關於年長退伍軍人罹患肺癌, 且無法接受手術之臨床試驗,
+%病患在 Veteran's Administration 醫院隨機接受標準治療或新的化學療法,
+病患在榮民醫院隨機接受標準治療方法或新的化學治療方法,
+比較治療的主要結果變數為死亡時間,
+變數名稱列在表. 
+資料在檔案 **survVATrial.csv**.
+
+
+
+| 變數            | 描述                                                           |
+|-----------------|----------------------------------------------------------------|
+| treat (therapy) | 治療組別: 0 = 標準; 1 = 新治療                                 |
+| cellcode        | 細胞型態; 1 = 鱗狀細胞; 2 = 小細胞; 3 = 腺體細胞; 4 = 大細胞   |
+| time            | 存活時間, 診斷日期至死亡日期, 單位以日計                       |
+| censor          | 設限狀態: 0 = 設限; 1 = 死亡                                   |
+| diagtime        | Karnofsky performance score, 診斷時身體狀態表現的分數          |
+| diagtime        | 診斷到隨機分配的時間, 以月計                                   |
+| age             | 診斷時的年齡 (以年計)                                          |
+| prior           | 先前是否接受治療; 0 = 無; 1 = 有                               |
+
+
+
+
+
+```{r message=FALSE, warning=FALSE}
+dd <- read.table("./Data/survVATrial.csv",
+                 header = TRUE,
+                 sep = ",",
+                 quote = "\"'",
+                 dec = ".",
+                 row.names = NULL,
+                 # col.names,
+                 as.is = TRUE,
+                 # as.is = !stringsAsFactors,
+                 na.strings = c(".", "NA"))
+head(dd)
+str(dd)
+dd$treat <- factor(dd$treat, labels = c("placebo", "test"))
+dd$cellcode <- factor(dd$cellcode, 
+                      labels = c("squamous", "small", "adeno", "large"))
+dd$censor <- factor(dd$censor, labels = c("survival", "dead"))
+dd$prior <- factor(dd$prior, labels = c("no", "yes"))
+head(dd)
+str(dd)
+## one-way table
+## table()
+table(dd$censor)
+table(dd$cellcode)
+## xtabs()
+xtabs(~ censor, data = dd)
+## two-way table()
+## table()
+dd.2tab = table(dd$cellcode, dd$censor)
+dd.2tab 
+class(dd.2tab)
+## xtabs()
+dd.2xtabs = xtabs(~ cellcode + censor, data = dd)
+dd.2xtabs
+class(dd.2xtabs)
+## three-way table()
+## table()
+dd.3tab = table(dd$treat, dd$censor, dd$cellcode)
+dd.3tab 
+## xtabs()
+dd.3xtabs = xtabs(~ treat + censor + cellcode, data = dd)
+dd.3xtabs
+```
+
+
+### 列聯表函式: ftable()
+函式
+`table()`
+或
+`xtabs()`
+對高維度列聯表的呈現類似 list 形式,
+較不方便操作,
+改使用函式
+`ftable()`,
+可以從任何向量, 矩陣, 陣列, 資料框架
+創造一個
+**扁平列聯表**
+(**flat contingency table**),
+**扁平列聯表**
+是一個
+`ftalbe`
+類別 (class) 的矩陣物件,
+其中變數 (欄位, column) 為分類因子變數,
+另外再加上各組頻率數目,
+每一列 (row) 代表每一種分類的類別水準 (level).
+使用函式
+`ftable()`
+得到
+`ftable` 物件,
+在 {R} 的列印上,
+會比
+`table()`
+或
+`xtabs()`
+得到
+`_contingency table_` 物件
+好看.
+
+```{r}
+## three-way table()
+## ftable()
+dd.3ftab = ftable(dd$cellcode, dd$treat, dd$censor)
+dd.3ftab
+```
+
+
+### 列聯表函式: margin.table(), prop.table() 
+
+ 
+使用函式
+`margin.table()`
+可以使用類別 (class) 為 `table` 的列聯表物件,
+或是使用陣列型式 (array, matrix) 的列聯表物件
+計算
+**邊際總合**
+(**marginal total**).
+函式
+`prop.table()`
+從陣列型式 (array, matrix) 之列聯表物件,
+計算列聯表物件的
+**相對頻率**
+(**relative frequency**).
+函式
+`addmargins()`
+對列聯表物件進行邊際維度計算總和.
+
+函式
+`margin.table()`
+與
+函式
+`prop.table()`
+無法對
+類別 (class) 為 `ftable` 的列聯表物件進行操作.
+函式
+`addmargins()`
+可以對
+類別 (class) 為 `table` 或 `ftable` 的列聯表物件進行操作.
+```{r eval=FALSE}
+margin.table(x, margin = NULL)
+prop.table(x, margin = NULL)
+addmargins(A, margin, ...)
+```
+其中引數
+
+
+* `x`: `table` 物件.
+* `A`: `table` 或 `ftable` 物件.
+* `margin`: 維度下標或向量 (index/vector), 設定計算的邊際維度.
+  * `margin = NULL`: 計算列聯表內總和或個別空格分率 (cell count/proportion).
+  * `margin = 1`: 計算列聯表的列位 (row) 邊際總和或分率 (row marginal total/proportion).
+* `margin = 2`: 計算列聯表的欄位 (column) 邊際總和或分率 (column marginal total/proportion).
+* `margin = k`: 其餘維度則依此列推.
+
+```{r}
+## one-way table
+## table()
+dd.1tab = table(dd$cellcode)
+dd.1tab
+margin.table(dd.1tab)
+prop.table(dd.1tab)
+## xtabs()
+dd.1xtabs = xtabs(~ censor, data = dd)
+margin.table(dd.1xtabs)
+prop.table(dd.1xtabs)
+## two-way table()
+## table()
+dd.2tab = table(dd$cellcode, dd$censor)
+dd.2tab 
+## cell count total and proportion 
+margin.table(dd.2tab)
+prop.table(dd.2tab)
+## condition on row
+margin.table(dd.2tab, margin = 1)
+prop.table(dd.2tab, margin = 1)
+## condition on column
+margin.table(dd.2tab, margin = 2)
+prop.table(dd.2tab, margin = 2)
+## xtabs()
+dd.2xtabs = xtabs(~ cellcode + censor, data = dd)
+dd.2xtabs
+## cell count total and proportion 
+margin.table(dd.2xtabs)
+prop.table(dd.2xtabs)
+## condition on row
+margin.table(dd.2xtabs, margin = 1)
+prop.table(dd.2xtabs, margin = 1)
+## condition on column
+margin.table(dd.2xtabs, margin = 2)
+prop.table(dd.2xtabs, margin = 2)
+```
+
+
+
+
+
+
+## 機率函式與亂數生成函式
+
+{R} 具有詳盡的機率函式與亂數生成函式參見表 \ref{tab:RDistFun**, 如令 $X$ 為一隨機變數 (random variable), 定義如下.
+
+
+\[
+\begin{aligned}
+&  f = f(X = x) = \text{機率密度函數}\; F(x) = \int f(x) dx = \text{累積機率分配函數}\\
+p &  =   F(q) = P (X \le q) = \text{累積機率分配函數, cumulative distribution function}  \\
+q &  =   Q (u) = F^{-1} (p) = \text{分位數函數, quantile function}, \; \text{其中}\;  p \le P (X \le q) \\
+d &  =  f(x) = F' (x) = P (X = x) = \text{機率密度分配函數, probability density function} \\
+r &  =  R (r) = f^{-1} (x)  = \text{隨機亂數函數, random number}, 
+\end{aligned}
+\]
+
+
+在 {R} 中, 相同的機率函數 (probability function), 使用相同的機率名稱,
+`ProbFun`,
+在機率名稱, `ProbFun`, 之間,
+加上 4 種不同的小寫字母, `p`, `q`, `d`, `r`,
+產生不同的機率函式.
+例如, `fProbFun`,
+表示用相同的機率函式定義, 產生上述不同之結果.
+非中央參數 (non-centrality parameter), `ncp` 現在僅用於累積分配函數,
+此外還有函是 `ptukey()` 和 `qtukey()` 計算
+Studentized Range Distribution.
+
+ | 機率分配   |   {R} 函式名 (ProbFun)   |  引數    |
+ |------------ +-------------------------+--------- |
+ | beta |    `beta`  |    shape1, shape2, ncp       |
+ | binomial |    `binom`  |    size, prob           |
+ | Cauchy |    `cauchy`  |    location, scale       |
+ | chi-squared |    `chisq`  |    df, ncp          |
+ | exponential |    `exp`  |    rate                |
+ | F |    `f`  |    df1, df1, ncp                   |
+ | gamma |    `gamma`  |    shape, scale            |
+ | geometric |    `geom`  |    prob                 |
+ | hypergeometric |    `hyper`  |    m, n, k        |
+ | log-normal |    `lnorm`  |    meanlog, sdlog    |
+ | logistic |    `logis`  |    location, scale      |
+ | negative binomial |    |nbinom |  |    size, prob   |
+ | normal |    `norm`  |    mean, sd                |
+ | Poisson |    `pois`  |    lambda                 |
+ | Student's |    `t`  |    t  df, ncp              |
+ | uniform |    `unif`  |    min, max               |
+ | Weibull |    `weibull`  |    shape, scale        |
+ | Wilcoxon |    `wilcox`  |    m, n                |
+
+Table: 機率函式
+
+* `p` 表示 **累積機率分配函數** (**cumulative distribution function, CDF**).
+* `q` 表示 **分位數** (**quantile**),
+符合 $u \le P (X < =  x)$ 的最小 $x$.
+* `d` 表示 **機率密度函數** (**probability density function, pdf**).
+* `r` 表示隨機模擬 **偽隨機亂數**, **隨機亂數**
+生成函式 (**pseudo-random number generation function**, **random number**).
+* `dProbFun` 的第一個參數是 $x$.
+* `pProbFun` 的第一個參數是 $q$.
+* `qProbFun` 的第一個參數是 $p$.
+* `rProbFun` 的的第一個參數是 $n$, 生成亂數之數目.
+* `pProbFun` 和 `qProbFun` 函數 都有邏輯引數 `lower.tail** 和 `log.p`. 
+  * 若 `lower.tail = TRUE` (default), 機率計算為 $P (X < =  x)$. 
+  * 若 `lower.tail = FALSE` 機率計算為 $P (X > x)$. 
+  * 若 `log.p = TRUE`, 機率 $p$ 是以 `log(p)` 輸入與輸出.
+* `dProbFun` 也有一個邏輯引數 `log`, 用來計算所要的對數機率值.
+
+```{r}
+# normal distribution
+pnorm(1.96)
+qnorm(0.975)
+dnorm(1.96)
+# Poisson distribution
+rpois(10, 1)
+rpois(10, 2)
+rpois(10, 20)
+## Cumulative distribution
+## Pr(x <= 2)
+ppois(2, 2)
+ppois(4, 2)
+ppois(6, 2)
+# t distribution
+qt(0.995, df = 2)
+2*pt(-1.96, df = 2)
+2*pt(-1.96, df = 30)
+# upper 1% point for an F(1, 2) distribution
+sqrt(qf(0.99, 1, 2))
+```
+
+通常產生亂數序列希望是不會重復的,
+實際上, {R} 在現在操作視窗下, 第一次產生時亂數時,
+從當下時間 (current time), 生成一個
+**種子**
+(**seed**)
+出發,
+不斷迭代更新產生隨機均等分配亂數 (uniform random number),
+所以不同時間下執行 {R}, 啟用不同的種子, 隨後內部的隨機種子就已經改變了, 模擬亂數是不會重復的,
+有時我們需要模擬結果是可重復的亂數序列,
+此時需要用函式 `set.seed()`,
+在每次產生偽隨機亂數之前, 把種子設定種子為某一特定正整數即可.
+
+
+```{r}
+## generate random number
+## set.seed(): set initial value
+## Caution use set.seed() everytime!
+## uniform
+runif(5)
+runif(5)
+set.seed(10)
+runif(5)
+set.seed(10)
+runif(5)
+# norm
+rnorm(5)
+rnorm(5)
+set.seed(10)
+rnorm(5)
+set.seed(10)
+rnorm(5)
+##  normal + uniform
+set.seed(10)
+runif(5)
+rnorm(5)
+set.seed(10)
+runif(5)
+rnorm(5)
+set.seed(10)
+rnorm(5)
+runif(5)
+```
+
+
+
+## 隨機抽樣函式 sample() 
+
+在 {R} 中有一個常用的隨機抽樣函式, `sample()`, 用法如下.
+若要重覆出現相同的隨機樣本, 須設定起始的一個
+**種子**
+(**seed**).
+
+```{r eval=FALSE}
+sample(x, size, replace = FALSE, prob = NULL)
+```
+* `x`  為一長度大於 1 的任意向量, 或是一個正整數.
+* `size = k` 設定所要抽出之樣本數.
+* `prob` 設定每一個個體被抽取之相對應機率或比率之向量, 
+  - 若無設定值, 則每一個個體被抽取之相對應機率為相等.
+* `replace = FALSE`  邏輯指令, 設定是否可重複抽取.
+
+```{r}
+## random sampling
+letters
+sample(letters, 5)
+sample(letters, 5)
+set.seed(1)
+sample(letters, 5)
+sample(letters, 5)
+set.seed(1)
+sample(letters, 5)
+sample(letters, 5)
+## sampling 5 subjects from 10 subjects
+## without or with replacement
+set.seed(1)
+x <- 1:10
+sample(x, size = 5, replace = FALSE) # (a) no resampling
+sample(x, size = 5, replace = TRUE)  # (b) resampling
+# permutation
+set.seed(1)
+x <- 1:10
+sample(x, size = 10, replace = FALSE) # no resampling
+# equal probability
+set.seed(1)
+x <- 1:10
+sample(x, size = 5, replace = FALSE, prob = c(1:10))
+sample(x, size = 5, replace = FALSE, prob = c(rep(1, 10) / 10.0))
+# unequal rpobability
+set.seed(1)
+x <- 1:10
+(prob.rs = c(seq(1, 10) / sum(seq(1, 10))))
+sum(prob.rs)
+sample(x, size = 5, replace = TRUE,  prob = seq(1, 10))
+```
+
+在臨床試驗或實驗性研究, 通常需要產生隨機分組名單,
+可利用 `sample()`, 依照不同隨機指派方法, 產生不同隨機分組名單.
+若要重覆出現相同的隨機樣本, 須設定起始的一個
+**種子**
+(**seed**).
+
+
+```{r}
+## clinical trials or experiments
+## randomization
+## random assign to two groups, total 20 subjects
+## random assigning treatment groups
+## 20 Bernoulli trials
+set.seed(1)
+sample(c(0, 1), size = 20, replace = TRUE)
+sample(2, size = 20, replace = TRUE)
+
+# random choose 10 subjects to group 1
+set.seed(1)
+sample(20, size = 10, replace = FALSE)
+
+# block randomization
+# total 5 blocks, block size 4, choose 2 subjects to group 1
+set.seed(1)
+replicate(5, sample(c(1:4), size = 2, replace = FALSE))
+```
+

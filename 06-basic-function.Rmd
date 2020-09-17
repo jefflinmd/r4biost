@@ -1,0 +1,569 @@
+# 基本函式 {#basicfunctiuon}
+
+
+
+{R} 有許多
+**函式**
+(**function**),
+函式是一種物件, 是指令的集合,
+執行特定功能或運算工作的指令, 資料整理, 資料分析等,
+透過函式,
+擴展了 {R} 在程式語言的功能性與便利性.
+函式內通常需輸入
+**引數**
+(**argument**).
+
+{R} 基本系統 (base) 提供了一部分常用函式,
+而更多不同類型的函式,
+則由許多不同的學者貢獻到
+{R} 系統 (contribution) 中,
+這些函數都是用 {R} 程式語言寫成的.
+例如, 統計常用函式
+`mean()`, `var()`, `sd()`, `log()` 等.
+
+
+
+## 函式語法
+
+
+一個函式內通常需輸入
+**引數**
+(**argument**)
+或是
+**統計公式**,
+**統計模型**,
+(**formals**).
+引數可以是一個以上,
+有些引數一定要輸入,
+稱為
+**必要引數**
+(**required argument**),
+有些引數可以不用輸入,
+稱為
+**自選引數**
+(**optional argument**),
+另外一種引數則為
+**省略引數**
+(**ellipsis argument**)
+這三種引可以同時存在一個函式內,
+引數可以是數值, 文字, 資料框架或 {R} 的任何物件.
+例如, 函式 ```log()``` 指令:    
+```     
+log(x, base = exp(1))     
+```      
+```log()``` 函式在 {R} 內設以自然數為底計算,
+其中 `x` 為必備引數,
+使用者必須自行輸入所要計算的數值作為引數值.
+而 `base = exp(1)`
+為選擇引數,
+若使用者沒有輸入引數值,
+函式 `log()` 內設以自然數 $e$ 為底,
+當然, 使用者可以更動底數的設定值,
+例如更動為以 $2$ 為底的獨度對數運算,
+```log(x, base = 2)```.
+```{r message=FALSE}
+## basic function
+x.vec = c(1:5)
+x.vec           # show x.vec
+mean(x = x.vec) # function mean() calculate mean, return a scalar
+var(x = x.vec)  # function mean() calculate variance
+sd(x.vec)       # function mean() calculate standard deviation
+summary(x.vec)  # summarized statistics
+log(x = x.vec)  # take log for all elements in vector x.vec
+## log function
+x.vec <- c(1, 2, 3, 4, 5)
+log(x = x.vec)
+log(x = x.vec, base = 2)
+```
+
+
+## 檢視的函式原始碼定義
+
+{R} 函式的原始碼定義分成
+S3 classes 函式 與 S4 classes 函式,
+許多時候, 可以在 {R} 輸入函式名稱,
+檢視 S3 classes 的函式.
+例如,
+`function.name()`,
+查看函式的原始碼內容與計算過程.
+有時必須使用 `methods("function.name")`,
+`getAnywhere("function.name")`,
+`stats:::function.name`
+例如,
+指令提示符號下輸入 `sd`,
+查看函式 `sd` 的計算過程與引數.
+```{r, message=FALSE}
+## methods()
+sd
+t
+methods(t)
+methods(class = "ts")
+```
+
+若要檢視 S4 classes 的函式, 可以使用
+`showClass("function.namme")`,
+`showMethods("function.namme")`,
+`getMethod("function.namme")`,
+`selectMethod()`,
+`existsMethod()`,
+`hasMethod()`,
+`removeClass()`,
+`removeMethod()`,
+`getClass()`,
+`getSlots()`,
+`slotNames()`,
+`slot()`.
+另外一種查看函式的原始碼內容與計算過程,
+是下載原始碼使用文書處理軟體打開檔案檢視.
+```{r eval=FALSE}
+download.packages(pkgs = "package.name",
+                  destdir = "C:/RData",
+                  type = "source")
+```
+
+
+
+## 數列函式
+
+
+{R} 有幾個產生數列的基本函式,
+包含 `:`, `sequence()`,  `rep()` 等.
+
+
+### 數列函式: seq() 與 sequence()
+
+
+在統計運算中, 常需要產生數列向量,
+例如產生
+`[1,2,3,4,5]`,
+`[1,3,5,7,9]`
+等等,
+可以使用 函式
+`:` (冒號),
+`seq()`
+或
+`sequence()`
+等產生數列向量.
+```{r message=FALSE}
+## :
+1:5
+5:1
+- 1:3
+```
+
+數列函式
+`seq()`
+或
+`sequence()`
+的指令, 不受限只有整數,
+可以任產生何實數數列.
+```{r eval=FALSE}
+seq(from = 1, to = 1, 
+    by = ((to - from)/(length.out - 1)),
+    length.out = NULL, 
+    along.with = NULL, ...)
+```
+* `from = 1` 數列起始值
+* `to = 1` 數列結束值
+* `by` 數列每次增加值
+* `length.out` 數列長度 (元素數目)
+```{r}
+## seq()
+seq(from = 1, to = 5, by = 0.5)
+seq(1, 5, 0.5)
+seq(1, 5, length = 3)
+seq(from = 0, to = 1, by = 0.1)
+seq(from = 0, to = 2, by = 0.33)
+sequence(c(3, 4, 5))
+```
+
+## 重複元素函式: rep()
+
+
+另一個與
+`seq()` 類似的函式
+`rep()`,
+可以產生相同重複元素的向量. 向量指令與其中引數分別為:
+```{r eval=FALSE}
+rep(x, times = 1, length.out = NA, each = 1)
+```
+* `x` 使用者想要相同重複元素的數值向量.
+* `times` 數值向量 `x` 重複的次數.
+* `each` 數值向量 `x` 的每個元素重複的次數.
+* `length.out = NA` 數值向量 `x` 重複後的長度.
+```{r}
+## rep()
+rep(0, times = 3)
+rep(1, 5)
+x.vec <- c(4, 5, 6)
+rep(x.vec, times = 2)
+rep(x.vec, each = 2)
+rep(x.vec, each = 2, times = 3)
+rep(x.vec, times = c(2, 2, 2))
+rep(x.vec, times = c(1, 2, 3))
+rep(x.vec, each = 2, len = 4)    # first 4 only.
+```
+
+
+## 算數函式 Arithmetic Computing Function
+
+
+{R} 有許多內建的
+**算數函式**
+(**arithmetic function**),
+包含指數, 對數,
+Gamma 函數, Beta 函數,
+三角函數, 反三角函數,
+雙曲函數, 反雙曲函數 等等.
+
+| 符號   | 定義                                                      |
+|--------|------------------------------------------------------------------|
+| -      | 減法運算 (Substraction, can be unary or binary)                  |
+| +      | 加法運算 (Addition, can be unary or binary)                      |
+| !      | 否定運算 (Unary not)                                             |
+| *      | 乘法運算 (Multiplication, binary)                                |
+| /      | 除法運算 (Division, binary)                                      |
+| \^     | 指數乘冪運算 (Exponentiation, binary)                            |
+| %%     | 整數除法的餘數 (Modulus, binary)                                 |
+| %/%    | 整數除法的商數 (Integer divide, binary)                          |
+| %*%    | 矩陣內積乘法 (Matrix product, binary)                            |
+| %o%    | 矩陣外積乘法 (Outer product, binary)                             |
+| %x%    | 矩陣 Kronecker 乘法 (Kronecker product, binary)                  |
+| %in%   | 配對運算 (Matching operator, binary, in model formulae: nesting) |
+| `round(x,  digits = 0)` | 設定小數位數 (數值會受到作業系統影響)        |
+| `signif(x, digits = 6)` | 設定實數列印出的小數位數 (數值會受到作業系統影響)  |
+| `trunc(x)` | 將 `x` 的小數截斷, 向 0 靠近                        |
+| `ceiling(x)` | 大於 `x` 的最小整數                             |
+| `floor(x)` | 小於 `x` 的最大整數                               |
+| `sign(x)` | 求 `x` 的正負值, 回傳 1, 0, 或 -1.                |
+| `abs(x)` | 求 `x` 的絕對值                                    |
+| `sqrt(x)` | $\sqrt{x}$                                         |
+| `exp(x)` | $e^x$                                             |
+| `expm1(x)` |  當 $\vert x \vert << 1$, 計算 $e^{x}-1$          |
+| `log(x)` | $\log (x)$                                          |
+| `log10(x)` | $log_{10} (x)$                                   |
+| `log2(x)` | $\log_2 (x)$                               |
+| `logb(x, base = z)` | $\log_z (x)$                           |
+| `log1p(x)` |  當 $\vert x \vert << 1$, 計算 $\log(1+x)$                    |
+| `gamma(x)` | $\Gamma (x) = (x-1)! = \int_0^\infty t^{(x-1)} \exp (-t) d t$  |
+| `lgamma(x)` |   $\log_e [\Gamma (x)]$                                 |
+| `beta(a, b)` | $B (a,b) = (\Gamma (a) \Gamma (b))\,/\, (\Gamma(a+b))$          |
+|             |   $ = \int_0^1 t^{(a-1)} (1-t)^{(b-1)} d t$                     |
+| `lbeta(a, b)` | $\log_e [B(a, b)]$                                            |
+| `digamma(x)` | $\frac{d}{dx} \log_e [\Gamma (x)]$                   |
+| `trigamma(x)` | $\frac{d^2}{d x^2} \log_e [\Gamma (x)]$               |
+| `psigamma(x, deriv = 0)`| $\frac{d^p}{d x^p} \log_e [\Gamma (x)]$      |
+| `sin(x) cos(x) tan(x)` |  三角函數 (trigonometric functions)                 |
+| `asin(x) acos(x) atan(x)` |  反三角函數 (inverse functions)                      |
+| `sinh(x) cosh(x) tanh(x)` |  雙曲函數 (hyperbolic functionsx)                    |
+| `asinh(x) acosh(x) atanh(x)`|  反雙曲函數 (inverse hyperbolic functions)            |
+
+Table: 算數函式 Arithmetic Computing Function 
+
+```{r}
+## Arithmetic Computing
+## rounding
+(x.vec <- 0.5 + c(-2:2))
+round(x.vec) # IEEE rounding
+(y.vec <- seq(-2, 2, by = 0.5))
+(y.round <- round(y.vec)) # IEEE rounding
+(y.trunc <- trunc(y.vec))
+(y.signif <- signif(y.vec))
+(y.ceil <- ceiling(y.vec))
+(y.floor <- floor(y.vec))
+cbind(y.vec, y.round, y.trunc, y.signif, y.ceil, y.floor)
+#
+(x.vec <-  0.5 + c(-2:3))
+round(x.vec) # IEEE rounding
+(y.vec <- seq(-2, 3, by = 0.5))
+(y.round <- round(y.vec)) # IEEE rounding
+(y.trunc <- trunc(y.vec))
+(y.signif <- signif(y.vec))
+(y.ceil <- ceiling(y.vec))
+(y.floor <- floor(y.vec))
+cbind(y.vec, y.round, y.trunc, y.signif, y.ceil, y.floor)
+#
+(y.vec <- seq(-2, 3, by = 0.5))
+y.vec[trunc(y.vec) != floor(y.vec)]
+y.vec[round(y.vec) != floor(y.vec + 0.5)]
+#
+(z.vec <- pi * 100 ^ (-1:3))
+round(z.vec, 3)
+signif(z.vec, 3)
+#
+## sign() abs()
+sign(pi) # == 1
+sign(-2:3)# -1 -1 0 1 1 1
+abs(-2:3)
+#
+## log(), exp() calculation
+(x.vec <- 1:3)
+log(exp(x.vec))
+(y.vec <- 10 ^ (x.vec))
+log10(y.vec)
+log10(1e7) # = 7
+#
+## options(digits, scipen)
+options(digits = 4, scipen = 0)
+z.vec <- pi * 100^(-1:3)
+print(z.vec / 1000, digits = 4)
+options(digits = 4, scipen = 100)
+print(z.vec / 1000, digits = 4)
+#
+options(digits = 4, scipen = 100)
+x.vec <- 100 ^ -(1 + 2 * 1:3)
+cbind(
+  x = x.vec,
+  log1px = log(1 + x.vec),
+  log1p  = log1p(x.vec),
+  exp    = exp(x.vec) - 1,
+  expm1  = expm1(x.vec)
+)
+#
+options(digits = 4, scipen = 0)
+x.vec <- 100^(-(1 + 2 * 1:3))
+cbind(
+  x = x.vec,
+  log1px = log(1 + x.vec),
+  log1p  = log1p(x.vec),
+  exp    = exp(x.vec) - 1,
+  expm1  = expm1(x.vec)
+)
+```
+
+
+
+## 組合與階乘函式: choose() 與 factorial()
+
+
+{R} 內建的組合與階乘函式
+`choose()`,
+`lchoose()`,
+`factorial()`,
+`lfactorial()`,
+其用法類似.
+
+* `choose(n, k)` = $\binom{n}{k}$
+* `fractorial(x)` = $x!$
+* `k` 為正整數.
+* `x` 與 `n` 為數值向量.
+* `factorial()`, `lfactorial()` 回傳原始結果取對數值.
+
+```{r}
+## combination
+## choose()
+choose(n = 5, k = 2)
+log(choose(n = 5, k = 2))
+lchoose(n = 5, k = 2)
+for (n in 0:5)
+  print(choose(n, k = 0:n))
+
+## factorial
+factorial(x = 100)
+log(factorial(x = 100))
+lfactorial(x = 100)
+lfactorial(x = 10000)
+factorial(x = c(1, 3, 5))
+```
+
+## 選擇資料函式: all(), any(), which()
+
+函式
+`all(x)` 與
+`any(x)`
+可以用來查看特定向量物件 `obj.vec` 的元素是否符合某些特定條件,
+回傳邏輯純量 `TRUE` 或 `FALSE`.
+函式
+`which()`
+查看特定向量物件 `obj.vec` 的元素是否符合某些特定條件,
+然後回傳一個下標向量, 紀錄向量物件符合某些特定條件的元素位置.
+函式指令
+`which.max()`
+與
+`which.min()`
+是函式指令
+`which()`
+的延伸.
+```{r eval=FALSE}
+all(..., na.rm = FALSE)
+any(..., na.rm = FALSE)
+which(x, arr.ind = FALSE, useNames = TRUE)
+```
+其中 `...` 為輸入向量物件的條件判斷.
+`all(x)`
+與
+`any(x)`
+回傳一個純量 (scalar) 代表 `TRUE` 或 `FALSE`.
+使用函式
+`all(x)`
+用來檢查邏輯向量 $\mathbf{x}$ 的所有元素是否都是 `TRUE`?
+另一方面,
+使用函式
+`any(x)`
+用來檢查 邏輯向量 $\mathbf{x}$ 的任一元素是否為 `TRUE`?
+使用函式指令
+`which(x)`
+則回傳一個向量,
+是邏輯向量 $\mathbf{x}$ 中的元素為 `TRUE` 所在的下標位置 (index).
+`which(x)` 可使用引數 `arr.ind = TRUE` 是當 $\mathbf{x}$ 為 array (matrix) 時,
+回傳 array (matrix) 的下標位置.
+```{r}
+## all(), any(), which()
+(x.vec <- c(-1:2))
+all(x.vec > 0)
+any(x.vec > 0)
+which(x.vec > 0)
+which.max(x.vec)
+which.min(x.vec)
+#
+(x.mat <- matrix(c(2, -1, -3,
+                   -1,  2,  4,
+                   -3,  4,  9),
+                 nrow = 3, byrow = T))
+all(x.mat > 0)
+any(x.mat > 0)
+which(x.mat > 0)
+#
+which(x.mat %% 2 == 0)
+which(x.mat %% 2 == 0, arr.ind = TRUE)
+```
+
+
+
+## 排序函式 Ranking and Sorting
+
+
+
+在 {R} 中有數個與排序相關的函式,
+如
+`rev()`,
+`sort()`,
+`order()`
+與
+`rank()`.
+
+
+| 函式       | 說明                                                                 |
+|------------+-----------------------------------------------------------------------|
+| `rev(x)`   |  將向量 $\mathbf{x}$ 元素反轉列出 (reverse order)                             |
+| `rank(x)`  |  向量 $\mathbf{x}$ 元素的對應排序 (returns the sample ranks of the values)   |
+|            |  相同數值內設排序方式 `ties.method = "average"`                        |
+| `sort(x)`  |   向量 $\mathbf{x}$ 從小到大列出 (sort a vector or factor, partially)       |
+|            |  into ascending or descending order).                         |
+| `order(x)` |  將向量 $\mathbf{x}$ 從小到大排序後的向量之元素        |
+
+Table: 常見之排序函式
+
+```{r eval=FALSE}
+rev(x)
+sort(x, decreasing = FALSE, na.last = NA, ...)
+rank(x, na.last = TRUE,
+     ties.method = c("average", "first", "last", "random", "max", "min"))
+order(x, ..., na.last = TRUE, decreasing = FALSE,
+        method = c("shell", "radix"))
+```
+這些函式的共用引數為:
+
+* 引數 `x` 為向量 $\mathbf{x}$.
+* 引數 `decreasing`:
+  * `decreasing = FALSE` 為 {R} 內設從小到大排序.
+  * `decreasing = TRUE` 則從大到小排序.
+* 引數 `na.last`:
+  * `na.last = TRUE` 為 {R} 內設將 NA 排序在最大.
+  * `na.last = FALSE` 為 {R} 內設將 NA 排序在最小.
+  * `na.last = NA` 為 {R} 內設將 NA 排除.
+
+
+* 函式
+`rev(x)`
+回傳一個向量 $\mathbf{z}$, 是將向量 $\mathbf{x}$ 元素反轉.
+* 函式
+`sort(x)`
+回傳一個向量 $\mathbf{z}$,
+是將向量 $\mathbf{x}$ 的元素從小到大排序的結果列出.
+* 函式 %使用函式指令
+`rank(x)`
+回傳一個向量 $\mathbf{z}$, 是將向量
+$\mathbf{x}$ 每一個元素從小到大排序之後, $\mathbf{x}$ 元素之相對順序 (rank).
+
+* `"average"`: 相同數值都是回傳平均排序值.
+* `"first"`: 相同數值都是回傳依序由小到大不同排序值.
+* `"last"`: 相同數值都是回傳依序由大到小排序值.
+* `"random"`: 相同數值回傳隨機排序值.
+* `"max"`: 相同數值回傳最大排序值.
+* `"min"`: 相同數值回傳最小排序值.
+
+```{r}
+## reverse, rank, sort and order
+## rev(): reverse elements
+x.vec <- c(7, 7, 7, 6, 10, 9, 9, 9, NA, 8)
+rev(x.vec)
+## sort(): from the smallest to the largest
+sort(x.vec)
+## rank():
+rank(x.vec, na.last = TRUE)
+rank(x.vec, na.last = FALSE)
+set.seed(1)
+rank(x.vec, ties.method = "average")
+rank(x.vec, ties.method = "first")
+rank(x.vec, ties.method = "last")
+rank(x.vec, ties.method = "random")
+rank(x.vec, ties.method = "max")
+rank(x.vec, ties.method = "min")
+## order(): retrun index
+## x.vec[] is the smallest one
+order(x.vec)
+x.vec[order(x.vec)]
+## rank(): ties.method = "average"
+x <- c(7, 9, 6, 7, 8, NA)
+sort(x, na.last = FALSE)
+rank(x, ties.method = "average", na.last = TRUE)
+(x.ord <- order(x, na.last = FALSE))
+x[x.ord] # = sort(x)
+```
+
+
+{R} 排序對缺失值 NA 處理要非常小心,
+引數 `na.last = TRUE` 為 {R} 內設,
+但在比較關係上, 對缺失值 NA 可有不同處理.
+
+
+
+## 物件查看與強制轉換函式
+
+
+
+{R} 的許多函式型式為
+`is.object()`,
+例如函式
+`is.na()`,
+`is.vector()`
+等,
+可以用來查看某一特定物件是否屬於某一類別.
+
+{R} 的許多函式型式為
+`as.object()`,
+例如函式
+`as.vector()`,
+`as.matrix(()`
+等,
+可以用來某強制轉換一特定物件到所指定的物件類別.
+```{r}
+
+## is() and as()
+# vector
+x.vec <- c(1 / 1, 1 / 2, 1 / 3, 1 / 4, 1 / 5)
+x.vec
+is.vector(x.vec)
+is.character(x.vec)
+x.vec <- as.character(x.vec)
+x.vec
+##
+b.df <- as.data.frame(matrix(c(1:24), nrow = 6, byrow = T))
+is.matrix(b.df)
+b.mat <- as.matrix(b.df)
+b.mat
+b.mat <- as.vector(b.mat)
+b.mat
+```
+

@@ -1,0 +1,589 @@
+# 資料基本處理 {#basictidy}
+
+
+[tidyverse 套件系統](https://www.tidyverse.org/) 
+包含許多不同套件, 
+提供資料科學一些實用的函式.
+包含  
+
+* tidyverse 核心
+  - `ggplot2` 視覺化分析.
+  - `purrr` 執行迴圈.
+  - `tibble` 增強資料框架.
+  - `dplyr` 資料處裡.
+  - `tidyr` 精簡資料, 
+  - `stringr` 字串整理. 
+  - `readr` 資料輸入. 
+  - `forcats 處理類別變數 (factors).
+  
+tidyverse 套件系統的其他關聯套件包含
+  
+* 資料輸入 import   
+  - `readxl` 輸入 excel 關聯檔案.  
+  - `haven` 輸入 SPSS, Stata 與 SAS 關聯檔案.
+  - `jsonlite` 輸入 JSON 關聯檔案.
+  - `xml2` 輸入 XML 關聯檔案.
+  - `httr` 輸入 web APIs 關聯檔案.
+  - `rvest` 輸入 web scraping 關聯檔案.
+* DBI 輸入 關聯資料庫, 協同套件有 `RSQLite`, `RPostgres` 或 `odbc`.
+* 資料處理 tidy/wrangle
+  - `stringr` 處理字串.
+  - `lubridate` 處理日期與時間.
+  - `forcats` 處理類別變數 (factors).
+  - `hms` 處理日期與時間.
+  - `blob` 處理二元資料儲存檔案.
+* 程式寫作 program
+  - `rlang` 提供寫作核心語言與 tidyverse.
+  - `magrittr` 提供資料流動通道 `%>%`.
+  - `glue` 提供字串合併.
+* 建模 model
+  - `broom` 處理建模結果.
+  - `modelr` 偕同執行建模族.
+
+
+
+## 資料輸入套件 readr
+
+
+`tidyverse` 套件系統中的 `readr` 套件提供一些方便資料輸入的函式.
+包含 
+`read_csv()` 輸入 `.csv` 資料檔,
+`read_excel` 輸入 `excel` 資料檔,
+`read_delim()` 輸入不同分隔符號資料檔.
+其中引數如下 (`help(read_delim)`).
+
+* `file` = 路徑與檔名
+* `delim` = 分隔符號
+* `quote` = 視同分隔符號 (資料的文字變數值常放在雙引號中)
+* `escape_backslash` = 預設 FALSE, 是否有逃脫符號
+* `escape_double` = 預設TRUE, 是否用引號符號作為逃脫符號
+* `col_names` = 設定變數名 (`T` 或 `F`)
+* `col_types` =  設定變數的類型
+* `na` = 設定 NA 符號
+* `comment` = 設定注釋符號, 在注釋符號之後的文字不會被讀入
+* `trim_ws` = 去除變數值得空白
+* `skip` = 要跳過幾行 (row) 才開始讀入資料
+* `n_max` = 最大輸入行數
+
+
+```{r, message=FALSE}
+# .csv
+library(tidyverse)
+library(readr)
+dd <- readr::read_csv("C:/RData/DMTKAInfMo.csv")
+print(dd, n = 5, width = Inf)
+# .xls
+library(readxl)
+dd <- readxl::read_excel("C:/RData/DMTKAInfMo.xls")
+print(dd, n = 5, width = Inf)
+```
+
+
+## 整潔資料 Tidy Data
+
+
+統計計算可以進行分析的資料,
+通常有一個的簡單的基本架構,
+在 {R} 稱作
+**資料框架**
+(**data frame**).
+資料框架是類似於在 `SAS`, `STATA` 等的 dataset 架構.
+資料框架通常類似矩陣,
+資料框架也類似矩形的
+**交叉列聯表**
+(**cross table**),
+ 稱為 
+**資料表**
+(** data table**).
+套件 `tidverse` 原始套件 tidy` 強調外部資料檔案必須符合
+**整潔資料** (**tidy data**) 方便操作.
+整潔資料的基本要求特徵是
+每個變數各自形成 1 欄 (縱行, row),
+每個列 (橫列, row) 各自為一個觀測時間的測量.
+例如, 每位個體只有觀測一次,
+則每個列為一位個體的觀測值.
+若每位個體有多次觀測時間點,
+則一位個體一次觀測時間點的觀測值為一列,
+一位個體或有多列的觀測值.
+一個整潔資料的資料表包含以下重點.
+
+* 一個檔案只用一張資料表
+* 一張資料表 (EXCEL 的 sheet).
+* 一個欄位 (縱行, Column) 只有一個變數, 同時有清楚的變數名.
+* 若完整資料包含不同資料表, 則不同資料表要有索引 (inxex) 或指標變數 (id) 可進行關聯與串聯.
+
+![Tidy Data: R for Data Science, Figure 12.1](./images/tidydata.png)
+
+**整潔資料** 指引主要提供研究者在輸入資料檔案時能夠遵循.
+例如, 一些者常將 EXCEL 一張 sheel 內混合著原始資料, 分析結果與圖形.
+也經常將二個變數放在同一個欄位, 二個變數簡單以 `/` 分隔.
+例如檔案 **DMTKAORI.xls**.
+若資料檔案不是整潔資料, 則需浩費學多時間清理, 甚至必須重新輸入到資料檔案.
+
+
+
+## Tibble 與 Data Frame
+
+`tidyverse` 系統中的 `readr` 套件輸入資料後,
+`tidyverse` 會儲存成 (tibble) 資料物件, 
+成為`tbl_df`, `tbl` 類型的資料物件, 
+主要是 `tidyverse` 系統會使用 tibble 套件進行操作.
+`tibbles` 資料物件與原有資料框架 `data.frame` 物件有相同的屬性外,
+另外多了些讓 `tidyverse` 系統容易操作的屬性.
+對初學者而言, 二者幾呼無任何差異.
+若有 {R} base 函式無法操作 `tibble` 資料物件,
+可使用 `as.data.frame()` 
+轉成 {R} base 的 `data.frame` 物件.
+同樣, 若 `tidyverse` 系統函式無法操作的 `data.frame` 物件,
+可用 ‵as_tibble()` 將`data.frame` 物件
+轉成`tibbles` 資料物件.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例.
+```{r message=FALSE}
+## data frame object
+dd <- read.table("./Data/survVATrial.csv",
+                 header = TRUE,
+                 sep = ",",
+                 quote = "\"'",
+                 dec = ".",
+                 row.names = NULL,
+                 # col.names,
+                 as.is = TRUE,
+                 # as.is = !stringsAsFactors,
+                 na.strings = c(".", "NA"))
+class(dd)
+library(tibble)
+dd <- as_tibble(dd)
+class(dd)
+```
+`tibble` 套件的 `tibble()` 函式的使用如同 {R} base `data.frame()`.
+`tibble()` 函式可以使用 {R} base 不准使用的變數名.
+`tibble` 物件與 `data.frame` 物件的主要差別有 2 種情境.
+
+1. `tibble` 物件的顯示, `print()` 只用 10 rows, 變數 (columns) 只有納入符合視窗寬度的數目, 這對大數據檢視較為方便.
+且顯示 `str()` 函式可呈現變數基本模式的類別.
+可使用 `n = k` 顯示 $k$ rows,
+`width = Inf` 顯示所有變數.
+也可設定整區選項為 
+options(tibble.print_min = Inf),  顯示所有 rows,
+以及
+`options(tibble.width = Inf)` 顯示所有 columns.
+
+2. {R} base 多數容許使用部分物件名 (變數名),
+但 `tibble` 物件無法使用部分變數名.
+可能會對資深程式寫作人員些許困擾.
+
+
+## 資料流動管道運算指令 Pipe
+
+
+`tidyverse` 系統中的 `magrittr` 套件提供一個非常實用的運算指令
+`%>%` 稱為 **pipe**, **管線**, **管道** **導管**.
+此運算符號, 可將函式與運算串聯, 
+`%>%` 左側通常是資料物件, 資料框架, 矩陣, 向量等, 
+`%>%` 右側通常是函式 `fun_name()`,
+而 `%>%` 左側資料自動為函式 `fun_name()` 內的第一個引數.
+在 Unix/Linux 系統的各種指令可以運用 pipe 的方式串連執行,
+`magrittr` 套件提供類似的思維,
+且資料流動從 `%>%` 左測的資料送到 %>%` 右側的函式執行運算,
+可讓程式寫作符合文字書寫由左到右的思考邏輯.
+使用 `pipe` 並不會改變程式的執行順序,
+主要目的在於讓程式更容易寫作與閱讀, 
+降低程式寫作的錯誤與負擔.
+```{r message=FALSE}
+## short and clean 
+log(mean(c(1:10)))
+## easily read 
+x <- c(1:10)
+x.mean <- mean(x)
+log.mean <- log(x.mean)
+log.mean
+## pipe %>%
+library(magrittr)
+c(1:10) %>% mean() %>% log()
+```
+
+
+
+
+## 資料檢視函式 glimpse()
+
+
+資料輸入到 {R} 後, 
+必須先檢視資料內容, 比對原始資料檔案是否正確讀入資料.
+包含觀測值數目, 變數數目, 
+那些變數為辨識指標,
+變數屬性, 那些變數為連續變數或類別變數,
+類別變數屬性, 名目變數或是順序變數,
+整理類別變數的類別水準名稱.
+每個變數的缺失數目與頻率,
+每個個體的缺失數目與頻率.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例.
+```{r message=FALSE}
+dd = dd %>% as_tibble()
+print(dd, n = 5, width = Inf)
+```
+可以看到資料有 `r dim(dd)[1]` 位個體, `r dim(dd)[2]` 個變數.
+其中`time`, `diagtime`, `kps`, `age` 為連續變數.
+ `treat`, `cellcode`, `censor`, `prior` 等為類別變數,
+但類別變數以數字輸入, 需先設定成為類別變數.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例.
+```{r}
+dd$treat <- factor(dd$treat, labels = c("placebo", "test"))
+dd$cellcode <- factor(dd$cellcode, 
+                      labels = c("squamous", "small", "adeno", "large"))
+dd$censor <- factor(dd$censor, labels = c("survival", "dead"))
+dd$prior <- factor(dd$prior, labels = c("no", "yes"))
+print(dd, n = 5, width = Inf)
+```
+
+`tidyverse` 系統中的 `tibble` 套件提供一個檢視資料函式 ``glimpse()`,
+類似 {R} base 的 `str()` 函式.
+```{r message = FALSE}
+## R base
+str(dd)
+## glimpse()
+glimpse(dd)
+```
+
+
+
+
+## 資料處裡 dplyr 套件
+
+`tidyverse` 系統中的資料處裡 `dplyr` 套件,
+有一些資料資料處裡常用函式.
+
+* `%>%` = `pipe` 指令
+* `rename()` = 變數 (column) 重新命名
+* `filter()` = 選擇個體或行位子集 (rows)
+* `arrange()` = 依據變數值排序
+* `select()` = 選擇變數 (variables) 或欄位子集 (columns)
+* `mutate()` = 變數轉換
+* `sample_n()` 與 `sample_frac()` = 隨機抽樣函式 
+* `distinct()` 與 `n_distinct()` = 選出明顯不同個體 
+* `slice()` = 利用橫列指標 (row index) 選出個體 (row)
+* `summarise()` = 計算常見統計量
+* `group_by()` = 資料分組操作
+* `%>%` = `pipe` 指令
+
+這些函式的第 1 個引數為資料物件, 
+後續只用為變數名 (不加雙引號),
+可以合併使用 `group_by()` 函式與 `%>%` 指令.
+
+
+
+### 選擇個體函式 `filter()` 
+
+資料常常需要依據納入與排除條件, 
+此時會依據變數值進行篩選.
+`filter()` 函式可協助選擇個體.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+選擇個體 `treat` 為 placebo, cellcode 為 large.
+```{r message=FALSE}
+## filter()
+dd %>% 
+  filter(treat == 'placebo', cellcode == 'large')
+```
+選擇個體 `treat` 為試驗藥組, age 大於 50, kps 小於或等於 7
+```{r message=FALSE}
+dd %>% 
+  filter(treat == 'test', age > 50, kps <= 7)
+```
+
+
+### 依據變數值排序函式 `arrange()`
+
+
+資料常常需要依據變數值排序,
+`arrange()` 函式內設依照變數在函式出現順序以及變數值由小到大排序.
+若要變數值從由大到小排序, 可使用 `desc()` 函式.
+例如, 以資料在檔案第 5 章的 **survVATrial.csv** 為例, 
+依照 age 由小到大排序, 
+time 由大到小排序.
+無論如何排序, 缺失值總是排在最後,
+這須與 {R} base 的 `order()`, `sort()` 或 `rank()` 進行比較.
+```{r}
+## arrange()
+dd %>% 
+  arrange(age, desc(time))
+```
+
+
+
+### 選擇變數或欄位子集函式 `select()`
+
+面對大數據時, 可能有成千上萬的變數,
+但通常部不會使用到所有的變數,
+選擇所需要的變數另組成分析子集,
+可減少 RAM 的負擔並加速分析執行速度.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+選擇 `treat`, `cellcode`, `censor` 等變數.
+```{r message=FALSE}
+dd %>% 
+  arrange(treat, cellcode, censor)
+```
+
+
+### 變數轉換函式 `mutate()` 
+
+資料分析前常常需要變數進行轉換, 例如取對數轉換,
+標準化, 也常將二個以上不同變數進行計算, 轉換成新變數,
+例如計算 BMI (生體質量指數).
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+對 `time` 取對數轉換, `diagtime * age / 100`.
+```{r message=FALSE}
+## mutate()
+dd %>% 
+  mutate(
+    log_age = log(age),
+    diag_age = diagtime * age / 100
+    )
+```
+
+
+### 隨機抽樣函式 `sample_n()` 與 `sample_frac()`
+
+函式 `sample_n()` 與 `sample_frac()`
+可以對資料進行隨機抽樣.
+引數為
+
+* `size = k` 設定所要抽出之樣本數或分率.
+* `weight` 抽取之相對應權重.
+  - 若無設定值, 則每一個個體被抽取之相對應權重相等.
+* `replace = FALSE`  邏輯指令, 設定是否可重複抽取.
+
+以資料在檔案第 5 章的 **survVATrial.csv** 為例, 
+由資料抽樣 5 位個體.
+```{r message=FALSE}
+## sample_n()
+dd %>% sample_n(size = 5, replace = FALSE)
+dd %>% sample_n(size = 5, replace = TRUE)
+dd %>% sample_frac(size = 0.1)
+```
+
+
+
+
+### 選出明顯不同個體函式 `distinct()` 與 `n_distinct()`
+
+資料常常重覆輸入的個體, 或是個體有重覆測量,
+`distinct()` 函式可以查詢多少明顯不同的個體,
+使用引數 `.keep_all = TRUE` 可以保留所有變數.
+函式 `n_distinct()` 計算明顯不同的個體數目,
+使用引數 `na.rm = FALSE` 決定是否納入缺失值.
+```{r message=FALSE}
+## distict()
+set.seed(1)
+df <- tibble(
+  x = sample(10, 100, rep = TRUE),
+  y = sample(10, 100, rep = TRUE)
+)
+df
+nrow(df)
+nrow(distinct(df))
+nrow(distinct(df, x, y))
+distinct(df, x)
+distinct(df, y)
+distinct(df, x, .keep_all = TRUE)
+#
+set.seed(1)
+x <- sample(1:10, 1e5, rep = TRUE)
+length(x)
+length(unique(x))
+n_distinct(x)
+```
+
+
+
+### 利用橫列指標選出個體函式 `slice()`
+
+`slice()` 為一系列函式可以利用橫列指標 (row index) 
+選出個體 (row). 包含
+
+* `slice()`  
+* `slice_head()` 選出資料最前端的個體
+* `slice_last()` 選出資料最末端的個體
+* `slice_min()`  選出資料變數值最小的個體
+* `slice_max()`  選出資料變數值最大的個體
+* `slice_sample()` 隨機選出個體
+
+```{r message=FALSE}
+## slice()
+set.seed(1)
+dd %>% slice(1)
+dd %>% slice(1:3)
+dd %>% slice(101:n())
+dd %>% slice(-c(1:100))
+dd %>% slice_head(n = 3)
+dd %>% slice_tail(n = 3)
+dd %>% slice_min(time, n = 3)
+dd %>% slice_max(time, n = 3)
+dd %>% slice_sample(n = 3)
+```
+
+
+### 計算常見統計量函式 `summarise()`
+
+資料分析常常需要變數基本統計量,
+例如, 計算個數, 平均值, 變異數等等.
+ `summarise()` 函式可計算常見統計量,
+ 期常用引數有
+ 
+* Center: `mean()`, `median()`
+* Spread: `sd()`, `IQR()`, `mad()`. `range()`
+* Range: `min()`, `max()`, `quantile()`
+* Position: `first()`, `last()`, `nth()`
+* Count: `n()`, `n_distinct()`
+* Logical: `any()`, `all()`
+
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+對資料計算個數 `n()`,
+對 `age` 計算平均值與標準差.
+```{r message=FALSE}
+## summarise
+dd %>% 
+  summarise(
+    count = n(),
+    age_mean = mean(age, na.rm = TRUE),
+    age_sd = sd(age, na.rm = TRUE)
+    )
+```
+
+### 資料分組操作函式 `group_by()`
+
+資料分析常常需要類別變數分組, 個別操作資料或進行計算統計量.
+函式 `group_by()` 引數可放入類別變數, 然後分組進行相同資料分析.
+以資料在檔案第 5 章的 **survVATrial.csv** 為例, 
+對試驗藥組與安慰劑組分別對 `diagtime` 計算計算平均值與標準差..
+```{r message=FALSE}
+## group_by()
+dd %>% 
+  group_by(treat) %>% 
+  summarise(
+    diagtime_mean = mean(diagtime),
+    diagtime_sd = sd(diagtime)
+    )
+dd %>% 
+  group_by(treat, cellcode) %>% 
+  summarise(
+    diagtime_mean = mean(diagtime),
+    diagtime_sd = sd(diagtime)
+    )
+```
+
+### 多變數計算統計量函式 `summarise_all()`
+
+`summarise()` 函式只能分別對當一變數進行計算,
+若要同時對許多變數進行相同操作,
+可使用以下函式.
+
+* `summarise_all()` 對每一個變數進行相同操作
+* `summarise_each()` 對每一個變數進行相同操作, 需加變數名
+* `summarise_at()` 對選出的變數進行相同操作 需加變數名
+* `summarise_if()` 對符合特定條件的變數進行相同操作
+
+```{r message=FALSE}
+## summarise_all()
+dd %>% 
+  select(time, diagtime, kps, age) %>% 
+  summarise_all(mean, na.rm = TRUE)
+dd %>% select(time, diagtime, kps, age) %>% 
+  summarise_all(list(mean, sd), na.rm = TRUE)
+dd %>%
+  summarise_each(list(mean, sd), time, age) # not so useful
+dd %>% 
+  summarise_at(c("time", "age"), mean, na.rm = TRUE)
+dd %>% 
+  summarise_at(vars(time, age), mean, na.rm = TRUE)
+dd %>% 
+  summarise_if(is.numeric, list(mean, sd), na.rm = TRUE)
+```
+
+
+
+## 資料聯集與交集函式
+
+若二組資料有相同的變數, 但可能僅有部分相同的個體,
+可以利用二組資料聯集與交集操作選出個體. 
+
+* `intersect(x, y)` 選出 `x` 與 `y` 都存在的不同個體.
+* `union(x, y)` 選出 `x` 與 `y` 存在的不同個體.
+* `setdiff(x, y)`  選出存在 `x` 但不存在 `y` 的不同個體. 
+
+以資料在檔案第 5 章的 **survVATrial.csv** 為例, 
+隨機從前 10 位個體重覆抽取 7 位, 進行 2 次, 得到 2 組資料.
+```{r message=FALSE}
+## set operation
+df <- dd %>% 
+  select(treat, cellcode, time, censor, age) %>% 
+  mutate(id = 1:n()) %>%
+  filter(id <= 10)
+df
+set.seed(1)
+x <- df %>% sample_n(size = 7, replace = TRUE)
+y <- df %>% sample_n(size = 7, replace = TRUE)
+x
+y
+intersect(x, y)
+union(x, y)
+setdiff(x, y)
+```
+
+
+
+## 資料合併函式
+
+
+資料經常儲存再不同檔案, 
+例如門診檔, 住院檔, 實驗室檔,
+同一位個體常須使用個體辨識碼 (id) 或姓名 (names)
+進行合併或清理.
+用來連結不同資料的個體辨識碼或變數稱為
+**關鍵碼** 或 **所引鍵**
+(**key**),
+多數為個體辨識碼, 當有時為時間, 日期, 文見編號等,
+可能同時須使用 2 個變數才能成為單一辨識碼,
+例如, 同時須使用醫院與院內病歷號, 
+避免不同個體在不同醫院卻有有相同的病歷號.
+`tidyverse` 系統的有許多 `_join_(x, y)` 函式可進行各種資料合併.
+若 2 組資料包含一些相同變數, 盪不同觀測值, 此時必須小心處理.
+
+* `inner_join(x, y)` 包函 `x` 與 `y` 都配對存在的 `x` 與 `y` 個體與變數
+* `left_join(x, y)` 包函所有 `x` 個體與變數且在 `y` 有配對存在的 `y` 個體與變數
+* `right_join(x, y)`包函所有 `y` 個體與變數且在 `x` 有配對存在的 `x` 個體與變數
+* `full_join(x, y)` 包函所有 `x` 與 `y` 的個體與變數資料
+* `semi_join(x, y)` 包函 `x` 在 `y` 有配對存在的 `x` 個體與變數
+* `anti_join(x, y)` 包函 `x` 在 `y` 無配對存在的 `x` 個體與變數
+
+![`dplyr::_join`](./images/tidyversrejoin.png)
+
+以資料在檔案第 5 章的 **survVATrial.csv** 為例, 
+隨機從前 10 位個體抽取 7 位, 進行 2 次, 得到 2 組資料 `x` 與 `y`.
+`x` 資料包函 `id`, `treat`, time`, `age`. 
+`y` 資料包函 `id`, `cellcode`, `ceosor`, `age`. 
+
+```{r message=FALSE}
+## _join()
+set.seed(1)
+df <- dd %>% 
+  select(treat, cellcode, time, censor, age) %>% 
+  mutate(id = 1:n()) %>%
+  filter(id <= 10) 
+x <- df %>% 
+  select(id, treat, time, age) %>% 
+  sample_n(size = 7, replace = FALSE) %>%
+  arrange(id)
+y <- df %>% 
+  select(id, cellcode, censor, age) %>% 
+  sample_n(size = 7, replace = FALSE)  %>%
+  arrange(id)
+x
+y
+inner_join(x, y)
+left_join(x, y) 
+right_join(x, y)
+full_join(x, y) 
+semi_join(x, y) 
+anti_join(x, y) 
+```
+

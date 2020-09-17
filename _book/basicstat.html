@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 基本統計函式 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 7 基本統計函式 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 基本統計函式 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 7 基本統計函式 | R 資料科學與統計" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 基本統計函式 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 7 基本統計函式 | R 資料科學與統計" />
+  
+
+<meta name="author" content="Jeff Lin" />
+
+
+<meta name="date" content="2020-09-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basicfunctiuon.html"/>
+<link rel="next" href="basictidy.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>2</b> 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector.html"><a href="vector.html#向量"><i class="fa fa-check"></i><b>2.1</b> 向量</a></li>
+<li class="chapter" data-level="2.2" data-path="vector.html"><a href="vector.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a></li>
+<li class="chapter" data-level="2.3" data-path="vector.html"><a href="vector.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.3</b> 向量產生函式 <code>c()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="vector.html"><a href="vector.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.4</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.5" data-path="vector.html"><a href="vector.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.5</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector.html"><a href="vector.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.6</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.7" data-path="vector.html"><a href="vector.html#向量邏輯操作"><i class="fa fa-check"></i><b>2.7</b> 向量邏輯操作</a></li>
+<li class="chapter" data-level="2.8" data-path="vector.html"><a href="vector.html#向量元素命名"><i class="fa fa-check"></i><b>2.8</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.9" data-path="vector.html"><a href="vector.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.9</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.10" data-path="vector.html"><a href="vector.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.10</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.11" data-path="vector.html"><a href="vector.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.11</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataobject.html"><a href="dataobject.html"><i class="fa fa-check"></i><b>3</b> 資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataobject.html"><a href="dataobject.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dataobject.html"><a href="dataobject.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dataobject.html"><a href="dataobject.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dataobject.html"><a href="dataobject.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="dataobject.html"><a href="dataobject.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.2.1</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dataobject.html"><a href="dataobject.html#陣列物件-array"><i class="fa fa-check"></i><b>3.2.2</b> 陣列物件 Array</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="dataobject.html"><a href="dataobject.html#列表物件-list"><i class="fa fa-check"></i><b>3.3</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dataobject.html"><a href="dataobject.html#列表函式-list"><i class="fa fa-check"></i><b>3.3.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dataobject.html"><a href="dataobject.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.3.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="dataobject.html"><a href="dataobject.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.4</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.5" data-path="dataobject.html"><a href="dataobject.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.5</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="dataobject.html"><a href="dataobject.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.5.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datainout.html"><a href="datainout.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datainout.html"><a href="datainout.html#資料框架"><i class="fa fa-check"></i><b>4.1</b> 資料框架</a></li>
+<li class="chapter" data-level="4.2" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-空白分隔"><i class="fa fa-check"></i><b>4.2</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔</a></li>
+<li class="chapter" data-level="4.3" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔"><i class="fa fa-check"></i><b>4.3</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</a></li>
+<li class="chapter" data-level="4.4" data-path="datainout.html"><a href="datainout.html#r-內建資料框架"><i class="fa fa-check"></i><b>4.4</b> R 內建資料框架</a></li>
+<li class="chapter" data-level="4.5" data-path="datainout.html"><a href="datainout.html#輸出-r-資料"><i class="fa fa-check"></i><b>4.5</b> 輸出 {R} 資料</a></li>
+<li class="chapter" data-level="4.6" data-path="datainout.html"><a href="datainout.html#儲存-r-格式資料檔"><i class="fa fa-check"></i><b>4.6</b> 儲存 {R} 格式資料檔</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>5</b> 資料視覺化分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataviz.html"><a href="dataviz.html#視覺化分析原則"><i class="fa fa-check"></i><b>5.1</b> 視覺化分析原則</a></li>
+<li class="chapter" data-level="5.2" data-path="dataviz.html"><a href="dataviz.html#繪圖套件-ggplot2"><i class="fa fa-check"></i><b>5.2</b> 繪圖套件 ggplot2</a></li>
+<li class="chapter" data-level="5.3" data-path="dataviz.html"><a href="dataviz.html#類別變數"><i class="fa fa-check"></i><b>5.3</b> 類別變數</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="dataviz.html"><a href="dataviz.html#單類別變數"><i class="fa fa-check"></i><b>5.3.1</b> 單類別變數</a></li>
+<li class="chapter" data-level="5.3.2" data-path="dataviz.html"><a href="dataviz.html#多類別變數"><i class="fa fa-check"></i><b>5.3.2</b> 多類別變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="dataviz.html"><a href="dataviz.html#連續變數"><i class="fa fa-check"></i><b>5.4</b> 連續變數</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dataviz.html"><a href="dataviz.html#單連續變數"><i class="fa fa-check"></i><b>5.4.1</b> 單連續變數</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dataviz.html"><a href="dataviz.html#二連續變數"><i class="fa fa-check"></i><b>5.4.2</b> 二連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dataviz.html"><a href="dataviz.html#混合變數"><i class="fa fa-check"></i><b>5.5</b> 混合變數</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="dataviz.html"><a href="dataviz.html#一連續-一類別"><i class="fa fa-check"></i><b>5.5.1</b> 一連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.2" data-path="dataviz.html"><a href="dataviz.html#二連續-一類別"><i class="fa fa-check"></i><b>5.5.2</b> 二連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.3" data-path="dataviz.html"><a href="dataviz.html#三連續變數"><i class="fa fa-check"></i><b>5.5.3</b> 三連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="dataviz.html"><a href="dataviz.html#分組繪圖"><i class="fa fa-check"></i><b>5.6</b> 分組繪圖</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html"><i class="fa fa-check"></i><b>6</b> 基本函式</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#函式語法"><i class="fa fa-check"></i><b>6.1</b> 函式語法</a></li>
+<li class="chapter" data-level="6.2" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#檢視的函式原始碼定義"><i class="fa fa-check"></i><b>6.2</b> 檢視的函式原始碼定義</a></li>
+<li class="chapter" data-level="6.3" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式"><i class="fa fa-check"></i><b>6.3</b> 數列函式</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式-seq-與-sequence"><i class="fa fa-check"></i><b>6.3.1</b> 數列函式: seq() 與 sequence()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#重複元素函式-rep"><i class="fa fa-check"></i><b>6.4</b> 重複元素函式: rep()</a></li>
+<li class="chapter" data-level="6.5" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#算數函式-arithmetic-computing-function"><i class="fa fa-check"></i><b>6.5</b> 算數函式 Arithmetic Computing Function</a></li>
+<li class="chapter" data-level="6.6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#組合與階乘函式-choose-與-factorial"><i class="fa fa-check"></i><b>6.6</b> 組合與階乘函式: choose() 與 factorial()</a></li>
+<li class="chapter" data-level="6.7" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#選擇資料函式-all-any-which"><i class="fa fa-check"></i><b>6.7</b> 選擇資料函式: all(), any(), which()</a></li>
+<li class="chapter" data-level="6.8" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#排序函式-ranking-and-sorting"><i class="fa fa-check"></i><b>6.8</b> 排序函式 Ranking and Sorting</a></li>
+<li class="chapter" data-level="6.9" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#物件查看與強制轉換函式"><i class="fa fa-check"></i><b>6.9</b> 物件查看與強制轉換函式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basicstat.html"><a href="basicstat.html"><i class="fa fa-check"></i><b>7</b> 基本統計函式</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basicstat.html"><a href="basicstat.html#敘述統計函式"><i class="fa fa-check"></i><b>7.1</b> 敘述統計函式</a></li>
+<li class="chapter" data-level="7.2" data-path="basicstat.html"><a href="basicstat.html#類別資料表格函數"><i class="fa fa-check"></i><b>7.2</b> 類別資料表格函數</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-table-xtabs"><i class="fa fa-check"></i><b>7.2.1</b> 列聯表函式: table(), xtabs()</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-ftable"><i class="fa fa-check"></i><b>7.2.2</b> 列聯表函式: ftable()</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-margin.table-prop.table"><i class="fa fa-check"></i><b>7.2.3</b> 列聯表函式: margin.table(), prop.table()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basicstat.html"><a href="basicstat.html#機率函式與亂數生成函式"><i class="fa fa-check"></i><b>7.3</b> 機率函式與亂數生成函式</a></li>
+<li class="chapter" data-level="7.4" data-path="basicstat.html"><a href="basicstat.html#隨機抽樣函式-sample"><i class="fa fa-check"></i><b>7.4</b> 隨機抽樣函式 sample()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basictidy.html"><a href="basictidy.html"><i class="fa fa-check"></i><b>8</b> 資料基本處理</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basictidy.html"><a href="basictidy.html#資料輸入套件-readr"><i class="fa fa-check"></i><b>8.1</b> 資料輸入套件 readr</a></li>
+<li class="chapter" data-level="8.2" data-path="basictidy.html"><a href="basictidy.html#整潔資料-tidy-data"><i class="fa fa-check"></i><b>8.2</b> 整潔資料 Tidy Data</a></li>
+<li class="chapter" data-level="8.3" data-path="basictidy.html"><a href="basictidy.html#tibble-與-data-frame"><i class="fa fa-check"></i><b>8.3</b> Tibble 與 Data Frame</a></li>
+<li class="chapter" data-level="8.4" data-path="basictidy.html"><a href="basictidy.html#資料流動管道運算指令-pipe"><i class="fa fa-check"></i><b>8.4</b> 資料流動管道運算指令 Pipe</a></li>
+<li class="chapter" data-level="8.5" data-path="basictidy.html"><a href="basictidy.html#資料檢視函式-glimpse"><i class="fa fa-check"></i><b>8.5</b> 資料檢視函式 glimpse()</a></li>
+<li class="chapter" data-level="8.6" data-path="basictidy.html"><a href="basictidy.html#資料處裡-dplyr-套件"><i class="fa fa-check"></i><b>8.6</b> 資料處裡 dplyr 套件</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="basictidy.html"><a href="basictidy.html#選擇個體函式-filter"><i class="fa fa-check"></i><b>8.6.1</b> 選擇個體函式 <code>filter()</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
+<li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
+<li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
+<li class="chapter" data-level="11" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>11</b> Temp</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basicstat" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> 基本統計函式</h1>
+<p>{R} 有許多統計函式,
+可以對向量物件進行統計分析,
+{R} 內建所有常見的基礎敘述統計量,
+例如累加與乘積函式,
+<code>sum()</code>,
+<code>cumsum()</code>,
+<code>diff()</code>,
+<code>prod()</code>,
+<code>cumprod()</code>;
+樣本統計量函式,
+例如,
+<code>mean()</code>,
+<code>median()</code>,
+<code>var()</code>,
+<code>sd()</code>,
+<code>range()</code>,
+<code>min()</code>,
+<code>max()</code>,
+<code>quantile()</code>,
+<code>sample()</code> 等.</p>
+<p>使用 {R} 的統計函式進行資料分析時,
+須可別注意缺失值,
+若資料物件中有缺失值,
+一些 {R} 的統計函式須另外做特別處裡,
+可以對資料物件中的缺失值,
+先使用函式
+<code>na.omit()</code>
+處理,
+然後再進行資料分析,
+例如,
+<code>mean(na.omit(x))</code>.
+另外,
+可使用統計函式內的通用引數,
+<code>na.rm = T</code>,
+例如,
+<code>mean(x, na.rm = T)</code>
+然後再進行資料分析,
+對矩陣或資料框架物件做運算,
+若資料物件中有缺失值,
+常會有不可預期的結果必須小心.</p>
+<table>
+<caption>基本統計函式</caption>
+<colgroup>
+<col width="20%" />
+<col width="23%" />
+<col width="56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>格式</th>
+<th>說明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sum(x)</code></td>
+<td>加總和 (scalar)</td>
+<td><span class="math inline">\(y = \sum_i x_i\)</span></td>
+</tr>
+<tr class="even">
+<td><code>cumsum(x)</code></td>
+<td>累計加總和 (vector)</td>
+<td><span class="math inline">\(z_j = \sum_{i \le j} x_i\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>diff(x)</code></td>
+<td><code>x[i+1]-x[i]</code></td>
+<td><span class="math inline">\(z_i = x_{i+1} - x_i\)</span></td>
+</tr>
+<tr class="even">
+<td><code>lag(x, k)</code></td>
+<td><code>x[i-k]</code></td>
+<td><span class="math inline">\(z_i = x_{i-k}\)</span>, 對應 <code>x[i]</code> 回傳 <code>x[i-k]</code></td>
+</tr>
+<tr class="odd">
+<td><code>lead(x, k)</code></td>
+<td><code>x[i+k]</code></td>
+<td><span class="math inline">\(z_i = x_{i+k}\)</span>, 對應 <code>x[i]</code> 回傳 <code>x[i+k]</code></td>
+</tr>
+<tr class="even">
+<td><code>prod(x)</code></td>
+<td>乘積 (product)</td>
+<td><span class="math inline">\(y = \prod_i x_i\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>cumprod(x)</code></td>
+<td>累計乘積</td>
+<td>$z_j = _{i j} x_i</td>
+</tr>
+<tr class="even">
+<td><code>mean(x)</code></td>
+<td>平均值 (mean)</td>
+<td><span class="math inline">\(\bar{x} = \frac{1}{n} \sum_i x_i\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><code>median(x)</code></td>
+<td>中位數 (median)</td>
+<td><span class="math inline">\(0.5\)</span> quantile, <span class="math inline">\(50^{th}\)</span> percentile</td>
+</tr>
+<tr class="even">
+<td><code>var(x)</code></td>
+<td>變異數, 共變異數</td>
+<td><span class="math inline">\(s^2 = \frac{1}{n-1} \sum_i (x_i - \bar{x})^2\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>sd(x)</code></td>
+<td>標準差 (SD)</td>
+<td><span class="math inline">\(s = \sqrt{s^2}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>range(x)</code></td>
+<td>範圍 (range)</td>
+<td><span class="math inline">\((\min (x), \max (x))\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>min(x)</code></td>
+<td>最小值</td>
+<td><span class="math inline">\(\min (x)\)</span></td>
+</tr>
+<tr class="even">
+<td><code>max(x)</code></td>
+<td>最大值</td>
+<td><span class="math inline">\(\max (x)\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>quantile(x)</code></td>
+<td>百分位數</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>fivenum(x)</code></td>
+<td>五數摘要</td>
+<td>(five-number summary) <span class="math inline">\((\min, Q_1, \text{median}, Q_3, \max)\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>sample(x)</code></td>
+<td>隨機抽樣</td>
+<td>random sample</td>
+</tr>
+</tbody>
+</table>
+<div id="敘述統計函式" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> 敘述統計函式</h2>
+<p>{R} 內建一些基本敘述統計, 如計算平均值與變異等.
+<code>z &lt;- range(x)</code> 函式回傳一個向量,
+二個元素 <span class="math inline">\((\min(x), \max(x))\)</span>;
+極大值與極小值分別為 <code>min(x)</code>, <code>max(x)</code>;
+求取百分位值可以用 <code>quantile()</code>,
+如 <code>quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95)</code>.
+<code>fivenum(x)</code> 回傳 <span class="math inline">\(\mathbf{x}\)</span> 向量 <span class="math inline">\((\min, Q_1, \text{median}, Q_3, \max)\)</span>.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="basicstat.html#cb142-1" aria-hidden="true"></a><span class="co">## basic descriptive statistics</span></span>
+<span id="cb142-2"><a href="basicstat.html#cb142-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="fl">0.3</span>)</span>
+<span id="cb142-3"><a href="basicstat.html#cb142-3" aria-hidden="true"></a>x</span>
+<span id="cb142-4"><a href="basicstat.html#cb142-4" aria-hidden="true"></a><span class="co">##  [1] -2.0 -1.7 -1.4 -1.1 -0.8 -0.5 -0.2  0.1  0.4  0.7  1.0</span></span>
+<span id="cb142-5"><a href="basicstat.html#cb142-5" aria-hidden="true"></a><span class="co">## [12]  1.3  1.6  1.9  2.2  2.5  2.8</span></span>
+<span id="cb142-6"><a href="basicstat.html#cb142-6" aria-hidden="true"></a><span class="kw">sum</span>(x)</span>
+<span id="cb142-7"><a href="basicstat.html#cb142-7" aria-hidden="true"></a><span class="co">## [1] 6.8</span></span>
+<span id="cb142-8"><a href="basicstat.html#cb142-8" aria-hidden="true"></a><span class="kw">cumsum</span>(x)</span>
+<span id="cb142-9"><a href="basicstat.html#cb142-9" aria-hidden="true"></a><span class="co">##  [1] -2.0 -3.7 -5.1 -6.2 -7.0 -7.5 -7.7 -7.6 -7.2 -6.5 -5.5</span></span>
+<span id="cb142-10"><a href="basicstat.html#cb142-10" aria-hidden="true"></a><span class="co">## [12] -4.2 -2.6 -0.7  1.5  4.0  6.8</span></span>
+<span id="cb142-11"><a href="basicstat.html#cb142-11" aria-hidden="true"></a><span class="kw">diff</span>(x)</span>
+<span id="cb142-12"><a href="basicstat.html#cb142-12" aria-hidden="true"></a><span class="co">##  [1] 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3</span></span>
+<span id="cb142-13"><a href="basicstat.html#cb142-13" aria-hidden="true"></a><span class="co">## [14] 0.3 0.3 0.3</span></span>
+<span id="cb142-14"><a href="basicstat.html#cb142-14" aria-hidden="true"></a><span class="kw">prod</span>(x)</span>
+<span id="cb142-15"><a href="basicstat.html#cb142-15" aria-hidden="true"></a><span class="co">## [1] -0.7138</span></span>
+<span id="cb142-16"><a href="basicstat.html#cb142-16" aria-hidden="true"></a><span class="kw">cumprod</span>(x)</span>
+<span id="cb142-17"><a href="basicstat.html#cb142-17" aria-hidden="true"></a><span class="co">##  [1] -2.00000  3.40000 -4.76000  5.23600 -4.18880  2.09440</span></span>
+<span id="cb142-18"><a href="basicstat.html#cb142-18" aria-hidden="true"></a><span class="co">##  [7] -0.41888 -0.04189 -0.01676 -0.01173 -0.01173 -0.01525</span></span>
+<span id="cb142-19"><a href="basicstat.html#cb142-19" aria-hidden="true"></a><span class="co">## [13] -0.02440 -0.04635 -0.10197 -0.25493 -0.71381</span></span>
+<span id="cb142-20"><a href="basicstat.html#cb142-20" aria-hidden="true"></a><span class="kw">mean</span>(x)</span>
+<span id="cb142-21"><a href="basicstat.html#cb142-21" aria-hidden="true"></a><span class="co">## [1] 0.4</span></span>
+<span id="cb142-22"><a href="basicstat.html#cb142-22" aria-hidden="true"></a><span class="kw">median</span>(x)</span>
+<span id="cb142-23"><a href="basicstat.html#cb142-23" aria-hidden="true"></a><span class="co">## [1] 0.4</span></span>
+<span id="cb142-24"><a href="basicstat.html#cb142-24" aria-hidden="true"></a><span class="kw">var</span>(x)</span>
+<span id="cb142-25"><a href="basicstat.html#cb142-25" aria-hidden="true"></a><span class="co">## [1] 2.295</span></span>
+<span id="cb142-26"><a href="basicstat.html#cb142-26" aria-hidden="true"></a><span class="kw">sd</span>(x)</span>
+<span id="cb142-27"><a href="basicstat.html#cb142-27" aria-hidden="true"></a><span class="co">## [1] 1.515</span></span>
+<span id="cb142-28"><a href="basicstat.html#cb142-28" aria-hidden="true"></a><span class="kw">range</span>(x)</span>
+<span id="cb142-29"><a href="basicstat.html#cb142-29" aria-hidden="true"></a><span class="co">## [1] -2.0  2.8</span></span>
+<span id="cb142-30"><a href="basicstat.html#cb142-30" aria-hidden="true"></a><span class="kw">min</span>(x)</span>
+<span id="cb142-31"><a href="basicstat.html#cb142-31" aria-hidden="true"></a><span class="co">## [1] -2</span></span>
+<span id="cb142-32"><a href="basicstat.html#cb142-32" aria-hidden="true"></a><span class="kw">max</span>(x)</span>
+<span id="cb142-33"><a href="basicstat.html#cb142-33" aria-hidden="true"></a><span class="co">## [1] 2.8</span></span>
+<span id="cb142-34"><a href="basicstat.html#cb142-34" aria-hidden="true"></a><span class="co">## quantile</span></span>
+<span id="cb142-35"><a href="basicstat.html#cb142-35" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>))</span>
+<span id="cb142-36"><a href="basicstat.html#cb142-36" aria-hidden="true"></a>y</span>
+<span id="cb142-37"><a href="basicstat.html#cb142-37" aria-hidden="true"></a><span class="co">##    5%   25%   50%   75%   95% </span></span>
+<span id="cb142-38"><a href="basicstat.html#cb142-38" aria-hidden="true"></a><span class="co">## -1.76 -0.80  0.40  1.60  2.56</span></span>
+<span id="cb142-39"><a href="basicstat.html#cb142-39" aria-hidden="true"></a><span class="co"># IQR: inter-quantile range</span></span>
+<span id="cb142-40"><a href="basicstat.html#cb142-40" aria-hidden="true"></a>iqr =<span class="st"> </span>y[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>y[<span class="dv">2</span>]</span>
+<span id="cb142-41"><a href="basicstat.html#cb142-41" aria-hidden="true"></a>iqr</span>
+<span id="cb142-42"><a href="basicstat.html#cb142-42" aria-hidden="true"></a><span class="co">## 75% </span></span>
+<span id="cb142-43"><a href="basicstat.html#cb142-43" aria-hidden="true"></a><span class="co">## 2.4</span></span>
+<span id="cb142-44"><a href="basicstat.html#cb142-44" aria-hidden="true"></a><span class="co">## five numnber summary</span></span>
+<span id="cb142-45"><a href="basicstat.html#cb142-45" aria-hidden="true"></a><span class="kw">fivenum</span>(x)</span>
+<span id="cb142-46"><a href="basicstat.html#cb142-46" aria-hidden="true"></a><span class="co">## [1] -2.0 -0.8  0.4  1.6  2.8</span></span>
+<span id="cb142-47"><a href="basicstat.html#cb142-47" aria-hidden="true"></a><span class="co"># missing values</span></span>
+<span id="cb142-48"><a href="basicstat.html#cb142-48" aria-hidden="true"></a>x[<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb142-49"><a href="basicstat.html#cb142-49" aria-hidden="true"></a>x[<span class="dv">7</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb142-50"><a href="basicstat.html#cb142-50" aria-hidden="true"></a>x</span>
+<span id="cb142-51"><a href="basicstat.html#cb142-51" aria-hidden="true"></a><span class="co">##  [1] -2.0 -1.7   NA -1.1 -0.8 -0.5   NA  0.1  0.4  0.7  1.0</span></span>
+<span id="cb142-52"><a href="basicstat.html#cb142-52" aria-hidden="true"></a><span class="co">## [12]  1.3  1.6  1.9  2.2  2.5  2.8</span></span>
+<span id="cb142-53"><a href="basicstat.html#cb142-53" aria-hidden="true"></a><span class="kw">mean</span>(x)</span>
+<span id="cb142-54"><a href="basicstat.html#cb142-54" aria-hidden="true"></a><span class="co">## [1] NA</span></span>
+<span id="cb142-55"><a href="basicstat.html#cb142-55" aria-hidden="true"></a><span class="kw">mean</span>(<span class="kw">na.omit</span>(x))</span>
+<span id="cb142-56"><a href="basicstat.html#cb142-56" aria-hidden="true"></a><span class="co">## [1] 0.56</span></span>
+<span id="cb142-57"><a href="basicstat.html#cb142-57" aria-hidden="true"></a><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> T)</span>
+<span id="cb142-58"><a href="basicstat.html#cb142-58" aria-hidden="true"></a><span class="co">## [1] 0.56</span></span>
+<span id="cb142-59"><a href="basicstat.html#cb142-59" aria-hidden="true"></a><span class="kw">var</span>(x, <span class="dt">na.rm =</span> T)</span>
+<span id="cb142-60"><a href="basicstat.html#cb142-60" aria-hidden="true"></a><span class="co">## [1] 2.338</span></span></code></pre></div>
+</div>
+<div id="類別資料表格函數" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> 類別資料表格函數</h2>
+<p>在類別資料分析中,
+常常會使用到
+<strong>列聯表</strong>
+(<strong>contingency table</strong>),
+在 {R} 中, 一些函式用來製造或操作
+<strong>列聯表</strong>
+(<strong>contingency table</strong>),
+例如,
+<code>table()</code>,
+<code>xtabs()</code>,
+<code>as.table()</code>,
+<code>is.table()</code>;
+<code>ftable()</code>,
+<code>read.ftable()</code>,
+<code>wirte.ftable()</code>;
+<code>as.data.frame()</code>;
+<code>margin.table()</code>,
+<code>prop.table()</code>,
+<code>addmargins()</code>
+等.
+除此之外,
+{R} 還有一些關於列聯表的套件,
+例如,
+<code>xtable</code>,
+<code>vcd**,</code>reshape2<code>,</code>plyr<code>,</code>dplyr<code>,</code>tidyr<code>,</code>tidyverse<code>等, 將資料產生或轉換成列聯表. {R} 本身有一些分析列聯表的函式, 也有許多許多流行病學的套件與函式, 對 **列聯表** 進行分析. 例如,</code>Epi<code>,</code>epibasix<code>,</code>epiDisplay<code>(之前為</code>epicalc<code>),</code>epifit<code>,</code>epiR<code>,</code>epitools<code>,</code>RCOR<code>,</code>pROC`
+等,
+可以進行流行病學分析,
+套件主要分析能力大至相同,
+但各別套件仍有其特徵.</p>
+<p>類別資料的輸入常見有 2 種型式,
+(a)
+<strong>個別資料</strong>
+(<strong>individual data</strong>,
+<strong>micro data</strong>,
+<strong>case data</strong>);
+(b)
+<strong>聚集資料</strong>
+(<strong>aggregated data</strong>,
+<strong>macro data</strong>,
+<strong>summarized data</strong>,
+<strong>ecological data</strong>).
+個別資料內包含每一位
+<strong>個體</strong>
+(<strong>subject</strong>,
+<strong>individual</strong>),
+研究者為目前的研究目的所蒐集的第一手資料,
+記錄著每一為個體的測量值,
+個別資料有時稱為
+<strong>原始資料</strong>
+(<strong>raw data</strong>,
+<strong>primary data</strong>,
+<strong>original data</strong>).
+資料只有摘要之後的結果,
+是由其他來源所得到的資料,
+沒有每一位個體的比變數觀測值,
+例如沒有每一位個體的性別, 年紀等觀測值,
+這種整理分析候的資料有時稱為
+<strong>二手資料</strong>
+或
+<strong>次級資料</strong>
+(<strong>secondary data</strong>).</p>
+<p>個別資料可以經過整理成為聚集資料形態,
+但是, 若遺失每一位個體的測量值, 只有聚集資料, 則無法回復原來的個別資料.
+因此, 研究盡量使用每一位個體的測量值, 但有些時候, 無法得到每一位個體的測量值,
+若資料內全是類別變數,
+則 個別資料 與 聚集資料 分析結論部會有差別,
+但資料內若有連續變數如年紀, BMI 等,
+將連續變數轉換成類別變數, 只呈現或分析聚集資料,
+則會造成所謂的
+<strong>生態謬誤</strong>
+(<strong>ecological fallacy</strong>),
+是指由 聚集資料 (團體) 所得到的推論,
+不能反應 個別資料 (個人的真實) 所得到的推論,
+所產生研究推論的誤導.</p>
+<div id="列聯表函式-table-xtabs" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> 列聯表函式: table(), xtabs()</h3>
+<p>使用函式
+<code>table()</code>,
+<code>xtabs()</code>,
+可以從任何向量, 矩陣, 陣列, 資料框架
+創造一個列聯表,
+回傳一個
+<strong>列聯表</strong>
+物件.
+函式
+<code>table()</code>
+回傳的物件稱為
+<code>_contingency table_</code>.
+這是一個 {R} 物件類別 (class)
+為
+<code>table</code>
+之特殊物件.
+使用函式
+<code>as.table()</code>
+可用來強制將 矩陣 或 資料框架 形成列聯表物件.
+<code>as.matrix()</code> 強制將 列聯表物件 形成 矩陣.
+<code>as.data.frame()</code> 強制將 列聯表物件 形成 資料框架.
+<code>as.data.frame()</code> 是 <code>xtabs()</code> 的反函式.
+使用函式
+<code>is.table()</code>
+可查看物件是否為列聯表物件.
+使用函式
+<code>table()</code>
+須使用資料內個別變數或向量.
+使用函式
+<code>xtabs()</code>
+可以從資料框架中,
+利用統計模型公式 (model formula) 創造一個列聯表.
+函式 <code>as.data.frame()</code>
+則是函式
+<code>xtabs()</code>
+的反函式,
+從列聯表物件創造一個資料框架.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="basicstat.html#cb143-1" aria-hidden="true"></a><span class="kw">table</span>(variable_name, ...)</span>
+<span id="cb143-2"><a href="basicstat.html#cb143-2" aria-hidden="true"></a><span class="kw">xtabs</span>(formula, data)</span></code></pre></div>
+<p>其中常用引數如下.</p>
+<ul>
+<li><code>formula</code>: 使用統計模型公式輸入.</li>
+<li><code>data</code>: 資料框架名.</li>
+<li><code>na.action = "na.omit"</code>: 缺失值處理方式.</li>
+<li><code>exclude</code>: 排除類別水準的細項, 自動內設排除缺失值.</li>
+<li><code>useNA</code>: 處理缺失值選項.
+<ul>
+<li><code>"no"</code>: 排除缺失值.</li>
+<li><code>"ifany"</code>: 納入缺失值, 若類別水準的計數 (count) 為正整數.</li>
+<li><code>"always"</code>: 永遠納入缺失值成為 1 類別水準. 即使類別水準的計數 (count) 為 0 仍然自成 1 個類別水準.</li>
+</ul></li>
+</ul>
+<p>Prentice (1973) 報告一個研究,
+關於年長退伍軍人罹患肺癌, 且無法接受手術之臨床試驗,
+%病患在 Veteran’s Administration 醫院隨機接受標準治療或新的化學療法,
+病患在榮民醫院隨機接受標準治療方法或新的化學治療方法,
+比較治療的主要結果變數為死亡時間,
+變數名稱列在表.
+資料在檔案 <strong>survVATrial.csv</strong>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>treat (therapy)</td>
+<td>治療組別: 0 = 標準; 1 = 新治療</td>
+</tr>
+<tr class="even">
+<td>cellcode</td>
+<td>細胞型態; 1 = 鱗狀細胞; 2 = 小細胞; 3 = 腺體細胞; 4 = 大細胞</td>
+</tr>
+<tr class="odd">
+<td>time</td>
+<td>存活時間, 診斷日期至死亡日期, 單位以日計</td>
+</tr>
+<tr class="even">
+<td>censor</td>
+<td>設限狀態: 0 = 設限; 1 = 死亡</td>
+</tr>
+<tr class="odd">
+<td>diagtime</td>
+<td>Karnofsky performance score, 診斷時身體狀態表現的分數</td>
+</tr>
+<tr class="even">
+<td>diagtime</td>
+<td>診斷到隨機分配的時間, 以月計</td>
+</tr>
+<tr class="odd">
+<td>age</td>
+<td>診斷時的年齡 (以年計)</td>
+</tr>
+<tr class="even">
+<td>prior</td>
+<td>先前是否接受治療; 0 = 無; 1 = 有</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="basicstat.html#cb144-1" aria-hidden="true"></a>dd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./Data/survVATrial.csv&quot;</span>,</span>
+<span id="cb144-2"><a href="basicstat.html#cb144-2" aria-hidden="true"></a>                 <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb144-3"><a href="basicstat.html#cb144-3" aria-hidden="true"></a>                 <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb144-4"><a href="basicstat.html#cb144-4" aria-hidden="true"></a>                 <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
+<span id="cb144-5"><a href="basicstat.html#cb144-5" aria-hidden="true"></a>                 <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb144-6"><a href="basicstat.html#cb144-6" aria-hidden="true"></a>                 <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb144-7"><a href="basicstat.html#cb144-7" aria-hidden="true"></a>                 <span class="co"># col.names,</span></span>
+<span id="cb144-8"><a href="basicstat.html#cb144-8" aria-hidden="true"></a>                 <span class="dt">as.is =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb144-9"><a href="basicstat.html#cb144-9" aria-hidden="true"></a>                 <span class="co"># as.is = !stringsAsFactors,</span></span>
+<span id="cb144-10"><a href="basicstat.html#cb144-10" aria-hidden="true"></a>                 <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb144-11"><a href="basicstat.html#cb144-11" aria-hidden="true"></a><span class="kw">head</span>(dd)</span>
+<span id="cb144-12"><a href="basicstat.html#cb144-12" aria-hidden="true"></a><span class="co">##   treat cellcode time censor diagtime kps age prior</span></span>
+<span id="cb144-13"><a href="basicstat.html#cb144-13" aria-hidden="true"></a><span class="co">## 1     0        1   72      1       60   7  69     0</span></span>
+<span id="cb144-14"><a href="basicstat.html#cb144-14" aria-hidden="true"></a><span class="co">## 2     0        1  411      1       70   5  64    10</span></span>
+<span id="cb144-15"><a href="basicstat.html#cb144-15" aria-hidden="true"></a><span class="co">## 3     0        1  228      1       60   3  38     0</span></span>
+<span id="cb144-16"><a href="basicstat.html#cb144-16" aria-hidden="true"></a><span class="co">## 4     0        1  126      1       60   9  63    10</span></span>
+<span id="cb144-17"><a href="basicstat.html#cb144-17" aria-hidden="true"></a><span class="co">## 5     0        1  118      1       70  11  65    10</span></span>
+<span id="cb144-18"><a href="basicstat.html#cb144-18" aria-hidden="true"></a><span class="co">## 6     0        1   10      1       20   5  49     0</span></span>
+<span id="cb144-19"><a href="basicstat.html#cb144-19" aria-hidden="true"></a><span class="kw">str</span>(dd)</span>
+<span id="cb144-20"><a href="basicstat.html#cb144-20" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	137 obs. of  8 variables:</span></span>
+<span id="cb144-21"><a href="basicstat.html#cb144-21" aria-hidden="true"></a><span class="co">##  $ treat   : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb144-22"><a href="basicstat.html#cb144-22" aria-hidden="true"></a><span class="co">##  $ cellcode: int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb144-23"><a href="basicstat.html#cb144-23" aria-hidden="true"></a><span class="co">##  $ time    : int  72 411 228 126 118 10 82 110 314 100 ...</span></span>
+<span id="cb144-24"><a href="basicstat.html#cb144-24" aria-hidden="true"></a><span class="co">##  $ censor  : int  1 1 1 1 1 1 1 1 1 0 ...</span></span>
+<span id="cb144-25"><a href="basicstat.html#cb144-25" aria-hidden="true"></a><span class="co">##  $ diagtime: int  60 70 60 60 70 20 40 80 50 70 ...</span></span>
+<span id="cb144-26"><a href="basicstat.html#cb144-26" aria-hidden="true"></a><span class="co">##  $ kps     : int  7 5 3 9 11 5 10 29 18 6 ...</span></span>
+<span id="cb144-27"><a href="basicstat.html#cb144-27" aria-hidden="true"></a><span class="co">##  $ age     : int  69 64 38 63 65 49 69 68 43 70 ...</span></span>
+<span id="cb144-28"><a href="basicstat.html#cb144-28" aria-hidden="true"></a><span class="co">##  $ prior   : int  0 10 0 10 10 0 10 0 0 0 ...</span></span>
+<span id="cb144-29"><a href="basicstat.html#cb144-29" aria-hidden="true"></a>dd<span class="op">$</span>treat &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
+<span id="cb144-30"><a href="basicstat.html#cb144-30" aria-hidden="true"></a>dd<span class="op">$</span>cellcode &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>cellcode, </span>
+<span id="cb144-31"><a href="basicstat.html#cb144-31" aria-hidden="true"></a>                      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;squamous&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;adeno&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
+<span id="cb144-32"><a href="basicstat.html#cb144-32" aria-hidden="true"></a>dd<span class="op">$</span>censor &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>censor, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;survival&quot;</span>, <span class="st">&quot;dead&quot;</span>))</span>
+<span id="cb144-33"><a href="basicstat.html#cb144-33" aria-hidden="true"></a>dd<span class="op">$</span>prior &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>prior, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb144-34"><a href="basicstat.html#cb144-34" aria-hidden="true"></a><span class="kw">head</span>(dd)</span>
+<span id="cb144-35"><a href="basicstat.html#cb144-35" aria-hidden="true"></a><span class="co">##     treat cellcode time censor diagtime kps age prior</span></span>
+<span id="cb144-36"><a href="basicstat.html#cb144-36" aria-hidden="true"></a><span class="co">## 1 placebo squamous   72   dead       60   7  69    no</span></span>
+<span id="cb144-37"><a href="basicstat.html#cb144-37" aria-hidden="true"></a><span class="co">## 2 placebo squamous  411   dead       70   5  64   yes</span></span>
+<span id="cb144-38"><a href="basicstat.html#cb144-38" aria-hidden="true"></a><span class="co">## 3 placebo squamous  228   dead       60   3  38    no</span></span>
+<span id="cb144-39"><a href="basicstat.html#cb144-39" aria-hidden="true"></a><span class="co">## 4 placebo squamous  126   dead       60   9  63   yes</span></span>
+<span id="cb144-40"><a href="basicstat.html#cb144-40" aria-hidden="true"></a><span class="co">## 5 placebo squamous  118   dead       70  11  65   yes</span></span>
+<span id="cb144-41"><a href="basicstat.html#cb144-41" aria-hidden="true"></a><span class="co">## 6 placebo squamous   10   dead       20   5  49    no</span></span>
+<span id="cb144-42"><a href="basicstat.html#cb144-42" aria-hidden="true"></a><span class="kw">str</span>(dd)</span>
+<span id="cb144-43"><a href="basicstat.html#cb144-43" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	137 obs. of  8 variables:</span></span>
+<span id="cb144-44"><a href="basicstat.html#cb144-44" aria-hidden="true"></a><span class="co">##  $ treat   : Factor w/ 2 levels &quot;placebo&quot;,&quot;test&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb144-45"><a href="basicstat.html#cb144-45" aria-hidden="true"></a><span class="co">##  $ cellcode: Factor w/ 4 levels &quot;squamous&quot;,&quot;small&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb144-46"><a href="basicstat.html#cb144-46" aria-hidden="true"></a><span class="co">##  $ time    : int  72 411 228 126 118 10 82 110 314 100 ...</span></span>
+<span id="cb144-47"><a href="basicstat.html#cb144-47" aria-hidden="true"></a><span class="co">##  $ censor  : Factor w/ 2 levels &quot;survival&quot;,&quot;dead&quot;: 2 2 2 2 2 2 2 2 2 1 ...</span></span>
+<span id="cb144-48"><a href="basicstat.html#cb144-48" aria-hidden="true"></a><span class="co">##  $ diagtime: int  60 70 60 60 70 20 40 80 50 70 ...</span></span>
+<span id="cb144-49"><a href="basicstat.html#cb144-49" aria-hidden="true"></a><span class="co">##  $ kps     : int  7 5 3 9 11 5 10 29 18 6 ...</span></span>
+<span id="cb144-50"><a href="basicstat.html#cb144-50" aria-hidden="true"></a><span class="co">##  $ age     : int  69 64 38 63 65 49 69 68 43 70 ...</span></span>
+<span id="cb144-51"><a href="basicstat.html#cb144-51" aria-hidden="true"></a><span class="co">##  $ prior   : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 2 1 2 2 1 2 1 1 1 ...</span></span>
+<span id="cb144-52"><a href="basicstat.html#cb144-52" aria-hidden="true"></a><span class="co">## one-way table</span></span>
+<span id="cb144-53"><a href="basicstat.html#cb144-53" aria-hidden="true"></a><span class="co">## table()</span></span>
+<span id="cb144-54"><a href="basicstat.html#cb144-54" aria-hidden="true"></a><span class="kw">table</span>(dd<span class="op">$</span>censor)</span>
+<span id="cb144-55"><a href="basicstat.html#cb144-55" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-56"><a href="basicstat.html#cb144-56" aria-hidden="true"></a><span class="co">## survival     dead </span></span>
+<span id="cb144-57"><a href="basicstat.html#cb144-57" aria-hidden="true"></a><span class="co">##        9      128</span></span>
+<span id="cb144-58"><a href="basicstat.html#cb144-58" aria-hidden="true"></a><span class="kw">table</span>(dd<span class="op">$</span>cellcode)</span>
+<span id="cb144-59"><a href="basicstat.html#cb144-59" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-60"><a href="basicstat.html#cb144-60" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
+<span id="cb144-61"><a href="basicstat.html#cb144-61" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
+<span id="cb144-62"><a href="basicstat.html#cb144-62" aria-hidden="true"></a><span class="co">## xtabs()</span></span>
+<span id="cb144-63"><a href="basicstat.html#cb144-63" aria-hidden="true"></a><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>censor, <span class="dt">data =</span> dd)</span>
+<span id="cb144-64"><a href="basicstat.html#cb144-64" aria-hidden="true"></a><span class="co">## censor</span></span>
+<span id="cb144-65"><a href="basicstat.html#cb144-65" aria-hidden="true"></a><span class="co">## survival     dead </span></span>
+<span id="cb144-66"><a href="basicstat.html#cb144-66" aria-hidden="true"></a><span class="co">##        9      128</span></span>
+<span id="cb144-67"><a href="basicstat.html#cb144-67" aria-hidden="true"></a><span class="co">## two-way table()</span></span>
+<span id="cb144-68"><a href="basicstat.html#cb144-68" aria-hidden="true"></a><span class="co">## table()</span></span>
+<span id="cb144-69"><a href="basicstat.html#cb144-69" aria-hidden="true"></a>dd<span class="fl">.2</span>tab =<span class="st"> </span><span class="kw">table</span>(dd<span class="op">$</span>cellcode, dd<span class="op">$</span>censor)</span>
+<span id="cb144-70"><a href="basicstat.html#cb144-70" aria-hidden="true"></a>dd<span class="fl">.2</span>tab </span>
+<span id="cb144-71"><a href="basicstat.html#cb144-71" aria-hidden="true"></a><span class="co">##           </span></span>
+<span id="cb144-72"><a href="basicstat.html#cb144-72" aria-hidden="true"></a><span class="co">##            survival dead</span></span>
+<span id="cb144-73"><a href="basicstat.html#cb144-73" aria-hidden="true"></a><span class="co">##   squamous        4   31</span></span>
+<span id="cb144-74"><a href="basicstat.html#cb144-74" aria-hidden="true"></a><span class="co">##   small           3   45</span></span>
+<span id="cb144-75"><a href="basicstat.html#cb144-75" aria-hidden="true"></a><span class="co">##   adeno           1   26</span></span>
+<span id="cb144-76"><a href="basicstat.html#cb144-76" aria-hidden="true"></a><span class="co">##   large           1   26</span></span>
+<span id="cb144-77"><a href="basicstat.html#cb144-77" aria-hidden="true"></a><span class="kw">class</span>(dd<span class="fl">.2</span>tab)</span>
+<span id="cb144-78"><a href="basicstat.html#cb144-78" aria-hidden="true"></a><span class="co">## [1] &quot;table&quot;</span></span>
+<span id="cb144-79"><a href="basicstat.html#cb144-79" aria-hidden="true"></a><span class="co">## xtabs()</span></span>
+<span id="cb144-80"><a href="basicstat.html#cb144-80" aria-hidden="true"></a>dd<span class="fl">.2</span>xtabs =<span class="st"> </span><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>cellcode <span class="op">+</span><span class="st"> </span>censor, <span class="dt">data =</span> dd)</span>
+<span id="cb144-81"><a href="basicstat.html#cb144-81" aria-hidden="true"></a>dd<span class="fl">.2</span>xtabs</span>
+<span id="cb144-82"><a href="basicstat.html#cb144-82" aria-hidden="true"></a><span class="co">##           censor</span></span>
+<span id="cb144-83"><a href="basicstat.html#cb144-83" aria-hidden="true"></a><span class="co">## cellcode   survival dead</span></span>
+<span id="cb144-84"><a href="basicstat.html#cb144-84" aria-hidden="true"></a><span class="co">##   squamous        4   31</span></span>
+<span id="cb144-85"><a href="basicstat.html#cb144-85" aria-hidden="true"></a><span class="co">##   small           3   45</span></span>
+<span id="cb144-86"><a href="basicstat.html#cb144-86" aria-hidden="true"></a><span class="co">##   adeno           1   26</span></span>
+<span id="cb144-87"><a href="basicstat.html#cb144-87" aria-hidden="true"></a><span class="co">##   large           1   26</span></span>
+<span id="cb144-88"><a href="basicstat.html#cb144-88" aria-hidden="true"></a><span class="kw">class</span>(dd<span class="fl">.2</span>xtabs)</span>
+<span id="cb144-89"><a href="basicstat.html#cb144-89" aria-hidden="true"></a><span class="co">## [1] &quot;xtabs&quot; &quot;table&quot;</span></span>
+<span id="cb144-90"><a href="basicstat.html#cb144-90" aria-hidden="true"></a><span class="co">## three-way table()</span></span>
+<span id="cb144-91"><a href="basicstat.html#cb144-91" aria-hidden="true"></a><span class="co">## table()</span></span>
+<span id="cb144-92"><a href="basicstat.html#cb144-92" aria-hidden="true"></a>dd<span class="fl">.3</span>tab =<span class="st"> </span><span class="kw">table</span>(dd<span class="op">$</span>treat, dd<span class="op">$</span>censor, dd<span class="op">$</span>cellcode)</span>
+<span id="cb144-93"><a href="basicstat.html#cb144-93" aria-hidden="true"></a>dd<span class="fl">.3</span>tab </span>
+<span id="cb144-94"><a href="basicstat.html#cb144-94" aria-hidden="true"></a><span class="co">## , ,  = squamous</span></span>
+<span id="cb144-95"><a href="basicstat.html#cb144-95" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-96"><a href="basicstat.html#cb144-96" aria-hidden="true"></a><span class="co">##          </span></span>
+<span id="cb144-97"><a href="basicstat.html#cb144-97" aria-hidden="true"></a><span class="co">##           survival dead</span></span>
+<span id="cb144-98"><a href="basicstat.html#cb144-98" aria-hidden="true"></a><span class="co">##   placebo        2   13</span></span>
+<span id="cb144-99"><a href="basicstat.html#cb144-99" aria-hidden="true"></a><span class="co">##   test           2   18</span></span>
+<span id="cb144-100"><a href="basicstat.html#cb144-100" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-101"><a href="basicstat.html#cb144-101" aria-hidden="true"></a><span class="co">## , ,  = small</span></span>
+<span id="cb144-102"><a href="basicstat.html#cb144-102" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-103"><a href="basicstat.html#cb144-103" aria-hidden="true"></a><span class="co">##          </span></span>
+<span id="cb144-104"><a href="basicstat.html#cb144-104" aria-hidden="true"></a><span class="co">##           survival dead</span></span>
+<span id="cb144-105"><a href="basicstat.html#cb144-105" aria-hidden="true"></a><span class="co">##   placebo        2   28</span></span>
+<span id="cb144-106"><a href="basicstat.html#cb144-106" aria-hidden="true"></a><span class="co">##   test           1   17</span></span>
+<span id="cb144-107"><a href="basicstat.html#cb144-107" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-108"><a href="basicstat.html#cb144-108" aria-hidden="true"></a><span class="co">## , ,  = adeno</span></span>
+<span id="cb144-109"><a href="basicstat.html#cb144-109" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-110"><a href="basicstat.html#cb144-110" aria-hidden="true"></a><span class="co">##          </span></span>
+<span id="cb144-111"><a href="basicstat.html#cb144-111" aria-hidden="true"></a><span class="co">##           survival dead</span></span>
+<span id="cb144-112"><a href="basicstat.html#cb144-112" aria-hidden="true"></a><span class="co">##   placebo        0    9</span></span>
+<span id="cb144-113"><a href="basicstat.html#cb144-113" aria-hidden="true"></a><span class="co">##   test           1   17</span></span>
+<span id="cb144-114"><a href="basicstat.html#cb144-114" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-115"><a href="basicstat.html#cb144-115" aria-hidden="true"></a><span class="co">## , ,  = large</span></span>
+<span id="cb144-116"><a href="basicstat.html#cb144-116" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-117"><a href="basicstat.html#cb144-117" aria-hidden="true"></a><span class="co">##          </span></span>
+<span id="cb144-118"><a href="basicstat.html#cb144-118" aria-hidden="true"></a><span class="co">##           survival dead</span></span>
+<span id="cb144-119"><a href="basicstat.html#cb144-119" aria-hidden="true"></a><span class="co">##   placebo        1   14</span></span>
+<span id="cb144-120"><a href="basicstat.html#cb144-120" aria-hidden="true"></a><span class="co">##   test           0   12</span></span>
+<span id="cb144-121"><a href="basicstat.html#cb144-121" aria-hidden="true"></a><span class="co">## xtabs()</span></span>
+<span id="cb144-122"><a href="basicstat.html#cb144-122" aria-hidden="true"></a>dd<span class="fl">.3</span>xtabs =<span class="st"> </span><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>treat <span class="op">+</span><span class="st"> </span>censor <span class="op">+</span><span class="st"> </span>cellcode, <span class="dt">data =</span> dd)</span>
+<span id="cb144-123"><a href="basicstat.html#cb144-123" aria-hidden="true"></a>dd<span class="fl">.3</span>xtabs</span>
+<span id="cb144-124"><a href="basicstat.html#cb144-124" aria-hidden="true"></a><span class="co">## , , cellcode = squamous</span></span>
+<span id="cb144-125"><a href="basicstat.html#cb144-125" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-126"><a href="basicstat.html#cb144-126" aria-hidden="true"></a><span class="co">##          censor</span></span>
+<span id="cb144-127"><a href="basicstat.html#cb144-127" aria-hidden="true"></a><span class="co">## treat     survival dead</span></span>
+<span id="cb144-128"><a href="basicstat.html#cb144-128" aria-hidden="true"></a><span class="co">##   placebo        2   13</span></span>
+<span id="cb144-129"><a href="basicstat.html#cb144-129" aria-hidden="true"></a><span class="co">##   test           2   18</span></span>
+<span id="cb144-130"><a href="basicstat.html#cb144-130" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-131"><a href="basicstat.html#cb144-131" aria-hidden="true"></a><span class="co">## , , cellcode = small</span></span>
+<span id="cb144-132"><a href="basicstat.html#cb144-132" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-133"><a href="basicstat.html#cb144-133" aria-hidden="true"></a><span class="co">##          censor</span></span>
+<span id="cb144-134"><a href="basicstat.html#cb144-134" aria-hidden="true"></a><span class="co">## treat     survival dead</span></span>
+<span id="cb144-135"><a href="basicstat.html#cb144-135" aria-hidden="true"></a><span class="co">##   placebo        2   28</span></span>
+<span id="cb144-136"><a href="basicstat.html#cb144-136" aria-hidden="true"></a><span class="co">##   test           1   17</span></span>
+<span id="cb144-137"><a href="basicstat.html#cb144-137" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-138"><a href="basicstat.html#cb144-138" aria-hidden="true"></a><span class="co">## , , cellcode = adeno</span></span>
+<span id="cb144-139"><a href="basicstat.html#cb144-139" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-140"><a href="basicstat.html#cb144-140" aria-hidden="true"></a><span class="co">##          censor</span></span>
+<span id="cb144-141"><a href="basicstat.html#cb144-141" aria-hidden="true"></a><span class="co">## treat     survival dead</span></span>
+<span id="cb144-142"><a href="basicstat.html#cb144-142" aria-hidden="true"></a><span class="co">##   placebo        0    9</span></span>
+<span id="cb144-143"><a href="basicstat.html#cb144-143" aria-hidden="true"></a><span class="co">##   test           1   17</span></span>
+<span id="cb144-144"><a href="basicstat.html#cb144-144" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-145"><a href="basicstat.html#cb144-145" aria-hidden="true"></a><span class="co">## , , cellcode = large</span></span>
+<span id="cb144-146"><a href="basicstat.html#cb144-146" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb144-147"><a href="basicstat.html#cb144-147" aria-hidden="true"></a><span class="co">##          censor</span></span>
+<span id="cb144-148"><a href="basicstat.html#cb144-148" aria-hidden="true"></a><span class="co">## treat     survival dead</span></span>
+<span id="cb144-149"><a href="basicstat.html#cb144-149" aria-hidden="true"></a><span class="co">##   placebo        1   14</span></span>
+<span id="cb144-150"><a href="basicstat.html#cb144-150" aria-hidden="true"></a><span class="co">##   test           0   12</span></span></code></pre></div>
+</div>
+<div id="列聯表函式-ftable" class="section level3" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> 列聯表函式: ftable()</h3>
+<p>函式
+<code>table()</code>
+或
+<code>xtabs()</code>
+對高維度列聯表的呈現類似 list 形式,
+較不方便操作,
+改使用函式
+<code>ftable()</code>,
+可以從任何向量, 矩陣, 陣列, 資料框架
+創造一個
+<strong>扁平列聯表</strong>
+(<strong>flat contingency table</strong>),
+<strong>扁平列聯表</strong>
+是一個
+<code>ftalbe</code>
+類別 (class) 的矩陣物件,
+其中變數 (欄位, column) 為分類因子變數,
+另外再加上各組頻率數目,
+每一列 (row) 代表每一種分類的類別水準 (level).
+使用函式
+<code>ftable()</code>
+得到
+<code>ftable</code> 物件,
+在 {R} 的列印上,
+會比
+<code>table()</code>
+或
+<code>xtabs()</code>
+得到
+<code>_contingency table_</code> 物件
+好看.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="basicstat.html#cb145-1" aria-hidden="true"></a><span class="co">## three-way table()</span></span>
+<span id="cb145-2"><a href="basicstat.html#cb145-2" aria-hidden="true"></a><span class="co">## ftable()</span></span>
+<span id="cb145-3"><a href="basicstat.html#cb145-3" aria-hidden="true"></a>dd<span class="fl">.3</span>ftab =<span class="st"> </span><span class="kw">ftable</span>(dd<span class="op">$</span>cellcode, dd<span class="op">$</span>treat, dd<span class="op">$</span>censor)</span>
+<span id="cb145-4"><a href="basicstat.html#cb145-4" aria-hidden="true"></a>dd<span class="fl">.3</span>ftab</span>
+<span id="cb145-5"><a href="basicstat.html#cb145-5" aria-hidden="true"></a><span class="co">##                   survival dead</span></span>
+<span id="cb145-6"><a href="basicstat.html#cb145-6" aria-hidden="true"></a><span class="co">##                                </span></span>
+<span id="cb145-7"><a href="basicstat.html#cb145-7" aria-hidden="true"></a><span class="co">## squamous placebo         2   13</span></span>
+<span id="cb145-8"><a href="basicstat.html#cb145-8" aria-hidden="true"></a><span class="co">##          test            2   18</span></span>
+<span id="cb145-9"><a href="basicstat.html#cb145-9" aria-hidden="true"></a><span class="co">## small    placebo         2   28</span></span>
+<span id="cb145-10"><a href="basicstat.html#cb145-10" aria-hidden="true"></a><span class="co">##          test            1   17</span></span>
+<span id="cb145-11"><a href="basicstat.html#cb145-11" aria-hidden="true"></a><span class="co">## adeno    placebo         0    9</span></span>
+<span id="cb145-12"><a href="basicstat.html#cb145-12" aria-hidden="true"></a><span class="co">##          test            1   17</span></span>
+<span id="cb145-13"><a href="basicstat.html#cb145-13" aria-hidden="true"></a><span class="co">## large    placebo         1   14</span></span>
+<span id="cb145-14"><a href="basicstat.html#cb145-14" aria-hidden="true"></a><span class="co">##          test            0   12</span></span></code></pre></div>
+</div>
+<div id="列聯表函式-margin.table-prop.table" class="section level3" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> 列聯表函式: margin.table(), prop.table()</h3>
+<p>使用函式
+<code>margin.table()</code>
+可以使用類別 (class) 為 <code>table</code> 的列聯表物件,
+或是使用陣列型式 (array, matrix) 的列聯表物件
+計算
+<strong>邊際總合</strong>
+(<strong>marginal total</strong>).
+函式
+<code>prop.table()</code>
+從陣列型式 (array, matrix) 之列聯表物件,
+計算列聯表物件的
+<strong>相對頻率</strong>
+(<strong>relative frequency</strong>).
+函式
+<code>addmargins()</code>
+對列聯表物件進行邊際維度計算總和.</p>
+<p>函式
+<code>margin.table()</code>
+與
+函式
+<code>prop.table()</code>
+無法對
+類別 (class) 為 <code>ftable</code> 的列聯表物件進行操作.
+函式
+<code>addmargins()</code>
+可以對
+類別 (class) 為 <code>table</code> 或 <code>ftable</code> 的列聯表物件進行操作.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="basicstat.html#cb146-1" aria-hidden="true"></a><span class="kw">margin.table</span>(x, <span class="dt">margin =</span> <span class="ot">NULL</span>)</span>
+<span id="cb146-2"><a href="basicstat.html#cb146-2" aria-hidden="true"></a><span class="kw">prop.table</span>(x, <span class="dt">margin =</span> <span class="ot">NULL</span>)</span>
+<span id="cb146-3"><a href="basicstat.html#cb146-3" aria-hidden="true"></a><span class="kw">addmargins</span>(A, margin, ...)</span></code></pre></div>
+<p>其中引數</p>
+<ul>
+<li><code>x</code>: <code>table</code> 物件.</li>
+<li><code>A</code>: <code>table</code> 或 <code>ftable</code> 物件.</li>
+<li><code>margin</code>: 維度下標或向量 (index/vector), 設定計算的邊際維度.
+<ul>
+<li><code>margin = NULL</code>: 計算列聯表內總和或個別空格分率 (cell count/proportion).</li>
+<li><code>margin = 1</code>: 計算列聯表的列位 (row) 邊際總和或分率 (row marginal total/proportion).</li>
+</ul></li>
+<li><code>margin = 2</code>: 計算列聯表的欄位 (column) 邊際總和或分率 (column marginal total/proportion).</li>
+<li><code>margin = k</code>: 其餘維度則依此列推.</li>
+</ul>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="basicstat.html#cb147-1" aria-hidden="true"></a><span class="co">## one-way table</span></span>
+<span id="cb147-2"><a href="basicstat.html#cb147-2" aria-hidden="true"></a><span class="co">## table()</span></span>
+<span id="cb147-3"><a href="basicstat.html#cb147-3" aria-hidden="true"></a>dd<span class="fl">.1</span>tab =<span class="st"> </span><span class="kw">table</span>(dd<span class="op">$</span>cellcode)</span>
+<span id="cb147-4"><a href="basicstat.html#cb147-4" aria-hidden="true"></a>dd<span class="fl">.1</span>tab</span>
+<span id="cb147-5"><a href="basicstat.html#cb147-5" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb147-6"><a href="basicstat.html#cb147-6" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
+<span id="cb147-7"><a href="basicstat.html#cb147-7" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
+<span id="cb147-8"><a href="basicstat.html#cb147-8" aria-hidden="true"></a><span class="kw">margin.table</span>(dd<span class="fl">.1</span>tab)</span>
+<span id="cb147-9"><a href="basicstat.html#cb147-9" aria-hidden="true"></a><span class="co">## [1] 137</span></span>
+<span id="cb147-10"><a href="basicstat.html#cb147-10" aria-hidden="true"></a><span class="kw">prop.table</span>(dd<span class="fl">.1</span>tab)</span>
+<span id="cb147-11"><a href="basicstat.html#cb147-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb147-12"><a href="basicstat.html#cb147-12" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
+<span id="cb147-13"><a href="basicstat.html#cb147-13" aria-hidden="true"></a><span class="co">##   0.2555   0.3504   0.1971   0.1971</span></span>
+<span id="cb147-14"><a href="basicstat.html#cb147-14" aria-hidden="true"></a><span class="co">## xtabs()</span></span>
+<span id="cb147-15"><a href="basicstat.html#cb147-15" aria-hidden="true"></a>dd<span class="fl">.1</span>xtabs =<span class="st"> </span><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>censor, <span class="dt">data =</span> dd)</span>
+<span id="cb147-16"><a href="basicstat.html#cb147-16" aria-hidden="true"></a><span class="kw">margin.table</span>(dd<span class="fl">.1</span>xtabs)</span>
+<span id="cb147-17"><a href="basicstat.html#cb147-17" aria-hidden="true"></a><span class="co">## [1] 137</span></span>
+<span id="cb147-18"><a href="basicstat.html#cb147-18" aria-hidden="true"></a><span class="kw">prop.table</span>(dd<span class="fl">.1</span>xtabs)</span>
+<span id="cb147-19"><a href="basicstat.html#cb147-19" aria-hidden="true"></a><span class="co">## censor</span></span>
+<span id="cb147-20"><a href="basicstat.html#cb147-20" aria-hidden="true"></a><span class="co">## survival     dead </span></span>
+<span id="cb147-21"><a href="basicstat.html#cb147-21" aria-hidden="true"></a><span class="co">##  0.06569  0.93431</span></span>
+<span id="cb147-22"><a href="basicstat.html#cb147-22" aria-hidden="true"></a><span class="co">## two-way table()</span></span>
+<span id="cb147-23"><a href="basicstat.html#cb147-23" aria-hidden="true"></a><span class="co">## table()</span></span>
+<span id="cb147-24"><a href="basicstat.html#cb147-24" aria-hidden="true"></a>dd<span class="fl">.2</span>tab =<span class="st"> </span><span class="kw">table</span>(dd<span class="op">$</span>cellcode, dd<span class="op">$</span>censor)</span>
+<span id="cb147-25"><a href="basicstat.html#cb147-25" aria-hidden="true"></a>dd<span class="fl">.2</span>tab </span>
+<span id="cb147-26"><a href="basicstat.html#cb147-26" aria-hidden="true"></a><span class="co">##           </span></span>
+<span id="cb147-27"><a href="basicstat.html#cb147-27" aria-hidden="true"></a><span class="co">##            survival dead</span></span>
+<span id="cb147-28"><a href="basicstat.html#cb147-28" aria-hidden="true"></a><span class="co">##   squamous        4   31</span></span>
+<span id="cb147-29"><a href="basicstat.html#cb147-29" aria-hidden="true"></a><span class="co">##   small           3   45</span></span>
+<span id="cb147-30"><a href="basicstat.html#cb147-30" aria-hidden="true"></a><span class="co">##   adeno           1   26</span></span>
+<span id="cb147-31"><a href="basicstat.html#cb147-31" aria-hidden="true"></a><span class="co">##   large           1   26</span></span>
+<span id="cb147-32"><a href="basicstat.html#cb147-32" aria-hidden="true"></a><span class="co">## cell count total and proportion </span></span>
+<span id="cb147-33"><a href="basicstat.html#cb147-33" aria-hidden="true"></a><span class="kw">margin.table</span>(dd<span class="fl">.2</span>tab)</span>
+<span id="cb147-34"><a href="basicstat.html#cb147-34" aria-hidden="true"></a><span class="co">## [1] 137</span></span>
+<span id="cb147-35"><a href="basicstat.html#cb147-35" aria-hidden="true"></a><span class="kw">prop.table</span>(dd<span class="fl">.2</span>tab)</span>
+<span id="cb147-36"><a href="basicstat.html#cb147-36" aria-hidden="true"></a><span class="co">##           </span></span>
+<span id="cb147-37"><a href="basicstat.html#cb147-37" aria-hidden="true"></a><span class="co">##            survival     dead</span></span>
+<span id="cb147-38"><a href="basicstat.html#cb147-38" aria-hidden="true"></a><span class="co">##   squamous 0.029197 0.226277</span></span>
+<span id="cb147-39"><a href="basicstat.html#cb147-39" aria-hidden="true"></a><span class="co">##   small    0.021898 0.328467</span></span>
+<span id="cb147-40"><a href="basicstat.html#cb147-40" aria-hidden="true"></a><span class="co">##   adeno    0.007299 0.189781</span></span>
+<span id="cb147-41"><a href="basicstat.html#cb147-41" aria-hidden="true"></a><span class="co">##   large    0.007299 0.189781</span></span>
+<span id="cb147-42"><a href="basicstat.html#cb147-42" aria-hidden="true"></a><span class="co">## condition on row</span></span>
+<span id="cb147-43"><a href="basicstat.html#cb147-43" aria-hidden="true"></a><span class="kw">margin.table</span>(dd<span class="fl">.2</span>tab, <span class="dt">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb147-44"><a href="basicstat.html#cb147-44" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb147-45"><a href="basicstat.html#cb147-45" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
+<span id="cb147-46"><a href="basicstat.html#cb147-46" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
+<span id="cb147-47"><a href="basicstat.html#cb147-47" aria-hidden="true"></a><span class="kw">prop.table</span>(dd<span class="fl">.2</span>tab, <span class="dt">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb147-48"><a href="basicstat.html#cb147-48" aria-hidden="true"></a><span class="co">##           </span></span>
+<span id="cb147-49"><a href="basicstat.html#cb147-49" aria-hidden="true"></a><span class="co">##            survival    dead</span></span>
+<span id="cb147-50"><a href="basicstat.html#cb147-50" aria-hidden="true"></a><span class="co">##   squamous  0.11429 0.88571</span></span>
+<span id="cb147-51"><a href="basicstat.html#cb147-51" aria-hidden="true"></a><span class="co">##   small     0.06250 0.93750</span></span>
+<span id="cb147-52"><a href="basicstat.html#cb147-52" aria-hidden="true"></a><span class="co">##   adeno     0.03704 0.96296</span></span>
+<span id="cb147-53"><a href="basicstat.html#cb147-53" aria-hidden="true"></a><span class="co">##   large     0.03704 0.96296</span></span>
+<span id="cb147-54"><a href="basicstat.html#cb147-54" aria-hidden="true"></a><span class="co">## condition on column</span></span>
+<span id="cb147-55"><a href="basicstat.html#cb147-55" aria-hidden="true"></a><span class="kw">margin.table</span>(dd<span class="fl">.2</span>tab, <span class="dt">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb147-56"><a href="basicstat.html#cb147-56" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb147-57"><a href="basicstat.html#cb147-57" aria-hidden="true"></a><span class="co">## survival     dead </span></span>
+<span id="cb147-58"><a href="basicstat.html#cb147-58" aria-hidden="true"></a><span class="co">##        9      128</span></span>
+<span id="cb147-59"><a href="basicstat.html#cb147-59" aria-hidden="true"></a><span class="kw">prop.table</span>(dd<span class="fl">.2</span>tab, <span class="dt">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb147-60"><a href="basicstat.html#cb147-60" aria-hidden="true"></a><span class="co">##           </span></span>
+<span id="cb147-61"><a href="basicstat.html#cb147-61" aria-hidden="true"></a><span class="co">##            survival   dead</span></span>
+<span id="cb147-62"><a href="basicstat.html#cb147-62" aria-hidden="true"></a><span class="co">##   squamous   0.4444 0.2422</span></span>
+<span id="cb147-63"><a href="basicstat.html#cb147-63" aria-hidden="true"></a><span class="co">##   small      0.3333 0.3516</span></span>
+<span id="cb147-64"><a href="basicstat.html#cb147-64" aria-hidden="true"></a><span class="co">##   adeno      0.1111 0.2031</span></span>
+<span id="cb147-65"><a href="basicstat.html#cb147-65" aria-hidden="true"></a><span class="co">##   large      0.1111 0.2031</span></span>
+<span id="cb147-66"><a href="basicstat.html#cb147-66" aria-hidden="true"></a><span class="co">## xtabs()</span></span>
+<span id="cb147-67"><a href="basicstat.html#cb147-67" aria-hidden="true"></a>dd<span class="fl">.2</span>xtabs =<span class="st"> </span><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>cellcode <span class="op">+</span><span class="st"> </span>censor, <span class="dt">data =</span> dd)</span>
+<span id="cb147-68"><a href="basicstat.html#cb147-68" aria-hidden="true"></a>dd<span class="fl">.2</span>xtabs</span>
+<span id="cb147-69"><a href="basicstat.html#cb147-69" aria-hidden="true"></a><span class="co">##           censor</span></span>
+<span id="cb147-70"><a href="basicstat.html#cb147-70" aria-hidden="true"></a><span class="co">## cellcode   survival dead</span></span>
+<span id="cb147-71"><a href="basicstat.html#cb147-71" aria-hidden="true"></a><span class="co">##   squamous        4   31</span></span>
+<span id="cb147-72"><a href="basicstat.html#cb147-72" aria-hidden="true"></a><span class="co">##   small           3   45</span></span>
+<span id="cb147-73"><a href="basicstat.html#cb147-73" aria-hidden="true"></a><span class="co">##   adeno           1   26</span></span>
+<span id="cb147-74"><a href="basicstat.html#cb147-74" aria-hidden="true"></a><span class="co">##   large           1   26</span></span>
+<span id="cb147-75"><a href="basicstat.html#cb147-75" aria-hidden="true"></a><span class="co">## cell count total and proportion </span></span>
+<span id="cb147-76"><a href="basicstat.html#cb147-76" aria-hidden="true"></a><span class="kw">margin.table</span>(dd<span class="fl">.2</span>xtabs)</span>
+<span id="cb147-77"><a href="basicstat.html#cb147-77" aria-hidden="true"></a><span class="co">## [1] 137</span></span>
+<span id="cb147-78"><a href="basicstat.html#cb147-78" aria-hidden="true"></a><span class="kw">prop.table</span>(dd<span class="fl">.2</span>xtabs)</span>
+<span id="cb147-79"><a href="basicstat.html#cb147-79" aria-hidden="true"></a><span class="co">##           censor</span></span>
+<span id="cb147-80"><a href="basicstat.html#cb147-80" aria-hidden="true"></a><span class="co">## cellcode   survival     dead</span></span>
+<span id="cb147-81"><a href="basicstat.html#cb147-81" aria-hidden="true"></a><span class="co">##   squamous 0.029197 0.226277</span></span>
+<span id="cb147-82"><a href="basicstat.html#cb147-82" aria-hidden="true"></a><span class="co">##   small    0.021898 0.328467</span></span>
+<span id="cb147-83"><a href="basicstat.html#cb147-83" aria-hidden="true"></a><span class="co">##   adeno    0.007299 0.189781</span></span>
+<span id="cb147-84"><a href="basicstat.html#cb147-84" aria-hidden="true"></a><span class="co">##   large    0.007299 0.189781</span></span>
+<span id="cb147-85"><a href="basicstat.html#cb147-85" aria-hidden="true"></a><span class="co">## condition on row</span></span>
+<span id="cb147-86"><a href="basicstat.html#cb147-86" aria-hidden="true"></a><span class="kw">margin.table</span>(dd<span class="fl">.2</span>xtabs, <span class="dt">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb147-87"><a href="basicstat.html#cb147-87" aria-hidden="true"></a><span class="co">## cellcode</span></span>
+<span id="cb147-88"><a href="basicstat.html#cb147-88" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
+<span id="cb147-89"><a href="basicstat.html#cb147-89" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
+<span id="cb147-90"><a href="basicstat.html#cb147-90" aria-hidden="true"></a><span class="kw">prop.table</span>(dd<span class="fl">.2</span>xtabs, <span class="dt">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb147-91"><a href="basicstat.html#cb147-91" aria-hidden="true"></a><span class="co">##           censor</span></span>
+<span id="cb147-92"><a href="basicstat.html#cb147-92" aria-hidden="true"></a><span class="co">## cellcode   survival    dead</span></span>
+<span id="cb147-93"><a href="basicstat.html#cb147-93" aria-hidden="true"></a><span class="co">##   squamous  0.11429 0.88571</span></span>
+<span id="cb147-94"><a href="basicstat.html#cb147-94" aria-hidden="true"></a><span class="co">##   small     0.06250 0.93750</span></span>
+<span id="cb147-95"><a href="basicstat.html#cb147-95" aria-hidden="true"></a><span class="co">##   adeno     0.03704 0.96296</span></span>
+<span id="cb147-96"><a href="basicstat.html#cb147-96" aria-hidden="true"></a><span class="co">##   large     0.03704 0.96296</span></span>
+<span id="cb147-97"><a href="basicstat.html#cb147-97" aria-hidden="true"></a><span class="co">## condition on column</span></span>
+<span id="cb147-98"><a href="basicstat.html#cb147-98" aria-hidden="true"></a><span class="kw">margin.table</span>(dd<span class="fl">.2</span>xtabs, <span class="dt">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb147-99"><a href="basicstat.html#cb147-99" aria-hidden="true"></a><span class="co">## censor</span></span>
+<span id="cb147-100"><a href="basicstat.html#cb147-100" aria-hidden="true"></a><span class="co">## survival     dead </span></span>
+<span id="cb147-101"><a href="basicstat.html#cb147-101" aria-hidden="true"></a><span class="co">##        9      128</span></span>
+<span id="cb147-102"><a href="basicstat.html#cb147-102" aria-hidden="true"></a><span class="kw">prop.table</span>(dd<span class="fl">.2</span>xtabs, <span class="dt">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb147-103"><a href="basicstat.html#cb147-103" aria-hidden="true"></a><span class="co">##           censor</span></span>
+<span id="cb147-104"><a href="basicstat.html#cb147-104" aria-hidden="true"></a><span class="co">## cellcode   survival   dead</span></span>
+<span id="cb147-105"><a href="basicstat.html#cb147-105" aria-hidden="true"></a><span class="co">##   squamous   0.4444 0.2422</span></span>
+<span id="cb147-106"><a href="basicstat.html#cb147-106" aria-hidden="true"></a><span class="co">##   small      0.3333 0.3516</span></span>
+<span id="cb147-107"><a href="basicstat.html#cb147-107" aria-hidden="true"></a><span class="co">##   adeno      0.1111 0.2031</span></span>
+<span id="cb147-108"><a href="basicstat.html#cb147-108" aria-hidden="true"></a><span class="co">##   large      0.1111 0.2031</span></span></code></pre></div>
+</div>
+</div>
+<div id="機率函式與亂數生成函式" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> 機率函式與亂數生成函式</h2>
+<p>{R} 具有詳盡的機率函式與亂數生成函式參見表 \ref{tab:RDistFun**, 如令 <span class="math inline">\(X\)</span> 為一隨機變數 (random variable), 定義如下.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;  f = f(X = x) = \text{機率密度函數}\; F(x) = \int f(x) dx = \text{累積機率分配函數}\\
+p &amp;  =   F(q) = P (X \le q) = \text{累積機率分配函數, cumulative distribution function}  \\
+q &amp;  =   Q (u) = F^{-1} (p) = \text{分位數函數, quantile function}, \; \text{其中}\;  p \le P (X \le q) \\
+d &amp;  =  f(x) = F&#39; (x) = P (X = x) = \text{機率密度分配函數, probability density function} \\
+r &amp;  =  R (r) = f^{-1} (x)  = \text{隨機亂數函數, random number}, 
+\end{aligned}
+\]</span></p>
+<p>在 {R} 中, 相同的機率函數 (probability function), 使用相同的機率名稱,
+<code>ProbFun</code>,
+在機率名稱, <code>ProbFun</code>, 之間,
+加上 4 種不同的小寫字母, <code>p</code>, <code>q</code>, <code>d</code>, <code>r</code>,
+產生不同的機率函式.
+例如, <code>fProbFun</code>,
+表示用相同的機率函式定義, 產生上述不同之結果.
+非中央參數 (non-centrality parameter), <code>ncp</code> 現在僅用於累積分配函數,
+此外還有函是 <code>ptukey()</code> 和 <code>qtukey()</code> 計算
+Studentized Range Distribution.</p>
+<table>
+<caption>機率函式</caption>
+<thead>
+<tr class="header">
+<th>機率分配</th>
+<th>{R} 函式名 (ProbFun)</th>
+<th>引數</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>beta</td>
+<td><code>beta</code></td>
+<td>shape1, shape2, ncp</td>
+</tr>
+<tr class="even">
+<td>binomial</td>
+<td><code>binom</code></td>
+<td>size, prob</td>
+</tr>
+<tr class="odd">
+<td>Cauchy</td>
+<td><code>cauchy</code></td>
+<td>location, scale</td>
+</tr>
+<tr class="even">
+<td>chi-squared</td>
+<td><code>chisq</code></td>
+<td>df, ncp</td>
+</tr>
+<tr class="odd">
+<td>exponential</td>
+<td><code>exp</code></td>
+<td>rate</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td><code>f</code></td>
+<td>df1, df1, ncp</td>
+</tr>
+<tr class="odd">
+<td>gamma</td>
+<td><code>gamma</code></td>
+<td>shape, scale</td>
+</tr>
+<tr class="even">
+<td>geometric</td>
+<td><code>geom</code></td>
+<td>prob</td>
+</tr>
+<tr class="odd">
+<td>hypergeometric</td>
+<td><code>hyper</code></td>
+<td>m, n, k</td>
+</tr>
+<tr class="even">
+<td>log-normal</td>
+<td><code>lnorm</code></td>
+<td>meanlog, sdlog</td>
+</tr>
+<tr class="odd">
+<td>logistic</td>
+<td><code>logis</code></td>
+<td>location, scale</td>
+</tr>
+<tr class="even">
+<td>negative binomial</td>
+<td></td>
+<td>nbinom</td>
+</tr>
+<tr class="odd">
+<td>normal</td>
+<td><code>norm</code></td>
+<td>mean, sd</td>
+</tr>
+<tr class="even">
+<td>Poisson</td>
+<td><code>pois</code></td>
+<td>lambda</td>
+</tr>
+<tr class="odd">
+<td>Student’s</td>
+<td><code>t</code></td>
+<td>t df, ncp</td>
+</tr>
+<tr class="even">
+<td>uniform</td>
+<td><code>unif</code></td>
+<td>min, max</td>
+</tr>
+<tr class="odd">
+<td>Weibull</td>
+<td><code>weibull</code></td>
+<td>shape, scale</td>
+</tr>
+<tr class="even">
+<td>Wilcoxon</td>
+<td><code>wilcox</code></td>
+<td>m, n</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>p</code> 表示 <strong>累積機率分配函數</strong> (<strong>cumulative distribution function, CDF</strong>).</li>
+<li><code>q</code> 表示 <strong>分位數</strong> (<strong>quantile</strong>),
+符合 <span class="math inline">\(u \le P (X &lt; = x)\)</span> 的最小 <span class="math inline">\(x\)</span>.</li>
+<li><code>d</code> 表示 <strong>機率密度函數</strong> (<strong>probability density function, pdf</strong>).</li>
+<li><code>r</code> 表示隨機模擬 <strong>偽隨機亂數</strong>, <strong>隨機亂數</strong>
+生成函式 (<strong>pseudo-random number generation function</strong>, <strong>random number</strong>).</li>
+<li><code>dProbFun</code> 的第一個參數是 <span class="math inline">\(x\)</span>.</li>
+<li><code>pProbFun</code> 的第一個參數是 <span class="math inline">\(q\)</span>.</li>
+<li><code>qProbFun</code> 的第一個參數是 <span class="math inline">\(p\)</span>.</li>
+<li><code>rProbFun</code> 的的第一個參數是 <span class="math inline">\(n\)</span>, 生成亂數之數目.</li>
+<li><code>pProbFun</code> 和 <code>qProbFun</code> 函數 都有邏輯引數 <code>lower.tail** 和</code>log.p`.
+<ul>
+<li>若 <code>lower.tail = TRUE</code> (default), 機率計算為 <span class="math inline">\(P (X &lt; = x)\)</span>.</li>
+<li>若 <code>lower.tail = FALSE</code> 機率計算為 <span class="math inline">\(P (X &gt; x)\)</span>.</li>
+<li>若 <code>log.p = TRUE</code>, 機率 <span class="math inline">\(p\)</span> 是以 <code>log(p)</code> 輸入與輸出.</li>
+</ul></li>
+<li><code>dProbFun</code> 也有一個邏輯引數 <code>log</code>, 用來計算所要的對數機率值.</li>
+</ul>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="basicstat.html#cb148-1" aria-hidden="true"></a><span class="co"># normal distribution</span></span>
+<span id="cb148-2"><a href="basicstat.html#cb148-2" aria-hidden="true"></a><span class="kw">pnorm</span>(<span class="fl">1.96</span>)</span>
+<span id="cb148-3"><a href="basicstat.html#cb148-3" aria-hidden="true"></a><span class="co">## [1] 0.975</span></span>
+<span id="cb148-4"><a href="basicstat.html#cb148-4" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb148-5"><a href="basicstat.html#cb148-5" aria-hidden="true"></a><span class="co">## [1] 1.96</span></span>
+<span id="cb148-6"><a href="basicstat.html#cb148-6" aria-hidden="true"></a><span class="kw">dnorm</span>(<span class="fl">1.96</span>)</span>
+<span id="cb148-7"><a href="basicstat.html#cb148-7" aria-hidden="true"></a><span class="co">## [1] 0.05844</span></span>
+<span id="cb148-8"><a href="basicstat.html#cb148-8" aria-hidden="true"></a><span class="co"># Poisson distribution</span></span>
+<span id="cb148-9"><a href="basicstat.html#cb148-9" aria-hidden="true"></a><span class="kw">rpois</span>(<span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb148-10"><a href="basicstat.html#cb148-10" aria-hidden="true"></a><span class="co">##  [1] 0 0 0 1 1 2 1 1 4 1</span></span>
+<span id="cb148-11"><a href="basicstat.html#cb148-11" aria-hidden="true"></a><span class="kw">rpois</span>(<span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb148-12"><a href="basicstat.html#cb148-12" aria-hidden="true"></a><span class="co">##  [1] 3 4 1 2 0 1 1 0 1 4</span></span>
+<span id="cb148-13"><a href="basicstat.html#cb148-13" aria-hidden="true"></a><span class="kw">rpois</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span>
+<span id="cb148-14"><a href="basicstat.html#cb148-14" aria-hidden="true"></a><span class="co">##  [1] 18 21 16 23 22 24 23 20 11 22</span></span>
+<span id="cb148-15"><a href="basicstat.html#cb148-15" aria-hidden="true"></a><span class="co">## Cumulative distribution</span></span>
+<span id="cb148-16"><a href="basicstat.html#cb148-16" aria-hidden="true"></a><span class="co">## Pr(x &lt;= 2)</span></span>
+<span id="cb148-17"><a href="basicstat.html#cb148-17" aria-hidden="true"></a><span class="kw">ppois</span>(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb148-18"><a href="basicstat.html#cb148-18" aria-hidden="true"></a><span class="co">## [1] 0.6767</span></span>
+<span id="cb148-19"><a href="basicstat.html#cb148-19" aria-hidden="true"></a><span class="kw">ppois</span>(<span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb148-20"><a href="basicstat.html#cb148-20" aria-hidden="true"></a><span class="co">## [1] 0.9473</span></span>
+<span id="cb148-21"><a href="basicstat.html#cb148-21" aria-hidden="true"></a><span class="kw">ppois</span>(<span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb148-22"><a href="basicstat.html#cb148-22" aria-hidden="true"></a><span class="co">## [1] 0.9955</span></span>
+<span id="cb148-23"><a href="basicstat.html#cb148-23" aria-hidden="true"></a><span class="co"># t distribution</span></span>
+<span id="cb148-24"><a href="basicstat.html#cb148-24" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.995</span>, <span class="dt">df =</span> <span class="dv">2</span>)</span>
+<span id="cb148-25"><a href="basicstat.html#cb148-25" aria-hidden="true"></a><span class="co">## [1] 9.925</span></span>
+<span id="cb148-26"><a href="basicstat.html#cb148-26" aria-hidden="true"></a><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="fl">1.96</span>, <span class="dt">df =</span> <span class="dv">2</span>)</span>
+<span id="cb148-27"><a href="basicstat.html#cb148-27" aria-hidden="true"></a><span class="co">## [1] 0.1891</span></span>
+<span id="cb148-28"><a href="basicstat.html#cb148-28" aria-hidden="true"></a><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="fl">1.96</span>, <span class="dt">df =</span> <span class="dv">30</span>)</span>
+<span id="cb148-29"><a href="basicstat.html#cb148-29" aria-hidden="true"></a><span class="co">## [1] 0.05934</span></span>
+<span id="cb148-30"><a href="basicstat.html#cb148-30" aria-hidden="true"></a><span class="co"># upper 1% point for an F(1, 2) distribution</span></span>
+<span id="cb148-31"><a href="basicstat.html#cb148-31" aria-hidden="true"></a><span class="kw">sqrt</span>(<span class="kw">qf</span>(<span class="fl">0.99</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb148-32"><a href="basicstat.html#cb148-32" aria-hidden="true"></a><span class="co">## [1] 9.925</span></span></code></pre></div>
+<p>通常產生亂數序列希望是不會重復的,
+實際上, {R} 在現在操作視窗下, 第一次產生時亂數時,
+從當下時間 (current time), 生成一個
+<strong>種子</strong>
+(<strong>seed</strong>)
+出發,
+不斷迭代更新產生隨機均等分配亂數 (uniform random number),
+所以不同時間下執行 {R}, 啟用不同的種子, 隨後內部的隨機種子就已經改變了, 模擬亂數是不會重復的,
+有時我們需要模擬結果是可重復的亂數序列,
+此時需要用函式 <code>set.seed()</code>,
+在每次產生偽隨機亂數之前, 把種子設定種子為某一特定正整數即可.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="basicstat.html#cb149-1" aria-hidden="true"></a><span class="co">## generate random number</span></span>
+<span id="cb149-2"><a href="basicstat.html#cb149-2" aria-hidden="true"></a><span class="co">## set.seed(): set initial value</span></span>
+<span id="cb149-3"><a href="basicstat.html#cb149-3" aria-hidden="true"></a><span class="co">## Caution use set.seed() everytime!</span></span>
+<span id="cb149-4"><a href="basicstat.html#cb149-4" aria-hidden="true"></a><span class="co">## uniform</span></span>
+<span id="cb149-5"><a href="basicstat.html#cb149-5" aria-hidden="true"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span>
+<span id="cb149-6"><a href="basicstat.html#cb149-6" aria-hidden="true"></a><span class="co">## [1] 0.86121 0.43810 0.24480 0.07068 0.09947</span></span>
+<span id="cb149-7"><a href="basicstat.html#cb149-7" aria-hidden="true"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span>
+<span id="cb149-8"><a href="basicstat.html#cb149-8" aria-hidden="true"></a><span class="co">## [1] 0.3163 0.5186 0.6620 0.4068 0.9129</span></span>
+<span id="cb149-9"><a href="basicstat.html#cb149-9" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb149-10"><a href="basicstat.html#cb149-10" aria-hidden="true"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span>
+<span id="cb149-11"><a href="basicstat.html#cb149-11" aria-hidden="true"></a><span class="co">## [1] 0.50748 0.30677 0.42691 0.69310 0.08514</span></span>
+<span id="cb149-12"><a href="basicstat.html#cb149-12" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb149-13"><a href="basicstat.html#cb149-13" aria-hidden="true"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span>
+<span id="cb149-14"><a href="basicstat.html#cb149-14" aria-hidden="true"></a><span class="co">## [1] 0.50748 0.30677 0.42691 0.69310 0.08514</span></span>
+<span id="cb149-15"><a href="basicstat.html#cb149-15" aria-hidden="true"></a><span class="co"># norm</span></span>
+<span id="cb149-16"><a href="basicstat.html#cb149-16" aria-hidden="true"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb149-17"><a href="basicstat.html#cb149-17" aria-hidden="true"></a><span class="co">## [1] -0.7540 -0.6059 -0.1772  0.1706  0.2428</span></span>
+<span id="cb149-18"><a href="basicstat.html#cb149-18" aria-hidden="true"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb149-19"><a href="basicstat.html#cb149-19" aria-hidden="true"></a><span class="co">## [1] -0.1794 -0.6305  0.9787  0.2933 -0.3703</span></span>
+<span id="cb149-20"><a href="basicstat.html#cb149-20" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb149-21"><a href="basicstat.html#cb149-21" aria-hidden="true"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb149-22"><a href="basicstat.html#cb149-22" aria-hidden="true"></a><span class="co">## [1]  0.01875 -0.18425 -1.37133 -0.59917  0.29455</span></span>
+<span id="cb149-23"><a href="basicstat.html#cb149-23" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb149-24"><a href="basicstat.html#cb149-24" aria-hidden="true"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb149-25"><a href="basicstat.html#cb149-25" aria-hidden="true"></a><span class="co">## [1]  0.01875 -0.18425 -1.37133 -0.59917  0.29455</span></span>
+<span id="cb149-26"><a href="basicstat.html#cb149-26" aria-hidden="true"></a><span class="co">##  normal + uniform</span></span>
+<span id="cb149-27"><a href="basicstat.html#cb149-27" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb149-28"><a href="basicstat.html#cb149-28" aria-hidden="true"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span>
+<span id="cb149-29"><a href="basicstat.html#cb149-29" aria-hidden="true"></a><span class="co">## [1] 0.50748 0.30677 0.42691 0.69310 0.08514</span></span>
+<span id="cb149-30"><a href="basicstat.html#cb149-30" aria-hidden="true"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb149-31"><a href="basicstat.html#cb149-31" aria-hidden="true"></a><span class="co">## [1] -0.7540 -0.6059 -0.1772  0.1706  0.2428</span></span>
+<span id="cb149-32"><a href="basicstat.html#cb149-32" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb149-33"><a href="basicstat.html#cb149-33" aria-hidden="true"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span>
+<span id="cb149-34"><a href="basicstat.html#cb149-34" aria-hidden="true"></a><span class="co">## [1] 0.50748 0.30677 0.42691 0.69310 0.08514</span></span>
+<span id="cb149-35"><a href="basicstat.html#cb149-35" aria-hidden="true"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb149-36"><a href="basicstat.html#cb149-36" aria-hidden="true"></a><span class="co">## [1] -0.7540 -0.6059 -0.1772  0.1706  0.2428</span></span>
+<span id="cb149-37"><a href="basicstat.html#cb149-37" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb149-38"><a href="basicstat.html#cb149-38" aria-hidden="true"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb149-39"><a href="basicstat.html#cb149-39" aria-hidden="true"></a><span class="co">## [1]  0.01875 -0.18425 -1.37133 -0.59917  0.29455</span></span>
+<span id="cb149-40"><a href="basicstat.html#cb149-40" aria-hidden="true"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span>
+<span id="cb149-41"><a href="basicstat.html#cb149-41" aria-hidden="true"></a><span class="co">## [1] 0.6517 0.5677 0.1135 0.5959 0.3580</span></span></code></pre></div>
+</div>
+<div id="隨機抽樣函式-sample" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> 隨機抽樣函式 sample()</h2>
+<p>在 {R} 中有一個常用的隨機抽樣函式, <code>sample()</code>, 用法如下.
+若要重覆出現相同的隨機樣本, 須設定起始的一個
+<strong>種子</strong>
+(<strong>seed</strong>).</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="basicstat.html#cb150-1" aria-hidden="true"></a><span class="kw">sample</span>(x, size, <span class="dt">replace =</span> <span class="ot">FALSE</span>, <span class="dt">prob =</span> <span class="ot">NULL</span>)</span></code></pre></div>
+<ul>
+<li><code>x</code> 為一長度大於 1 的任意向量, 或是一個正整數.</li>
+<li><code>size = k</code> 設定所要抽出之樣本數.</li>
+<li><code>prob</code> 設定每一個個體被抽取之相對應機率或比率之向量,
+<ul>
+<li>若無設定值, 則每一個個體被抽取之相對應機率為相等.</li>
+</ul></li>
+<li><code>replace = FALSE</code> 邏輯指令, 設定是否可重複抽取.</li>
+</ul>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="basicstat.html#cb151-1" aria-hidden="true"></a><span class="co">## random sampling</span></span>
+<span id="cb151-2"><a href="basicstat.html#cb151-2" aria-hidden="true"></a>letters</span>
+<span id="cb151-3"><a href="basicstat.html#cb151-3" aria-hidden="true"></a><span class="co">##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot;</span></span>
+<span id="cb151-4"><a href="basicstat.html#cb151-4" aria-hidden="true"></a><span class="co">## [14] &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</span></span>
+<span id="cb151-5"><a href="basicstat.html#cb151-5" aria-hidden="true"></a><span class="kw">sample</span>(letters, <span class="dv">5</span>)</span>
+<span id="cb151-6"><a href="basicstat.html#cb151-6" aria-hidden="true"></a><span class="co">## [1] &quot;g&quot; &quot;j&quot; &quot;b&quot; &quot;m&quot; &quot;h&quot;</span></span>
+<span id="cb151-7"><a href="basicstat.html#cb151-7" aria-hidden="true"></a><span class="kw">sample</span>(letters, <span class="dv">5</span>)</span>
+<span id="cb151-8"><a href="basicstat.html#cb151-8" aria-hidden="true"></a><span class="co">## [1] &quot;n&quot; &quot;g&quot; &quot;f&quot; &quot;y&quot; &quot;v&quot;</span></span>
+<span id="cb151-9"><a href="basicstat.html#cb151-9" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb151-10"><a href="basicstat.html#cb151-10" aria-hidden="true"></a><span class="kw">sample</span>(letters, <span class="dv">5</span>)</span>
+<span id="cb151-11"><a href="basicstat.html#cb151-11" aria-hidden="true"></a><span class="co">## [1] &quot;y&quot; &quot;d&quot; &quot;g&quot; &quot;a&quot; &quot;b&quot;</span></span>
+<span id="cb151-12"><a href="basicstat.html#cb151-12" aria-hidden="true"></a><span class="kw">sample</span>(letters, <span class="dv">5</span>)</span>
+<span id="cb151-13"><a href="basicstat.html#cb151-13" aria-hidden="true"></a><span class="co">## [1] &quot;w&quot; &quot;k&quot; &quot;n&quot; &quot;r&quot; &quot;s&quot;</span></span>
+<span id="cb151-14"><a href="basicstat.html#cb151-14" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb151-15"><a href="basicstat.html#cb151-15" aria-hidden="true"></a><span class="kw">sample</span>(letters, <span class="dv">5</span>)</span>
+<span id="cb151-16"><a href="basicstat.html#cb151-16" aria-hidden="true"></a><span class="co">## [1] &quot;y&quot; &quot;d&quot; &quot;g&quot; &quot;a&quot; &quot;b&quot;</span></span>
+<span id="cb151-17"><a href="basicstat.html#cb151-17" aria-hidden="true"></a><span class="kw">sample</span>(letters, <span class="dv">5</span>)</span>
+<span id="cb151-18"><a href="basicstat.html#cb151-18" aria-hidden="true"></a><span class="co">## [1] &quot;w&quot; &quot;k&quot; &quot;n&quot; &quot;r&quot; &quot;s&quot;</span></span>
+<span id="cb151-19"><a href="basicstat.html#cb151-19" aria-hidden="true"></a><span class="co">## sampling 5 subjects from 10 subjects</span></span>
+<span id="cb151-20"><a href="basicstat.html#cb151-20" aria-hidden="true"></a><span class="co">## without or with replacement</span></span>
+<span id="cb151-21"><a href="basicstat.html#cb151-21" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb151-22"><a href="basicstat.html#cb151-22" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb151-23"><a href="basicstat.html#cb151-23" aria-hidden="true"></a><span class="kw">sample</span>(x, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>) <span class="co"># (a) no resampling</span></span>
+<span id="cb151-24"><a href="basicstat.html#cb151-24" aria-hidden="true"></a><span class="co">## [1] 9 4 7 1 2</span></span>
+<span id="cb151-25"><a href="basicstat.html#cb151-25" aria-hidden="true"></a><span class="kw">sample</span>(x, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)  <span class="co"># (b) resampling</span></span>
+<span id="cb151-26"><a href="basicstat.html#cb151-26" aria-hidden="true"></a><span class="co">## [1] 7 2 3 1 5</span></span>
+<span id="cb151-27"><a href="basicstat.html#cb151-27" aria-hidden="true"></a><span class="co"># permutation</span></span>
+<span id="cb151-28"><a href="basicstat.html#cb151-28" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb151-29"><a href="basicstat.html#cb151-29" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb151-30"><a href="basicstat.html#cb151-30" aria-hidden="true"></a><span class="kw">sample</span>(x, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>) <span class="co"># no resampling</span></span>
+<span id="cb151-31"><a href="basicstat.html#cb151-31" aria-hidden="true"></a><span class="co">##  [1]  9  4  7  1  2  5  3 10  6  8</span></span>
+<span id="cb151-32"><a href="basicstat.html#cb151-32" aria-hidden="true"></a><span class="co"># equal probability</span></span>
+<span id="cb151-33"><a href="basicstat.html#cb151-33" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb151-34"><a href="basicstat.html#cb151-34" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb151-35"><a href="basicstat.html#cb151-35" aria-hidden="true"></a><span class="kw">sample</span>(x, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>))</span>
+<span id="cb151-36"><a href="basicstat.html#cb151-36" aria-hidden="true"></a><span class="co">## [1]  9  8  6  2 10</span></span>
+<span id="cb151-37"><a href="basicstat.html#cb151-37" aria-hidden="true"></a><span class="kw">sample</span>(x, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>) <span class="op">/</span><span class="st"> </span><span class="fl">10.0</span>))</span>
+<span id="cb151-38"><a href="basicstat.html#cb151-38" aria-hidden="true"></a><span class="co">## [1] 10  1  7  6  2</span></span>
+<span id="cb151-39"><a href="basicstat.html#cb151-39" aria-hidden="true"></a><span class="co"># unequal rpobability</span></span>
+<span id="cb151-40"><a href="basicstat.html#cb151-40" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb151-41"><a href="basicstat.html#cb151-41" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb151-42"><a href="basicstat.html#cb151-42" aria-hidden="true"></a>(<span class="dt">prob.rs =</span> <span class="kw">c</span>(<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>))))</span>
+<span id="cb151-43"><a href="basicstat.html#cb151-43" aria-hidden="true"></a><span class="co">##  [1] 0.01818 0.03636 0.05455 0.07273 0.09091 0.10909</span></span>
+<span id="cb151-44"><a href="basicstat.html#cb151-44" aria-hidden="true"></a><span class="co">##  [7] 0.12727 0.14545 0.16364 0.18182</span></span>
+<span id="cb151-45"><a href="basicstat.html#cb151-45" aria-hidden="true"></a><span class="kw">sum</span>(prob.rs)</span>
+<span id="cb151-46"><a href="basicstat.html#cb151-46" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
+<span id="cb151-47"><a href="basicstat.html#cb151-47" aria-hidden="true"></a><span class="kw">sample</span>(x, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>,  <span class="dt">prob =</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>))</span>
+<span id="cb151-48"><a href="basicstat.html#cb151-48" aria-hidden="true"></a><span class="co">## [1] 9 8 7 3 9</span></span></code></pre></div>
+<p>在臨床試驗或實驗性研究, 通常需要產生隨機分組名單,
+可利用 <code>sample()</code>, 依照不同隨機指派方法, 產生不同隨機分組名單.
+若要重覆出現相同的隨機樣本, 須設定起始的一個
+<strong>種子</strong>
+(<strong>seed</strong>).</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="basicstat.html#cb152-1" aria-hidden="true"></a><span class="co">## clinical trials or experiments</span></span>
+<span id="cb152-2"><a href="basicstat.html#cb152-2" aria-hidden="true"></a><span class="co">## randomization</span></span>
+<span id="cb152-3"><a href="basicstat.html#cb152-3" aria-hidden="true"></a><span class="co">## random assign to two groups, total 20 subjects</span></span>
+<span id="cb152-4"><a href="basicstat.html#cb152-4" aria-hidden="true"></a><span class="co">## random assigning treatment groups</span></span>
+<span id="cb152-5"><a href="basicstat.html#cb152-5" aria-hidden="true"></a><span class="co">## 20 Bernoulli trials</span></span>
+<span id="cb152-6"><a href="basicstat.html#cb152-6" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb152-7"><a href="basicstat.html#cb152-7" aria-hidden="true"></a><span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb152-8"><a href="basicstat.html#cb152-8" aria-hidden="true"></a><span class="co">##  [1] 0 1 0 0 1 0 0 0 1 1 0 0 0 0 0 1 1 1 1 0</span></span>
+<span id="cb152-9"><a href="basicstat.html#cb152-9" aria-hidden="true"></a><span class="kw">sample</span>(<span class="dv">2</span>, <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb152-10"><a href="basicstat.html#cb152-10" aria-hidden="true"></a><span class="co">##  [1] 1 1 1 1 1 1 2 1 1 2 2 2 1 2 1 1 2 1 2 2</span></span>
+<span id="cb152-11"><a href="basicstat.html#cb152-11" aria-hidden="true"></a><span class="co"># random choose 10 subjects to group 1</span></span>
+<span id="cb152-12"><a href="basicstat.html#cb152-12" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb152-13"><a href="basicstat.html#cb152-13" aria-hidden="true"></a><span class="kw">sample</span>(<span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb152-14"><a href="basicstat.html#cb152-14" aria-hidden="true"></a><span class="co">##  [1]  4  7  1  2 13 19 11 17 14  3</span></span>
+<span id="cb152-15"><a href="basicstat.html#cb152-15" aria-hidden="true"></a><span class="co"># block randomization</span></span>
+<span id="cb152-16"><a href="basicstat.html#cb152-16" aria-hidden="true"></a><span class="co"># total 5 blocks, block size 4, choose 2 subjects to group 1</span></span>
+<span id="cb152-17"><a href="basicstat.html#cb152-17" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb152-18"><a href="basicstat.html#cb152-18" aria-hidden="true"></a><span class="kw">replicate</span>(<span class="dv">5</span>, <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>), <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>))</span>
+<span id="cb152-19"><a href="basicstat.html#cb152-19" aria-hidden="true"></a><span class="co">##      [,1] [,2] [,3] [,4] [,5]</span></span>
+<span id="cb152-20"><a href="basicstat.html#cb152-20" aria-hidden="true"></a><span class="co">## [1,]    1    1    1    3    2</span></span>
+<span id="cb152-21"><a href="basicstat.html#cb152-21" aria-hidden="true"></a><span class="co">## [2,]    3    2    3    2    3</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basicfunctiuon.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basictidy.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "PMingLiU",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r4biost.pdf", "r4biost.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

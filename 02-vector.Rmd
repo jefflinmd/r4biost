@@ -1,0 +1,744 @@
+# 向量 {#vector}
+
+
+{R} 是以物件導向為主的程式語言,
+在 {R} 中, 資料或運算指令以具有名稱的
+**物件**
+(**object**),
+形式儲存,
+資料物件可以是 向量 (vector),
+矩陣 (matrix),
+陣列 (array),
+列表 (Lists),
+或 資料框架 (data frames) 等.
+在 {R} 中, 資料分析基本上是產生資料物件,
+對物件命名, 使用函式對物件運算操作.
+透過指令, 很容易地對物件進行統計分析與統計繪圖.
+{R} 的資料結構與程式寫作相對於目前當紅的其他程式語言較多嚴謹的要求,
+本章主要說明 {R} 的基本資料型式與基本運算.
+
+
+
+## 向量
+
+{R} 的最基本物件是向量,
+**向量** (**vector**)
+是指包含相同
+**模式**
+(**mode**)
+的元素組成.
+{R} 的基本資料型式稱為
+**基本模式**
+(**basic mode**) 有
+**numeric**, **integer**, **logical**, **complex**, **character**.
+同一向量內的元素不可混合.
+
+單一數值 (scalar), 可視為僅具有單一元素的向量,
+標準的向量是
+倍精準度 (double) 的
+數值向量
+({numerical vector}).
+向量是具有相同基本類型的元素序列,
+在 {R} 中, 純量或單一數值
+(**scalar**)
+也可看成是長度為 $1$ 的向量,
+向量大體上相當於其他程式語言中的 $1$-維度數列,
+但在 {R} 中向量並不具有
+**沒有維度**
+(**no dimension**).
+例如, 在 {R} 中 `x.vec <- c(1, 2, 3)`,
+可以視為 $1 \times 3$ 的矩陣,
+也可以視為 $3 \times 1$ 的矩陣,
+但是, 當向量 `x.vec` 與其它向量/矩陣進行運算時,
+向量 `x.vec` 會受到與其進行運算的矩陣物件影響,
+若任由 {R} 的內在設定,
+則常會有意想不到的運算結果.
+
+
+
+
+## 向量基本資料類型
+
+{R} 的最基本物件是向量,
+**向量**
+是指包含相同
+**模式**
+(**mode**)
+的元素組成.
+{R} 的基本資料型式稱為
+**基本模式**
+(**basic mode**) 有
+**numeric**, **integer**, **logical**, **complex**, **character**,
+使用函式 `class()` 可以檢視基本模式.
+
+
+* **numeric**, 數值型 (實數型), 含 **single** 單精準度型與 **double** 倍精準度型.
+```{r}
+# numeric
+x1 <- 10.1 
+x1
+class(x1)
+x2 <- 10
+x2
+class(x2)
+is.numeric(x2)
+```
+* **integer**, 整數向量 (有時需特別指定輸入成 1L, 2L, ...).
+```{r}
+# integer
+y1 <- 1L
+y1
+class(y1)
+is.integer(y1)
+is.numeric(y1)
+```
+* **logical**, 邏輯型或布林型 (true or false), 以 **TRUE** (**T**) 或 **FALSE** (**F**)
+呈現, 也可以是 $1$ 與 $0$ 整數分別代表 **T** 與 **F**.
+```{r}
+# logic
+yes_id <- TRUE
+yes_id
+no_id <- FALSE
+no_id
+class(no_id)
+is.logical(no_id)
+2 == 3
+2 != 3
+2 > 3
+2 <= 3
+4 >= 1
+TRUE + 5
+TRUE * 5
+FALSE * 5
+TRUE + FALSE
+TRUE * FALSE
+```
+* **complex**, 複數型.
+```{r}
+x = 3+5i
+x
+class(x)
+```
+* **character**, 文字型或字串型, 通常輸入時在文字兩側加上雙引號 (**"**).
+```{r}
+# character
+ca <- "yes"
+ca
+cb <- "this is a book."
+cb
+class(cb)
+is.character(cb)
+"abc" > "abd"
+"date" < "dates"
+```
+
+
+資料分析另外常見的日期與類別變數也必須特別處裡.
+格式有 'Date`, `POSIXct` 與 `POSIXt`等,
+例如, 使用函式 `Sys.Date()` 可得系統日期.
+```{r}
+Sys.Date()
+date1 <- as.Date("2020-09-17")
+date1
+class(date1)
+as.numeric(date1)
+date2 <- as.POSIXct("2020-09-17 18:30")
+class(date2)
+as.numeric(date2)
+```
+詳細的日期與類別變數操作, 以後再詳述.
+
+
+
+
+## 向量產生函式 `c()`
+
+輸入簡單的向量資料, 可以用函式
+`c()`
+指令.
+`c()`為 **concatenate** (**連接**),
+將數值或文字連接成向量.
+```{r}
+## c()
+## numerical
+x.vec <- c(1/1, 1/2, 1/3, 1/4, 1/5)
+x.vec
+## integer
+x.vec <- c(1L, 2L, 3L)
+x.vec
+## character
+flavors.vec <- c("chocolate", "vanilla", "strawberry") # character
+flavors.vec
+y.vec <- c("Hello", "What's your name?", "Your email?")
+y.vec
+## logical
+z.vec <- c(F, T, T, F, F)
+z.vec
+## complex
+x.complex.vec <- c(8+3i, 9+0i, 2+4i)
+x.complex.vec
+## numerical
+x.vec <- c(1/1, 1/2, 1/3, 1/4, 1/5)
+y.vec <- c(1, 2, 3, 4, 5)
+z.vec <- c(x.vec, 11, 12, y.vec)
+z.vec
+```
+
+
+## 向量基本運算操作符號
+
+
+{R} 對物件運算操作有其
+**基本操作符號**
+(**basic operators**), 如同 `C` 語言,
+可以分成算數操作 (arithmetic operator),
+相關比較操作 (relation/comparison operator),
+邏輯操作 (logical operator).
+{R} 也是一種高階程式語言 (programming language),
+因此提供了其它程序語言共有的
+條件 (if-else),
+轉換 (switch),
+迴圈 (loop)
+與
+函式 (function) 等,
+程序控制結構語法,
+進階資料分析使用高階程式語言與函式寫作進行.
+本章先討論基本運算操作.
+
+
+
+
+| 符號   | 定義                                                      |
+|--------|------------------------------------------------------------------|
+| -      | 減法運算 (Substraction, can be unary or binary)                  |
+| +      | 加法運算 (Addition, can be unary or binary)                      |
+| !      | 否定運算 (Unary not)                                             |
+| *      | 乘法運算 (Multiplication, binary)                                |
+| /      | 除法運算 (Division, binary)                                      |
+| \^     | 指數乘冪運算 (Exponentiation, binary)                            |
+| %%     | 整數除法的餘數 (Modulus, binary)                                 |
+| %/%    | 整數除法的商數 (Integer divide, binary)                          |
+| %*%    | 矩陣內積乘法 (Matrix product, binary)                            |
+| %o%    | 矩陣外積乘法 (Outer product, binary)                             |
+| %x%    | 矩陣 Kronecker 乘法 (Kronecker product, binary)                  |
+| %in%   | 配對運算 (Matching operator, binary, in model formulae: nesting) |
+| `<`    | 小於 Less than, binary                                    |
+| `>`    | 大於 Greater than, binary                                 |
+| `==`   | 相等 Equal to, binary                                     |
+| `!=`  | 不相等 Not equal to                                        |
+| `>=`   | 大於或等於 Greater than or equal to, binary                  |
+| `<=`   | 小於或等於 Less than or equal to, binary                     |
+| `&`    | 邏輯 `和`, 向量的個別元素使用 (Logical AND, binary, vectorized) |  
+| `&&`   | 邏輯 `和`, 二元操作 (Logical AND, binary, not vectorized)       |  
+| <code>&#124;</code>   | 邏輯 `或`, 向量的個別元素使用 (Logical OR, binary, vectorized)   |
+| <code>&#124;&#124;</code>   | 邏輯 `或`, 二元操作 (Logical OR, binary, not vectorized)  |
+| `xor`  | 邏輯 ``或'', 向量個別元素互斥聯集運算, 僅有 1 為 TRUE              |
+
+Table: 向量基本運算操作符號
+
+
+## 向量基本算數操作 
+
+
+{R} 向量物件的
+**算數操作**
+(**arithmetic operator**)
+符號包含以下符號,
+`+`, `-`, `!`, `*`, `/`, `\^`, `%%`, `%/%`, `%*%`, `%o%`, `%x%`, `%in%` 等
+算數操作根據最基本的運算次序: 
+括號, 指數, 乘法, 除法, 加減法, 也就是如同一般手寫計算.
+
+```{r}
+## Arithmetic Operator
+1 + 2
+1 + 2 + 3
+3 * 7 * 2
+4/2
+4/3
+2 * 3 + 4
+2 * (3 + 4)
+(3 + 11 * 2)/4
+#
+x.complex <- (8+3i)+(1+2i)
+x.complex
+#
+x.vec <- 1:5
+y.vec <- c(-1, -2, 0, 2, 4)
+z.vec <- c(2, 2, 3, 3, 4)
+x.vec + y.vec
+x.vec - y.vec
+#
+x.vec * 2
+x.vec * y.vec
+x.vec/2
+x.vec/y.vec
+#
+x.vec^2
+x.vec^z.vec
+y.vec/2
+y.vec/x.vec
+#
+y.vec %% 3  # modular arithmetic remainder
+y.vec %/% 3   # integer division
+y.vec %/% x.vec
+```
+
+
+## 向量關係比較操作 
+
+**邏輯向量**
+(**logic vector**)
+的元素值有
+`TRUE`,
+`FALSE`.
+可以分別簡寫為
+`T` 和
+`F`.
+在 {R} 之內, 向量之間的
+**關係比較操作**
+(**relation/comparison operator**)
+可以產生邏輯向量.
+關係比較操作符號包含常見的
+`<`,
+`<=`,
+`>`,
+`>=`.
+```{r message=FALSE}
+## Relation/Comparison Operator
+x.vec <- 1:5
+y.vec <- (x.vec > 2)
+y.vec
+any(x.vec > 2)
+all(x.vec > 2)
+#
+x.vec <- 1:5
+y.vec <- c(0, 2, 4, 6, 8)
+#
+x.vec < 2
+x.vec<= 2
+x.vec == 2
+x.vec != 2
+#
+x.vec < y.vec
+x.vec < (y.vec - 2)
+x.vec <= y.vec
+x.vec <= (y.vec - 2)
+#
+x.vec == y.vec
+x.vec == (y.vec - 2)
+x.vec != y.vec
+x.vec != (y.vec - 2)
+```
+
+## 向量邏輯操作
+
+
+在 {R} 之內, 向量之間的
+關係比較操作
+可以產生邏輯向量.
+在 {R} 中可對邏輯向量進行運算操作,
+**邏輯操作**
+(**logical operator**)
+符號包含常見的
+`!` (否定), 
+`&`, `&&` (AND), `|` , `||` (OR),
+以及判斷相等的
+`==` 和判斷不等的
+`!=` 等.
+![(R for Data Science: Section 2.5)](./static/logicplot.png){width=80%}
+
+```{r message=FALSE}
+## Logical Operator: AND OR XOR
+x.vec <- 1:5
+y.vec <- c(0, 2, 4, 6, 8)
+(x.vec > 0) &  (y.vec > 0)  # return vector AND
+(x.vec > 0) && (y.vec > 0)  # return scalar AND
+#
+(x.vec > 0) &  ((y.vec - 3) > 0)     # return vector AND
+((x.vec-2) > 0) && ((y.vec - 3) > 0) # return scalar AND
+#
+(x.vec > 0) &  ((y.vec + 3) > 0)     # return vector AND
+((x.vec-2) > 0) && ((y.vec + 3) > 0) # return scalar AND
+#
+(x.vec > 0) | (y.vec > 0) # return vector OR
+((x.vec- 2) > 0) | ((y.vec - 3) > 0)
+#
+(x.vec > 0) || (y.vec > 0) # return scalar OR
+((x.vec-2) > 0) || ((y.vec - 3) > 0)
+#
+(x.vec > 0) || ((y.vec + 3) > 0) # return scalar OR
+((x.vec-2) > 0) || ((y.vec + 3) > 0)
+#
+xor((x.vec > 0), (y.vec > 0)) # return vector exclusive OR
+xor(((x.vec - 2) > 0), ((y.vec - 3) > 0))
+xor(((x.vec - 2) > 0), ((y.vec + 3) > 0))
+#
+xx.vec <- (x.vec <= 3)
+yy.vec <- (y.vec >= 4)
+xx.vec
+yy.vec
+#
+xx.vec && yy.vec
+xx.vec & yy.vec
+xx.vec || yy.vec
+xx.vec | yy.vec
+xor(xx.vec, yy.vec)
+```
+
+## 向量元素命名 
+
+
+向量的每個元素或部分元素都可以命名,
+使用者可以在輸入元素時直接給予命名,
+或另外使用函式
+`names()`
+給予命名.
+若要移除命名,
+使用函式 `unname()` 移除命名,
+或使用 `names(x.vec) <- NULL` 移除命名.
+```{r}
+## vector names
+x.vec <- c(
+  age = 50,
+  chol = 220,
+  dbp = 84,
+  sbp = 132
+) # directly
+x.vec
+names(x.vec)
+#
+x.vec <- c(55, 236, 80, 140)
+names(x.vec) <- c("age", "chol", "sbp", "dbp")
+#
+y.vec.name <- names(x.vec)
+y.vec <- c(60, 214, 90, 144)
+names(y.vec) <- y.vec.name
+y.vec
+```
+
+
+## 向量下標與索引 Inxex
+
+一個向量的長度 (length) 是向量元素的數目,
+一個向量的個別元素或部分元素可以向量的下標 (index) 取得,
+向量的
+**下標**
+或
+**索引**
+(**index**)
+是在向量名稱後面加 **中括號** `[i]`,
+並放入下標數目 (或向量) 得到.
+原始向量的下標可以採用下列四種方式的任何一種,
+正整數, 負整數, 文字或字串與邏輯向量.
+```{r}
+## Vector Indexing
+## positive integer
+x.vec <- 1:50
+x.vec[7]
+x.vec[11:15]
+y.vec <- x.vec[11:15]
+y.vec
+## negative integer
+z.vec <- 6:10
+z.vec[-c(2, 4)]
+## character string
+fruit.vec <- c(5, 10, 1, 20)
+fruit.vec
+names(fruit.vec) <- c("orange", "banana", "apple", "peach")
+fruit.vec
+lunch.vec  <-  fruit.vec[c("apple", "orange")]
+lunch.vec
+## logical index
+x.vec <- c(NA, -2, -1, NA, 1, 2, NA) # NA = missing value
+x.vec
+y.vec <- x.vec[!is.na(x.vec)] # !is.na() = check missing value
+y.vec
+z.vec <- x.vec[x.vec > 0 & !is.na(x.vec)]
+z.vec
+x.vec[x.vec < 0] # Note: NA
+y.vec[y.vec < 0]
+z.vec[z.vec < 0]
+```
+
+
+## 遺失值 (缺失值) Missing Values
+
+研究資料,
+通常會有
+**遺失值**
+或
+**缺失值**
+(**missing value**,
+incomplete data**),
+在 R 中, 輸入或輸出遺失值,
+通常以
+`NA` 表示,
+(`NA` = Not Available),
+R 還有另外有
+`NaN` = Not a Number
+是指物件運算後產生非數值結果,
+以及
+`NULL`
+是指物件的長度是 $0$.
+任何對遺失值
+(`NA`) 的算數操作,
+會得到遺失值
+(`NA`)
+結果.
+使用函式
+`is.na()`,
+`is.nan()`
+可以查看向量內那些元素是遺失值.
+回傳一個邏輯向量.
+對遺失值作比較大小運算須非常小心.
+要移除遺失值, 可以使用函式
+`na.omit()`,
+`na.fail()`,
+`na.exclude()`,
+`na.action()`
+等指令.
+且函式 `complete.cases()` 可以同時移出多個缺失值.
+對於不同基本模式的向量元素進行融合,
+若不合階層結構,
+則 R 回傳缺失值.
+```{r}
+## missing value
+z.vec <- c(1:2, NA)
+is.na(z.vec)
+log(z.vec)
+z.vec / 0
+0 / 0
+Inf - Inf
+#
+is.na(z.vec)
+is.nan(z.vec)
+is.nan(0 / 0)
+#
+x.vec  <-  c(1, 2, NA, 4, NA, 5, 6)
+bad  <-  is.na(x.vec)
+x.vec[!bad]
+#
+x.vec  <-  c(1, 2, NA, 4, NA, 5, 6)
+y.vec  <-  c("a", "b", NA, "d", NA, "f", "g")
+good  <-  complete.cases(x.vec, y.vec)
+good
+x.vec[good]
+y.vec[good]
+#
+data(airquality)
+airquality[1:6,]
+good  <-  complete.cases(airquality)
+airquality[good,][1:6,]
+```
+
+
+
+## 因子物件與類別變數 Factor
+
+**因子物件**
+(**factor**)
+為處理
+**類別資料**
+(**categorical data**),
+提供的一種有效的方法.
+**類別變數**
+將變數值分成互斥的類別水準,
+在類別變數定義中的特定幾種類別水準是否有大小差距,
+又可分類成
+**名目變數**
+(**nominal variable**)
+與
+**有序變數**
+(**ordinal variable**),
+或稱
+**名目尺度**
+與
+**順序尺度**.
+其中
+**名目尺度**
+是最簡單的測量,
+名目尺度將變數值分成互斥的類別水準,
+同一變數內的類別水準並無量化大小的差別.
+名目尺度用文字或數字表示或標記, 這些數字本身並無任何意義,
+例如 `左側` 為 1, `右側` 為 0;
+1 $=$ `拇指`, 2 $=$ `食指`, 3 $=$ `中指`, 4 $=$ `無名指`, 5 $=$ `小指`.
+在名目尺度中,
+特別的情形是變數內只有 2 個類別水準,
+如存活或死亡, 統計習慣上會分別標記為 0 或 1,
+感染或無感染, 這類變數常稱做
+**二元變數**
+(**dichotomous variable**,
+**binary variable**),
+二元變數通常有特殊的統計分析方法.
+**順序尺度**
+是指同一變數內的類別水準有
+輕重, 大小, 強弱, 好壞等級順序之資料.
+例如, 疼痛情形有 4 種情境: `無`, `輕度`, `中度`, `重度`,
+癌症分期為 I, II, III, IV 等 4 期.
+雖然順序尺度用數字 $1, 2, 3, 4, \ldots$ 表示或標記,
+但是數字本身通常不能用來做運算, 只能比較相對大小或高低次序,
+順序之間的實際差異並無法從標記的數字差異得知.
+
+
+統計中的類別資料,
+有各種不同表示方法,
+在電腦的資料儲存時常常是以文字為變數值,
+但使用上文字較占空間且無法精準傳達
+類別變數的概念.
+因此在 {R} 中特別使用
+**因子**
+(**factor**)
+來表示.
+因子是一種特殊的文字向量,
+文字向量中的每一個元素, 取一個離散值,
+因子物件 有一個特殊屬性, 稱為
+**層次*,
+**水平*,
+**水準*
+或
+**類別水準**
+(**levels**),
+表示這組所有可能的離散值.
+因子常常是用文字或字串輸入,
+有時會使用數值或整數代表,
+一但變數設定為因素或因子向量,
+{R} 在列印或輸出時,
+並不會加上雙引號 `"`,
+且數值或有大小順序的文字, 
+{R} 在統計分析上都必須特別處理.
+
+在 {R} 中若要設定因子,
+可以簡單地用函式
+`factor()`
+產生無序因子物件.                
+```               
+factor(x = character(), levels, labels = levels,               
+       exclude = NA, ordered = is.ordered(x), nmax = NA)                  
+```                         
+其中引數為
+
+* `x` 為原始向量, 通常為文字向量, 若是數值向量, {R} 先轉換成文字向量.
+* `levels` 設定類別水準.
+* `labels` 類別水準的標記文字.
+* `exclude = NA` 排除缺失值或某一特定值為一類別水準.
+* `ordered = is.ordered(x)` 設定因子物件類別水準的順序, 仍是無序因子物件.
+* `nmax = NA` 是否類別水準的最大數目.
+
+```{r}
+## factor()
+sex <- c("male", "female", "male", "male", "female")
+sex
+class(sex)
+sex <- factor(sex)
+sex
+class(sex)
+## factor() + levels
+sex <- c("male", "female", "male", "male", "female")
+sex <- factor(sex, levels = c("female", "male"))
+sex
+## factor() + levels + labels
+x.chr = c("male", "male", "female", "female")
+factor(x.chr, levels = c("male", "female", "bisex"))
+factor(x.chr, levels = c("male", "female", "bisex"), 
+              labels = c("m", "f", "b"))
+## factor() + exclude
+## factor() + exclude
+pain <- c("none", "mild", "moderate", "severe", NA)
+factor(pain) # NA is NOT a level.
+factor(pain, exclude = NA) # NA is NOT a level.
+factor(pain, exclude = c(NA)) # NA is NOT a level.
+factor(pain, exclude = NULL) # NA is a level.
+factor(pain, exclude = "mild") # NA is a level.
+pain <- factor(pain, exclude = c("mild", NA)) 
+pain # mild and NA are NOT levels.
+
+```
+
+
+{R} 中的 `factor()` 為 
+**無序因子**
+(**unordered factor**),
+類似於統計分析中的
+**名義變數**
+(**nominal variable**),
+**無序因子**
+中的類別水準 (level),
+其離散值無大小順序的關係, 如性別的男與女.
+{R} 列印無序因子物件時,
+**類別水準**
+內建型式依照文字字母順序,
+可以使用函式
+`levels()`
+查看無序因子物件的類別水準;
+也可以使用函式
+`levels()`
+設定列印無序因子物件 **類別水準** 的顯示次序,
+{R} 內建顯示次序是依照文字字母或數字排次序,
+可以使用函式
+`levels()` 指令,
+改變顯示因子物件的次序或方向.
+
+
+在統計模型中常使用 類別變數 作為解釋變數,
+常常必須令 無序因子物件 或 類別變數
+的某一個類別水準為
+**參照水準**
+(**reference level**),
+以便建構類別型解釋變數內不同類別水準的
+**對照比較**
+(**contrast comparison**).
+使用函式
+`relevel()`,
+可以改變無序因子類別水準的參考水準.
+
+
+```{r}
+## unorder
+## level()
+gender <- c("M", "F", "M", "M", "F")
+gender <- factor(gender)
+gender
+levels(gender)
+levels(gender) <- c("Female", "Male")
+gender
+hypertension <- c("Lo", "Mod", "Hi", "Mod", "Lo", "Hi", "Lo")
+hypertension <- factor(hypertension)
+hypertension
+# relevel()
+relevel(hypertension, ref = "Lo") # reset a reference level
+```
+
+使用 `as.integer()`
+可將類別變數轉換成數值整數,
+此數值整數從 1 到 類別水準的整數,
+且依照原有的類別水準依序給整數,
+使用上必須注意此差異.
+
+
+```{r}
+## convert to numerical values
+hypertension <- c("Lo", "Mod", "Hi", "Mod", "Lo", "Hi", "Lo")
+hypertension <- factor(hypertension)
+levels(hypertension)
+hypertension
+as.integer(hypertension)
+#
+levels(hypertension) <- list("Low" = "Lo", 
+                             "Moderate" = "Mod", 
+                             "High" = "Hi")
+hypertension
+as.integer(hypertension) 
+#
+## convert to numerical values
+pain <- c(7, 8, 6, 6, 8, 7)
+pain <- factor(pain)
+pain
+as.integer(pain)
+pain.chr = as.character(pain)
+pain.chr
+pain.num = as.integer(pain.chr)
+pain.num
+```
+
+
+We describe our methods in this chapter.

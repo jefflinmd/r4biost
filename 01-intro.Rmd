@@ -1,0 +1,779 @@
+# R 語言基本概論 {#intro}
+
+R 系統是由 Ross Ihaka 與 Robert Gentleman 從 S 語言所發展出來, 主要是為了統計分析與統計繪圖.
+R 除了資料處理與分析, R 擁有一完整陣列和矩陣的操作運算, 完整圖形工具, 也是一種相當完善的程式設計語言.
+S 語言在 1980 年代末期, 由 AT\&T 實驗室,
+Rick Becker, John Chambers, 與 Allan Wilks 發展用來進行統計分析與統計繪圖,
+1990 年代, Insightful 公司將 S 商品化,
+並加入許多方便的操作介面, 稱為 Splus.
+R 與 S (或 Splus) 語法大多相近,
+R 與 S 都是以物件導向為主的程式語言,
+透過交互作用方式很容易地進行統計分析與統計繪圖,
+在當年 S 語言使用交互作用方式與當時主流統計軟體, 如 SAS, SPSS 有相當差異.
+且最大差別是 R 是一個免費的統計分析軟體 (open-source, GNU General Public License),
+R 目前由一群跨國際的志工人員組成的 {R} 核心發展組織 (R core-development team) 所維持, 運作與持續更新發展,
+在今日, {R} 不僅是統計專業人員的研究工具,
+也是資料科學家經常使用的重要工具之一.
+
+
+## 下載與安裝 R
+
+
+R 有各種版本, 可以在 Microsoft Window, Unix/Linux, 
+Apple Mac OS 等作業性系統運行,
+以下則以 windows 作業系統為主要說明.
+若你的 windows 使用者名稱或帳號為中文,
+請先進入控制台,
+新增或變更 ``使用者名稱'' (User),
+更改使用者名稱為英文,
+然後才進行以下安裝.
+任何與 R 的檔案名稱或路徑名稱,
+請勿使用中文, 空格或特殊符號.
+
+ R 與其他軟體成可以形成強大的可重製性研究論文或動態文件
+(Reproducible Research, Dynamic Documentation),
+可同時依序安裝
+Rtools, RStudio, Tex System, Pandoc, Git 等相關軟體.
+初學者請請讓軟體內設的路徑 (PATH) 自動安裝,
+不要任意更動 PATH 與安裝位置.
+安裝任何與 R 相關軟體,
+請按滑鼠右鍵以系統管理員身分執行.
+
+
+
+R 時常有更新版本, 下載與安裝 R 與 Rtools 簡述如下:
+1. 上網至 http://www.r-project.org
+2. 按滑鼠點選網頁左邊連結 (Link) 下載區 [Download CRAN](https://cran.r-project.org/mirrors.html).
+3. 按滑鼠點選網頁 CRAN Mirrors 中的任一鏡像網址 (CRAN Mirrors), 如
+https://cloud.r-project.org/
+4. 按滑鼠點選上述鏡像網址內網頁中的 Download R for Windows.
+5. 按滑鼠點選網頁 R for Windows 中的 base.
+6. 按滑鼠右鍵, 點選檔案網址 Download R X.Y.Z for Windows,
+其中 X.Y.Z 為 R 版本代碼, 下載儲存至個人檔案夾內.
+7. 至下載的檔案夾內, 按滑鼠右鍵點擊 R-X.Y.Z-win.exe,
+以系統管理員身分執行安裝.
+8. 可選擇中文或英文進行安裝, 只要安裝 64 位元系統.
+9. 回到與 base 同一網頁視窗, 點選 Rtools, 點選最先版本的 Rtoolsxx.exe.
+下載檔案, 請按滑鼠右鍵以系統管理員身分執行安裝.
+10. 詳細安裝 Windows, Mac 或 Linux 作業系統, 利用 google 或 Youtube 等, 搜尋相關訊息.
+
+
+## 下載與安裝 RSudio
+
+直接在 {R} 視窗輸入 {R} 指令並不是很方便.
+使用文字編輯軟體輸入, 修正, 儲存, 然後再送到 {R} 執行.
+過去有許多 {R} 文字/程式編輯軟體可用,
+RStudio 是目前最方便的 {R} 編輯程式,
+RStudio 原始是 {R} 的一種操作介面, 
+目前也衍伸成可使用多種程式語言的操作介面.
+可上網至 http://www.rstudio.com/,
+在 Product 選項下, 選擇 [R premier IDE for R](https://rstudio.com/products/rstudio/),
+選擇 [Rstudio Desktop](https://rstudio.com/products/rstudio/download/),
+選擇合適的作業系統進行下載 RStudio.
+下載 Rstudio 檔案完成後,
+請按滑鼠右鍵以系統管理員身分執行安裝.
+再次注意, 
+使用者名稱 (User Name),
+須更改使用者名稱為英文,
+然後才進行下載安裝.
+任何與 RSudio 的檔案名稱或路徑名稱,
+請勿使用中文, 空格或特殊符號.
+若想使用 Tex/LaTeX, 或 讓 Rstudio 產生 PDF 檔案,
+需依序安裝 Tex system, Pandoc, Git,
+安裝 TeX/LaTeX/XeLaTex 系統,
+請至 https://www.latex-project.org/get/,
+或直接安裝 MikTeX: http://miktex.org/.
+安裝 Pandoc,
+請至 http://pandoc.org/,
+或 http://pandoc.org/installing.html.
+安裝 Git, 請至 https://git-scm.com/.
+同時申請 [GitHub](https://github.com/) 帳號,
+任何軟體請按滑鼠右鍵以系統管理員身分執行安裝.
+詳細的可重製性研究論文操作,
+可參考 [@xie2015], Xie (2020) https://bookdown.org/yihui/rmarkdown/,
+https://rmarkdown.rstudio.com/ 等文件.
+
+
+
+## 簡單實例
+
+學習 {R} 最好的方法, 就是要開始使用 {R}, 初學者要了解 {R}, 可先進行一些簡單實例的演練,
+首先須注意的是, 在 {R} 程式語言所使用的文字, 大小寫是有差別的.
+直接在 {R} 或 RStudio console 視窗輸入指令都會得到相同的結果.
+```{r, eval=FALSE}
+1+2         # calculator
+log(3.14)   # log function
+x = 1 + 2   # one plus two assign to x
+x           # print x
+x = c(1, 3, 5, 7) # get a vector
+mean(x)     # mean function
+log(x)      # log function
+```
+若要自學基本 {R} 或 進階 {R},
+利用 google 搜尋 R Introduction, R Tutorial 等,
+或搜尋與觀看 YouTube 影片.
+請繼續練習下列指令.
+```{r, eval=FALSE}
+factorial(4)
+sin(pi)
+x.vec <- c(2:5)
+exp(x.vec)
+matrix(c(1:6), nrows=2, ncols=3)
+weight = c(50, 45, 67, 53)
+mean(weight)
+sd(weight)
+```
+
+{R} 具有強大的繪圖功能, 可將程式語言與繪圖函數緊密結合,
+控制標題, 顏色, 說明文字等, 繪製高品質的統計圖並可儲存於不同格式,
+提供不同文書處裡軟體使用.
+練習以下指令可以體會一些 {R} 的繪圖功能.
+```{r, eval=FALSE}
+## demo
+demo(graphics)
+demo(image)
+example(contour)
+demo(persp)
+example(persp3d)
+demo(plotmath)
+demo(Hershey)
+install.packages("lattice") # install package
+library("lattice")          # load package
+demo(lattice)
+example(wireframe)
+install.packages("rgl")
+library("rgl")
+demo(rgl)                   # Interact using your mouse.
+```
+
+{R} 是統計程式語言,
+程式語言是語言的一種,
+程式語言是人與電腦溝通的工具, 任命令電腦做事的語言.
+程式語言是須嚴謹的邏輯語法, 電腦才會正確執行命令,
+
+{R} 對於未有統計專業背景的初學者是困難學習的語言,
+初學者學習 {R} 語言, 類似小孩學習語言,
+通常須 0.5$\sim$1.0 年以上,
+初學者請先直接學習現成實用的簡單指令,
+初學者請不要先學太多抽像語法與閱讀抽像說明,
+若已經學習其它一種程式語言相對較容學會易另一種程式語言.
+學習程式語言最大挫折是城市經常出現無法理解的錯誤訊息,
+可利用 google, 將錯誤訊息尋找容易理解的答案.
+{R} 最常犯的錯誤如下:   
+
+* 英文大小寫差異.
+* 英文單字拚錯.
+* 中文編碼問題, Big5 與 utf-8 等.
+* 缺少標點符號: 單/雙引號, 逗號, \$, \}, ], ).
+* 變數名/物件名, 指令, 資料檔案: 多餘空白, 多餘空格, 多餘 Tab 等.
+* 直接從 PDF 文件 或 Web 等 copy 程式造成亂碼.
+* 未詳細閱讀錯誤訊息或警告訊息.    
+
+初學者對物件命名時, 應盡量避免定義一個物件名字,
+與現有的物件同名, 所以命名時要避免重覆,
+同時避免物件名字過短, 以免後來引起錯亂.
+
+
+
+
+
+## 物件 Object
+
+{R} 與 **S** 是物件導向為主的程式語言,
+(Object-Oriented Programming Language),
+在 {R} 系統中, 儲存的資料或可執行的函數, 都稱為
+**物件**
+(**object**).
+{R} 物件包含儲存資料的
+向量 (vector), 矩陣 (matrix), 陣列 (array), 列表 (Lists),
+資料框架 (data frames)
+或執行特定運算指令的
+函式 (function) 等.
+
+
+
+{R} 透過函式或指令, 很容易地對資料物件進行統計分析與統計繪圖.
+須特別注意, 在 {R} 對物件或指令命名的英文大小寫是有差異,
+`s` 與 `S` 是不同的.
+對物件命名時, 
+**物件名字**
+(**object name**)
+起始位置必須以 **英文字母** 或 **.** (句點) 命名,
+若物件名字以 **.** 為起始,
+則物件名字的第二個位置需為文字,
+物件名字其餘位置,
+以英文字母 (A-Z 或 a-z),
+數字 (0-9), /, .,  \_ (underscore) 或 -, 等皆可.
+中間不可有空格.
+
+{R} 也保留一些特定名字做為特定的物件名字, 
+指令名字或常用函式名字使用,
+例如, `c`, `s`, `C`, `T`, `F` 等,
+這些名稱叫做
+**保留名字**
+(**reserved names**).
+例如:
+```
+FALSE Inf NA NaN NULL TRUE
+break else for function if in next repeat while
+F T
+c q s t C D I
+diff mean pi range rank var
+```
+
+初學者對物件命名時, 應盡量避免定義一個物件名字,
+與現有的物件同名, 所以命名時要避免重覆,
+同時避免物件名字過短, 以免後來引起錯亂.
+
+
+
+
+## 使用指令
+
+
+{R} 基本介面是一個互動式指令視窗,
+指令可分成 2 種,
+一為
+**運算式**
+(**expression**),
+例如,
+```
+1+2
+log(x)
+mean(x)
+```
+另一個為
+**指派運算**
+或
+**賦值運算**
+(**assignment**),
+例如,
+```
+x <- 1+2
+x = 4-5
+```
+當一個 {R} 程式需要使用者輸入指令時,
+它會顯示
+**指令提示符號**
+(**prompt symbol**),
+指令提示符號通常是一個 `>` (大於符號).
+當使用者輸入完整的
+**運算式**,
+則運算式指令輸入後的結果,
+{R} 會馬上顯示在指令下方.
+當使用者輸入完整的
+**指派運算**,
+{R} 同樣會做運算式,
+並且把結果 (值) 傳給變數,
+但結果不會自動顯示在 {R} 視窗螢幕上.
+在 {R} 中可利用
+```
+options(prompt = "R>")
+```
+將指令提示符號 `>` 改成 `R>`.
+
+**指派運算符號**
+(**assignment symbol**)
+通常是 `<- ``, 一個小於符號和一個短線符號組成,
+例如, `x <- 1 + 2`, 讀成
+`x` ``得到'' $(1 + 2)$.
+在 {R} 中可以如傳統的程式語言或統計軟體,
+使用 `=`
+(等號) 為
+**指派運算符號**,
+例如, `x = 1 + 2`,
+但在 {R} 中,
+`=`
+(等號) 還有其他用途,
+使用者可依個人習慣使用
+`<-`
+或
+`=`,
+但是多數 {R} 專業人士建議使用 `<-`.
+
+要顯示賦值運算的結果,
+可以輸入物件名,
+使用函式 `print()`,
+或在賦值運算時, 前後加上小括號顯示賦值運算的結果.
+```{r}
+## asign          
+x <- 1   # assign object x           
+x        # show x             
+print(x) # print()                  
+msg <- "hello"                   
+msg     # show x                     
+```
+
+如果一條輸入的指令在第一行結束的時候,
+在 {R} 語法上還不完整,
+若用鍵盤上 `<Enter>` 按鍵時,
+則
+{R} 會給出另一個不同的提示符號,
+通常是 `+` (加號),
+且該提示符號 `+` 會出現在第二行,
+和隨後的數行中,
+{R} 持續地等待使用者輸入指令.
+當一指令在語法上是完整的時候,
+使用鍵盤上 `<Enter>` 按鍵時,
+{R} 才會執行指令.
+不同的完整指令要在同一行輸入時,
+可用 `;` (分號) 隔開, 或是另起一新輸入行輸入指令分別輸入不同的完整指令.
+例如,
+```
+## input at the same line, use ;
+x <- 1 + 2; y <- 3 + 4
+## input 2 lines separately  
+x <- 1 + 2
+y <- 3 + 4
+```
+數個指令也可以放入一組大括弧內,
+``{ \; }``,
+數個指令放在一起,
+構成一個
+**複合運算式**
+(**compound expression**),
+這部份在函式的章節會再進一步說明.
+
+在 {R} 中, 若要對任何指令, 物件, 程式語言
+加上
+**注釋**
+(**commands**),
+則注釋從 \# (井號) 開始, 到句子收尾之間的語句就是是注釋,
+在 {R} 中,
+注釋幾乎可以放在任何地方的任何一行之中.
+習慣上, 整行的注釋使用雙井號作為開始, \#\#,
+運算式尾端注釋使用單井號開始 \#.
+```{r}
+## This is my R code
+log(pi)
+## simple calculation
+3+4 # calculator: two plus one
+```
+
+在 {R} 互動式窗 Console 中, 若要重複一個指令, 或是叫回之前輸入的指令,
+可以用鍵盤上的 $\uparrow$ (向上) 箭頭按鍵,
+調出之前已經輸入的指令, 視窗中便可顯示之前的輸入指令,
+再利用鍵盤上 `<DEL>` 按鍵更改成所要輸入的指令.
+可以再次練習以下指令, 檢視 {R} 會傳結果.
+```{r, echp=FALSE}
+# This is my R code
+x = 1 + 2  # one plus two
+x
+x + 4
+x - 1
+```
+
+
+
+## 查詢顯示物件與刪除物件
+
+在 {R} 中產生和控制的實體稱為
+**物件**
+(**object**),
+它們可以是向量, 陣列, 字串, 函式等不同型式.
+{R} 函式
+`object()`
+或
+`ls()`
+可以查詢與顯示當前保存在 {R} 環境中的物件名稱.
+```
+## show objects
+object()  # shiow all objects
+ls()      # show all obkects
+ls(x, y)  # show x and y object
+```
+
+透過函式 `rm()`,
+可以刪除物件, 例如,
+```
+## delete objects: x.vec and y.vec 
+rm(x.vec, y.vec)
+```
+可以刪除物件 `x.vec` 與 `y.vec`.
+
+
+
+## 程式中止操作
+
+當程式寫作不當, 造成 {R} 永無止境的執行運算.
+若要中斷執行中的程式,
+可按下 `<Esc>` 鍵中斷執行中的程式.
+例如, 輸入
+```
+for (i in 1:1000000) print (i) # press <Esc>
+```
+按下 `<Esc>` 鍵可中斷執行中的程式.
+
+
+
+
+
+
+## 工作目錄
+
+任何 {R} 工作中產生的物件或暫時檔案,
+都會在電腦的
+**工作目錄**
+或
+**工作路徑**
+(**working directory**).
+{R} 指令內的路徑 (PATH) 分隔為 `//` (例如, `C://RData//`)
+或 `/` (例如, `C:/RData/`).
+可用 Windowns 的 $\backslash\backslash$ (例如, C:$\backslash\backslash$RData).
+指令 `getwd()`,
+可以顯示當前工作目錄.
+指令
+`setwd()`,
+可以改變當前工作目錄.
+請練習以下指令.
+```
+getwd() # show your current working directory
+setwd("C:/RData/")
+getwd()
+## [1] "C:/RData"
+```
+請再比較下列比較檔案路徑格式指令.
+```
+setwd("C:/RData")
+getwd()
+setwd("C:/RData/")
+getwd()
+```
+
+
+
+使用 {R} 做統計資料分析,
+不同的分析資料計畫,
+最好使用不同的工作目錄,
+以免相同名字的物件, 相互取代,
+也便於管理.
+在分析資料過程中,
+將物件命名為 `age`, `gender`,
+`m1.lm`, `m2.lm` 等,
+是一件常有的情形,
+在任一次的分析計畫中,
+這樣的命名是有其特定含義,
+但不同分析資料計畫,
+在一個工作目錄下進行時,
+區別資料內相同物件名字,
+是一件非常困難的事情.
+此時可以利用 RStudio　專案計畫 (project),
+將不同資料分析或課程內容獨立在一個專案計畫,
+每一個專案計畫都在同一檔案路徑或檔案夾中,
+此時程式便可攜帶任一作業系統或上傳到 GitHub 系統.
+詳細的可重製性研究論文操作與版本控制 (version control),
+可參考 [@xie2015], Xie (2020) https://bookdown.org/yihui/rmarkdown/,
+https://rmarkdown.rstudio.com/,
+https://happygitwithr.com/ 等文件.
+
+
+
+
+## 程式編輯軟體與整合系統 RStudio  
+
+若要方便使用中文以及可重製性研究論文系統, 可更動下列選項.
+開啟 RStudio:
+使用滑數點選 `Tools`, 點選 `Global Options....`.
+
+* 點選 `General`,
+取消點選 `Restore .RData`,
+在 `Save workspace to .RData on exit`: 點選 `Never`.
+* 在 `Default text encoding`: 點選 `UTF-8`.
+* 點選進入 `Appearance`,
+點選你喜歡的式樣, 例如,
+點選 `Zoom`: 140%,
+點選  `Font size`: 14,
+點選你喜歡的字型.
+* 點選進入 `Sweave`,
+在 `Waeve Rnw file using`: 點選 `knitr`,
+在 `Typest LaTeX into PDF using: 點選 `XeLaTeX`.
+* 最後記得點選 `Apply` 或 `OK`.
+
+
+開始使用 {RStudio} 撰寫第一個 R 程式檔案.
+
+* 開啟 {RStudio}, 檢視 {RStudio} 在左上角視窗最上端工具列.
+* 點選 `File` $\rightarrow$ `New File` $\rightarrow$ `R Script`,
+開啟一新的 R 程式檔案.
+* 同樣在左上角視窗最上端工具列,
+點選 `File`,
+$\rightarrow$ 存檔案 `Save as`,
+在檔案夾 C:$\backslash$RData,
+儲存成為 `Rlab00.r` 檔案.
+* 以 `.r` 或 `.R` 為副檔名, 代表 {R} 程式檔案.
+* 在 `source` 視窗, 輸入以下程式.
+* 輸入完成後, 同樣在左上角視窗最上端工具列,
+點選 `File`,
+存檔案 `Save`.
+* 上述操作部分指令有捷徑可使用.
+
+以下撰寫第一個 R 程式, 並完成存檔. 
+```{r, eval=FALSE}
+## Rlab00.r
+x <- 1
+print(x)
+x
+msg <- "hello"
+msg
+y <- 1:20
+y
+rm(x, msg, y)
+```
+將程式輸入在 R 程式檔案內,
+將要執行的程式行列, 以滑鼠反白,
+複製 (copy) 到 {RSudio} Console 視窗, 執行程式.
+可以滑鼠反白, 同時按 `<control>+<Enter>` 鍵, 執行程式.
+使用 {R} 程式檔案, 可保有 {R} 程式, 隨時修正或重複執行.
+將下列指令輸入在 {RStudio} 新建立的 `Rlab00.r` 檔案內.
+請再次練習下列指令, 並執行致令, 在 {RSudio} Consol 視窗檢視結果.
+
+* 開啟 {RStudio}, 檢視 {RStudio} 在左上角視窗最上端工具列.
+* 點選 `File` $\rightarrow$ `New File`,
+可嘗試建立 $\rightarrow$ `R Notebook` 或是 `R Markdown`,
+{RStudio} 會自動建立簡單模板 (template).
+可見在區塊 (chunk) 以三個撇號 ```` ```{r} ````
+與尾端三個撇號 ```` ``` ````  之間
+可以撰寫 R 程式. 例如,
+
+```` ```{r} ````     
+2.4*3.8             
+x.vec = rnorm(50)           
+y.vec = rnorm(50)              
+plot(x.vec, y.vec)              
+```` ``` ````                
+使用 R Notebook` 或是 `R Markdown` 的好處是可以將報告文字與統計分析結果, 表格或圖片整合,
+不用再 copy $\rightarrow$ paste 到 word 文件上.
+當資料增加或修正, 僅要按下上方 `knit`, 即可再次自動排版產生正確的分析結果, 表格或圖片.
+讀者可利用 R Notebook` 或是 `R Markdown` 的模板,
+按下上方 `knit` 檢視生成的報告.
+
+
+## 函式 Function
+
+{R} 有許多
+**函式**
+(**function**),
+函式是一種物件, 是指令的集合,
+執行特定功能或運算工作的指令, 資料整理, 資料分析等,
+透過函式,
+擴展了 {R} 在程式語言的功能性與便利性.
+函式內通常需輸入
+**引數**
+(**argument**).
+
+{R} 基本系統 (base) 提供了一部分常用函式,
+而更多不同類型的函式,
+則由許多不同的學者貢獻到
+{R} 系統 (contribution) 中,
+這些函數都是用 {R} 程式語言寫成的.
+例如, 統計常用函式
+`mean()`, `var()`, `sd()`, `log()` 等.
+請練習以下 R 程式.
+```{r}
+## function
+## function c() = concatenate elements, return a vector x.vec
+x.vec = c(1:5) 
+x.vec # show x.vec 
+mean(x = x.vec) # function mean() calculate mean, return a scalar
+var(x = x.vec)  # function mean() calculate variance
+log(x = x.vec)  # take log for all elements in vector x.vec
+```
+
+
+一個函式內通常需輸入
+**引數**
+(**argument**)
+或是
+**統計公式**,
+**統計模型**,
+(**formals**).
+引數可以是一個以上,
+有些引數一定要輸入,
+稱為
+**必要引數**
+(**required argument**),
+有些引數可以不用輸入,
+稱為
+**自選引數**
+(**optional argument**),
+另外一種引數則為
+**省略引數**
+(**ellipsis argument**)
+這三種引可以同時存在一個函式內,
+引數可以是數值, 文字, 資料框架或 {R} 的任何物件.
+例如, 函式 ```log()``` 指令:    
+```     
+log(x, base = exp(1))     
+```      
+```log()``` 函式在 {R} 內設以自然數為底計算,
+其中 `x` 為必備引數,
+使用者必須自行輸入所要計算的數值作為引數值.
+而 `base = exp(1)`
+為選擇引數,
+若使用者沒有輸入引數值,
+函式 `log()` 內設以自然數 $e$ 為底,
+當然, 使用者可以更動底數的設定值,
+例如更動為以 $2$ 為底的獨度對數運算,
+```log(x, base = 2)```.
+```{r}
+## log function
+x.vec <- c(1, 2, 3, 4, 5)
+log(x = x.vec)
+log(x = x.vec, base = 2)
+```
+
+
+
+## 套件 Packages
+
+特定的統計分析方法許多專用的函式集合成一組.
+**套件}**
+(**package**).
+許多學者針對特定分析, 寫成專用的 {R} 函式,
+學者常將這些特定的統計分析方法專用的函式集合成一組
+**套件**
+(**package**),
+例如, `survival`
+套件,
+專用來進行存活分析,
+例如, 在資料科學上大量使用 `tidyverse` 套件.
+
+{R} 的套件數目一直在快速增加,
+個別套件內則有不同的函式.
+在 {R} 中,
+由一些標準 (基本) 套件構成 base {R},
+包含 {R} 可以進行一些標準統計和繪圖所需的的基本函數,
+在任何 {R} 的安裝版本中, 都會被自動安裝與載入.
+另外, 許多學者為 {R} 提供了基本套件以外的套件,
+稱為
+**貢獻套件**
+(**contributed package**).
+
+若在 {R} 第一次使用某一特定功能的套件,
+則需事先安裝此特定套件.
+安裝套件有不同的方法, 若已經先連接網際網路,
+常用的方法為
+(1) 使用 {RStudio} 內設套件所在的位置.
+由 {RStudio} 右下套件視窗.
+使用滑鼠選擇 `Packages` $\rightarrow$ `Install`.
+輸入所要安裝的套件名稱, 例如, 
+`tidyverse`,
+`MASS` 等.
+
+(2) 使用函式 `install.packages()`
+安裝所需的套件.     
+```       
+install.packages("PackageName", dependencies = TRUE)         
+```               
+可以安裝 ``PackageName` 套件.
+例如,
+可將下列指令寫入 `Console`` 視窗內.               
+```          
+install.packages("survival")
+library(survival)
+```              
+若在 {R} 中, 要使用某一特定的套件,
+須先載入此特定的套件,
+
+* 請先確認已經安裝套件或更新套件.
+* 使用 `library()` 或 `require()` 函式載入套件.
+
+通常建議使用 `library()`,
+因為 `library()` =  loads a package, 會同時檢視套件與關聯的函式是否安裝妥當,
+而 `require()` = tries to load a package,
+且當套件與關聯的函式未安裝妥當時,
+並不會提出警告或出現 error 訊息, 
+例如, 函式 `foo()` 在套件 `paa` 未先安裝或使用妥當,
+使用 `require()` 納入套件 `pbb`,
+套件 `pbb` 的函式 `coo()` 會呼叫 物件函式 `foo()`,
+但使用者並未先納入套件 `paa` 
+執行套件 `paa` 其他程式不會提出警告, 
+但當使用者在後續使用到函式 `coo()` 時,
+才會出現 error 訊息, 
+或是不出現 error 訊息而出現產生的物件, `my.obj`, 不存在,
+因此很難追尋到錯誤來源.
+
+通常在使用 `library(package.name)`
+之後, 就可直接使用 `package.name` 套件內的函式
+`function.name()`.
+個別套件內有許多函式,
+不同套件可能有相同名稱的函式,
+若要避免誤用相同名稱的函式,
+可以使用 `{::}` 串聯
+`package.name` 與 `function.name()` 如下:         
+```                
+package.name::function.name()           
+```              
+就可正確使用特定套件 `package.name` 內的特定函式 `function.name()`.
+例如使用指令            
+```
+ggplot2::ggplot()            
+````
+明確指出使用套件 `ggplot2` 內的函式 `ggplot()`.
+
+
+
+
+## 解說與輔助文件
+
+
+{R} 有良好的解說文件,
+可利用 Google 搜尋任何 {R} 相關疑惑.
+{R} 內部最常使用的線上協助為啟動網頁流覽器
+`help.start()`. 嘗試在 `Console` 輸入           
+```
+help.start()               
+```                   
+尋找特定函式 `funName` 解說,
+在 {R} 中可直接輸入下列任一種函式,
+`help(funName)`,
+`?funName`,
+`help.search("funName")`,
+`apropos("funName")` 等等.
+例如, 尋找 函式 `mean()` 函式解說.
+在 {R} 中可直接輸入下列任一種指令.              
+```
+help(mean)              
+?mean                 
+help.search("mean")            
+apropos("mean")                  
+```                    
+若要詢問函式內的引數,
+可用函式 `args("funName")`.
+
+
+
+
+## 地區語系與時區
+
+
+{R} 程式版本經常更新, 且 {R} 一些貢獻套件也經常在 {R} 版本更新後無法運作,
+{R} 一些貢獻套件對地區語系與時區的呈現文字非常敏感,
+因此在牽涉到不同時區的時間計算與轉換, 可注意使用中 {R} 的地區語系與時區.
+函式 `sessionInfo()` 可以取得使用中 {R} 的所有資訊.
+```
+sessionInfo()
+```
+從函式 `version()` 可以看見 {R} 版本
+` version[['version.string']]`,
+從函式`Sys.getlocale()` 可以看見 {R} 目前設定地區語系為
+`r Sys.getlocale()`. 這是設定台灣地區使用 cp950 (big5) 編碼.
+對一些套件可能無法正確顯式.
+從函式`Sys.timezone()` 可以看見 {R} 目前設定時區為
+`r Sys.timezone()`.
+{R} 在台灣當地時間 (local time) 中文格式有時會出現 NA,
+一些地區中文的介面對於如何呈現日期時間有時會出現錯誤,
+若日期時間輸入輸出格式出現錯誤, 可先改正輸入輸出格式,
+例如, 改用英文標準時間 `Sys.setlocale("LC_TIME", "C")`,
+如此改成 UTC 時區 (Universal Time, Coordinated).
+或是使用 ISO 時間格式.
+若要更動語系可使用                         
+```{r, eval=FALSE}
+# 中文 -> 英文
+Sys.setlocale("LC_CTYPE", "en_US.UTF-8")
+# system("defaults write org.R-project.R force.LANG en_US.UTF-8") # linux/mac
+# 英文 -> 中文
+Sys.setlocale(category = "LC_ALL", locale = "cht")
+# system("defaults write org.R-project.R force.LANG zh_TW.UTF-8") # linux/mac
+```                        
+上述方式暫時有效, 重新啟動 {R} 後此設定就會消失. 

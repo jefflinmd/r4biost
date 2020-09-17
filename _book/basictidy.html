@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 資料基本處理 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 8 資料基本處理 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 資料基本處理 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 8 資料基本處理 | R 資料科學與統計" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 資料基本處理 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 8 資料基本處理 | R 資料科學與統計" />
+  
+
+<meta name="author" content="Jeff Lin" />
+
+
+<meta name="date" content="2020-09-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basicstat.html"/>
+<link rel="next" href="applications.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>2</b> 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector.html"><a href="vector.html#向量"><i class="fa fa-check"></i><b>2.1</b> 向量</a></li>
+<li class="chapter" data-level="2.2" data-path="vector.html"><a href="vector.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a></li>
+<li class="chapter" data-level="2.3" data-path="vector.html"><a href="vector.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.3</b> 向量產生函式 <code>c()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="vector.html"><a href="vector.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.4</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.5" data-path="vector.html"><a href="vector.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.5</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector.html"><a href="vector.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.6</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.7" data-path="vector.html"><a href="vector.html#向量邏輯操作"><i class="fa fa-check"></i><b>2.7</b> 向量邏輯操作</a></li>
+<li class="chapter" data-level="2.8" data-path="vector.html"><a href="vector.html#向量元素命名"><i class="fa fa-check"></i><b>2.8</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.9" data-path="vector.html"><a href="vector.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.9</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.10" data-path="vector.html"><a href="vector.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.10</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.11" data-path="vector.html"><a href="vector.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.11</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataobject.html"><a href="dataobject.html"><i class="fa fa-check"></i><b>3</b> 資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataobject.html"><a href="dataobject.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dataobject.html"><a href="dataobject.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dataobject.html"><a href="dataobject.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dataobject.html"><a href="dataobject.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="dataobject.html"><a href="dataobject.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.2.1</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dataobject.html"><a href="dataobject.html#陣列物件-array"><i class="fa fa-check"></i><b>3.2.2</b> 陣列物件 Array</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="dataobject.html"><a href="dataobject.html#列表物件-list"><i class="fa fa-check"></i><b>3.3</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dataobject.html"><a href="dataobject.html#列表函式-list"><i class="fa fa-check"></i><b>3.3.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dataobject.html"><a href="dataobject.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.3.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="dataobject.html"><a href="dataobject.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.4</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.5" data-path="dataobject.html"><a href="dataobject.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.5</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="dataobject.html"><a href="dataobject.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.5.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datainout.html"><a href="datainout.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datainout.html"><a href="datainout.html#資料框架"><i class="fa fa-check"></i><b>4.1</b> 資料框架</a></li>
+<li class="chapter" data-level="4.2" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-空白分隔"><i class="fa fa-check"></i><b>4.2</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔</a></li>
+<li class="chapter" data-level="4.3" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔"><i class="fa fa-check"></i><b>4.3</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</a></li>
+<li class="chapter" data-level="4.4" data-path="datainout.html"><a href="datainout.html#r-內建資料框架"><i class="fa fa-check"></i><b>4.4</b> R 內建資料框架</a></li>
+<li class="chapter" data-level="4.5" data-path="datainout.html"><a href="datainout.html#輸出-r-資料"><i class="fa fa-check"></i><b>4.5</b> 輸出 {R} 資料</a></li>
+<li class="chapter" data-level="4.6" data-path="datainout.html"><a href="datainout.html#儲存-r-格式資料檔"><i class="fa fa-check"></i><b>4.6</b> 儲存 {R} 格式資料檔</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>5</b> 資料視覺化分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataviz.html"><a href="dataviz.html#視覺化分析原則"><i class="fa fa-check"></i><b>5.1</b> 視覺化分析原則</a></li>
+<li class="chapter" data-level="5.2" data-path="dataviz.html"><a href="dataviz.html#繪圖套件-ggplot2"><i class="fa fa-check"></i><b>5.2</b> 繪圖套件 ggplot2</a></li>
+<li class="chapter" data-level="5.3" data-path="dataviz.html"><a href="dataviz.html#類別變數"><i class="fa fa-check"></i><b>5.3</b> 類別變數</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="dataviz.html"><a href="dataviz.html#單類別變數"><i class="fa fa-check"></i><b>5.3.1</b> 單類別變數</a></li>
+<li class="chapter" data-level="5.3.2" data-path="dataviz.html"><a href="dataviz.html#多類別變數"><i class="fa fa-check"></i><b>5.3.2</b> 多類別變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="dataviz.html"><a href="dataviz.html#連續變數"><i class="fa fa-check"></i><b>5.4</b> 連續變數</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dataviz.html"><a href="dataviz.html#單連續變數"><i class="fa fa-check"></i><b>5.4.1</b> 單連續變數</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dataviz.html"><a href="dataviz.html#二連續變數"><i class="fa fa-check"></i><b>5.4.2</b> 二連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dataviz.html"><a href="dataviz.html#混合變數"><i class="fa fa-check"></i><b>5.5</b> 混合變數</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="dataviz.html"><a href="dataviz.html#一連續-一類別"><i class="fa fa-check"></i><b>5.5.1</b> 一連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.2" data-path="dataviz.html"><a href="dataviz.html#二連續-一類別"><i class="fa fa-check"></i><b>5.5.2</b> 二連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.3" data-path="dataviz.html"><a href="dataviz.html#三連續變數"><i class="fa fa-check"></i><b>5.5.3</b> 三連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="dataviz.html"><a href="dataviz.html#分組繪圖"><i class="fa fa-check"></i><b>5.6</b> 分組繪圖</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html"><i class="fa fa-check"></i><b>6</b> 基本函式</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#函式語法"><i class="fa fa-check"></i><b>6.1</b> 函式語法</a></li>
+<li class="chapter" data-level="6.2" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#檢視的函式原始碼定義"><i class="fa fa-check"></i><b>6.2</b> 檢視的函式原始碼定義</a></li>
+<li class="chapter" data-level="6.3" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式"><i class="fa fa-check"></i><b>6.3</b> 數列函式</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式-seq-與-sequence"><i class="fa fa-check"></i><b>6.3.1</b> 數列函式: seq() 與 sequence()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#重複元素函式-rep"><i class="fa fa-check"></i><b>6.4</b> 重複元素函式: rep()</a></li>
+<li class="chapter" data-level="6.5" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#算數函式-arithmetic-computing-function"><i class="fa fa-check"></i><b>6.5</b> 算數函式 Arithmetic Computing Function</a></li>
+<li class="chapter" data-level="6.6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#組合與階乘函式-choose-與-factorial"><i class="fa fa-check"></i><b>6.6</b> 組合與階乘函式: choose() 與 factorial()</a></li>
+<li class="chapter" data-level="6.7" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#選擇資料函式-all-any-which"><i class="fa fa-check"></i><b>6.7</b> 選擇資料函式: all(), any(), which()</a></li>
+<li class="chapter" data-level="6.8" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#排序函式-ranking-and-sorting"><i class="fa fa-check"></i><b>6.8</b> 排序函式 Ranking and Sorting</a></li>
+<li class="chapter" data-level="6.9" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#物件查看與強制轉換函式"><i class="fa fa-check"></i><b>6.9</b> 物件查看與強制轉換函式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basicstat.html"><a href="basicstat.html"><i class="fa fa-check"></i><b>7</b> 基本統計函式</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basicstat.html"><a href="basicstat.html#敘述統計函式"><i class="fa fa-check"></i><b>7.1</b> 敘述統計函式</a></li>
+<li class="chapter" data-level="7.2" data-path="basicstat.html"><a href="basicstat.html#類別資料表格函數"><i class="fa fa-check"></i><b>7.2</b> 類別資料表格函數</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-table-xtabs"><i class="fa fa-check"></i><b>7.2.1</b> 列聯表函式: table(), xtabs()</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-ftable"><i class="fa fa-check"></i><b>7.2.2</b> 列聯表函式: ftable()</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-margin.table-prop.table"><i class="fa fa-check"></i><b>7.2.3</b> 列聯表函式: margin.table(), prop.table()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basicstat.html"><a href="basicstat.html#機率函式與亂數生成函式"><i class="fa fa-check"></i><b>7.3</b> 機率函式與亂數生成函式</a></li>
+<li class="chapter" data-level="7.4" data-path="basicstat.html"><a href="basicstat.html#隨機抽樣函式-sample"><i class="fa fa-check"></i><b>7.4</b> 隨機抽樣函式 sample()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basictidy.html"><a href="basictidy.html"><i class="fa fa-check"></i><b>8</b> 資料基本處理</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basictidy.html"><a href="basictidy.html#資料輸入套件-readr"><i class="fa fa-check"></i><b>8.1</b> 資料輸入套件 readr</a></li>
+<li class="chapter" data-level="8.2" data-path="basictidy.html"><a href="basictidy.html#整潔資料-tidy-data"><i class="fa fa-check"></i><b>8.2</b> 整潔資料 Tidy Data</a></li>
+<li class="chapter" data-level="8.3" data-path="basictidy.html"><a href="basictidy.html#tibble-與-data-frame"><i class="fa fa-check"></i><b>8.3</b> Tibble 與 Data Frame</a></li>
+<li class="chapter" data-level="8.4" data-path="basictidy.html"><a href="basictidy.html#資料流動管道運算指令-pipe"><i class="fa fa-check"></i><b>8.4</b> 資料流動管道運算指令 Pipe</a></li>
+<li class="chapter" data-level="8.5" data-path="basictidy.html"><a href="basictidy.html#資料檢視函式-glimpse"><i class="fa fa-check"></i><b>8.5</b> 資料檢視函式 glimpse()</a></li>
+<li class="chapter" data-level="8.6" data-path="basictidy.html"><a href="basictidy.html#資料處裡-dplyr-套件"><i class="fa fa-check"></i><b>8.6</b> 資料處裡 dplyr 套件</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="basictidy.html"><a href="basictidy.html#選擇個體函式-filter"><i class="fa fa-check"></i><b>8.6.1</b> 選擇個體函式 <code>filter()</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
+<li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
+<li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
+<li class="chapter" data-level="11" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>11</b> Temp</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basictidy" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 資料基本處理</h1>
+<p><a href="https://www.tidyverse.org/">tidyverse 套件系統</a>
+包含許多不同套件,
+提供資料科學一些實用的函式.
+包含</p>
+<ul>
+<li>tidyverse 核心
+<ul>
+<li><code>ggplot2</code> 視覺化分析.</li>
+<li><code>purrr</code> 執行迴圈.</li>
+<li><code>tibble</code> 增強資料框架.</li>
+<li><code>dplyr</code> 資料處裡.</li>
+<li><code>tidyr</code> 精簡資料,</li>
+<li><code>stringr</code> 字串整理.</li>
+<li><code>readr</code> 資料輸入.</li>
+<li>`forcats 處理類別變數 (factors).</li>
+</ul></li>
+</ul>
+<p>tidyverse 套件系統的其他關聯套件包含</p>
+<ul>
+<li>資料輸入 import
+<ul>
+<li><code>readxl</code> 輸入 excel 關聯檔案.<br />
+</li>
+<li><code>haven</code> 輸入 SPSS, Stata 與 SAS 關聯檔案.</li>
+<li><code>jsonlite</code> 輸入 JSON 關聯檔案.</li>
+<li><code>xml2</code> 輸入 XML 關聯檔案.</li>
+<li><code>httr</code> 輸入 web APIs 關聯檔案.</li>
+<li><code>rvest</code> 輸入 web scraping 關聯檔案.</li>
+</ul></li>
+<li>DBI 輸入 關聯資料庫, 協同套件有 <code>RSQLite</code>, <code>RPostgres</code> 或 <code>odbc</code>.</li>
+<li>資料處理 tidy/wrangle
+<ul>
+<li><code>stringr</code> 處理字串.</li>
+<li><code>lubridate</code> 處理日期與時間.</li>
+<li><code>forcats</code> 處理類別變數 (factors).</li>
+<li><code>hms</code> 處理日期與時間.</li>
+<li><code>blob</code> 處理二元資料儲存檔案.</li>
+</ul></li>
+<li>程式寫作 program
+<ul>
+<li><code>rlang</code> 提供寫作核心語言與 tidyverse.</li>
+<li><code>magrittr</code> 提供資料流動通道 <code>%&gt;%</code>.</li>
+<li><code>glue</code> 提供字串合併.</li>
+</ul></li>
+<li>建模 model
+<ul>
+<li><code>broom</code> 處理建模結果.</li>
+<li><code>modelr</code> 偕同執行建模族.</li>
+</ul></li>
+</ul>
+<div id="資料輸入套件-readr" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> 資料輸入套件 readr</h2>
+<p><code>tidyverse</code> 套件系統中的 <code>readr</code> 套件提供一些方便資料輸入的函式.
+包含
+<code>read_csv()</code> 輸入 <code>.csv</code> 資料檔,
+<code>read_excel</code> 輸入 <code>excel</code> 資料檔,
+<code>read_delim()</code> 輸入不同分隔符號資料檔.
+其中引數如下 (<code>help(read_delim)</code>).</p>
+<ul>
+<li><code>file</code> = 路徑與檔名</li>
+<li><code>delim</code> = 分隔符號</li>
+<li><code>quote</code> = 視同分隔符號 (資料的文字變數值常放在雙引號中)</li>
+<li><code>escape_backslash</code> = 預設 FALSE, 是否有逃脫符號</li>
+<li><code>escape_double</code> = 預設TRUE, 是否用引號符號作為逃脫符號</li>
+<li><code>col_names</code> = 設定變數名 (<code>T</code> 或 <code>F</code>)</li>
+<li><code>col_types</code> = 設定變數的類型</li>
+<li><code>na</code> = 設定 NA 符號</li>
+<li><code>comment</code> = 設定注釋符號, 在注釋符號之後的文字不會被讀入</li>
+<li><code>trim_ws</code> = 去除變數值得空白</li>
+<li><code>skip</code> = 要跳過幾行 (row) 才開始讀入資料</li>
+<li><code>n_max</code> = 最大輸入行數</li>
+</ul>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="basictidy.html#cb153-1" aria-hidden="true"></a><span class="co"># .csv</span></span>
+<span id="cb153-2"><a href="basictidy.html#cb153-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb153-3"><a href="basictidy.html#cb153-3" aria-hidden="true"></a><span class="kw">library</span>(readr)</span>
+<span id="cb153-4"><a href="basictidy.html#cb153-4" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;C:/RData/DMTKAInfMo.csv&quot;</span>)</span>
+<span id="cb153-5"><a href="basictidy.html#cb153-5" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb153-6"><a href="basictidy.html#cb153-6" aria-hidden="true"></a><span class="co">## # A tibble: 78 x 16</span></span>
+<span id="cb153-7"><a href="basictidy.html#cb153-7" aria-hidden="true"></a><span class="co">##      No   age   sex    DM  DMyr preAC prePC postAC postPC</span></span>
+<span id="cb153-8"><a href="basictidy.html#cb153-8" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb153-9"><a href="basictidy.html#cb153-9" aria-hidden="true"></a><span class="co">## 1     1    67     0     0    10   120   160    140    180</span></span>
+<span id="cb153-10"><a href="basictidy.html#cb153-10" aria-hidden="true"></a><span class="co">## 2     2    67     0     0    11   100   150    150    220</span></span>
+<span id="cb153-11"><a href="basictidy.html#cb153-11" aria-hidden="true"></a><span class="co">## 3     3    72     1     0     4   150   200    120    150</span></span>
+<span id="cb153-12"><a href="basictidy.html#cb153-12" aria-hidden="true"></a><span class="co">## 4     4    82     1     0     8   150   200    160    250</span></span>
+<span id="cb153-13"><a href="basictidy.html#cb153-13" aria-hidden="true"></a><span class="co">## 5     5    73     1     0     3    85   110    140    200</span></span>
+<span id="cb153-14"><a href="basictidy.html#cb153-14" aria-hidden="true"></a><span class="co">##   medication  SIDE PREKS POSKS   ABS INFECT INFMO</span></span>
+<span id="cb153-15"><a href="basictidy.html#cb153-15" aria-hidden="true"></a><span class="co">##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb153-16"><a href="basictidy.html#cb153-16" aria-hidden="true"></a><span class="co">## 1          0     0    56    92     1      0     0</span></span>
+<span id="cb153-17"><a href="basictidy.html#cb153-17" aria-hidden="true"></a><span class="co">## 2          0     1    62    62     0      1     2</span></span>
+<span id="cb153-18"><a href="basictidy.html#cb153-18" aria-hidden="true"></a><span class="co">## 3          2     0    60    94     1      0     0</span></span>
+<span id="cb153-19"><a href="basictidy.html#cb153-19" aria-hidden="true"></a><span class="co">## 4          0     1    47    90     1      0     0</span></span>
+<span id="cb153-20"><a href="basictidy.html#cb153-20" aria-hidden="true"></a><span class="co">## 5          0     0    44    88     0      0     0</span></span>
+<span id="cb153-21"><a href="basictidy.html#cb153-21" aria-hidden="true"></a><span class="co">## # ... with 73 more rows</span></span>
+<span id="cb153-22"><a href="basictidy.html#cb153-22" aria-hidden="true"></a><span class="co"># .xls</span></span>
+<span id="cb153-23"><a href="basictidy.html#cb153-23" aria-hidden="true"></a><span class="kw">library</span>(readxl)</span>
+<span id="cb153-24"><a href="basictidy.html#cb153-24" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;C:/RData/DMTKAInfMo.xls&quot;</span>)</span>
+<span id="cb153-25"><a href="basictidy.html#cb153-25" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb153-26"><a href="basictidy.html#cb153-26" aria-hidden="true"></a><span class="co">## # A tibble: 78 x 16</span></span>
+<span id="cb153-27"><a href="basictidy.html#cb153-27" aria-hidden="true"></a><span class="co">##      No   age   sex    DM  DMyr preAC prePC postAC postPC</span></span>
+<span id="cb153-28"><a href="basictidy.html#cb153-28" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb153-29"><a href="basictidy.html#cb153-29" aria-hidden="true"></a><span class="co">## 1     1    67     0     0    10   120   160    140    180</span></span>
+<span id="cb153-30"><a href="basictidy.html#cb153-30" aria-hidden="true"></a><span class="co">## 2     2    67     0     0    11   100   150    150    220</span></span>
+<span id="cb153-31"><a href="basictidy.html#cb153-31" aria-hidden="true"></a><span class="co">## 3     3    72     1     0     4   150   200    120    150</span></span>
+<span id="cb153-32"><a href="basictidy.html#cb153-32" aria-hidden="true"></a><span class="co">## 4     4    82     1     0     8   150   200    160    250</span></span>
+<span id="cb153-33"><a href="basictidy.html#cb153-33" aria-hidden="true"></a><span class="co">## 5     5    73     1     0     3    85   110    140    200</span></span>
+<span id="cb153-34"><a href="basictidy.html#cb153-34" aria-hidden="true"></a><span class="co">##   medication  SIDE PREKS POSKS   ABS INFECT I0FECTMO</span></span>
+<span id="cb153-35"><a href="basictidy.html#cb153-35" aria-hidden="true"></a><span class="co">##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb153-36"><a href="basictidy.html#cb153-36" aria-hidden="true"></a><span class="co">## 1          0     0    56    92     1      0        0</span></span>
+<span id="cb153-37"><a href="basictidy.html#cb153-37" aria-hidden="true"></a><span class="co">## 2          0     1    62    62     0      1        2</span></span>
+<span id="cb153-38"><a href="basictidy.html#cb153-38" aria-hidden="true"></a><span class="co">## 3          2     0    60    94     1      0        0</span></span>
+<span id="cb153-39"><a href="basictidy.html#cb153-39" aria-hidden="true"></a><span class="co">## 4          0     1    47    90     1      0        0</span></span>
+<span id="cb153-40"><a href="basictidy.html#cb153-40" aria-hidden="true"></a><span class="co">## 5          0     0    44    88     0      0        0</span></span>
+<span id="cb153-41"><a href="basictidy.html#cb153-41" aria-hidden="true"></a><span class="co">## # ... with 73 more rows</span></span></code></pre></div>
+</div>
+<div id="整潔資料-tidy-data" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> 整潔資料 Tidy Data</h2>
+<p>統計計算可以進行分析的資料,
+通常有一個的簡單的基本架構,
+在 {R} 稱作
+<strong>資料框架</strong>
+(<strong>data frame</strong>).
+資料框架是類似於在 <code>SAS</code>, <code>STATA</code> 等的 dataset 架構.
+資料框架通常類似矩陣,
+資料框架也類似矩形的
+<strong>交叉列聯表</strong>
+(<strong>cross table</strong>),
+稱為
+<strong>資料表</strong>
+(** data table<strong>).
+套件 <code>tidverse</code> 原始套件 tidy` 強調外部資料檔案必須符合
+</strong>整潔資料** (<strong>tidy data</strong>) 方便操作.
+整潔資料的基本要求特徵是
+每個變數各自形成 1 欄 (縱行, row),
+每個列 (橫列, row) 各自為一個觀測時間的測量.
+例如, 每位個體只有觀測一次,
+則每個列為一位個體的觀測值.
+若每位個體有多次觀測時間點,
+則一位個體一次觀測時間點的觀測值為一列,
+一位個體或有多列的觀測值.
+一個整潔資料的資料表包含以下重點.</p>
+<ul>
+<li>一個檔案只用一張資料表</li>
+<li>一張資料表 (EXCEL 的 sheet).</li>
+<li>一個欄位 (縱行, Column) 只有一個變數, 同時有清楚的變數名.</li>
+<li>若完整資料包含不同資料表, 則不同資料表要有索引 (inxex) 或指標變數 (id) 可進行關聯與串聯.</li>
+</ul>
+<div class="figure">
+<img src="images/tidydata.png" alt="" />
+<p class="caption">Tidy Data: R for Data Science, Figure 12.1</p>
+</div>
+<p><strong>整潔資料</strong> 指引主要提供研究者在輸入資料檔案時能夠遵循.
+例如, 一些者常將 EXCEL 一張 sheel 內混合著原始資料, 分析結果與圖形.
+也經常將二個變數放在同一個欄位, 二個變數簡單以 <code>/</code> 分隔.
+例如檔案 <strong>DMTKAORI.xls</strong>.
+若資料檔案不是整潔資料, 則需浩費學多時間清理, 甚至必須重新輸入到資料檔案.</p>
+</div>
+<div id="tibble-與-data-frame" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Tibble 與 Data Frame</h2>
+<p><code>tidyverse</code> 系統中的 <code>readr</code> 套件輸入資料後,
+<code>tidyverse</code> 會儲存成 (tibble) 資料物件,
+成為<code>tbl_df</code>, <code>tbl</code> 類型的資料物件,
+主要是 <code>tidyverse</code> 系統會使用 tibble 套件進行操作.
+<code>tibbles</code> 資料物件與原有資料框架 <code>data.frame</code> 物件有相同的屬性外,
+另外多了些讓 <code>tidyverse</code> 系統容易操作的屬性.
+對初學者而言, 二者幾呼無任何差異.
+若有 {R} base 函式無法操作 <code>tibble</code> 資料物件,
+可使用 <code>as.data.frame()</code>
+轉成 {R} base 的 <code>data.frame</code> 物件.
+同樣, 若 <code>tidyverse</code> 系統函式無法操作的 <code>data.frame</code> 物件,
+可用 ‵as_tibble()<code>將</code>data.frame<code>物件 轉成</code>tibbles` 資料物件.
+以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="basictidy.html#cb154-1" aria-hidden="true"></a><span class="co">## data frame object</span></span>
+<span id="cb154-2"><a href="basictidy.html#cb154-2" aria-hidden="true"></a>dd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./Data/survVATrial.csv&quot;</span>,</span>
+<span id="cb154-3"><a href="basictidy.html#cb154-3" aria-hidden="true"></a>                 <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb154-4"><a href="basictidy.html#cb154-4" aria-hidden="true"></a>                 <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb154-5"><a href="basictidy.html#cb154-5" aria-hidden="true"></a>                 <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
+<span id="cb154-6"><a href="basictidy.html#cb154-6" aria-hidden="true"></a>                 <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb154-7"><a href="basictidy.html#cb154-7" aria-hidden="true"></a>                 <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb154-8"><a href="basictidy.html#cb154-8" aria-hidden="true"></a>                 <span class="co"># col.names,</span></span>
+<span id="cb154-9"><a href="basictidy.html#cb154-9" aria-hidden="true"></a>                 <span class="dt">as.is =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb154-10"><a href="basictidy.html#cb154-10" aria-hidden="true"></a>                 <span class="co"># as.is = !stringsAsFactors,</span></span>
+<span id="cb154-11"><a href="basictidy.html#cb154-11" aria-hidden="true"></a>                 <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb154-12"><a href="basictidy.html#cb154-12" aria-hidden="true"></a><span class="kw">class</span>(dd)</span>
+<span id="cb154-13"><a href="basictidy.html#cb154-13" aria-hidden="true"></a><span class="co">## [1] &quot;data.frame&quot;</span></span>
+<span id="cb154-14"><a href="basictidy.html#cb154-14" aria-hidden="true"></a><span class="kw">library</span>(tibble)</span>
+<span id="cb154-15"><a href="basictidy.html#cb154-15" aria-hidden="true"></a>dd &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(dd)</span>
+<span id="cb154-16"><a href="basictidy.html#cb154-16" aria-hidden="true"></a><span class="kw">class</span>(dd)</span>
+<span id="cb154-17"><a href="basictidy.html#cb154-17" aria-hidden="true"></a><span class="co">## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span></code></pre></div>
+<p><code>tibble</code> 套件的 <code>tibble()</code> 函式的使用如同 {R} base <code>data.frame()</code>.
+<code>tibble()</code> 函式可以使用 {R} base 不准使用的變數名.
+<code>tibble</code> 物件與 <code>data.frame</code> 物件的主要差別有 2 種情境.</p>
+<ol style="list-style-type: decimal">
+<li><p><code>tibble</code> 物件的顯示, <code>print()</code> 只用 10 rows, 變數 (columns) 只有納入符合視窗寬度的數目, 這對大數據檢視較為方便.
+且顯示 <code>str()</code> 函式可呈現變數基本模式的類別.
+可使用 <code>n = k</code> 顯示 <span class="math inline">\(k\)</span> rows,
+<code>width = Inf</code> 顯示所有變數.
+也可設定整區選項為
+options(tibble.print_min = Inf), 顯示所有 rows,
+以及
+<code>options(tibble.width = Inf)</code> 顯示所有 columns.</p></li>
+<li><p>{R} base 多數容許使用部分物件名 (變數名),
+但 <code>tibble</code> 物件無法使用部分變數名.
+可能會對資深程式寫作人員些許困擾.</p></li>
+</ol>
+</div>
+<div id="資料流動管道運算指令-pipe" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> 資料流動管道運算指令 Pipe</h2>
+<p><code>tidyverse</code> 系統中的 <code>magrittr</code> 套件提供一個非常實用的運算指令
+<code>%&gt;%</code> 稱為 <strong>pipe</strong>, <strong>管線</strong>, <strong>管道</strong> <strong>導管</strong>.
+此運算符號, 可將函式與運算串聯,
+<code>%&gt;%</code> 左側通常是資料物件, 資料框架, 矩陣, 向量等,
+<code>%&gt;%</code> 右側通常是函式 <code>fun_name()</code>,
+而 <code>%&gt;%</code> 左側資料自動為函式 <code>fun_name()</code> 內的第一個引數.
+在 Unix/Linux 系統的各種指令可以運用 pipe 的方式串連執行,
+<code>magrittr</code> 套件提供類似的思維,
+且資料流動從 <code>%&gt;%</code> 左測的資料送到 %&gt;%<code>右側的函式執行運算, 可讓程式寫作符合文字書寫由左到右的思考邏輯. 使用</code>pipe` 並不會改變程式的執行順序,
+主要目的在於讓程式更容易寫作與閱讀,
+降低程式寫作的錯誤與負擔.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="basictidy.html#cb155-1" aria-hidden="true"></a><span class="co">## short and clean </span></span>
+<span id="cb155-2"><a href="basictidy.html#cb155-2" aria-hidden="true"></a><span class="kw">log</span>(<span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)))</span>
+<span id="cb155-3"><a href="basictidy.html#cb155-3" aria-hidden="true"></a><span class="co">## [1] 1.705</span></span>
+<span id="cb155-4"><a href="basictidy.html#cb155-4" aria-hidden="true"></a><span class="co">## easily read </span></span>
+<span id="cb155-5"><a href="basictidy.html#cb155-5" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb155-6"><a href="basictidy.html#cb155-6" aria-hidden="true"></a>x.mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</span>
+<span id="cb155-7"><a href="basictidy.html#cb155-7" aria-hidden="true"></a>log.mean &lt;-<span class="st"> </span><span class="kw">log</span>(x.mean)</span>
+<span id="cb155-8"><a href="basictidy.html#cb155-8" aria-hidden="true"></a>log.mean</span>
+<span id="cb155-9"><a href="basictidy.html#cb155-9" aria-hidden="true"></a><span class="co">## [1] 1.705</span></span>
+<span id="cb155-10"><a href="basictidy.html#cb155-10" aria-hidden="true"></a><span class="co">## pipe %&gt;%</span></span>
+<span id="cb155-11"><a href="basictidy.html#cb155-11" aria-hidden="true"></a><span class="kw">library</span>(magrittr)</span>
+<span id="cb155-12"><a href="basictidy.html#cb155-12" aria-hidden="true"></a><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mean</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">log</span>()</span>
+<span id="cb155-13"><a href="basictidy.html#cb155-13" aria-hidden="true"></a><span class="co">## [1] 1.705</span></span></code></pre></div>
+</div>
+<div id="資料檢視函式-glimpse" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> 資料檢視函式 glimpse()</h2>
+<p>資料輸入到 {R} 後,
+必須先檢視資料內容, 比對原始資料檔案是否正確讀入資料.
+包含觀測值數目, 變數數目,
+那些變數為辨識指標,
+變數屬性, 那些變數為連續變數或類別變數,
+類別變數屬性, 名目變數或是順序變數,
+整理類別變數的類別水準名稱.
+每個變數的缺失數目與頻率,
+每個個體的缺失數目與頻率.
+以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="basictidy.html#cb156-1" aria-hidden="true"></a>dd =<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as_tibble</span>()</span>
+<span id="cb156-2"><a href="basictidy.html#cb156-2" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb156-3"><a href="basictidy.html#cb156-3" aria-hidden="true"></a><span class="co">## # A tibble: 137 x 8</span></span>
+<span id="cb156-4"><a href="basictidy.html#cb156-4" aria-hidden="true"></a><span class="co">##   treat cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb156-5"><a href="basictidy.html#cb156-5" aria-hidden="true"></a><span class="co">##   &lt;int&gt;    &lt;int&gt; &lt;int&gt;  &lt;int&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb156-6"><a href="basictidy.html#cb156-6" aria-hidden="true"></a><span class="co">## 1     0        1    72      1       60     7    69     0</span></span>
+<span id="cb156-7"><a href="basictidy.html#cb156-7" aria-hidden="true"></a><span class="co">## 2     0        1   411      1       70     5    64    10</span></span>
+<span id="cb156-8"><a href="basictidy.html#cb156-8" aria-hidden="true"></a><span class="co">## 3     0        1   228      1       60     3    38     0</span></span>
+<span id="cb156-9"><a href="basictidy.html#cb156-9" aria-hidden="true"></a><span class="co">## 4     0        1   126      1       60     9    63    10</span></span>
+<span id="cb156-10"><a href="basictidy.html#cb156-10" aria-hidden="true"></a><span class="co">## 5     0        1   118      1       70    11    65    10</span></span>
+<span id="cb156-11"><a href="basictidy.html#cb156-11" aria-hidden="true"></a><span class="co">## # ... with 132 more rows</span></span></code></pre></div>
+<p>可以看到資料有 137 位個體, 8 個變數.
+其中<code>time</code>, <code>diagtime</code>, <code>kps</code>, <code>age</code> 為連續變數.
+<code>treat</code>, <code>cellcode</code>, <code>censor</code>, <code>prior</code> 等為類別變數,
+但類別變數以數字輸入, 需先設定成為類別變數.
+以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="basictidy.html#cb157-1" aria-hidden="true"></a>dd<span class="op">$</span>treat &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
+<span id="cb157-2"><a href="basictidy.html#cb157-2" aria-hidden="true"></a>dd<span class="op">$</span>cellcode &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>cellcode, </span>
+<span id="cb157-3"><a href="basictidy.html#cb157-3" aria-hidden="true"></a>                      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;squamous&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;adeno&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
+<span id="cb157-4"><a href="basictidy.html#cb157-4" aria-hidden="true"></a>dd<span class="op">$</span>censor &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>censor, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;survival&quot;</span>, <span class="st">&quot;dead&quot;</span>))</span>
+<span id="cb157-5"><a href="basictidy.html#cb157-5" aria-hidden="true"></a>dd<span class="op">$</span>prior &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>prior, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb157-6"><a href="basictidy.html#cb157-6" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb157-7"><a href="basictidy.html#cb157-7" aria-hidden="true"></a><span class="co">## # A tibble: 137 x 8</span></span>
+<span id="cb157-8"><a href="basictidy.html#cb157-8" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb157-9"><a href="basictidy.html#cb157-9" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb157-10"><a href="basictidy.html#cb157-10" aria-hidden="true"></a><span class="co">## 1 placebo squamous    72 dead         60     7    69 no   </span></span>
+<span id="cb157-11"><a href="basictidy.html#cb157-11" aria-hidden="true"></a><span class="co">## 2 placebo squamous   411 dead         70     5    64 yes  </span></span>
+<span id="cb157-12"><a href="basictidy.html#cb157-12" aria-hidden="true"></a><span class="co">## 3 placebo squamous   228 dead         60     3    38 no   </span></span>
+<span id="cb157-13"><a href="basictidy.html#cb157-13" aria-hidden="true"></a><span class="co">## 4 placebo squamous   126 dead         60     9    63 yes  </span></span>
+<span id="cb157-14"><a href="basictidy.html#cb157-14" aria-hidden="true"></a><span class="co">## 5 placebo squamous   118 dead         70    11    65 yes  </span></span>
+<span id="cb157-15"><a href="basictidy.html#cb157-15" aria-hidden="true"></a><span class="co">## # ... with 132 more rows</span></span></code></pre></div>
+<p><code>tidyverse</code> 系統中的 <code>tibble</code> 套件提供一個檢視資料函式 `<code>glimpse()</code>,
+類似 {R} base 的 <code>str()</code> 函式.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="basictidy.html#cb158-1" aria-hidden="true"></a><span class="co">## R base</span></span>
+<span id="cb158-2"><a href="basictidy.html#cb158-2" aria-hidden="true"></a><span class="kw">str</span>(dd)</span>
+<span id="cb158-3"><a href="basictidy.html#cb158-3" aria-hidden="true"></a><span class="co">## tibble [137 x 8] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb158-4"><a href="basictidy.html#cb158-4" aria-hidden="true"></a><span class="co">##  $ treat   : Factor w/ 2 levels &quot;placebo&quot;,&quot;test&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb158-5"><a href="basictidy.html#cb158-5" aria-hidden="true"></a><span class="co">##  $ cellcode: Factor w/ 4 levels &quot;squamous&quot;,&quot;small&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb158-6"><a href="basictidy.html#cb158-6" aria-hidden="true"></a><span class="co">##  $ time    : int [1:137] 72 411 228 126 118 10 82 110 314 100 ...</span></span>
+<span id="cb158-7"><a href="basictidy.html#cb158-7" aria-hidden="true"></a><span class="co">##  $ censor  : Factor w/ 2 levels &quot;survival&quot;,&quot;dead&quot;: 2 2 2 2 2 2 2 2 2 1 ...</span></span>
+<span id="cb158-8"><a href="basictidy.html#cb158-8" aria-hidden="true"></a><span class="co">##  $ diagtime: int [1:137] 60 70 60 60 70 20 40 80 50 70 ...</span></span>
+<span id="cb158-9"><a href="basictidy.html#cb158-9" aria-hidden="true"></a><span class="co">##  $ kps     : int [1:137] 7 5 3 9 11 5 10 29 18 6 ...</span></span>
+<span id="cb158-10"><a href="basictidy.html#cb158-10" aria-hidden="true"></a><span class="co">##  $ age     : int [1:137] 69 64 38 63 65 49 69 68 43 70 ...</span></span>
+<span id="cb158-11"><a href="basictidy.html#cb158-11" aria-hidden="true"></a><span class="co">##  $ prior   : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 2 1 2 2 1 2 1 1 1 ...</span></span>
+<span id="cb158-12"><a href="basictidy.html#cb158-12" aria-hidden="true"></a><span class="co">## glimpse()</span></span>
+<span id="cb158-13"><a href="basictidy.html#cb158-13" aria-hidden="true"></a><span class="kw">glimpse</span>(dd)</span>
+<span id="cb158-14"><a href="basictidy.html#cb158-14" aria-hidden="true"></a><span class="co">## Rows: 137</span></span>
+<span id="cb158-15"><a href="basictidy.html#cb158-15" aria-hidden="true"></a><span class="co">## Columns: 8</span></span>
+<span id="cb158-16"><a href="basictidy.html#cb158-16" aria-hidden="true"></a><span class="co">## $ treat    &lt;fct&gt; placebo, placebo, placebo, placebo, p...</span></span>
+<span id="cb158-17"><a href="basictidy.html#cb158-17" aria-hidden="true"></a><span class="co">## $ cellcode &lt;fct&gt; squamous, squamous, squamous, squamou...</span></span>
+<span id="cb158-18"><a href="basictidy.html#cb158-18" aria-hidden="true"></a><span class="co">## $ time     &lt;int&gt; 72, 411, 228, 126, 118, 10, 82, 110, ...</span></span>
+<span id="cb158-19"><a href="basictidy.html#cb158-19" aria-hidden="true"></a><span class="co">## $ censor   &lt;fct&gt; dead, dead, dead, dead, dead, dead, d...</span></span>
+<span id="cb158-20"><a href="basictidy.html#cb158-20" aria-hidden="true"></a><span class="co">## $ diagtime &lt;int&gt; 60, 70, 60, 60, 70, 20, 40, 80, 50, 7...</span></span>
+<span id="cb158-21"><a href="basictidy.html#cb158-21" aria-hidden="true"></a><span class="co">## $ kps      &lt;int&gt; 7, 5, 3, 9, 11, 5, 10, 29, 18, 6, 4, ...</span></span>
+<span id="cb158-22"><a href="basictidy.html#cb158-22" aria-hidden="true"></a><span class="co">## $ age      &lt;int&gt; 69, 64, 38, 63, 65, 49, 69, 68, 43, 7...</span></span>
+<span id="cb158-23"><a href="basictidy.html#cb158-23" aria-hidden="true"></a><span class="co">## $ prior    &lt;fct&gt; no, yes, no, yes, yes, no, yes, no, n...</span></span></code></pre></div>
+</div>
+<div id="資料處裡-dplyr-套件" class="section level2" number="8.6">
+<h2><span class="header-section-number">8.6</span> 資料處裡 dplyr 套件</h2>
+<p><code>tidyverse</code> 系統中的資料處裡 <code>dplyr</code> 套件,
+有一些資料資料處裡常用函式.</p>
+<ul>
+<li><code>%&gt;%</code> = <code>pipe</code> 指令</li>
+<li><code>rename()</code> = 變數 (column) 重新命名</li>
+<li><code>filter()</code> = 選擇個體或行位子集 (rows)</li>
+<li><code>arrange()</code> = 依據變數值排序</li>
+<li><code>select()</code> = 選擇變數 (variables) 或欄位子集 (columns)</li>
+<li><code>mutate()</code> = 變數轉換</li>
+<li><code>sample_n()</code> 與 <code>sample_frac()</code> = 隨機抽樣函式</li>
+<li><code>distinct()</code> 與 <code>n_distinct()</code> = 選出明顯不同個體</li>
+<li><code>slice()</code> = 利用橫列指標 (row index) 選出個體 (row)</li>
+<li><code>summarise()</code> = 計算常見統計量</li>
+<li><code>group_by()</code> = 資料分組操作</li>
+<li><code>%&gt;%</code> = <code>pipe</code> 指令</li>
+</ul>
+<p>這些函式的第 1 個引數為資料物件,
+後續只用為變數名 (不加雙引號),
+可以合併使用 <code>group_by()</code> 函式與 <code>%&gt;%</code> 指令.</p>
+<div id="選擇個體函式-filter" class="section level3" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> 選擇個體函式 <code>filter()</code></h3>
+<p>資料常常需要依據納入與排除條件,
+此時會依據變數值進行篩選.
+<code>filter()</code> 函式可協助選擇個體.
+以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+選擇個體 <code>treat</code> 為 placebo, cellcode 為 large.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="basictidy.html#cb159-1" aria-hidden="true"></a><span class="co">## filter()</span></span>
+<span id="cb159-2"><a href="basictidy.html#cb159-2" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb159-3"><a href="basictidy.html#cb159-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(treat <span class="op">==</span><span class="st"> &#39;placebo&#39;</span>, cellcode <span class="op">==</span><span class="st"> &#39;large&#39;</span>)</span>
+<span id="cb159-4"><a href="basictidy.html#cb159-4" aria-hidden="true"></a><span class="co">## # A tibble: 15 x 8</span></span>
+<span id="cb159-5"><a href="basictidy.html#cb159-5" aria-hidden="true"></a><span class="co">##    treat  cellcode  time censor  diagtime   kps   age prior</span></span>
+<span id="cb159-6"><a href="basictidy.html#cb159-6" aria-hidden="true"></a><span class="co">##    &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb159-7"><a href="basictidy.html#cb159-7" aria-hidden="true"></a><span class="co">##  1 place~ large      177 dead          50    16    66 yes  </span></span>
+<span id="cb159-8"><a href="basictidy.html#cb159-8" aria-hidden="true"></a><span class="co">##  2 place~ large      162 dead          80     5    62 no   </span></span>
+<span id="cb159-9"><a href="basictidy.html#cb159-9" aria-hidden="true"></a><span class="co">##  3 place~ large      216 dead          50    15    52 no   </span></span>
+<span id="cb159-10"><a href="basictidy.html#cb159-10" aria-hidden="true"></a><span class="co">##  4 place~ large      553 dead          70     2    47 no   </span></span>
+<span id="cb159-11"><a href="basictidy.html#cb159-11" aria-hidden="true"></a><span class="co">##  5 place~ large      278 dead          60    12    63 no   </span></span>
+<span id="cb159-12"><a href="basictidy.html#cb159-12" aria-hidden="true"></a><span class="co">##  6 place~ large       12 dead          40    12    68 yes  </span></span>
+<span id="cb159-13"><a href="basictidy.html#cb159-13" aria-hidden="true"></a><span class="co">##  7 place~ large      260 dead          80     5    45 no   </span></span>
+<span id="cb159-14"><a href="basictidy.html#cb159-14" aria-hidden="true"></a><span class="co">##  8 place~ large      200 dead          80    12    41 yes  </span></span>
+<span id="cb159-15"><a href="basictidy.html#cb159-15" aria-hidden="true"></a><span class="co">##  9 place~ large      156 dead          70     2    66 no   </span></span>
+<span id="cb159-16"><a href="basictidy.html#cb159-16" aria-hidden="true"></a><span class="co">## 10 place~ large      182 surviv~       90     2    62 no   </span></span>
+<span id="cb159-17"><a href="basictidy.html#cb159-17" aria-hidden="true"></a><span class="co">## 11 place~ large      143 dead          90     8    60 no   </span></span>
+<span id="cb159-18"><a href="basictidy.html#cb159-18" aria-hidden="true"></a><span class="co">## 12 place~ large      105 dead          80    11    66 no   </span></span>
+<span id="cb159-19"><a href="basictidy.html#cb159-19" aria-hidden="true"></a><span class="co">## 13 place~ large      103 dead          80     5    38 no   </span></span>
+<span id="cb159-20"><a href="basictidy.html#cb159-20" aria-hidden="true"></a><span class="co">## 14 place~ large      250 dead          70     8    53 yes  </span></span>
+<span id="cb159-21"><a href="basictidy.html#cb159-21" aria-hidden="true"></a><span class="co">## 15 place~ large      100 dead          60    13    37 yes</span></span></code></pre></div>
+<p>選擇個體 <code>treat</code> 為試驗藥組, age 大於 50, kps 小於或等於 7</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="basictidy.html#cb160-1" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb160-2"><a href="basictidy.html#cb160-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(treat <span class="op">==</span><span class="st"> &#39;test&#39;</span>, age <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>, kps <span class="op">&lt;=</span><span class="st"> </span><span class="dv">7</span>)</span>
+<span id="cb160-3"><a href="basictidy.html#cb160-3" aria-hidden="true"></a><span class="co">## # A tibble: 35 x 8</span></span>
+<span id="cb160-4"><a href="basictidy.html#cb160-4" aria-hidden="true"></a><span class="co">##    treat cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb160-5"><a href="basictidy.html#cb160-5" aria-hidden="true"></a><span class="co">##    &lt;fct&gt; &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb160-6"><a href="basictidy.html#cb160-6" aria-hidden="true"></a><span class="co">##  1 test  squamous   112 dead         80     6    60 no   </span></span>
+<span id="cb160-7"><a href="basictidy.html#cb160-7" aria-hidden="true"></a><span class="co">##  2 test  squamous   242 dead         50     1    70 no   </span></span>
+<span id="cb160-8"><a href="basictidy.html#cb160-8" aria-hidden="true"></a><span class="co">##  3 test  squamous   111 dead         70     3    62 no   </span></span>
+<span id="cb160-9"><a href="basictidy.html#cb160-9" aria-hidden="true"></a><span class="co">##  4 test  squamous   587 dead         60     3    58 no   </span></span>
+<span id="cb160-10"><a href="basictidy.html#cb160-10" aria-hidden="true"></a><span class="co">##  5 test  squamous   389 dead         90     2    62 no   </span></span>
+<span id="cb160-11"><a href="basictidy.html#cb160-11" aria-hidden="true"></a><span class="co">##  6 test  squamous    33 dead         30     6    64 no   </span></span>
+<span id="cb160-12"><a href="basictidy.html#cb160-12" aria-hidden="true"></a><span class="co">##  7 test  squamous   467 dead         90     2    64 no   </span></span>
+<span id="cb160-13"><a href="basictidy.html#cb160-13" aria-hidden="true"></a><span class="co">##  8 test  squamous   283 dead         90     2    51 no   </span></span>
+<span id="cb160-14"><a href="basictidy.html#cb160-14" aria-hidden="true"></a><span class="co">##  9 test  small       25 dead         30     2    69 no   </span></span>
+<span id="cb160-15"><a href="basictidy.html#cb160-15" aria-hidden="true"></a><span class="co">## 10 test  small       21 dead         20     4    71 no   </span></span>
+<span id="cb160-16"><a href="basictidy.html#cb160-16" aria-hidden="true"></a><span class="co">## # ... with 25 more rows</span></span></code></pre></div>
+</div>
+<div id="依據變數值排序函式-arrange" class="section level3" number="8.6.2">
+<h3><span class="header-section-number">8.6.2</span> 依據變數值排序函式 <code>arrange()</code></h3>
+<p>資料常常需要依據變數值排序,
+<code>arrange()</code> 函式內設依照變數在函式出現順序以及變數值由小到大排序.
+若要變數值從由大到小排序, 可使用 <code>desc()</code> 函式.
+例如, 以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+依照 age 由小到大排序,
+time 由大到小排序.
+無論如何排序, 缺失值總是排在最後,
+這須與 {R} base 的 <code>order()</code>, <code>sort()</code> 或 <code>rank()</code> 進行比較.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="basictidy.html#cb161-1" aria-hidden="true"></a><span class="co">## arrange()</span></span>
+<span id="cb161-2"><a href="basictidy.html#cb161-2" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb161-3"><a href="basictidy.html#cb161-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">arrange</span>(age, <span class="kw">desc</span>(time))</span>
+<span id="cb161-4"><a href="basictidy.html#cb161-4" aria-hidden="true"></a><span class="co">## # A tibble: 137 x 8</span></span>
+<span id="cb161-5"><a href="basictidy.html#cb161-5" aria-hidden="true"></a><span class="co">##    treat  cellcode  time censor  diagtime   kps   age prior</span></span>
+<span id="cb161-6"><a href="basictidy.html#cb161-6" aria-hidden="true"></a><span class="co">##    &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb161-7"><a href="basictidy.html#cb161-7" aria-hidden="true"></a><span class="co">##  1 place~ adeno       95 dead          80     4    34 no   </span></span>
+<span id="cb161-8"><a href="basictidy.html#cb161-8" aria-hidden="true"></a><span class="co">##  2 place~ small        4 dead          40     2    35 no   </span></span>
+<span id="cb161-9"><a href="basictidy.html#cb161-9" aria-hidden="true"></a><span class="co">##  3 test   squamous     1 dead          50     7    35 no   </span></span>
+<span id="cb161-10"><a href="basictidy.html#cb161-10" aria-hidden="true"></a><span class="co">##  4 test   small      103 surviv~       70    22    36 yes  </span></span>
+<span id="cb161-11"><a href="basictidy.html#cb161-11" aria-hidden="true"></a><span class="co">##  5 place~ large      100 dead          60    13    37 yes  </span></span>
+<span id="cb161-12"><a href="basictidy.html#cb161-12" aria-hidden="true"></a><span class="co">##  6 test   large       49 dead          30     3    37 no   </span></span>
+<span id="cb161-13"><a href="basictidy.html#cb161-13" aria-hidden="true"></a><span class="co">##  7 place~ squamous   228 dead          60     3    38 no   </span></span>
+<span id="cb161-14"><a href="basictidy.html#cb161-14" aria-hidden="true"></a><span class="co">##  8 place~ adeno      117 dead          80     2    38 no   </span></span>
+<span id="cb161-15"><a href="basictidy.html#cb161-15" aria-hidden="true"></a><span class="co">##  9 place~ large      103 dead          80     5    38 no   </span></span>
+<span id="cb161-16"><a href="basictidy.html#cb161-16" aria-hidden="true"></a><span class="co">## 10 test   adeno       31 dead          80     3    39 no   </span></span>
+<span id="cb161-17"><a href="basictidy.html#cb161-17" aria-hidden="true"></a><span class="co">## # ... with 127 more rows</span></span></code></pre></div>
+</div>
+<div id="選擇變數或欄位子集函式-select" class="section level3" number="8.6.3">
+<h3><span class="header-section-number">8.6.3</span> 選擇變數或欄位子集函式 <code>select()</code></h3>
+<p>面對大數據時, 可能有成千上萬的變數,
+但通常部不會使用到所有的變數,
+選擇所需要的變數另組成分析子集,
+可減少 RAM 的負擔並加速分析執行速度.
+以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+選擇 <code>treat</code>, <code>cellcode</code>, <code>censor</code> 等變數.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="basictidy.html#cb162-1" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb162-2"><a href="basictidy.html#cb162-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">arrange</span>(treat, cellcode, censor)</span>
+<span id="cb162-3"><a href="basictidy.html#cb162-3" aria-hidden="true"></a><span class="co">## # A tibble: 137 x 8</span></span>
+<span id="cb162-4"><a href="basictidy.html#cb162-4" aria-hidden="true"></a><span class="co">##    treat  cellcode  time censor  diagtime   kps   age prior</span></span>
+<span id="cb162-5"><a href="basictidy.html#cb162-5" aria-hidden="true"></a><span class="co">##    &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb162-6"><a href="basictidy.html#cb162-6" aria-hidden="true"></a><span class="co">##  1 place~ squamous   100 surviv~       70     6    70 no   </span></span>
+<span id="cb162-7"><a href="basictidy.html#cb162-7" aria-hidden="true"></a><span class="co">##  2 place~ squamous    25 surviv~       80     9    52 yes  </span></span>
+<span id="cb162-8"><a href="basictidy.html#cb162-8" aria-hidden="true"></a><span class="co">##  3 place~ squamous    72 dead          60     7    69 no   </span></span>
+<span id="cb162-9"><a href="basictidy.html#cb162-9" aria-hidden="true"></a><span class="co">##  4 place~ squamous   411 dead          70     5    64 yes  </span></span>
+<span id="cb162-10"><a href="basictidy.html#cb162-10" aria-hidden="true"></a><span class="co">##  5 place~ squamous   228 dead          60     3    38 no   </span></span>
+<span id="cb162-11"><a href="basictidy.html#cb162-11" aria-hidden="true"></a><span class="co">##  6 place~ squamous   126 dead          60     9    63 yes  </span></span>
+<span id="cb162-12"><a href="basictidy.html#cb162-12" aria-hidden="true"></a><span class="co">##  7 place~ squamous   118 dead          70    11    65 yes  </span></span>
+<span id="cb162-13"><a href="basictidy.html#cb162-13" aria-hidden="true"></a><span class="co">##  8 place~ squamous    10 dead          20     5    49 no   </span></span>
+<span id="cb162-14"><a href="basictidy.html#cb162-14" aria-hidden="true"></a><span class="co">##  9 place~ squamous    82 dead          40    10    69 yes  </span></span>
+<span id="cb162-15"><a href="basictidy.html#cb162-15" aria-hidden="true"></a><span class="co">## 10 place~ squamous   110 dead          80    29    68 no   </span></span>
+<span id="cb162-16"><a href="basictidy.html#cb162-16" aria-hidden="true"></a><span class="co">## # ... with 127 more rows</span></span></code></pre></div>
+</div>
+<div id="變數轉換函式-mutate" class="section level3" number="8.6.4">
+<h3><span class="header-section-number">8.6.4</span> 變數轉換函式 <code>mutate()</code></h3>
+<p>資料分析前常常需要變數進行轉換, 例如取對數轉換,
+標準化, 也常將二個以上不同變數進行計算, 轉換成新變數,
+例如計算 BMI (生體質量指數).
+以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+對 <code>time</code> 取對數轉換, <code>diagtime * age / 100</code>.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="basictidy.html#cb163-1" aria-hidden="true"></a><span class="co">## mutate()</span></span>
+<span id="cb163-2"><a href="basictidy.html#cb163-2" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb163-3"><a href="basictidy.html#cb163-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
+<span id="cb163-4"><a href="basictidy.html#cb163-4" aria-hidden="true"></a>    <span class="dt">log_age =</span> <span class="kw">log</span>(age),</span>
+<span id="cb163-5"><a href="basictidy.html#cb163-5" aria-hidden="true"></a>    <span class="dt">diag_age =</span> diagtime <span class="op">*</span><span class="st"> </span>age <span class="op">/</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb163-6"><a href="basictidy.html#cb163-6" aria-hidden="true"></a>    )</span>
+<span id="cb163-7"><a href="basictidy.html#cb163-7" aria-hidden="true"></a><span class="co">## # A tibble: 137 x 10</span></span>
+<span id="cb163-8"><a href="basictidy.html#cb163-8" aria-hidden="true"></a><span class="co">##    treat cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb163-9"><a href="basictidy.html#cb163-9" aria-hidden="true"></a><span class="co">##    &lt;fct&gt; &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb163-10"><a href="basictidy.html#cb163-10" aria-hidden="true"></a><span class="co">##  1 plac~ squamous    72 dead         60     7    69 no   </span></span>
+<span id="cb163-11"><a href="basictidy.html#cb163-11" aria-hidden="true"></a><span class="co">##  2 plac~ squamous   411 dead         70     5    64 yes  </span></span>
+<span id="cb163-12"><a href="basictidy.html#cb163-12" aria-hidden="true"></a><span class="co">##  3 plac~ squamous   228 dead         60     3    38 no   </span></span>
+<span id="cb163-13"><a href="basictidy.html#cb163-13" aria-hidden="true"></a><span class="co">##  4 plac~ squamous   126 dead         60     9    63 yes  </span></span>
+<span id="cb163-14"><a href="basictidy.html#cb163-14" aria-hidden="true"></a><span class="co">##  5 plac~ squamous   118 dead         70    11    65 yes  </span></span>
+<span id="cb163-15"><a href="basictidy.html#cb163-15" aria-hidden="true"></a><span class="co">##  6 plac~ squamous    10 dead         20     5    49 no   </span></span>
+<span id="cb163-16"><a href="basictidy.html#cb163-16" aria-hidden="true"></a><span class="co">##  7 plac~ squamous    82 dead         40    10    69 yes  </span></span>
+<span id="cb163-17"><a href="basictidy.html#cb163-17" aria-hidden="true"></a><span class="co">##  8 plac~ squamous   110 dead         80    29    68 no   </span></span>
+<span id="cb163-18"><a href="basictidy.html#cb163-18" aria-hidden="true"></a><span class="co">##  9 plac~ squamous   314 dead         50    18    43 no   </span></span>
+<span id="cb163-19"><a href="basictidy.html#cb163-19" aria-hidden="true"></a><span class="co">## 10 plac~ squamous   100 survi~       70     6    70 no   </span></span>
+<span id="cb163-20"><a href="basictidy.html#cb163-20" aria-hidden="true"></a><span class="co">## # ... with 127 more rows, and 2 more variables:</span></span>
+<span id="cb163-21"><a href="basictidy.html#cb163-21" aria-hidden="true"></a><span class="co">## #   log_age &lt;dbl&gt;, diag_age &lt;dbl&gt;</span></span></code></pre></div>
+</div>
+<div id="隨機抽樣函式-sample_n-與-sample_frac" class="section level3" number="8.6.5">
+<h3><span class="header-section-number">8.6.5</span> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></h3>
+<p>函式 <code>sample_n()</code> 與 <code>sample_frac()</code>
+可以對資料進行隨機抽樣.
+引數為</p>
+<ul>
+<li><code>size = k</code> 設定所要抽出之樣本數或分率.</li>
+<li><code>weight</code> 抽取之相對應權重.
+<ul>
+<li>若無設定值, 則每一個個體被抽取之相對應權重相等.</li>
+</ul></li>
+<li><code>replace = FALSE</code> 邏輯指令, 設定是否可重複抽取.</li>
+</ul>
+<p>以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+由資料抽樣 5 位個體.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="basictidy.html#cb164-1" aria-hidden="true"></a><span class="co">## sample_n()</span></span>
+<span id="cb164-2"><a href="basictidy.html#cb164-2" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb164-3"><a href="basictidy.html#cb164-3" aria-hidden="true"></a><span class="co">## # A tibble: 5 x 8</span></span>
+<span id="cb164-4"><a href="basictidy.html#cb164-4" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor  diagtime   kps   age prior</span></span>
+<span id="cb164-5"><a href="basictidy.html#cb164-5" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb164-6"><a href="basictidy.html#cb164-6" aria-hidden="true"></a><span class="co">## 1 placebo adeno       12 dead          50     4    63 yes  </span></span>
+<span id="cb164-7"><a href="basictidy.html#cb164-7" aria-hidden="true"></a><span class="co">## 2 test    squamous     1 dead          50     7    35 no   </span></span>
+<span id="cb164-8"><a href="basictidy.html#cb164-8" aria-hidden="true"></a><span class="co">## 3 placebo small      123 surviv~       40     3    55 no   </span></span>
+<span id="cb164-9"><a href="basictidy.html#cb164-9" aria-hidden="true"></a><span class="co">## 4 test    small       51 dead          30    87    59 yes  </span></span>
+<span id="cb164-10"><a href="basictidy.html#cb164-10" aria-hidden="true"></a><span class="co">## 5 test    squamous   242 dead          50     1    70 no</span></span>
+<span id="cb164-11"><a href="basictidy.html#cb164-11" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb164-12"><a href="basictidy.html#cb164-12" aria-hidden="true"></a><span class="co">## # A tibble: 5 x 8</span></span>
+<span id="cb164-13"><a href="basictidy.html#cb164-13" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor  diagtime   kps   age prior</span></span>
+<span id="cb164-14"><a href="basictidy.html#cb164-14" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb164-15"><a href="basictidy.html#cb164-15" aria-hidden="true"></a><span class="co">## 1 placebo squamous    82 dead          40    10    69 yes  </span></span>
+<span id="cb164-16"><a href="basictidy.html#cb164-16" aria-hidden="true"></a><span class="co">## 2 test    squamous   231 surviv~       50     8    52 yes  </span></span>
+<span id="cb164-17"><a href="basictidy.html#cb164-17" aria-hidden="true"></a><span class="co">## 3 test    squamous   389 dead          90     2    62 no   </span></span>
+<span id="cb164-18"><a href="basictidy.html#cb164-18" aria-hidden="true"></a><span class="co">## 4 placebo small       18 dead          30     4    60 no   </span></span>
+<span id="cb164-19"><a href="basictidy.html#cb164-19" aria-hidden="true"></a><span class="co">## 5 test    small       80 dead          50    17    71 no</span></span>
+<span id="cb164-20"><a href="basictidy.html#cb164-20" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_frac</span>(<span class="dt">size =</span> <span class="fl">0.1</span>)</span>
+<span id="cb164-21"><a href="basictidy.html#cb164-21" aria-hidden="true"></a><span class="co">## # A tibble: 14 x 8</span></span>
+<span id="cb164-22"><a href="basictidy.html#cb164-22" aria-hidden="true"></a><span class="co">##    treat  cellcode  time censor  diagtime   kps   age prior</span></span>
+<span id="cb164-23"><a href="basictidy.html#cb164-23" aria-hidden="true"></a><span class="co">##    &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb164-24"><a href="basictidy.html#cb164-24" aria-hidden="true"></a><span class="co">##  1 test   adeno       83 surviv~       99     3    57 no   </span></span>
+<span id="cb164-25"><a href="basictidy.html#cb164-25" aria-hidden="true"></a><span class="co">##  2 place~ small       31 dead          75     3    65 no   </span></span>
+<span id="cb164-26"><a href="basictidy.html#cb164-26" aria-hidden="true"></a><span class="co">##  3 test   small       51 dead          30    87    59 yes  </span></span>
+<span id="cb164-27"><a href="basictidy.html#cb164-27" aria-hidden="true"></a><span class="co">##  4 test   large       52 dead          60     4    45 no   </span></span>
+<span id="cb164-28"><a href="basictidy.html#cb164-28" aria-hidden="true"></a><span class="co">##  5 test   squamous    15 dead          50    13    40 yes  </span></span>
+<span id="cb164-29"><a href="basictidy.html#cb164-29" aria-hidden="true"></a><span class="co">##  6 place~ small       20 dead          30     5    65 no   </span></span>
+<span id="cb164-30"><a href="basictidy.html#cb164-30" aria-hidden="true"></a><span class="co">##  7 test   squamous   201 dead          80    28    52 yes  </span></span>
+<span id="cb164-31"><a href="basictidy.html#cb164-31" aria-hidden="true"></a><span class="co">##  8 test   squamous   999 dead          90    12    54 yes  </span></span>
+<span id="cb164-32"><a href="basictidy.html#cb164-32" aria-hidden="true"></a><span class="co">##  9 test   squamous   242 dead          50     1    70 no   </span></span>
+<span id="cb164-33"><a href="basictidy.html#cb164-33" aria-hidden="true"></a><span class="co">## 10 place~ small        7 dead          50     7    72 no   </span></span>
+<span id="cb164-34"><a href="basictidy.html#cb164-34" aria-hidden="true"></a><span class="co">## 11 place~ small       51 dead          60     1    67 no   </span></span>
+<span id="cb164-35"><a href="basictidy.html#cb164-35" aria-hidden="true"></a><span class="co">## 12 test   adeno       31 dead          80     3    39 no   </span></span>
+<span id="cb164-36"><a href="basictidy.html#cb164-36" aria-hidden="true"></a><span class="co">## 13 place~ small       13 dead          60     4    56 no   </span></span>
+<span id="cb164-37"><a href="basictidy.html#cb164-37" aria-hidden="true"></a><span class="co">## 14 place~ small       22 dead          60     4    68 no</span></span></code></pre></div>
+</div>
+<div id="選出明顯不同個體函式-distinct-與-n_distinct" class="section level3" number="8.6.6">
+<h3><span class="header-section-number">8.6.6</span> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></h3>
+<p>資料常常重覆輸入的個體, 或是個體有重覆測量,
+<code>distinct()</code> 函式可以查詢多少明顯不同的個體,
+使用引數 <code>.keep_all = TRUE</code> 可以保留所有變數.
+函式 <code>n_distinct()</code> 計算明顯不同的個體數目,
+使用引數 <code>na.rm = FALSE</code> 決定是否納入缺失值.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="basictidy.html#cb165-1" aria-hidden="true"></a><span class="co">## distict()</span></span>
+<span id="cb165-2"><a href="basictidy.html#cb165-2" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb165-3"><a href="basictidy.html#cb165-3" aria-hidden="true"></a>df &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
+<span id="cb165-4"><a href="basictidy.html#cb165-4" aria-hidden="true"></a>  <span class="dt">x =</span> <span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dt">rep =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb165-5"><a href="basictidy.html#cb165-5" aria-hidden="true"></a>  <span class="dt">y =</span> <span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dt">rep =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb165-6"><a href="basictidy.html#cb165-6" aria-hidden="true"></a>)</span>
+<span id="cb165-7"><a href="basictidy.html#cb165-7" aria-hidden="true"></a>df</span>
+<span id="cb165-8"><a href="basictidy.html#cb165-8" aria-hidden="true"></a><span class="co">## # A tibble: 100 x 2</span></span>
+<span id="cb165-9"><a href="basictidy.html#cb165-9" aria-hidden="true"></a><span class="co">##        x     y</span></span>
+<span id="cb165-10"><a href="basictidy.html#cb165-10" aria-hidden="true"></a><span class="co">##    &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb165-11"><a href="basictidy.html#cb165-11" aria-hidden="true"></a><span class="co">##  1     9     3</span></span>
+<span id="cb165-12"><a href="basictidy.html#cb165-12" aria-hidden="true"></a><span class="co">##  2     4    10</span></span>
+<span id="cb165-13"><a href="basictidy.html#cb165-13" aria-hidden="true"></a><span class="co">##  3     7     3</span></span>
+<span id="cb165-14"><a href="basictidy.html#cb165-14" aria-hidden="true"></a><span class="co">##  4     1     1</span></span>
+<span id="cb165-15"><a href="basictidy.html#cb165-15" aria-hidden="true"></a><span class="co">##  5     2     6</span></span>
+<span id="cb165-16"><a href="basictidy.html#cb165-16" aria-hidden="true"></a><span class="co">##  6     7     6</span></span>
+<span id="cb165-17"><a href="basictidy.html#cb165-17" aria-hidden="true"></a><span class="co">##  7     2     4</span></span>
+<span id="cb165-18"><a href="basictidy.html#cb165-18" aria-hidden="true"></a><span class="co">##  8     3     9</span></span>
+<span id="cb165-19"><a href="basictidy.html#cb165-19" aria-hidden="true"></a><span class="co">##  9     1     5</span></span>
+<span id="cb165-20"><a href="basictidy.html#cb165-20" aria-hidden="true"></a><span class="co">## 10     5     1</span></span>
+<span id="cb165-21"><a href="basictidy.html#cb165-21" aria-hidden="true"></a><span class="co">## # ... with 90 more rows</span></span>
+<span id="cb165-22"><a href="basictidy.html#cb165-22" aria-hidden="true"></a><span class="kw">nrow</span>(df)</span>
+<span id="cb165-23"><a href="basictidy.html#cb165-23" aria-hidden="true"></a><span class="co">## [1] 100</span></span>
+<span id="cb165-24"><a href="basictidy.html#cb165-24" aria-hidden="true"></a><span class="kw">nrow</span>(<span class="kw">distinct</span>(df))</span>
+<span id="cb165-25"><a href="basictidy.html#cb165-25" aria-hidden="true"></a><span class="co">## [1] 65</span></span>
+<span id="cb165-26"><a href="basictidy.html#cb165-26" aria-hidden="true"></a><span class="kw">nrow</span>(<span class="kw">distinct</span>(df, x, y))</span>
+<span id="cb165-27"><a href="basictidy.html#cb165-27" aria-hidden="true"></a><span class="co">## [1] 65</span></span>
+<span id="cb165-28"><a href="basictidy.html#cb165-28" aria-hidden="true"></a><span class="kw">distinct</span>(df, x)</span>
+<span id="cb165-29"><a href="basictidy.html#cb165-29" aria-hidden="true"></a><span class="co">## # A tibble: 10 x 1</span></span>
+<span id="cb165-30"><a href="basictidy.html#cb165-30" aria-hidden="true"></a><span class="co">##        x</span></span>
+<span id="cb165-31"><a href="basictidy.html#cb165-31" aria-hidden="true"></a><span class="co">##    &lt;int&gt;</span></span>
+<span id="cb165-32"><a href="basictidy.html#cb165-32" aria-hidden="true"></a><span class="co">##  1     9</span></span>
+<span id="cb165-33"><a href="basictidy.html#cb165-33" aria-hidden="true"></a><span class="co">##  2     4</span></span>
+<span id="cb165-34"><a href="basictidy.html#cb165-34" aria-hidden="true"></a><span class="co">##  3     7</span></span>
+<span id="cb165-35"><a href="basictidy.html#cb165-35" aria-hidden="true"></a><span class="co">##  4     1</span></span>
+<span id="cb165-36"><a href="basictidy.html#cb165-36" aria-hidden="true"></a><span class="co">##  5     2</span></span>
+<span id="cb165-37"><a href="basictidy.html#cb165-37" aria-hidden="true"></a><span class="co">##  6     3</span></span>
+<span id="cb165-38"><a href="basictidy.html#cb165-38" aria-hidden="true"></a><span class="co">##  7     5</span></span>
+<span id="cb165-39"><a href="basictidy.html#cb165-39" aria-hidden="true"></a><span class="co">##  8    10</span></span>
+<span id="cb165-40"><a href="basictidy.html#cb165-40" aria-hidden="true"></a><span class="co">##  9     6</span></span>
+<span id="cb165-41"><a href="basictidy.html#cb165-41" aria-hidden="true"></a><span class="co">## 10     8</span></span>
+<span id="cb165-42"><a href="basictidy.html#cb165-42" aria-hidden="true"></a><span class="kw">distinct</span>(df, y)</span>
+<span id="cb165-43"><a href="basictidy.html#cb165-43" aria-hidden="true"></a><span class="co">## # A tibble: 10 x 1</span></span>
+<span id="cb165-44"><a href="basictidy.html#cb165-44" aria-hidden="true"></a><span class="co">##        y</span></span>
+<span id="cb165-45"><a href="basictidy.html#cb165-45" aria-hidden="true"></a><span class="co">##    &lt;int&gt;</span></span>
+<span id="cb165-46"><a href="basictidy.html#cb165-46" aria-hidden="true"></a><span class="co">##  1     3</span></span>
+<span id="cb165-47"><a href="basictidy.html#cb165-47" aria-hidden="true"></a><span class="co">##  2    10</span></span>
+<span id="cb165-48"><a href="basictidy.html#cb165-48" aria-hidden="true"></a><span class="co">##  3     1</span></span>
+<span id="cb165-49"><a href="basictidy.html#cb165-49" aria-hidden="true"></a><span class="co">##  4     6</span></span>
+<span id="cb165-50"><a href="basictidy.html#cb165-50" aria-hidden="true"></a><span class="co">##  5     4</span></span>
+<span id="cb165-51"><a href="basictidy.html#cb165-51" aria-hidden="true"></a><span class="co">##  6     9</span></span>
+<span id="cb165-52"><a href="basictidy.html#cb165-52" aria-hidden="true"></a><span class="co">##  7     5</span></span>
+<span id="cb165-53"><a href="basictidy.html#cb165-53" aria-hidden="true"></a><span class="co">##  8     7</span></span>
+<span id="cb165-54"><a href="basictidy.html#cb165-54" aria-hidden="true"></a><span class="co">##  9     2</span></span>
+<span id="cb165-55"><a href="basictidy.html#cb165-55" aria-hidden="true"></a><span class="co">## 10     8</span></span>
+<span id="cb165-56"><a href="basictidy.html#cb165-56" aria-hidden="true"></a><span class="kw">distinct</span>(df, x, <span class="dt">.keep_all =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb165-57"><a href="basictidy.html#cb165-57" aria-hidden="true"></a><span class="co">## # A tibble: 10 x 2</span></span>
+<span id="cb165-58"><a href="basictidy.html#cb165-58" aria-hidden="true"></a><span class="co">##        x     y</span></span>
+<span id="cb165-59"><a href="basictidy.html#cb165-59" aria-hidden="true"></a><span class="co">##    &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb165-60"><a href="basictidy.html#cb165-60" aria-hidden="true"></a><span class="co">##  1     9     3</span></span>
+<span id="cb165-61"><a href="basictidy.html#cb165-61" aria-hidden="true"></a><span class="co">##  2     4    10</span></span>
+<span id="cb165-62"><a href="basictidy.html#cb165-62" aria-hidden="true"></a><span class="co">##  3     7     3</span></span>
+<span id="cb165-63"><a href="basictidy.html#cb165-63" aria-hidden="true"></a><span class="co">##  4     1     1</span></span>
+<span id="cb165-64"><a href="basictidy.html#cb165-64" aria-hidden="true"></a><span class="co">##  5     2     6</span></span>
+<span id="cb165-65"><a href="basictidy.html#cb165-65" aria-hidden="true"></a><span class="co">##  6     3     9</span></span>
+<span id="cb165-66"><a href="basictidy.html#cb165-66" aria-hidden="true"></a><span class="co">##  7     5     1</span></span>
+<span id="cb165-67"><a href="basictidy.html#cb165-67" aria-hidden="true"></a><span class="co">##  8    10     6</span></span>
+<span id="cb165-68"><a href="basictidy.html#cb165-68" aria-hidden="true"></a><span class="co">##  9     6     3</span></span>
+<span id="cb165-69"><a href="basictidy.html#cb165-69" aria-hidden="true"></a><span class="co">## 10     8     2</span></span>
+<span id="cb165-70"><a href="basictidy.html#cb165-70" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb165-71"><a href="basictidy.html#cb165-71" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb165-72"><a href="basictidy.html#cb165-72" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="fl">1e5</span>, <span class="dt">rep =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb165-73"><a href="basictidy.html#cb165-73" aria-hidden="true"></a><span class="kw">length</span>(x)</span>
+<span id="cb165-74"><a href="basictidy.html#cb165-74" aria-hidden="true"></a><span class="co">## [1] 100000</span></span>
+<span id="cb165-75"><a href="basictidy.html#cb165-75" aria-hidden="true"></a><span class="kw">length</span>(<span class="kw">unique</span>(x))</span>
+<span id="cb165-76"><a href="basictidy.html#cb165-76" aria-hidden="true"></a><span class="co">## [1] 10</span></span>
+<span id="cb165-77"><a href="basictidy.html#cb165-77" aria-hidden="true"></a><span class="kw">n_distinct</span>(x)</span>
+<span id="cb165-78"><a href="basictidy.html#cb165-78" aria-hidden="true"></a><span class="co">## [1] 10</span></span></code></pre></div>
+</div>
+<div id="利用橫列指標選出個體函式-slice" class="section level3" number="8.6.7">
+<h3><span class="header-section-number">8.6.7</span> 利用橫列指標選出個體函式 <code>slice()</code></h3>
+<p><code>slice()</code> 為一系列函式可以利用橫列指標 (row index)
+選出個體 (row). 包含</p>
+<ul>
+<li><code>slice()</code><br />
+</li>
+<li><code>slice_head()</code> 選出資料最前端的個體</li>
+<li><code>slice_last()</code> 選出資料最末端的個體</li>
+<li><code>slice_min()</code> 選出資料變數值最小的個體</li>
+<li><code>slice_max()</code> 選出資料變數值最大的個體</li>
+<li><code>slice_sample()</code> 隨機選出個體</li>
+</ul>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="basictidy.html#cb166-1" aria-hidden="true"></a><span class="co">## slice()</span></span>
+<span id="cb166-2"><a href="basictidy.html#cb166-2" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb166-3"><a href="basictidy.html#cb166-3" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb166-4"><a href="basictidy.html#cb166-4" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 8</span></span>
+<span id="cb166-5"><a href="basictidy.html#cb166-5" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb166-6"><a href="basictidy.html#cb166-6" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-7"><a href="basictidy.html#cb166-7" aria-hidden="true"></a><span class="co">## 1 placebo squamous    72 dead         60     7    69 no</span></span>
+<span id="cb166-8"><a href="basictidy.html#cb166-8" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb166-9"><a href="basictidy.html#cb166-9" aria-hidden="true"></a><span class="co">## # A tibble: 3 x 8</span></span>
+<span id="cb166-10"><a href="basictidy.html#cb166-10" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb166-11"><a href="basictidy.html#cb166-11" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-12"><a href="basictidy.html#cb166-12" aria-hidden="true"></a><span class="co">## 1 placebo squamous    72 dead         60     7    69 no   </span></span>
+<span id="cb166-13"><a href="basictidy.html#cb166-13" aria-hidden="true"></a><span class="co">## 2 placebo squamous   411 dead         70     5    64 yes  </span></span>
+<span id="cb166-14"><a href="basictidy.html#cb166-14" aria-hidden="true"></a><span class="co">## 3 placebo squamous   228 dead         60     3    38 no</span></span>
+<span id="cb166-15"><a href="basictidy.html#cb166-15" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="dv">101</span><span class="op">:</span><span class="kw">n</span>())</span>
+<span id="cb166-16"><a href="basictidy.html#cb166-16" aria-hidden="true"></a><span class="co">## # A tibble: 37 x 8</span></span>
+<span id="cb166-17"><a href="basictidy.html#cb166-17" aria-hidden="true"></a><span class="co">##    treat cellcode  time censor   diagtime   kps   age prior</span></span>
+<span id="cb166-18"><a href="basictidy.html#cb166-18" aria-hidden="true"></a><span class="co">##    &lt;fct&gt; &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;       &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-19"><a href="basictidy.html#cb166-19" aria-hidden="true"></a><span class="co">##  1 test  small       99 dead           85     4    62 no   </span></span>
+<span id="cb166-20"><a href="basictidy.html#cb166-20" aria-hidden="true"></a><span class="co">##  2 test  small       61 dead           70     2    71 no   </span></span>
+<span id="cb166-21"><a href="basictidy.html#cb166-21" aria-hidden="true"></a><span class="co">##  3 test  small       25 dead           70     2    70 no   </span></span>
+<span id="cb166-22"><a href="basictidy.html#cb166-22" aria-hidden="true"></a><span class="co">##  4 test  small       95 dead           70     1    61 no   </span></span>
+<span id="cb166-23"><a href="basictidy.html#cb166-23" aria-hidden="true"></a><span class="co">##  5 test  small       80 dead           50    17    71 no   </span></span>
+<span id="cb166-24"><a href="basictidy.html#cb166-24" aria-hidden="true"></a><span class="co">##  6 test  small       51 dead           30    87    59 yes  </span></span>
+<span id="cb166-25"><a href="basictidy.html#cb166-25" aria-hidden="true"></a><span class="co">##  7 test  small       29 dead           40     8    67 no   </span></span>
+<span id="cb166-26"><a href="basictidy.html#cb166-26" aria-hidden="true"></a><span class="co">##  8 test  adeno       24 dead           40     2    60 no   </span></span>
+<span id="cb166-27"><a href="basictidy.html#cb166-27" aria-hidden="true"></a><span class="co">##  9 test  adeno       18 dead           40     5    69 yes  </span></span>
+<span id="cb166-28"><a href="basictidy.html#cb166-28" aria-hidden="true"></a><span class="co">## 10 test  adeno       83 survival       99     3    57 no   </span></span>
+<span id="cb166-29"><a href="basictidy.html#cb166-29" aria-hidden="true"></a><span class="co">## # ... with 27 more rows</span></span>
+<span id="cb166-30"><a href="basictidy.html#cb166-30" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>))</span>
+<span id="cb166-31"><a href="basictidy.html#cb166-31" aria-hidden="true"></a><span class="co">## # A tibble: 37 x 8</span></span>
+<span id="cb166-32"><a href="basictidy.html#cb166-32" aria-hidden="true"></a><span class="co">##    treat cellcode  time censor   diagtime   kps   age prior</span></span>
+<span id="cb166-33"><a href="basictidy.html#cb166-33" aria-hidden="true"></a><span class="co">##    &lt;fct&gt; &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;       &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-34"><a href="basictidy.html#cb166-34" aria-hidden="true"></a><span class="co">##  1 test  small       99 dead           85     4    62 no   </span></span>
+<span id="cb166-35"><a href="basictidy.html#cb166-35" aria-hidden="true"></a><span class="co">##  2 test  small       61 dead           70     2    71 no   </span></span>
+<span id="cb166-36"><a href="basictidy.html#cb166-36" aria-hidden="true"></a><span class="co">##  3 test  small       25 dead           70     2    70 no   </span></span>
+<span id="cb166-37"><a href="basictidy.html#cb166-37" aria-hidden="true"></a><span class="co">##  4 test  small       95 dead           70     1    61 no   </span></span>
+<span id="cb166-38"><a href="basictidy.html#cb166-38" aria-hidden="true"></a><span class="co">##  5 test  small       80 dead           50    17    71 no   </span></span>
+<span id="cb166-39"><a href="basictidy.html#cb166-39" aria-hidden="true"></a><span class="co">##  6 test  small       51 dead           30    87    59 yes  </span></span>
+<span id="cb166-40"><a href="basictidy.html#cb166-40" aria-hidden="true"></a><span class="co">##  7 test  small       29 dead           40     8    67 no   </span></span>
+<span id="cb166-41"><a href="basictidy.html#cb166-41" aria-hidden="true"></a><span class="co">##  8 test  adeno       24 dead           40     2    60 no   </span></span>
+<span id="cb166-42"><a href="basictidy.html#cb166-42" aria-hidden="true"></a><span class="co">##  9 test  adeno       18 dead           40     5    69 yes  </span></span>
+<span id="cb166-43"><a href="basictidy.html#cb166-43" aria-hidden="true"></a><span class="co">## 10 test  adeno       83 survival       99     3    57 no   </span></span>
+<span id="cb166-44"><a href="basictidy.html#cb166-44" aria-hidden="true"></a><span class="co">## # ... with 27 more rows</span></span>
+<span id="cb166-45"><a href="basictidy.html#cb166-45" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice_head</span>(<span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb166-46"><a href="basictidy.html#cb166-46" aria-hidden="true"></a><span class="co">## # A tibble: 3 x 8</span></span>
+<span id="cb166-47"><a href="basictidy.html#cb166-47" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb166-48"><a href="basictidy.html#cb166-48" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-49"><a href="basictidy.html#cb166-49" aria-hidden="true"></a><span class="co">## 1 placebo squamous    72 dead         60     7    69 no   </span></span>
+<span id="cb166-50"><a href="basictidy.html#cb166-50" aria-hidden="true"></a><span class="co">## 2 placebo squamous   411 dead         70     5    64 yes  </span></span>
+<span id="cb166-51"><a href="basictidy.html#cb166-51" aria-hidden="true"></a><span class="co">## 3 placebo squamous   228 dead         60     3    38 no</span></span>
+<span id="cb166-52"><a href="basictidy.html#cb166-52" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice_tail</span>(<span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb166-53"><a href="basictidy.html#cb166-53" aria-hidden="true"></a><span class="co">## # A tibble: 3 x 8</span></span>
+<span id="cb166-54"><a href="basictidy.html#cb166-54" aria-hidden="true"></a><span class="co">##   treat cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb166-55"><a href="basictidy.html#cb166-55" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-56"><a href="basictidy.html#cb166-56" aria-hidden="true"></a><span class="co">## 1 test  large      231 dead         70    18    67 yes  </span></span>
+<span id="cb166-57"><a href="basictidy.html#cb166-57" aria-hidden="true"></a><span class="co">## 2 test  large      378 dead         80     4    65 no   </span></span>
+<span id="cb166-58"><a href="basictidy.html#cb166-58" aria-hidden="true"></a><span class="co">## 3 test  large       49 dead         30     3    37 no</span></span>
+<span id="cb166-59"><a href="basictidy.html#cb166-59" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice_min</span>(time, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb166-60"><a href="basictidy.html#cb166-60" aria-hidden="true"></a><span class="co">## # A tibble: 3 x 8</span></span>
+<span id="cb166-61"><a href="basictidy.html#cb166-61" aria-hidden="true"></a><span class="co">##   treat cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb166-62"><a href="basictidy.html#cb166-62" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-63"><a href="basictidy.html#cb166-63" aria-hidden="true"></a><span class="co">## 1 test  squamous     1 dead         20    21    65 yes  </span></span>
+<span id="cb166-64"><a href="basictidy.html#cb166-64" aria-hidden="true"></a><span class="co">## 2 test  squamous     1 dead         50     7    35 no   </span></span>
+<span id="cb166-65"><a href="basictidy.html#cb166-65" aria-hidden="true"></a><span class="co">## 3 test  small        2 dead         40    36    44 yes</span></span>
+<span id="cb166-66"><a href="basictidy.html#cb166-66" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice_max</span>(time, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb166-67"><a href="basictidy.html#cb166-67" aria-hidden="true"></a><span class="co">## # A tibble: 3 x 8</span></span>
+<span id="cb166-68"><a href="basictidy.html#cb166-68" aria-hidden="true"></a><span class="co">##   treat cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb166-69"><a href="basictidy.html#cb166-69" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-70"><a href="basictidy.html#cb166-70" aria-hidden="true"></a><span class="co">## 1 test  squamous   999 dead         90    12    54 yes  </span></span>
+<span id="cb166-71"><a href="basictidy.html#cb166-71" aria-hidden="true"></a><span class="co">## 2 test  squamous   991 dead         70     7    50 yes  </span></span>
+<span id="cb166-72"><a href="basictidy.html#cb166-72" aria-hidden="true"></a><span class="co">## 3 test  squamous   587 dead         60     3    58 no</span></span>
+<span id="cb166-73"><a href="basictidy.html#cb166-73" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice_sample</span>(<span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb166-74"><a href="basictidy.html#cb166-74" aria-hidden="true"></a><span class="co">## # A tibble: 3 x 8</span></span>
+<span id="cb166-75"><a href="basictidy.html#cb166-75" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor diagtime   kps   age prior</span></span>
+<span id="cb166-76"><a href="basictidy.html#cb166-76" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;</span></span>
+<span id="cb166-77"><a href="basictidy.html#cb166-77" aria-hidden="true"></a><span class="co">## 1 placebo large      250 dead         70     8    53 yes  </span></span>
+<span id="cb166-78"><a href="basictidy.html#cb166-78" aria-hidden="true"></a><span class="co">## 2 test    large       53 dead         60    12    66 no   </span></span>
+<span id="cb166-79"><a href="basictidy.html#cb166-79" aria-hidden="true"></a><span class="co">## 3 placebo small       63 dead         50    11    48 no</span></span></code></pre></div>
+</div>
+<div id="計算常見統計量函式-summarise" class="section level3" number="8.6.8">
+<h3><span class="header-section-number">8.6.8</span> 計算常見統計量函式 <code>summarise()</code></h3>
+<p>資料分析常常需要變數基本統計量,
+例如, 計算個數, 平均值, 變異數等等.
+<code>summarise()</code> 函式可計算常見統計量,
+期常用引數有</p>
+<ul>
+<li>Center: <code>mean()</code>, <code>median()</code></li>
+<li>Spread: <code>sd()</code>, <code>IQR()</code>, <code>mad()</code>. <code>range()</code></li>
+<li>Range: <code>min()</code>, <code>max()</code>, <code>quantile()</code></li>
+<li>Position: <code>first()</code>, <code>last()</code>, <code>nth()</code></li>
+<li>Count: <code>n()</code>, <code>n_distinct()</code></li>
+<li>Logical: <code>any()</code>, <code>all()</code></li>
+</ul>
+<p>以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+對資料計算個數 <code>n()</code>,
+對 <code>age</code> 計算平均值與標準差.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="basictidy.html#cb167-1" aria-hidden="true"></a><span class="co">## summarise</span></span>
+<span id="cb167-2"><a href="basictidy.html#cb167-2" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb167-3"><a href="basictidy.html#cb167-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
+<span id="cb167-4"><a href="basictidy.html#cb167-4" aria-hidden="true"></a>    <span class="dt">count =</span> <span class="kw">n</span>(),</span>
+<span id="cb167-5"><a href="basictidy.html#cb167-5" aria-hidden="true"></a>    <span class="dt">age_mean =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb167-6"><a href="basictidy.html#cb167-6" aria-hidden="true"></a>    <span class="dt">age_sd =</span> <span class="kw">sd</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb167-7"><a href="basictidy.html#cb167-7" aria-hidden="true"></a>    )</span>
+<span id="cb167-8"><a href="basictidy.html#cb167-8" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 3</span></span>
+<span id="cb167-9"><a href="basictidy.html#cb167-9" aria-hidden="true"></a><span class="co">##   count age_mean age_sd</span></span>
+<span id="cb167-10"><a href="basictidy.html#cb167-10" aria-hidden="true"></a><span class="co">##   &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb167-11"><a href="basictidy.html#cb167-11" aria-hidden="true"></a><span class="co">## 1   137     58.3   10.5</span></span></code></pre></div>
+</div>
+<div id="資料分組操作函式-group_by" class="section level3" number="8.6.9">
+<h3><span class="header-section-number">8.6.9</span> 資料分組操作函式 <code>group_by()</code></h3>
+<p>資料分析常常需要類別變數分組, 個別操作資料或進行計算統計量.
+函式 <code>group_by()</code> 引數可放入類別變數, 然後分組進行相同資料分析.
+以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+對試驗藥組與安慰劑組分別對 <code>diagtime</code> 計算計算平均值與標準差..</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="basictidy.html#cb168-1" aria-hidden="true"></a><span class="co">## group_by()</span></span>
+<span id="cb168-2"><a href="basictidy.html#cb168-2" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb168-3"><a href="basictidy.html#cb168-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">group_by</span>(treat) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb168-4"><a href="basictidy.html#cb168-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
+<span id="cb168-5"><a href="basictidy.html#cb168-5" aria-hidden="true"></a>    <span class="dt">diagtime_mean =</span> <span class="kw">mean</span>(diagtime),</span>
+<span id="cb168-6"><a href="basictidy.html#cb168-6" aria-hidden="true"></a>    <span class="dt">diagtime_sd =</span> <span class="kw">sd</span>(diagtime)</span>
+<span id="cb168-7"><a href="basictidy.html#cb168-7" aria-hidden="true"></a>    )</span>
+<span id="cb168-8"><a href="basictidy.html#cb168-8" aria-hidden="true"></a><span class="co">## # A tibble: 2 x 3</span></span>
+<span id="cb168-9"><a href="basictidy.html#cb168-9" aria-hidden="true"></a><span class="co">##   treat   diagtime_mean diagtime_sd</span></span>
+<span id="cb168-10"><a href="basictidy.html#cb168-10" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;           &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb168-11"><a href="basictidy.html#cb168-11" aria-hidden="true"></a><span class="co">## 1 placebo          59.2        18.7</span></span>
+<span id="cb168-12"><a href="basictidy.html#cb168-12" aria-hidden="true"></a><span class="co">## 2 test             57.9        21.4</span></span>
+<span id="cb168-13"><a href="basictidy.html#cb168-13" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb168-14"><a href="basictidy.html#cb168-14" aria-hidden="true"></a><span class="st">  </span><span class="kw">group_by</span>(treat, cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb168-15"><a href="basictidy.html#cb168-15" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
+<span id="cb168-16"><a href="basictidy.html#cb168-16" aria-hidden="true"></a>    <span class="dt">diagtime_mean =</span> <span class="kw">mean</span>(diagtime),</span>
+<span id="cb168-17"><a href="basictidy.html#cb168-17" aria-hidden="true"></a>    <span class="dt">diagtime_sd =</span> <span class="kw">sd</span>(diagtime)</span>
+<span id="cb168-18"><a href="basictidy.html#cb168-18" aria-hidden="true"></a>    )</span>
+<span id="cb168-19"><a href="basictidy.html#cb168-19" aria-hidden="true"></a><span class="co">## # A tibble: 8 x 4</span></span>
+<span id="cb168-20"><a href="basictidy.html#cb168-20" aria-hidden="true"></a><span class="co">## # Groups:   treat [2]</span></span>
+<span id="cb168-21"><a href="basictidy.html#cb168-21" aria-hidden="true"></a><span class="co">##   treat   cellcode diagtime_mean diagtime_sd</span></span>
+<span id="cb168-22"><a href="basictidy.html#cb168-22" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;            &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb168-23"><a href="basictidy.html#cb168-23" aria-hidden="true"></a><span class="co">## 1 placebo squamous          57.3        17.9</span></span>
+<span id="cb168-24"><a href="basictidy.html#cb168-24" aria-hidden="true"></a><span class="co">## 2 placebo small             54.8        17.7</span></span>
+<span id="cb168-25"><a href="basictidy.html#cb168-25" aria-hidden="true"></a><span class="co">## 3 placebo adeno             58.9        24.2</span></span>
+<span id="cb168-26"><a href="basictidy.html#cb168-26" aria-hidden="true"></a><span class="co">## 4 placebo large             70          15.1</span></span>
+<span id="cb168-27"><a href="basictidy.html#cb168-27" aria-hidden="true"></a><span class="co">## 5 test    squamous          63.5        22.3</span></span>
+<span id="cb168-28"><a href="basictidy.html#cb168-28" aria-hidden="true"></a><span class="co">## 6 test    small             51.4        21.5</span></span>
+<span id="cb168-29"><a href="basictidy.html#cb168-29" aria-hidden="true"></a><span class="co">## 7 test    adeno             57.7        21.7</span></span>
+<span id="cb168-30"><a href="basictidy.html#cb168-30" aria-hidden="true"></a><span class="co">## 8 test    large             58.8        18.8</span></span></code></pre></div>
+</div>
+<div id="多變數計算統計量函式-summarise_all" class="section level3" number="8.6.10">
+<h3><span class="header-section-number">8.6.10</span> 多變數計算統計量函式 <code>summarise_all()</code></h3>
+<p><code>summarise()</code> 函式只能分別對當一變數進行計算,
+若要同時對許多變數進行相同操作,
+可使用以下函式.</p>
+<ul>
+<li><code>summarise_all()</code> 對每一個變數進行相同操作</li>
+<li><code>summarise_each()</code> 對每一個變數進行相同操作, 需加變數名</li>
+<li><code>summarise_at()</code> 對選出的變數進行相同操作 需加變數名</li>
+<li><code>summarise_if()</code> 對符合特定條件的變數進行相同操作</li>
+</ul>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="basictidy.html#cb169-1" aria-hidden="true"></a><span class="co">## summarise_all()</span></span>
+<span id="cb169-2"><a href="basictidy.html#cb169-2" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb169-3"><a href="basictidy.html#cb169-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(time, diagtime, kps, age) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb169-4"><a href="basictidy.html#cb169-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise_all</span>(mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb169-5"><a href="basictidy.html#cb169-5" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 4</span></span>
+<span id="cb169-6"><a href="basictidy.html#cb169-6" aria-hidden="true"></a><span class="co">##    time diagtime   kps   age</span></span>
+<span id="cb169-7"><a href="basictidy.html#cb169-7" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb169-8"><a href="basictidy.html#cb169-8" aria-hidden="true"></a><span class="co">## 1  122.     58.6  8.77  58.3</span></span>
+<span id="cb169-9"><a href="basictidy.html#cb169-9" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(time, diagtime, kps, age) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb169-10"><a href="basictidy.html#cb169-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise_all</span>(<span class="kw">list</span>(mean, sd), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb169-11"><a href="basictidy.html#cb169-11" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 8</span></span>
+<span id="cb169-12"><a href="basictidy.html#cb169-12" aria-hidden="true"></a><span class="co">##   time_fn1 diagtime_fn1 kps_fn1 age_fn1 time_fn2</span></span>
+<span id="cb169-13"><a href="basictidy.html#cb169-13" aria-hidden="true"></a><span class="co">##      &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb169-14"><a href="basictidy.html#cb169-14" aria-hidden="true"></a><span class="co">## 1     122.         58.6    8.77    58.3     158.</span></span>
+<span id="cb169-15"><a href="basictidy.html#cb169-15" aria-hidden="true"></a><span class="co">## # ... with 3 more variables: diagtime_fn2 &lt;dbl&gt;,</span></span>
+<span id="cb169-16"><a href="basictidy.html#cb169-16" aria-hidden="true"></a><span class="co">## #   kps_fn2 &lt;dbl&gt;, age_fn2 &lt;dbl&gt;</span></span>
+<span id="cb169-17"><a href="basictidy.html#cb169-17" aria-hidden="true"></a>dd <span class="op">%&gt;%</span></span>
+<span id="cb169-18"><a href="basictidy.html#cb169-18" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise_each</span>(<span class="kw">list</span>(mean, sd), time, age) <span class="co"># not so useful</span></span>
+<span id="cb169-19"><a href="basictidy.html#cb169-19" aria-hidden="true"></a><span class="co">## Warning: `summarise_each_()` is deprecated as of dplyr 0.7.0.</span></span>
+<span id="cb169-20"><a href="basictidy.html#cb169-20" aria-hidden="true"></a><span class="co">## Please use `across()` instead.</span></span>
+<span id="cb169-21"><a href="basictidy.html#cb169-21" aria-hidden="true"></a><span class="co">## This warning is displayed once every 8 hours.</span></span>
+<span id="cb169-22"><a href="basictidy.html#cb169-22" aria-hidden="true"></a><span class="co">## Call `lifecycle::last_warnings()` to see where this warning was generated.</span></span>
+<span id="cb169-23"><a href="basictidy.html#cb169-23" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 4</span></span>
+<span id="cb169-24"><a href="basictidy.html#cb169-24" aria-hidden="true"></a><span class="co">##   time_fn1 age_fn1 time_fn2 age_fn2</span></span>
+<span id="cb169-25"><a href="basictidy.html#cb169-25" aria-hidden="true"></a><span class="co">##      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb169-26"><a href="basictidy.html#cb169-26" aria-hidden="true"></a><span class="co">## 1     122.    58.3     158.    10.5</span></span>
+<span id="cb169-27"><a href="basictidy.html#cb169-27" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb169-28"><a href="basictidy.html#cb169-28" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, <span class="st">&quot;age&quot;</span>), mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb169-29"><a href="basictidy.html#cb169-29" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 2</span></span>
+<span id="cb169-30"><a href="basictidy.html#cb169-30" aria-hidden="true"></a><span class="co">##    time   age</span></span>
+<span id="cb169-31"><a href="basictidy.html#cb169-31" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb169-32"><a href="basictidy.html#cb169-32" aria-hidden="true"></a><span class="co">## 1  122.  58.3</span></span>
+<span id="cb169-33"><a href="basictidy.html#cb169-33" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb169-34"><a href="basictidy.html#cb169-34" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(time, age), mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb169-35"><a href="basictidy.html#cb169-35" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 2</span></span>
+<span id="cb169-36"><a href="basictidy.html#cb169-36" aria-hidden="true"></a><span class="co">##    time   age</span></span>
+<span id="cb169-37"><a href="basictidy.html#cb169-37" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb169-38"><a href="basictidy.html#cb169-38" aria-hidden="true"></a><span class="co">## 1  122.  58.3</span></span>
+<span id="cb169-39"><a href="basictidy.html#cb169-39" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb169-40"><a href="basictidy.html#cb169-40" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise_if</span>(is.numeric, <span class="kw">list</span>(mean, sd), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb169-41"><a href="basictidy.html#cb169-41" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 8</span></span>
+<span id="cb169-42"><a href="basictidy.html#cb169-42" aria-hidden="true"></a><span class="co">##   time_fn1 diagtime_fn1 kps_fn1 age_fn1 time_fn2</span></span>
+<span id="cb169-43"><a href="basictidy.html#cb169-43" aria-hidden="true"></a><span class="co">##      &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb169-44"><a href="basictidy.html#cb169-44" aria-hidden="true"></a><span class="co">## 1     122.         58.6    8.77    58.3     158.</span></span>
+<span id="cb169-45"><a href="basictidy.html#cb169-45" aria-hidden="true"></a><span class="co">## # ... with 3 more variables: diagtime_fn2 &lt;dbl&gt;,</span></span>
+<span id="cb169-46"><a href="basictidy.html#cb169-46" aria-hidden="true"></a><span class="co">## #   kps_fn2 &lt;dbl&gt;, age_fn2 &lt;dbl&gt;</span></span></code></pre></div>
+</div>
+</div>
+<div id="資料聯集與交集函式" class="section level2" number="8.7">
+<h2><span class="header-section-number">8.7</span> 資料聯集與交集函式</h2>
+<p>若二組資料有相同的變數, 但可能僅有部分相同的個體,
+可以利用二組資料聯集與交集操作選出個體.</p>
+<ul>
+<li><code>intersect(x, y)</code> 選出 <code>x</code> 與 <code>y</code> 都存在的不同個體.</li>
+<li><code>union(x, y)</code> 選出 <code>x</code> 與 <code>y</code> 存在的不同個體.</li>
+<li><code>setdiff(x, y)</code> 選出存在 <code>x</code> 但不存在 <code>y</code> 的不同個體.</li>
+</ul>
+<p>以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+隨機從前 10 位個體重覆抽取 7 位, 進行 2 次, 得到 2 組資料.</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="basictidy.html#cb170-1" aria-hidden="true"></a><span class="co">## set operation</span></span>
+<span id="cb170-2"><a href="basictidy.html#cb170-2" aria-hidden="true"></a>df &lt;-<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb170-3"><a href="basictidy.html#cb170-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(treat, cellcode, time, censor, age) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb170-4"><a href="basictidy.html#cb170-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb170-5"><a href="basictidy.html#cb170-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(id <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>)</span>
+<span id="cb170-6"><a href="basictidy.html#cb170-6" aria-hidden="true"></a>df</span>
+<span id="cb170-7"><a href="basictidy.html#cb170-7" aria-hidden="true"></a><span class="co">## # A tibble: 10 x 6</span></span>
+<span id="cb170-8"><a href="basictidy.html#cb170-8" aria-hidden="true"></a><span class="co">##    treat   cellcode  time censor     age    id</span></span>
+<span id="cb170-9"><a href="basictidy.html#cb170-9" aria-hidden="true"></a><span class="co">##    &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;    &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb170-10"><a href="basictidy.html#cb170-10" aria-hidden="true"></a><span class="co">##  1 placebo squamous    72 dead        69     1</span></span>
+<span id="cb170-11"><a href="basictidy.html#cb170-11" aria-hidden="true"></a><span class="co">##  2 placebo squamous   411 dead        64     2</span></span>
+<span id="cb170-12"><a href="basictidy.html#cb170-12" aria-hidden="true"></a><span class="co">##  3 placebo squamous   228 dead        38     3</span></span>
+<span id="cb170-13"><a href="basictidy.html#cb170-13" aria-hidden="true"></a><span class="co">##  4 placebo squamous   126 dead        63     4</span></span>
+<span id="cb170-14"><a href="basictidy.html#cb170-14" aria-hidden="true"></a><span class="co">##  5 placebo squamous   118 dead        65     5</span></span>
+<span id="cb170-15"><a href="basictidy.html#cb170-15" aria-hidden="true"></a><span class="co">##  6 placebo squamous    10 dead        49     6</span></span>
+<span id="cb170-16"><a href="basictidy.html#cb170-16" aria-hidden="true"></a><span class="co">##  7 placebo squamous    82 dead        69     7</span></span>
+<span id="cb170-17"><a href="basictidy.html#cb170-17" aria-hidden="true"></a><span class="co">##  8 placebo squamous   110 dead        68     8</span></span>
+<span id="cb170-18"><a href="basictidy.html#cb170-18" aria-hidden="true"></a><span class="co">##  9 placebo squamous   314 dead        43     9</span></span>
+<span id="cb170-19"><a href="basictidy.html#cb170-19" aria-hidden="true"></a><span class="co">## 10 placebo squamous   100 survival    70    10</span></span>
+<span id="cb170-20"><a href="basictidy.html#cb170-20" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb170-21"><a href="basictidy.html#cb170-21" aria-hidden="true"></a>x &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dt">size =</span> <span class="dv">7</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb170-22"><a href="basictidy.html#cb170-22" aria-hidden="true"></a>y &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dt">size =</span> <span class="dv">7</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb170-23"><a href="basictidy.html#cb170-23" aria-hidden="true"></a>x</span>
+<span id="cb170-24"><a href="basictidy.html#cb170-24" aria-hidden="true"></a><span class="co">## # A tibble: 7 x 6</span></span>
+<span id="cb170-25"><a href="basictidy.html#cb170-25" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor   age    id</span></span>
+<span id="cb170-26"><a href="basictidy.html#cb170-26" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb170-27"><a href="basictidy.html#cb170-27" aria-hidden="true"></a><span class="co">## 1 placebo squamous   314 dead      43     9</span></span>
+<span id="cb170-28"><a href="basictidy.html#cb170-28" aria-hidden="true"></a><span class="co">## 2 placebo squamous   126 dead      63     4</span></span>
+<span id="cb170-29"><a href="basictidy.html#cb170-29" aria-hidden="true"></a><span class="co">## 3 placebo squamous    82 dead      69     7</span></span>
+<span id="cb170-30"><a href="basictidy.html#cb170-30" aria-hidden="true"></a><span class="co">## 4 placebo squamous    72 dead      69     1</span></span>
+<span id="cb170-31"><a href="basictidy.html#cb170-31" aria-hidden="true"></a><span class="co">## 5 placebo squamous   411 dead      64     2</span></span>
+<span id="cb170-32"><a href="basictidy.html#cb170-32" aria-hidden="true"></a><span class="co">## 6 placebo squamous    82 dead      69     7</span></span>
+<span id="cb170-33"><a href="basictidy.html#cb170-33" aria-hidden="true"></a><span class="co">## 7 placebo squamous   411 dead      64     2</span></span>
+<span id="cb170-34"><a href="basictidy.html#cb170-34" aria-hidden="true"></a>y</span>
+<span id="cb170-35"><a href="basictidy.html#cb170-35" aria-hidden="true"></a><span class="co">## # A tibble: 7 x 6</span></span>
+<span id="cb170-36"><a href="basictidy.html#cb170-36" aria-hidden="true"></a><span class="co">##   treat   cellcode  time censor     age    id</span></span>
+<span id="cb170-37"><a href="basictidy.html#cb170-37" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;    &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb170-38"><a href="basictidy.html#cb170-38" aria-hidden="true"></a><span class="co">## 1 placebo squamous   228 dead        38     3</span></span>
+<span id="cb170-39"><a href="basictidy.html#cb170-39" aria-hidden="true"></a><span class="co">## 2 placebo squamous    72 dead        69     1</span></span>
+<span id="cb170-40"><a href="basictidy.html#cb170-40" aria-hidden="true"></a><span class="co">## 3 placebo squamous   118 dead        65     5</span></span>
+<span id="cb170-41"><a href="basictidy.html#cb170-41" aria-hidden="true"></a><span class="co">## 4 placebo squamous   118 dead        65     5</span></span>
+<span id="cb170-42"><a href="basictidy.html#cb170-42" aria-hidden="true"></a><span class="co">## 5 placebo squamous   100 survival    70    10</span></span>
+<span id="cb170-43"><a href="basictidy.html#cb170-43" aria-hidden="true"></a><span class="co">## 6 placebo squamous    10 dead        49     6</span></span>
+<span id="cb170-44"><a href="basictidy.html#cb170-44" aria-hidden="true"></a><span class="co">## 7 placebo squamous   100 survival    70    10</span></span>
+<span id="cb170-45"><a href="basictidy.html#cb170-45" aria-hidden="true"></a><span class="kw">intersect</span>(x, y)</span>
+<span id="cb170-46"><a href="basictidy.html#cb170-46" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 2</span></span>
+<span id="cb170-47"><a href="basictidy.html#cb170-47" aria-hidden="true"></a><span class="co">##   treat   treat  </span></span>
+<span id="cb170-48"><a href="basictidy.html#cb170-48" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;   &lt;fct&gt;  </span></span>
+<span id="cb170-49"><a href="basictidy.html#cb170-49" aria-hidden="true"></a><span class="co">## 1 placebo placebo</span></span>
+<span id="cb170-50"><a href="basictidy.html#cb170-50" aria-hidden="true"></a><span class="kw">union</span>(x, y)</span>
+<span id="cb170-51"><a href="basictidy.html#cb170-51" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb170-52"><a href="basictidy.html#cb170-52" aria-hidden="true"></a><span class="co">## [1] placebo placebo placebo placebo placebo placebo placebo</span></span>
+<span id="cb170-53"><a href="basictidy.html#cb170-53" aria-hidden="true"></a><span class="co">## Levels: placebo test</span></span>
+<span id="cb170-54"><a href="basictidy.html#cb170-54" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-55"><a href="basictidy.html#cb170-55" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb170-56"><a href="basictidy.html#cb170-56" aria-hidden="true"></a><span class="co">## [1] squamous squamous squamous squamous squamous squamous</span></span>
+<span id="cb170-57"><a href="basictidy.html#cb170-57" aria-hidden="true"></a><span class="co">## [7] squamous</span></span>
+<span id="cb170-58"><a href="basictidy.html#cb170-58" aria-hidden="true"></a><span class="co">## Levels: squamous small adeno large</span></span>
+<span id="cb170-59"><a href="basictidy.html#cb170-59" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-60"><a href="basictidy.html#cb170-60" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb170-61"><a href="basictidy.html#cb170-61" aria-hidden="true"></a><span class="co">## [1] 314 126  82  72 411  82 411</span></span>
+<span id="cb170-62"><a href="basictidy.html#cb170-62" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-63"><a href="basictidy.html#cb170-63" aria-hidden="true"></a><span class="co">## [[4]]</span></span>
+<span id="cb170-64"><a href="basictidy.html#cb170-64" aria-hidden="true"></a><span class="co">## [1] dead dead dead dead dead dead dead</span></span>
+<span id="cb170-65"><a href="basictidy.html#cb170-65" aria-hidden="true"></a><span class="co">## Levels: survival dead</span></span>
+<span id="cb170-66"><a href="basictidy.html#cb170-66" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-67"><a href="basictidy.html#cb170-67" aria-hidden="true"></a><span class="co">## [[5]]</span></span>
+<span id="cb170-68"><a href="basictidy.html#cb170-68" aria-hidden="true"></a><span class="co">## [1] 43 63 69 69 64 69 64</span></span>
+<span id="cb170-69"><a href="basictidy.html#cb170-69" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-70"><a href="basictidy.html#cb170-70" aria-hidden="true"></a><span class="co">## [[6]]</span></span>
+<span id="cb170-71"><a href="basictidy.html#cb170-71" aria-hidden="true"></a><span class="co">## [1] 9 4 7 1 2 7 2</span></span>
+<span id="cb170-72"><a href="basictidy.html#cb170-72" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-73"><a href="basictidy.html#cb170-73" aria-hidden="true"></a><span class="co">## [[7]]</span></span>
+<span id="cb170-74"><a href="basictidy.html#cb170-74" aria-hidden="true"></a><span class="co">## [1] 228  72 118 118 100  10 100</span></span>
+<span id="cb170-75"><a href="basictidy.html#cb170-75" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-76"><a href="basictidy.html#cb170-76" aria-hidden="true"></a><span class="co">## [[8]]</span></span>
+<span id="cb170-77"><a href="basictidy.html#cb170-77" aria-hidden="true"></a><span class="co">## [1] dead     dead     dead     dead     survival dead    </span></span>
+<span id="cb170-78"><a href="basictidy.html#cb170-78" aria-hidden="true"></a><span class="co">## [7] survival</span></span>
+<span id="cb170-79"><a href="basictidy.html#cb170-79" aria-hidden="true"></a><span class="co">## Levels: survival dead</span></span>
+<span id="cb170-80"><a href="basictidy.html#cb170-80" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-81"><a href="basictidy.html#cb170-81" aria-hidden="true"></a><span class="co">## [[9]]</span></span>
+<span id="cb170-82"><a href="basictidy.html#cb170-82" aria-hidden="true"></a><span class="co">## [1] 38 69 65 65 70 49 70</span></span>
+<span id="cb170-83"><a href="basictidy.html#cb170-83" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb170-84"><a href="basictidy.html#cb170-84" aria-hidden="true"></a><span class="co">## [[10]]</span></span>
+<span id="cb170-85"><a href="basictidy.html#cb170-85" aria-hidden="true"></a><span class="co">## [1]  3  1  5  5 10  6 10</span></span>
+<span id="cb170-86"><a href="basictidy.html#cb170-86" aria-hidden="true"></a><span class="kw">setdiff</span>(x, y)</span>
+<span id="cb170-87"><a href="basictidy.html#cb170-87" aria-hidden="true"></a><span class="co">## # A tibble: 5 x 4</span></span>
+<span id="cb170-88"><a href="basictidy.html#cb170-88" aria-hidden="true"></a><span class="co">##    time censor   age    id</span></span>
+<span id="cb170-89"><a href="basictidy.html#cb170-89" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb170-90"><a href="basictidy.html#cb170-90" aria-hidden="true"></a><span class="co">## 1   314 dead      43     9</span></span>
+<span id="cb170-91"><a href="basictidy.html#cb170-91" aria-hidden="true"></a><span class="co">## 2   126 dead      63     4</span></span>
+<span id="cb170-92"><a href="basictidy.html#cb170-92" aria-hidden="true"></a><span class="co">## 3    82 dead      69     7</span></span>
+<span id="cb170-93"><a href="basictidy.html#cb170-93" aria-hidden="true"></a><span class="co">## 4    72 dead      69     1</span></span>
+<span id="cb170-94"><a href="basictidy.html#cb170-94" aria-hidden="true"></a><span class="co">## 5   411 dead      64     2</span></span></code></pre></div>
+</div>
+<div id="資料合併函式" class="section level2" number="8.8">
+<h2><span class="header-section-number">8.8</span> 資料合併函式</h2>
+<p>資料經常儲存再不同檔案,
+例如門診檔, 住院檔, 實驗室檔,
+同一位個體常須使用個體辨識碼 (id) 或姓名 (names)
+進行合併或清理.
+用來連結不同資料的個體辨識碼或變數稱為
+<strong>關鍵碼</strong> 或 <strong>所引鍵</strong>
+(<strong>key</strong>),
+多數為個體辨識碼, 當有時為時間, 日期, 文見編號等,
+可能同時須使用 2 個變數才能成為單一辨識碼,
+例如, 同時須使用醫院與院內病歷號,
+避免不同個體在不同醫院卻有有相同的病歷號.
+<code>tidyverse</code> 系統的有許多 <code>_join_(x, y)</code> 函式可進行各種資料合併.
+若 2 組資料包含一些相同變數, 盪不同觀測值, 此時必須小心處理.</p>
+<ul>
+<li><code>inner_join(x, y)</code> 包函 <code>x</code> 與 <code>y</code> 都配對存在的 <code>x</code> 與 <code>y</code> 個體與變數</li>
+<li><code>left_join(x, y)</code> 包函所有 <code>x</code> 個體與變數且在 <code>y</code> 有配對存在的 <code>y</code> 個體與變數</li>
+<li><code>right_join(x, y)</code>包函所有 <code>y</code> 個體與變數且在 <code>x</code> 有配對存在的 <code>x</code> 個體與變數</li>
+<li><code>full_join(x, y)</code> 包函所有 <code>x</code> 與 <code>y</code> 的個體與變數資料</li>
+<li><code>semi_join(x, y)</code> 包函 <code>x</code> 在 <code>y</code> 有配對存在的 <code>x</code> 個體與變數</li>
+<li><code>anti_join(x, y)</code> 包函 <code>x</code> 在 <code>y</code> 無配對存在的 <code>x</code> 個體與變數</li>
+</ul>
+<div class="figure">
+<img src="images/tidyversrejoin.png" alt="" />
+<p class="caption"><code>dplyr::_join</code></p>
+</div>
+<p>以資料在檔案第 5 章的 <strong>survVATrial.csv</strong> 為例,
+隨機從前 10 位個體抽取 7 位, 進行 2 次, 得到 2 組資料 <code>x</code> 與 <code>y</code>.
+<code>x</code> 資料包函 <code>id</code>, <code>treat</code>, time<code>,</code>age<code>.</code>y<code>資料包函</code>id<code>,</code>cellcode<code>,</code>ceosor<code>,</code>age`.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="basictidy.html#cb171-1" aria-hidden="true"></a><span class="co">## _join()</span></span>
+<span id="cb171-2"><a href="basictidy.html#cb171-2" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb171-3"><a href="basictidy.html#cb171-3" aria-hidden="true"></a>df &lt;-<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb171-4"><a href="basictidy.html#cb171-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(treat, cellcode, time, censor, age) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb171-5"><a href="basictidy.html#cb171-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb171-6"><a href="basictidy.html#cb171-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(id <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>) </span>
+<span id="cb171-7"><a href="basictidy.html#cb171-7" aria-hidden="true"></a>x &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb171-8"><a href="basictidy.html#cb171-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(id, treat, time, age) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb171-9"><a href="basictidy.html#cb171-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dt">size =</span> <span class="dv">7</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb171-10"><a href="basictidy.html#cb171-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">arrange</span>(id)</span>
+<span id="cb171-11"><a href="basictidy.html#cb171-11" aria-hidden="true"></a>y &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb171-12"><a href="basictidy.html#cb171-12" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(id, cellcode, censor, age) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb171-13"><a href="basictidy.html#cb171-13" aria-hidden="true"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dt">size =</span> <span class="dv">7</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)  <span class="op">%&gt;%</span></span>
+<span id="cb171-14"><a href="basictidy.html#cb171-14" aria-hidden="true"></a><span class="st">  </span><span class="kw">arrange</span>(id)</span>
+<span id="cb171-15"><a href="basictidy.html#cb171-15" aria-hidden="true"></a>x</span>
+<span id="cb171-16"><a href="basictidy.html#cb171-16" aria-hidden="true"></a><span class="co">## # A tibble: 7 x 4</span></span>
+<span id="cb171-17"><a href="basictidy.html#cb171-17" aria-hidden="true"></a><span class="co">##      id treat    time   age</span></span>
+<span id="cb171-18"><a href="basictidy.html#cb171-18" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb171-19"><a href="basictidy.html#cb171-19" aria-hidden="true"></a><span class="co">## 1     1 placebo    72    69</span></span>
+<span id="cb171-20"><a href="basictidy.html#cb171-20" aria-hidden="true"></a><span class="co">## 2     2 placebo   411    64</span></span>
+<span id="cb171-21"><a href="basictidy.html#cb171-21" aria-hidden="true"></a><span class="co">## 3     3 placebo   228    38</span></span>
+<span id="cb171-22"><a href="basictidy.html#cb171-22" aria-hidden="true"></a><span class="co">## 4     4 placebo   126    63</span></span>
+<span id="cb171-23"><a href="basictidy.html#cb171-23" aria-hidden="true"></a><span class="co">## 5     5 placebo   118    65</span></span>
+<span id="cb171-24"><a href="basictidy.html#cb171-24" aria-hidden="true"></a><span class="co">## 6     7 placebo    82    69</span></span>
+<span id="cb171-25"><a href="basictidy.html#cb171-25" aria-hidden="true"></a><span class="co">## 7     9 placebo   314    43</span></span>
+<span id="cb171-26"><a href="basictidy.html#cb171-26" aria-hidden="true"></a>y</span>
+<span id="cb171-27"><a href="basictidy.html#cb171-27" aria-hidden="true"></a><span class="co">## # A tibble: 7 x 4</span></span>
+<span id="cb171-28"><a href="basictidy.html#cb171-28" aria-hidden="true"></a><span class="co">##      id cellcode censor     age</span></span>
+<span id="cb171-29"><a href="basictidy.html#cb171-29" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;    &lt;int&gt;</span></span>
+<span id="cb171-30"><a href="basictidy.html#cb171-30" aria-hidden="true"></a><span class="co">## 1     1 squamous dead        69</span></span>
+<span id="cb171-31"><a href="basictidy.html#cb171-31" aria-hidden="true"></a><span class="co">## 2     2 squamous dead        64</span></span>
+<span id="cb171-32"><a href="basictidy.html#cb171-32" aria-hidden="true"></a><span class="co">## 3     3 squamous dead        38</span></span>
+<span id="cb171-33"><a href="basictidy.html#cb171-33" aria-hidden="true"></a><span class="co">## 4     5 squamous dead        65</span></span>
+<span id="cb171-34"><a href="basictidy.html#cb171-34" aria-hidden="true"></a><span class="co">## 5     6 squamous dead        49</span></span>
+<span id="cb171-35"><a href="basictidy.html#cb171-35" aria-hidden="true"></a><span class="co">## 6     7 squamous dead        69</span></span>
+<span id="cb171-36"><a href="basictidy.html#cb171-36" aria-hidden="true"></a><span class="co">## 7    10 squamous survival    70</span></span>
+<span id="cb171-37"><a href="basictidy.html#cb171-37" aria-hidden="true"></a><span class="kw">inner_join</span>(x, y)</span>
+<span id="cb171-38"><a href="basictidy.html#cb171-38" aria-hidden="true"></a><span class="co">## # A tibble: 5 x 6</span></span>
+<span id="cb171-39"><a href="basictidy.html#cb171-39" aria-hidden="true"></a><span class="co">##      id treat    time   age cellcode censor</span></span>
+<span id="cb171-40"><a href="basictidy.html#cb171-40" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;   &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt; </span></span>
+<span id="cb171-41"><a href="basictidy.html#cb171-41" aria-hidden="true"></a><span class="co">## 1     1 placebo    72    69 squamous dead  </span></span>
+<span id="cb171-42"><a href="basictidy.html#cb171-42" aria-hidden="true"></a><span class="co">## 2     2 placebo   411    64 squamous dead  </span></span>
+<span id="cb171-43"><a href="basictidy.html#cb171-43" aria-hidden="true"></a><span class="co">## 3     3 placebo   228    38 squamous dead  </span></span>
+<span id="cb171-44"><a href="basictidy.html#cb171-44" aria-hidden="true"></a><span class="co">## 4     5 placebo   118    65 squamous dead  </span></span>
+<span id="cb171-45"><a href="basictidy.html#cb171-45" aria-hidden="true"></a><span class="co">## 5     7 placebo    82    69 squamous dead</span></span>
+<span id="cb171-46"><a href="basictidy.html#cb171-46" aria-hidden="true"></a><span class="kw">left_join</span>(x, y) </span>
+<span id="cb171-47"><a href="basictidy.html#cb171-47" aria-hidden="true"></a><span class="co">## # A tibble: 7 x 6</span></span>
+<span id="cb171-48"><a href="basictidy.html#cb171-48" aria-hidden="true"></a><span class="co">##      id treat    time   age cellcode censor</span></span>
+<span id="cb171-49"><a href="basictidy.html#cb171-49" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;   &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt; </span></span>
+<span id="cb171-50"><a href="basictidy.html#cb171-50" aria-hidden="true"></a><span class="co">## 1     1 placebo    72    69 squamous dead  </span></span>
+<span id="cb171-51"><a href="basictidy.html#cb171-51" aria-hidden="true"></a><span class="co">## 2     2 placebo   411    64 squamous dead  </span></span>
+<span id="cb171-52"><a href="basictidy.html#cb171-52" aria-hidden="true"></a><span class="co">## 3     3 placebo   228    38 squamous dead  </span></span>
+<span id="cb171-53"><a href="basictidy.html#cb171-53" aria-hidden="true"></a><span class="co">## 4     4 placebo   126    63 &lt;NA&gt;     &lt;NA&gt;  </span></span>
+<span id="cb171-54"><a href="basictidy.html#cb171-54" aria-hidden="true"></a><span class="co">## 5     5 placebo   118    65 squamous dead  </span></span>
+<span id="cb171-55"><a href="basictidy.html#cb171-55" aria-hidden="true"></a><span class="co">## 6     7 placebo    82    69 squamous dead  </span></span>
+<span id="cb171-56"><a href="basictidy.html#cb171-56" aria-hidden="true"></a><span class="co">## 7     9 placebo   314    43 &lt;NA&gt;     &lt;NA&gt;</span></span>
+<span id="cb171-57"><a href="basictidy.html#cb171-57" aria-hidden="true"></a><span class="kw">right_join</span>(x, y)</span>
+<span id="cb171-58"><a href="basictidy.html#cb171-58" aria-hidden="true"></a><span class="co">## # A tibble: 7 x 6</span></span>
+<span id="cb171-59"><a href="basictidy.html#cb171-59" aria-hidden="true"></a><span class="co">##      id treat    time   age cellcode censor  </span></span>
+<span id="cb171-60"><a href="basictidy.html#cb171-60" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;   &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;   </span></span>
+<span id="cb171-61"><a href="basictidy.html#cb171-61" aria-hidden="true"></a><span class="co">## 1     1 placebo    72    69 squamous dead    </span></span>
+<span id="cb171-62"><a href="basictidy.html#cb171-62" aria-hidden="true"></a><span class="co">## 2     2 placebo   411    64 squamous dead    </span></span>
+<span id="cb171-63"><a href="basictidy.html#cb171-63" aria-hidden="true"></a><span class="co">## 3     3 placebo   228    38 squamous dead    </span></span>
+<span id="cb171-64"><a href="basictidy.html#cb171-64" aria-hidden="true"></a><span class="co">## 4     5 placebo   118    65 squamous dead    </span></span>
+<span id="cb171-65"><a href="basictidy.html#cb171-65" aria-hidden="true"></a><span class="co">## 5     7 placebo    82    69 squamous dead    </span></span>
+<span id="cb171-66"><a href="basictidy.html#cb171-66" aria-hidden="true"></a><span class="co">## 6     6 &lt;NA&gt;       NA    49 squamous dead    </span></span>
+<span id="cb171-67"><a href="basictidy.html#cb171-67" aria-hidden="true"></a><span class="co">## 7    10 &lt;NA&gt;       NA    70 squamous survival</span></span>
+<span id="cb171-68"><a href="basictidy.html#cb171-68" aria-hidden="true"></a><span class="kw">full_join</span>(x, y) </span>
+<span id="cb171-69"><a href="basictidy.html#cb171-69" aria-hidden="true"></a><span class="co">## # A tibble: 9 x 6</span></span>
+<span id="cb171-70"><a href="basictidy.html#cb171-70" aria-hidden="true"></a><span class="co">##      id treat    time   age cellcode censor  </span></span>
+<span id="cb171-71"><a href="basictidy.html#cb171-71" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;   &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;   </span></span>
+<span id="cb171-72"><a href="basictidy.html#cb171-72" aria-hidden="true"></a><span class="co">## 1     1 placebo    72    69 squamous dead    </span></span>
+<span id="cb171-73"><a href="basictidy.html#cb171-73" aria-hidden="true"></a><span class="co">## 2     2 placebo   411    64 squamous dead    </span></span>
+<span id="cb171-74"><a href="basictidy.html#cb171-74" aria-hidden="true"></a><span class="co">## 3     3 placebo   228    38 squamous dead    </span></span>
+<span id="cb171-75"><a href="basictidy.html#cb171-75" aria-hidden="true"></a><span class="co">## 4     4 placebo   126    63 &lt;NA&gt;     &lt;NA&gt;    </span></span>
+<span id="cb171-76"><a href="basictidy.html#cb171-76" aria-hidden="true"></a><span class="co">## 5     5 placebo   118    65 squamous dead    </span></span>
+<span id="cb171-77"><a href="basictidy.html#cb171-77" aria-hidden="true"></a><span class="co">## 6     7 placebo    82    69 squamous dead    </span></span>
+<span id="cb171-78"><a href="basictidy.html#cb171-78" aria-hidden="true"></a><span class="co">## 7     9 placebo   314    43 &lt;NA&gt;     &lt;NA&gt;    </span></span>
+<span id="cb171-79"><a href="basictidy.html#cb171-79" aria-hidden="true"></a><span class="co">## 8     6 &lt;NA&gt;       NA    49 squamous dead    </span></span>
+<span id="cb171-80"><a href="basictidy.html#cb171-80" aria-hidden="true"></a><span class="co">## 9    10 &lt;NA&gt;       NA    70 squamous survival</span></span>
+<span id="cb171-81"><a href="basictidy.html#cb171-81" aria-hidden="true"></a><span class="kw">semi_join</span>(x, y) </span>
+<span id="cb171-82"><a href="basictidy.html#cb171-82" aria-hidden="true"></a><span class="co">## # A tibble: 5 x 4</span></span>
+<span id="cb171-83"><a href="basictidy.html#cb171-83" aria-hidden="true"></a><span class="co">##      id treat    time   age</span></span>
+<span id="cb171-84"><a href="basictidy.html#cb171-84" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb171-85"><a href="basictidy.html#cb171-85" aria-hidden="true"></a><span class="co">## 1     1 placebo    72    69</span></span>
+<span id="cb171-86"><a href="basictidy.html#cb171-86" aria-hidden="true"></a><span class="co">## 2     2 placebo   411    64</span></span>
+<span id="cb171-87"><a href="basictidy.html#cb171-87" aria-hidden="true"></a><span class="co">## 3     3 placebo   228    38</span></span>
+<span id="cb171-88"><a href="basictidy.html#cb171-88" aria-hidden="true"></a><span class="co">## 4     5 placebo   118    65</span></span>
+<span id="cb171-89"><a href="basictidy.html#cb171-89" aria-hidden="true"></a><span class="co">## 5     7 placebo    82    69</span></span>
+<span id="cb171-90"><a href="basictidy.html#cb171-90" aria-hidden="true"></a><span class="kw">anti_join</span>(x, y) </span>
+<span id="cb171-91"><a href="basictidy.html#cb171-91" aria-hidden="true"></a><span class="co">## # A tibble: 2 x 4</span></span>
+<span id="cb171-92"><a href="basictidy.html#cb171-92" aria-hidden="true"></a><span class="co">##      id treat    time   age</span></span>
+<span id="cb171-93"><a href="basictidy.html#cb171-93" aria-hidden="true"></a><span class="co">##   &lt;int&gt; &lt;fct&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb171-94"><a href="basictidy.html#cb171-94" aria-hidden="true"></a><span class="co">## 1     4 placebo   126    63</span></span>
+<span id="cb171-95"><a href="basictidy.html#cb171-95" aria-hidden="true"></a><span class="co">## 2     9 placebo   314    43</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basicstat.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "PMingLiU",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r4biost.pdf", "r4biost.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

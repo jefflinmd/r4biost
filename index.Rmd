@@ -1,0 +1,78 @@
+--- 
+title: "R 資料科學與統計"
+author: "Jeff Lin"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "R 資料科學與統計"
+---
+
+
+
+```{r echo=FALSE, message=FALSE, results='hide'}
+library(bookdown)
+library(rsconnect)
+library(rmarkdown)
+# https://2020rbiost.netlify.app/
+# bookdown::publish_book(render = 'local')
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=80, tidy=TRUE, highlight=FALSE, collapse=TRUE), fig.width = 4.5, fig.height = 3.5, message=FALSE)
+# show text in hook1
+hook1 <- function(x){ gsub("```\n*```r*\n*", "", x) }
+hook2 <- function(x){ gsub("```\n+```\n", "", x) }
+knit_hooks$set(document = hook1)
+```
+
+# Prerequisites {-}
+
+
+
+R 可視為統計數學軟體, 也是一種程式語言,
+而近年來的發展, R 更成為資料科學的熱門的工具之一.
+R 是一個免費的統計分析軟體 (open-source, GNU General Public License),
+R 由一群跨國際的志工人員組成的 {R} 核心發展組織 (R core-development team) 所維持, 運作與持續更新發展.
+
+
+目前對初學者的 R 入門學習有二大主要論點, 
+一為學習使用 R Base 原始語言與原始套件, 
+二為直接學習外部套件, 如 ggplot2, tidyverse 系統.
+無論哪一種方式各有其優缺點.
+個人認為對未來必須經常性使用 R 進行資料分析工作的初學者,
+則建議先學習使用 R Base 原始語言.
+對於未來僅在少數時間必須使用 R 進行資料分析工作,
+或是僅在統計學上課使用, 
+則建議學習 ggplot2, tidyverse 等外部套件.
+至於已經具有其他程式語言基礎, 則二者學習方式無多大差別.
+作者個人對學習使用 R Base 原始語言與原始套件的介紹, 可參考
+[R 程式語言與醫學統計](https://www.jefflinmd.com/book/rintro/).
+
+
+目前有許多 R 書籍, 寫作本書主要是為了個人上課方便使用,
+假設讀者沒有太多統計資料分析概念或經驗,
+也無程式語言寫作經驗.
+本書的主要寫作對象為醫師或醫學研究人員,
+以及使用 R 輔助學習統計的大學生為主. 
+本書使用 R **bookdown** package 寫作 [@R-bookdown], 方便隨時更新內容.
+
+
+本書前面章節資料使用醫學相關資料或是基礎統計學相關資料,
+先降低資料的複雜性有助於了解 R 統計程式語言的核心,
+後面章節再導入大數據分析.
+本書關於 R base 多數摘取本人 R base 內容,
+[R 程式語言與醫學統計](https://www.jefflinmd.com/book/rintro/),
+後面章節主要介紹使用 ggplot2, tidyverse 系統套件進資料分析工作,
+主要參考來源 https://r4ds.had.co.nz/ 與 https://rstudio-education.github.io/hopr/.
+但學習歷程很難將二者完全切割,
+通常會交錯並進.
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+

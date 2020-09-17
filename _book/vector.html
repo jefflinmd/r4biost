@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 向量 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 2 向量 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 向量 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 2 向量 | R 資料科學與統計" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 向量 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 2 向量 | R 資料科學與統計" />
+  
+
+<meta name="author" content="Jeff Lin" />
+
+
+<meta name="date" content="2020-09-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="dataobject.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>2</b> 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector.html"><a href="vector.html#向量"><i class="fa fa-check"></i><b>2.1</b> 向量</a></li>
+<li class="chapter" data-level="2.2" data-path="vector.html"><a href="vector.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a></li>
+<li class="chapter" data-level="2.3" data-path="vector.html"><a href="vector.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.3</b> 向量產生函式 <code>c()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="vector.html"><a href="vector.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.4</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.5" data-path="vector.html"><a href="vector.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.5</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector.html"><a href="vector.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.6</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.7" data-path="vector.html"><a href="vector.html#向量邏輯操作"><i class="fa fa-check"></i><b>2.7</b> 向量邏輯操作</a></li>
+<li class="chapter" data-level="2.8" data-path="vector.html"><a href="vector.html#向量元素命名"><i class="fa fa-check"></i><b>2.8</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.9" data-path="vector.html"><a href="vector.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.9</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.10" data-path="vector.html"><a href="vector.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.10</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.11" data-path="vector.html"><a href="vector.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.11</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataobject.html"><a href="dataobject.html"><i class="fa fa-check"></i><b>3</b> 資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataobject.html"><a href="dataobject.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dataobject.html"><a href="dataobject.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dataobject.html"><a href="dataobject.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dataobject.html"><a href="dataobject.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="dataobject.html"><a href="dataobject.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.2.1</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dataobject.html"><a href="dataobject.html#陣列物件-array"><i class="fa fa-check"></i><b>3.2.2</b> 陣列物件 Array</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="dataobject.html"><a href="dataobject.html#列表物件-list"><i class="fa fa-check"></i><b>3.3</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dataobject.html"><a href="dataobject.html#列表函式-list"><i class="fa fa-check"></i><b>3.3.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dataobject.html"><a href="dataobject.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.3.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="dataobject.html"><a href="dataobject.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.4</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.5" data-path="dataobject.html"><a href="dataobject.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.5</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="dataobject.html"><a href="dataobject.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.5.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datainout.html"><a href="datainout.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datainout.html"><a href="datainout.html#資料框架"><i class="fa fa-check"></i><b>4.1</b> 資料框架</a></li>
+<li class="chapter" data-level="4.2" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-空白分隔"><i class="fa fa-check"></i><b>4.2</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔</a></li>
+<li class="chapter" data-level="4.3" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔"><i class="fa fa-check"></i><b>4.3</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</a></li>
+<li class="chapter" data-level="4.4" data-path="datainout.html"><a href="datainout.html#r-內建資料框架"><i class="fa fa-check"></i><b>4.4</b> R 內建資料框架</a></li>
+<li class="chapter" data-level="4.5" data-path="datainout.html"><a href="datainout.html#輸出-r-資料"><i class="fa fa-check"></i><b>4.5</b> 輸出 {R} 資料</a></li>
+<li class="chapter" data-level="4.6" data-path="datainout.html"><a href="datainout.html#儲存-r-格式資料檔"><i class="fa fa-check"></i><b>4.6</b> 儲存 {R} 格式資料檔</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>5</b> 資料視覺化分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataviz.html"><a href="dataviz.html#視覺化分析原則"><i class="fa fa-check"></i><b>5.1</b> 視覺化分析原則</a></li>
+<li class="chapter" data-level="5.2" data-path="dataviz.html"><a href="dataviz.html#繪圖套件-ggplot2"><i class="fa fa-check"></i><b>5.2</b> 繪圖套件 ggplot2</a></li>
+<li class="chapter" data-level="5.3" data-path="dataviz.html"><a href="dataviz.html#類別變數"><i class="fa fa-check"></i><b>5.3</b> 類別變數</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="dataviz.html"><a href="dataviz.html#單類別變數"><i class="fa fa-check"></i><b>5.3.1</b> 單類別變數</a></li>
+<li class="chapter" data-level="5.3.2" data-path="dataviz.html"><a href="dataviz.html#多類別變數"><i class="fa fa-check"></i><b>5.3.2</b> 多類別變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="dataviz.html"><a href="dataviz.html#連續變數"><i class="fa fa-check"></i><b>5.4</b> 連續變數</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dataviz.html"><a href="dataviz.html#單連續變數"><i class="fa fa-check"></i><b>5.4.1</b> 單連續變數</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dataviz.html"><a href="dataviz.html#二連續變數"><i class="fa fa-check"></i><b>5.4.2</b> 二連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dataviz.html"><a href="dataviz.html#混合變數"><i class="fa fa-check"></i><b>5.5</b> 混合變數</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="dataviz.html"><a href="dataviz.html#一連續-一類別"><i class="fa fa-check"></i><b>5.5.1</b> 一連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.2" data-path="dataviz.html"><a href="dataviz.html#二連續-一類別"><i class="fa fa-check"></i><b>5.5.2</b> 二連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.3" data-path="dataviz.html"><a href="dataviz.html#三連續變數"><i class="fa fa-check"></i><b>5.5.3</b> 三連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="dataviz.html"><a href="dataviz.html#分組繪圖"><i class="fa fa-check"></i><b>5.6</b> 分組繪圖</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html"><i class="fa fa-check"></i><b>6</b> 基本函式</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#函式語法"><i class="fa fa-check"></i><b>6.1</b> 函式語法</a></li>
+<li class="chapter" data-level="6.2" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#檢視的函式原始碼定義"><i class="fa fa-check"></i><b>6.2</b> 檢視的函式原始碼定義</a></li>
+<li class="chapter" data-level="6.3" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式"><i class="fa fa-check"></i><b>6.3</b> 數列函式</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式-seq-與-sequence"><i class="fa fa-check"></i><b>6.3.1</b> 數列函式: seq() 與 sequence()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#重複元素函式-rep"><i class="fa fa-check"></i><b>6.4</b> 重複元素函式: rep()</a></li>
+<li class="chapter" data-level="6.5" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#算數函式-arithmetic-computing-function"><i class="fa fa-check"></i><b>6.5</b> 算數函式 Arithmetic Computing Function</a></li>
+<li class="chapter" data-level="6.6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#組合與階乘函式-choose-與-factorial"><i class="fa fa-check"></i><b>6.6</b> 組合與階乘函式: choose() 與 factorial()</a></li>
+<li class="chapter" data-level="6.7" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#選擇資料函式-all-any-which"><i class="fa fa-check"></i><b>6.7</b> 選擇資料函式: all(), any(), which()</a></li>
+<li class="chapter" data-level="6.8" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#排序函式-ranking-and-sorting"><i class="fa fa-check"></i><b>6.8</b> 排序函式 Ranking and Sorting</a></li>
+<li class="chapter" data-level="6.9" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#物件查看與強制轉換函式"><i class="fa fa-check"></i><b>6.9</b> 物件查看與強制轉換函式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basicstat.html"><a href="basicstat.html"><i class="fa fa-check"></i><b>7</b> 基本統計函式</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basicstat.html"><a href="basicstat.html#敘述統計函式"><i class="fa fa-check"></i><b>7.1</b> 敘述統計函式</a></li>
+<li class="chapter" data-level="7.2" data-path="basicstat.html"><a href="basicstat.html#類別資料表格函數"><i class="fa fa-check"></i><b>7.2</b> 類別資料表格函數</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-table-xtabs"><i class="fa fa-check"></i><b>7.2.1</b> 列聯表函式: table(), xtabs()</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-ftable"><i class="fa fa-check"></i><b>7.2.2</b> 列聯表函式: ftable()</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-margin.table-prop.table"><i class="fa fa-check"></i><b>7.2.3</b> 列聯表函式: margin.table(), prop.table()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basicstat.html"><a href="basicstat.html#機率函式與亂數生成函式"><i class="fa fa-check"></i><b>7.3</b> 機率函式與亂數生成函式</a></li>
+<li class="chapter" data-level="7.4" data-path="basicstat.html"><a href="basicstat.html#隨機抽樣函式-sample"><i class="fa fa-check"></i><b>7.4</b> 隨機抽樣函式 sample()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basictidy.html"><a href="basictidy.html"><i class="fa fa-check"></i><b>8</b> 資料基本處理</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basictidy.html"><a href="basictidy.html#資料輸入套件-readr"><i class="fa fa-check"></i><b>8.1</b> 資料輸入套件 readr</a></li>
+<li class="chapter" data-level="8.2" data-path="basictidy.html"><a href="basictidy.html#整潔資料-tidy-data"><i class="fa fa-check"></i><b>8.2</b> 整潔資料 Tidy Data</a></li>
+<li class="chapter" data-level="8.3" data-path="basictidy.html"><a href="basictidy.html#tibble-與-data-frame"><i class="fa fa-check"></i><b>8.3</b> Tibble 與 Data Frame</a></li>
+<li class="chapter" data-level="8.4" data-path="basictidy.html"><a href="basictidy.html#資料流動管道運算指令-pipe"><i class="fa fa-check"></i><b>8.4</b> 資料流動管道運算指令 Pipe</a></li>
+<li class="chapter" data-level="8.5" data-path="basictidy.html"><a href="basictidy.html#資料檢視函式-glimpse"><i class="fa fa-check"></i><b>8.5</b> 資料檢視函式 glimpse()</a></li>
+<li class="chapter" data-level="8.6" data-path="basictidy.html"><a href="basictidy.html#資料處裡-dplyr-套件"><i class="fa fa-check"></i><b>8.6</b> 資料處裡 dplyr 套件</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="basictidy.html"><a href="basictidy.html#選擇個體函式-filter"><i class="fa fa-check"></i><b>8.6.1</b> 選擇個體函式 <code>filter()</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
+<li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
+<li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
+<li class="chapter" data-level="11" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>11</b> Temp</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vector" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> 向量</h1>
+<p>{R} 是以物件導向為主的程式語言,
+在 {R} 中, 資料或運算指令以具有名稱的
+<strong>物件</strong>
+(<strong>object</strong>),
+形式儲存,
+資料物件可以是 向量 (vector),
+矩陣 (matrix),
+陣列 (array),
+列表 (Lists),
+或 資料框架 (data frames) 等.
+在 {R} 中, 資料分析基本上是產生資料物件,
+對物件命名, 使用函式對物件運算操作.
+透過指令, 很容易地對物件進行統計分析與統計繪圖.
+{R} 的資料結構與程式寫作相對於目前當紅的其他程式語言較多嚴謹的要求,
+本章主要說明 {R} 的基本資料型式與基本運算.</p>
+<div id="向量" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 向量</h2>
+<p>{R} 的最基本物件是向量,
+<strong>向量</strong> (<strong>vector</strong>)
+是指包含相同
+<strong>模式</strong>
+(<strong>mode</strong>)
+的元素組成.
+{R} 的基本資料型式稱為
+<strong>基本模式</strong>
+(<strong>basic mode</strong>) 有
+<strong>numeric</strong>, <strong>integer</strong>, <strong>logical</strong>, <strong>complex</strong>, <strong>character</strong>.
+同一向量內的元素不可混合.</p>
+<p>單一數值 (scalar), 可視為僅具有單一元素的向量,
+標準的向量是
+倍精準度 (double) 的
+數值向量
+({numerical vector}).
+向量是具有相同基本類型的元素序列,
+在 {R} 中, 純量或單一數值
+(<strong>scalar</strong>)
+也可看成是長度為 <span class="math inline">\(1\)</span> 的向量,
+向量大體上相當於其他程式語言中的 <span class="math inline">\(1\)</span>-維度數列,
+但在 {R} 中向量並不具有
+<strong>沒有維度</strong>
+(<strong>no dimension</strong>).
+例如, 在 {R} 中 <code>x.vec &lt;- c(1, 2, 3)</code>,
+可以視為 <span class="math inline">\(1 \times 3\)</span> 的矩陣,
+也可以視為 <span class="math inline">\(3 \times 1\)</span> 的矩陣,
+但是, 當向量 <code>x.vec</code> 與其它向量/矩陣進行運算時,
+向量 <code>x.vec</code> 會受到與其進行運算的矩陣物件影響,
+若任由 {R} 的內在設定,
+則常會有意想不到的運算結果.</p>
+</div>
+<div id="向量基本資料類型" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> 向量基本資料類型</h2>
+<p>{R} 的最基本物件是向量,
+<strong>向量</strong>
+是指包含相同
+<strong>模式</strong>
+(<strong>mode</strong>)
+的元素組成.
+{R} 的基本資料型式稱為
+<strong>基本模式</strong>
+(<strong>basic mode</strong>) 有
+<strong>numeric</strong>, <strong>integer</strong>, <strong>logical</strong>, <strong>complex</strong>, <strong>character</strong>,
+使用函式 <code>class()</code> 可以檢視基本模式.</p>
+<ul>
+<li><strong>numeric</strong>, 數值型 (實數型), 含 <strong>single</strong> 單精準度型與 <strong>double</strong> 倍精準度型.</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="vector.html#cb29-1" aria-hidden="true"></a><span class="co"># numeric</span></span>
+<span id="cb29-2"><a href="vector.html#cb29-2" aria-hidden="true"></a>x1 &lt;-<span class="st"> </span><span class="fl">10.1</span> </span>
+<span id="cb29-3"><a href="vector.html#cb29-3" aria-hidden="true"></a>x1</span>
+<span id="cb29-4"><a href="vector.html#cb29-4" aria-hidden="true"></a><span class="co">## [1] 10.1</span></span>
+<span id="cb29-5"><a href="vector.html#cb29-5" aria-hidden="true"></a><span class="kw">class</span>(x1)</span>
+<span id="cb29-6"><a href="vector.html#cb29-6" aria-hidden="true"></a><span class="co">## [1] &quot;numeric&quot;</span></span>
+<span id="cb29-7"><a href="vector.html#cb29-7" aria-hidden="true"></a>x2 &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb29-8"><a href="vector.html#cb29-8" aria-hidden="true"></a>x2</span>
+<span id="cb29-9"><a href="vector.html#cb29-9" aria-hidden="true"></a><span class="co">## [1] 10</span></span>
+<span id="cb29-10"><a href="vector.html#cb29-10" aria-hidden="true"></a><span class="kw">class</span>(x2)</span>
+<span id="cb29-11"><a href="vector.html#cb29-11" aria-hidden="true"></a><span class="co">## [1] &quot;numeric&quot;</span></span>
+<span id="cb29-12"><a href="vector.html#cb29-12" aria-hidden="true"></a><span class="kw">is.numeric</span>(x2)</span>
+<span id="cb29-13"><a href="vector.html#cb29-13" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
+<ul>
+<li><strong>integer</strong>, 整數向量 (有時需特別指定輸入成 1L, 2L, …).</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="vector.html#cb30-1" aria-hidden="true"></a><span class="co"># integer</span></span>
+<span id="cb30-2"><a href="vector.html#cb30-2" aria-hidden="true"></a>y1 &lt;-<span class="st"> </span>1L</span>
+<span id="cb30-3"><a href="vector.html#cb30-3" aria-hidden="true"></a>y1</span>
+<span id="cb30-4"><a href="vector.html#cb30-4" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
+<span id="cb30-5"><a href="vector.html#cb30-5" aria-hidden="true"></a><span class="kw">class</span>(y1)</span>
+<span id="cb30-6"><a href="vector.html#cb30-6" aria-hidden="true"></a><span class="co">## [1] &quot;integer&quot;</span></span>
+<span id="cb30-7"><a href="vector.html#cb30-7" aria-hidden="true"></a><span class="kw">is.integer</span>(y1)</span>
+<span id="cb30-8"><a href="vector.html#cb30-8" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb30-9"><a href="vector.html#cb30-9" aria-hidden="true"></a><span class="kw">is.numeric</span>(y1)</span>
+<span id="cb30-10"><a href="vector.html#cb30-10" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
+<ul>
+<li><strong>logical</strong>, 邏輯型或布林型 (true or false), 以 <strong>TRUE</strong> (<strong>T</strong>) 或 <strong>FALSE</strong> (<strong>F</strong>)
+呈現, 也可以是 <span class="math inline">\(1\)</span> 與 <span class="math inline">\(0\)</span> 整數分別代表 <strong>T</strong> 與 <strong>F</strong>.</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="vector.html#cb31-1" aria-hidden="true"></a><span class="co"># logic</span></span>
+<span id="cb31-2"><a href="vector.html#cb31-2" aria-hidden="true"></a>yes_id &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb31-3"><a href="vector.html#cb31-3" aria-hidden="true"></a>yes_id</span>
+<span id="cb31-4"><a href="vector.html#cb31-4" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb31-5"><a href="vector.html#cb31-5" aria-hidden="true"></a>no_id &lt;-<span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb31-6"><a href="vector.html#cb31-6" aria-hidden="true"></a>no_id</span>
+<span id="cb31-7"><a href="vector.html#cb31-7" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb31-8"><a href="vector.html#cb31-8" aria-hidden="true"></a><span class="kw">class</span>(no_id)</span>
+<span id="cb31-9"><a href="vector.html#cb31-9" aria-hidden="true"></a><span class="co">## [1] &quot;logical&quot;</span></span>
+<span id="cb31-10"><a href="vector.html#cb31-10" aria-hidden="true"></a><span class="kw">is.logical</span>(no_id)</span>
+<span id="cb31-11"><a href="vector.html#cb31-11" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb31-12"><a href="vector.html#cb31-12" aria-hidden="true"></a><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb31-13"><a href="vector.html#cb31-13" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb31-14"><a href="vector.html#cb31-14" aria-hidden="true"></a><span class="dv">2</span> <span class="op">!=</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb31-15"><a href="vector.html#cb31-15" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb31-16"><a href="vector.html#cb31-16" aria-hidden="true"></a><span class="dv">2</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb31-17"><a href="vector.html#cb31-17" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb31-18"><a href="vector.html#cb31-18" aria-hidden="true"></a><span class="dv">2</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb31-19"><a href="vector.html#cb31-19" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb31-20"><a href="vector.html#cb31-20" aria-hidden="true"></a><span class="dv">4</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb31-21"><a href="vector.html#cb31-21" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb31-22"><a href="vector.html#cb31-22" aria-hidden="true"></a><span class="ot">TRUE</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb31-23"><a href="vector.html#cb31-23" aria-hidden="true"></a><span class="co">## [1] 6</span></span>
+<span id="cb31-24"><a href="vector.html#cb31-24" aria-hidden="true"></a><span class="ot">TRUE</span> <span class="op">*</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb31-25"><a href="vector.html#cb31-25" aria-hidden="true"></a><span class="co">## [1] 5</span></span>
+<span id="cb31-26"><a href="vector.html#cb31-26" aria-hidden="true"></a><span class="ot">FALSE</span> <span class="op">*</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb31-27"><a href="vector.html#cb31-27" aria-hidden="true"></a><span class="co">## [1] 0</span></span>
+<span id="cb31-28"><a href="vector.html#cb31-28" aria-hidden="true"></a><span class="ot">TRUE</span> <span class="op">+</span><span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb31-29"><a href="vector.html#cb31-29" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
+<span id="cb31-30"><a href="vector.html#cb31-30" aria-hidden="true"></a><span class="ot">TRUE</span> <span class="op">*</span><span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb31-31"><a href="vector.html#cb31-31" aria-hidden="true"></a><span class="co">## [1] 0</span></span></code></pre></div>
+<ul>
+<li><strong>complex</strong>, 複數型.</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="vector.html#cb32-1" aria-hidden="true"></a>x =<span class="st"> </span><span class="dv">3</span><span class="op">+</span>5i</span>
+<span id="cb32-2"><a href="vector.html#cb32-2" aria-hidden="true"></a>x</span>
+<span id="cb32-3"><a href="vector.html#cb32-3" aria-hidden="true"></a><span class="co">## [1] 3+5i</span></span>
+<span id="cb32-4"><a href="vector.html#cb32-4" aria-hidden="true"></a><span class="kw">class</span>(x)</span>
+<span id="cb32-5"><a href="vector.html#cb32-5" aria-hidden="true"></a><span class="co">## [1] &quot;complex&quot;</span></span></code></pre></div>
+<ul>
+<li><strong>character</strong>, 文字型或字串型, 通常輸入時在文字兩側加上雙引號 (<strong>"</strong>).</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="vector.html#cb33-1" aria-hidden="true"></a><span class="co"># character</span></span>
+<span id="cb33-2"><a href="vector.html#cb33-2" aria-hidden="true"></a>ca &lt;-<span class="st"> &quot;yes&quot;</span></span>
+<span id="cb33-3"><a href="vector.html#cb33-3" aria-hidden="true"></a>ca</span>
+<span id="cb33-4"><a href="vector.html#cb33-4" aria-hidden="true"></a><span class="co">## [1] &quot;yes&quot;</span></span>
+<span id="cb33-5"><a href="vector.html#cb33-5" aria-hidden="true"></a>cb &lt;-<span class="st"> &quot;this is a book.&quot;</span></span>
+<span id="cb33-6"><a href="vector.html#cb33-6" aria-hidden="true"></a>cb</span>
+<span id="cb33-7"><a href="vector.html#cb33-7" aria-hidden="true"></a><span class="co">## [1] &quot;this is a book.&quot;</span></span>
+<span id="cb33-8"><a href="vector.html#cb33-8" aria-hidden="true"></a><span class="kw">class</span>(cb)</span>
+<span id="cb33-9"><a href="vector.html#cb33-9" aria-hidden="true"></a><span class="co">## [1] &quot;character&quot;</span></span>
+<span id="cb33-10"><a href="vector.html#cb33-10" aria-hidden="true"></a><span class="kw">is.character</span>(cb)</span>
+<span id="cb33-11"><a href="vector.html#cb33-11" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb33-12"><a href="vector.html#cb33-12" aria-hidden="true"></a><span class="st">&quot;abc&quot;</span> <span class="op">&gt;</span><span class="st"> &quot;abd&quot;</span></span>
+<span id="cb33-13"><a href="vector.html#cb33-13" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb33-14"><a href="vector.html#cb33-14" aria-hidden="true"></a><span class="st">&quot;date&quot;</span> <span class="op">&lt;</span><span class="st"> &quot;dates&quot;</span></span>
+<span id="cb33-15"><a href="vector.html#cb33-15" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
+<p>資料分析另外常見的日期與類別變數也必須特別處裡.
+格式有 ’Date<code>,</code>POSIXct<code>與</code>POSIXt<code>等, 例如, 使用函式</code>Sys.Date()` 可得系統日期.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="vector.html#cb34-1" aria-hidden="true"></a><span class="kw">Sys.Date</span>()</span>
+<span id="cb34-2"><a href="vector.html#cb34-2" aria-hidden="true"></a><span class="co">## [1] &quot;2020-09-16&quot;</span></span>
+<span id="cb34-3"><a href="vector.html#cb34-3" aria-hidden="true"></a>date1 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-09-17&quot;</span>)</span>
+<span id="cb34-4"><a href="vector.html#cb34-4" aria-hidden="true"></a>date1</span>
+<span id="cb34-5"><a href="vector.html#cb34-5" aria-hidden="true"></a><span class="co">## [1] &quot;2020-09-17&quot;</span></span>
+<span id="cb34-6"><a href="vector.html#cb34-6" aria-hidden="true"></a><span class="kw">class</span>(date1)</span>
+<span id="cb34-7"><a href="vector.html#cb34-7" aria-hidden="true"></a><span class="co">## [1] &quot;Date&quot;</span></span>
+<span id="cb34-8"><a href="vector.html#cb34-8" aria-hidden="true"></a><span class="kw">as.numeric</span>(date1)</span>
+<span id="cb34-9"><a href="vector.html#cb34-9" aria-hidden="true"></a><span class="co">## [1] 18522</span></span>
+<span id="cb34-10"><a href="vector.html#cb34-10" aria-hidden="true"></a>date2 &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-09-17 18:30&quot;</span>)</span>
+<span id="cb34-11"><a href="vector.html#cb34-11" aria-hidden="true"></a><span class="kw">class</span>(date2)</span>
+<span id="cb34-12"><a href="vector.html#cb34-12" aria-hidden="true"></a><span class="co">## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</span></span>
+<span id="cb34-13"><a href="vector.html#cb34-13" aria-hidden="true"></a><span class="kw">as.numeric</span>(date2)</span>
+<span id="cb34-14"><a href="vector.html#cb34-14" aria-hidden="true"></a><span class="co">## [1] 1.6e+09</span></span></code></pre></div>
+<p>詳細的日期與類別變數操作, 以後再詳述.</p>
+</div>
+<div id="向量產生函式-c" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> 向量產生函式 <code>c()</code></h2>
+<p>輸入簡單的向量資料, 可以用函式
+<code>c()</code>
+指令.
+<code>c()</code>為 <strong>concatenate</strong> (<strong>連接</strong>),
+將數值或文字連接成向量.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="vector.html#cb35-1" aria-hidden="true"></a><span class="co">## c()</span></span>
+<span id="cb35-2"><a href="vector.html#cb35-2" aria-hidden="true"></a><span class="co">## numerical</span></span>
+<span id="cb35-3"><a href="vector.html#cb35-3" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">1</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>)</span>
+<span id="cb35-4"><a href="vector.html#cb35-4" aria-hidden="true"></a>x.vec</span>
+<span id="cb35-5"><a href="vector.html#cb35-5" aria-hidden="true"></a><span class="co">## [1] 1.0000 0.5000 0.3333 0.2500 0.2000</span></span>
+<span id="cb35-6"><a href="vector.html#cb35-6" aria-hidden="true"></a><span class="co">## integer</span></span>
+<span id="cb35-7"><a href="vector.html#cb35-7" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L)</span>
+<span id="cb35-8"><a href="vector.html#cb35-8" aria-hidden="true"></a>x.vec</span>
+<span id="cb35-9"><a href="vector.html#cb35-9" aria-hidden="true"></a><span class="co">## [1] 1 2 3</span></span>
+<span id="cb35-10"><a href="vector.html#cb35-10" aria-hidden="true"></a><span class="co">## character</span></span>
+<span id="cb35-11"><a href="vector.html#cb35-11" aria-hidden="true"></a>flavors.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;chocolate&quot;</span>, <span class="st">&quot;vanilla&quot;</span>, <span class="st">&quot;strawberry&quot;</span>) <span class="co"># character</span></span>
+<span id="cb35-12"><a href="vector.html#cb35-12" aria-hidden="true"></a>flavors.vec</span>
+<span id="cb35-13"><a href="vector.html#cb35-13" aria-hidden="true"></a><span class="co">## [1] &quot;chocolate&quot;  &quot;vanilla&quot;    &quot;strawberry&quot;</span></span>
+<span id="cb35-14"><a href="vector.html#cb35-14" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;What&#39;s your name?&quot;</span>, <span class="st">&quot;Your email?&quot;</span>)</span>
+<span id="cb35-15"><a href="vector.html#cb35-15" aria-hidden="true"></a>y.vec</span>
+<span id="cb35-16"><a href="vector.html#cb35-16" aria-hidden="true"></a><span class="co">## [1] &quot;Hello&quot;             &quot;What&#39;s your name?&quot;</span></span>
+<span id="cb35-17"><a href="vector.html#cb35-17" aria-hidden="true"></a><span class="co">## [3] &quot;Your email?&quot;</span></span>
+<span id="cb35-18"><a href="vector.html#cb35-18" aria-hidden="true"></a><span class="co">## logical</span></span>
+<span id="cb35-19"><a href="vector.html#cb35-19" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span><span class="kw">c</span>(F, T, T, F, F)</span>
+<span id="cb35-20"><a href="vector.html#cb35-20" aria-hidden="true"></a>z.vec</span>
+<span id="cb35-21"><a href="vector.html#cb35-21" aria-hidden="true"></a><span class="co">## [1] FALSE  TRUE  TRUE FALSE FALSE</span></span>
+<span id="cb35-22"><a href="vector.html#cb35-22" aria-hidden="true"></a><span class="co">## complex</span></span>
+<span id="cb35-23"><a href="vector.html#cb35-23" aria-hidden="true"></a>x.complex.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span><span class="op">+</span>3i, <span class="dv">9</span><span class="op">+</span>0i, <span class="dv">2</span><span class="op">+</span>4i)</span>
+<span id="cb35-24"><a href="vector.html#cb35-24" aria-hidden="true"></a>x.complex.vec</span>
+<span id="cb35-25"><a href="vector.html#cb35-25" aria-hidden="true"></a><span class="co">## [1] 8+3i 9+0i 2+4i</span></span>
+<span id="cb35-26"><a href="vector.html#cb35-26" aria-hidden="true"></a><span class="co">## numerical</span></span>
+<span id="cb35-27"><a href="vector.html#cb35-27" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">1</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>)</span>
+<span id="cb35-28"><a href="vector.html#cb35-28" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb35-29"><a href="vector.html#cb35-29" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span><span class="kw">c</span>(x.vec, <span class="dv">11</span>, <span class="dv">12</span>, y.vec)</span>
+<span id="cb35-30"><a href="vector.html#cb35-30" aria-hidden="true"></a>z.vec</span>
+<span id="cb35-31"><a href="vector.html#cb35-31" aria-hidden="true"></a><span class="co">##  [1]  1.0000  0.5000  0.3333  0.2500  0.2000 11.0000</span></span>
+<span id="cb35-32"><a href="vector.html#cb35-32" aria-hidden="true"></a><span class="co">##  [7] 12.0000  1.0000  2.0000  3.0000  4.0000  5.0000</span></span></code></pre></div>
+</div>
+<div id="向量基本運算操作符號" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> 向量基本運算操作符號</h2>
+<p>{R} 對物件運算操作有其
+<strong>基本操作符號</strong>
+(<strong>basic operators</strong>), 如同 <code>C</code> 語言,
+可以分成算數操作 (arithmetic operator),
+相關比較操作 (relation/comparison operator),
+邏輯操作 (logical operator).
+{R} 也是一種高階程式語言 (programming language),
+因此提供了其它程序語言共有的
+條件 (if-else),
+轉換 (switch),
+迴圈 (loop)
+與
+函式 (function) 等,
+程序控制結構語法,
+進階資料分析使用高階程式語言與函式寫作進行.
+本章先討論基本運算操作.</p>
+<table>
+<caption>向量基本運算操作符號</caption>
+<thead>
+<tr class="header">
+<th>符號</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-</td>
+<td>減法運算 (Substraction, can be unary or binary)</td>
+</tr>
+<tr class="even">
+<td>+</td>
+<td>加法運算 (Addition, can be unary or binary)</td>
+</tr>
+<tr class="odd">
+<td>!</td>
+<td>否定運算 (Unary not)</td>
+</tr>
+<tr class="even">
+<td>*</td>
+<td>乘法運算 (Multiplication, binary)</td>
+</tr>
+<tr class="odd">
+<td>/</td>
+<td>除法運算 (Division, binary)</td>
+</tr>
+<tr class="even">
+<td>^</td>
+<td>指數乘冪運算 (Exponentiation, binary)</td>
+</tr>
+<tr class="odd">
+<td>%%</td>
+<td>整數除法的餘數 (Modulus, binary)</td>
+</tr>
+<tr class="even">
+<td>%/%</td>
+<td>整數除法的商數 (Integer divide, binary)</td>
+</tr>
+<tr class="odd">
+<td>%*%</td>
+<td>矩陣內積乘法 (Matrix product, binary)</td>
+</tr>
+<tr class="even">
+<td>%o%</td>
+<td>矩陣外積乘法 (Outer product, binary)</td>
+</tr>
+<tr class="odd">
+<td>%x%</td>
+<td>矩陣 Kronecker 乘法 (Kronecker product, binary)</td>
+</tr>
+<tr class="even">
+<td>%in%</td>
+<td>配對運算 (Matching operator, binary, in model formulae: nesting)</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>小於 Less than, binary</td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>大於 Greater than, binary</td>
+</tr>
+<tr class="odd">
+<td><code>==</code></td>
+<td>相等 Equal to, binary</td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>不相等 Not equal to</td>
+</tr>
+<tr class="odd">
+<td><code>&gt;=</code></td>
+<td>大於或等於 Greater than or equal to, binary</td>
+</tr>
+<tr class="even">
+<td><code>&lt;=</code></td>
+<td>小於或等於 Less than or equal to, binary</td>
+</tr>
+<tr class="odd">
+<td><code>&amp;</code></td>
+<td>邏輯 <code>和</code>, 向量的個別元素使用 (Logical AND, binary, vectorized)</td>
+</tr>
+<tr class="even">
+<td><code>&amp;&amp;</code></td>
+<td>邏輯 <code>和</code>, 二元操作 (Logical AND, binary, not vectorized)</td>
+</tr>
+<tr class="odd">
+<td><code>|</code></td>
+<td>邏輯 <code>或</code>, 向量的個別元素使用 (Logical OR, binary, vectorized)</td>
+</tr>
+<tr class="even">
+<td><code>||</code></td>
+<td>邏輯 <code>或</code>, 二元操作 (Logical OR, binary, not vectorized)</td>
+</tr>
+<tr class="odd">
+<td><code>xor</code></td>
+<td>邏輯 ``或’’, 向量個別元素互斥聯集運算, 僅有 1 為 TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="向量基本算數操作" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> 向量基本算數操作</h2>
+<p>{R} 向量物件的
+<strong>算數操作</strong>
+(<strong>arithmetic operator</strong>)
+符號包含以下符號,
+<code>+</code>, <code>-</code>, <code>!</code>, <code>*</code>, <code>/</code>, <code>\^</code>, <code>%%</code>, <code>%/%</code>, <code>%*%</code>, <code>%o%</code>, <code>%x%</code>, <code>%in%</code> 等
+算數操作根據最基本的運算次序:
+括號, 指數, 乘法, 除法, 加減法, 也就是如同一般手寫計算.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="vector.html#cb36-1" aria-hidden="true"></a><span class="co">## Arithmetic Operator</span></span>
+<span id="cb36-2"><a href="vector.html#cb36-2" aria-hidden="true"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb36-3"><a href="vector.html#cb36-3" aria-hidden="true"></a><span class="co">## [1] 3</span></span>
+<span id="cb36-4"><a href="vector.html#cb36-4" aria-hidden="true"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb36-5"><a href="vector.html#cb36-5" aria-hidden="true"></a><span class="co">## [1] 6</span></span>
+<span id="cb36-6"><a href="vector.html#cb36-6" aria-hidden="true"></a><span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">7</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb36-7"><a href="vector.html#cb36-7" aria-hidden="true"></a><span class="co">## [1] 42</span></span>
+<span id="cb36-8"><a href="vector.html#cb36-8" aria-hidden="true"></a><span class="dv">4</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb36-9"><a href="vector.html#cb36-9" aria-hidden="true"></a><span class="co">## [1] 2</span></span>
+<span id="cb36-10"><a href="vector.html#cb36-10" aria-hidden="true"></a><span class="dv">4</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb36-11"><a href="vector.html#cb36-11" aria-hidden="true"></a><span class="co">## [1] 1.333</span></span>
+<span id="cb36-12"><a href="vector.html#cb36-12" aria-hidden="true"></a><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span></span>
+<span id="cb36-13"><a href="vector.html#cb36-13" aria-hidden="true"></a><span class="co">## [1] 10</span></span>
+<span id="cb36-14"><a href="vector.html#cb36-14" aria-hidden="true"></a><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span>)</span>
+<span id="cb36-15"><a href="vector.html#cb36-15" aria-hidden="true"></a><span class="co">## [1] 14</span></span>
+<span id="cb36-16"><a href="vector.html#cb36-16" aria-hidden="true"></a>(<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">11</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span></span>
+<span id="cb36-17"><a href="vector.html#cb36-17" aria-hidden="true"></a><span class="co">## [1] 6.25</span></span>
+<span id="cb36-18"><a href="vector.html#cb36-18" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb36-19"><a href="vector.html#cb36-19" aria-hidden="true"></a>x.complex &lt;-<span class="st"> </span>(<span class="dv">8</span><span class="op">+</span>3i)<span class="op">+</span>(<span class="dv">1</span><span class="op">+</span>2i)</span>
+<span id="cb36-20"><a href="vector.html#cb36-20" aria-hidden="true"></a>x.complex</span>
+<span id="cb36-21"><a href="vector.html#cb36-21" aria-hidden="true"></a><span class="co">## [1] 9+5i</span></span>
+<span id="cb36-22"><a href="vector.html#cb36-22" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb36-23"><a href="vector.html#cb36-23" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb36-24"><a href="vector.html#cb36-24" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb36-25"><a href="vector.html#cb36-25" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb36-26"><a href="vector.html#cb36-26" aria-hidden="true"></a>x.vec <span class="op">+</span><span class="st"> </span>y.vec</span>
+<span id="cb36-27"><a href="vector.html#cb36-27" aria-hidden="true"></a><span class="co">## [1] 0 0 3 6 9</span></span>
+<span id="cb36-28"><a href="vector.html#cb36-28" aria-hidden="true"></a>x.vec <span class="op">-</span><span class="st"> </span>y.vec</span>
+<span id="cb36-29"><a href="vector.html#cb36-29" aria-hidden="true"></a><span class="co">## [1] 2 4 3 2 1</span></span>
+<span id="cb36-30"><a href="vector.html#cb36-30" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb36-31"><a href="vector.html#cb36-31" aria-hidden="true"></a>x.vec <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb36-32"><a href="vector.html#cb36-32" aria-hidden="true"></a><span class="co">## [1]  2  4  6  8 10</span></span>
+<span id="cb36-33"><a href="vector.html#cb36-33" aria-hidden="true"></a>x.vec <span class="op">*</span><span class="st"> </span>y.vec</span>
+<span id="cb36-34"><a href="vector.html#cb36-34" aria-hidden="true"></a><span class="co">## [1] -1 -4  0  8 20</span></span>
+<span id="cb36-35"><a href="vector.html#cb36-35" aria-hidden="true"></a>x.vec<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb36-36"><a href="vector.html#cb36-36" aria-hidden="true"></a><span class="co">## [1] 0.5 1.0 1.5 2.0 2.5</span></span>
+<span id="cb36-37"><a href="vector.html#cb36-37" aria-hidden="true"></a>x.vec<span class="op">/</span>y.vec</span>
+<span id="cb36-38"><a href="vector.html#cb36-38" aria-hidden="true"></a><span class="co">## [1] -1.00 -1.00   Inf  2.00  1.25</span></span>
+<span id="cb36-39"><a href="vector.html#cb36-39" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb36-40"><a href="vector.html#cb36-40" aria-hidden="true"></a>x.vec<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb36-41"><a href="vector.html#cb36-41" aria-hidden="true"></a><span class="co">## [1]  1  4  9 16 25</span></span>
+<span id="cb36-42"><a href="vector.html#cb36-42" aria-hidden="true"></a>x.vec<span class="op">^</span>z.vec</span>
+<span id="cb36-43"><a href="vector.html#cb36-43" aria-hidden="true"></a><span class="co">## [1]   1   4  27  64 625</span></span>
+<span id="cb36-44"><a href="vector.html#cb36-44" aria-hidden="true"></a>y.vec<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb36-45"><a href="vector.html#cb36-45" aria-hidden="true"></a><span class="co">## [1] -0.5 -1.0  0.0  1.0  2.0</span></span>
+<span id="cb36-46"><a href="vector.html#cb36-46" aria-hidden="true"></a>y.vec<span class="op">/</span>x.vec</span>
+<span id="cb36-47"><a href="vector.html#cb36-47" aria-hidden="true"></a><span class="co">## [1] -1.0 -1.0  0.0  0.5  0.8</span></span>
+<span id="cb36-48"><a href="vector.html#cb36-48" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb36-49"><a href="vector.html#cb36-49" aria-hidden="true"></a>y.vec <span class="op">%%</span><span class="st"> </span><span class="dv">3</span>  <span class="co"># modular arithmetic remainder</span></span>
+<span id="cb36-50"><a href="vector.html#cb36-50" aria-hidden="true"></a><span class="co">## [1] 2 1 0 2 1</span></span>
+<span id="cb36-51"><a href="vector.html#cb36-51" aria-hidden="true"></a>y.vec <span class="op">%/%</span><span class="st"> </span><span class="dv">3</span>   <span class="co"># integer division</span></span>
+<span id="cb36-52"><a href="vector.html#cb36-52" aria-hidden="true"></a><span class="co">## [1] -1 -1  0  0  1</span></span>
+<span id="cb36-53"><a href="vector.html#cb36-53" aria-hidden="true"></a>y.vec <span class="op">%/%</span><span class="st"> </span>x.vec</span>
+<span id="cb36-54"><a href="vector.html#cb36-54" aria-hidden="true"></a><span class="co">## [1] -1 -1  0  0  0</span></span></code></pre></div>
+</div>
+<div id="向量關係比較操作" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> 向量關係比較操作</h2>
+<p><strong>邏輯向量</strong>
+(<strong>logic vector</strong>)
+的元素值有
+<code>TRUE</code>,
+<code>FALSE</code>.
+可以分別簡寫為
+<code>T</code> 和
+<code>F</code>.
+在 {R} 之內, 向量之間的
+<strong>關係比較操作</strong>
+(<strong>relation/comparison operator</strong>)
+可以產生邏輯向量.
+關係比較操作符號包含常見的
+<code>&lt;</code>,
+<code>&lt;=</code>,
+<code>&gt;</code>,
+<code>&gt;=</code>.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="vector.html#cb37-1" aria-hidden="true"></a><span class="co">## Relation/Comparison Operator</span></span>
+<span id="cb37-2"><a href="vector.html#cb37-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb37-3"><a href="vector.html#cb37-3" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb37-4"><a href="vector.html#cb37-4" aria-hidden="true"></a>y.vec</span>
+<span id="cb37-5"><a href="vector.html#cb37-5" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE  TRUE  TRUE</span></span>
+<span id="cb37-6"><a href="vector.html#cb37-6" aria-hidden="true"></a><span class="kw">any</span>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb37-7"><a href="vector.html#cb37-7" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb37-8"><a href="vector.html#cb37-8" aria-hidden="true"></a><span class="kw">all</span>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb37-9"><a href="vector.html#cb37-9" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb37-10"><a href="vector.html#cb37-10" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb37-11"><a href="vector.html#cb37-11" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb37-12"><a href="vector.html#cb37-12" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb37-13"><a href="vector.html#cb37-13" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb37-14"><a href="vector.html#cb37-14" aria-hidden="true"></a>x.vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb37-15"><a href="vector.html#cb37-15" aria-hidden="true"></a><span class="co">## [1]  TRUE FALSE FALSE FALSE FALSE</span></span>
+<span id="cb37-16"><a href="vector.html#cb37-16" aria-hidden="true"></a>x.vec<span class="op">&lt;=</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb37-17"><a href="vector.html#cb37-17" aria-hidden="true"></a><span class="co">## [1]  TRUE  TRUE FALSE FALSE FALSE</span></span>
+<span id="cb37-18"><a href="vector.html#cb37-18" aria-hidden="true"></a>x.vec <span class="op">==</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb37-19"><a href="vector.html#cb37-19" aria-hidden="true"></a><span class="co">## [1] FALSE  TRUE FALSE FALSE FALSE</span></span>
+<span id="cb37-20"><a href="vector.html#cb37-20" aria-hidden="true"></a>x.vec <span class="op">!=</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb37-21"><a href="vector.html#cb37-21" aria-hidden="true"></a><span class="co">## [1]  TRUE FALSE  TRUE  TRUE  TRUE</span></span>
+<span id="cb37-22"><a href="vector.html#cb37-22" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb37-23"><a href="vector.html#cb37-23" aria-hidden="true"></a>x.vec <span class="op">&lt;</span><span class="st"> </span>y.vec</span>
+<span id="cb37-24"><a href="vector.html#cb37-24" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE  TRUE  TRUE</span></span>
+<span id="cb37-25"><a href="vector.html#cb37-25" aria-hidden="true"></a>x.vec <span class="op">&lt;</span><span class="st"> </span>(y.vec <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb37-26"><a href="vector.html#cb37-26" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE FALSE FALSE  TRUE</span></span>
+<span id="cb37-27"><a href="vector.html#cb37-27" aria-hidden="true"></a>x.vec <span class="op">&lt;=</span><span class="st"> </span>y.vec</span>
+<span id="cb37-28"><a href="vector.html#cb37-28" aria-hidden="true"></a><span class="co">## [1] FALSE  TRUE  TRUE  TRUE  TRUE</span></span>
+<span id="cb37-29"><a href="vector.html#cb37-29" aria-hidden="true"></a>x.vec <span class="op">&lt;=</span><span class="st"> </span>(y.vec <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb37-30"><a href="vector.html#cb37-30" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE FALSE  TRUE  TRUE</span></span>
+<span id="cb37-31"><a href="vector.html#cb37-31" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb37-32"><a href="vector.html#cb37-32" aria-hidden="true"></a>x.vec <span class="op">==</span><span class="st"> </span>y.vec</span>
+<span id="cb37-33"><a href="vector.html#cb37-33" aria-hidden="true"></a><span class="co">## [1] FALSE  TRUE FALSE FALSE FALSE</span></span>
+<span id="cb37-34"><a href="vector.html#cb37-34" aria-hidden="true"></a>x.vec <span class="op">==</span><span class="st"> </span>(y.vec <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb37-35"><a href="vector.html#cb37-35" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE FALSE  TRUE FALSE</span></span>
+<span id="cb37-36"><a href="vector.html#cb37-36" aria-hidden="true"></a>x.vec <span class="op">!=</span><span class="st"> </span>y.vec</span>
+<span id="cb37-37"><a href="vector.html#cb37-37" aria-hidden="true"></a><span class="co">## [1]  TRUE FALSE  TRUE  TRUE  TRUE</span></span>
+<span id="cb37-38"><a href="vector.html#cb37-38" aria-hidden="true"></a>x.vec <span class="op">!=</span><span class="st"> </span>(y.vec <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb37-39"><a href="vector.html#cb37-39" aria-hidden="true"></a><span class="co">## [1]  TRUE  TRUE  TRUE FALSE  TRUE</span></span></code></pre></div>
+</div>
+<div id="向量邏輯操作" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> 向量邏輯操作</h2>
+<p>在 {R} 之內, 向量之間的
+關係比較操作
+可以產生邏輯向量.
+在 {R} 中可對邏輯向量進行運算操作,
+<strong>邏輯操作</strong>
+(<strong>logical operator</strong>)
+符號包含常見的
+<code>!</code> (否定),
+<code>&amp;</code>, <code>&amp;&amp;</code> (AND), <code>|</code> , <code>||</code> (OR),
+以及判斷相等的
+<code>==</code> 和判斷不等的
+<code>!=</code> 等.
+<img src="static/logicplot.png" style="width:80.0%" alt="(R for Data Science: Section 2.5)" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="vector.html#cb38-1" aria-hidden="true"></a><span class="co">## Logical Operator: AND OR XOR</span></span>
+<span id="cb38-2"><a href="vector.html#cb38-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb38-3"><a href="vector.html#cb38-3" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb38-4"><a href="vector.html#cb38-4" aria-hidden="true"></a>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st">  </span>(y.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)  <span class="co"># return vector AND</span></span>
+<span id="cb38-5"><a href="vector.html#cb38-5" aria-hidden="true"></a><span class="co">## [1] FALSE  TRUE  TRUE  TRUE  TRUE</span></span>
+<span id="cb38-6"><a href="vector.html#cb38-6" aria-hidden="true"></a>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st"> </span>(y.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)  <span class="co"># return scalar AND</span></span>
+<span id="cb38-7"><a href="vector.html#cb38-7" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb38-8"><a href="vector.html#cb38-8" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb38-9"><a href="vector.html#cb38-9" aria-hidden="true"></a>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st">  </span>((y.vec <span class="op">-</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)     <span class="co"># return vector AND</span></span>
+<span id="cb38-10"><a href="vector.html#cb38-10" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE  TRUE  TRUE</span></span>
+<span id="cb38-11"><a href="vector.html#cb38-11" aria-hidden="true"></a>((x.vec<span class="dv">-2</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st"> </span>((y.vec <span class="op">-</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="co"># return scalar AND</span></span>
+<span id="cb38-12"><a href="vector.html#cb38-12" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb38-13"><a href="vector.html#cb38-13" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb38-14"><a href="vector.html#cb38-14" aria-hidden="true"></a>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st">  </span>((y.vec <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)     <span class="co"># return vector AND</span></span>
+<span id="cb38-15"><a href="vector.html#cb38-15" aria-hidden="true"></a><span class="co">## [1] TRUE TRUE TRUE TRUE TRUE</span></span>
+<span id="cb38-16"><a href="vector.html#cb38-16" aria-hidden="true"></a>((x.vec<span class="dv">-2</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st"> </span>((y.vec <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="co"># return scalar AND</span></span>
+<span id="cb38-17"><a href="vector.html#cb38-17" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb38-18"><a href="vector.html#cb38-18" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb38-19"><a href="vector.html#cb38-19" aria-hidden="true"></a>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">|</span><span class="st"> </span>(y.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="co"># return vector OR</span></span>
+<span id="cb38-20"><a href="vector.html#cb38-20" aria-hidden="true"></a><span class="co">## [1] TRUE TRUE TRUE TRUE TRUE</span></span>
+<span id="cb38-21"><a href="vector.html#cb38-21" aria-hidden="true"></a>((x.vec<span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">|</span><span class="st"> </span>((y.vec <span class="op">-</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb38-22"><a href="vector.html#cb38-22" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE  TRUE  TRUE</span></span>
+<span id="cb38-23"><a href="vector.html#cb38-23" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb38-24"><a href="vector.html#cb38-24" aria-hidden="true"></a>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">||</span><span class="st"> </span>(y.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="co"># return scalar OR</span></span>
+<span id="cb38-25"><a href="vector.html#cb38-25" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb38-26"><a href="vector.html#cb38-26" aria-hidden="true"></a>((x.vec<span class="dv">-2</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">||</span><span class="st"> </span>((y.vec <span class="op">-</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb38-27"><a href="vector.html#cb38-27" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb38-28"><a href="vector.html#cb38-28" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb38-29"><a href="vector.html#cb38-29" aria-hidden="true"></a>(x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">||</span><span class="st"> </span>((y.vec <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="co"># return scalar OR</span></span>
+<span id="cb38-30"><a href="vector.html#cb38-30" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb38-31"><a href="vector.html#cb38-31" aria-hidden="true"></a>((x.vec<span class="dv">-2</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">||</span><span class="st"> </span>((y.vec <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb38-32"><a href="vector.html#cb38-32" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb38-33"><a href="vector.html#cb38-33" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb38-34"><a href="vector.html#cb38-34" aria-hidden="true"></a><span class="kw">xor</span>((x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>), (y.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)) <span class="co"># return vector exclusive OR</span></span>
+<span id="cb38-35"><a href="vector.html#cb38-35" aria-hidden="true"></a><span class="co">## [1]  TRUE FALSE FALSE FALSE FALSE</span></span>
+<span id="cb38-36"><a href="vector.html#cb38-36" aria-hidden="true"></a><span class="kw">xor</span>(((x.vec <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>), ((y.vec <span class="op">-</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))</span>
+<span id="cb38-37"><a href="vector.html#cb38-37" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE FALSE FALSE FALSE</span></span>
+<span id="cb38-38"><a href="vector.html#cb38-38" aria-hidden="true"></a><span class="kw">xor</span>(((x.vec <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>), ((y.vec <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))</span>
+<span id="cb38-39"><a href="vector.html#cb38-39" aria-hidden="true"></a><span class="co">## [1]  TRUE  TRUE FALSE FALSE FALSE</span></span>
+<span id="cb38-40"><a href="vector.html#cb38-40" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb38-41"><a href="vector.html#cb38-41" aria-hidden="true"></a>xx.vec &lt;-<span class="st"> </span>(x.vec <span class="op">&lt;=</span><span class="st"> </span><span class="dv">3</span>)</span>
+<span id="cb38-42"><a href="vector.html#cb38-42" aria-hidden="true"></a>yy.vec &lt;-<span class="st"> </span>(y.vec <span class="op">&gt;=</span><span class="st"> </span><span class="dv">4</span>)</span>
+<span id="cb38-43"><a href="vector.html#cb38-43" aria-hidden="true"></a>xx.vec</span>
+<span id="cb38-44"><a href="vector.html#cb38-44" aria-hidden="true"></a><span class="co">## [1]  TRUE  TRUE  TRUE FALSE FALSE</span></span>
+<span id="cb38-45"><a href="vector.html#cb38-45" aria-hidden="true"></a>yy.vec</span>
+<span id="cb38-46"><a href="vector.html#cb38-46" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE  TRUE  TRUE</span></span>
+<span id="cb38-47"><a href="vector.html#cb38-47" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb38-48"><a href="vector.html#cb38-48" aria-hidden="true"></a>xx.vec <span class="op">&amp;&amp;</span><span class="st"> </span>yy.vec</span>
+<span id="cb38-49"><a href="vector.html#cb38-49" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb38-50"><a href="vector.html#cb38-50" aria-hidden="true"></a>xx.vec <span class="op">&amp;</span><span class="st"> </span>yy.vec</span>
+<span id="cb38-51"><a href="vector.html#cb38-51" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE FALSE FALSE</span></span>
+<span id="cb38-52"><a href="vector.html#cb38-52" aria-hidden="true"></a>xx.vec <span class="op">||</span><span class="st"> </span>yy.vec</span>
+<span id="cb38-53"><a href="vector.html#cb38-53" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb38-54"><a href="vector.html#cb38-54" aria-hidden="true"></a>xx.vec <span class="op">|</span><span class="st"> </span>yy.vec</span>
+<span id="cb38-55"><a href="vector.html#cb38-55" aria-hidden="true"></a><span class="co">## [1] TRUE TRUE TRUE TRUE TRUE</span></span>
+<span id="cb38-56"><a href="vector.html#cb38-56" aria-hidden="true"></a><span class="kw">xor</span>(xx.vec, yy.vec)</span>
+<span id="cb38-57"><a href="vector.html#cb38-57" aria-hidden="true"></a><span class="co">## [1]  TRUE  TRUE FALSE  TRUE  TRUE</span></span></code></pre></div>
+</div>
+<div id="向量元素命名" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> 向量元素命名</h2>
+<p>向量的每個元素或部分元素都可以命名,
+使用者可以在輸入元素時直接給予命名,
+或另外使用函式
+<code>names()</code>
+給予命名.
+若要移除命名,
+使用函式 <code>unname()</code> 移除命名,
+或使用 <code>names(x.vec) &lt;- NULL</code> 移除命名.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="vector.html#cb39-1" aria-hidden="true"></a><span class="co">## vector names</span></span>
+<span id="cb39-2"><a href="vector.html#cb39-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb39-3"><a href="vector.html#cb39-3" aria-hidden="true"></a>  <span class="dt">age =</span> <span class="dv">50</span>,</span>
+<span id="cb39-4"><a href="vector.html#cb39-4" aria-hidden="true"></a>  <span class="dt">chol =</span> <span class="dv">220</span>,</span>
+<span id="cb39-5"><a href="vector.html#cb39-5" aria-hidden="true"></a>  <span class="dt">dbp =</span> <span class="dv">84</span>,</span>
+<span id="cb39-6"><a href="vector.html#cb39-6" aria-hidden="true"></a>  <span class="dt">sbp =</span> <span class="dv">132</span></span>
+<span id="cb39-7"><a href="vector.html#cb39-7" aria-hidden="true"></a>) <span class="co"># directly</span></span>
+<span id="cb39-8"><a href="vector.html#cb39-8" aria-hidden="true"></a>x.vec</span>
+<span id="cb39-9"><a href="vector.html#cb39-9" aria-hidden="true"></a><span class="co">##  age chol  dbp  sbp </span></span>
+<span id="cb39-10"><a href="vector.html#cb39-10" aria-hidden="true"></a><span class="co">##   50  220   84  132</span></span>
+<span id="cb39-11"><a href="vector.html#cb39-11" aria-hidden="true"></a><span class="kw">names</span>(x.vec)</span>
+<span id="cb39-12"><a href="vector.html#cb39-12" aria-hidden="true"></a><span class="co">## [1] &quot;age&quot;  &quot;chol&quot; &quot;dbp&quot;  &quot;sbp&quot;</span></span>
+<span id="cb39-13"><a href="vector.html#cb39-13" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb39-14"><a href="vector.html#cb39-14" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">55</span>, <span class="dv">236</span>, <span class="dv">80</span>, <span class="dv">140</span>)</span>
+<span id="cb39-15"><a href="vector.html#cb39-15" aria-hidden="true"></a><span class="kw">names</span>(x.vec) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;chol&quot;</span>, <span class="st">&quot;sbp&quot;</span>, <span class="st">&quot;dbp&quot;</span>)</span>
+<span id="cb39-16"><a href="vector.html#cb39-16" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb39-17"><a href="vector.html#cb39-17" aria-hidden="true"></a>y.vec.name &lt;-<span class="st"> </span><span class="kw">names</span>(x.vec)</span>
+<span id="cb39-18"><a href="vector.html#cb39-18" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">60</span>, <span class="dv">214</span>, <span class="dv">90</span>, <span class="dv">144</span>)</span>
+<span id="cb39-19"><a href="vector.html#cb39-19" aria-hidden="true"></a><span class="kw">names</span>(y.vec) &lt;-<span class="st"> </span>y.vec.name</span>
+<span id="cb39-20"><a href="vector.html#cb39-20" aria-hidden="true"></a>y.vec</span>
+<span id="cb39-21"><a href="vector.html#cb39-21" aria-hidden="true"></a><span class="co">##  age chol  sbp  dbp </span></span>
+<span id="cb39-22"><a href="vector.html#cb39-22" aria-hidden="true"></a><span class="co">##   60  214   90  144</span></span></code></pre></div>
+</div>
+<div id="向量下標與索引-inxex" class="section level2" number="2.9">
+<h2><span class="header-section-number">2.9</span> 向量下標與索引 Inxex</h2>
+<p>一個向量的長度 (length) 是向量元素的數目,
+一個向量的個別元素或部分元素可以向量的下標 (index) 取得,
+向量的
+<strong>下標</strong>
+或
+<strong>索引</strong>
+(<strong>index</strong>)
+是在向量名稱後面加 <strong>中括號</strong> <code>[i]</code>,
+並放入下標數目 (或向量) 得到.
+原始向量的下標可以採用下列四種方式的任何一種,
+正整數, 負整數, 文字或字串與邏輯向量.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="vector.html#cb40-1" aria-hidden="true"></a><span class="co">## Vector Indexing</span></span>
+<span id="cb40-2"><a href="vector.html#cb40-2" aria-hidden="true"></a><span class="co">## positive integer</span></span>
+<span id="cb40-3"><a href="vector.html#cb40-3" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">50</span></span>
+<span id="cb40-4"><a href="vector.html#cb40-4" aria-hidden="true"></a>x.vec[<span class="dv">7</span>]</span>
+<span id="cb40-5"><a href="vector.html#cb40-5" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
+<span id="cb40-6"><a href="vector.html#cb40-6" aria-hidden="true"></a>x.vec[<span class="dv">11</span><span class="op">:</span><span class="dv">15</span>]</span>
+<span id="cb40-7"><a href="vector.html#cb40-7" aria-hidden="true"></a><span class="co">## [1] 11 12 13 14 15</span></span>
+<span id="cb40-8"><a href="vector.html#cb40-8" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span>x.vec[<span class="dv">11</span><span class="op">:</span><span class="dv">15</span>]</span>
+<span id="cb40-9"><a href="vector.html#cb40-9" aria-hidden="true"></a>y.vec</span>
+<span id="cb40-10"><a href="vector.html#cb40-10" aria-hidden="true"></a><span class="co">## [1] 11 12 13 14 15</span></span>
+<span id="cb40-11"><a href="vector.html#cb40-11" aria-hidden="true"></a><span class="co">## negative integer</span></span>
+<span id="cb40-12"><a href="vector.html#cb40-12" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span><span class="dv">6</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb40-13"><a href="vector.html#cb40-13" aria-hidden="true"></a>z.vec[<span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span>
+<span id="cb40-14"><a href="vector.html#cb40-14" aria-hidden="true"></a><span class="co">## [1]  6  8 10</span></span>
+<span id="cb40-15"><a href="vector.html#cb40-15" aria-hidden="true"></a><span class="co">## character string</span></span>
+<span id="cb40-16"><a href="vector.html#cb40-16" aria-hidden="true"></a>fruit.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">20</span>)</span>
+<span id="cb40-17"><a href="vector.html#cb40-17" aria-hidden="true"></a>fruit.vec</span>
+<span id="cb40-18"><a href="vector.html#cb40-18" aria-hidden="true"></a><span class="co">## [1]  5 10  1 20</span></span>
+<span id="cb40-19"><a href="vector.html#cb40-19" aria-hidden="true"></a><span class="kw">names</span>(fruit.vec) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;apple&quot;</span>, <span class="st">&quot;peach&quot;</span>)</span>
+<span id="cb40-20"><a href="vector.html#cb40-20" aria-hidden="true"></a>fruit.vec</span>
+<span id="cb40-21"><a href="vector.html#cb40-21" aria-hidden="true"></a><span class="co">## orange banana  apple  peach </span></span>
+<span id="cb40-22"><a href="vector.html#cb40-22" aria-hidden="true"></a><span class="co">##      5     10      1     20</span></span>
+<span id="cb40-23"><a href="vector.html#cb40-23" aria-hidden="true"></a>lunch.vec  &lt;-<span class="st">  </span>fruit.vec[<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;orange&quot;</span>)]</span>
+<span id="cb40-24"><a href="vector.html#cb40-24" aria-hidden="true"></a>lunch.vec</span>
+<span id="cb40-25"><a href="vector.html#cb40-25" aria-hidden="true"></a><span class="co">##  apple orange </span></span>
+<span id="cb40-26"><a href="vector.html#cb40-26" aria-hidden="true"></a><span class="co">##      1      5</span></span>
+<span id="cb40-27"><a href="vector.html#cb40-27" aria-hidden="true"></a><span class="co">## logical index</span></span>
+<span id="cb40-28"><a href="vector.html#cb40-28" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">-2</span>, <span class="dv">-1</span>, <span class="ot">NA</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>) <span class="co"># NA = missing value</span></span>
+<span id="cb40-29"><a href="vector.html#cb40-29" aria-hidden="true"></a>x.vec</span>
+<span id="cb40-30"><a href="vector.html#cb40-30" aria-hidden="true"></a><span class="co">## [1] NA -2 -1 NA  1  2 NA</span></span>
+<span id="cb40-31"><a href="vector.html#cb40-31" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span>x.vec[<span class="op">!</span><span class="kw">is.na</span>(x.vec)] <span class="co"># !is.na() = check missing value</span></span>
+<span id="cb40-32"><a href="vector.html#cb40-32" aria-hidden="true"></a>y.vec</span>
+<span id="cb40-33"><a href="vector.html#cb40-33" aria-hidden="true"></a><span class="co">## [1] -2 -1  1  2</span></span>
+<span id="cb40-34"><a href="vector.html#cb40-34" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span>x.vec[x.vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(x.vec)]</span>
+<span id="cb40-35"><a href="vector.html#cb40-35" aria-hidden="true"></a>z.vec</span>
+<span id="cb40-36"><a href="vector.html#cb40-36" aria-hidden="true"></a><span class="co">## [1] 1 2</span></span>
+<span id="cb40-37"><a href="vector.html#cb40-37" aria-hidden="true"></a>x.vec[x.vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] <span class="co"># Note: NA</span></span>
+<span id="cb40-38"><a href="vector.html#cb40-38" aria-hidden="true"></a><span class="co">## [1] NA -2 -1 NA NA</span></span>
+<span id="cb40-39"><a href="vector.html#cb40-39" aria-hidden="true"></a>y.vec[y.vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>]</span>
+<span id="cb40-40"><a href="vector.html#cb40-40" aria-hidden="true"></a><span class="co">## [1] -2 -1</span></span>
+<span id="cb40-41"><a href="vector.html#cb40-41" aria-hidden="true"></a>z.vec[z.vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>]</span>
+<span id="cb40-42"><a href="vector.html#cb40-42" aria-hidden="true"></a><span class="co">## numeric(0)</span></span></code></pre></div>
+</div>
+<div id="遺失值-缺失值-missing-values" class="section level2" number="2.10">
+<h2><span class="header-section-number">2.10</span> 遺失值 (缺失值) Missing Values</h2>
+<p>研究資料,
+通常會有
+<strong>遺失值</strong>
+或
+<strong>缺失值</strong>
+(<strong>missing value</strong>,
+incomplete data**),
+在 R 中, 輸入或輸出遺失值,
+通常以
+<code>NA</code> 表示,
+(<code>NA</code> = Not Available),
+R 還有另外有
+<code>NaN</code> = Not a Number
+是指物件運算後產生非數值結果,
+以及
+<code>NULL</code>
+是指物件的長度是 <span class="math inline">\(0\)</span>.
+任何對遺失值
+(<code>NA</code>) 的算數操作,
+會得到遺失值
+(<code>NA</code>)
+結果.
+使用函式
+<code>is.na()</code>,
+<code>is.nan()</code>
+可以查看向量內那些元素是遺失值.
+回傳一個邏輯向量.
+對遺失值作比較大小運算須非常小心.
+要移除遺失值, 可以使用函式
+<code>na.omit()</code>,
+<code>na.fail()</code>,
+<code>na.exclude()</code>,
+<code>na.action()</code>
+等指令.
+且函式 <code>complete.cases()</code> 可以同時移出多個缺失值.
+對於不同基本模式的向量元素進行融合,
+若不合階層結構,
+則 R 回傳缺失值.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="vector.html#cb41-1" aria-hidden="true"></a><span class="co">## missing value</span></span>
+<span id="cb41-2"><a href="vector.html#cb41-2" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="ot">NA</span>)</span>
+<span id="cb41-3"><a href="vector.html#cb41-3" aria-hidden="true"></a><span class="kw">is.na</span>(z.vec)</span>
+<span id="cb41-4"><a href="vector.html#cb41-4" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE</span></span>
+<span id="cb41-5"><a href="vector.html#cb41-5" aria-hidden="true"></a><span class="kw">log</span>(z.vec)</span>
+<span id="cb41-6"><a href="vector.html#cb41-6" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931     NA</span></span>
+<span id="cb41-7"><a href="vector.html#cb41-7" aria-hidden="true"></a>z.vec <span class="op">/</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb41-8"><a href="vector.html#cb41-8" aria-hidden="true"></a><span class="co">## [1] Inf Inf  NA</span></span>
+<span id="cb41-9"><a href="vector.html#cb41-9" aria-hidden="true"></a><span class="dv">0</span> <span class="op">/</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb41-10"><a href="vector.html#cb41-10" aria-hidden="true"></a><span class="co">## [1] NaN</span></span>
+<span id="cb41-11"><a href="vector.html#cb41-11" aria-hidden="true"></a><span class="ot">Inf</span> <span class="op">-</span><span class="st"> </span><span class="ot">Inf</span></span>
+<span id="cb41-12"><a href="vector.html#cb41-12" aria-hidden="true"></a><span class="co">## [1] NaN</span></span>
+<span id="cb41-13"><a href="vector.html#cb41-13" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb41-14"><a href="vector.html#cb41-14" aria-hidden="true"></a><span class="kw">is.na</span>(z.vec)</span>
+<span id="cb41-15"><a href="vector.html#cb41-15" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE</span></span>
+<span id="cb41-16"><a href="vector.html#cb41-16" aria-hidden="true"></a><span class="kw">is.nan</span>(z.vec)</span>
+<span id="cb41-17"><a href="vector.html#cb41-17" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE FALSE</span></span>
+<span id="cb41-18"><a href="vector.html#cb41-18" aria-hidden="true"></a><span class="kw">is.nan</span>(<span class="dv">0</span> <span class="op">/</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb41-19"><a href="vector.html#cb41-19" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb41-20"><a href="vector.html#cb41-20" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb41-21"><a href="vector.html#cb41-21" aria-hidden="true"></a>x.vec  &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">4</span>, <span class="ot">NA</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb41-22"><a href="vector.html#cb41-22" aria-hidden="true"></a>bad  &lt;-<span class="st">  </span><span class="kw">is.na</span>(x.vec)</span>
+<span id="cb41-23"><a href="vector.html#cb41-23" aria-hidden="true"></a>x.vec[<span class="op">!</span>bad]</span>
+<span id="cb41-24"><a href="vector.html#cb41-24" aria-hidden="true"></a><span class="co">## [1] 1 2 4 5 6</span></span>
+<span id="cb41-25"><a href="vector.html#cb41-25" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb41-26"><a href="vector.html#cb41-26" aria-hidden="true"></a>x.vec  &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">4</span>, <span class="ot">NA</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb41-27"><a href="vector.html#cb41-27" aria-hidden="true"></a>y.vec  &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="ot">NA</span>, <span class="st">&quot;d&quot;</span>, <span class="ot">NA</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>)</span>
+<span id="cb41-28"><a href="vector.html#cb41-28" aria-hidden="true"></a>good  &lt;-<span class="st">  </span><span class="kw">complete.cases</span>(x.vec, y.vec)</span>
+<span id="cb41-29"><a href="vector.html#cb41-29" aria-hidden="true"></a>good</span>
+<span id="cb41-30"><a href="vector.html#cb41-30" aria-hidden="true"></a><span class="co">## [1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE</span></span>
+<span id="cb41-31"><a href="vector.html#cb41-31" aria-hidden="true"></a>x.vec[good]</span>
+<span id="cb41-32"><a href="vector.html#cb41-32" aria-hidden="true"></a><span class="co">## [1] 1 2 4 5 6</span></span>
+<span id="cb41-33"><a href="vector.html#cb41-33" aria-hidden="true"></a>y.vec[good]</span>
+<span id="cb41-34"><a href="vector.html#cb41-34" aria-hidden="true"></a><span class="co">## [1] &quot;a&quot; &quot;b&quot; &quot;d&quot; &quot;f&quot; &quot;g&quot;</span></span>
+<span id="cb41-35"><a href="vector.html#cb41-35" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb41-36"><a href="vector.html#cb41-36" aria-hidden="true"></a><span class="kw">data</span>(airquality)</span>
+<span id="cb41-37"><a href="vector.html#cb41-37" aria-hidden="true"></a>airquality[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,]</span>
+<span id="cb41-38"><a href="vector.html#cb41-38" aria-hidden="true"></a><span class="co">##   Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb41-39"><a href="vector.html#cb41-39" aria-hidden="true"></a><span class="co">## 1    41     190  7.4   67     5   1</span></span>
+<span id="cb41-40"><a href="vector.html#cb41-40" aria-hidden="true"></a><span class="co">## 2    36     118  8.0   72     5   2</span></span>
+<span id="cb41-41"><a href="vector.html#cb41-41" aria-hidden="true"></a><span class="co">## 3    12     149 12.6   74     5   3</span></span>
+<span id="cb41-42"><a href="vector.html#cb41-42" aria-hidden="true"></a><span class="co">## 4    18     313 11.5   62     5   4</span></span>
+<span id="cb41-43"><a href="vector.html#cb41-43" aria-hidden="true"></a><span class="co">## 5    NA      NA 14.3   56     5   5</span></span>
+<span id="cb41-44"><a href="vector.html#cb41-44" aria-hidden="true"></a><span class="co">## 6    28      NA 14.9   66     5   6</span></span>
+<span id="cb41-45"><a href="vector.html#cb41-45" aria-hidden="true"></a>good  &lt;-<span class="st">  </span><span class="kw">complete.cases</span>(airquality)</span>
+<span id="cb41-46"><a href="vector.html#cb41-46" aria-hidden="true"></a>airquality[good,][<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,]</span>
+<span id="cb41-47"><a href="vector.html#cb41-47" aria-hidden="true"></a><span class="co">##   Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb41-48"><a href="vector.html#cb41-48" aria-hidden="true"></a><span class="co">## 1    41     190  7.4   67     5   1</span></span>
+<span id="cb41-49"><a href="vector.html#cb41-49" aria-hidden="true"></a><span class="co">## 2    36     118  8.0   72     5   2</span></span>
+<span id="cb41-50"><a href="vector.html#cb41-50" aria-hidden="true"></a><span class="co">## 3    12     149 12.6   74     5   3</span></span>
+<span id="cb41-51"><a href="vector.html#cb41-51" aria-hidden="true"></a><span class="co">## 4    18     313 11.5   62     5   4</span></span>
+<span id="cb41-52"><a href="vector.html#cb41-52" aria-hidden="true"></a><span class="co">## 7    23     299  8.6   65     5   7</span></span>
+<span id="cb41-53"><a href="vector.html#cb41-53" aria-hidden="true"></a><span class="co">## 8    19      99 13.8   59     5   8</span></span></code></pre></div>
+</div>
+<div id="因子物件與類別變數-factor" class="section level2" number="2.11">
+<h2><span class="header-section-number">2.11</span> 因子物件與類別變數 Factor</h2>
+<p><strong>因子物件</strong>
+(<strong>factor</strong>)
+為處理
+<strong>類別資料</strong>
+(<strong>categorical data</strong>),
+提供的一種有效的方法.
+<strong>類別變數</strong>
+將變數值分成互斥的類別水準,
+在類別變數定義中的特定幾種類別水準是否有大小差距,
+又可分類成
+<strong>名目變數</strong>
+(<strong>nominal variable</strong>)
+與
+<strong>有序變數</strong>
+(<strong>ordinal variable</strong>),
+或稱
+<strong>名目尺度</strong>
+與
+<strong>順序尺度</strong>.
+其中
+<strong>名目尺度</strong>
+是最簡單的測量,
+名目尺度將變數值分成互斥的類別水準,
+同一變數內的類別水準並無量化大小的差別.
+名目尺度用文字或數字表示或標記, 這些數字本身並無任何意義,
+例如 <code>左側</code> 為 1, <code>右側</code> 為 0;
+1 <span class="math inline">\(=\)</span> <code>拇指</code>, 2 <span class="math inline">\(=\)</span> <code>食指</code>, 3 <span class="math inline">\(=\)</span> <code>中指</code>, 4 <span class="math inline">\(=\)</span> <code>無名指</code>, 5 <span class="math inline">\(=\)</span> <code>小指</code>.
+在名目尺度中,
+特別的情形是變數內只有 2 個類別水準,
+如存活或死亡, 統計習慣上會分別標記為 0 或 1,
+感染或無感染, 這類變數常稱做
+<strong>二元變數</strong>
+(<strong>dichotomous variable</strong>,
+<strong>binary variable</strong>),
+二元變數通常有特殊的統計分析方法.
+<strong>順序尺度</strong>
+是指同一變數內的類別水準有
+輕重, 大小, 強弱, 好壞等級順序之資料.
+例如, 疼痛情形有 4 種情境: <code>無</code>, <code>輕度</code>, <code>中度</code>, <code>重度</code>,
+癌症分期為 I, II, III, IV 等 4 期.
+雖然順序尺度用數字 <span class="math inline">\(1, 2, 3, 4, \ldots\)</span> 表示或標記,
+但是數字本身通常不能用來做運算, 只能比較相對大小或高低次序,
+順序之間的實際差異並無法從標記的數字差異得知.</p>
+<p>統計中的類別資料,
+有各種不同表示方法,
+在電腦的資料儲存時常常是以文字為變數值,
+但使用上文字較占空間且無法精準傳達
+類別變數的概念.
+因此在 {R} 中特別使用
+<strong>因子</strong>
+(<strong>factor</strong>)
+來表示.
+因子是一種特殊的文字向量,
+文字向量中的每一個元素, 取一個離散值,
+因子物件 有一個特殊屬性, 稱為
+**層次*,
+**水平*,
+**水準*
+或
+<strong>類別水準</strong>
+(<strong>levels</strong>),
+表示這組所有可能的離散值.
+因子常常是用文字或字串輸入,
+有時會使用數值或整數代表,
+一但變數設定為因素或因子向量,
+{R} 在列印或輸出時,
+並不會加上雙引號 <code>"</code>,
+且數值或有大小順序的文字,
+{R} 在統計分析上都必須特別處理.</p>
+<p>在 {R} 中若要設定因子,
+可以簡單地用函式
+<code>factor()</code>
+產生無序因子物件.</p>
+<pre><code>factor(x = character(), levels, labels = levels,               
+       exclude = NA, ordered = is.ordered(x), nmax = NA)                  </code></pre>
+<p>其中引數為</p>
+<ul>
+<li><code>x</code> 為原始向量, 通常為文字向量, 若是數值向量, {R} 先轉換成文字向量.</li>
+<li><code>levels</code> 設定類別水準.</li>
+<li><code>labels</code> 類別水準的標記文字.</li>
+<li><code>exclude = NA</code> 排除缺失值或某一特定值為一類別水準.</li>
+<li><code>ordered = is.ordered(x)</code> 設定因子物件類別水準的順序, 仍是無序因子物件.</li>
+<li><code>nmax = NA</code> 是否類別水準的最大數目.</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="vector.html#cb43-1" aria-hidden="true"></a><span class="co">## factor()</span></span>
+<span id="cb43-2"><a href="vector.html#cb43-2" aria-hidden="true"></a>sex &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>)</span>
+<span id="cb43-3"><a href="vector.html#cb43-3" aria-hidden="true"></a>sex</span>
+<span id="cb43-4"><a href="vector.html#cb43-4" aria-hidden="true"></a><span class="co">## [1] &quot;male&quot;   &quot;female&quot; &quot;male&quot;   &quot;male&quot;   &quot;female&quot;</span></span>
+<span id="cb43-5"><a href="vector.html#cb43-5" aria-hidden="true"></a><span class="kw">class</span>(sex)</span>
+<span id="cb43-6"><a href="vector.html#cb43-6" aria-hidden="true"></a><span class="co">## [1] &quot;character&quot;</span></span>
+<span id="cb43-7"><a href="vector.html#cb43-7" aria-hidden="true"></a>sex &lt;-<span class="st"> </span><span class="kw">factor</span>(sex)</span>
+<span id="cb43-8"><a href="vector.html#cb43-8" aria-hidden="true"></a>sex</span>
+<span id="cb43-9"><a href="vector.html#cb43-9" aria-hidden="true"></a><span class="co">## [1] male   female male   male   female</span></span>
+<span id="cb43-10"><a href="vector.html#cb43-10" aria-hidden="true"></a><span class="co">## Levels: female male</span></span>
+<span id="cb43-11"><a href="vector.html#cb43-11" aria-hidden="true"></a><span class="kw">class</span>(sex)</span>
+<span id="cb43-12"><a href="vector.html#cb43-12" aria-hidden="true"></a><span class="co">## [1] &quot;factor&quot;</span></span>
+<span id="cb43-13"><a href="vector.html#cb43-13" aria-hidden="true"></a><span class="co">## factor() + levels</span></span>
+<span id="cb43-14"><a href="vector.html#cb43-14" aria-hidden="true"></a>sex &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>)</span>
+<span id="cb43-15"><a href="vector.html#cb43-15" aria-hidden="true"></a>sex &lt;-<span class="st"> </span><span class="kw">factor</span>(sex, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>))</span>
+<span id="cb43-16"><a href="vector.html#cb43-16" aria-hidden="true"></a>sex</span>
+<span id="cb43-17"><a href="vector.html#cb43-17" aria-hidden="true"></a><span class="co">## [1] male   female male   male   female</span></span>
+<span id="cb43-18"><a href="vector.html#cb43-18" aria-hidden="true"></a><span class="co">## Levels: female male</span></span>
+<span id="cb43-19"><a href="vector.html#cb43-19" aria-hidden="true"></a><span class="co">## factor() + levels + labels</span></span>
+<span id="cb43-20"><a href="vector.html#cb43-20" aria-hidden="true"></a>x.chr =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>)</span>
+<span id="cb43-21"><a href="vector.html#cb43-21" aria-hidden="true"></a><span class="kw">factor</span>(x.chr, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;bisex&quot;</span>))</span>
+<span id="cb43-22"><a href="vector.html#cb43-22" aria-hidden="true"></a><span class="co">## [1] male   male   female female</span></span>
+<span id="cb43-23"><a href="vector.html#cb43-23" aria-hidden="true"></a><span class="co">## Levels: male female bisex</span></span>
+<span id="cb43-24"><a href="vector.html#cb43-24" aria-hidden="true"></a><span class="kw">factor</span>(x.chr, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;bisex&quot;</span>), </span>
+<span id="cb43-25"><a href="vector.html#cb43-25" aria-hidden="true"></a>              <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;b&quot;</span>))</span>
+<span id="cb43-26"><a href="vector.html#cb43-26" aria-hidden="true"></a><span class="co">## [1] m m f f</span></span>
+<span id="cb43-27"><a href="vector.html#cb43-27" aria-hidden="true"></a><span class="co">## Levels: m f b</span></span>
+<span id="cb43-28"><a href="vector.html#cb43-28" aria-hidden="true"></a><span class="co">## factor() + exclude</span></span>
+<span id="cb43-29"><a href="vector.html#cb43-29" aria-hidden="true"></a><span class="co">## factor() + exclude</span></span>
+<span id="cb43-30"><a href="vector.html#cb43-30" aria-hidden="true"></a>pain &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;none&quot;</span>, <span class="st">&quot;mild&quot;</span>, <span class="st">&quot;moderate&quot;</span>, <span class="st">&quot;severe&quot;</span>, <span class="ot">NA</span>)</span>
+<span id="cb43-31"><a href="vector.html#cb43-31" aria-hidden="true"></a><span class="kw">factor</span>(pain) <span class="co"># NA is NOT a level.</span></span>
+<span id="cb43-32"><a href="vector.html#cb43-32" aria-hidden="true"></a><span class="co">## [1] none     mild     moderate severe   &lt;NA&gt;    </span></span>
+<span id="cb43-33"><a href="vector.html#cb43-33" aria-hidden="true"></a><span class="co">## Levels: mild moderate none severe</span></span>
+<span id="cb43-34"><a href="vector.html#cb43-34" aria-hidden="true"></a><span class="kw">factor</span>(pain, <span class="dt">exclude =</span> <span class="ot">NA</span>) <span class="co"># NA is NOT a level.</span></span>
+<span id="cb43-35"><a href="vector.html#cb43-35" aria-hidden="true"></a><span class="co">## [1] none     mild     moderate severe   &lt;NA&gt;    </span></span>
+<span id="cb43-36"><a href="vector.html#cb43-36" aria-hidden="true"></a><span class="co">## Levels: mild moderate none severe</span></span>
+<span id="cb43-37"><a href="vector.html#cb43-37" aria-hidden="true"></a><span class="kw">factor</span>(pain, <span class="dt">exclude =</span> <span class="kw">c</span>(<span class="ot">NA</span>)) <span class="co"># NA is NOT a level.</span></span>
+<span id="cb43-38"><a href="vector.html#cb43-38" aria-hidden="true"></a><span class="co">## [1] none     mild     moderate severe   &lt;NA&gt;    </span></span>
+<span id="cb43-39"><a href="vector.html#cb43-39" aria-hidden="true"></a><span class="co">## Levels: mild moderate none severe</span></span>
+<span id="cb43-40"><a href="vector.html#cb43-40" aria-hidden="true"></a><span class="kw">factor</span>(pain, <span class="dt">exclude =</span> <span class="ot">NULL</span>) <span class="co"># NA is a level.</span></span>
+<span id="cb43-41"><a href="vector.html#cb43-41" aria-hidden="true"></a><span class="co">## [1] none     mild     moderate severe   &lt;NA&gt;    </span></span>
+<span id="cb43-42"><a href="vector.html#cb43-42" aria-hidden="true"></a><span class="co">## Levels: mild moderate none severe &lt;NA&gt;</span></span>
+<span id="cb43-43"><a href="vector.html#cb43-43" aria-hidden="true"></a><span class="kw">factor</span>(pain, <span class="dt">exclude =</span> <span class="st">&quot;mild&quot;</span>) <span class="co"># NA is a level.</span></span>
+<span id="cb43-44"><a href="vector.html#cb43-44" aria-hidden="true"></a><span class="co">## [1] none     &lt;NA&gt;     moderate severe   &lt;NA&gt;    </span></span>
+<span id="cb43-45"><a href="vector.html#cb43-45" aria-hidden="true"></a><span class="co">## Levels: moderate none severe &lt;NA&gt;</span></span>
+<span id="cb43-46"><a href="vector.html#cb43-46" aria-hidden="true"></a>pain &lt;-<span class="st"> </span><span class="kw">factor</span>(pain, <span class="dt">exclude =</span> <span class="kw">c</span>(<span class="st">&quot;mild&quot;</span>, <span class="ot">NA</span>)) </span>
+<span id="cb43-47"><a href="vector.html#cb43-47" aria-hidden="true"></a>pain <span class="co"># mild and NA are NOT levels.</span></span>
+<span id="cb43-48"><a href="vector.html#cb43-48" aria-hidden="true"></a><span class="co">## [1] none     &lt;NA&gt;     moderate severe   &lt;NA&gt;    </span></span>
+<span id="cb43-49"><a href="vector.html#cb43-49" aria-hidden="true"></a><span class="co">## Levels: moderate none severe</span></span></code></pre></div>
+<p>{R} 中的 <code>factor()</code> 為
+<strong>無序因子</strong>
+(<strong>unordered factor</strong>),
+類似於統計分析中的
+<strong>名義變數</strong>
+(<strong>nominal variable</strong>),
+<strong>無序因子</strong>
+中的類別水準 (level),
+其離散值無大小順序的關係, 如性別的男與女.
+{R} 列印無序因子物件時,
+<strong>類別水準</strong>
+內建型式依照文字字母順序,
+可以使用函式
+<code>levels()</code>
+查看無序因子物件的類別水準;
+也可以使用函式
+<code>levels()</code>
+設定列印無序因子物件 <strong>類別水準</strong> 的顯示次序,
+{R} 內建顯示次序是依照文字字母或數字排次序,
+可以使用函式
+<code>levels()</code> 指令,
+改變顯示因子物件的次序或方向.</p>
+<p>在統計模型中常使用 類別變數 作為解釋變數,
+常常必須令 無序因子物件 或 類別變數
+的某一個類別水準為
+<strong>參照水準</strong>
+(<strong>reference level</strong>),
+以便建構類別型解釋變數內不同類別水準的
+<strong>對照比較</strong>
+(<strong>contrast comparison</strong>).
+使用函式
+<code>relevel()</code>,
+可以改變無序因子類別水準的參考水準.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="vector.html#cb44-1" aria-hidden="true"></a><span class="co">## unorder</span></span>
+<span id="cb44-2"><a href="vector.html#cb44-2" aria-hidden="true"></a><span class="co">## level()</span></span>
+<span id="cb44-3"><a href="vector.html#cb44-3" aria-hidden="true"></a>gender &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
+<span id="cb44-4"><a href="vector.html#cb44-4" aria-hidden="true"></a>gender &lt;-<span class="st"> </span><span class="kw">factor</span>(gender)</span>
+<span id="cb44-5"><a href="vector.html#cb44-5" aria-hidden="true"></a>gender</span>
+<span id="cb44-6"><a href="vector.html#cb44-6" aria-hidden="true"></a><span class="co">## [1] M F M M F</span></span>
+<span id="cb44-7"><a href="vector.html#cb44-7" aria-hidden="true"></a><span class="co">## Levels: F M</span></span>
+<span id="cb44-8"><a href="vector.html#cb44-8" aria-hidden="true"></a><span class="kw">levels</span>(gender)</span>
+<span id="cb44-9"><a href="vector.html#cb44-9" aria-hidden="true"></a><span class="co">## [1] &quot;F&quot; &quot;M&quot;</span></span>
+<span id="cb44-10"><a href="vector.html#cb44-10" aria-hidden="true"></a><span class="kw">levels</span>(gender) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>)</span>
+<span id="cb44-11"><a href="vector.html#cb44-11" aria-hidden="true"></a>gender</span>
+<span id="cb44-12"><a href="vector.html#cb44-12" aria-hidden="true"></a><span class="co">## [1] Male   Female Male   Male   Female</span></span>
+<span id="cb44-13"><a href="vector.html#cb44-13" aria-hidden="true"></a><span class="co">## Levels: Female Male</span></span>
+<span id="cb44-14"><a href="vector.html#cb44-14" aria-hidden="true"></a>hypertension &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Lo&quot;</span>, <span class="st">&quot;Mod&quot;</span>, <span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Mod&quot;</span>, <span class="st">&quot;Lo&quot;</span>, <span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Lo&quot;</span>)</span>
+<span id="cb44-15"><a href="vector.html#cb44-15" aria-hidden="true"></a>hypertension &lt;-<span class="st"> </span><span class="kw">factor</span>(hypertension)</span>
+<span id="cb44-16"><a href="vector.html#cb44-16" aria-hidden="true"></a>hypertension</span>
+<span id="cb44-17"><a href="vector.html#cb44-17" aria-hidden="true"></a><span class="co">## [1] Lo  Mod Hi  Mod Lo  Hi  Lo </span></span>
+<span id="cb44-18"><a href="vector.html#cb44-18" aria-hidden="true"></a><span class="co">## Levels: Hi Lo Mod</span></span>
+<span id="cb44-19"><a href="vector.html#cb44-19" aria-hidden="true"></a><span class="co"># relevel()</span></span>
+<span id="cb44-20"><a href="vector.html#cb44-20" aria-hidden="true"></a><span class="kw">relevel</span>(hypertension, <span class="dt">ref =</span> <span class="st">&quot;Lo&quot;</span>) <span class="co"># reset a reference level</span></span>
+<span id="cb44-21"><a href="vector.html#cb44-21" aria-hidden="true"></a><span class="co">## [1] Lo  Mod Hi  Mod Lo  Hi  Lo </span></span>
+<span id="cb44-22"><a href="vector.html#cb44-22" aria-hidden="true"></a><span class="co">## Levels: Lo Hi Mod</span></span></code></pre></div>
+<p>使用 <code>as.integer()</code>
+可將類別變數轉換成數值整數,
+此數值整數從 1 到 類別水準的整數,
+且依照原有的類別水準依序給整數,
+使用上必須注意此差異.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="vector.html#cb45-1" aria-hidden="true"></a><span class="co">## convert to numerical values</span></span>
+<span id="cb45-2"><a href="vector.html#cb45-2" aria-hidden="true"></a>hypertension &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Lo&quot;</span>, <span class="st">&quot;Mod&quot;</span>, <span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Mod&quot;</span>, <span class="st">&quot;Lo&quot;</span>, <span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Lo&quot;</span>)</span>
+<span id="cb45-3"><a href="vector.html#cb45-3" aria-hidden="true"></a>hypertension &lt;-<span class="st"> </span><span class="kw">factor</span>(hypertension)</span>
+<span id="cb45-4"><a href="vector.html#cb45-4" aria-hidden="true"></a><span class="kw">levels</span>(hypertension)</span>
+<span id="cb45-5"><a href="vector.html#cb45-5" aria-hidden="true"></a><span class="co">## [1] &quot;Hi&quot;  &quot;Lo&quot;  &quot;Mod&quot;</span></span>
+<span id="cb45-6"><a href="vector.html#cb45-6" aria-hidden="true"></a>hypertension</span>
+<span id="cb45-7"><a href="vector.html#cb45-7" aria-hidden="true"></a><span class="co">## [1] Lo  Mod Hi  Mod Lo  Hi  Lo </span></span>
+<span id="cb45-8"><a href="vector.html#cb45-8" aria-hidden="true"></a><span class="co">## Levels: Hi Lo Mod</span></span>
+<span id="cb45-9"><a href="vector.html#cb45-9" aria-hidden="true"></a><span class="kw">as.integer</span>(hypertension)</span>
+<span id="cb45-10"><a href="vector.html#cb45-10" aria-hidden="true"></a><span class="co">## [1] 2 3 1 3 2 1 2</span></span>
+<span id="cb45-11"><a href="vector.html#cb45-11" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb45-12"><a href="vector.html#cb45-12" aria-hidden="true"></a><span class="kw">levels</span>(hypertension) &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Low&quot;</span> =<span class="st"> &quot;Lo&quot;</span>, </span>
+<span id="cb45-13"><a href="vector.html#cb45-13" aria-hidden="true"></a>                             <span class="st">&quot;Moderate&quot;</span> =<span class="st"> &quot;Mod&quot;</span>, </span>
+<span id="cb45-14"><a href="vector.html#cb45-14" aria-hidden="true"></a>                             <span class="st">&quot;High&quot;</span> =<span class="st"> &quot;Hi&quot;</span>)</span>
+<span id="cb45-15"><a href="vector.html#cb45-15" aria-hidden="true"></a>hypertension</span>
+<span id="cb45-16"><a href="vector.html#cb45-16" aria-hidden="true"></a><span class="co">## [1] Low      Moderate High     Moderate Low      High    </span></span>
+<span id="cb45-17"><a href="vector.html#cb45-17" aria-hidden="true"></a><span class="co">## [7] Low     </span></span>
+<span id="cb45-18"><a href="vector.html#cb45-18" aria-hidden="true"></a><span class="co">## Levels: Low Moderate High</span></span>
+<span id="cb45-19"><a href="vector.html#cb45-19" aria-hidden="true"></a><span class="kw">as.integer</span>(hypertension) </span>
+<span id="cb45-20"><a href="vector.html#cb45-20" aria-hidden="true"></a><span class="co">## [1] 1 2 3 2 1 3 1</span></span>
+<span id="cb45-21"><a href="vector.html#cb45-21" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb45-22"><a href="vector.html#cb45-22" aria-hidden="true"></a><span class="co">## convert to numerical values</span></span>
+<span id="cb45-23"><a href="vector.html#cb45-23" aria-hidden="true"></a>pain &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">7</span>)</span>
+<span id="cb45-24"><a href="vector.html#cb45-24" aria-hidden="true"></a>pain &lt;-<span class="st"> </span><span class="kw">factor</span>(pain)</span>
+<span id="cb45-25"><a href="vector.html#cb45-25" aria-hidden="true"></a>pain</span>
+<span id="cb45-26"><a href="vector.html#cb45-26" aria-hidden="true"></a><span class="co">## [1] 7 8 6 6 8 7</span></span>
+<span id="cb45-27"><a href="vector.html#cb45-27" aria-hidden="true"></a><span class="co">## Levels: 6 7 8</span></span>
+<span id="cb45-28"><a href="vector.html#cb45-28" aria-hidden="true"></a><span class="kw">as.integer</span>(pain)</span>
+<span id="cb45-29"><a href="vector.html#cb45-29" aria-hidden="true"></a><span class="co">## [1] 2 3 1 1 3 2</span></span>
+<span id="cb45-30"><a href="vector.html#cb45-30" aria-hidden="true"></a>pain.chr =<span class="st"> </span><span class="kw">as.character</span>(pain)</span>
+<span id="cb45-31"><a href="vector.html#cb45-31" aria-hidden="true"></a>pain.chr</span>
+<span id="cb45-32"><a href="vector.html#cb45-32" aria-hidden="true"></a><span class="co">## [1] &quot;7&quot; &quot;8&quot; &quot;6&quot; &quot;6&quot; &quot;8&quot; &quot;7&quot;</span></span>
+<span id="cb45-33"><a href="vector.html#cb45-33" aria-hidden="true"></a>pain.num =<span class="st"> </span><span class="kw">as.integer</span>(pain.chr)</span>
+<span id="cb45-34"><a href="vector.html#cb45-34" aria-hidden="true"></a>pain.num</span>
+<span id="cb45-35"><a href="vector.html#cb45-35" aria-hidden="true"></a><span class="co">## [1] 7 8 6 6 8 7</span></span></code></pre></div>
+<p>We describe our methods in this chapter.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dataobject.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "PMingLiU",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r4biost.pdf", "r4biost.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

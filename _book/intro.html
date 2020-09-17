@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 R 語言基本概論 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 1 R 語言基本概論 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 R 語言基本概論 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 1 R 語言基本概論 | R 資料科學與統計" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 R 語言基本概論 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 1 R 語言基本概論 | R 資料科學與統計" />
+  
+
+<meta name="author" content="Jeff Lin" />
+
+
+<meta name="date" content="2020-09-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="vector.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>2</b> 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector.html"><a href="vector.html#向量"><i class="fa fa-check"></i><b>2.1</b> 向量</a></li>
+<li class="chapter" data-level="2.2" data-path="vector.html"><a href="vector.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a></li>
+<li class="chapter" data-level="2.3" data-path="vector.html"><a href="vector.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.3</b> 向量產生函式 <code>c()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="vector.html"><a href="vector.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.4</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.5" data-path="vector.html"><a href="vector.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.5</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector.html"><a href="vector.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.6</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.7" data-path="vector.html"><a href="vector.html#向量邏輯操作"><i class="fa fa-check"></i><b>2.7</b> 向量邏輯操作</a></li>
+<li class="chapter" data-level="2.8" data-path="vector.html"><a href="vector.html#向量元素命名"><i class="fa fa-check"></i><b>2.8</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.9" data-path="vector.html"><a href="vector.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.9</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.10" data-path="vector.html"><a href="vector.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.10</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.11" data-path="vector.html"><a href="vector.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.11</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataobject.html"><a href="dataobject.html"><i class="fa fa-check"></i><b>3</b> 資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataobject.html"><a href="dataobject.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dataobject.html"><a href="dataobject.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dataobject.html"><a href="dataobject.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dataobject.html"><a href="dataobject.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="dataobject.html"><a href="dataobject.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.2.1</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dataobject.html"><a href="dataobject.html#陣列物件-array"><i class="fa fa-check"></i><b>3.2.2</b> 陣列物件 Array</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="dataobject.html"><a href="dataobject.html#列表物件-list"><i class="fa fa-check"></i><b>3.3</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="dataobject.html"><a href="dataobject.html#列表函式-list"><i class="fa fa-check"></i><b>3.3.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dataobject.html"><a href="dataobject.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.3.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="dataobject.html"><a href="dataobject.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.4</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.5" data-path="dataobject.html"><a href="dataobject.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.5</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="dataobject.html"><a href="dataobject.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.5.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datainout.html"><a href="datainout.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datainout.html"><a href="datainout.html#資料框架"><i class="fa fa-check"></i><b>4.1</b> 資料框架</a></li>
+<li class="chapter" data-level="4.2" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-空白分隔"><i class="fa fa-check"></i><b>4.2</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔</a></li>
+<li class="chapter" data-level="4.3" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔"><i class="fa fa-check"></i><b>4.3</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</a></li>
+<li class="chapter" data-level="4.4" data-path="datainout.html"><a href="datainout.html#r-內建資料框架"><i class="fa fa-check"></i><b>4.4</b> R 內建資料框架</a></li>
+<li class="chapter" data-level="4.5" data-path="datainout.html"><a href="datainout.html#輸出-r-資料"><i class="fa fa-check"></i><b>4.5</b> 輸出 {R} 資料</a></li>
+<li class="chapter" data-level="4.6" data-path="datainout.html"><a href="datainout.html#儲存-r-格式資料檔"><i class="fa fa-check"></i><b>4.6</b> 儲存 {R} 格式資料檔</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>5</b> 資料視覺化分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataviz.html"><a href="dataviz.html#視覺化分析原則"><i class="fa fa-check"></i><b>5.1</b> 視覺化分析原則</a></li>
+<li class="chapter" data-level="5.2" data-path="dataviz.html"><a href="dataviz.html#繪圖套件-ggplot2"><i class="fa fa-check"></i><b>5.2</b> 繪圖套件 ggplot2</a></li>
+<li class="chapter" data-level="5.3" data-path="dataviz.html"><a href="dataviz.html#類別變數"><i class="fa fa-check"></i><b>5.3</b> 類別變數</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="dataviz.html"><a href="dataviz.html#單類別變數"><i class="fa fa-check"></i><b>5.3.1</b> 單類別變數</a></li>
+<li class="chapter" data-level="5.3.2" data-path="dataviz.html"><a href="dataviz.html#多類別變數"><i class="fa fa-check"></i><b>5.3.2</b> 多類別變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="dataviz.html"><a href="dataviz.html#連續變數"><i class="fa fa-check"></i><b>5.4</b> 連續變數</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dataviz.html"><a href="dataviz.html#單連續變數"><i class="fa fa-check"></i><b>5.4.1</b> 單連續變數</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dataviz.html"><a href="dataviz.html#二連續變數"><i class="fa fa-check"></i><b>5.4.2</b> 二連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dataviz.html"><a href="dataviz.html#混合變數"><i class="fa fa-check"></i><b>5.5</b> 混合變數</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="dataviz.html"><a href="dataviz.html#一連續-一類別"><i class="fa fa-check"></i><b>5.5.1</b> 一連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.2" data-path="dataviz.html"><a href="dataviz.html#二連續-一類別"><i class="fa fa-check"></i><b>5.5.2</b> 二連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.3" data-path="dataviz.html"><a href="dataviz.html#三連續變數"><i class="fa fa-check"></i><b>5.5.3</b> 三連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="dataviz.html"><a href="dataviz.html#分組繪圖"><i class="fa fa-check"></i><b>5.6</b> 分組繪圖</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html"><i class="fa fa-check"></i><b>6</b> 基本函式</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#函式語法"><i class="fa fa-check"></i><b>6.1</b> 函式語法</a></li>
+<li class="chapter" data-level="6.2" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#檢視的函式原始碼定義"><i class="fa fa-check"></i><b>6.2</b> 檢視的函式原始碼定義</a></li>
+<li class="chapter" data-level="6.3" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式"><i class="fa fa-check"></i><b>6.3</b> 數列函式</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式-seq-與-sequence"><i class="fa fa-check"></i><b>6.3.1</b> 數列函式: seq() 與 sequence()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#重複元素函式-rep"><i class="fa fa-check"></i><b>6.4</b> 重複元素函式: rep()</a></li>
+<li class="chapter" data-level="6.5" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#算數函式-arithmetic-computing-function"><i class="fa fa-check"></i><b>6.5</b> 算數函式 Arithmetic Computing Function</a></li>
+<li class="chapter" data-level="6.6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#組合與階乘函式-choose-與-factorial"><i class="fa fa-check"></i><b>6.6</b> 組合與階乘函式: choose() 與 factorial()</a></li>
+<li class="chapter" data-level="6.7" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#選擇資料函式-all-any-which"><i class="fa fa-check"></i><b>6.7</b> 選擇資料函式: all(), any(), which()</a></li>
+<li class="chapter" data-level="6.8" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#排序函式-ranking-and-sorting"><i class="fa fa-check"></i><b>6.8</b> 排序函式 Ranking and Sorting</a></li>
+<li class="chapter" data-level="6.9" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#物件查看與強制轉換函式"><i class="fa fa-check"></i><b>6.9</b> 物件查看與強制轉換函式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basicstat.html"><a href="basicstat.html"><i class="fa fa-check"></i><b>7</b> 基本統計函式</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basicstat.html"><a href="basicstat.html#敘述統計函式"><i class="fa fa-check"></i><b>7.1</b> 敘述統計函式</a></li>
+<li class="chapter" data-level="7.2" data-path="basicstat.html"><a href="basicstat.html#類別資料表格函數"><i class="fa fa-check"></i><b>7.2</b> 類別資料表格函數</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-table-xtabs"><i class="fa fa-check"></i><b>7.2.1</b> 列聯表函式: table(), xtabs()</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-ftable"><i class="fa fa-check"></i><b>7.2.2</b> 列聯表函式: ftable()</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-margin.table-prop.table"><i class="fa fa-check"></i><b>7.2.3</b> 列聯表函式: margin.table(), prop.table()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basicstat.html"><a href="basicstat.html#機率函式與亂數生成函式"><i class="fa fa-check"></i><b>7.3</b> 機率函式與亂數生成函式</a></li>
+<li class="chapter" data-level="7.4" data-path="basicstat.html"><a href="basicstat.html#隨機抽樣函式-sample"><i class="fa fa-check"></i><b>7.4</b> 隨機抽樣函式 sample()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basictidy.html"><a href="basictidy.html"><i class="fa fa-check"></i><b>8</b> 資料基本處理</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basictidy.html"><a href="basictidy.html#資料輸入套件-readr"><i class="fa fa-check"></i><b>8.1</b> 資料輸入套件 readr</a></li>
+<li class="chapter" data-level="8.2" data-path="basictidy.html"><a href="basictidy.html#整潔資料-tidy-data"><i class="fa fa-check"></i><b>8.2</b> 整潔資料 Tidy Data</a></li>
+<li class="chapter" data-level="8.3" data-path="basictidy.html"><a href="basictidy.html#tibble-與-data-frame"><i class="fa fa-check"></i><b>8.3</b> Tibble 與 Data Frame</a></li>
+<li class="chapter" data-level="8.4" data-path="basictidy.html"><a href="basictidy.html#資料流動管道運算指令-pipe"><i class="fa fa-check"></i><b>8.4</b> 資料流動管道運算指令 Pipe</a></li>
+<li class="chapter" data-level="8.5" data-path="basictidy.html"><a href="basictidy.html#資料檢視函式-glimpse"><i class="fa fa-check"></i><b>8.5</b> 資料檢視函式 glimpse()</a></li>
+<li class="chapter" data-level="8.6" data-path="basictidy.html"><a href="basictidy.html#資料處裡-dplyr-套件"><i class="fa fa-check"></i><b>8.6</b> 資料處裡 dplyr 套件</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="basictidy.html"><a href="basictidy.html#選擇個體函式-filter"><i class="fa fa-check"></i><b>8.6.1</b> 選擇個體函式 <code>filter()</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
+<li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
+<li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
+<li class="chapter" data-level="11" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>11</b> Temp</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> R 語言基本概論</h1>
+<p>R 系統是由 Ross Ihaka 與 Robert Gentleman 從 S 語言所發展出來, 主要是為了統計分析與統計繪圖.
+R 除了資料處理與分析, R 擁有一完整陣列和矩陣的操作運算, 完整圖形工具, 也是一種相當完善的程式設計語言.
+S 語言在 1980 年代末期, 由 AT&amp;T 實驗室,
+Rick Becker, John Chambers, 與 Allan Wilks 發展用來進行統計分析與統計繪圖,
+1990 年代, Insightful 公司將 S 商品化,
+並加入許多方便的操作介面, 稱為 Splus.
+R 與 S (或 Splus) 語法大多相近,
+R 與 S 都是以物件導向為主的程式語言,
+透過交互作用方式很容易地進行統計分析與統計繪圖,
+在當年 S 語言使用交互作用方式與當時主流統計軟體, 如 SAS, SPSS 有相當差異.
+且最大差別是 R 是一個免費的統計分析軟體 (open-source, GNU General Public License),
+R 目前由一群跨國際的志工人員組成的 {R} 核心發展組織 (R core-development team) 所維持, 運作與持續更新發展,
+在今日, {R} 不僅是統計專業人員的研究工具,
+也是資料科學家經常使用的重要工具之一.</p>
+<div id="下載與安裝-r" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> 下載與安裝 R</h2>
+<p>R 有各種版本, 可以在 Microsoft Window, Unix/Linux,
+Apple Mac OS 等作業性系統運行,
+以下則以 windows 作業系統為主要說明.
+若你的 windows 使用者名稱或帳號為中文,
+請先進入控制台,
+新增或變更 ``使用者名稱’’ (User),
+更改使用者名稱為英文,
+然後才進行以下安裝.
+任何與 R 的檔案名稱或路徑名稱,
+請勿使用中文, 空格或特殊符號.</p>
+<p>R 與其他軟體成可以形成強大的可重製性研究論文或動態文件
+(Reproducible Research, Dynamic Documentation),
+可同時依序安裝
+Rtools, RStudio, Tex System, Pandoc, Git 等相關軟體.
+初學者請請讓軟體內設的路徑 (PATH) 自動安裝,
+不要任意更動 PATH 與安裝位置.
+安裝任何與 R 相關軟體,
+請按滑鼠右鍵以系統管理員身分執行.</p>
+<p>R 時常有更新版本, 下載與安裝 R 與 Rtools 簡述如下:
+1. 上網至 <a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>
+2. 按滑鼠點選網頁左邊連結 (Link) 下載區 <a href="https://cran.r-project.org/mirrors.html">Download CRAN</a>.
+3. 按滑鼠點選網頁 CRAN Mirrors 中的任一鏡像網址 (CRAN Mirrors), 如
+<a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a>
+4. 按滑鼠點選上述鏡像網址內網頁中的 Download R for Windows.
+5. 按滑鼠點選網頁 R for Windows 中的 base.
+6. 按滑鼠右鍵, 點選檔案網址 Download R X.Y.Z for Windows,
+其中 X.Y.Z 為 R 版本代碼, 下載儲存至個人檔案夾內.
+7. 至下載的檔案夾內, 按滑鼠右鍵點擊 R-X.Y.Z-win.exe,
+以系統管理員身分執行安裝.
+8. 可選擇中文或英文進行安裝, 只要安裝 64 位元系統.
+9. 回到與 base 同一網頁視窗, 點選 Rtools, 點選最先版本的 Rtoolsxx.exe.
+下載檔案, 請按滑鼠右鍵以系統管理員身分執行安裝.
+10. 詳細安裝 Windows, Mac 或 Linux 作業系統, 利用 google 或 Youtube 等, 搜尋相關訊息.</p>
+</div>
+<div id="下載與安裝-rsudio" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> 下載與安裝 RSudio</h2>
+<p>直接在 {R} 視窗輸入 {R} 指令並不是很方便.
+使用文字編輯軟體輸入, 修正, 儲存, 然後再送到 {R} 執行.
+過去有許多 {R} 文字/程式編輯軟體可用,
+RStudio 是目前最方便的 {R} 編輯程式,
+RStudio 原始是 {R} 的一種操作介面,
+目前也衍伸成可使用多種程式語言的操作介面.
+可上網至 <a href="http://www.rstudio.com/" class="uri">http://www.rstudio.com/</a>,
+在 Product 選項下, 選擇 <a href="https://rstudio.com/products/rstudio/">R premier IDE for R</a>,
+選擇 <a href="https://rstudio.com/products/rstudio/download/">Rstudio Desktop</a>,
+選擇合適的作業系統進行下載 RStudio.
+下載 Rstudio 檔案完成後,
+請按滑鼠右鍵以系統管理員身分執行安裝.
+再次注意,
+使用者名稱 (User Name),
+須更改使用者名稱為英文,
+然後才進行下載安裝.
+任何與 RSudio 的檔案名稱或路徑名稱,
+請勿使用中文, 空格或特殊符號.
+若想使用 Tex/LaTeX, 或 讓 Rstudio 產生 PDF 檔案,
+需依序安裝 Tex system, Pandoc, Git,
+安裝 TeX/LaTeX/XeLaTex 系統,
+請至 <a href="https://www.latex-project.org/get/" class="uri">https://www.latex-project.org/get/</a>,
+或直接安裝 MikTeX: <a href="http://miktex.org/" class="uri">http://miktex.org/</a>.
+安裝 Pandoc,
+請至 <a href="http://pandoc.org/" class="uri">http://pandoc.org/</a>,
+或 <a href="http://pandoc.org/installing.html" class="uri">http://pandoc.org/installing.html</a>.
+安裝 Git, 請至 <a href="https://git-scm.com/" class="uri">https://git-scm.com/</a>.
+同時申請 <a href="https://github.com/">GitHub</a> 帳號,
+任何軟體請按滑鼠右鍵以系統管理員身分執行安裝.
+詳細的可重製性研究論文操作,
+可參考 <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>, Xie (2020) <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>,
+<a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a> 等文件.</p>
+</div>
+<div id="簡單實例" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> 簡單實例</h2>
+<p>學習 {R} 最好的方法, 就是要開始使用 {R}, 初學者要了解 {R}, 可先進行一些簡單實例的演練,
+首先須注意的是, 在 {R} 程式語言所使用的文字, 大小寫是有差別的.
+直接在 {R} 或 RStudio console 視窗輸入指令都會得到相同的結果.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true"></a><span class="dv">1</span><span class="op">+</span><span class="dv">2</span>         <span class="co"># calculator</span></span>
+<span id="cb1-2"><a href="intro.html#cb1-2" aria-hidden="true"></a><span class="kw">log</span>(<span class="fl">3.14</span>)   <span class="co"># log function</span></span>
+<span id="cb1-3"><a href="intro.html#cb1-3" aria-hidden="true"></a>x =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>   <span class="co"># one plus two assign to x</span></span>
+<span id="cb1-4"><a href="intro.html#cb1-4" aria-hidden="true"></a>x           <span class="co"># print x</span></span>
+<span id="cb1-5"><a href="intro.html#cb1-5" aria-hidden="true"></a>x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>) <span class="co"># get a vector</span></span>
+<span id="cb1-6"><a href="intro.html#cb1-6" aria-hidden="true"></a><span class="kw">mean</span>(x)     <span class="co"># mean function</span></span>
+<span id="cb1-7"><a href="intro.html#cb1-7" aria-hidden="true"></a><span class="kw">log</span>(x)      <span class="co"># log function</span></span></code></pre></div>
+<p>若要自學基本 {R} 或 進階 {R},
+利用 google 搜尋 R Introduction, R Tutorial 等,
+或搜尋與觀看 YouTube 影片.
+請繼續練習下列指令.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" aria-hidden="true"></a><span class="kw">factorial</span>(<span class="dv">4</span>)</span>
+<span id="cb2-2"><a href="intro.html#cb2-2" aria-hidden="true"></a><span class="kw">sin</span>(pi)</span>
+<span id="cb2-3"><a href="intro.html#cb2-3" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb2-4"><a href="intro.html#cb2-4" aria-hidden="true"></a><span class="kw">exp</span>(x.vec)</span>
+<span id="cb2-5"><a href="intro.html#cb2-5" aria-hidden="true"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">nrows=</span><span class="dv">2</span>, <span class="dt">ncols=</span><span class="dv">3</span>)</span>
+<span id="cb2-6"><a href="intro.html#cb2-6" aria-hidden="true"></a>weight =<span class="st"> </span><span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">45</span>, <span class="dv">67</span>, <span class="dv">53</span>)</span>
+<span id="cb2-7"><a href="intro.html#cb2-7" aria-hidden="true"></a><span class="kw">mean</span>(weight)</span>
+<span id="cb2-8"><a href="intro.html#cb2-8" aria-hidden="true"></a><span class="kw">sd</span>(weight)</span></code></pre></div>
+<p>{R} 具有強大的繪圖功能, 可將程式語言與繪圖函數緊密結合,
+控制標題, 顏色, 說明文字等, 繪製高品質的統計圖並可儲存於不同格式,
+提供不同文書處裡軟體使用.
+練習以下指令可以體會一些 {R} 的繪圖功能.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" aria-hidden="true"></a><span class="co">## demo</span></span>
+<span id="cb3-2"><a href="intro.html#cb3-2" aria-hidden="true"></a><span class="kw">demo</span>(graphics)</span>
+<span id="cb3-3"><a href="intro.html#cb3-3" aria-hidden="true"></a><span class="kw">demo</span>(image)</span>
+<span id="cb3-4"><a href="intro.html#cb3-4" aria-hidden="true"></a><span class="kw">example</span>(contour)</span>
+<span id="cb3-5"><a href="intro.html#cb3-5" aria-hidden="true"></a><span class="kw">demo</span>(persp)</span>
+<span id="cb3-6"><a href="intro.html#cb3-6" aria-hidden="true"></a><span class="kw">example</span>(persp3d)</span>
+<span id="cb3-7"><a href="intro.html#cb3-7" aria-hidden="true"></a><span class="kw">demo</span>(plotmath)</span>
+<span id="cb3-8"><a href="intro.html#cb3-8" aria-hidden="true"></a><span class="kw">demo</span>(Hershey)</span>
+<span id="cb3-9"><a href="intro.html#cb3-9" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;lattice&quot;</span>) <span class="co"># install package</span></span>
+<span id="cb3-10"><a href="intro.html#cb3-10" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;lattice&quot;</span>)          <span class="co"># load package</span></span>
+<span id="cb3-11"><a href="intro.html#cb3-11" aria-hidden="true"></a><span class="kw">demo</span>(lattice)</span>
+<span id="cb3-12"><a href="intro.html#cb3-12" aria-hidden="true"></a><span class="kw">example</span>(wireframe)</span>
+<span id="cb3-13"><a href="intro.html#cb3-13" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;rgl&quot;</span>)</span>
+<span id="cb3-14"><a href="intro.html#cb3-14" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;rgl&quot;</span>)</span>
+<span id="cb3-15"><a href="intro.html#cb3-15" aria-hidden="true"></a><span class="kw">demo</span>(rgl)                   <span class="co"># Interact using your mouse.</span></span></code></pre></div>
+<p>{R} 是統計程式語言,
+程式語言是語言的一種,
+程式語言是人與電腦溝通的工具, 任命令電腦做事的語言.
+程式語言是須嚴謹的邏輯語法, 電腦才會正確執行命令,</p>
+<p>{R} 對於未有統計專業背景的初學者是困難學習的語言,
+初學者學習 {R} 語言, 類似小孩學習語言,
+通常須 0.5$$1.0 年以上,
+初學者請先直接學習現成實用的簡單指令,
+初學者請不要先學太多抽像語法與閱讀抽像說明,
+若已經學習其它一種程式語言相對較容學會易另一種程式語言.
+學習程式語言最大挫折是城市經常出現無法理解的錯誤訊息,
+可利用 google, 將錯誤訊息尋找容易理解的答案.
+{R} 最常犯的錯誤如下:</p>
+<ul>
+<li>英文大小寫差異.</li>
+<li>英文單字拚錯.</li>
+<li>中文編碼問題, Big5 與 utf-8 等.</li>
+<li>缺少標點符號: 單/雙引號, 逗號, $, }, ], ).</li>
+<li>變數名/物件名, 指令, 資料檔案: 多餘空白, 多餘空格, 多餘 Tab 等.</li>
+<li>直接從 PDF 文件 或 Web 等 copy 程式造成亂碼.</li>
+<li>未詳細閱讀錯誤訊息或警告訊息.</li>
+</ul>
+<p>初學者對物件命名時, 應盡量避免定義一個物件名字,
+與現有的物件同名, 所以命名時要避免重覆,
+同時避免物件名字過短, 以免後來引起錯亂.</p>
+</div>
+<div id="物件-object" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> 物件 Object</h2>
+<p>{R} 與 <strong>S</strong> 是物件導向為主的程式語言,
+(Object-Oriented Programming Language),
+在 {R} 系統中, 儲存的資料或可執行的函數, 都稱為
+<strong>物件</strong>
+(<strong>object</strong>).
+{R} 物件包含儲存資料的
+向量 (vector), 矩陣 (matrix), 陣列 (array), 列表 (Lists),
+資料框架 (data frames)
+或執行特定運算指令的
+函式 (function) 等.</p>
+<p>{R} 透過函式或指令, 很容易地對資料物件進行統計分析與統計繪圖.
+須特別注意, 在 {R} 對物件或指令命名的英文大小寫是有差異,
+<code>s</code> 與 <code>S</code> 是不同的.
+對物件命名時,
+<strong>物件名字</strong>
+(<strong>object name</strong>)
+起始位置必須以 <strong>英文字母</strong> 或 <strong>.</strong> (句點) 命名,
+若物件名字以 <strong>.</strong> 為起始,
+則物件名字的第二個位置需為文字,
+物件名字其餘位置,
+以英文字母 (A-Z 或 a-z),
+數字 (0-9), /, ., _ (underscore) 或 -, 等皆可.
+中間不可有空格.</p>
+<p>{R} 也保留一些特定名字做為特定的物件名字,
+指令名字或常用函式名字使用,
+例如, <code>c</code>, <code>s</code>, <code>C</code>, <code>T</code>, <code>F</code> 等,
+這些名稱叫做
+<strong>保留名字</strong>
+(<strong>reserved names</strong>).
+例如:</p>
+<pre><code>FALSE Inf NA NaN NULL TRUE
+break else for function if in next repeat while
+F T
+c q s t C D I
+diff mean pi range rank var</code></pre>
+<p>初學者對物件命名時, 應盡量避免定義一個物件名字,
+與現有的物件同名, 所以命名時要避免重覆,
+同時避免物件名字過短, 以免後來引起錯亂.</p>
+</div>
+<div id="使用指令" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> 使用指令</h2>
+<p>{R} 基本介面是一個互動式指令視窗,
+指令可分成 2 種,
+一為
+<strong>運算式</strong>
+(<strong>expression</strong>),
+例如,</p>
+<pre><code>1+2
+log(x)
+mean(x)</code></pre>
+<p>另一個為
+<strong>指派運算</strong>
+或
+<strong>賦值運算</strong>
+(<strong>assignment</strong>),
+例如,</p>
+<pre><code>x &lt;- 1+2
+x = 4-5</code></pre>
+<p>當一個 {R} 程式需要使用者輸入指令時,
+它會顯示
+<strong>指令提示符號</strong>
+(<strong>prompt symbol</strong>),
+指令提示符號通常是一個 <code>&gt;</code> (大於符號).
+當使用者輸入完整的
+<strong>運算式</strong>,
+則運算式指令輸入後的結果,
+{R} 會馬上顯示在指令下方.
+當使用者輸入完整的
+<strong>指派運算</strong>,
+{R} 同樣會做運算式,
+並且把結果 (值) 傳給變數,
+但結果不會自動顯示在 {R} 視窗螢幕上.
+在 {R} 中可利用</p>
+<pre><code>options(prompt = &quot;R&gt;&quot;)</code></pre>
+<p>將指令提示符號 <code>&gt;</code> 改成 <code>R&gt;</code>.</p>
+<p><strong>指派運算符號</strong>
+(<strong>assignment symbol</strong>)
+通常是 <code>&lt;- ``, 一個小於符號和一個短線符號組成, 例如,</code>x &lt;- 1 + 2<code>, 讀成</code>x<code>``得到'' $(1 + 2)$. 在 {R} 中可以如傳統的程式語言或統計軟體, 使用</code>=<code>(等號) 為 **指派運算符號**, 例如,</code>x = 1 + 2<code>, 但在 {R} 中,</code>=<code>(等號) 還有其他用途, 使用者可依個人習慣使用</code>&lt;-<code>或</code>=<code>, 但是多數 {R} 專業人士建議使用</code>&lt;-`.</p>
+<p>要顯示賦值運算的結果,
+可以輸入物件名,
+使用函式 <code>print()</code>,
+或在賦值運算時, 前後加上小括號顯示賦值運算的結果.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro.html#cb8-1" aria-hidden="true"></a><span class="co">## asign          </span></span>
+<span id="cb8-2"><a href="intro.html#cb8-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span>   <span class="co"># assign object x           </span></span>
+<span id="cb8-3"><a href="intro.html#cb8-3" aria-hidden="true"></a>x        <span class="co"># show x             </span></span>
+<span id="cb8-4"><a href="intro.html#cb8-4" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
+<span id="cb8-5"><a href="intro.html#cb8-5" aria-hidden="true"></a><span class="kw">print</span>(x) <span class="co"># print()                  </span></span>
+<span id="cb8-6"><a href="intro.html#cb8-6" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
+<span id="cb8-7"><a href="intro.html#cb8-7" aria-hidden="true"></a>msg &lt;-<span class="st"> &quot;hello&quot;</span>                   </span>
+<span id="cb8-8"><a href="intro.html#cb8-8" aria-hidden="true"></a>msg     <span class="co"># show x                     </span></span>
+<span id="cb8-9"><a href="intro.html#cb8-9" aria-hidden="true"></a><span class="co">## [1] &quot;hello&quot;</span></span></code></pre></div>
+<p>如果一條輸入的指令在第一行結束的時候,
+在 {R} 語法上還不完整,
+若用鍵盤上 <code>&lt;Enter&gt;</code> 按鍵時,
+則
+{R} 會給出另一個不同的提示符號,
+通常是 <code>+</code> (加號),
+且該提示符號 <code>+</code> 會出現在第二行,
+和隨後的數行中,
+{R} 持續地等待使用者輸入指令.
+當一指令在語法上是完整的時候,
+使用鍵盤上 <code>&lt;Enter&gt;</code> 按鍵時,
+{R} 才會執行指令.
+不同的完整指令要在同一行輸入時,
+可用 <code>;</code> (分號) 隔開, 或是另起一新輸入行輸入指令分別輸入不同的完整指令.
+例如,</p>
+<pre><code>## input at the same line, use ;
+x &lt;- 1 + 2; y &lt;- 3 + 4
+## input 2 lines separately  
+x &lt;- 1 + 2
+y &lt;- 3 + 4</code></pre>
+<p>數個指令也可以放入一組大括弧內,
+<code>{ \; }</code>,
+數個指令放在一起,
+構成一個
+<strong>複合運算式</strong>
+(<strong>compound expression</strong>),
+這部份在函式的章節會再進一步說明.</p>
+<p>在 {R} 中, 若要對任何指令, 物件, 程式語言
+加上
+<strong>注釋</strong>
+(<strong>commands</strong>),
+則注釋從 # (井號) 開始, 到句子收尾之間的語句就是是注釋,
+在 {R} 中,
+注釋幾乎可以放在任何地方的任何一行之中.
+習慣上, 整行的注釋使用雙井號作為開始, ##,
+運算式尾端注釋使用單井號開始 #.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro.html#cb10-1" aria-hidden="true"></a><span class="co">## This is my R code</span></span>
+<span id="cb10-2"><a href="intro.html#cb10-2" aria-hidden="true"></a><span class="kw">log</span>(pi)</span>
+<span id="cb10-3"><a href="intro.html#cb10-3" aria-hidden="true"></a><span class="co">## [1] 1.145</span></span>
+<span id="cb10-4"><a href="intro.html#cb10-4" aria-hidden="true"></a><span class="co">## simple calculation</span></span>
+<span id="cb10-5"><a href="intro.html#cb10-5" aria-hidden="true"></a><span class="dv">3</span><span class="op">+</span><span class="dv">4</span> <span class="co"># calculator: two plus one</span></span>
+<span id="cb10-6"><a href="intro.html#cb10-6" aria-hidden="true"></a><span class="co">## [1] 7</span></span></code></pre></div>
+<p>在 {R} 互動式窗 Console 中, 若要重複一個指令, 或是叫回之前輸入的指令,
+可以用鍵盤上的 <span class="math inline">\(\uparrow\)</span> (向上) 箭頭按鍵,
+調出之前已經輸入的指令, 視窗中便可顯示之前的輸入指令,
+再利用鍵盤上 <code>&lt;DEL&gt;</code> 按鍵更改成所要輸入的指令.
+可以再次練習以下指令, 檢視 {R} 會傳結果.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true"></a><span class="co"># This is my R code</span></span>
+<span id="cb11-2"><a href="intro.html#cb11-2" aria-hidden="true"></a>x =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>  <span class="co"># one plus two</span></span>
+<span id="cb11-3"><a href="intro.html#cb11-3" aria-hidden="true"></a>x</span>
+<span id="cb11-4"><a href="intro.html#cb11-4" aria-hidden="true"></a><span class="co">## [1] 3</span></span>
+<span id="cb11-5"><a href="intro.html#cb11-5" aria-hidden="true"></a>x <span class="op">+</span><span class="st"> </span><span class="dv">4</span></span>
+<span id="cb11-6"><a href="intro.html#cb11-6" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
+<span id="cb11-7"><a href="intro.html#cb11-7" aria-hidden="true"></a>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb11-8"><a href="intro.html#cb11-8" aria-hidden="true"></a><span class="co">## [1] 2</span></span></code></pre></div>
+</div>
+<div id="查詢顯示物件與刪除物件" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> 查詢顯示物件與刪除物件</h2>
+<p>在 {R} 中產生和控制的實體稱為
+<strong>物件</strong>
+(<strong>object</strong>),
+它們可以是向量, 陣列, 字串, 函式等不同型式.
+{R} 函式
+<code>object()</code>
+或
+<code>ls()</code>
+可以查詢與顯示當前保存在 {R} 環境中的物件名稱.</p>
+<pre><code>## show objects
+object()  # shiow all objects
+ls()      # show all obkects
+ls(x, y)  # show x and y object</code></pre>
+<p>透過函式 <code>rm()</code>,
+可以刪除物件, 例如,</p>
+<pre><code>## delete objects: x.vec and y.vec 
+rm(x.vec, y.vec)</code></pre>
+<p>可以刪除物件 <code>x.vec</code> 與 <code>y.vec</code>.</p>
+</div>
+<div id="程式中止操作" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> 程式中止操作</h2>
+<p>當程式寫作不當, 造成 {R} 永無止境的執行運算.
+若要中斷執行中的程式,
+可按下 <code>&lt;Esc&gt;</code> 鍵中斷執行中的程式.
+例如, 輸入</p>
+<pre><code>for (i in 1:1000000) print (i) # press &lt;Esc&gt;</code></pre>
+<p>按下 <code>&lt;Esc&gt;</code> 鍵可中斷執行中的程式.</p>
+</div>
+<div id="工作目錄" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> 工作目錄</h2>
+<p>任何 {R} 工作中產生的物件或暫時檔案,
+都會在電腦的
+<strong>工作目錄</strong>
+或
+<strong>工作路徑</strong>
+(<strong>working directory</strong>).
+{R} 指令內的路徑 (PATH) 分隔為 <code>//</code> (例如, <code>C://RData//</code>)
+或 <code>/</code> (例如, <code>C:/RData/</code>).
+可用 Windowns 的 <span class="math inline">\(\backslash\backslash\)</span> (例如, C:<span class="math inline">\(\backslash\backslash\)</span>RData).
+指令 <code>getwd()</code>,
+可以顯示當前工作目錄.
+指令
+<code>setwd()</code>,
+可以改變當前工作目錄.
+請練習以下指令.</p>
+<pre><code>getwd() # show your current working directory
+setwd(&quot;C:/RData/&quot;)
+getwd()
+## [1] &quot;C:/RData&quot;</code></pre>
+<p>請再比較下列比較檔案路徑格式指令.</p>
+<pre><code>setwd(&quot;C:/RData&quot;)
+getwd()
+setwd(&quot;C:/RData/&quot;)
+getwd()</code></pre>
+<p>使用 {R} 做統計資料分析,
+不同的分析資料計畫,
+最好使用不同的工作目錄,
+以免相同名字的物件, 相互取代,
+也便於管理.
+在分析資料過程中,
+將物件命名為 <code>age</code>, <code>gender</code>,
+<code>m1.lm</code>, <code>m2.lm</code> 等,
+是一件常有的情形,
+在任一次的分析計畫中,
+這樣的命名是有其特定含義,
+但不同分析資料計畫,
+在一個工作目錄下進行時,
+區別資料內相同物件名字,
+是一件非常困難的事情.
+此時可以利用 RStudio　專案計畫 (project),
+將不同資料分析或課程內容獨立在一個專案計畫,
+每一個專案計畫都在同一檔案路徑或檔案夾中,
+此時程式便可攜帶任一作業系統或上傳到 GitHub 系統.
+詳細的可重製性研究論文操作與版本控制 (version control),
+可參考 <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>, Xie (2020) <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>,
+<a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a>,
+<a href="https://happygitwithr.com/" class="uri">https://happygitwithr.com/</a> 等文件.</p>
+</div>
+<div id="程式編輯軟體與整合系統-rstudio" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> 程式編輯軟體與整合系統 RStudio</h2>
+<p>若要方便使用中文以及可重製性研究論文系統, 可更動下列選項.
+開啟 RStudio:
+使用滑數點選 <code>Tools</code>, 點選 <code>Global Options....</code>.</p>
+<ul>
+<li>點選 <code>General</code>,
+取消點選 <code>Restore .RData</code>,
+在 <code>Save workspace to .RData on exit</code>: 點選 <code>Never</code>.</li>
+<li>在 <code>Default text encoding</code>: 點選 <code>UTF-8</code>.</li>
+<li>點選進入 <code>Appearance</code>,
+點選你喜歡的式樣, 例如,
+點選 <code>Zoom</code>: 140%,
+點選 <code>Font size</code>: 14,
+點選你喜歡的字型.</li>
+<li>點選進入 <code>Sweave</code>,
+在 <code>Waeve Rnw file using</code>: 點選 <code>knitr</code>,
+在 <code>Typest LaTeX into PDF using: 點選</code>XeLaTeX`.</li>
+<li>最後記得點選 <code>Apply</code> 或 <code>OK</code>.</li>
+</ul>
+<p>開始使用 {RStudio} 撰寫第一個 R 程式檔案.</p>
+<ul>
+<li>開啟 {RStudio}, 檢視 {RStudio} 在左上角視窗最上端工具列.</li>
+<li>點選 <code>File</code> <span class="math inline">\(\rightarrow\)</span> <code>New File</code> <span class="math inline">\(\rightarrow\)</span> <code>R Script</code>,
+開啟一新的 R 程式檔案.</li>
+<li>同樣在左上角視窗最上端工具列,
+點選 <code>File</code>,
+<span class="math inline">\(\rightarrow\)</span> 存檔案 <code>Save as</code>,
+在檔案夾 C:<span class="math inline">\(\backslash\)</span>RData,
+儲存成為 <code>Rlab00.r</code> 檔案.</li>
+<li>以 <code>.r</code> 或 <code>.R</code> 為副檔名, 代表 {R} 程式檔案.</li>
+<li>在 <code>source</code> 視窗, 輸入以下程式.</li>
+<li>輸入完成後, 同樣在左上角視窗最上端工具列,
+點選 <code>File</code>,
+存檔案 <code>Save</code>.</li>
+<li>上述操作部分指令有捷徑可使用.</li>
+</ul>
+<p>以下撰寫第一個 R 程式, 並完成存檔.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="intro.html#cb17-1" aria-hidden="true"></a><span class="co">## Rlab00.r</span></span>
+<span id="cb17-2"><a href="intro.html#cb17-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-3"><a href="intro.html#cb17-3" aria-hidden="true"></a><span class="kw">print</span>(x)</span>
+<span id="cb17-4"><a href="intro.html#cb17-4" aria-hidden="true"></a>x</span>
+<span id="cb17-5"><a href="intro.html#cb17-5" aria-hidden="true"></a>msg &lt;-<span class="st"> &quot;hello&quot;</span></span>
+<span id="cb17-6"><a href="intro.html#cb17-6" aria-hidden="true"></a>msg</span>
+<span id="cb17-7"><a href="intro.html#cb17-7" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">20</span></span>
+<span id="cb17-8"><a href="intro.html#cb17-8" aria-hidden="true"></a>y</span>
+<span id="cb17-9"><a href="intro.html#cb17-9" aria-hidden="true"></a><span class="kw">rm</span>(x, msg, y)</span></code></pre></div>
+<p>將程式輸入在 R 程式檔案內,
+將要執行的程式行列, 以滑鼠反白,
+複製 (copy) 到 {RSudio} Console 視窗, 執行程式.
+可以滑鼠反白, 同時按 <code>&lt;control&gt;+&lt;Enter&gt;</code> 鍵, 執行程式.
+使用 {R} 程式檔案, 可保有 {R} 程式, 隨時修正或重複執行.
+將下列指令輸入在 {RStudio} 新建立的 <code>Rlab00.r</code> 檔案內.
+請再次練習下列指令, 並執行致令, 在 {RSudio} Consol 視窗檢視結果.</p>
+<ul>
+<li>開啟 {RStudio}, 檢視 {RStudio} 在左上角視窗最上端工具列.</li>
+<li>點選 <code>File</code> <span class="math inline">\(\rightarrow\)</span> <code>New File</code>,
+可嘗試建立 <span class="math inline">\(\rightarrow\)</span> <code>R Notebook</code> 或是 <code>R Markdown</code>,
+{RStudio} 會自動建立簡單模板 (template).
+可見在區塊 (chunk) 以三個撇號 <code>```{r}</code>
+與尾端三個撇號 <code>```</code> 之間
+可以撰寫 R 程式. 例如,</li>
+</ul>
+<p><code>```{r}</code><br />
+2.4*3.8<br />
+x.vec = rnorm(50)<br />
+y.vec = rnorm(50)<br />
+plot(x.vec, y.vec)<br />
+<code>```</code><br />
+使用 R Notebook<code>或是</code>R Markdown<code>的好處是可以將報告文字與統計分析結果, 表格或圖片整合, 不用再 copy $\rightarrow$ paste 到 word 文件上. 當資料增加或修正, 僅要按下上方</code>knit<code>, 即可再次自動排版產生正確的分析結果, 表格或圖片. 讀者可利用 R Notebook</code> 或是 <code>R Markdown</code> 的模板,
+按下上方 <code>knit</code> 檢視生成的報告.</p>
+</div>
+<div id="函式-function" class="section level2" number="1.10">
+<h2><span class="header-section-number">1.10</span> 函式 Function</h2>
+<p>{R} 有許多
+<strong>函式</strong>
+(<strong>function</strong>),
+函式是一種物件, 是指令的集合,
+執行特定功能或運算工作的指令, 資料整理, 資料分析等,
+透過函式,
+擴展了 {R} 在程式語言的功能性與便利性.
+函式內通常需輸入
+<strong>引數</strong>
+(<strong>argument</strong>).</p>
+<p>{R} 基本系統 (base) 提供了一部分常用函式,
+而更多不同類型的函式,
+則由許多不同的學者貢獻到
+{R} 系統 (contribution) 中,
+這些函數都是用 {R} 程式語言寫成的.
+例如, 統計常用函式
+<code>mean()</code>, <code>var()</code>, <code>sd()</code>, <code>log()</code> 等.
+請練習以下 R 程式.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="intro.html#cb18-1" aria-hidden="true"></a><span class="co">## function</span></span>
+<span id="cb18-2"><a href="intro.html#cb18-2" aria-hidden="true"></a><span class="co">## function c() = concatenate elements, return a vector x.vec</span></span>
+<span id="cb18-3"><a href="intro.html#cb18-3" aria-hidden="true"></a>x.vec =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) </span>
+<span id="cb18-4"><a href="intro.html#cb18-4" aria-hidden="true"></a>x.vec <span class="co"># show x.vec </span></span>
+<span id="cb18-5"><a href="intro.html#cb18-5" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4 5</span></span>
+<span id="cb18-6"><a href="intro.html#cb18-6" aria-hidden="true"></a><span class="kw">mean</span>(<span class="dt">x =</span> x.vec) <span class="co"># function mean() calculate mean, return a scalar</span></span>
+<span id="cb18-7"><a href="intro.html#cb18-7" aria-hidden="true"></a><span class="co">## [1] 3</span></span>
+<span id="cb18-8"><a href="intro.html#cb18-8" aria-hidden="true"></a><span class="kw">var</span>(<span class="dt">x =</span> x.vec)  <span class="co"># function mean() calculate variance</span></span>
+<span id="cb18-9"><a href="intro.html#cb18-9" aria-hidden="true"></a><span class="co">## [1] 2.5</span></span>
+<span id="cb18-10"><a href="intro.html#cb18-10" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)  <span class="co"># take log for all elements in vector x.vec</span></span>
+<span id="cb18-11"><a href="intro.html#cb18-11" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931 1.0986 1.3863 1.6094</span></span></code></pre></div>
+<p>一個函式內通常需輸入
+<strong>引數</strong>
+(<strong>argument</strong>)
+或是
+<strong>統計公式</strong>,
+<strong>統計模型</strong>,
+(<strong>formals</strong>).
+引數可以是一個以上,
+有些引數一定要輸入,
+稱為
+<strong>必要引數</strong>
+(<strong>required argument</strong>),
+有些引數可以不用輸入,
+稱為
+<strong>自選引數</strong>
+(<strong>optional argument</strong>),
+另外一種引數則為
+<strong>省略引數</strong>
+(<strong>ellipsis argument</strong>)
+這三種引可以同時存在一個函式內,
+引數可以是數值, 文字, 資料框架或 {R} 的任何物件.
+例如, 函式 <code>log()</code> 指令:</p>
+<pre><code>log(x, base = exp(1))     </code></pre>
+<p><code>log()</code> 函式在 {R} 內設以自然數為底計算,
+其中 <code>x</code> 為必備引數,
+使用者必須自行輸入所要計算的數值作為引數值.
+而 <code>base = exp(1)</code>
+為選擇引數,
+若使用者沒有輸入引數值,
+函式 <code>log()</code> 內設以自然數 <span class="math inline">\(e\)</span> 為底,
+當然, 使用者可以更動底數的設定值,
+例如更動為以 <span class="math inline">\(2\)</span> 為底的獨度對數運算,
+<code>log(x, base = 2)</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="intro.html#cb20-1" aria-hidden="true"></a><span class="co">## log function</span></span>
+<span id="cb20-2"><a href="intro.html#cb20-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb20-3"><a href="intro.html#cb20-3" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)</span>
+<span id="cb20-4"><a href="intro.html#cb20-4" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931 1.0986 1.3863 1.6094</span></span>
+<span id="cb20-5"><a href="intro.html#cb20-5" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec, <span class="dt">base =</span> <span class="dv">2</span>)</span>
+<span id="cb20-6"><a href="intro.html#cb20-6" aria-hidden="true"></a><span class="co">## [1] 0.000 1.000 1.585 2.000 2.322</span></span></code></pre></div>
+</div>
+<div id="套件-packages" class="section level2" number="1.11">
+<h2><span class="header-section-number">1.11</span> 套件 Packages</h2>
+<p>特定的統計分析方法許多專用的函式集合成一組.
+<strong>套件}</strong>
+(<strong>package</strong>).
+許多學者針對特定分析, 寫成專用的 {R} 函式,
+學者常將這些特定的統計分析方法專用的函式集合成一組
+<strong>套件</strong>
+(<strong>package</strong>),
+例如, <code>survival</code>
+套件,
+專用來進行存活分析,
+例如, 在資料科學上大量使用 <code>tidyverse</code> 套件.</p>
+<p>{R} 的套件數目一直在快速增加,
+個別套件內則有不同的函式.
+在 {R} 中,
+由一些標準 (基本) 套件構成 base {R},
+包含 {R} 可以進行一些標準統計和繪圖所需的的基本函數,
+在任何 {R} 的安裝版本中, 都會被自動安裝與載入.
+另外, 許多學者為 {R} 提供了基本套件以外的套件,
+稱為
+<strong>貢獻套件</strong>
+(<strong>contributed package</strong>).</p>
+<p>若在 {R} 第一次使用某一特定功能的套件,
+則需事先安裝此特定套件.
+安裝套件有不同的方法, 若已經先連接網際網路,
+常用的方法為
+(1) 使用 {RStudio} 內設套件所在的位置.
+由 {RStudio} 右下套件視窗.
+使用滑鼠選擇 <code>Packages</code> <span class="math inline">\(\rightarrow\)</span> <code>Install</code>.
+輸入所要安裝的套件名稱, 例如,
+<code>tidyverse</code>,
+<code>MASS</code> 等.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>使用函式 <code>install.packages()</code>
+安裝所需的套件.<br />
+</li>
+</ol>
+<pre><code>install.packages(&quot;PackageName&quot;, dependencies = TRUE)         </code></pre>
+<p>可以安裝 <code>PackageName` 套件. 例如, 可將下列指令寫入 `Console</code> 視窗內.</p>
+<pre><code>install.packages(&quot;survival&quot;)
+library(survival)</code></pre>
+<p>若在 {R} 中, 要使用某一特定的套件,
+須先載入此特定的套件,</p>
+<ul>
+<li>請先確認已經安裝套件或更新套件.</li>
+<li>使用 <code>library()</code> 或 <code>require()</code> 函式載入套件.</li>
+</ul>
+<p>通常建議使用 <code>library()</code>,
+因為 <code>library()</code> = loads a package, 會同時檢視套件與關聯的函式是否安裝妥當,
+而 <code>require()</code> = tries to load a package,
+且當套件與關聯的函式未安裝妥當時,
+並不會提出警告或出現 error 訊息,
+例如, 函式 <code>foo()</code> 在套件 <code>paa</code> 未先安裝或使用妥當,
+使用 <code>require()</code> 納入套件 <code>pbb</code>,
+套件 <code>pbb</code> 的函式 <code>coo()</code> 會呼叫 物件函式 <code>foo()</code>,
+但使用者並未先納入套件 <code>paa</code>
+執行套件 <code>paa</code> 其他程式不會提出警告,
+但當使用者在後續使用到函式 <code>coo()</code> 時,
+才會出現 error 訊息,
+或是不出現 error 訊息而出現產生的物件, <code>my.obj</code>, 不存在,
+因此很難追尋到錯誤來源.</p>
+<p>通常在使用 <code>library(package.name)</code>
+之後, 就可直接使用 <code>package.name</code> 套件內的函式
+<code>function.name()</code>.
+個別套件內有許多函式,
+不同套件可能有相同名稱的函式,
+若要避免誤用相同名稱的函式,
+可以使用 <code>{::}</code> 串聯
+<code>package.name</code> 與 <code>function.name()</code> 如下:</p>
+<pre><code>package.name::function.name()           </code></pre>
+<p>就可正確使用特定套件 <code>package.name</code> 內的特定函式 <code>function.name()</code>.
+例如使用指令</p>
+<pre><code>ggplot2::ggplot()            </code></pre>
+<p>明確指出使用套件 <code>ggplot2</code> 內的函式 <code>ggplot()</code>.</p>
+</div>
+<div id="解說與輔助文件" class="section level2" number="1.12">
+<h2><span class="header-section-number">1.12</span> 解說與輔助文件</h2>
+<p>{R} 有良好的解說文件,
+可利用 Google 搜尋任何 {R} 相關疑惑.
+{R} 內部最常使用的線上協助為啟動網頁流覽器
+<code>help.start()</code>. 嘗試在 <code>Console</code> 輸入</p>
+<pre><code>help.start()               </code></pre>
+<p>尋找特定函式 <code>funName</code> 解說,
+在 {R} 中可直接輸入下列任一種函式,
+<code>help(funName)</code>,
+<code>?funName</code>,
+<code>help.search("funName")</code>,
+<code>apropos("funName")</code> 等等.
+例如, 尋找 函式 <code>mean()</code> 函式解說.
+在 {R} 中可直接輸入下列任一種指令.</p>
+<pre><code>help(mean)              
+?mean                 
+help.search(&quot;mean&quot;)            
+apropos(&quot;mean&quot;)                  </code></pre>
+<p>若要詢問函式內的引數,
+可用函式 <code>args("funName")</code>.</p>
+</div>
+<div id="地區語系與時區" class="section level2" number="1.13">
+<h2><span class="header-section-number">1.13</span> 地區語系與時區</h2>
+<p>{R} 程式版本經常更新, 且 {R} 一些貢獻套件也經常在 {R} 版本更新後無法運作,
+{R} 一些貢獻套件對地區語系與時區的呈現文字非常敏感,
+因此在牽涉到不同時區的時間計算與轉換, 可注意使用中 {R} 的地區語系與時區.
+函式 <code>sessionInfo()</code> 可以取得使用中 {R} 的所有資訊.</p>
+<pre><code>sessionInfo()</code></pre>
+<p>從函式 <code>version()</code> 可以看見 {R} 版本
+<code>version[['version.string']]</code>,
+從函式<code>Sys.getlocale()</code> 可以看見 {R} 目前設定地區語系為
+LC_COLLATE=Chinese (Traditional)_Taiwan.950;LC_CTYPE=Chinese (Traditional)_Taiwan.950;LC_MONETARY=Chinese (Traditional)_Taiwan.950;LC_NUMERIC=C;LC_TIME=Chinese (Traditional)_Taiwan.950. 這是設定台灣地區使用 cp950 (big5) 編碼.
+對一些套件可能無法正確顯式.
+從函式<code>Sys.timezone()</code> 可以看見 {R} 目前設定時區為
+Asia/Taipei.
+{R} 在台灣當地時間 (local time) 中文格式有時會出現 NA,
+一些地區中文的介面對於如何呈現日期時間有時會出現錯誤,
+若日期時間輸入輸出格式出現錯誤, 可先改正輸入輸出格式,
+例如, 改用英文標準時間 <code>Sys.setlocale("LC_TIME", "C")</code>,
+如此改成 UTC 時區 (Universal Time, Coordinated).
+或是使用 ISO 時間格式.
+若要更動語系可使用</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="intro.html#cb28-1" aria-hidden="true"></a><span class="co"># 中文 -&gt; 英文</span></span>
+<span id="cb28-2"><a href="intro.html#cb28-2" aria-hidden="true"></a><span class="kw">Sys.setlocale</span>(<span class="st">&quot;LC_CTYPE&quot;</span>, <span class="st">&quot;en_US.UTF-8&quot;</span>)</span>
+<span id="cb28-3"><a href="intro.html#cb28-3" aria-hidden="true"></a><span class="co"># system(&quot;defaults write org.R-project.R force.LANG en_US.UTF-8&quot;) # linux/mac</span></span>
+<span id="cb28-4"><a href="intro.html#cb28-4" aria-hidden="true"></a><span class="co"># 英文 -&gt; 中文</span></span>
+<span id="cb28-5"><a href="intro.html#cb28-5" aria-hidden="true"></a><span class="kw">Sys.setlocale</span>(<span class="dt">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="dt">locale =</span> <span class="st">&quot;cht&quot;</span>)</span>
+<span id="cb28-6"><a href="intro.html#cb28-6" aria-hidden="true"></a><span class="co"># system(&quot;defaults write org.R-project.R force.LANG zh_TW.UTF-8&quot;) # linux/mac</span></span></code></pre></div>
+<p>上述方式暫時有效, 重新啟動 {R} 後此設定就會消失.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-xie2015">
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vector.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "PMingLiU",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r4biost.pdf", "r4biost.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,323 @@
+# 資料輸入與輸出 {#datainout}
+
+
+在 {R} 中, 資料以具有名稱的
+**物件**
+形式儲存,
+它們可以是向量 (vector), 矩陣 (matrix), 陣列 (array), 列表 (Lists),
+或 資料框架 (data frames) 等.
+簡單的資料, 可以直接在 {R} 視窗中輸入,
+大型資料, 通常先以資料庫軟體,
+試算表軟體等輸入儲存成外部檔案,
+由 {R} 從外部檔案中讀入,
+而不是直接在 {R} 中使用鍵盤輸入.
+
+
+
+{R} 可以讀入純文字 ASCII 格式的資料檔,
+{R} 也有許多套件可以讀入許多不同格式檔案與資料庫關聯檔案,
+SAS, SPSS, STATA, EXCEL,
+網路公開資料, 
+web open data (XML, HTML JSON), 
+image, texts, stock market, social media 等.
+每一資料的儲存格式不盡相同,
+通常由儲存資料的軟體所決定,
+通常可由檔案的附檔名得知資料的儲存格式.
+
+{R} 對輸入資料的原先設計,
+假設使用者利用其他工具,
+如文書檔編輯器, 資料庫軟體, 或試算表軟體等,
+輸入原始資料並儲存成 {R} 的外部原始資料檔案,
+任何外部原始資料檔案,
+必須修改成特定的 {R} 輸入檔格式,
+以使它們符合 {R} 輸入外部原始資料檔案的要求,
+對統計分析來說,
+這是比較容易地進行外部原始資料的管理.
+如同多數專業統計軟體, 不是專業的資料庫軟體,
+外部原始資料的管理, 通常都是藉由專業的資料庫軟體進行.
+任何資料庫軟體都可以將資料輸出純文字 ASCII 格式的資料檔案,
+且任何資料庫軟體或文書檔編輯器都可讀入純文字 ASCII 格式的資料檔案.
+
+
+
+
+## 資料框架
+
+
+
+統計計算可以進行分析的資料,
+通常有一個的簡單的基本架構,
+在 {R} 稱作
+**資料框架**
+(**data frame**).
+資料框架是類似於在 `SAS`, `STATA` 等的 dataset 架構.
+資料框架通常類似矩陣,
+資料框架也類似矩形的
+**交叉列聯表**
+(**cross table**).
+
+在 {R} 中, 資料框架是統計分析中最基本的資料結構,
+許多統計模型分析都必須用到資料框架結構,
+資料框架與矩陣類似,
+不同的地方在資料框架變數不需要是相同的變數形式或種類,
+實數變數, 整數變數, 文字類別變數, 邏輯變數等都可放在同一資料框架中,
+資料框架的基本架構如下表. 
+但是矩陣物件只能有相同的變數 **模式** (**mode**) 的元素組成.
+
+
+
+| No | age | sex | DM | DMyr | preAC | prePC | postAC | postPC | Med | SIDE | PREKS | POSKS | ABS | INFECT |
+|----|-----|-----|----|------|-------|-------|--------|--------|-----|------|-------|-------|-----|--------|
+| 1  | 67  | 0   | 0  | 10   | 120   | 160   | 140    | 180    | 0   | 0    | 56    | 92    | 1   | 0      |
+| 2  | 67  | 0   | 0  | 11   | 100   | 150   | 150    | 220    | 0   | 1    | 62    | 62    | 0   | 1      |
+| 3  | 72  | 1   | 0  | 4    | 150   | 200   | 120    | 150    | 2   | 0    | 60    | 94    | 1   | 0      |
+| 4  | 82  | 1   | 0  | 8    | 150   | 200   | 160    | 250    | 0   | 1    | 47    | 90    | 1   | 0      |
+| 5  | 73  | 1   | 0  | 3    | 85    | 110   | 140    | 200    | 0   | 0    | 44    | 88    | 0   | 0      |
+
+
+Table: 原始資料檔案 DMTKRtabsep.txt 與 DMTKRblanksep.txt: 以純文字空白分隔儲存
+
+資料框架有一些特徵, 舉例如下.
+
+
+* 第 1 列 (橫列, row), 可以是變數的 **變數名** (**variable names**)    
+* 第 1 列 (row), 有時是變數的 **欄位標籤** (**column label**),
+而第 2 列 (row) 為變數名.        
+* 每個變數各自形成 1 欄 (縱行, row).        
+* 第 1 欄 (縱行, column) 為個體辨識碼 (label, identification), 或稱 **列位標籤** (**row label**).          
+* 每一欄 (變數) 的變數值形式可以是實數, 文字, 邏輯變數.      
+* 第一欄 (column) 有時候是 **列位標籤** (**row label**).
+* 變數名稱以英文為起始, 之後可包含文字與數字, 不可使用標點符號與空格,
+有些軟體可以使用 `underscore` `_`.
+
+* 變數值通常為數字,
+整數或文字,
+儘量避免直接輸入文字,
+因為大小寫, 符號, 空格的輸入經常造成錯誤.
+
+
+
+* 變數值通常為數字,
+整數, 邏輯值或文字,
+儘量避免直接輸入文字,
+因為大小寫, 符號, 空格的輸入經常造成錯誤.
+
+* 若原始資料沒有 變數名 或 標籤,
+{R} 讀入資料時可以同時輸入變數名,
+或讀入資料後, 再輸入變數名.
+
+
+## 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔
+
+
+
+任何資料庫軟體都可以將資料輸出純文字 ASCII 格式的資料檔案,
+且任何資料庫軟體或文書檔編輯器都可讀入純文字 ASCII 格式的資料檔案.
+統計分析通常需要讀取外部 **原始資料** (**raw data**) 檔案,
+{R} 對輸入資料的原先設計時讀入純文字 ASCII 格式的資料檔案,
+暫存到電腦的記憶體上, 形成 {R} 資料框架,
+對初學者而言讀入或輸出外部純文字 ASCII 格式的資料檔案最為容易.
+
+{R} 統計分析主要在資料框架 (data frame) 中的變數進行分析操作,
+{R} 使用資料框架函式指令
+`read.table()`
+或
+`read.csv()`
+讀入外部資料檔案,
+對初學者而言最為容易.
+而其他函式,
+例如, `scan()` 讀取外部資料, 對初學者而言較困難.
+為了可以直接讀取整個外部檔案進入 {R} 並形成 {R} 的資料框架物件,
+純文字 ASCII 格式的外部檔案常常要求有特定的格式, 例如:
+
+* 多數檔編輯器, 資料庫, 試算表等軟體可以存取.
+* 第一的列 (the first row) 可以有該資料各個變數的 **變數名** (**variable names**) 或是 **行位名**, **欄位名** (**column name**)
+或是
+**欄位標籤**
+(**column label**).  
+* 第一欄 (the first column) 有時候是
+**列的標籤**
+(**row label**)
+或是
+**列的名字**
+(**row name**).
+* 其餘的列 (row), 是個別變數的觀測數值.
+* 變數值之間常以 **空白鍵** (<space>)  (blank space) 分開,
+也可以其他特定符號 'Tab` 分隔.
+* 若是變數資料是文字列型, 通常以雙引號包含,
+但有時例外, 需視資料原始儲存軟體的設定.
+* 純文字 ASCII 格式, 變數值以空格分開的副檔名通常為
+**.dat**, **.prn** 或 **.txt**.
+* 若變數之間以 `,` (逗號) 分開變數值的 ASCII 形式檔案,
+一般稱為
+**comma-separated-variable format**
+或
+**CSV format**,
+檔案名通常以
+**.csv**
+作為延伸檔名.
+* 初學者的原始資料之變數名稱 (variable name) 不要使用
+**中文**,
+**空格**, 
+盡量少用 `.` (點, dot),
+或 `_` (underscore).
+中文, 以免容易造成錯誤.
+初學者盡量不要使用 **文字** 作為變數值 (observed value).
+* 變數值之間以空白鍵或 **特定符號** `Tab` 鍵分開意義不同,
+不同軟體讀入這 2 種 ASCII 資料有所不同.
+這很難區分, 初學者盡量使用 **CSV format**.
+```{r}
+# DMTKRblanksep.txt = " " single space separate
+Rblanksep.df = read.table("C:/RData/DMTKRblanksep.txt",
+                          header = TRUE,
+                          row.names = NULL,
+                          dec = ".")
+head(Rblanksep.df)
+str(Rblanksep.df)
+## complete read.table
+## DMTKRblanksep.txt = " " single space separate
+Rblanksep.df = read.table("C:/RData/DMTKRblanksep.txt",
+                          header = TRUE,
+                          sep = " ",
+                          quote = "\"'",
+                          dec = ".",
+                          row.names = NULL,
+                          # col.names,
+                          as.is = TRUE,
+                          # as.is = !stringsAsFactors,
+                          na.strings = c(".", "NA"))
+head(Rblanksep.df)
+str(Rblanksep.df)
+```
+
+
+
+## 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔
+ 
+
+另一種原始資料以純文字  ASCII 格式檔儲存,
+且變數值之間是以 **逗號** `,` (**comma**) 分隔的 ASCII 檔案,
+其格式化稱為
+**csv format**
+(**comma-separated-variable format**),
+副檔名通常為 `.csv`.
+使用函式
+`read.table()`
+自動內設以空格分開變數值,
+必須更改分開變數值符號為 `,`.
+使用函式 `read.csv()`
+自動內設以 `,` 分開變數值.
+```{r}
+## read data file: DMTKRcsv.csv
+read_table.df <- read.table("C:/RData/DMTKRcsv.csv",
+                            header = TRUE,
+                            row.names = NULL,
+                            sep = ",",
+                            dec = ".")
+head(read_table.df, n = 3)
+# simple one
+read_csv.df <- read.csv("C:/RData/DMTKRcsv.csv")
+head(read_csv.df, n = 3)
+#
+read_csv.df <- read.csv("C:/RData/DMTKRcsv.csv",
+                            header = TRUE,
+                            row.names = NULL,
+                            sep = ",",
+                            dec = ".")
+head(read_csv.df, n = 3)
+```
+
+
+
+## R 內建資料框架
+
+
+{R} 有許多內建資料框架,
+另外貢獻套件 (contributed packages) 也有許多內建的資料框架,
+可以使用
+`data()`
+查看 {R} 內建資料框架名稱,
+或使用 `library(help = "datasets")`
+查看 {R} 內建資料框架名稱.
+
+使用 `data(package = "package.name")`
+查看名稱為
+`package.name` 套件中的資料框架名稱,
+載入資料框架,
+可用 `data(data.name)`
+載入 {R} 內建名稱為
+`data.name`
+資料框架使用,
+或
+`data(package.data.name`,
+`package = "package.name")`
+載入名稱為
+`package.name` 套件中,
+名稱為 
+`pack.data.name` 資料框架使用.
+```{r}
+# data()     # check names of datasets 
+data(Orange) # use {R} build-in dataset = Orange
+# help(Orange)
+head(Orange)
+#
+library(MASS)
+# help(package = MASS)
+# data(package = "MASS")     # check MASS package data set
+data(VA, package = "MASS")   # use MASS package dataset = VA
+# help(VA)
+head(VA)
+```
+
+
+
+
+## 輸出 {R} 資料
+
+由 {R} 程式產生的資料, 可以儲存成外部資料檔案.
+包含函式 `write.table()` 與 `write.csv()`.
+其引數如下.
+
+* `x` = 匯出的 {R} 物件名
+* `file` = 路徑與檔案名稱
+* `append = FALSE` 預設不在檔案末端附加資料
+* `quote = "\""` 預設文字變數值使用雙引號將
+* `sep = " "` 預設空白分隔符號
+* `eol  = "\n"` 設定換行符號
+* `na = NA` 設定 NA 符號
+* `dec = '.'` 設定小數點符號
+* `row.names = TRUE` 設定輸出 row names
+* `col.names = TRUE` 設定輸出變數名 (column names)
+* `qmethod = c("escape", "double")` 文字變數值有當引號時的分隔符號
+* `fileEncoding` = "" 設定檔案編碼
+
+使用函式 `write.csv()` 儲存檔案與函式 `write.table()` 類似,
+但使用 `sep = ","`.
+
+
+
+
+## 儲存 {R} 格式資料檔
+
+函式 `saveRDS()` 可將資料儲存成 {R} 格式的外部資料檔案.
+函式 `readRDS()` 可將外部 {R} 格式資料輸入.
+主要是在用在大數據檔案, 
+若每次輸入外部資料檔案非常費時, 
+可以將已經轉成 `data frame` 物件的資料直接儲存成 {R} 格式的外部資料檔案.
+只要使用函式 `readRDS()` 輸入, 可以節省許多時間. 
+{R} 另外一組函式 `save()` 與函式 `load()` 有類似功能, 
+較較不方便.
+```{r}
+## saveRDS() and save()
+x <- c(1:5)
+saveRDS(x, file = "C:/RData/x.Rds")
+save(x, file = "C:/RData/x.Rda")   # working directory
+## readRDS()
+new_x <- readRDS(file = "C:/RData/x.Rds")
+new_x
+## load() -- note the result
+new_x <- load(file = "C:/RData/x.Rda")
+new_x
+x
+```
+
