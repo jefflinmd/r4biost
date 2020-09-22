@@ -551,67 +551,81 @@ image, texts, stock market, social media 等.
 <span id="cb58-4"><a href="datainout.html#cb58-4" aria-hidden="true"></a>                          <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
 <span id="cb58-5"><a href="datainout.html#cb58-5" aria-hidden="true"></a>                          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
 <span id="cb58-6"><a href="datainout.html#cb58-6" aria-hidden="true"></a><span class="kw">head</span>(Rblanksep.df)</span>
-<span id="cb58-7"><a href="datainout.html#cb58-7" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb58-8"><a href="datainout.html#cb58-8" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb58-9"><a href="datainout.html#cb58-9" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb58-10"><a href="datainout.html#cb58-10" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span>
-<span id="cb58-11"><a href="datainout.html#cb58-11" aria-hidden="true"></a><span class="co">## 4  4  82   1  0    8   150   200    160    250   0    1    47    90   1      0</span></span>
-<span id="cb58-12"><a href="datainout.html#cb58-12" aria-hidden="true"></a><span class="co">## 5  5  73   1  0    3    85   110    140    200   0    0    44    88   0      0</span></span>
-<span id="cb58-13"><a href="datainout.html#cb58-13" aria-hidden="true"></a><span class="co">## 6  6  76   0  0    1   120   150    120    200   0    1    52    94   1      0</span></span>
-<span id="cb58-14"><a href="datainout.html#cb58-14" aria-hidden="true"></a><span class="kw">str</span>(Rblanksep.df)</span>
-<span id="cb58-15"><a href="datainout.html#cb58-15" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	78 obs. of  15 variables:</span></span>
-<span id="cb58-16"><a href="datainout.html#cb58-16" aria-hidden="true"></a><span class="co">##  $ No    : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span id="cb58-17"><a href="datainout.html#cb58-17" aria-hidden="true"></a><span class="co">##  $ age   : int  67 67 72 82 73 76 76 77 64 64 ...</span></span>
-<span id="cb58-18"><a href="datainout.html#cb58-18" aria-hidden="true"></a><span class="co">##  $ sex   : int  0 0 1 1 1 0 0 0 0 0 ...</span></span>
-<span id="cb58-19"><a href="datainout.html#cb58-19" aria-hidden="true"></a><span class="co">##  $ DM    : int  0 0 0 0 0 0 0 1 0 0 ...</span></span>
-<span id="cb58-20"><a href="datainout.html#cb58-20" aria-hidden="true"></a><span class="co">##  $ DMyr  : int  10 11 4 8 3 1 1 35 5 5 ...</span></span>
-<span id="cb58-21"><a href="datainout.html#cb58-21" aria-hidden="true"></a><span class="co">##  $ preAC : int  120 100 150 150 85 120 120 200 130 130 ...</span></span>
-<span id="cb58-22"><a href="datainout.html#cb58-22" aria-hidden="true"></a><span class="co">##  $ prePC : int  160 150 200 200 110 150 150 250 180 180 ...</span></span>
-<span id="cb58-23"><a href="datainout.html#cb58-23" aria-hidden="true"></a><span class="co">##  $ postAC: int  140 150 120 160 140 120 120 230 100 100 ...</span></span>
-<span id="cb58-24"><a href="datainout.html#cb58-24" aria-hidden="true"></a><span class="co">##  $ postPC: int  180 220 150 250 200 200 200 300 150 150 ...</span></span>
-<span id="cb58-25"><a href="datainout.html#cb58-25" aria-hidden="true"></a><span class="co">##  $ Med   : int  0 0 2 0 0 0 0 1 0 0 ...</span></span>
-<span id="cb58-26"><a href="datainout.html#cb58-26" aria-hidden="true"></a><span class="co">##  $ SIDE  : int  0 1 0 1 0 1 0 1 0 1 ...</span></span>
-<span id="cb58-27"><a href="datainout.html#cb58-27" aria-hidden="true"></a><span class="co">##  $ PREKS : int  56 62 60 47 44 52 48 42 40 45 ...</span></span>
-<span id="cb58-28"><a href="datainout.html#cb58-28" aria-hidden="true"></a><span class="co">##  $ POSKS : int  92 62 94 90 88 94 96 90 94 96 ...</span></span>
-<span id="cb58-29"><a href="datainout.html#cb58-29" aria-hidden="true"></a><span class="co">##  $ ABS   : int  1 0 1 1 0 1 0 1 1 0 ...</span></span>
-<span id="cb58-30"><a href="datainout.html#cb58-30" aria-hidden="true"></a><span class="co">##  $ INFECT: int  0 1 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb58-31"><a href="datainout.html#cb58-31" aria-hidden="true"></a><span class="co">## complete read.table</span></span>
-<span id="cb58-32"><a href="datainout.html#cb58-32" aria-hidden="true"></a><span class="co">## DMTKRblanksep.txt = &quot; &quot; single space separate</span></span>
-<span id="cb58-33"><a href="datainout.html#cb58-33" aria-hidden="true"></a>Rblanksep.df =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/RData/DMTKRblanksep.txt&quot;</span>,</span>
-<span id="cb58-34"><a href="datainout.html#cb58-34" aria-hidden="true"></a>                          <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb58-35"><a href="datainout.html#cb58-35" aria-hidden="true"></a>                          <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>,</span>
-<span id="cb58-36"><a href="datainout.html#cb58-36" aria-hidden="true"></a>                          <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
-<span id="cb58-37"><a href="datainout.html#cb58-37" aria-hidden="true"></a>                          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
-<span id="cb58-38"><a href="datainout.html#cb58-38" aria-hidden="true"></a>                          <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
-<span id="cb58-39"><a href="datainout.html#cb58-39" aria-hidden="true"></a>                          <span class="co"># col.names,</span></span>
-<span id="cb58-40"><a href="datainout.html#cb58-40" aria-hidden="true"></a>                          <span class="dt">as.is =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb58-41"><a href="datainout.html#cb58-41" aria-hidden="true"></a>                          <span class="co"># as.is = !stringsAsFactors,</span></span>
-<span id="cb58-42"><a href="datainout.html#cb58-42" aria-hidden="true"></a>                          <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
-<span id="cb58-43"><a href="datainout.html#cb58-43" aria-hidden="true"></a><span class="kw">head</span>(Rblanksep.df)</span>
-<span id="cb58-44"><a href="datainout.html#cb58-44" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb58-45"><a href="datainout.html#cb58-45" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb58-46"><a href="datainout.html#cb58-46" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb58-47"><a href="datainout.html#cb58-47" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span>
-<span id="cb58-48"><a href="datainout.html#cb58-48" aria-hidden="true"></a><span class="co">## 4  4  82   1  0    8   150   200    160    250   0    1    47    90   1      0</span></span>
-<span id="cb58-49"><a href="datainout.html#cb58-49" aria-hidden="true"></a><span class="co">## 5  5  73   1  0    3    85   110    140    200   0    0    44    88   0      0</span></span>
-<span id="cb58-50"><a href="datainout.html#cb58-50" aria-hidden="true"></a><span class="co">## 6  6  76   0  0    1   120   150    120    200   0    1    52    94   1      0</span></span>
-<span id="cb58-51"><a href="datainout.html#cb58-51" aria-hidden="true"></a><span class="kw">str</span>(Rblanksep.df)</span>
-<span id="cb58-52"><a href="datainout.html#cb58-52" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	78 obs. of  15 variables:</span></span>
-<span id="cb58-53"><a href="datainout.html#cb58-53" aria-hidden="true"></a><span class="co">##  $ No    : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span id="cb58-54"><a href="datainout.html#cb58-54" aria-hidden="true"></a><span class="co">##  $ age   : int  67 67 72 82 73 76 76 77 64 64 ...</span></span>
-<span id="cb58-55"><a href="datainout.html#cb58-55" aria-hidden="true"></a><span class="co">##  $ sex   : int  0 0 1 1 1 0 0 0 0 0 ...</span></span>
-<span id="cb58-56"><a href="datainout.html#cb58-56" aria-hidden="true"></a><span class="co">##  $ DM    : int  0 0 0 0 0 0 0 1 0 0 ...</span></span>
-<span id="cb58-57"><a href="datainout.html#cb58-57" aria-hidden="true"></a><span class="co">##  $ DMyr  : int  10 11 4 8 3 1 1 35 5 5 ...</span></span>
-<span id="cb58-58"><a href="datainout.html#cb58-58" aria-hidden="true"></a><span class="co">##  $ preAC : int  120 100 150 150 85 120 120 200 130 130 ...</span></span>
-<span id="cb58-59"><a href="datainout.html#cb58-59" aria-hidden="true"></a><span class="co">##  $ prePC : int  160 150 200 200 110 150 150 250 180 180 ...</span></span>
-<span id="cb58-60"><a href="datainout.html#cb58-60" aria-hidden="true"></a><span class="co">##  $ postAC: int  140 150 120 160 140 120 120 230 100 100 ...</span></span>
-<span id="cb58-61"><a href="datainout.html#cb58-61" aria-hidden="true"></a><span class="co">##  $ postPC: int  180 220 150 250 200 200 200 300 150 150 ...</span></span>
-<span id="cb58-62"><a href="datainout.html#cb58-62" aria-hidden="true"></a><span class="co">##  $ Med   : int  0 0 2 0 0 0 0 1 0 0 ...</span></span>
-<span id="cb58-63"><a href="datainout.html#cb58-63" aria-hidden="true"></a><span class="co">##  $ SIDE  : int  0 1 0 1 0 1 0 1 0 1 ...</span></span>
-<span id="cb58-64"><a href="datainout.html#cb58-64" aria-hidden="true"></a><span class="co">##  $ PREKS : int  56 62 60 47 44 52 48 42 40 45 ...</span></span>
-<span id="cb58-65"><a href="datainout.html#cb58-65" aria-hidden="true"></a><span class="co">##  $ POSKS : int  92 62 94 90 88 94 96 90 94 96 ...</span></span>
-<span id="cb58-66"><a href="datainout.html#cb58-66" aria-hidden="true"></a><span class="co">##  $ ABS   : int  1 0 1 1 0 1 0 1 1 0 ...</span></span>
-<span id="cb58-67"><a href="datainout.html#cb58-67" aria-hidden="true"></a><span class="co">##  $ INFECT: int  0 1 0 0 0 0 0 0 0 0 ...</span></span></code></pre></div>
+<span id="cb58-7"><a href="datainout.html#cb58-7" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS</span></span>
+<span id="cb58-8"><a href="datainout.html#cb58-8" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1</span></span>
+<span id="cb58-9"><a href="datainout.html#cb58-9" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0</span></span>
+<span id="cb58-10"><a href="datainout.html#cb58-10" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1</span></span>
+<span id="cb58-11"><a href="datainout.html#cb58-11" aria-hidden="true"></a><span class="co">## 4  4  82   1  0    8   150   200    160    250   0    1    47    90   1</span></span>
+<span id="cb58-12"><a href="datainout.html#cb58-12" aria-hidden="true"></a><span class="co">## 5  5  73   1  0    3    85   110    140    200   0    0    44    88   0</span></span>
+<span id="cb58-13"><a href="datainout.html#cb58-13" aria-hidden="true"></a><span class="co">## 6  6  76   0  0    1   120   150    120    200   0    1    52    94   1</span></span>
+<span id="cb58-14"><a href="datainout.html#cb58-14" aria-hidden="true"></a><span class="co">##   INFECT</span></span>
+<span id="cb58-15"><a href="datainout.html#cb58-15" aria-hidden="true"></a><span class="co">## 1      0</span></span>
+<span id="cb58-16"><a href="datainout.html#cb58-16" aria-hidden="true"></a><span class="co">## 2      1</span></span>
+<span id="cb58-17"><a href="datainout.html#cb58-17" aria-hidden="true"></a><span class="co">## 3      0</span></span>
+<span id="cb58-18"><a href="datainout.html#cb58-18" aria-hidden="true"></a><span class="co">## 4      0</span></span>
+<span id="cb58-19"><a href="datainout.html#cb58-19" aria-hidden="true"></a><span class="co">## 5      0</span></span>
+<span id="cb58-20"><a href="datainout.html#cb58-20" aria-hidden="true"></a><span class="co">## 6      0</span></span>
+<span id="cb58-21"><a href="datainout.html#cb58-21" aria-hidden="true"></a><span class="kw">str</span>(Rblanksep.df)</span>
+<span id="cb58-22"><a href="datainout.html#cb58-22" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	78 obs. of  15 variables:</span></span>
+<span id="cb58-23"><a href="datainout.html#cb58-23" aria-hidden="true"></a><span class="co">##  $ No    : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span id="cb58-24"><a href="datainout.html#cb58-24" aria-hidden="true"></a><span class="co">##  $ age   : int  67 67 72 82 73 76 76 77 64 64 ...</span></span>
+<span id="cb58-25"><a href="datainout.html#cb58-25" aria-hidden="true"></a><span class="co">##  $ sex   : int  0 0 1 1 1 0 0 0 0 0 ...</span></span>
+<span id="cb58-26"><a href="datainout.html#cb58-26" aria-hidden="true"></a><span class="co">##  $ DM    : int  0 0 0 0 0 0 0 1 0 0 ...</span></span>
+<span id="cb58-27"><a href="datainout.html#cb58-27" aria-hidden="true"></a><span class="co">##  $ DMyr  : int  10 11 4 8 3 1 1 35 5 5 ...</span></span>
+<span id="cb58-28"><a href="datainout.html#cb58-28" aria-hidden="true"></a><span class="co">##  $ preAC : int  120 100 150 150 85 120 120 200 130 130 ...</span></span>
+<span id="cb58-29"><a href="datainout.html#cb58-29" aria-hidden="true"></a><span class="co">##  $ prePC : int  160 150 200 200 110 150 150 250 180 180 ...</span></span>
+<span id="cb58-30"><a href="datainout.html#cb58-30" aria-hidden="true"></a><span class="co">##  $ postAC: int  140 150 120 160 140 120 120 230 100 100 ...</span></span>
+<span id="cb58-31"><a href="datainout.html#cb58-31" aria-hidden="true"></a><span class="co">##  $ postPC: int  180 220 150 250 200 200 200 300 150 150 ...</span></span>
+<span id="cb58-32"><a href="datainout.html#cb58-32" aria-hidden="true"></a><span class="co">##  $ Med   : int  0 0 2 0 0 0 0 1 0 0 ...</span></span>
+<span id="cb58-33"><a href="datainout.html#cb58-33" aria-hidden="true"></a><span class="co">##  $ SIDE  : int  0 1 0 1 0 1 0 1 0 1 ...</span></span>
+<span id="cb58-34"><a href="datainout.html#cb58-34" aria-hidden="true"></a><span class="co">##  $ PREKS : int  56 62 60 47 44 52 48 42 40 45 ...</span></span>
+<span id="cb58-35"><a href="datainout.html#cb58-35" aria-hidden="true"></a><span class="co">##  $ POSKS : int  92 62 94 90 88 94 96 90 94 96 ...</span></span>
+<span id="cb58-36"><a href="datainout.html#cb58-36" aria-hidden="true"></a><span class="co">##  $ ABS   : int  1 0 1 1 0 1 0 1 1 0 ...</span></span>
+<span id="cb58-37"><a href="datainout.html#cb58-37" aria-hidden="true"></a><span class="co">##  $ INFECT: int  0 1 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb58-38"><a href="datainout.html#cb58-38" aria-hidden="true"></a><span class="co">## complete read.table</span></span>
+<span id="cb58-39"><a href="datainout.html#cb58-39" aria-hidden="true"></a><span class="co">## DMTKRblanksep.txt = &quot; &quot; single space separate</span></span>
+<span id="cb58-40"><a href="datainout.html#cb58-40" aria-hidden="true"></a>Rblanksep.df =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/RData/DMTKRblanksep.txt&quot;</span>,</span>
+<span id="cb58-41"><a href="datainout.html#cb58-41" aria-hidden="true"></a>                          <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb58-42"><a href="datainout.html#cb58-42" aria-hidden="true"></a>                          <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>,</span>
+<span id="cb58-43"><a href="datainout.html#cb58-43" aria-hidden="true"></a>                          <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
+<span id="cb58-44"><a href="datainout.html#cb58-44" aria-hidden="true"></a>                          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb58-45"><a href="datainout.html#cb58-45" aria-hidden="true"></a>                          <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb58-46"><a href="datainout.html#cb58-46" aria-hidden="true"></a>                          <span class="co"># col.names,</span></span>
+<span id="cb58-47"><a href="datainout.html#cb58-47" aria-hidden="true"></a>                          <span class="dt">as.is =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb58-48"><a href="datainout.html#cb58-48" aria-hidden="true"></a>                          <span class="co"># as.is = !stringsAsFactors,</span></span>
+<span id="cb58-49"><a href="datainout.html#cb58-49" aria-hidden="true"></a>                          <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb58-50"><a href="datainout.html#cb58-50" aria-hidden="true"></a><span class="kw">head</span>(Rblanksep.df)</span>
+<span id="cb58-51"><a href="datainout.html#cb58-51" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS</span></span>
+<span id="cb58-52"><a href="datainout.html#cb58-52" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1</span></span>
+<span id="cb58-53"><a href="datainout.html#cb58-53" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0</span></span>
+<span id="cb58-54"><a href="datainout.html#cb58-54" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1</span></span>
+<span id="cb58-55"><a href="datainout.html#cb58-55" aria-hidden="true"></a><span class="co">## 4  4  82   1  0    8   150   200    160    250   0    1    47    90   1</span></span>
+<span id="cb58-56"><a href="datainout.html#cb58-56" aria-hidden="true"></a><span class="co">## 5  5  73   1  0    3    85   110    140    200   0    0    44    88   0</span></span>
+<span id="cb58-57"><a href="datainout.html#cb58-57" aria-hidden="true"></a><span class="co">## 6  6  76   0  0    1   120   150    120    200   0    1    52    94   1</span></span>
+<span id="cb58-58"><a href="datainout.html#cb58-58" aria-hidden="true"></a><span class="co">##   INFECT</span></span>
+<span id="cb58-59"><a href="datainout.html#cb58-59" aria-hidden="true"></a><span class="co">## 1      0</span></span>
+<span id="cb58-60"><a href="datainout.html#cb58-60" aria-hidden="true"></a><span class="co">## 2      1</span></span>
+<span id="cb58-61"><a href="datainout.html#cb58-61" aria-hidden="true"></a><span class="co">## 3      0</span></span>
+<span id="cb58-62"><a href="datainout.html#cb58-62" aria-hidden="true"></a><span class="co">## 4      0</span></span>
+<span id="cb58-63"><a href="datainout.html#cb58-63" aria-hidden="true"></a><span class="co">## 5      0</span></span>
+<span id="cb58-64"><a href="datainout.html#cb58-64" aria-hidden="true"></a><span class="co">## 6      0</span></span>
+<span id="cb58-65"><a href="datainout.html#cb58-65" aria-hidden="true"></a><span class="kw">str</span>(Rblanksep.df)</span>
+<span id="cb58-66"><a href="datainout.html#cb58-66" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	78 obs. of  15 variables:</span></span>
+<span id="cb58-67"><a href="datainout.html#cb58-67" aria-hidden="true"></a><span class="co">##  $ No    : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span id="cb58-68"><a href="datainout.html#cb58-68" aria-hidden="true"></a><span class="co">##  $ age   : int  67 67 72 82 73 76 76 77 64 64 ...</span></span>
+<span id="cb58-69"><a href="datainout.html#cb58-69" aria-hidden="true"></a><span class="co">##  $ sex   : int  0 0 1 1 1 0 0 0 0 0 ...</span></span>
+<span id="cb58-70"><a href="datainout.html#cb58-70" aria-hidden="true"></a><span class="co">##  $ DM    : int  0 0 0 0 0 0 0 1 0 0 ...</span></span>
+<span id="cb58-71"><a href="datainout.html#cb58-71" aria-hidden="true"></a><span class="co">##  $ DMyr  : int  10 11 4 8 3 1 1 35 5 5 ...</span></span>
+<span id="cb58-72"><a href="datainout.html#cb58-72" aria-hidden="true"></a><span class="co">##  $ preAC : int  120 100 150 150 85 120 120 200 130 130 ...</span></span>
+<span id="cb58-73"><a href="datainout.html#cb58-73" aria-hidden="true"></a><span class="co">##  $ prePC : int  160 150 200 200 110 150 150 250 180 180 ...</span></span>
+<span id="cb58-74"><a href="datainout.html#cb58-74" aria-hidden="true"></a><span class="co">##  $ postAC: int  140 150 120 160 140 120 120 230 100 100 ...</span></span>
+<span id="cb58-75"><a href="datainout.html#cb58-75" aria-hidden="true"></a><span class="co">##  $ postPC: int  180 220 150 250 200 200 200 300 150 150 ...</span></span>
+<span id="cb58-76"><a href="datainout.html#cb58-76" aria-hidden="true"></a><span class="co">##  $ Med   : int  0 0 2 0 0 0 0 1 0 0 ...</span></span>
+<span id="cb58-77"><a href="datainout.html#cb58-77" aria-hidden="true"></a><span class="co">##  $ SIDE  : int  0 1 0 1 0 1 0 1 0 1 ...</span></span>
+<span id="cb58-78"><a href="datainout.html#cb58-78" aria-hidden="true"></a><span class="co">##  $ PREKS : int  56 62 60 47 44 52 48 42 40 45 ...</span></span>
+<span id="cb58-79"><a href="datainout.html#cb58-79" aria-hidden="true"></a><span class="co">##  $ POSKS : int  92 62 94 90 88 94 96 90 94 96 ...</span></span>
+<span id="cb58-80"><a href="datainout.html#cb58-80" aria-hidden="true"></a><span class="co">##  $ ABS   : int  1 0 1 1 0 1 0 1 1 0 ...</span></span>
+<span id="cb58-81"><a href="datainout.html#cb58-81" aria-hidden="true"></a><span class="co">##  $ INFECT: int  0 1 0 0 0 0 0 0 0 0 ...</span></span></code></pre></div>
 </div>
 <div id="輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</h2>
@@ -634,28 +648,40 @@ image, texts, stock market, social media 等.
 <span id="cb59-5"><a href="datainout.html#cb59-5" aria-hidden="true"></a>                            <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
 <span id="cb59-6"><a href="datainout.html#cb59-6" aria-hidden="true"></a>                            <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
 <span id="cb59-7"><a href="datainout.html#cb59-7" aria-hidden="true"></a><span class="kw">head</span>(read_table.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
-<span id="cb59-8"><a href="datainout.html#cb59-8" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb59-9"><a href="datainout.html#cb59-9" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb59-10"><a href="datainout.html#cb59-10" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb59-11"><a href="datainout.html#cb59-11" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span>
-<span id="cb59-12"><a href="datainout.html#cb59-12" aria-hidden="true"></a><span class="co"># simple one</span></span>
-<span id="cb59-13"><a href="datainout.html#cb59-13" aria-hidden="true"></a>read_csv.df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>)</span>
-<span id="cb59-14"><a href="datainout.html#cb59-14" aria-hidden="true"></a><span class="kw">head</span>(read_csv.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
-<span id="cb59-15"><a href="datainout.html#cb59-15" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb59-16"><a href="datainout.html#cb59-16" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb59-17"><a href="datainout.html#cb59-17" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb59-18"><a href="datainout.html#cb59-18" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span>
-<span id="cb59-19"><a href="datainout.html#cb59-19" aria-hidden="true"></a><span class="co">#</span></span>
-<span id="cb59-20"><a href="datainout.html#cb59-20" aria-hidden="true"></a>read_csv.df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>,</span>
-<span id="cb59-21"><a href="datainout.html#cb59-21" aria-hidden="true"></a>                            <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb59-22"><a href="datainout.html#cb59-22" aria-hidden="true"></a>                            <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
-<span id="cb59-23"><a href="datainout.html#cb59-23" aria-hidden="true"></a>                            <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
-<span id="cb59-24"><a href="datainout.html#cb59-24" aria-hidden="true"></a>                            <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb59-25"><a href="datainout.html#cb59-25" aria-hidden="true"></a><span class="kw">head</span>(read_csv.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
-<span id="cb59-26"><a href="datainout.html#cb59-26" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb59-27"><a href="datainout.html#cb59-27" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb59-28"><a href="datainout.html#cb59-28" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb59-29"><a href="datainout.html#cb59-29" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span></code></pre></div>
+<span id="cb59-8"><a href="datainout.html#cb59-8" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS</span></span>
+<span id="cb59-9"><a href="datainout.html#cb59-9" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1</span></span>
+<span id="cb59-10"><a href="datainout.html#cb59-10" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0</span></span>
+<span id="cb59-11"><a href="datainout.html#cb59-11" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1</span></span>
+<span id="cb59-12"><a href="datainout.html#cb59-12" aria-hidden="true"></a><span class="co">##   INFECT</span></span>
+<span id="cb59-13"><a href="datainout.html#cb59-13" aria-hidden="true"></a><span class="co">## 1      0</span></span>
+<span id="cb59-14"><a href="datainout.html#cb59-14" aria-hidden="true"></a><span class="co">## 2      1</span></span>
+<span id="cb59-15"><a href="datainout.html#cb59-15" aria-hidden="true"></a><span class="co">## 3      0</span></span>
+<span id="cb59-16"><a href="datainout.html#cb59-16" aria-hidden="true"></a><span class="co"># simple one</span></span>
+<span id="cb59-17"><a href="datainout.html#cb59-17" aria-hidden="true"></a>read_csv.df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>)</span>
+<span id="cb59-18"><a href="datainout.html#cb59-18" aria-hidden="true"></a><span class="kw">head</span>(read_csv.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb59-19"><a href="datainout.html#cb59-19" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS</span></span>
+<span id="cb59-20"><a href="datainout.html#cb59-20" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1</span></span>
+<span id="cb59-21"><a href="datainout.html#cb59-21" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0</span></span>
+<span id="cb59-22"><a href="datainout.html#cb59-22" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1</span></span>
+<span id="cb59-23"><a href="datainout.html#cb59-23" aria-hidden="true"></a><span class="co">##   INFECT</span></span>
+<span id="cb59-24"><a href="datainout.html#cb59-24" aria-hidden="true"></a><span class="co">## 1      0</span></span>
+<span id="cb59-25"><a href="datainout.html#cb59-25" aria-hidden="true"></a><span class="co">## 2      1</span></span>
+<span id="cb59-26"><a href="datainout.html#cb59-26" aria-hidden="true"></a><span class="co">## 3      0</span></span>
+<span id="cb59-27"><a href="datainout.html#cb59-27" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb59-28"><a href="datainout.html#cb59-28" aria-hidden="true"></a>read_csv.df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>,</span>
+<span id="cb59-29"><a href="datainout.html#cb59-29" aria-hidden="true"></a>                            <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb59-30"><a href="datainout.html#cb59-30" aria-hidden="true"></a>                            <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb59-31"><a href="datainout.html#cb59-31" aria-hidden="true"></a>                            <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb59-32"><a href="datainout.html#cb59-32" aria-hidden="true"></a>                            <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb59-33"><a href="datainout.html#cb59-33" aria-hidden="true"></a><span class="kw">head</span>(read_csv.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb59-34"><a href="datainout.html#cb59-34" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS</span></span>
+<span id="cb59-35"><a href="datainout.html#cb59-35" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1</span></span>
+<span id="cb59-36"><a href="datainout.html#cb59-36" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0</span></span>
+<span id="cb59-37"><a href="datainout.html#cb59-37" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1</span></span>
+<span id="cb59-38"><a href="datainout.html#cb59-38" aria-hidden="true"></a><span class="co">##   INFECT</span></span>
+<span id="cb59-39"><a href="datainout.html#cb59-39" aria-hidden="true"></a><span class="co">## 1      0</span></span>
+<span id="cb59-40"><a href="datainout.html#cb59-40" aria-hidden="true"></a><span class="co">## 2      1</span></span>
+<span id="cb59-41"><a href="datainout.html#cb59-41" aria-hidden="true"></a><span class="co">## 3      0</span></span></code></pre></div>
 </div>
 <div id="r-內建資料框架" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> R 內建資料框架</h2>

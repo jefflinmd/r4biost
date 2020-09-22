@@ -376,40 +376,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb153-4"><a href="basictidy.html#cb153-4" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;C:/RData/DMTKAInfMo.csv&quot;</span>)</span>
 <span id="cb153-5"><a href="basictidy.html#cb153-5" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
 <span id="cb153-6"><a href="basictidy.html#cb153-6" aria-hidden="true"></a><span class="co">## # A tibble: 78 x 16</span></span>
-<span id="cb153-7"><a href="basictidy.html#cb153-7" aria-hidden="true"></a><span class="co">##      No   age   sex    DM  DMyr preAC prePC postAC postPC medication  SIDE PREKS</span></span>
-<span id="cb153-8"><a href="basictidy.html#cb153-8" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb153-9"><a href="basictidy.html#cb153-9" aria-hidden="true"></a><span class="co">## 1     1    67     0     0    10   120   160    140    180          0     0    56</span></span>
-<span id="cb153-10"><a href="basictidy.html#cb153-10" aria-hidden="true"></a><span class="co">## 2     2    67     0     0    11   100   150    150    220          0     1    62</span></span>
-<span id="cb153-11"><a href="basictidy.html#cb153-11" aria-hidden="true"></a><span class="co">## 3     3    72     1     0     4   150   200    120    150          2     0    60</span></span>
-<span id="cb153-12"><a href="basictidy.html#cb153-12" aria-hidden="true"></a><span class="co">## 4     4    82     1     0     8   150   200    160    250          0     1    47</span></span>
-<span id="cb153-13"><a href="basictidy.html#cb153-13" aria-hidden="true"></a><span class="co">## 5     5    73     1     0     3    85   110    140    200          0     0    44</span></span>
-<span id="cb153-14"><a href="basictidy.html#cb153-14" aria-hidden="true"></a><span class="co">##   POSKS   ABS INFECT INFMO</span></span>
-<span id="cb153-15"><a href="basictidy.html#cb153-15" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb153-16"><a href="basictidy.html#cb153-16" aria-hidden="true"></a><span class="co">## 1    92     1      0     0</span></span>
-<span id="cb153-17"><a href="basictidy.html#cb153-17" aria-hidden="true"></a><span class="co">## 2    62     0      1     2</span></span>
-<span id="cb153-18"><a href="basictidy.html#cb153-18" aria-hidden="true"></a><span class="co">## 3    94     1      0     0</span></span>
-<span id="cb153-19"><a href="basictidy.html#cb153-19" aria-hidden="true"></a><span class="co">## 4    90     1      0     0</span></span>
-<span id="cb153-20"><a href="basictidy.html#cb153-20" aria-hidden="true"></a><span class="co">## 5    88     0      0     0</span></span>
+<span id="cb153-7"><a href="basictidy.html#cb153-7" aria-hidden="true"></a><span class="co">##      No   age   sex    DM  DMyr preAC prePC postAC postPC medication  SIDE</span></span>
+<span id="cb153-8"><a href="basictidy.html#cb153-8" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb153-9"><a href="basictidy.html#cb153-9" aria-hidden="true"></a><span class="co">## 1     1    67     0     0    10   120   160    140    180          0     0</span></span>
+<span id="cb153-10"><a href="basictidy.html#cb153-10" aria-hidden="true"></a><span class="co">## 2     2    67     0     0    11   100   150    150    220          0     1</span></span>
+<span id="cb153-11"><a href="basictidy.html#cb153-11" aria-hidden="true"></a><span class="co">## 3     3    72     1     0     4   150   200    120    150          2     0</span></span>
+<span id="cb153-12"><a href="basictidy.html#cb153-12" aria-hidden="true"></a><span class="co">## 4     4    82     1     0     8   150   200    160    250          0     1</span></span>
+<span id="cb153-13"><a href="basictidy.html#cb153-13" aria-hidden="true"></a><span class="co">## 5     5    73     1     0     3    85   110    140    200          0     0</span></span>
+<span id="cb153-14"><a href="basictidy.html#cb153-14" aria-hidden="true"></a><span class="co">##   PREKS POSKS   ABS INFECT INFMO</span></span>
+<span id="cb153-15"><a href="basictidy.html#cb153-15" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb153-16"><a href="basictidy.html#cb153-16" aria-hidden="true"></a><span class="co">## 1    56    92     1      0     0</span></span>
+<span id="cb153-17"><a href="basictidy.html#cb153-17" aria-hidden="true"></a><span class="co">## 2    62    62     0      1     2</span></span>
+<span id="cb153-18"><a href="basictidy.html#cb153-18" aria-hidden="true"></a><span class="co">## 3    60    94     1      0     0</span></span>
+<span id="cb153-19"><a href="basictidy.html#cb153-19" aria-hidden="true"></a><span class="co">## 4    47    90     1      0     0</span></span>
+<span id="cb153-20"><a href="basictidy.html#cb153-20" aria-hidden="true"></a><span class="co">## 5    44    88     0      0     0</span></span>
 <span id="cb153-21"><a href="basictidy.html#cb153-21" aria-hidden="true"></a><span class="co">## # ... with 73 more rows</span></span>
 <span id="cb153-22"><a href="basictidy.html#cb153-22" aria-hidden="true"></a><span class="co"># .xls</span></span>
 <span id="cb153-23"><a href="basictidy.html#cb153-23" aria-hidden="true"></a><span class="kw">library</span>(readxl)</span>
 <span id="cb153-24"><a href="basictidy.html#cb153-24" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;C:/RData/DMTKAInfMo.xls&quot;</span>)</span>
 <span id="cb153-25"><a href="basictidy.html#cb153-25" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
 <span id="cb153-26"><a href="basictidy.html#cb153-26" aria-hidden="true"></a><span class="co">## # A tibble: 78 x 16</span></span>
-<span id="cb153-27"><a href="basictidy.html#cb153-27" aria-hidden="true"></a><span class="co">##      No   age   sex    DM  DMyr preAC prePC postAC postPC medication  SIDE PREKS</span></span>
-<span id="cb153-28"><a href="basictidy.html#cb153-28" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb153-29"><a href="basictidy.html#cb153-29" aria-hidden="true"></a><span class="co">## 1     1    67     0     0    10   120   160    140    180          0     0    56</span></span>
-<span id="cb153-30"><a href="basictidy.html#cb153-30" aria-hidden="true"></a><span class="co">## 2     2    67     0     0    11   100   150    150    220          0     1    62</span></span>
-<span id="cb153-31"><a href="basictidy.html#cb153-31" aria-hidden="true"></a><span class="co">## 3     3    72     1     0     4   150   200    120    150          2     0    60</span></span>
-<span id="cb153-32"><a href="basictidy.html#cb153-32" aria-hidden="true"></a><span class="co">## 4     4    82     1     0     8   150   200    160    250          0     1    47</span></span>
-<span id="cb153-33"><a href="basictidy.html#cb153-33" aria-hidden="true"></a><span class="co">## 5     5    73     1     0     3    85   110    140    200          0     0    44</span></span>
-<span id="cb153-34"><a href="basictidy.html#cb153-34" aria-hidden="true"></a><span class="co">##   POSKS   ABS INFECT I0FECTMO</span></span>
-<span id="cb153-35"><a href="basictidy.html#cb153-35" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb153-36"><a href="basictidy.html#cb153-36" aria-hidden="true"></a><span class="co">## 1    92     1      0        0</span></span>
-<span id="cb153-37"><a href="basictidy.html#cb153-37" aria-hidden="true"></a><span class="co">## 2    62     0      1        2</span></span>
-<span id="cb153-38"><a href="basictidy.html#cb153-38" aria-hidden="true"></a><span class="co">## 3    94     1      0        0</span></span>
-<span id="cb153-39"><a href="basictidy.html#cb153-39" aria-hidden="true"></a><span class="co">## 4    90     1      0        0</span></span>
-<span id="cb153-40"><a href="basictidy.html#cb153-40" aria-hidden="true"></a><span class="co">## 5    88     0      0        0</span></span>
+<span id="cb153-27"><a href="basictidy.html#cb153-27" aria-hidden="true"></a><span class="co">##      No   age   sex    DM  DMyr preAC prePC postAC postPC medication  SIDE</span></span>
+<span id="cb153-28"><a href="basictidy.html#cb153-28" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb153-29"><a href="basictidy.html#cb153-29" aria-hidden="true"></a><span class="co">## 1     1    67     0     0    10   120   160    140    180          0     0</span></span>
+<span id="cb153-30"><a href="basictidy.html#cb153-30" aria-hidden="true"></a><span class="co">## 2     2    67     0     0    11   100   150    150    220          0     1</span></span>
+<span id="cb153-31"><a href="basictidy.html#cb153-31" aria-hidden="true"></a><span class="co">## 3     3    72     1     0     4   150   200    120    150          2     0</span></span>
+<span id="cb153-32"><a href="basictidy.html#cb153-32" aria-hidden="true"></a><span class="co">## 4     4    82     1     0     8   150   200    160    250          0     1</span></span>
+<span id="cb153-33"><a href="basictidy.html#cb153-33" aria-hidden="true"></a><span class="co">## 5     5    73     1     0     3    85   110    140    200          0     0</span></span>
+<span id="cb153-34"><a href="basictidy.html#cb153-34" aria-hidden="true"></a><span class="co">##   PREKS POSKS   ABS INFECT I0FECTMO</span></span>
+<span id="cb153-35"><a href="basictidy.html#cb153-35" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb153-36"><a href="basictidy.html#cb153-36" aria-hidden="true"></a><span class="co">## 1    56    92     1      0        0</span></span>
+<span id="cb153-37"><a href="basictidy.html#cb153-37" aria-hidden="true"></a><span class="co">## 2    62    62     0      1        2</span></span>
+<span id="cb153-38"><a href="basictidy.html#cb153-38" aria-hidden="true"></a><span class="co">## 3    60    94     1      0        0</span></span>
+<span id="cb153-39"><a href="basictidy.html#cb153-39" aria-hidden="true"></a><span class="co">## 4    47    90     1      0        0</span></span>
+<span id="cb153-40"><a href="basictidy.html#cb153-40" aria-hidden="true"></a><span class="co">## 5    44    88     0      0        0</span></span>
 <span id="cb153-41"><a href="basictidy.html#cb153-41" aria-hidden="true"></a><span class="co">## # ... with 73 more rows</span></span></code></pre></div>
 </div>
 <div id="整潔資料-tidy-data" class="section level2" number="8.2">
@@ -590,14 +590,14 @@ options(tibble.print_min = Inf), 顯示所有 rows,
 <span id="cb158-13"><a href="basictidy.html#cb158-13" aria-hidden="true"></a><span class="kw">glimpse</span>(dd)</span>
 <span id="cb158-14"><a href="basictidy.html#cb158-14" aria-hidden="true"></a><span class="co">## Rows: 137</span></span>
 <span id="cb158-15"><a href="basictidy.html#cb158-15" aria-hidden="true"></a><span class="co">## Columns: 8</span></span>
-<span id="cb158-16"><a href="basictidy.html#cb158-16" aria-hidden="true"></a><span class="co">## $ treat    &lt;fct&gt; placebo, placebo, placebo, placebo, placebo, placebo, place...</span></span>
-<span id="cb158-17"><a href="basictidy.html#cb158-17" aria-hidden="true"></a><span class="co">## $ cellcode &lt;fct&gt; squamous, squamous, squamous, squamous, squamous, squamous,...</span></span>
-<span id="cb158-18"><a href="basictidy.html#cb158-18" aria-hidden="true"></a><span class="co">## $ time     &lt;int&gt; 72, 411, 228, 126, 118, 10, 82, 110, 314, 100, 42, 8, 144, ...</span></span>
-<span id="cb158-19"><a href="basictidy.html#cb158-19" aria-hidden="true"></a><span class="co">## $ censor   &lt;fct&gt; dead, dead, dead, dead, dead, dead, dead, dead, dead, survi...</span></span>
-<span id="cb158-20"><a href="basictidy.html#cb158-20" aria-hidden="true"></a><span class="co">## $ diagtime &lt;int&gt; 60, 70, 60, 60, 70, 20, 40, 80, 50, 70, 60, 40, 30, 80, 70,...</span></span>
-<span id="cb158-21"><a href="basictidy.html#cb158-21" aria-hidden="true"></a><span class="co">## $ kps      &lt;int&gt; 7, 5, 3, 9, 11, 5, 10, 29, 18, 6, 4, 58, 4, 9, 11, 3, 9, 2,...</span></span>
-<span id="cb158-22"><a href="basictidy.html#cb158-22" aria-hidden="true"></a><span class="co">## $ age      &lt;int&gt; 69, 64, 38, 63, 65, 49, 69, 68, 43, 70, 81, 63, 63, 52, 48,...</span></span>
-<span id="cb158-23"><a href="basictidy.html#cb158-23" aria-hidden="true"></a><span class="co">## $ prior    &lt;fct&gt; no, yes, no, yes, yes, no, yes, no, no, no, no, yes, no, ye...</span></span></code></pre></div>
+<span id="cb158-16"><a href="basictidy.html#cb158-16" aria-hidden="true"></a><span class="co">## $ treat    &lt;fct&gt; placebo, placebo, placebo, placebo, placebo, placebo, pl...</span></span>
+<span id="cb158-17"><a href="basictidy.html#cb158-17" aria-hidden="true"></a><span class="co">## $ cellcode &lt;fct&gt; squamous, squamous, squamous, squamous, squamous, squamo...</span></span>
+<span id="cb158-18"><a href="basictidy.html#cb158-18" aria-hidden="true"></a><span class="co">## $ time     &lt;int&gt; 72, 411, 228, 126, 118, 10, 82, 110, 314, 100, 42, 8, 14...</span></span>
+<span id="cb158-19"><a href="basictidy.html#cb158-19" aria-hidden="true"></a><span class="co">## $ censor   &lt;fct&gt; dead, dead, dead, dead, dead, dead, dead, dead, dead, su...</span></span>
+<span id="cb158-20"><a href="basictidy.html#cb158-20" aria-hidden="true"></a><span class="co">## $ diagtime &lt;int&gt; 60, 70, 60, 60, 70, 20, 40, 80, 50, 70, 60, 40, 30, 80, ...</span></span>
+<span id="cb158-21"><a href="basictidy.html#cb158-21" aria-hidden="true"></a><span class="co">## $ kps      &lt;int&gt; 7, 5, 3, 9, 11, 5, 10, 29, 18, 6, 4, 58, 4, 9, 11, 3, 9,...</span></span>
+<span id="cb158-22"><a href="basictidy.html#cb158-22" aria-hidden="true"></a><span class="co">## $ age      &lt;int&gt; 69, 64, 38, 63, 65, 49, 69, 68, 43, 70, 81, 63, 63, 52, ...</span></span>
+<span id="cb158-23"><a href="basictidy.html#cb158-23" aria-hidden="true"></a><span class="co">## $ prior    &lt;fct&gt; no, yes, no, yes, yes, no, yes, no, no, no, no, yes, no,...</span></span></code></pre></div>
 </div>
 <div id="資料處裡-dplyr-套件" class="section level2" number="8.6">
 <h2><span class="header-section-number">8.6</span> 資料處裡 dplyr 套件</h2>
