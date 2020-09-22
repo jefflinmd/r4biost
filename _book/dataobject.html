@@ -24,7 +24,7 @@
 <meta name="author" content="Jeff Lin" />
 
 
-<meta name="date" content="2020-09-16" />
+<meta name="date" content="2020-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -600,8 +600,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb51-18"><a href="dataobject.html#cb51-18" aria-hidden="true"></a><span class="co">##         12   14   16</span></span>
 <span id="cb51-19"><a href="dataobject.html#cb51-19" aria-hidden="true"></a><span class="co">## x.vec    1    2    3</span></span>
 <span id="cb51-20"><a href="dataobject.html#cb51-20" aria-hidden="true"></a><span class="kw">cbind</span>(x.mat, y.vec) <span class="co"># warning</span></span>
-<span id="cb51-21"><a href="dataobject.html#cb51-21" aria-hidden="true"></a><span class="co">## Warning in cbind(x.mat, y.vec): number of rows of result is</span></span>
-<span id="cb51-22"><a href="dataobject.html#cb51-22" aria-hidden="true"></a><span class="co">## not a multiple of vector length (arg 2)</span></span>
+<span id="cb51-21"><a href="dataobject.html#cb51-21" aria-hidden="true"></a><span class="co">## Warning in cbind(x.mat, y.vec): number of rows of result is not a multiple of</span></span>
+<span id="cb51-22"><a href="dataobject.html#cb51-22" aria-hidden="true"></a><span class="co">## vector length (arg 2)</span></span>
 <span id="cb51-23"><a href="dataobject.html#cb51-23" aria-hidden="true"></a><span class="co">##               y.vec</span></span>
 <span id="cb51-24"><a href="dataobject.html#cb51-24" aria-hidden="true"></a><span class="co">## [1,] 11 13 15     8</span></span>
 <span id="cb51-25"><a href="dataobject.html#cb51-25" aria-hidden="true"></a><span class="co">## [2,] 12 14 16     9</span></span>
@@ -635,8 +635,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb51-53"><a href="dataobject.html#cb51-53" aria-hidden="true"></a><span class="co">## x.vec    1    2</span></span>
 <span id="cb51-54"><a href="dataobject.html#cb51-54" aria-hidden="true"></a><span class="co">## y.vec    8    9</span></span>
 <span id="cb51-55"><a href="dataobject.html#cb51-55" aria-hidden="true"></a><span class="kw">cbind</span>(z.mat, y.vec) <span class="co"># warning</span></span>
-<span id="cb51-56"><a href="dataobject.html#cb51-56" aria-hidden="true"></a><span class="co">## Warning in cbind(z.mat, y.vec): number of rows of result is</span></span>
-<span id="cb51-57"><a href="dataobject.html#cb51-57" aria-hidden="true"></a><span class="co">## not a multiple of vector length (arg 2)</span></span>
+<span id="cb51-56"><a href="dataobject.html#cb51-56" aria-hidden="true"></a><span class="co">## Warning in cbind(z.mat, y.vec): number of rows of result is not a multiple of</span></span>
+<span id="cb51-57"><a href="dataobject.html#cb51-57" aria-hidden="true"></a><span class="co">## vector length (arg 2)</span></span>
 <span id="cb51-58"><a href="dataobject.html#cb51-58" aria-hidden="true"></a><span class="co">##             y.vec</span></span>
 <span id="cb51-59"><a href="dataobject.html#cb51-59" aria-hidden="true"></a><span class="co">##       11 13     8</span></span>
 <span id="cb51-60"><a href="dataobject.html#cb51-60" aria-hidden="true"></a><span class="co">##       12 14     9</span></span>
@@ -684,98 +684,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="dataobject.html#cb52-1" aria-hidden="true"></a><span class="co">## array()</span></span>
 <span id="cb52-2"><a href="dataobject.html#cb52-2" aria-hidden="true"></a>a.vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">24</span></span>
 <span id="cb52-3"><a href="dataobject.html#cb52-3" aria-hidden="true"></a>a.vec</span>
-<span id="cb52-4"><a href="dataobject.html#cb52-4" aria-hidden="true"></a><span class="co">##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18</span></span>
-<span id="cb52-5"><a href="dataobject.html#cb52-5" aria-hidden="true"></a><span class="co">## [19] 19 20 21 22 23 24</span></span>
-<span id="cb52-6"><a href="dataobject.html#cb52-6" aria-hidden="true"></a>b.array &lt;-<span class="st"> </span><span class="kw">array</span>(a.vec, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
-<span id="cb52-7"><a href="dataobject.html#cb52-7" aria-hidden="true"></a>                 <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;x4&quot;</span>),</span>
-<span id="cb52-8"><a href="dataobject.html#cb52-8" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;y1&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y3&quot;</span>),</span>
-<span id="cb52-9"><a href="dataobject.html#cb52-9" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;z1&quot;</span>, <span class="st">&quot;z2&quot;</span>)))</span>
-<span id="cb52-10"><a href="dataobject.html#cb52-10" aria-hidden="true"></a>b.array</span>
-<span id="cb52-11"><a href="dataobject.html#cb52-11" aria-hidden="true"></a><span class="co">## , , z1</span></span>
-<span id="cb52-12"><a href="dataobject.html#cb52-12" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb52-13"><a href="dataobject.html#cb52-13" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
-<span id="cb52-14"><a href="dataobject.html#cb52-14" aria-hidden="true"></a><span class="co">## x1  1  5  9</span></span>
-<span id="cb52-15"><a href="dataobject.html#cb52-15" aria-hidden="true"></a><span class="co">## x2  2  6 10</span></span>
-<span id="cb52-16"><a href="dataobject.html#cb52-16" aria-hidden="true"></a><span class="co">## x3  3  7 11</span></span>
-<span id="cb52-17"><a href="dataobject.html#cb52-17" aria-hidden="true"></a><span class="co">## x4  4  8 12</span></span>
-<span id="cb52-18"><a href="dataobject.html#cb52-18" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb52-19"><a href="dataobject.html#cb52-19" aria-hidden="true"></a><span class="co">## , , z2</span></span>
-<span id="cb52-20"><a href="dataobject.html#cb52-20" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb52-21"><a href="dataobject.html#cb52-21" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
-<span id="cb52-22"><a href="dataobject.html#cb52-22" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
-<span id="cb52-23"><a href="dataobject.html#cb52-23" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
-<span id="cb52-24"><a href="dataobject.html#cb52-24" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
-<span id="cb52-25"><a href="dataobject.html#cb52-25" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span>
-<span id="cb52-26"><a href="dataobject.html#cb52-26" aria-hidden="true"></a><span class="kw">mode</span>(b.array)</span>
-<span id="cb52-27"><a href="dataobject.html#cb52-27" aria-hidden="true"></a><span class="co">## [1] &quot;numeric&quot;</span></span>
-<span id="cb52-28"><a href="dataobject.html#cb52-28" aria-hidden="true"></a><span class="kw">dim</span>(b.array)</span>
-<span id="cb52-29"><a href="dataobject.html#cb52-29" aria-hidden="true"></a><span class="co">## [1] 4 3 2</span></span>
-<span id="cb52-30"><a href="dataobject.html#cb52-30" aria-hidden="true"></a><span class="kw">length</span>(b.array)</span>
-<span id="cb52-31"><a href="dataobject.html#cb52-31" aria-hidden="true"></a><span class="co">## [1] 24</span></span>
-<span id="cb52-32"><a href="dataobject.html#cb52-32" aria-hidden="true"></a><span class="kw">dimnames</span>(b.array)</span>
-<span id="cb52-33"><a href="dataobject.html#cb52-33" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
-<span id="cb52-34"><a href="dataobject.html#cb52-34" aria-hidden="true"></a><span class="co">## [1] &quot;x1&quot; &quot;x2&quot; &quot;x3&quot; &quot;x4&quot;</span></span>
-<span id="cb52-35"><a href="dataobject.html#cb52-35" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb52-36"><a href="dataobject.html#cb52-36" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
-<span id="cb52-37"><a href="dataobject.html#cb52-37" aria-hidden="true"></a><span class="co">## [1] &quot;y1&quot; &quot;y2&quot; &quot;y3&quot;</span></span>
-<span id="cb52-38"><a href="dataobject.html#cb52-38" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb52-39"><a href="dataobject.html#cb52-39" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
-<span id="cb52-40"><a href="dataobject.html#cb52-40" aria-hidden="true"></a><span class="co">## [1] &quot;z1&quot; &quot;z2&quot;</span></span>
-<span id="cb52-41"><a href="dataobject.html#cb52-41" aria-hidden="true"></a><span class="kw">rownames</span>(b.array)</span>
-<span id="cb52-42"><a href="dataobject.html#cb52-42" aria-hidden="true"></a><span class="co">## [1] &quot;x1&quot; &quot;x2&quot; &quot;x3&quot; &quot;x4&quot;</span></span>
-<span id="cb52-43"><a href="dataobject.html#cb52-43" aria-hidden="true"></a><span class="kw">colnames</span>(b.array)</span>
-<span id="cb52-44"><a href="dataobject.html#cb52-44" aria-hidden="true"></a><span class="co">## [1] &quot;y1&quot; &quot;y2&quot; &quot;y3&quot;</span></span>
-<span id="cb52-45"><a href="dataobject.html#cb52-45" aria-hidden="true"></a><span class="co"># array index</span></span>
-<span id="cb52-46"><a href="dataobject.html#cb52-46" aria-hidden="true"></a>a.vec</span>
-<span id="cb52-47"><a href="dataobject.html#cb52-47" aria-hidden="true"></a><span class="co">##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18</span></span>
-<span id="cb52-48"><a href="dataobject.html#cb52-48" aria-hidden="true"></a><span class="co">## [19] 19 20 21 22 23 24</span></span>
-<span id="cb52-49"><a href="dataobject.html#cb52-49" aria-hidden="true"></a>b.array &lt;-<span class="st"> </span><span class="kw">array</span>(a.vec, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
-<span id="cb52-50"><a href="dataobject.html#cb52-50" aria-hidden="true"></a>                 <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;x4&quot;</span>),</span>
-<span id="cb52-51"><a href="dataobject.html#cb52-51" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;y1&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y3&quot;</span>),</span>
-<span id="cb52-52"><a href="dataobject.html#cb52-52" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;z1&quot;</span>, <span class="st">&quot;z2&quot;</span>)))</span>
-<span id="cb52-53"><a href="dataobject.html#cb52-53" aria-hidden="true"></a>b.array</span>
-<span id="cb52-54"><a href="dataobject.html#cb52-54" aria-hidden="true"></a><span class="co">## , , z1</span></span>
-<span id="cb52-55"><a href="dataobject.html#cb52-55" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb52-56"><a href="dataobject.html#cb52-56" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
-<span id="cb52-57"><a href="dataobject.html#cb52-57" aria-hidden="true"></a><span class="co">## x1  1  5  9</span></span>
-<span id="cb52-58"><a href="dataobject.html#cb52-58" aria-hidden="true"></a><span class="co">## x2  2  6 10</span></span>
-<span id="cb52-59"><a href="dataobject.html#cb52-59" aria-hidden="true"></a><span class="co">## x3  3  7 11</span></span>
-<span id="cb52-60"><a href="dataobject.html#cb52-60" aria-hidden="true"></a><span class="co">## x4  4  8 12</span></span>
+<span id="cb52-4"><a href="dataobject.html#cb52-4" aria-hidden="true"></a><span class="co">##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24</span></span>
+<span id="cb52-5"><a href="dataobject.html#cb52-5" aria-hidden="true"></a>b.array &lt;-<span class="st"> </span><span class="kw">array</span>(a.vec, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb52-6"><a href="dataobject.html#cb52-6" aria-hidden="true"></a>                 <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;x4&quot;</span>),</span>
+<span id="cb52-7"><a href="dataobject.html#cb52-7" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;y1&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y3&quot;</span>),</span>
+<span id="cb52-8"><a href="dataobject.html#cb52-8" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;z1&quot;</span>, <span class="st">&quot;z2&quot;</span>)))</span>
+<span id="cb52-9"><a href="dataobject.html#cb52-9" aria-hidden="true"></a>b.array</span>
+<span id="cb52-10"><a href="dataobject.html#cb52-10" aria-hidden="true"></a><span class="co">## , , z1</span></span>
+<span id="cb52-11"><a href="dataobject.html#cb52-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-12"><a href="dataobject.html#cb52-12" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-13"><a href="dataobject.html#cb52-13" aria-hidden="true"></a><span class="co">## x1  1  5  9</span></span>
+<span id="cb52-14"><a href="dataobject.html#cb52-14" aria-hidden="true"></a><span class="co">## x2  2  6 10</span></span>
+<span id="cb52-15"><a href="dataobject.html#cb52-15" aria-hidden="true"></a><span class="co">## x3  3  7 11</span></span>
+<span id="cb52-16"><a href="dataobject.html#cb52-16" aria-hidden="true"></a><span class="co">## x4  4  8 12</span></span>
+<span id="cb52-17"><a href="dataobject.html#cb52-17" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-18"><a href="dataobject.html#cb52-18" aria-hidden="true"></a><span class="co">## , , z2</span></span>
+<span id="cb52-19"><a href="dataobject.html#cb52-19" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-20"><a href="dataobject.html#cb52-20" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-21"><a href="dataobject.html#cb52-21" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
+<span id="cb52-22"><a href="dataobject.html#cb52-22" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
+<span id="cb52-23"><a href="dataobject.html#cb52-23" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
+<span id="cb52-24"><a href="dataobject.html#cb52-24" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span>
+<span id="cb52-25"><a href="dataobject.html#cb52-25" aria-hidden="true"></a><span class="kw">mode</span>(b.array)</span>
+<span id="cb52-26"><a href="dataobject.html#cb52-26" aria-hidden="true"></a><span class="co">## [1] &quot;numeric&quot;</span></span>
+<span id="cb52-27"><a href="dataobject.html#cb52-27" aria-hidden="true"></a><span class="kw">dim</span>(b.array)</span>
+<span id="cb52-28"><a href="dataobject.html#cb52-28" aria-hidden="true"></a><span class="co">## [1] 4 3 2</span></span>
+<span id="cb52-29"><a href="dataobject.html#cb52-29" aria-hidden="true"></a><span class="kw">length</span>(b.array)</span>
+<span id="cb52-30"><a href="dataobject.html#cb52-30" aria-hidden="true"></a><span class="co">## [1] 24</span></span>
+<span id="cb52-31"><a href="dataobject.html#cb52-31" aria-hidden="true"></a><span class="kw">dimnames</span>(b.array)</span>
+<span id="cb52-32"><a href="dataobject.html#cb52-32" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb52-33"><a href="dataobject.html#cb52-33" aria-hidden="true"></a><span class="co">## [1] &quot;x1&quot; &quot;x2&quot; &quot;x3&quot; &quot;x4&quot;</span></span>
+<span id="cb52-34"><a href="dataobject.html#cb52-34" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-35"><a href="dataobject.html#cb52-35" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb52-36"><a href="dataobject.html#cb52-36" aria-hidden="true"></a><span class="co">## [1] &quot;y1&quot; &quot;y2&quot; &quot;y3&quot;</span></span>
+<span id="cb52-37"><a href="dataobject.html#cb52-37" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-38"><a href="dataobject.html#cb52-38" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb52-39"><a href="dataobject.html#cb52-39" aria-hidden="true"></a><span class="co">## [1] &quot;z1&quot; &quot;z2&quot;</span></span>
+<span id="cb52-40"><a href="dataobject.html#cb52-40" aria-hidden="true"></a><span class="kw">rownames</span>(b.array)</span>
+<span id="cb52-41"><a href="dataobject.html#cb52-41" aria-hidden="true"></a><span class="co">## [1] &quot;x1&quot; &quot;x2&quot; &quot;x3&quot; &quot;x4&quot;</span></span>
+<span id="cb52-42"><a href="dataobject.html#cb52-42" aria-hidden="true"></a><span class="kw">colnames</span>(b.array)</span>
+<span id="cb52-43"><a href="dataobject.html#cb52-43" aria-hidden="true"></a><span class="co">## [1] &quot;y1&quot; &quot;y2&quot; &quot;y3&quot;</span></span>
+<span id="cb52-44"><a href="dataobject.html#cb52-44" aria-hidden="true"></a><span class="co"># array index</span></span>
+<span id="cb52-45"><a href="dataobject.html#cb52-45" aria-hidden="true"></a>a.vec</span>
+<span id="cb52-46"><a href="dataobject.html#cb52-46" aria-hidden="true"></a><span class="co">##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24</span></span>
+<span id="cb52-47"><a href="dataobject.html#cb52-47" aria-hidden="true"></a>b.array &lt;-<span class="st"> </span><span class="kw">array</span>(a.vec, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb52-48"><a href="dataobject.html#cb52-48" aria-hidden="true"></a>                 <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;x1&quot;</span>, <span class="st">&quot;x2&quot;</span>, <span class="st">&quot;x3&quot;</span>, <span class="st">&quot;x4&quot;</span>),</span>
+<span id="cb52-49"><a href="dataobject.html#cb52-49" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;y1&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y3&quot;</span>),</span>
+<span id="cb52-50"><a href="dataobject.html#cb52-50" aria-hidden="true"></a>                                 <span class="kw">c</span>(<span class="st">&quot;z1&quot;</span>, <span class="st">&quot;z2&quot;</span>)))</span>
+<span id="cb52-51"><a href="dataobject.html#cb52-51" aria-hidden="true"></a>b.array</span>
+<span id="cb52-52"><a href="dataobject.html#cb52-52" aria-hidden="true"></a><span class="co">## , , z1</span></span>
+<span id="cb52-53"><a href="dataobject.html#cb52-53" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-54"><a href="dataobject.html#cb52-54" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-55"><a href="dataobject.html#cb52-55" aria-hidden="true"></a><span class="co">## x1  1  5  9</span></span>
+<span id="cb52-56"><a href="dataobject.html#cb52-56" aria-hidden="true"></a><span class="co">## x2  2  6 10</span></span>
+<span id="cb52-57"><a href="dataobject.html#cb52-57" aria-hidden="true"></a><span class="co">## x3  3  7 11</span></span>
+<span id="cb52-58"><a href="dataobject.html#cb52-58" aria-hidden="true"></a><span class="co">## x4  4  8 12</span></span>
+<span id="cb52-59"><a href="dataobject.html#cb52-59" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb52-60"><a href="dataobject.html#cb52-60" aria-hidden="true"></a><span class="co">## , , z2</span></span>
 <span id="cb52-61"><a href="dataobject.html#cb52-61" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb52-62"><a href="dataobject.html#cb52-62" aria-hidden="true"></a><span class="co">## , , z2</span></span>
-<span id="cb52-63"><a href="dataobject.html#cb52-63" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb52-64"><a href="dataobject.html#cb52-64" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
-<span id="cb52-65"><a href="dataobject.html#cb52-65" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
-<span id="cb52-66"><a href="dataobject.html#cb52-66" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
-<span id="cb52-67"><a href="dataobject.html#cb52-67" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
-<span id="cb52-68"><a href="dataobject.html#cb52-68" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span>
-<span id="cb52-69"><a href="dataobject.html#cb52-69" aria-hidden="true"></a>b.array[<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]</span>
-<span id="cb52-70"><a href="dataobject.html#cb52-70" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
-<span id="cb52-71"><a href="dataobject.html#cb52-71" aria-hidden="true"></a>b.array[<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>]</span>
-<span id="cb52-72"><a href="dataobject.html#cb52-72" aria-hidden="true"></a><span class="co">## [1] 24</span></span>
-<span id="cb52-73"><a href="dataobject.html#cb52-73" aria-hidden="true"></a>b.array[<span class="dv">2</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">1</span>]</span>
-<span id="cb52-74"><a href="dataobject.html#cb52-74" aria-hidden="true"></a><span class="co">## y1 y3 </span></span>
-<span id="cb52-75"><a href="dataobject.html#cb52-75" aria-hidden="true"></a><span class="co">##  2 10</span></span>
-<span id="cb52-76"><a href="dataobject.html#cb52-76" aria-hidden="true"></a>b.array[<span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">1</span>]</span>
-<span id="cb52-77"><a href="dataobject.html#cb52-77" aria-hidden="true"></a><span class="co">## y2 y3 </span></span>
-<span id="cb52-78"><a href="dataobject.html#cb52-78" aria-hidden="true"></a><span class="co">##  7 11</span></span>
-<span id="cb52-79"><a href="dataobject.html#cb52-79" aria-hidden="true"></a>b.array[<span class="dv">2</span>, ,]</span>
-<span id="cb52-80"><a href="dataobject.html#cb52-80" aria-hidden="true"></a><span class="co">##    z1 z2</span></span>
-<span id="cb52-81"><a href="dataobject.html#cb52-81" aria-hidden="true"></a><span class="co">## y1  2 14</span></span>
-<span id="cb52-82"><a href="dataobject.html#cb52-82" aria-hidden="true"></a><span class="co">## y2  6 18</span></span>
-<span id="cb52-83"><a href="dataobject.html#cb52-83" aria-hidden="true"></a><span class="co">## y3 10 22</span></span>
-<span id="cb52-84"><a href="dataobject.html#cb52-84" aria-hidden="true"></a>b.array[, <span class="dv">2</span>,]</span>
-<span id="cb52-85"><a href="dataobject.html#cb52-85" aria-hidden="true"></a><span class="co">##    z1 z2</span></span>
-<span id="cb52-86"><a href="dataobject.html#cb52-86" aria-hidden="true"></a><span class="co">## x1  5 17</span></span>
-<span id="cb52-87"><a href="dataobject.html#cb52-87" aria-hidden="true"></a><span class="co">## x2  6 18</span></span>
-<span id="cb52-88"><a href="dataobject.html#cb52-88" aria-hidden="true"></a><span class="co">## x3  7 19</span></span>
-<span id="cb52-89"><a href="dataobject.html#cb52-89" aria-hidden="true"></a><span class="co">## x4  8 20</span></span>
-<span id="cb52-90"><a href="dataobject.html#cb52-90" aria-hidden="true"></a>b.array[, , <span class="dv">2</span>]</span>
-<span id="cb52-91"><a href="dataobject.html#cb52-91" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
-<span id="cb52-92"><a href="dataobject.html#cb52-92" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
-<span id="cb52-93"><a href="dataobject.html#cb52-93" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
-<span id="cb52-94"><a href="dataobject.html#cb52-94" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
-<span id="cb52-95"><a href="dataobject.html#cb52-95" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span></code></pre></div>
+<span id="cb52-62"><a href="dataobject.html#cb52-62" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-63"><a href="dataobject.html#cb52-63" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
+<span id="cb52-64"><a href="dataobject.html#cb52-64" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
+<span id="cb52-65"><a href="dataobject.html#cb52-65" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
+<span id="cb52-66"><a href="dataobject.html#cb52-66" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span>
+<span id="cb52-67"><a href="dataobject.html#cb52-67" aria-hidden="true"></a>b.array[<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]</span>
+<span id="cb52-68"><a href="dataobject.html#cb52-68" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
+<span id="cb52-69"><a href="dataobject.html#cb52-69" aria-hidden="true"></a>b.array[<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb52-70"><a href="dataobject.html#cb52-70" aria-hidden="true"></a><span class="co">## [1] 24</span></span>
+<span id="cb52-71"><a href="dataobject.html#cb52-71" aria-hidden="true"></a>b.array[<span class="dv">2</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">1</span>]</span>
+<span id="cb52-72"><a href="dataobject.html#cb52-72" aria-hidden="true"></a><span class="co">## y1 y3 </span></span>
+<span id="cb52-73"><a href="dataobject.html#cb52-73" aria-hidden="true"></a><span class="co">##  2 10</span></span>
+<span id="cb52-74"><a href="dataobject.html#cb52-74" aria-hidden="true"></a>b.array[<span class="dv">3</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">1</span>]</span>
+<span id="cb52-75"><a href="dataobject.html#cb52-75" aria-hidden="true"></a><span class="co">## y2 y3 </span></span>
+<span id="cb52-76"><a href="dataobject.html#cb52-76" aria-hidden="true"></a><span class="co">##  7 11</span></span>
+<span id="cb52-77"><a href="dataobject.html#cb52-77" aria-hidden="true"></a>b.array[<span class="dv">2</span>, ,]</span>
+<span id="cb52-78"><a href="dataobject.html#cb52-78" aria-hidden="true"></a><span class="co">##    z1 z2</span></span>
+<span id="cb52-79"><a href="dataobject.html#cb52-79" aria-hidden="true"></a><span class="co">## y1  2 14</span></span>
+<span id="cb52-80"><a href="dataobject.html#cb52-80" aria-hidden="true"></a><span class="co">## y2  6 18</span></span>
+<span id="cb52-81"><a href="dataobject.html#cb52-81" aria-hidden="true"></a><span class="co">## y3 10 22</span></span>
+<span id="cb52-82"><a href="dataobject.html#cb52-82" aria-hidden="true"></a>b.array[, <span class="dv">2</span>,]</span>
+<span id="cb52-83"><a href="dataobject.html#cb52-83" aria-hidden="true"></a><span class="co">##    z1 z2</span></span>
+<span id="cb52-84"><a href="dataobject.html#cb52-84" aria-hidden="true"></a><span class="co">## x1  5 17</span></span>
+<span id="cb52-85"><a href="dataobject.html#cb52-85" aria-hidden="true"></a><span class="co">## x2  6 18</span></span>
+<span id="cb52-86"><a href="dataobject.html#cb52-86" aria-hidden="true"></a><span class="co">## x3  7 19</span></span>
+<span id="cb52-87"><a href="dataobject.html#cb52-87" aria-hidden="true"></a><span class="co">## x4  8 20</span></span>
+<span id="cb52-88"><a href="dataobject.html#cb52-88" aria-hidden="true"></a>b.array[, , <span class="dv">2</span>]</span>
+<span id="cb52-89"><a href="dataobject.html#cb52-89" aria-hidden="true"></a><span class="co">##    y1 y2 y3</span></span>
+<span id="cb52-90"><a href="dataobject.html#cb52-90" aria-hidden="true"></a><span class="co">## x1 13 17 21</span></span>
+<span id="cb52-91"><a href="dataobject.html#cb52-91" aria-hidden="true"></a><span class="co">## x2 14 18 22</span></span>
+<span id="cb52-92"><a href="dataobject.html#cb52-92" aria-hidden="true"></a><span class="co">## x3 15 19 23</span></span>
+<span id="cb52-93"><a href="dataobject.html#cb52-93" aria-hidden="true"></a><span class="co">## x4 16 20 24</span></span></code></pre></div>
 </div>
 </div>
 <div id="列表物件-list" class="section level2" number="3.3">
@@ -1106,52 +1104,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb57-26"><a href="dataobject.html#cb57-26" aria-hidden="true"></a><span class="co">## 22 0.56  158 untreated</span></span>
 <span id="cb57-27"><a href="dataobject.html#cb57-27" aria-hidden="true"></a><span class="co">## 23 1.10  160 untreated</span></span>
 <span id="cb57-28"><a href="dataobject.html#cb57-28" aria-hidden="true"></a>Puromycin<span class="op">$</span>rate</span>
-<span id="cb57-29"><a href="dataobject.html#cb57-29" aria-hidden="true"></a><span class="co">##  [1]  76  47  97 107 123 139 159 152 191 201 207 200  67</span></span>
-<span id="cb57-30"><a href="dataobject.html#cb57-30" aria-hidden="true"></a><span class="co">## [14]  51  84  86  98 115 131 124 144 158 160</span></span>
+<span id="cb57-29"><a href="dataobject.html#cb57-29" aria-hidden="true"></a><span class="co">##  [1]  76  47  97 107 123 139 159 152 191 201 207 200  67  51  84  86  98 115 131</span></span>
+<span id="cb57-30"><a href="dataobject.html#cb57-30" aria-hidden="true"></a><span class="co">## [20] 124 144 158 160</span></span>
 <span id="cb57-31"><a href="dataobject.html#cb57-31" aria-hidden="true"></a>Puromycin<span class="op">$</span>state</span>
-<span id="cb57-32"><a href="dataobject.html#cb57-32" aria-hidden="true"></a><span class="co">##  [1] treated   treated   treated   treated   treated  </span></span>
-<span id="cb57-33"><a href="dataobject.html#cb57-33" aria-hidden="true"></a><span class="co">##  [6] treated   treated   treated   treated   treated  </span></span>
-<span id="cb57-34"><a href="dataobject.html#cb57-34" aria-hidden="true"></a><span class="co">## [11] treated   treated   untreated untreated untreated</span></span>
-<span id="cb57-35"><a href="dataobject.html#cb57-35" aria-hidden="true"></a><span class="co">## [16] untreated untreated untreated untreated untreated</span></span>
-<span id="cb57-36"><a href="dataobject.html#cb57-36" aria-hidden="true"></a><span class="co">## [21] untreated untreated untreated</span></span>
-<span id="cb57-37"><a href="dataobject.html#cb57-37" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
-<span id="cb57-38"><a href="dataobject.html#cb57-38" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>]</span>
-<span id="cb57-39"><a href="dataobject.html#cb57-39" aria-hidden="true"></a><span class="co">##    conc</span></span>
-<span id="cb57-40"><a href="dataobject.html#cb57-40" aria-hidden="true"></a><span class="co">## 1  0.02</span></span>
-<span id="cb57-41"><a href="dataobject.html#cb57-41" aria-hidden="true"></a><span class="co">## 2  0.02</span></span>
-<span id="cb57-42"><a href="dataobject.html#cb57-42" aria-hidden="true"></a><span class="co">## 3  0.06</span></span>
-<span id="cb57-43"><a href="dataobject.html#cb57-43" aria-hidden="true"></a><span class="co">## 4  0.06</span></span>
-<span id="cb57-44"><a href="dataobject.html#cb57-44" aria-hidden="true"></a><span class="co">## 5  0.11</span></span>
-<span id="cb57-45"><a href="dataobject.html#cb57-45" aria-hidden="true"></a><span class="co">## 6  0.11</span></span>
-<span id="cb57-46"><a href="dataobject.html#cb57-46" aria-hidden="true"></a><span class="co">## 7  0.22</span></span>
-<span id="cb57-47"><a href="dataobject.html#cb57-47" aria-hidden="true"></a><span class="co">## 8  0.22</span></span>
-<span id="cb57-48"><a href="dataobject.html#cb57-48" aria-hidden="true"></a><span class="co">## 9  0.56</span></span>
-<span id="cb57-49"><a href="dataobject.html#cb57-49" aria-hidden="true"></a><span class="co">## 10 0.56</span></span>
-<span id="cb57-50"><a href="dataobject.html#cb57-50" aria-hidden="true"></a><span class="co">## 11 1.10</span></span>
-<span id="cb57-51"><a href="dataobject.html#cb57-51" aria-hidden="true"></a><span class="co">## 12 1.10</span></span>
-<span id="cb57-52"><a href="dataobject.html#cb57-52" aria-hidden="true"></a><span class="co">## 13 0.02</span></span>
-<span id="cb57-53"><a href="dataobject.html#cb57-53" aria-hidden="true"></a><span class="co">## 14 0.02</span></span>
-<span id="cb57-54"><a href="dataobject.html#cb57-54" aria-hidden="true"></a><span class="co">## 15 0.06</span></span>
-<span id="cb57-55"><a href="dataobject.html#cb57-55" aria-hidden="true"></a><span class="co">## 16 0.06</span></span>
-<span id="cb57-56"><a href="dataobject.html#cb57-56" aria-hidden="true"></a><span class="co">## 17 0.11</span></span>
-<span id="cb57-57"><a href="dataobject.html#cb57-57" aria-hidden="true"></a><span class="co">## 18 0.11</span></span>
-<span id="cb57-58"><a href="dataobject.html#cb57-58" aria-hidden="true"></a><span class="co">## 19 0.22</span></span>
-<span id="cb57-59"><a href="dataobject.html#cb57-59" aria-hidden="true"></a><span class="co">## 20 0.22</span></span>
-<span id="cb57-60"><a href="dataobject.html#cb57-60" aria-hidden="true"></a><span class="co">## 21 0.56</span></span>
-<span id="cb57-61"><a href="dataobject.html#cb57-61" aria-hidden="true"></a><span class="co">## 22 0.56</span></span>
-<span id="cb57-62"><a href="dataobject.html#cb57-62" aria-hidden="true"></a><span class="co">## 23 1.10</span></span>
-<span id="cb57-63"><a href="dataobject.html#cb57-63" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>][[<span class="dv">1</span>]]</span>
-<span id="cb57-64"><a href="dataobject.html#cb57-64" aria-hidden="true"></a><span class="co">##  [1] 0.02 0.02 0.06 0.06 0.11 0.11 0.22 0.22 0.56 0.56 1.10</span></span>
-<span id="cb57-65"><a href="dataobject.html#cb57-65" aria-hidden="true"></a><span class="co">## [12] 1.10 0.02 0.02 0.06 0.06 0.11 0.11 0.22 0.22 0.56 0.56</span></span>
-<span id="cb57-66"><a href="dataobject.html#cb57-66" aria-hidden="true"></a><span class="co">## [23] 1.10</span></span>
-<span id="cb57-67"><a href="dataobject.html#cb57-67" aria-hidden="true"></a>Puromycin<span class="op">$</span>state[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
-<span id="cb57-68"><a href="dataobject.html#cb57-68" aria-hidden="true"></a><span class="co">## [1] treated treated treated</span></span>
-<span id="cb57-69"><a href="dataobject.html#cb57-69" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
-<span id="cb57-70"><a href="dataobject.html#cb57-70" aria-hidden="true"></a>Puromycin[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
-<span id="cb57-71"><a href="dataobject.html#cb57-71" aria-hidden="true"></a><span class="co">##   conc rate</span></span>
-<span id="cb57-72"><a href="dataobject.html#cb57-72" aria-hidden="true"></a><span class="co">## 1 0.02   76</span></span>
-<span id="cb57-73"><a href="dataobject.html#cb57-73" aria-hidden="true"></a><span class="co">## 2 0.02   47</span></span>
-<span id="cb57-74"><a href="dataobject.html#cb57-74" aria-hidden="true"></a><span class="co">## 3 0.06   97</span></span></code></pre></div>
+<span id="cb57-32"><a href="dataobject.html#cb57-32" aria-hidden="true"></a><span class="co">##  [1] treated   treated   treated   treated   treated   treated   treated  </span></span>
+<span id="cb57-33"><a href="dataobject.html#cb57-33" aria-hidden="true"></a><span class="co">##  [8] treated   treated   treated   treated   treated   untreated untreated</span></span>
+<span id="cb57-34"><a href="dataobject.html#cb57-34" aria-hidden="true"></a><span class="co">## [15] untreated untreated untreated untreated untreated untreated untreated</span></span>
+<span id="cb57-35"><a href="dataobject.html#cb57-35" aria-hidden="true"></a><span class="co">## [22] untreated untreated</span></span>
+<span id="cb57-36"><a href="dataobject.html#cb57-36" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
+<span id="cb57-37"><a href="dataobject.html#cb57-37" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>]</span>
+<span id="cb57-38"><a href="dataobject.html#cb57-38" aria-hidden="true"></a><span class="co">##    conc</span></span>
+<span id="cb57-39"><a href="dataobject.html#cb57-39" aria-hidden="true"></a><span class="co">## 1  0.02</span></span>
+<span id="cb57-40"><a href="dataobject.html#cb57-40" aria-hidden="true"></a><span class="co">## 2  0.02</span></span>
+<span id="cb57-41"><a href="dataobject.html#cb57-41" aria-hidden="true"></a><span class="co">## 3  0.06</span></span>
+<span id="cb57-42"><a href="dataobject.html#cb57-42" aria-hidden="true"></a><span class="co">## 4  0.06</span></span>
+<span id="cb57-43"><a href="dataobject.html#cb57-43" aria-hidden="true"></a><span class="co">## 5  0.11</span></span>
+<span id="cb57-44"><a href="dataobject.html#cb57-44" aria-hidden="true"></a><span class="co">## 6  0.11</span></span>
+<span id="cb57-45"><a href="dataobject.html#cb57-45" aria-hidden="true"></a><span class="co">## 7  0.22</span></span>
+<span id="cb57-46"><a href="dataobject.html#cb57-46" aria-hidden="true"></a><span class="co">## 8  0.22</span></span>
+<span id="cb57-47"><a href="dataobject.html#cb57-47" aria-hidden="true"></a><span class="co">## 9  0.56</span></span>
+<span id="cb57-48"><a href="dataobject.html#cb57-48" aria-hidden="true"></a><span class="co">## 10 0.56</span></span>
+<span id="cb57-49"><a href="dataobject.html#cb57-49" aria-hidden="true"></a><span class="co">## 11 1.10</span></span>
+<span id="cb57-50"><a href="dataobject.html#cb57-50" aria-hidden="true"></a><span class="co">## 12 1.10</span></span>
+<span id="cb57-51"><a href="dataobject.html#cb57-51" aria-hidden="true"></a><span class="co">## 13 0.02</span></span>
+<span id="cb57-52"><a href="dataobject.html#cb57-52" aria-hidden="true"></a><span class="co">## 14 0.02</span></span>
+<span id="cb57-53"><a href="dataobject.html#cb57-53" aria-hidden="true"></a><span class="co">## 15 0.06</span></span>
+<span id="cb57-54"><a href="dataobject.html#cb57-54" aria-hidden="true"></a><span class="co">## 16 0.06</span></span>
+<span id="cb57-55"><a href="dataobject.html#cb57-55" aria-hidden="true"></a><span class="co">## 17 0.11</span></span>
+<span id="cb57-56"><a href="dataobject.html#cb57-56" aria-hidden="true"></a><span class="co">## 18 0.11</span></span>
+<span id="cb57-57"><a href="dataobject.html#cb57-57" aria-hidden="true"></a><span class="co">## 19 0.22</span></span>
+<span id="cb57-58"><a href="dataobject.html#cb57-58" aria-hidden="true"></a><span class="co">## 20 0.22</span></span>
+<span id="cb57-59"><a href="dataobject.html#cb57-59" aria-hidden="true"></a><span class="co">## 21 0.56</span></span>
+<span id="cb57-60"><a href="dataobject.html#cb57-60" aria-hidden="true"></a><span class="co">## 22 0.56</span></span>
+<span id="cb57-61"><a href="dataobject.html#cb57-61" aria-hidden="true"></a><span class="co">## 23 1.10</span></span>
+<span id="cb57-62"><a href="dataobject.html#cb57-62" aria-hidden="true"></a>Puromycin[<span class="dv">1</span>][[<span class="dv">1</span>]]</span>
+<span id="cb57-63"><a href="dataobject.html#cb57-63" aria-hidden="true"></a><span class="co">##  [1] 0.02 0.02 0.06 0.06 0.11 0.11 0.22 0.22 0.56 0.56 1.10 1.10 0.02 0.02 0.06</span></span>
+<span id="cb57-64"><a href="dataobject.html#cb57-64" aria-hidden="true"></a><span class="co">## [16] 0.06 0.11 0.11 0.22 0.22 0.56 0.56 1.10</span></span>
+<span id="cb57-65"><a href="dataobject.html#cb57-65" aria-hidden="true"></a>Puromycin<span class="op">$</span>state[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
+<span id="cb57-66"><a href="dataobject.html#cb57-66" aria-hidden="true"></a><span class="co">## [1] treated treated treated</span></span>
+<span id="cb57-67"><a href="dataobject.html#cb57-67" aria-hidden="true"></a><span class="co">## Levels: treated untreated</span></span>
+<span id="cb57-68"><a href="dataobject.html#cb57-68" aria-hidden="true"></a>Puromycin[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
+<span id="cb57-69"><a href="dataobject.html#cb57-69" aria-hidden="true"></a><span class="co">##   conc rate</span></span>
+<span id="cb57-70"><a href="dataobject.html#cb57-70" aria-hidden="true"></a><span class="co">## 1 0.02   76</span></span>
+<span id="cb57-71"><a href="dataobject.html#cb57-71" aria-hidden="true"></a><span class="co">## 2 0.02   47</span></span>
+<span id="cb57-72"><a href="dataobject.html#cb57-72" aria-hidden="true"></a><span class="co">## 3 0.06   97</span></span></code></pre></div>
 
 </div>
 </div>

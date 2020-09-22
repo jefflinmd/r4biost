@@ -1,0 +1,422 @@
+# 資料視覺化分析
+
+
+
+
+繪圖文法是讓一個圖形容易思考, 合理討論與溝通的抽像規則. \\
+Leland Wilkinson (1999), 
+**The Grammar of Graphics**.
+{R} 內建許多繪圖工具函式,
+這些繪圖工具可以顯示各種統計繪圖並且自建一些全新的圖.
+{R} 繪圖工具函式之特色是用同一個繪圖函式, 對不同類型的物件,
+可以作出不同的圖形.
+繪圖工具函式既可互動式使用, 也可以批次處理使用.
+在許多情況下, 使用互動式 (interactive)
+執行 {R} 的圖形繪製, 是一個相當有效的方式.
+
+{R} 基本繪圖工具包含 高階繪圖函式 與 低階繪圖函式, 或是合併二種方式形成互動式繪圖函式:
+
+* **高階繪圖函式**
+(**high-levlel plotting functions**): 
+直接形成完整圖形, 圖形包括坐標軸, 標籤, 標題等等.
+* **低階繪圖函式**
+(**low-level plotting functions**): 
+是將 點, 線, 座標與標籤等逐步形成圖形.
+
+繪圖工具函式所產生之圖形結果,
+無法指定成物件,
+必須送到
+**圖形裝置**
+**graphic device**),
+圖形裝置可以是一個視窗或某一特定格式之圖形檔案,
+{R} 可以將圖形儲存在各種圖形裝置,
+包含 `pdf`, `ps`, `jpg`, `png` 檔案等等.
+
+
+在 {R} 中還有有一個獨立的強大之繪圖系統,
+`grid`
+套件,
+類似
+Splus
+裏的
+`Trellis`
+繪圖系統.
+根據 `grid`
+套件,
+所建構的另一個較容易使用之
+`lattice`, 
+`ggplot2` 等.
+可以產生多重漂亮起專業的統計繪圖.
+目前主流使用
+[tidyverse 套件系統](https://www.tidyverse.org/) 
+包含許多不同套件, 
+提供資料科學一些實用的函式,
+其中 `ggplot2` 為視覺化分析套件.
+以套件 `ggplot2` 為基礎, 已經衍生出許多其他繪圖套件.
+
+
+
+## 視覺化分析原則
+
+
+Edward Tufte (2006) 在 [Beautiful Evidence](http://www.edwardtufte.com)
+書中提出一些視覺化分析原則.
+
+* 顯示比較.
+* 顯示因果關係或關聯性.
+* 顯示多變量資料.
+* 整合不同資料的證據.
+* 描述與紀錄證據.
+* 顯示實質內容最重要.
+
+
+
+## 繪圖套件 ggplot2
+
+
+繪圖套件 `ggplot2` 是一個龐大的繪圖系統,
+開始學習 `ggplot2` 的程式語言會有些困難, 
+但中等程度複雜的圖形, 使用 `ggplot2` 通常會比使用 R base 繪圖系統容易.
+統計繪圖學習方式可從已經發表且有程式碼的圖形學起,
+例如, https://www.r-graph-gallery.com/index.html.
+
+`ggplot2` 的概念是使用結構性的語法, 
+先指定資料, 然後指定變數, 再指定幾何元素,
+最後處裡標題與標注數據以及背景的主題式樣.
+必要時考慮分組呈現相同圖形.
+`ggplot2` 的概念如同繪畫, 可隨時
+使用 `+` 加上圖層 (layers), 
+更新或取代原有圖層.
+
+
+* data: 選取資料.
+* mapping (aes): 選取資料內變數進行對應或映射
+  - x-變數, y-變數, color, fill, shape, size, etc.
+* geoms: 幾何物件 geometric object
+  - point, line, bar, shapes, ribbon, polygon, smooth, text etc.
+* stat: 計算統計量/變數轉換, statistics 
+* position: 調整位置 position adjustments.
+
+函式 `ggplot()` 基本程式如下.
+```{r eval=FALSE}
+ggplot(data = data_name, 
+       aes(x = variable_name,
+           y = variable_name,
+           ... <other variable_name mappings>)) +
+  geom_<type}() + 
+  ...
+```
+
+
+鑽石價值: 如何估價?   
+
+![](./static/BigDataDiamond.jpg){width=50%}
+
+鑽石價值受到許多因素影響,
+鑽石的價值主要與品質及物理測量有關.
+`ggplot2` 內件資料 `diamonds`, 
+收集了一些重要變數, 
+嘗試分析與鑽石價值關聯的因子, 以及使用這些變數預測鑽石價值,
+並進行鑽石定價. 
+在此利用 `ggplot2` 內件資料 `diamonds` 呈現 `ggplto2` 的使用方式.
+
+* price = 鑽石價值 = 反應變數 (美元)
+* 品質 = 4C = 類別解釋變數:  
+  - carat, cut, colour 與 clarity.
+*  物理測量 = 連續解釋變數: 
+  - depth, table, x, y, z.
+
+![](./static/Diamond.jpg){width=70%}
+
+
+
+鑽石價值: 如何估價?
+\bit
+\item 鑽石的價值與品質及物理測量有關
+\item 品質 = 4C = carat, cut, colour 與 clarity
+\item 物理測量 = 連續解釋變數 =  depth, table, x, y, z
+\item $\approx 54,000$ 顆鑽石 \url{http://www.diamondse.info/}
+\code{library(ggplot2)} + \code{data(diamonds)}
+\vspace*{-0.5cm}
+<<, tidy=FALSE, eval=FALSE, echo=TRUE, results='markup', size='footnotesize', cache=TRUE, autodep=TRUE, dependson=c(-1, -2, -3, -4, -5, -6, -7, -8, -9), fig.height=5, fig.width=5.5, out.height=".9\\textheight", out.width=".9\\textwidth", small.mar=TRUE, , fig.keep='all'>>=
+library(tidyverse)
+library(ggplot2)
+data(diamonds)
+print(diamonds, n = 5, wideth = Inf)
+#
+clarity.tab <- table(diamonds$clarity)
+clarity.tab
+prop.table(clarity.tab)
+barplot(clarity.tab)
+round(barplot(clarity.tab), 4)
+pie(clarity.tab)
+#
+ggplot(data = diamonds, aes(x = clarity)) +
+  geom_bar(color = "blue")
+ggplot(data = diamonds, aes(x = clarity)) +
+  geom_bar(color = "blue") + 
+  coord_flip()
+#
+
+   
+```   
+
+
+
+```{r message=FALSE}
+library(ggplot2)
+data(diamonds)
+print(diamonds, n = 5, wideth = Inf)
+```
+
+
+## 類別變數
+
+
+類別變數描述性統計主要是分析變數的
+**分配**
+或
+**分佈**
+(**distribution**),
+分配敘述變數的觀測數值以及這些觀測數值出現的頻率.
+類別變數描述性統計圖表常見為
+頻率表 (frequency table), 
+長條圖 (bar plot) 與圓形圖 (pie chart).
+
+對統計人員而言,
+類別變數使用圓形圖呈現. 
+是非常不好的資料呈現方式,
+使用頻率表 (Table) 或長條圖較佳.
+
+
+### 單類別變數
+
+* 單類別變數: 檢視類別水準的頻率大小.
+
+```{r eval=TRUE, message=FALSE}
+## pie chart: ggplot2 do not have a simple geom_pie()
+## use R base pie()
+clarity.tab <- table(diamonds$clarity)
+clarity.tab
+prop.table(clarity.tab)
+barplot(clarity.tab)
+round(barplot(clarity.tab), 4)
+pie(clarity.tab)
+
+library(ggplot2)
+## bar chart
+ggplot(data = diamonds, aes(x = clarity)) +
+  geom_bar(color = "blue")
+ggplot(data = diamonds, aes(x = clarity)) +
+  geom_bar(color = "blue") + 
+  coord_flip()
+ggplot(data = diamonds, aes(y = clarity)) +
+  geom_bar(color = "blue") 
+# pie chart: no simple solution
+clar.freq <- data.frame(clarity.tab)
+names(clar.freq)[1] <- "clarity"
+clar.freq
+ggplot(data = clar.freq, aes(x = "", y = Freq, fill = clarity)) +
+  geom_bar(width = 1, stat = "identity") + 
+  coord_polar("y", start = 0)
+ggplot(data = clar.freq, aes(x = "", y = Freq, fill = clarity)) +
+  geom_bar(stat = "identity", width = 1, color = "white") +
+  coord_polar(theta = "y", start = 0) +
+  theme_void() # remove background
+```
+
+### 多類別變數
+
+* 雙類別變數: 檢視變數聯合水準的頻率大小,
+檢視條件水準的頻率大小.
+
+
+```{r message=FALSE}
+## two categorical vtriables
+table(diamonds$color)
+table(diamonds$clarity)
+twoway.tab <- table(diamonds$color, diamonds$clarity)
+twoway.tab
+## # cell proportion
+cell.prop <- prop.table(twoway.tab, margin=NULL) 
+round(cell.prop, 3)
+## conditional on row sum to 1
+cond_row_prop <- prop.table(twoway.tab, margin = 1) 
+round(cond_row_prop, 3)
+apply(cond_row_prop, 1, sum) # rows sum to 1
+## conditional on column sum to 1
+cond_col_prop <- prop.table(twoway.tab, margin = 2) 
+round(cond_col_prop, 3)
+apply(cond_row_prop, 2, sum) # cols sum to 1
+## side-by-side bar plot
+barplot(twoway.tab, 
+        beside = TRUE, 
+        main = "Color By Clarity",
+        xlab = "clarty")
+# Stacked Bar Plot
+barplot(twoway.tab,
+        beside = FALSE, 
+        main = "Color By Clarity",
+        xlab = "color")
+## ggplot2
+## Automatically stack
+ggplot(data = diamonds, aes(x = clarity, fill = color)) + 
+  geom_bar()
+ggplot(data = diamonds, aes(x = clarity, fill = color)) +
+  geom_bar(position = "stack")
+## side-by-side 
+ggplot(data = diamonds, aes(x = clarity, fill = color)) + 
+  geom_bar(position = "dodge")
+ggplot(data = diamonds, aes(x = clarity, fill = color)) + 
+  geom_bar(position = "fill")
+```
+
+
+
+
+
+
+## 連續變數
+
+
+連續變數描述性統計主要是分析變數的
+**分配**
+或
+**分佈**
+(**distribution**),
+分配敘述變數的觀測數值以及這些觀測數值出現的頻率.
+連續變數描述性統計圖表常見為
+點狀圖 (dot plot), 枝葉圖 (stem-and-leaf),
+次數分配表, 直方圖 (histogram), 盒鬚圖 (box plot), 
+密度圖 (density plot), 平均值, 變異數等.
+對連續變數的描述, 若樣本數較少, 
+常使用點狀圖或枝葉圖.
+目前多數為大數據, 點狀圖或枝葉圖較少使用,
+但在實驗設計的數據呈現仍然非常重要.
+
+
+### 單連續變數
+
+* 單連續變數: 檢視中央趨勢, 離散程度 偏度, 峰度.
+
+
+
+```{r message=FALSE}
+## use R base pie()
+## histogram
+hist(diamonds$price, 
+     freq = TRUE,    
+     main = "price histogram",
+     xlab = "price")
+hist(diamonds$price, 
+     freq = FALSE,    
+     main = "price histogram",
+     xlab = "price")
+# box plot
+boxplot(diamonds$price, 
+        xlab = "price")
+# QQ plot
+qqnorm(diamonds$price, 
+       main = "Normal QQ Plot: Price")
+# density plot
+plot(density(diamonds$price),
+     main = "Density Plot",
+     xlab = "price",
+     ylab = "density")
+## ggplot2 
+## histogram
+ggplot(data = diamonds, aes(x = price)) + 
+  geom_histogram()
+## box plot
+ggplot(diamonds, aes(x = "", y = price)) + 
+  geom_boxplot()
+## violin plot
+ggplot(diamonds, aes(x = "", y = price)) + 
+  geom_violin()
+## density plot
+ggplot(data = diamonds, aes(x = price)) + 
+  geom_freqpoly()
+ggplot(data = diamonds, aes(x = price)) + 
+  stat_bin(geom = "area")
+ggplot(data = diamonds, aes(x = price)) + 
+  stat_bin(geom = "line")
+```
+
+
+
+### 多連續變數
+
+* 散佈圖 **scatter plot** = X & Y = 連續變數
+* 雙連續變數: 檢視二個變數關聯性, 大小, 方向, 趨勢.
+* 多連續變數: 檢視成對變數關聯性, 大小, 方向, 趨勢.
+
+
+```{r message=FALSE}
+## R base
+## scatter plot
+## basic
+plot(x = diamonds$carat, y = diamonds$price)
+## formulat y ~ x, data = data_name)
+plot(price ~ carat, data = diamonds)
+## ggplot
+ggplot(data = diamonds, aes( x = carat, y = price)) + 
+  geom_point()
+ggplot(data = diamonds, aes( x = carat, y = price)) + 
+  geom_jitter() 
+ggplot(data = diamonds, aes( x = carat, y = price)) + 
+  geom_jitter(size = 2, alpha = 1/2) 
+# add linear line or smoothing line
+ggplot(data = diamonds, aes( x = carat, y = price)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+ggplot(data = diamonds, aes( x = carat, y = price)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+ggplot(data = diamonds, aes( x = carat, y = price)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_smooth(se = FALSE)
+## pairwise scatter plot
+## R base
+con.df = diamonds[, c("carat", "price", "depth")]
+pairs(con.df)
+## ggplot2
+library(GGally)
+GGally::ggpairs(data = con.df)
+```
+
+* Try by yourself!
+
+```{r eval=FALSE}
+# more advanced
+my_fn <- function(data, mapping, ...){
+  p <- ggplot(data = data, mapping = mapping) + 
+    geom_point() + 
+    geom_smooth(method = loess, se = FALSE, fill = "red", color = "red", ...) +
+    geom_smooth(method = lm, se = FALSE, fill = "blue", color = "blue", ...)
+  p
+}
+GGally::ggpairs(data = con.df, 
+        lower = list(continuous = my_fn))
+## package car
+library(car)
+scatterplotMatrix(con.df)
+```
+
+
+
+## 混合變數
+
+* 一連續 + 一類別
+* 二連續 + 一類別
+* 二類別 + 一連續
+* 多變數
+
+
+
+```{r}
+# 
+ggplot(data = diamonds, aes(x = price)) + 
+  geom_histogram(aes(fill = clarity))
+```
+

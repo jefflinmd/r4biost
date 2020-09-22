@@ -24,7 +24,7 @@
 <meta name="author" content="Jeff Lin" />
 
 
-<meta name="date" content="2020-09-16" />
+<meta name="date" content="2020-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -452,63 +452,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="basicstat.html#cb142-1" aria-hidden="true"></a><span class="co">## basic descriptive statistics</span></span>
 <span id="cb142-2"><a href="basicstat.html#cb142-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="fl">0.3</span>)</span>
 <span id="cb142-3"><a href="basicstat.html#cb142-3" aria-hidden="true"></a>x</span>
-<span id="cb142-4"><a href="basicstat.html#cb142-4" aria-hidden="true"></a><span class="co">##  [1] -2.0 -1.7 -1.4 -1.1 -0.8 -0.5 -0.2  0.1  0.4  0.7  1.0</span></span>
-<span id="cb142-5"><a href="basicstat.html#cb142-5" aria-hidden="true"></a><span class="co">## [12]  1.3  1.6  1.9  2.2  2.5  2.8</span></span>
+<span id="cb142-4"><a href="basicstat.html#cb142-4" aria-hidden="true"></a><span class="co">##  [1] -2.0 -1.7 -1.4 -1.1 -0.8 -0.5 -0.2  0.1  0.4  0.7  1.0  1.3  1.6  1.9  2.2</span></span>
+<span id="cb142-5"><a href="basicstat.html#cb142-5" aria-hidden="true"></a><span class="co">## [16]  2.5  2.8</span></span>
 <span id="cb142-6"><a href="basicstat.html#cb142-6" aria-hidden="true"></a><span class="kw">sum</span>(x)</span>
 <span id="cb142-7"><a href="basicstat.html#cb142-7" aria-hidden="true"></a><span class="co">## [1] 6.8</span></span>
 <span id="cb142-8"><a href="basicstat.html#cb142-8" aria-hidden="true"></a><span class="kw">cumsum</span>(x)</span>
-<span id="cb142-9"><a href="basicstat.html#cb142-9" aria-hidden="true"></a><span class="co">##  [1] -2.0 -3.7 -5.1 -6.2 -7.0 -7.5 -7.7 -7.6 -7.2 -6.5 -5.5</span></span>
-<span id="cb142-10"><a href="basicstat.html#cb142-10" aria-hidden="true"></a><span class="co">## [12] -4.2 -2.6 -0.7  1.5  4.0  6.8</span></span>
+<span id="cb142-9"><a href="basicstat.html#cb142-9" aria-hidden="true"></a><span class="co">##  [1] -2.0 -3.7 -5.1 -6.2 -7.0 -7.5 -7.7 -7.6 -7.2 -6.5 -5.5 -4.2 -2.6 -0.7  1.5</span></span>
+<span id="cb142-10"><a href="basicstat.html#cb142-10" aria-hidden="true"></a><span class="co">## [16]  4.0  6.8</span></span>
 <span id="cb142-11"><a href="basicstat.html#cb142-11" aria-hidden="true"></a><span class="kw">diff</span>(x)</span>
-<span id="cb142-12"><a href="basicstat.html#cb142-12" aria-hidden="true"></a><span class="co">##  [1] 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3</span></span>
-<span id="cb142-13"><a href="basicstat.html#cb142-13" aria-hidden="true"></a><span class="co">## [14] 0.3 0.3 0.3</span></span>
-<span id="cb142-14"><a href="basicstat.html#cb142-14" aria-hidden="true"></a><span class="kw">prod</span>(x)</span>
-<span id="cb142-15"><a href="basicstat.html#cb142-15" aria-hidden="true"></a><span class="co">## [1] -0.7138</span></span>
-<span id="cb142-16"><a href="basicstat.html#cb142-16" aria-hidden="true"></a><span class="kw">cumprod</span>(x)</span>
-<span id="cb142-17"><a href="basicstat.html#cb142-17" aria-hidden="true"></a><span class="co">##  [1] -2.00000  3.40000 -4.76000  5.23600 -4.18880  2.09440</span></span>
-<span id="cb142-18"><a href="basicstat.html#cb142-18" aria-hidden="true"></a><span class="co">##  [7] -0.41888 -0.04189 -0.01676 -0.01173 -0.01173 -0.01525</span></span>
-<span id="cb142-19"><a href="basicstat.html#cb142-19" aria-hidden="true"></a><span class="co">## [13] -0.02440 -0.04635 -0.10197 -0.25493 -0.71381</span></span>
-<span id="cb142-20"><a href="basicstat.html#cb142-20" aria-hidden="true"></a><span class="kw">mean</span>(x)</span>
-<span id="cb142-21"><a href="basicstat.html#cb142-21" aria-hidden="true"></a><span class="co">## [1] 0.4</span></span>
-<span id="cb142-22"><a href="basicstat.html#cb142-22" aria-hidden="true"></a><span class="kw">median</span>(x)</span>
-<span id="cb142-23"><a href="basicstat.html#cb142-23" aria-hidden="true"></a><span class="co">## [1] 0.4</span></span>
-<span id="cb142-24"><a href="basicstat.html#cb142-24" aria-hidden="true"></a><span class="kw">var</span>(x)</span>
-<span id="cb142-25"><a href="basicstat.html#cb142-25" aria-hidden="true"></a><span class="co">## [1] 2.295</span></span>
-<span id="cb142-26"><a href="basicstat.html#cb142-26" aria-hidden="true"></a><span class="kw">sd</span>(x)</span>
-<span id="cb142-27"><a href="basicstat.html#cb142-27" aria-hidden="true"></a><span class="co">## [1] 1.515</span></span>
-<span id="cb142-28"><a href="basicstat.html#cb142-28" aria-hidden="true"></a><span class="kw">range</span>(x)</span>
-<span id="cb142-29"><a href="basicstat.html#cb142-29" aria-hidden="true"></a><span class="co">## [1] -2.0  2.8</span></span>
-<span id="cb142-30"><a href="basicstat.html#cb142-30" aria-hidden="true"></a><span class="kw">min</span>(x)</span>
-<span id="cb142-31"><a href="basicstat.html#cb142-31" aria-hidden="true"></a><span class="co">## [1] -2</span></span>
-<span id="cb142-32"><a href="basicstat.html#cb142-32" aria-hidden="true"></a><span class="kw">max</span>(x)</span>
-<span id="cb142-33"><a href="basicstat.html#cb142-33" aria-hidden="true"></a><span class="co">## [1] 2.8</span></span>
-<span id="cb142-34"><a href="basicstat.html#cb142-34" aria-hidden="true"></a><span class="co">## quantile</span></span>
-<span id="cb142-35"><a href="basicstat.html#cb142-35" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>))</span>
-<span id="cb142-36"><a href="basicstat.html#cb142-36" aria-hidden="true"></a>y</span>
-<span id="cb142-37"><a href="basicstat.html#cb142-37" aria-hidden="true"></a><span class="co">##    5%   25%   50%   75%   95% </span></span>
-<span id="cb142-38"><a href="basicstat.html#cb142-38" aria-hidden="true"></a><span class="co">## -1.76 -0.80  0.40  1.60  2.56</span></span>
-<span id="cb142-39"><a href="basicstat.html#cb142-39" aria-hidden="true"></a><span class="co"># IQR: inter-quantile range</span></span>
-<span id="cb142-40"><a href="basicstat.html#cb142-40" aria-hidden="true"></a>iqr =<span class="st"> </span>y[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>y[<span class="dv">2</span>]</span>
-<span id="cb142-41"><a href="basicstat.html#cb142-41" aria-hidden="true"></a>iqr</span>
-<span id="cb142-42"><a href="basicstat.html#cb142-42" aria-hidden="true"></a><span class="co">## 75% </span></span>
-<span id="cb142-43"><a href="basicstat.html#cb142-43" aria-hidden="true"></a><span class="co">## 2.4</span></span>
-<span id="cb142-44"><a href="basicstat.html#cb142-44" aria-hidden="true"></a><span class="co">## five numnber summary</span></span>
-<span id="cb142-45"><a href="basicstat.html#cb142-45" aria-hidden="true"></a><span class="kw">fivenum</span>(x)</span>
-<span id="cb142-46"><a href="basicstat.html#cb142-46" aria-hidden="true"></a><span class="co">## [1] -2.0 -0.8  0.4  1.6  2.8</span></span>
-<span id="cb142-47"><a href="basicstat.html#cb142-47" aria-hidden="true"></a><span class="co"># missing values</span></span>
-<span id="cb142-48"><a href="basicstat.html#cb142-48" aria-hidden="true"></a>x[<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb142-49"><a href="basicstat.html#cb142-49" aria-hidden="true"></a>x[<span class="dv">7</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb142-50"><a href="basicstat.html#cb142-50" aria-hidden="true"></a>x</span>
-<span id="cb142-51"><a href="basicstat.html#cb142-51" aria-hidden="true"></a><span class="co">##  [1] -2.0 -1.7   NA -1.1 -0.8 -0.5   NA  0.1  0.4  0.7  1.0</span></span>
-<span id="cb142-52"><a href="basicstat.html#cb142-52" aria-hidden="true"></a><span class="co">## [12]  1.3  1.6  1.9  2.2  2.5  2.8</span></span>
-<span id="cb142-53"><a href="basicstat.html#cb142-53" aria-hidden="true"></a><span class="kw">mean</span>(x)</span>
-<span id="cb142-54"><a href="basicstat.html#cb142-54" aria-hidden="true"></a><span class="co">## [1] NA</span></span>
-<span id="cb142-55"><a href="basicstat.html#cb142-55" aria-hidden="true"></a><span class="kw">mean</span>(<span class="kw">na.omit</span>(x))</span>
-<span id="cb142-56"><a href="basicstat.html#cb142-56" aria-hidden="true"></a><span class="co">## [1] 0.56</span></span>
-<span id="cb142-57"><a href="basicstat.html#cb142-57" aria-hidden="true"></a><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> T)</span>
-<span id="cb142-58"><a href="basicstat.html#cb142-58" aria-hidden="true"></a><span class="co">## [1] 0.56</span></span>
-<span id="cb142-59"><a href="basicstat.html#cb142-59" aria-hidden="true"></a><span class="kw">var</span>(x, <span class="dt">na.rm =</span> T)</span>
-<span id="cb142-60"><a href="basicstat.html#cb142-60" aria-hidden="true"></a><span class="co">## [1] 2.338</span></span></code></pre></div>
+<span id="cb142-12"><a href="basicstat.html#cb142-12" aria-hidden="true"></a><span class="co">##  [1] 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3</span></span>
+<span id="cb142-13"><a href="basicstat.html#cb142-13" aria-hidden="true"></a><span class="kw">prod</span>(x)</span>
+<span id="cb142-14"><a href="basicstat.html#cb142-14" aria-hidden="true"></a><span class="co">## [1] -0.7138</span></span>
+<span id="cb142-15"><a href="basicstat.html#cb142-15" aria-hidden="true"></a><span class="kw">cumprod</span>(x)</span>
+<span id="cb142-16"><a href="basicstat.html#cb142-16" aria-hidden="true"></a><span class="co">##  [1] -2.00000  3.40000 -4.76000  5.23600 -4.18880  2.09440 -0.41888 -0.04189</span></span>
+<span id="cb142-17"><a href="basicstat.html#cb142-17" aria-hidden="true"></a><span class="co">##  [9] -0.01676 -0.01173 -0.01173 -0.01525 -0.02440 -0.04635 -0.10197 -0.25493</span></span>
+<span id="cb142-18"><a href="basicstat.html#cb142-18" aria-hidden="true"></a><span class="co">## [17] -0.71381</span></span>
+<span id="cb142-19"><a href="basicstat.html#cb142-19" aria-hidden="true"></a><span class="kw">mean</span>(x)</span>
+<span id="cb142-20"><a href="basicstat.html#cb142-20" aria-hidden="true"></a><span class="co">## [1] 0.4</span></span>
+<span id="cb142-21"><a href="basicstat.html#cb142-21" aria-hidden="true"></a><span class="kw">median</span>(x)</span>
+<span id="cb142-22"><a href="basicstat.html#cb142-22" aria-hidden="true"></a><span class="co">## [1] 0.4</span></span>
+<span id="cb142-23"><a href="basicstat.html#cb142-23" aria-hidden="true"></a><span class="kw">var</span>(x)</span>
+<span id="cb142-24"><a href="basicstat.html#cb142-24" aria-hidden="true"></a><span class="co">## [1] 2.295</span></span>
+<span id="cb142-25"><a href="basicstat.html#cb142-25" aria-hidden="true"></a><span class="kw">sd</span>(x)</span>
+<span id="cb142-26"><a href="basicstat.html#cb142-26" aria-hidden="true"></a><span class="co">## [1] 1.515</span></span>
+<span id="cb142-27"><a href="basicstat.html#cb142-27" aria-hidden="true"></a><span class="kw">range</span>(x)</span>
+<span id="cb142-28"><a href="basicstat.html#cb142-28" aria-hidden="true"></a><span class="co">## [1] -2.0  2.8</span></span>
+<span id="cb142-29"><a href="basicstat.html#cb142-29" aria-hidden="true"></a><span class="kw">min</span>(x)</span>
+<span id="cb142-30"><a href="basicstat.html#cb142-30" aria-hidden="true"></a><span class="co">## [1] -2</span></span>
+<span id="cb142-31"><a href="basicstat.html#cb142-31" aria-hidden="true"></a><span class="kw">max</span>(x)</span>
+<span id="cb142-32"><a href="basicstat.html#cb142-32" aria-hidden="true"></a><span class="co">## [1] 2.8</span></span>
+<span id="cb142-33"><a href="basicstat.html#cb142-33" aria-hidden="true"></a><span class="co">## quantile</span></span>
+<span id="cb142-34"><a href="basicstat.html#cb142-34" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>))</span>
+<span id="cb142-35"><a href="basicstat.html#cb142-35" aria-hidden="true"></a>y</span>
+<span id="cb142-36"><a href="basicstat.html#cb142-36" aria-hidden="true"></a><span class="co">##    5%   25%   50%   75%   95% </span></span>
+<span id="cb142-37"><a href="basicstat.html#cb142-37" aria-hidden="true"></a><span class="co">## -1.76 -0.80  0.40  1.60  2.56</span></span>
+<span id="cb142-38"><a href="basicstat.html#cb142-38" aria-hidden="true"></a><span class="co"># IQR: inter-quantile range</span></span>
+<span id="cb142-39"><a href="basicstat.html#cb142-39" aria-hidden="true"></a>iqr =<span class="st"> </span>y[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>y[<span class="dv">2</span>]</span>
+<span id="cb142-40"><a href="basicstat.html#cb142-40" aria-hidden="true"></a>iqr</span>
+<span id="cb142-41"><a href="basicstat.html#cb142-41" aria-hidden="true"></a><span class="co">## 75% </span></span>
+<span id="cb142-42"><a href="basicstat.html#cb142-42" aria-hidden="true"></a><span class="co">## 2.4</span></span>
+<span id="cb142-43"><a href="basicstat.html#cb142-43" aria-hidden="true"></a><span class="co">## five numnber summary</span></span>
+<span id="cb142-44"><a href="basicstat.html#cb142-44" aria-hidden="true"></a><span class="kw">fivenum</span>(x)</span>
+<span id="cb142-45"><a href="basicstat.html#cb142-45" aria-hidden="true"></a><span class="co">## [1] -2.0 -0.8  0.4  1.6  2.8</span></span>
+<span id="cb142-46"><a href="basicstat.html#cb142-46" aria-hidden="true"></a><span class="co"># missing values</span></span>
+<span id="cb142-47"><a href="basicstat.html#cb142-47" aria-hidden="true"></a>x[<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb142-48"><a href="basicstat.html#cb142-48" aria-hidden="true"></a>x[<span class="dv">7</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb142-49"><a href="basicstat.html#cb142-49" aria-hidden="true"></a>x</span>
+<span id="cb142-50"><a href="basicstat.html#cb142-50" aria-hidden="true"></a><span class="co">##  [1] -2.0 -1.7   NA -1.1 -0.8 -0.5   NA  0.1  0.4  0.7  1.0  1.3  1.6  1.9  2.2</span></span>
+<span id="cb142-51"><a href="basicstat.html#cb142-51" aria-hidden="true"></a><span class="co">## [16]  2.5  2.8</span></span>
+<span id="cb142-52"><a href="basicstat.html#cb142-52" aria-hidden="true"></a><span class="kw">mean</span>(x)</span>
+<span id="cb142-53"><a href="basicstat.html#cb142-53" aria-hidden="true"></a><span class="co">## [1] NA</span></span>
+<span id="cb142-54"><a href="basicstat.html#cb142-54" aria-hidden="true"></a><span class="kw">mean</span>(<span class="kw">na.omit</span>(x))</span>
+<span id="cb142-55"><a href="basicstat.html#cb142-55" aria-hidden="true"></a><span class="co">## [1] 0.56</span></span>
+<span id="cb142-56"><a href="basicstat.html#cb142-56" aria-hidden="true"></a><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> T)</span>
+<span id="cb142-57"><a href="basicstat.html#cb142-57" aria-hidden="true"></a><span class="co">## [1] 0.56</span></span>
+<span id="cb142-58"><a href="basicstat.html#cb142-58" aria-hidden="true"></a><span class="kw">var</span>(x, <span class="dt">na.rm =</span> T)</span>
+<span id="cb142-59"><a href="basicstat.html#cb142-59" aria-hidden="true"></a><span class="co">## [1] 2.338</span></span></code></pre></div>
 </div>
 <div id="類別資料表格函數" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> 類別資料表格函數</h2>
@@ -1288,8 +1287,8 @@ Studentized Range Distribution.</p>
 </ul>
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="basicstat.html#cb151-1" aria-hidden="true"></a><span class="co">## random sampling</span></span>
 <span id="cb151-2"><a href="basicstat.html#cb151-2" aria-hidden="true"></a>letters</span>
-<span id="cb151-3"><a href="basicstat.html#cb151-3" aria-hidden="true"></a><span class="co">##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot;</span></span>
-<span id="cb151-4"><a href="basicstat.html#cb151-4" aria-hidden="true"></a><span class="co">## [14] &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</span></span>
+<span id="cb151-3"><a href="basicstat.html#cb151-3" aria-hidden="true"></a><span class="co">##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;</span></span>
+<span id="cb151-4"><a href="basicstat.html#cb151-4" aria-hidden="true"></a><span class="co">## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</span></span>
 <span id="cb151-5"><a href="basicstat.html#cb151-5" aria-hidden="true"></a><span class="kw">sample</span>(letters, <span class="dv">5</span>)</span>
 <span id="cb151-6"><a href="basicstat.html#cb151-6" aria-hidden="true"></a><span class="co">## [1] &quot;g&quot; &quot;j&quot; &quot;b&quot; &quot;m&quot; &quot;h&quot;</span></span>
 <span id="cb151-7"><a href="basicstat.html#cb151-7" aria-hidden="true"></a><span class="kw">sample</span>(letters, <span class="dv">5</span>)</span>
@@ -1328,8 +1327,8 @@ Studentized Range Distribution.</p>
 <span id="cb151-40"><a href="basicstat.html#cb151-40" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb151-41"><a href="basicstat.html#cb151-41" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
 <span id="cb151-42"><a href="basicstat.html#cb151-42" aria-hidden="true"></a>(<span class="dt">prob.rs =</span> <span class="kw">c</span>(<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>))))</span>
-<span id="cb151-43"><a href="basicstat.html#cb151-43" aria-hidden="true"></a><span class="co">##  [1] 0.01818 0.03636 0.05455 0.07273 0.09091 0.10909</span></span>
-<span id="cb151-44"><a href="basicstat.html#cb151-44" aria-hidden="true"></a><span class="co">##  [7] 0.12727 0.14545 0.16364 0.18182</span></span>
+<span id="cb151-43"><a href="basicstat.html#cb151-43" aria-hidden="true"></a><span class="co">##  [1] 0.01818 0.03636 0.05455 0.07273 0.09091 0.10909 0.12727 0.14545 0.16364</span></span>
+<span id="cb151-44"><a href="basicstat.html#cb151-44" aria-hidden="true"></a><span class="co">## [10] 0.18182</span></span>
 <span id="cb151-45"><a href="basicstat.html#cb151-45" aria-hidden="true"></a><span class="kw">sum</span>(prob.rs)</span>
 <span id="cb151-46"><a href="basicstat.html#cb151-46" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
 <span id="cb151-47"><a href="basicstat.html#cb151-47" aria-hidden="true"></a><span class="kw">sample</span>(x, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>,  <span class="dt">prob =</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>))</span>

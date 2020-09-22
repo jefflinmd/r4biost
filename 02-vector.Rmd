@@ -36,8 +36,8 @@
 單一數值 (scalar), 可視為僅具有單一元素的向量,
 標準的向量是
 倍精準度 (double) 的
-數值向量
-({numerical vector}).
+**數值向量**
+(**numerical vector**).
 向量是具有相同基本類型的元素序列,
 在 {R} 中, 純量或單一數值
 (**scalar**)
@@ -134,7 +134,7 @@ is.character(cb)
 
 
 資料分析另外常見的日期與類別變數也必須特別處裡.
-格式有 'Date`, `POSIXct` 與 `POSIXt`等,
+格式有 `Date`, `POSIXct` 與 `POSIXt`等,
 例如, 使用函式 `Sys.Date()` 可得系統日期.
 ```{r}
 Sys.Date()
@@ -232,7 +232,7 @@ z.vec
 | `&&`   | 邏輯 `和`, 二元操作 (Logical AND, binary, not vectorized)       |  
 | <code>&#124;</code>   | 邏輯 `或`, 向量的個別元素使用 (Logical OR, binary, vectorized)   |
 | <code>&#124;&#124;</code>   | 邏輯 `或`, 二元操作 (Logical OR, binary, not vectorized)  |
-| `xor`  | 邏輯 ``或'', 向量個別元素互斥聯集運算, 僅有 1 為 TRUE              |
+| `xor`  | 邏輯 `互斥`, 向量個別元素互斥聯集運算, 僅有 1 為 TRUE              |
 
 Table: 向量基本運算操作符號
 
@@ -315,7 +315,7 @@ x.vec <- 1:5
 y.vec <- c(0, 2, 4, 6, 8)
 #
 x.vec < 2
-x.vec<= 2
+x.vec <= 2
 x.vec == 2
 x.vec != 2
 #

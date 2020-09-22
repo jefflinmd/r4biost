@@ -24,7 +24,7 @@
 <meta name="author" content="Jeff Lin" />
 
 
-<meta name="date" content="2020-09-16" />
+<meta name="date" content="2020-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -388,7 +388,7 @@ RStudio 原始是 {R} 的一種操作介面,
 <p>學習 {R} 最好的方法, 就是要開始使用 {R}, 初學者要了解 {R}, 可先進行一些簡單實例的演練,
 首先須注意的是, 在 {R} 程式語言所使用的文字, 大小寫是有差別的.
 直接在 {R} 或 RStudio console 視窗輸入指令都會得到相同的結果.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true"></a><span class="dv">1</span><span class="op">+</span><span class="dv">2</span>         <span class="co"># calculator</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>       <span class="co"># calculator</span></span>
 <span id="cb1-2"><a href="intro.html#cb1-2" aria-hidden="true"></a><span class="kw">log</span>(<span class="fl">3.14</span>)   <span class="co"># log function</span></span>
 <span id="cb1-3"><a href="intro.html#cb1-3" aria-hidden="true"></a>x =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>   <span class="co"># one plus two assign to x</span></span>
 <span id="cb1-4"><a href="intro.html#cb1-4" aria-hidden="true"></a>x           <span class="co"># print x</span></span>
@@ -403,7 +403,7 @@ RStudio 原始是 {R} 的一種操作介面,
 <span id="cb2-2"><a href="intro.html#cb2-2" aria-hidden="true"></a><span class="kw">sin</span>(pi)</span>
 <span id="cb2-3"><a href="intro.html#cb2-3" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>)</span>
 <span id="cb2-4"><a href="intro.html#cb2-4" aria-hidden="true"></a><span class="kw">exp</span>(x.vec)</span>
-<span id="cb2-5"><a href="intro.html#cb2-5" aria-hidden="true"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">nrows=</span><span class="dv">2</span>, <span class="dt">ncols=</span><span class="dv">3</span>)</span>
+<span id="cb2-5"><a href="intro.html#cb2-5" aria-hidden="true"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
 <span id="cb2-6"><a href="intro.html#cb2-6" aria-hidden="true"></a>weight =<span class="st"> </span><span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">45</span>, <span class="dv">67</span>, <span class="dv">53</span>)</span>
 <span id="cb2-7"><a href="intro.html#cb2-7" aria-hidden="true"></a><span class="kw">mean</span>(weight)</span>
 <span id="cb2-8"><a href="intro.html#cb2-8" aria-hidden="true"></a><span class="kw">sd</span>(weight)</span></code></pre></div>
@@ -432,7 +432,7 @@ RStudio 原始是 {R} 的一種操作介面,
 程式語言是須嚴謹的邏輯語法, 電腦才會正確執行命令,</p>
 <p>{R} 對於未有統計專業背景的初學者是困難學習的語言,
 初學者學習 {R} 語言, 類似小孩學習語言,
-通常須 0.5$$1.0 年以上,
+通常須 0.5 – 1.0 年以上,
 初學者請先直接學習現成實用的簡單指令,
 初學者請不要先學太多抽像語法與閱讀抽像說明,
 若已經學習其它一種程式語言相對較容學會易另一種程式語言.
@@ -501,7 +501,7 @@ diff mean pi range rank var</code></pre>
 <strong>運算式</strong>
 (<strong>expression</strong>),
 例如,</p>
-<pre><code>1+2
+<pre><code>1 + 2
 log(x)
 mean(x)</code></pre>
 <p>另一個為
@@ -510,8 +510,8 @@ mean(x)</code></pre>
 <strong>賦值運算</strong>
 (<strong>assignment</strong>),
 例如,</p>
-<pre><code>x &lt;- 1+2
-x = 4-5</code></pre>
+<pre><code>x &lt;- 1 + 2
+x = 4 - 5</code></pre>
 <p>當一個 {R} 程式需要使用者輸入指令時,
 它會顯示
 <strong>指令提示符號</strong>
@@ -531,7 +531,7 @@ x = 4-5</code></pre>
 <p>將指令提示符號 <code>&gt;</code> 改成 <code>R&gt;</code>.</p>
 <p><strong>指派運算符號</strong>
 (<strong>assignment symbol</strong>)
-通常是 <code>&lt;- ``, 一個小於符號和一個短線符號組成, 例如,</code>x &lt;- 1 + 2<code>, 讀成</code>x<code>``得到'' $(1 + 2)$. 在 {R} 中可以如傳統的程式語言或統計軟體, 使用</code>=<code>(等號) 為 **指派運算符號**, 例如,</code>x = 1 + 2<code>, 但在 {R} 中,</code>=<code>(等號) 還有其他用途, 使用者可依個人習慣使用</code>&lt;-<code>或</code>=<code>, 但是多數 {R} 專業人士建議使用</code>&lt;-`.</p>
+通常是 <code>&lt;- ``, 一個小於符號和一個短線符號組成, 例如,</code>x &lt;- 1 + 2<code>, 讀成</code>x<code>**得到** $(1 + 2)$. 在 {R} 中可以如傳統的程式語言或統計軟體, 使用</code>=<code>(等號) 為 **指派運算符號**, 例如,</code>x = 1 + 2<code>, 但在 {R} 中,</code>=<code>(等號) 還有其他用途, 使用者可依個人習慣使用</code>&lt;-<code>或</code>=<code>, 但是多數 {R} 專業人士建議使用</code>&lt;-`.</p>
 <p>要顯示賦值運算的結果,
 可以輸入物件名,
 使用函式 <code>print()</code>,
@@ -566,7 +566,7 @@ x &lt;- 1 + 2; y &lt;- 3 + 4
 x &lt;- 1 + 2
 y &lt;- 3 + 4</code></pre>
 <p>數個指令也可以放入一組大括弧內,
-<code>{ \; }</code>,
+<code>{ ; }</code>,
 數個指令放在一起,
 構成一個
 <strong>複合運算式</strong>
@@ -583,7 +583,7 @@ y &lt;- 3 + 4</code></pre>
 運算式尾端注釋使用單井號開始 #.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro.html#cb10-1" aria-hidden="true"></a><span class="co">## This is my R code</span></span>
 <span id="cb10-2"><a href="intro.html#cb10-2" aria-hidden="true"></a><span class="kw">log</span>(pi)</span>
-<span id="cb10-3"><a href="intro.html#cb10-3" aria-hidden="true"></a><span class="co">## [1] 1.145</span></span>
+<span id="cb10-3"><a href="intro.html#cb10-3" aria-hidden="true"></a><span class="co">## [1] 1.14473</span></span>
 <span id="cb10-4"><a href="intro.html#cb10-4" aria-hidden="true"></a><span class="co">## simple calculation</span></span>
 <span id="cb10-5"><a href="intro.html#cb10-5" aria-hidden="true"></a><span class="dv">3</span><span class="op">+</span><span class="dv">4</span> <span class="co"># calculator: two plus one</span></span>
 <span id="cb10-6"><a href="intro.html#cb10-6" aria-hidden="true"></a><span class="co">## [1] 7</span></span></code></pre></div>
@@ -613,7 +613,7 @@ y &lt;- 3 + 4</code></pre>
 <code>ls()</code>
 可以查詢與顯示當前保存在 {R} 環境中的物件名稱.</p>
 <pre><code>## show objects
-object()  # shiow all objects
+objects() # shiow all objects
 ls()      # show all obkects
 ls(x, y)  # show x and y object</code></pre>
 <p>透過函式 <code>rm()</code>,
@@ -750,7 +750,7 @@ x.vec = rnorm(50)<br />
 y.vec = rnorm(50)<br />
 plot(x.vec, y.vec)<br />
 <code>```</code><br />
-使用 R Notebook<code>或是</code>R Markdown<code>的好處是可以將報告文字與統計分析結果, 表格或圖片整合, 不用再 copy $\rightarrow$ paste 到 word 文件上. 當資料增加或修正, 僅要按下上方</code>knit<code>, 即可再次自動排版產生正確的分析結果, 表格或圖片. 讀者可利用 R Notebook</code> 或是 <code>R Markdown</code> 的模板,
+使用 R Notebook<code>或是</code>R Markdown<code>的好處是可以將報告文字與統計分析結果, 表格或圖片整合, 不用再</code>copy<code>$\rightarrow$</code>paste<code>到 word 文件上. 當資料增加或修正, 僅要按下上方</code>knit<code>, 即可再次自動排版產生正確的分析結果, 表格或圖片. 讀者可利用 R Notebook</code> 或是 <code>R Markdown</code> 的模板,
 按下上方 <code>knit</code> 檢視生成的報告.</p>
 </div>
 <div id="函式-function" class="section level2" number="1.10">
@@ -783,7 +783,7 @@ plot(x.vec, y.vec)<br />
 <span id="cb18-8"><a href="intro.html#cb18-8" aria-hidden="true"></a><span class="kw">var</span>(<span class="dt">x =</span> x.vec)  <span class="co"># function mean() calculate variance</span></span>
 <span id="cb18-9"><a href="intro.html#cb18-9" aria-hidden="true"></a><span class="co">## [1] 2.5</span></span>
 <span id="cb18-10"><a href="intro.html#cb18-10" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)  <span class="co"># take log for all elements in vector x.vec</span></span>
-<span id="cb18-11"><a href="intro.html#cb18-11" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931 1.0986 1.3863 1.6094</span></span></code></pre></div>
+<span id="cb18-11"><a href="intro.html#cb18-11" aria-hidden="true"></a><span class="co">## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></span></code></pre></div>
 <p>一個函式內通常需輸入
 <strong>引數</strong>
 (<strong>argument</strong>)
@@ -820,14 +820,14 @@ plot(x.vec, y.vec)<br />
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="intro.html#cb20-1" aria-hidden="true"></a><span class="co">## log function</span></span>
 <span id="cb20-2"><a href="intro.html#cb20-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb20-3"><a href="intro.html#cb20-3" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)</span>
-<span id="cb20-4"><a href="intro.html#cb20-4" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931 1.0986 1.3863 1.6094</span></span>
+<span id="cb20-4"><a href="intro.html#cb20-4" aria-hidden="true"></a><span class="co">## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></span>
 <span id="cb20-5"><a href="intro.html#cb20-5" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec, <span class="dt">base =</span> <span class="dv">2</span>)</span>
-<span id="cb20-6"><a href="intro.html#cb20-6" aria-hidden="true"></a><span class="co">## [1] 0.000 1.000 1.585 2.000 2.322</span></span></code></pre></div>
+<span id="cb20-6"><a href="intro.html#cb20-6" aria-hidden="true"></a><span class="co">## [1] 0.000000 1.000000 1.584963 2.000000 2.321928</span></span></code></pre></div>
 </div>
 <div id="套件-packages" class="section level2" number="1.11">
 <h2><span class="header-section-number">1.11</span> 套件 Packages</h2>
 <p>特定的統計分析方法許多專用的函式集合成一組.
-<strong>套件}</strong>
+<strong>套件</strong>
 (<strong>package</strong>).
 許多學者針對特定分析, 寫成專用的 {R} 函式,
 學者常將這些特定的統計分析方法專用的函式集合成一組

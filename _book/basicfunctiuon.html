@@ -24,7 +24,7 @@
 <meta name="author" content="Jeff Lin" />
 
 
-<meta name="date" content="2020-09-16" />
+<meta name="date" content="2020-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -359,18 +359,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb127-7"><a href="basicfunctiuon.html#cb127-7" aria-hidden="true"></a><span class="kw">var</span>(<span class="dt">x =</span> x.vec)  <span class="co"># function mean() calculate variance</span></span>
 <span id="cb127-8"><a href="basicfunctiuon.html#cb127-8" aria-hidden="true"></a><span class="co">## [1] 2.5</span></span>
 <span id="cb127-9"><a href="basicfunctiuon.html#cb127-9" aria-hidden="true"></a><span class="kw">sd</span>(x.vec)       <span class="co"># function mean() calculate standard deviation</span></span>
-<span id="cb127-10"><a href="basicfunctiuon.html#cb127-10" aria-hidden="true"></a><span class="co">## [1] 1.581</span></span>
+<span id="cb127-10"><a href="basicfunctiuon.html#cb127-10" aria-hidden="true"></a><span class="co">## [1] 1.581139</span></span>
 <span id="cb127-11"><a href="basicfunctiuon.html#cb127-11" aria-hidden="true"></a><span class="kw">summary</span>(x.vec)  <span class="co"># summarized statistics</span></span>
 <span id="cb127-12"><a href="basicfunctiuon.html#cb127-12" aria-hidden="true"></a><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span id="cb127-13"><a href="basicfunctiuon.html#cb127-13" aria-hidden="true"></a><span class="co">##       1       2       3       3       4       5</span></span>
 <span id="cb127-14"><a href="basicfunctiuon.html#cb127-14" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)  <span class="co"># take log for all elements in vector x.vec</span></span>
-<span id="cb127-15"><a href="basicfunctiuon.html#cb127-15" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931 1.0986 1.3863 1.6094</span></span>
+<span id="cb127-15"><a href="basicfunctiuon.html#cb127-15" aria-hidden="true"></a><span class="co">## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></span>
 <span id="cb127-16"><a href="basicfunctiuon.html#cb127-16" aria-hidden="true"></a><span class="co">## log function</span></span>
 <span id="cb127-17"><a href="basicfunctiuon.html#cb127-17" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb127-18"><a href="basicfunctiuon.html#cb127-18" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)</span>
-<span id="cb127-19"><a href="basicfunctiuon.html#cb127-19" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931 1.0986 1.3863 1.6094</span></span>
+<span id="cb127-19"><a href="basicfunctiuon.html#cb127-19" aria-hidden="true"></a><span class="co">## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></span>
 <span id="cb127-20"><a href="basicfunctiuon.html#cb127-20" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec, <span class="dt">base =</span> <span class="dv">2</span>)</span>
-<span id="cb127-21"><a href="basicfunctiuon.html#cb127-21" aria-hidden="true"></a><span class="co">## [1] 0.000 1.000 1.585 2.000 2.322</span></span></code></pre></div>
+<span id="cb127-21"><a href="basicfunctiuon.html#cb127-21" aria-hidden="true"></a><span class="co">## [1] 0.000000 1.000000 1.584963 2.000000 2.321928</span></span></code></pre></div>
 </div>
 <div id="檢視的函式原始碼定義" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> 檢視的函式原始碼定義</h2>
@@ -392,47 +392,37 @@ S3 classes 函式 與 S4 classes 函式,
 <span id="cb128-3"><a href="basicfunctiuon.html#cb128-3" aria-hidden="true"></a><span class="co">## function (x, na.rm = FALSE) </span></span>
 <span id="cb128-4"><a href="basicfunctiuon.html#cb128-4" aria-hidden="true"></a><span class="co">## sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), </span></span>
 <span id="cb128-5"><a href="basicfunctiuon.html#cb128-5" aria-hidden="true"></a><span class="co">##     na.rm = na.rm))</span></span>
-<span id="cb128-6"><a href="basicfunctiuon.html#cb128-6" aria-hidden="true"></a><span class="co">## &lt;bytecode: 0x0000000009ebce68&gt;</span></span>
+<span id="cb128-6"><a href="basicfunctiuon.html#cb128-6" aria-hidden="true"></a><span class="co">## &lt;bytecode: 0x000000001492e130&gt;</span></span>
 <span id="cb128-7"><a href="basicfunctiuon.html#cb128-7" aria-hidden="true"></a><span class="co">## &lt;environment: namespace:stats&gt;</span></span>
 <span id="cb128-8"><a href="basicfunctiuon.html#cb128-8" aria-hidden="true"></a>t</span>
 <span id="cb128-9"><a href="basicfunctiuon.html#cb128-9" aria-hidden="true"></a><span class="co">## function (x) </span></span>
 <span id="cb128-10"><a href="basicfunctiuon.html#cb128-10" aria-hidden="true"></a><span class="co">## UseMethod(&quot;t&quot;)</span></span>
-<span id="cb128-11"><a href="basicfunctiuon.html#cb128-11" aria-hidden="true"></a><span class="co">## &lt;bytecode: 0x0000000016052500&gt;</span></span>
+<span id="cb128-11"><a href="basicfunctiuon.html#cb128-11" aria-hidden="true"></a><span class="co">## &lt;bytecode: 0x0000000007cea338&gt;</span></span>
 <span id="cb128-12"><a href="basicfunctiuon.html#cb128-12" aria-hidden="true"></a><span class="co">## &lt;environment: namespace:base&gt;</span></span>
 <span id="cb128-13"><a href="basicfunctiuon.html#cb128-13" aria-hidden="true"></a><span class="kw">methods</span>(t)</span>
-<span id="cb128-14"><a href="basicfunctiuon.html#cb128-14" aria-hidden="true"></a><span class="co">##  [1] t,ANY-method            t,CsparseMatrix-method </span></span>
-<span id="cb128-15"><a href="basicfunctiuon.html#cb128-15" aria-hidden="true"></a><span class="co">##  [3] t,dgCMatrix-method      t,dgeMatrix-method     </span></span>
-<span id="cb128-16"><a href="basicfunctiuon.html#cb128-16" aria-hidden="true"></a><span class="co">##  [5] t,diagonalMatrix-method t,dppMatrix-method     </span></span>
-<span id="cb128-17"><a href="basicfunctiuon.html#cb128-17" aria-hidden="true"></a><span class="co">##  [7] t,dsCMatrix-method      t,dspMatrix-method     </span></span>
-<span id="cb128-18"><a href="basicfunctiuon.html#cb128-18" aria-hidden="true"></a><span class="co">##  [9] t,dsTMatrix-method      t,dsyMatrix-method     </span></span>
-<span id="cb128-19"><a href="basicfunctiuon.html#cb128-19" aria-hidden="true"></a><span class="co">## [11] t,dtpMatrix-method      t,dtrMatrix-method     </span></span>
-<span id="cb128-20"><a href="basicfunctiuon.html#cb128-20" aria-hidden="true"></a><span class="co">## [13] t,dtTMatrix-method      t,indMatrix-method     </span></span>
-<span id="cb128-21"><a href="basicfunctiuon.html#cb128-21" aria-hidden="true"></a><span class="co">## [15] t,lgeMatrix-method      t,lspMatrix-method     </span></span>
-<span id="cb128-22"><a href="basicfunctiuon.html#cb128-22" aria-hidden="true"></a><span class="co">## [17] t,lsTMatrix-method      t,lsyMatrix-method     </span></span>
-<span id="cb128-23"><a href="basicfunctiuon.html#cb128-23" aria-hidden="true"></a><span class="co">## [19] t,ltpMatrix-method      t,ltrMatrix-method     </span></span>
-<span id="cb128-24"><a href="basicfunctiuon.html#cb128-24" aria-hidden="true"></a><span class="co">## [21] t,ltTMatrix-method      t,Matrix-method        </span></span>
-<span id="cb128-25"><a href="basicfunctiuon.html#cb128-25" aria-hidden="true"></a><span class="co">## [23] t,ngeMatrix-method      t,nspMatrix-method     </span></span>
-<span id="cb128-26"><a href="basicfunctiuon.html#cb128-26" aria-hidden="true"></a><span class="co">## [25] t,nsTMatrix-method      t,nsyMatrix-method     </span></span>
-<span id="cb128-27"><a href="basicfunctiuon.html#cb128-27" aria-hidden="true"></a><span class="co">## [27] t,ntpMatrix-method      t,ntrMatrix-method     </span></span>
-<span id="cb128-28"><a href="basicfunctiuon.html#cb128-28" aria-hidden="true"></a><span class="co">## [29] t,ntTMatrix-method      t,pMatrix-method       </span></span>
-<span id="cb128-29"><a href="basicfunctiuon.html#cb128-29" aria-hidden="true"></a><span class="co">## [31] t,RsparseMatrix-method  t,sparseVector-method  </span></span>
-<span id="cb128-30"><a href="basicfunctiuon.html#cb128-30" aria-hidden="true"></a><span class="co">## [33] t,TsparseMatrix-method  t.data.frame           </span></span>
-<span id="cb128-31"><a href="basicfunctiuon.html#cb128-31" aria-hidden="true"></a><span class="co">## [35] t.default               t.fractions*           </span></span>
-<span id="cb128-32"><a href="basicfunctiuon.html#cb128-32" aria-hidden="true"></a><span class="co">## [37] t.gtable*               t.trellis*             </span></span>
-<span id="cb128-33"><a href="basicfunctiuon.html#cb128-33" aria-hidden="true"></a><span class="co">## [39] t.ts*                   t.vctrs_sclr*          </span></span>
-<span id="cb128-34"><a href="basicfunctiuon.html#cb128-34" aria-hidden="true"></a><span class="co">## [41] t.vctrs_vctr*          </span></span>
-<span id="cb128-35"><a href="basicfunctiuon.html#cb128-35" aria-hidden="true"></a><span class="co">## see &#39;?methods&#39; for accessing help and source code</span></span>
-<span id="cb128-36"><a href="basicfunctiuon.html#cb128-36" aria-hidden="true"></a><span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&quot;ts&quot;</span>)</span>
-<span id="cb128-37"><a href="basicfunctiuon.html#cb128-37" aria-hidden="true"></a><span class="co">##  [1] [             [&lt;-           aggregate    </span></span>
-<span id="cb128-38"><a href="basicfunctiuon.html#cb128-38" aria-hidden="true"></a><span class="co">##  [4] as.data.frame cbind         coerce       </span></span>
-<span id="cb128-39"><a href="basicfunctiuon.html#cb128-39" aria-hidden="true"></a><span class="co">##  [7] cycle         diff          diffinv      </span></span>
-<span id="cb128-40"><a href="basicfunctiuon.html#cb128-40" aria-hidden="true"></a><span class="co">## [10] filter        initialize    kernapply    </span></span>
-<span id="cb128-41"><a href="basicfunctiuon.html#cb128-41" aria-hidden="true"></a><span class="co">## [13] lines         Math          Math2        </span></span>
-<span id="cb128-42"><a href="basicfunctiuon.html#cb128-42" aria-hidden="true"></a><span class="co">## [16] monthplot     na.omit       Ops          </span></span>
-<span id="cb128-43"><a href="basicfunctiuon.html#cb128-43" aria-hidden="true"></a><span class="co">## [19] plot          print         show         </span></span>
-<span id="cb128-44"><a href="basicfunctiuon.html#cb128-44" aria-hidden="true"></a><span class="co">## [22] slotsFromS3   t             time         </span></span>
-<span id="cb128-45"><a href="basicfunctiuon.html#cb128-45" aria-hidden="true"></a><span class="co">## [25] window        window&lt;-     </span></span>
-<span id="cb128-46"><a href="basicfunctiuon.html#cb128-46" aria-hidden="true"></a><span class="co">## see &#39;?methods&#39; for accessing help and source code</span></span></code></pre></div>
+<span id="cb128-14"><a href="basicfunctiuon.html#cb128-14" aria-hidden="true"></a><span class="co">##  [1] t,ANY-method            t,CsparseMatrix-method  t,dgCMatrix-method     </span></span>
+<span id="cb128-15"><a href="basicfunctiuon.html#cb128-15" aria-hidden="true"></a><span class="co">##  [4] t,dgeMatrix-method      t,diagonalMatrix-method t,dppMatrix-method     </span></span>
+<span id="cb128-16"><a href="basicfunctiuon.html#cb128-16" aria-hidden="true"></a><span class="co">##  [7] t,dsCMatrix-method      t,dspMatrix-method      t,dsTMatrix-method     </span></span>
+<span id="cb128-17"><a href="basicfunctiuon.html#cb128-17" aria-hidden="true"></a><span class="co">## [10] t,dsyMatrix-method      t,dtpMatrix-method      t,dtrMatrix-method     </span></span>
+<span id="cb128-18"><a href="basicfunctiuon.html#cb128-18" aria-hidden="true"></a><span class="co">## [13] t,dtTMatrix-method      t,indMatrix-method      t,lgeMatrix-method     </span></span>
+<span id="cb128-19"><a href="basicfunctiuon.html#cb128-19" aria-hidden="true"></a><span class="co">## [16] t,lspMatrix-method      t,lsTMatrix-method      t,lsyMatrix-method     </span></span>
+<span id="cb128-20"><a href="basicfunctiuon.html#cb128-20" aria-hidden="true"></a><span class="co">## [19] t,ltpMatrix-method      t,ltrMatrix-method      t,ltTMatrix-method     </span></span>
+<span id="cb128-21"><a href="basicfunctiuon.html#cb128-21" aria-hidden="true"></a><span class="co">## [22] t,Matrix-method         t,ngeMatrix-method      t,nspMatrix-method     </span></span>
+<span id="cb128-22"><a href="basicfunctiuon.html#cb128-22" aria-hidden="true"></a><span class="co">## [25] t,nsTMatrix-method      t,nsyMatrix-method      t,ntpMatrix-method     </span></span>
+<span id="cb128-23"><a href="basicfunctiuon.html#cb128-23" aria-hidden="true"></a><span class="co">## [28] t,ntrMatrix-method      t,ntTMatrix-method      t,pMatrix-method       </span></span>
+<span id="cb128-24"><a href="basicfunctiuon.html#cb128-24" aria-hidden="true"></a><span class="co">## [31] t,RsparseMatrix-method  t,sparseVector-method   t,TsparseMatrix-method </span></span>
+<span id="cb128-25"><a href="basicfunctiuon.html#cb128-25" aria-hidden="true"></a><span class="co">## [34] t.data.frame            t.default               t.fractions*           </span></span>
+<span id="cb128-26"><a href="basicfunctiuon.html#cb128-26" aria-hidden="true"></a><span class="co">## [37] t.gtable*               t.trellis*              t.ts*                  </span></span>
+<span id="cb128-27"><a href="basicfunctiuon.html#cb128-27" aria-hidden="true"></a><span class="co">## [40] t.vctrs_sclr*           t.vctrs_vctr*          </span></span>
+<span id="cb128-28"><a href="basicfunctiuon.html#cb128-28" aria-hidden="true"></a><span class="co">## see &#39;?methods&#39; for accessing help and source code</span></span>
+<span id="cb128-29"><a href="basicfunctiuon.html#cb128-29" aria-hidden="true"></a><span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&quot;ts&quot;</span>)</span>
+<span id="cb128-30"><a href="basicfunctiuon.html#cb128-30" aria-hidden="true"></a><span class="co">##  [1] [             [&lt;-           aggregate     as.data.frame cbind        </span></span>
+<span id="cb128-31"><a href="basicfunctiuon.html#cb128-31" aria-hidden="true"></a><span class="co">##  [6] coerce        cycle         diff          diffinv       filter       </span></span>
+<span id="cb128-32"><a href="basicfunctiuon.html#cb128-32" aria-hidden="true"></a><span class="co">## [11] initialize    kernapply     lines         Math          Math2        </span></span>
+<span id="cb128-33"><a href="basicfunctiuon.html#cb128-33" aria-hidden="true"></a><span class="co">## [16] monthplot     na.omit       Ops           plot          print        </span></span>
+<span id="cb128-34"><a href="basicfunctiuon.html#cb128-34" aria-hidden="true"></a><span class="co">## [21] show          slotsFromS3   t             time          window       </span></span>
+<span id="cb128-35"><a href="basicfunctiuon.html#cb128-35" aria-hidden="true"></a><span class="co">## [26] window&lt;-     </span></span>
+<span id="cb128-36"><a href="basicfunctiuon.html#cb128-36" aria-hidden="true"></a><span class="co">## see &#39;?methods&#39; for accessing help and source code</span></span></code></pre></div>
 <p>若要檢視 S4 classes 的函式, 可以使用
 <code>showClass("function.namme")</code>,
 <code>showMethods("function.namme")</code>,
@@ -783,9 +773,9 @@ Gamma 函數, Beta 函數,
 <span id="cb135-66"><a href="basicfunctiuon.html#cb135-66" aria-hidden="true"></a><span class="co">## [1] -1.5  0.5  2.5</span></span>
 <span id="cb135-67"><a href="basicfunctiuon.html#cb135-67" aria-hidden="true"></a><span class="co">#</span></span>
 <span id="cb135-68"><a href="basicfunctiuon.html#cb135-68" aria-hidden="true"></a>(z.vec &lt;-<span class="st"> </span>pi <span class="op">*</span><span class="st"> </span><span class="dv">100</span> <span class="op">^</span><span class="st"> </span>(<span class="op">-</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>))</span>
-<span id="cb135-69"><a href="basicfunctiuon.html#cb135-69" aria-hidden="true"></a><span class="co">## [1] 3.142e-02 3.142e+00 3.142e+02 3.142e+04 3.142e+06</span></span>
+<span id="cb135-69"><a href="basicfunctiuon.html#cb135-69" aria-hidden="true"></a><span class="co">## [1] 3.141593e-02 3.141593e+00 3.141593e+02 3.141593e+04 3.141593e+06</span></span>
 <span id="cb135-70"><a href="basicfunctiuon.html#cb135-70" aria-hidden="true"></a><span class="kw">round</span>(z.vec, <span class="dv">3</span>)</span>
-<span id="cb135-71"><a href="basicfunctiuon.html#cb135-71" aria-hidden="true"></a><span class="co">## [1] 3.100e-02 3.142e+00 3.142e+02 3.142e+04 3.142e+06</span></span>
+<span id="cb135-71"><a href="basicfunctiuon.html#cb135-71" aria-hidden="true"></a><span class="co">## [1]       0.031       3.142     314.159   31415.927 3141592.654</span></span>
 <span id="cb135-72"><a href="basicfunctiuon.html#cb135-72" aria-hidden="true"></a><span class="kw">signif</span>(z.vec, <span class="dv">3</span>)</span>
 <span id="cb135-73"><a href="basicfunctiuon.html#cb135-73" aria-hidden="true"></a><span class="co">## [1] 3.14e-02 3.14e+00 3.14e+02 3.14e+04 3.14e+06</span></span>
 <span id="cb135-74"><a href="basicfunctiuon.html#cb135-74" aria-hidden="true"></a><span class="co">#</span></span>
@@ -816,44 +806,39 @@ Gamma 函數, Beta 函數,
 <span id="cb135-99"><a href="basicfunctiuon.html#cb135-99" aria-hidden="true"></a><span class="co">## [1] 3.142e-05 3.142e-03 3.142e-01 3.142e+01 3.142e+03</span></span>
 <span id="cb135-100"><a href="basicfunctiuon.html#cb135-100" aria-hidden="true"></a><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>, <span class="dt">scipen =</span> <span class="dv">100</span>)</span>
 <span id="cb135-101"><a href="basicfunctiuon.html#cb135-101" aria-hidden="true"></a><span class="kw">print</span>(z.vec <span class="op">/</span><span class="st"> </span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">4</span>)</span>
-<span id="cb135-102"><a href="basicfunctiuon.html#cb135-102" aria-hidden="true"></a><span class="co">## [1]    0.00003142    0.00314159    0.31415927   31.41592654</span></span>
-<span id="cb135-103"><a href="basicfunctiuon.html#cb135-103" aria-hidden="true"></a><span class="co">## [5] 3141.59265359</span></span>
-<span id="cb135-104"><a href="basicfunctiuon.html#cb135-104" aria-hidden="true"></a><span class="co">#</span></span>
-<span id="cb135-105"><a href="basicfunctiuon.html#cb135-105" aria-hidden="true"></a><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>, <span class="dt">scipen =</span> <span class="dv">100</span>)</span>
-<span id="cb135-106"><a href="basicfunctiuon.html#cb135-106" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">100</span> <span class="op">^</span><span class="st"> </span><span class="op">-</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
-<span id="cb135-107"><a href="basicfunctiuon.html#cb135-107" aria-hidden="true"></a><span class="kw">cbind</span>(</span>
-<span id="cb135-108"><a href="basicfunctiuon.html#cb135-108" aria-hidden="true"></a>  <span class="dt">x =</span> x.vec,</span>
-<span id="cb135-109"><a href="basicfunctiuon.html#cb135-109" aria-hidden="true"></a>  <span class="dt">log1px =</span> <span class="kw">log</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>x.vec),</span>
-<span id="cb135-110"><a href="basicfunctiuon.html#cb135-110" aria-hidden="true"></a>  <span class="dt">log1p  =</span> <span class="kw">log1p</span>(x.vec),</span>
-<span id="cb135-111"><a href="basicfunctiuon.html#cb135-111" aria-hidden="true"></a>  <span class="dt">exp    =</span> <span class="kw">exp</span>(x.vec) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>,</span>
-<span id="cb135-112"><a href="basicfunctiuon.html#cb135-112" aria-hidden="true"></a>  <span class="dt">expm1  =</span> <span class="kw">expm1</span>(x.vec)</span>
-<span id="cb135-113"><a href="basicfunctiuon.html#cb135-113" aria-hidden="true"></a>)</span>
-<span id="cb135-114"><a href="basicfunctiuon.html#cb135-114" aria-hidden="true"></a><span class="co">##                     x               log1px</span></span>
-<span id="cb135-115"><a href="basicfunctiuon.html#cb135-115" aria-hidden="true"></a><span class="co">## [1,] 0.00000100000000 0.000000999999499918</span></span>
-<span id="cb135-116"><a href="basicfunctiuon.html#cb135-116" aria-hidden="true"></a><span class="co">## [2,] 0.00000000010000 0.000000000100000008</span></span>
-<span id="cb135-117"><a href="basicfunctiuon.html#cb135-117" aria-hidden="true"></a><span class="co">## [3,] 0.00000000000001 0.000000000000009992</span></span>
-<span id="cb135-118"><a href="basicfunctiuon.html#cb135-118" aria-hidden="true"></a><span class="co">##                 log1p                  exp</span></span>
-<span id="cb135-119"><a href="basicfunctiuon.html#cb135-119" aria-hidden="true"></a><span class="co">## [1,] 0.00000099999950 0.000001000000499962</span></span>
-<span id="cb135-120"><a href="basicfunctiuon.html#cb135-120" aria-hidden="true"></a><span class="co">## [2,] 0.00000000010000 0.000000000100000008</span></span>
-<span id="cb135-121"><a href="basicfunctiuon.html#cb135-121" aria-hidden="true"></a><span class="co">## [3,] 0.00000000000001 0.000000000000009992</span></span>
-<span id="cb135-122"><a href="basicfunctiuon.html#cb135-122" aria-hidden="true"></a><span class="co">##                 expm1</span></span>
-<span id="cb135-123"><a href="basicfunctiuon.html#cb135-123" aria-hidden="true"></a><span class="co">## [1,] 0.00000100000050</span></span>
-<span id="cb135-124"><a href="basicfunctiuon.html#cb135-124" aria-hidden="true"></a><span class="co">## [2,] 0.00000000010000</span></span>
-<span id="cb135-125"><a href="basicfunctiuon.html#cb135-125" aria-hidden="true"></a><span class="co">## [3,] 0.00000000000001</span></span>
-<span id="cb135-126"><a href="basicfunctiuon.html#cb135-126" aria-hidden="true"></a><span class="co">#</span></span>
-<span id="cb135-127"><a href="basicfunctiuon.html#cb135-127" aria-hidden="true"></a><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>, <span class="dt">scipen =</span> <span class="dv">0</span>)</span>
-<span id="cb135-128"><a href="basicfunctiuon.html#cb135-128" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">^</span>(<span class="op">-</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>))</span>
-<span id="cb135-129"><a href="basicfunctiuon.html#cb135-129" aria-hidden="true"></a><span class="kw">cbind</span>(</span>
-<span id="cb135-130"><a href="basicfunctiuon.html#cb135-130" aria-hidden="true"></a>  <span class="dt">x =</span> x.vec,</span>
-<span id="cb135-131"><a href="basicfunctiuon.html#cb135-131" aria-hidden="true"></a>  <span class="dt">log1px =</span> <span class="kw">log</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>x.vec),</span>
-<span id="cb135-132"><a href="basicfunctiuon.html#cb135-132" aria-hidden="true"></a>  <span class="dt">log1p  =</span> <span class="kw">log1p</span>(x.vec),</span>
-<span id="cb135-133"><a href="basicfunctiuon.html#cb135-133" aria-hidden="true"></a>  <span class="dt">exp    =</span> <span class="kw">exp</span>(x.vec) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>,</span>
-<span id="cb135-134"><a href="basicfunctiuon.html#cb135-134" aria-hidden="true"></a>  <span class="dt">expm1  =</span> <span class="kw">expm1</span>(x.vec)</span>
-<span id="cb135-135"><a href="basicfunctiuon.html#cb135-135" aria-hidden="true"></a>)</span>
-<span id="cb135-136"><a href="basicfunctiuon.html#cb135-136" aria-hidden="true"></a><span class="co">##          x    log1px log1p       exp expm1</span></span>
-<span id="cb135-137"><a href="basicfunctiuon.html#cb135-137" aria-hidden="true"></a><span class="co">## [1,] 1e-06 1.000e-06 1e-06 1.000e-06 1e-06</span></span>
-<span id="cb135-138"><a href="basicfunctiuon.html#cb135-138" aria-hidden="true"></a><span class="co">## [2,] 1e-10 1.000e-10 1e-10 1.000e-10 1e-10</span></span>
-<span id="cb135-139"><a href="basicfunctiuon.html#cb135-139" aria-hidden="true"></a><span class="co">## [3,] 1e-14 9.992e-15 1e-14 9.992e-15 1e-14</span></span></code></pre></div>
+<span id="cb135-102"><a href="basicfunctiuon.html#cb135-102" aria-hidden="true"></a><span class="co">## [1]    0.00003142    0.00314159    0.31415927   31.41592654 3141.59265359</span></span>
+<span id="cb135-103"><a href="basicfunctiuon.html#cb135-103" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb135-104"><a href="basicfunctiuon.html#cb135-104" aria-hidden="true"></a><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>, <span class="dt">scipen =</span> <span class="dv">100</span>)</span>
+<span id="cb135-105"><a href="basicfunctiuon.html#cb135-105" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">100</span> <span class="op">^</span><span class="st"> </span><span class="op">-</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb135-106"><a href="basicfunctiuon.html#cb135-106" aria-hidden="true"></a><span class="kw">cbind</span>(</span>
+<span id="cb135-107"><a href="basicfunctiuon.html#cb135-107" aria-hidden="true"></a>  <span class="dt">x =</span> x.vec,</span>
+<span id="cb135-108"><a href="basicfunctiuon.html#cb135-108" aria-hidden="true"></a>  <span class="dt">log1px =</span> <span class="kw">log</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>x.vec),</span>
+<span id="cb135-109"><a href="basicfunctiuon.html#cb135-109" aria-hidden="true"></a>  <span class="dt">log1p  =</span> <span class="kw">log1p</span>(x.vec),</span>
+<span id="cb135-110"><a href="basicfunctiuon.html#cb135-110" aria-hidden="true"></a>  <span class="dt">exp    =</span> <span class="kw">exp</span>(x.vec) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>,</span>
+<span id="cb135-111"><a href="basicfunctiuon.html#cb135-111" aria-hidden="true"></a>  <span class="dt">expm1  =</span> <span class="kw">expm1</span>(x.vec)</span>
+<span id="cb135-112"><a href="basicfunctiuon.html#cb135-112" aria-hidden="true"></a>)</span>
+<span id="cb135-113"><a href="basicfunctiuon.html#cb135-113" aria-hidden="true"></a><span class="co">##                     x               log1px            log1p                  exp</span></span>
+<span id="cb135-114"><a href="basicfunctiuon.html#cb135-114" aria-hidden="true"></a><span class="co">## [1,] 0.00000100000000 0.000000999999499918 0.00000099999950 0.000001000000499962</span></span>
+<span id="cb135-115"><a href="basicfunctiuon.html#cb135-115" aria-hidden="true"></a><span class="co">## [2,] 0.00000000010000 0.000000000100000008 0.00000000010000 0.000000000100000008</span></span>
+<span id="cb135-116"><a href="basicfunctiuon.html#cb135-116" aria-hidden="true"></a><span class="co">## [3,] 0.00000000000001 0.000000000000009992 0.00000000000001 0.000000000000009992</span></span>
+<span id="cb135-117"><a href="basicfunctiuon.html#cb135-117" aria-hidden="true"></a><span class="co">##                 expm1</span></span>
+<span id="cb135-118"><a href="basicfunctiuon.html#cb135-118" aria-hidden="true"></a><span class="co">## [1,] 0.00000100000050</span></span>
+<span id="cb135-119"><a href="basicfunctiuon.html#cb135-119" aria-hidden="true"></a><span class="co">## [2,] 0.00000000010000</span></span>
+<span id="cb135-120"><a href="basicfunctiuon.html#cb135-120" aria-hidden="true"></a><span class="co">## [3,] 0.00000000000001</span></span>
+<span id="cb135-121"><a href="basicfunctiuon.html#cb135-121" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb135-122"><a href="basicfunctiuon.html#cb135-122" aria-hidden="true"></a><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>, <span class="dt">scipen =</span> <span class="dv">0</span>)</span>
+<span id="cb135-123"><a href="basicfunctiuon.html#cb135-123" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">^</span>(<span class="op">-</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>))</span>
+<span id="cb135-124"><a href="basicfunctiuon.html#cb135-124" aria-hidden="true"></a><span class="kw">cbind</span>(</span>
+<span id="cb135-125"><a href="basicfunctiuon.html#cb135-125" aria-hidden="true"></a>  <span class="dt">x =</span> x.vec,</span>
+<span id="cb135-126"><a href="basicfunctiuon.html#cb135-126" aria-hidden="true"></a>  <span class="dt">log1px =</span> <span class="kw">log</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>x.vec),</span>
+<span id="cb135-127"><a href="basicfunctiuon.html#cb135-127" aria-hidden="true"></a>  <span class="dt">log1p  =</span> <span class="kw">log1p</span>(x.vec),</span>
+<span id="cb135-128"><a href="basicfunctiuon.html#cb135-128" aria-hidden="true"></a>  <span class="dt">exp    =</span> <span class="kw">exp</span>(x.vec) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>,</span>
+<span id="cb135-129"><a href="basicfunctiuon.html#cb135-129" aria-hidden="true"></a>  <span class="dt">expm1  =</span> <span class="kw">expm1</span>(x.vec)</span>
+<span id="cb135-130"><a href="basicfunctiuon.html#cb135-130" aria-hidden="true"></a>)</span>
+<span id="cb135-131"><a href="basicfunctiuon.html#cb135-131" aria-hidden="true"></a><span class="co">##          x    log1px log1p       exp expm1</span></span>
+<span id="cb135-132"><a href="basicfunctiuon.html#cb135-132" aria-hidden="true"></a><span class="co">## [1,] 1e-06 1.000e-06 1e-06 1.000e-06 1e-06</span></span>
+<span id="cb135-133"><a href="basicfunctiuon.html#cb135-133" aria-hidden="true"></a><span class="co">## [2,] 1e-10 1.000e-10 1e-10 1.000e-10 1e-10</span></span>
+<span id="cb135-134"><a href="basicfunctiuon.html#cb135-134" aria-hidden="true"></a><span class="co">## [3,] 1e-14 9.992e-15 1e-14 9.992e-15 1e-14</span></span></code></pre></div>
 </div>
 <div id="組合與階乘函式-choose-與-factorial" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> 組合與階乘函式: choose() 與 factorial()</h2>
@@ -1130,26 +1115,24 @@ Gamma 函數, Beta 函數,
 <span id="cb141-9"><a href="basicfunctiuon.html#cb141-9" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
 <span id="cb141-10"><a href="basicfunctiuon.html#cb141-10" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">as.character</span>(x.vec)</span>
 <span id="cb141-11"><a href="basicfunctiuon.html#cb141-11" aria-hidden="true"></a>x.vec</span>
-<span id="cb141-12"><a href="basicfunctiuon.html#cb141-12" aria-hidden="true"></a><span class="co">## [1] &quot;1&quot;                 &quot;0.5&quot;              </span></span>
-<span id="cb141-13"><a href="basicfunctiuon.html#cb141-13" aria-hidden="true"></a><span class="co">## [3] &quot;0.333333333333333&quot; &quot;0.25&quot;             </span></span>
-<span id="cb141-14"><a href="basicfunctiuon.html#cb141-14" aria-hidden="true"></a><span class="co">## [5] &quot;0.2&quot;</span></span>
-<span id="cb141-15"><a href="basicfunctiuon.html#cb141-15" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb141-16"><a href="basicfunctiuon.html#cb141-16" aria-hidden="true"></a>b.df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">24</span>), <span class="dt">nrow =</span> <span class="dv">6</span>, <span class="dt">byrow =</span> T))</span>
-<span id="cb141-17"><a href="basicfunctiuon.html#cb141-17" aria-hidden="true"></a><span class="kw">is.matrix</span>(b.df)</span>
-<span id="cb141-18"><a href="basicfunctiuon.html#cb141-18" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
-<span id="cb141-19"><a href="basicfunctiuon.html#cb141-19" aria-hidden="true"></a>b.mat &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(b.df)</span>
-<span id="cb141-20"><a href="basicfunctiuon.html#cb141-20" aria-hidden="true"></a>b.mat</span>
-<span id="cb141-21"><a href="basicfunctiuon.html#cb141-21" aria-hidden="true"></a><span class="co">##      V1 V2 V3 V4</span></span>
-<span id="cb141-22"><a href="basicfunctiuon.html#cb141-22" aria-hidden="true"></a><span class="co">## [1,]  1  2  3  4</span></span>
-<span id="cb141-23"><a href="basicfunctiuon.html#cb141-23" aria-hidden="true"></a><span class="co">## [2,]  5  6  7  8</span></span>
-<span id="cb141-24"><a href="basicfunctiuon.html#cb141-24" aria-hidden="true"></a><span class="co">## [3,]  9 10 11 12</span></span>
-<span id="cb141-25"><a href="basicfunctiuon.html#cb141-25" aria-hidden="true"></a><span class="co">## [4,] 13 14 15 16</span></span>
-<span id="cb141-26"><a href="basicfunctiuon.html#cb141-26" aria-hidden="true"></a><span class="co">## [5,] 17 18 19 20</span></span>
-<span id="cb141-27"><a href="basicfunctiuon.html#cb141-27" aria-hidden="true"></a><span class="co">## [6,] 21 22 23 24</span></span>
-<span id="cb141-28"><a href="basicfunctiuon.html#cb141-28" aria-hidden="true"></a>b.mat &lt;-<span class="st"> </span><span class="kw">as.vector</span>(b.mat)</span>
-<span id="cb141-29"><a href="basicfunctiuon.html#cb141-29" aria-hidden="true"></a>b.mat</span>
-<span id="cb141-30"><a href="basicfunctiuon.html#cb141-30" aria-hidden="true"></a><span class="co">##  [1]  1  5  9 13 17 21  2  6 10 14 18 22  3  7 11 15 19 23</span></span>
-<span id="cb141-31"><a href="basicfunctiuon.html#cb141-31" aria-hidden="true"></a><span class="co">## [19]  4  8 12 16 20 24</span></span></code></pre></div>
+<span id="cb141-12"><a href="basicfunctiuon.html#cb141-12" aria-hidden="true"></a><span class="co">## [1] &quot;1&quot;                 &quot;0.5&quot;               &quot;0.333333333333333&quot;</span></span>
+<span id="cb141-13"><a href="basicfunctiuon.html#cb141-13" aria-hidden="true"></a><span class="co">## [4] &quot;0.25&quot;              &quot;0.2&quot;</span></span>
+<span id="cb141-14"><a href="basicfunctiuon.html#cb141-14" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb141-15"><a href="basicfunctiuon.html#cb141-15" aria-hidden="true"></a>b.df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">24</span>), <span class="dt">nrow =</span> <span class="dv">6</span>, <span class="dt">byrow =</span> T))</span>
+<span id="cb141-16"><a href="basicfunctiuon.html#cb141-16" aria-hidden="true"></a><span class="kw">is.matrix</span>(b.df)</span>
+<span id="cb141-17"><a href="basicfunctiuon.html#cb141-17" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb141-18"><a href="basicfunctiuon.html#cb141-18" aria-hidden="true"></a>b.mat &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(b.df)</span>
+<span id="cb141-19"><a href="basicfunctiuon.html#cb141-19" aria-hidden="true"></a>b.mat</span>
+<span id="cb141-20"><a href="basicfunctiuon.html#cb141-20" aria-hidden="true"></a><span class="co">##      V1 V2 V3 V4</span></span>
+<span id="cb141-21"><a href="basicfunctiuon.html#cb141-21" aria-hidden="true"></a><span class="co">## [1,]  1  2  3  4</span></span>
+<span id="cb141-22"><a href="basicfunctiuon.html#cb141-22" aria-hidden="true"></a><span class="co">## [2,]  5  6  7  8</span></span>
+<span id="cb141-23"><a href="basicfunctiuon.html#cb141-23" aria-hidden="true"></a><span class="co">## [3,]  9 10 11 12</span></span>
+<span id="cb141-24"><a href="basicfunctiuon.html#cb141-24" aria-hidden="true"></a><span class="co">## [4,] 13 14 15 16</span></span>
+<span id="cb141-25"><a href="basicfunctiuon.html#cb141-25" aria-hidden="true"></a><span class="co">## [5,] 17 18 19 20</span></span>
+<span id="cb141-26"><a href="basicfunctiuon.html#cb141-26" aria-hidden="true"></a><span class="co">## [6,] 21 22 23 24</span></span>
+<span id="cb141-27"><a href="basicfunctiuon.html#cb141-27" aria-hidden="true"></a>b.mat &lt;-<span class="st"> </span><span class="kw">as.vector</span>(b.mat)</span>
+<span id="cb141-28"><a href="basicfunctiuon.html#cb141-28" aria-hidden="true"></a>b.mat</span>
+<span id="cb141-29"><a href="basicfunctiuon.html#cb141-29" aria-hidden="true"></a><span class="co">##  [1]  1  5  9 13 17 21  2  6 10 14 18 22  3  7 11 15 19 23  4  8 12 16 20 24</span></span></code></pre></div>
 
 </div>
 </div>

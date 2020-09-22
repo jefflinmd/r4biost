@@ -101,7 +101,7 @@ https://rmarkdown.rstudio.com/ 等文件.
 首先須注意的是, 在 {R} 程式語言所使用的文字, 大小寫是有差別的.
 直接在 {R} 或 RStudio console 視窗輸入指令都會得到相同的結果.
 ```{r, eval=FALSE}
-1+2         # calculator
+1 + 2       # calculator
 log(3.14)   # log function
 x = 1 + 2   # one plus two assign to x
 x           # print x
@@ -118,7 +118,7 @@ factorial(4)
 sin(pi)
 x.vec <- c(2:5)
 exp(x.vec)
-matrix(c(1:6), nrows=2, ncols=3)
+matrix(c(1:6), nrow = 2, ncol = 3)
 weight = c(50, 45, 67, 53)
 mean(weight)
 sd(weight)
@@ -153,7 +153,7 @@ demo(rgl)                   # Interact using your mouse.
 
 {R} 對於未有統計專業背景的初學者是困難學習的語言,
 初學者學習 {R} 語言, 類似小孩學習語言,
-通常須 0.5$\sim$1.0 年以上,
+通常須 0.5 -- 1.0 年以上,
 初學者請先直接學習現成實用的簡單指令,
 初學者請不要先學太多抽像語法與閱讀抽像說明,
 若已經學習其它一種程式語言相對較容學會易另一種程式語言.
@@ -238,7 +238,7 @@ diff mean pi range rank var
 (**expression**),
 例如,
 ```
-1+2
+1 + 2
 log(x)
 mean(x)
 ```
@@ -249,8 +249,8 @@ mean(x)
 (**assignment**),
 例如,
 ```
-x <- 1+2
-x = 4-5
+x <- 1 + 2
+x = 4 - 5
 ```
 當一個 {R} 程式需要使用者輸入指令時,
 它會顯示
@@ -276,11 +276,10 @@ options(prompt = "R>")
 (**assignment symbol**)
 通常是 `<- ``, 一個小於符號和一個短線符號組成,
 例如, `x <- 1 + 2`, 讀成
-`x` ``得到'' $(1 + 2)$.
+`x` **得到** $(1 + 2)$.
 在 {R} 中可以如傳統的程式語言或統計軟體,
 使用 `=`
-(等號) 為
-**指派運算符號**,
+(等號) 為 **指派運算符號**,
 例如, `x = 1 + 2`,
 但在 {R} 中,
 `=`
@@ -327,7 +326,7 @@ x <- 1 + 2
 y <- 3 + 4
 ```
 數個指令也可以放入一組大括弧內,
-``{ \; }``,
+`{ ; }`,
 數個指令放在一起,
 構成一個
 **複合運算式**
@@ -378,7 +377,7 @@ x - 1
 可以查詢與顯示當前保存在 {R} 環境中的物件名稱.
 ```
 ## show objects
-object()  # shiow all objects
+objects() # shiow all objects
 ls()      # show all obkects
 ls(x, y)  # show x and y object
 ```
@@ -542,7 +541,7 @@ y.vec = rnorm(50)
 plot(x.vec, y.vec)              
 ```` ``` ````                
 使用 R Notebook` 或是 `R Markdown` 的好處是可以將報告文字與統計分析結果, 表格或圖片整合,
-不用再 copy $\rightarrow$ paste 到 word 文件上.
+不用再 `copy` $\rightarrow$ `paste` 到 word 文件上.
 當資料增加或修正, 僅要按下上方 `knit`, 即可再次自動排版產生正確的分析結果, 表格或圖片.
 讀者可利用 R Notebook` 或是 `R Markdown` 的模板,
 按下上方 `knit` 檢視生成的報告.
@@ -627,7 +626,7 @@ log(x = x.vec, base = 2)
 ## 套件 Packages
 
 特定的統計分析方法許多專用的函式集合成一組.
-**套件}**
+**套件**
 (**package**).
 許多學者針對特定分析, 寫成專用的 {R} 函式,
 學者常將這些特定的統計分析方法專用的函式集合成一組

@@ -320,7 +320,7 @@ dd %>%
 選擇 `treat`, `cellcode`, `censor` 等變數.
 ```{r message=FALSE}
 dd %>% 
-  arrange(treat, cellcode, censor)
+  select(treat, cellcode, censor)
 ```
 
 
