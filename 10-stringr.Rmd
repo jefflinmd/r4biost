@@ -1,0 +1,490 @@
+# 文字與字串資料處理 {#stringr}
+
+傳統上, 統計人員較少直接處裡文字或字串資料,
+多數時候是由資料管理人元處理後, 轉換成數值資料, 然後交由統計人員進行後續分析.
+由於大數據時代來臨包含者多樣性的資料型態,
+統計人員必須必須直接處裡文字或字串資料的機會也越來越多.
+{R} 內有許多函數可以處理文字型態的資料物件 或 文字資料 (Character Data),
+常用之文字函式有
+`paste()`,
+`substr()`,
+`substring()`,
+`grep()`,
+`gsub()`,
+`strsplit()` 等.
+{R} 套件 `stringr` 有更多處理文字或字串資料函式.
+
+
+
+## 文字與字串資料基礎
+
+輸入文字遠比數字複雜, 必須考慮大小寫, 空格或 `Tab`, 
+單引號或雙引號, 特殊符號與字元等等.
+{R} 輸入特殊符號的顯示與實際想要輸入的特殊符號有些差別.
+```{r}
+st1 <- "This is a book"
+st1
+st2 <- 'To include a double "quote" inside a string, use single quotes'
+st2
+st3 <- "To include a single 'quote' inside a string, use double quotes"
+st3
+double_quote <- "\"" # or '"'
+double_quote
+single_quote <- '\'' # or "'"
+single_quote
+```
+類似情形, 若要輸入反斜線 `\`, 則須輸入連續 2 個反斜線: `\\`.
+```{r}
+backslash <- c("\\")
+backslash
+```
+{R} 輸入特殊符號反斜線 `\` 的顯示 `"\\"
+與實際想要輸入的單一個反斜線有些差別 `\`.
+若要呈現實際想要輸入的特殊符號,
+可使用函式 `writeLines()`.
+```{r}
+x.char <- c("\"", "\\")
+x.char
+writeLines(x.char)
+```
+利用指令 `?'"'` 或 `?"'"` 可以得到特殊符號的輸入方式.
+
+* `\n`	newline                                                   
+* `\r`	carriage return                                           
+* `\t`	tab                                                       
+* `\b`	backspace                                                 
+* `\a`	alert (bell)                                              
+* `\f`	form feed                                                 
+* `\v`	vertical tab                                              
+* `\\`	backslash `\`                                               
+* `\'`	ASCII apostrophe `'`                                        
+* `\"`	ASCII quotation mark `"`                                    
+* `\`\` 	ASCII grave accent (backtick) \`
+* `\nnn` character with given octal code (1, 2 or 3 digits)       
+* `\xnn` character with given hex code (1 or 2 hex digits)        
+* `\unnnn` Unicode character with given code (1--4 hex digits)    
+* `\Unnnnnnnn` Unicode character with given code (1--8 hex digits)
+
+```{r}
+x.utf <- "\u00b5"
+x.utf
+```
+
+
+## 套件 stringr
+
+{R} base 有許多函式處理文字或字串, 但函式的引數並不具有一致性, 容易混淆,
+因此 `tidyverse` 系列的套件 `stringr` 內的函式都以 `str_` 為起始,
+例如, `str_length()` 回傳文字向量內的文字字數.
+```{r}
+library(stringr)
+str_length(c("a", "Biostatistics", "Medical Statistics", "\'\b\t", NA))
+```
+
+## 合併文字或字串 str_c()
+
+函式 `str_c()` 可以合併文字或字串, 類似 {R} base 函式 `paste()`.
+使用引數 `sep` 設定合併的中間字元.
+```{r}
+str_c("medical", "statistics")
+str_c("medical", "statistics", sep = " ")
+str_c("medical", "statistics", sep = "-")
+str_c("medical", "statistics", sep = " + ")
+str_c("|-", "medical", "statistics", "-|")
+```
+若是遇到缺失值 NA, 則仍回傳 NA,
+若要改變遇到缺失值 NA, 回傳列印 `NA`,
+可以使用加用函式 `str_replace_na()`.
+```{r}
+x.char <- c("bio", NA, "statistics")
+str_c("pre-", x.char, "-end")
+str_c("pre-", str_replace_na(x.char), "-end")
+```
+若要合併 2 個字串向量為單一字串, 可以使用引數 `collpse`.
+```{r}
+char.vec <- c("I", "love", "biostatistics")
+str_c(char.vec, collapse = ", ")
+str_c(char.vec, collapse = "+")
+str_c(char.vec, collapse = " ")
+str_c(char.vec, sep = " ")
+str_c("I", "love", "biostatistics", sep = " ")
+```
+
+## 取出文字或字串向量中的部分元素 str_sub()
+
+函式 `str_sub()` 可以取出取出文字或字串向量中元素的部分文字.
+```{r eval=FALSE}
+str_sub(string, start = 1L, end = -1L)
+```
+引數 `start` 與 `end` 分別為向量中元素內文字之起始位置與結束位置.
+即使向量長度不足仍會回傳.
+```{r}
+char.vec <- c("I", "love", "medical", "statistics")
+str_sub(char.vec, start = 1, end = 3)
+```
+
+## 語言設定地區與文字大小寫排序
+
+不同地區的文字, 可能有類似文字,
+在大小寫轉換實常會出現轉換錯誤,
+若要確保大小寫轉換或排序正確, 
+套件 `stringr` 內的函式可改設定 {R} 程式使用文字的地區.
+例如, 大小寫轉換函式
+`str_to_lower(), `str_to_upper()` 或 `str_to_title()` 的使用.
+```{r}
+char.vec <- c("I", "Love", "Medical", "Statistics")
+str_to_upper(char.vec)
+str_to_lower(char.vec)
+str_to_title(str_to_upper(char.vec))
+str_to_title(str_to_lower(char.vec))
+```
+{R} base 函式 `sort()` 與 `order()` 定 {R} 程式登入使用文字的地區
+
+套件 `stringr` 內的函式 `str_sort()` 與 `str_order(),
+可以使用引數 `locale` 設定使用文字的地區.
+```{r}
+veg.vec <- c("apple", "eggplant", "banana")
+sort(veg.vec)
+order(veg.vec)
+str_sort(veg.vec, locale = "en")  # English
+str_sort(veg.vec, locale = "haw") # Hawaiian
+```
+
+## 移除空白, 加入空白, 截斷文字 `str_trim()` 與 `str_pad()`
+
+套件 `stringr` 內的函式 `str_trim()` 與 `str_pad()`
+可以對文字或字串向量內的首尾之空白 (white space) 移除,
+或是加入.
+```{r eval=FALSE}
+str_trim(string, side = c("both", "left", "right"))
+str_pad(string, width, side = c("left", "right", "both"), pad = " ")
+str_trunc(string, width, side = c("right", "left", "center"), ellipsis = "...")
+```
+引數 `both`, `left`, `right` 分別處理在首尾二端, 左端, 右端之空白.
+`width` 為加入空白後字串的長度, `pad` 為替代加入空白的文字或符號.
+```{r}
+veg.vec <- c("apple   ", "   eggplant   ", "   banana")
+str_trim(veg.vec, side = c("both"))
+str_trim(veg.vec, side = c("left"))
+str_trim(veg.vec, side = c("right"))
+veg.vec <- c("apple ", " eggplant ", " banana")
+str_pad("a", width = 15, side = c("both"), pad = " ")
+str_pad("a", width = 15, side = c("both"), pad = c("_"))
+str_pad(veg.vec, width = 15, side = c("both"))
+str_pad(veg.vec, width = 15, side = c("left"))
+str_pad(veg.vec, width = 15, side = c("right"))
+str_pad(veg.vec, width = 15, side = c("both"), pad = c("_"))
+char.vec <- c("I love biostatistics")
+str_trunc(char.vec, width = 10, side = c("center"))
+str_trunc(char.vec, width = 10, side = c("left"))
+str_trunc(char.vec, width = 10, side = c("right"))
+```
+
+
+## 尋找特定形式文字或字串
+
+
+文字或字串處理中一項重要的工作是尋找特定形式文字或字串 (pattern),
+然後進行 detect (偵測), locate (確認位置), 
+extract (取出), match (配對), replace (替代置換) 與 split (分割).
+
+
+### 偵測函式 `str_detect()`
+
+套件 `stringr` 內的函式 `str_detect()` 偵測字串向量是否包含特定形式文字,
+回傳邏輯向量.
+這與 {R} base 函式 `grep(pattern, x)` 類似.
+函式 `str_count()` 計算字串內配對成功的次數.
+```{r eval=FALSE}
+str_detect(string, pattern, negate = FALSE)
+str_count(string, pattern = "")
+```
+引數 `pattern` 定義所要尋找特定形式的文字,
+若 ` negate = TRUE` 同時回傳沒有配對成功的邏輯向量.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_detect(char.vec, pattern = "statistics", negate = FALSE)
+str_detect(char.vec, pattern = "statistics", negate = TRUE)
+str_detect(char.vec, pattern = "ti", negate = FALSE)
+str_detect(char.vec, pattern = "function", negate = FALSE)
+#
+str_count(char.vec, pattern = "ti")
+str_count(char.vec, pattern = "b")
+```
+
+### 確認位置函式 `str_detect()` 
+
+函式 `str_locate()` 尋找配對成功的字串之第 1 次位置,
+回傳矩陣, 包含起始以末端的位置.
+這與 {R} base 函式 `regexpr()` 與 `gregexpr()` 類似.
+```{r eval=FALSE}
+str_locate(string, pattern)
+str_locate_all(string, pattern)
+```
+另外函式 `str_locate_all()` 尋找配對成功的字串之所有位置,
+回傳列表.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_locate(char.vec, pattern = "ti")
+str_locate_all(char.vec, pattern = "ti")
+```
+
+
+### 確認索引函式 `str_subset()` 與 `str_which()` 
+
+函式 `str_subset()` 尋找字串向量內配對成功的之第 1 次的元素內容,
+而函式 `str_which()` 尋找字串向量內配對成功的之第 1 次索引 (index).
+```{r eval=FALSE}
+str_subset(string, pattern, negate = FALSE)
+str_which(string, pattern, negate = FALSE)
+```
+若引數 ` negate = TRUE` 回傳沒有配對成功的元素內容或索引.
+函式 `str_subset()` 與函式 `x[str_detect(x, pattern)]` 類似功能,
+等同於 R base 函式 `grep(pattern, x, value = TRUE)`. 
+而函式 `str_which()` 與函式 `which(str_detect(x, pattern))` 類似功能,
+等同於 R base 函式 `grep(pattern, x)`,
+如同函式 `str_detect()` 同於 R base 函式 `grepl(pattern, x)`.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_subset(char.vec, pattern = "ti")
+str_which(char.vec, pattern = "ti")
+```
+
+### 取出函式 `str_extract()`
+
+函式 `str_extract()` 尋找配對成功的字串之第 1 次位置,
+回傳字串向量. 
+```{r eval=FALSE}
+str_extract(string, pattern)
+str_extract_all(string, pattern, simplify = FALSE)
+```
+另外函式 `str_extract_all()` 尋找配對成功的字串之所有位置,
+回傳所有字串向量形成列表. 
+引數 `simplify = TRUE` 簡化成文字矩陣.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_extract(char.vec, pattern = "ti")
+str_extract_all(char.vec, pattern = "ti")
+```
+
+
+### 配對函式 `str_match()`
+
+函式 `str_match()` 使用在群組尋找特定形式文字或字串,
+若尋到找配對成功的字串之第 1 次位置,
+回傳文字矩陣,第一欄位為完全配對成功的文字,
+其餘欄位為群組內個別配對成功的文字.
+```{r eval=FALSE}
+str_match(string, pattern)
+str_match_all(string, pattern)
+```
+另外函式 `str_match_all()` 尋找配對成功的字串之所有位置.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_match(char.vec, pattern = "(a|ti)")
+str_match_all(char.vec, pattern = "(a|ti)")
+```
+
+### 替代置換函式 `str_replace()`
+
+函式 `str_match()` 使用在群組尋找特定形式文字或字串,
+若尋找到配對成功的字串之第 1 次位置,
+則使用其他特定字串替代置換.
+```{r eval=FALSE}
+str_replace(string, pattern, replacement)
+str_replace_all(string, pattern, replacement)
+```
+引數 `replacement` 設定新的替代字串置換原有尋找特定形式文字或字串.
+另外函式 `str_replace_all()` 尋找配對成功的字串之所有位置,
+同時使用其他特定字串替代置換.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_replace(char.vec, pattern = "ti", replacement = "--")
+str_replace_all(char.vec, pattern = "b", replacement = "+++")
+```
+
+
+
+### 分割函式 `str_split()`
+
+函式 `str_split()` 使用在群組尋找特定形式文字或字串,
+若尋找到配對成功的字串之第 1 次位置,
+則從特定形式文字或字串分割字串向量,
+回傳分割結果為列表物件.
+```{r eval=FALSE}
+str_split(string, pattern, n = Inf, simplify = FALSE)
+str_split_fixed(string, pattern, n)
+str_split_n(string, pattern, n)
+```
+其中引數 `n` 設定回傳物件的數目, 
+`simplify = TRUE` 回傳物件簡化成文字矩陣.
+另外函式 `str_split_fixed()` 
+回傳物件簡化成文字矩陣且欄位 (column) 數目為 `n`.
+`str_split_n()` 回傳物件簡化成文字向量, 長度為 `n`.
+```{r}
+char.vec <- c("a b c", "d e", "bio-statistics required-courses")
+str_split(char.vec, pattern = " ", n = Inf, simplify = FALSE)
+str_split(char.vec, pattern = " ", n = Inf, simplify = TRUE)
+str_split_fixed(char.vec, pattern = " ", n = 2)
+str_split_fixed(char.vec, pattern = "-", n = 2)
+```
+
+
+
+
+
+## 群組尋找特定形式的文字與字串 
+
+有些時候在尋找特定形式的文字與字串, 須要尋找不只一種特定的形式,
+此時須藉由 `alternate`, `anchor` 與 `look around` 概念處理.
+例如, 同時尋找 `b` 或 `ti`, 可以輸入 `b|ti`.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_replace(char.vec, pattern = "b|ti", replacement = "--")
+str_replace_all(char.vec, pattern = "b|ti", replacement = "+++")
+```
+
+`anchor` 起始符號 `^` 可以尋找字串的起始具有特定形式,
+尾端符號 `$` 可以尋找字串的尾端具有特定形式.
+例如,  `^b`,  尋找字串的起始具有 `b`,
+或 `n$`, 尋找字串的尾端具 `n`.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_replace(char.vec, pattern = "^b", replacement = "--")
+str_replace_all(char.vec, pattern = "n$", replacement = "+++")
+```
+
+
+有些時候需要尋找字串前後具有特定形式的文字與字串,
+例如, 尋找在 `ti` 之前的字元, 在 `p` 之後的字元等等.
+使用小括號 `()` 代表特定形式的前後順序.
+輸入 `a(?=c)` 表示在 `a` 之後有 `c` 字元,
+輸入 `a(?!c)` 表示在 `a` 之後無 `c` 字元,
+輸入 `(?<=b)a` 表示在 `a` 之前有 `b` 字元,
+輸入 `(?<!b)a` 表示在 `a` 之前無 `b` 字元.
+```{r}
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_replace(char.vec, pattern = "t(?=i)", replacement = "--")
+str_replace(char.vec, pattern = "t(?!i)", replacement = "--")
+str_replace(char.vec, pattern = "(?<=i)o", replacement = "--")
+str_replace_all(char.vec, pattern = "(?<=t)i", replacement = "--")
+str_replace(char.vec, pattern = "(?<!t)i", replacement = "--")
+str_replace_all(char.vec, pattern = "(?<!t)i", replacement = "--")
+```
+
+
+## 尋找連續重覆特定形式的文字與字串
+
+一個字串可能不只一個特定形式的文字與字串連續重覆出現,
+套件 `stringr` 尋找特定形式的文字與字串, 可以合併考量連續重覆出現次數.
+其中 `{}` 內不可有空格.
+`stringr` 在群組 `()` 之後加上 `\\1`, `\\2`, ... 等, 
+如同 
+可以設定尋找連續重覆出現次數.
+
+| stringr 輸入 | 意義         |
+|-----------|-----------------|
+| a?        | zero or one     |
+| a\*       | zero or more    |
+| a\+       | one or more     |
+| a\{n\}    | exactly n       |
+| a\{n, \}  | n or more       |
+| a\{n, m\} | between n and m |
+
+
+```{r}
+x.vec <- c(".a.aa.aaa.aaaa")
+str_replace(x.vec, pattern = "a?", replacement = "-")
+str_replace(x.vec, pattern = "a*", replacement = "-")
+str_replace(x.vec, pattern = "a+", replacement = "-")
+str_replace(x.vec, pattern = "a{2}", replacement = "-")
+str_replace(x.vec, pattern = "a{2,}", replacement = "-")
+str_replace(x.vec, pattern = "a{2,3}", replacement = "-")
+char.vec <- c("statistics", "biostatistics", 
+              "probability", "distribution")
+str_replace(char.vec, pattern = "i?", replacement = "-")
+str_replace(char.vec, pattern = "i*", replacement = "-")
+str_replace(char.vec, pattern = "i+", replacement = "-")
+str_replace(char.vec, pattern = "i{2}", replacement = "-")
+str_replace(char.vec, pattern = "i{2}", replacement = "-")
+str_replace(char.vec, pattern = "i{2,3}", replacement = "-")
+```
+
+
+## 正規表示文字與字串 (萬用字元)
+
+
+{R} 尋找特定形式的文字與字串, 可以使用程式語言通用的正規表示 (regular expression),
+在使用套件 `stringr` 輸入時有些差異, 以下表摘要說明.
+
+| stringr 輸入| 正規表示 | 真實的文字與字串                        |         
+|-------------|------|---------------------------------------------|
+| \\\\\.      | \\\. | .                                          |
+| \\\\\!      | \\\! | !                                          |
+| \\\\?       | \\?  | ?                                           |
+| \\\\\\\\    | \\\\ | \\                                          |
+| \\\\(      | \\( | (                                          |
+| \\\\)      | \\) | )                                          |
+| \\\\\{      | \\\{ | {                                          |
+| \\\\\}      | \\\} | }                                          |
+| \\\\n       | \\n  | new line (return)                         |
+| \\t         | \\t  | tab                                         |
+| \\\\s       | \\s  | any whitespace (\\S for non-whitespaces) |
+| \\\\d       | \\d  | any digit (\\D for non-digits)           |
+| \\\\w       | \\w  | any word character (\\W for non-word chars) |
+| \\\\b       | \\b  | word boundaries                             |
+|\\\\k        |\\k  | k = integer, repeated number             |
+[:digit:] |      | digits                                      |
+| [:alpha:] |      | letters                                     |
+| [:lower:] |      | lowercase letters                           |
+| [:upper:] |      | uppercase letters                           |
+| [:alnum:] |      | letters and numbers                         |
+| [:punct:] |      | punctuation                                 |
+| [:graph:] |      | letters, numbers, and punctuation           |
+| [:space:] |      | space characters (i.e. \\s)             |
+| [:blank:] |      | space and tab (but not new line)          |
+| \.          |      | every character except a new line           |
+
+Table 3: 正規表示文字與字串 (萬用字元)
+
+
+
+```{r}
+char.vec <- c("statistics.123", "biostatistics.a.b.c", 
+              "probability.a.c", "distribution.a c")
+str_replace(char.vec, pattern = ".i.", replacement = "-")
+str_replace_all(char.vec, pattern = ".i.", replacement = "-")
+str_replace(char.vec, pattern = "y\\.a", replacement = "-")
+str_replace(char.vec, pattern = "a[.]c", replacement = "-")
+str_replace(char.vec, pattern = "a[ ]", replacement = "-")
+str_replace(char.vec, pattern = "b[ab]+", replacement = "-")
+y.vec <- c("set", "sat", "sit", "sout")
+str_replace(y.vec, pattern = "s(a|i)t", replacement = "-")
+fruits.vec <- c("banana", "coconut", "cucumber", "jujube", "papaya", "berry")
+str_replace(fruits.vec, pattern = "(..)\\1", replacement = "-")
+str_replace(fruits.vec, pattern = "(.)(.)\\2\\1", replacement = "-")
+z.vec <- c("3 house", "4 cars", "5 dogs")
+str_replace_all(z.vec, c("3" = "three", "4" = "four", "5" = "five"))
+sent.vec <- sentences[1:5]
+sent.vec
+sent.vec %>% str_subset(pattern = "(a|the) ([^ ]+)") %>%
+  str_extract(pattern = "(a|the) ([^ ]+)")
+sent.vec %>% str_subset(pattern = "(a|the) ([^ ]+)") %>%
+  str_match(pattern = "(a|the) ([^ ]+)")
+sent.vec %>% 
+  str_replace("([^ ]+) ([^ ]+) ([^ ]+)", "\\1 \\3 \\2")
+```
+
+
+
+
+

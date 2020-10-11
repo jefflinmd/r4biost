@@ -83,7 +83,7 @@ Table: 原始資料檔案 DMTKRtabsep.txt 與 DMTKRblanksep.txt: 以純文字空
 * 第 1 列 (橫列, row), 可以是變數的 **變數名** (**variable names**)    
 * 第 1 列 (row), 有時是變數的 **欄位標籤** (**column label**),
 而第 2 列 (row) 為變數名.        
-* 每個變數各自形成 1 欄 (縱行, row).        
+* 每個變數各自形成 1 欄 (縱行, column).        
 * 第 1 欄 (縱行, column) 為個體辨識碼 (label, identification), 或稱 **列位標籤** (**row label**).          
 * 每一欄 (變數) 的變數值形式可以是實數, 文字, 邏輯變數.      
 * 第一欄 (column) 有時候是 **列位標籤** (**row label**).
@@ -97,10 +97,6 @@ Table: 原始資料檔案 DMTKRtabsep.txt 與 DMTKRblanksep.txt: 以純文字空
 
 
 
-* 變數值通常為數字,
-整數, 邏輯值或文字,
-儘量避免直接輸入文字,
-因為大小寫, 符號, 空格的輸入經常造成錯誤.
 
 * 若原始資料沒有 變數名 或 標籤,
 {R} 讀入資料時可以同時輸入變數名,
@@ -143,7 +139,7 @@ Table: 原始資料檔案 DMTKRtabsep.txt 與 DMTKRblanksep.txt: 以純文字空
 (**row name**).
 * 其餘的列 (row), 是個別變數的觀測數值.
 * 變數值之間常以 **空白鍵** (<space>)  (blank space) 分開,
-也可以其他特定符號 'Tab` 分隔.
+也可以其他特定符號 `Tab` 分隔.
 * 若是變數資料是文字列型, 通常以雙引號包含,
 但有時例外, 需視資料原始儲存軟體的設定.
 * 純文字 ASCII 格式, 變數值以空格分開的副檔名通常為
@@ -174,6 +170,8 @@ Rblanksep.df = read.table("C:/RData/DMTKRblanksep.txt",
                           dec = ".")
 head(Rblanksep.df)
 str(Rblanksep.df)
+```
+```{r eval = FALSE}
 ## complete read.table
 ## DMTKRblanksep.txt = " " single space separate
 Rblanksep.df = read.table("C:/RData/DMTKRblanksep.txt",
@@ -185,7 +183,7 @@ Rblanksep.df = read.table("C:/RData/DMTKRblanksep.txt",
                           # col.names,
                           as.is = TRUE,
                           # as.is = !stringsAsFactors,
-                          na.strings = c(".", "NA"))
+                          na.strings = c("", ".", "NA"))
 head(Rblanksep.df)
 str(Rblanksep.df)
 ```

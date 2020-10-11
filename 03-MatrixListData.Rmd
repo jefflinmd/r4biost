@@ -201,12 +201,12 @@ m.mat[c("row1"), c("C1", "C3")]
 `drop = FALSE`.
 ```{r}
 ## dimension reduction
-x.mat <- matrix(1:8, 2, 4)
+x.mat <- matrix(1:8, nrow = 2, ncol = 4)
 x.mat[1,] # reduces to a vector
 x.mat[1, , drop = FALSE] # remains as a matrix
 ```
 
-### 向量與矩陣的合併: rbind() 與 cbind()
+## 向量與矩陣的合併: rbind() 與 cbind()
 
 在 {R} 中向量並不具有
 **沒有維度**
@@ -254,7 +254,7 @@ cbind(z.mat, y.vec) # warning
 
 
 
-### 陣列物件 Array
+## 陣列物件 Array
 
 
 **陣列**
@@ -409,7 +409,7 @@ x.list
 若一個名字為 `List.Name` 的列表物件,
 要取得 list 其中的 第 `i.number` 成份,
 須使用
-`List.Name[[3]]`.
+`List.Name[[i]]`.
 注意, 在列表物件的下標操作,
 `[[i.number]]`
 與 `[i.number]`
@@ -437,12 +437,12 @@ xyz.list[3]
 會與使用函式
 `List.Name[[comp.name]]` 取得相同結果.
 在
-`List.Name\$comp.name`
+`List.Name$comp.name`
 或
 `List.Name[[comp.name]]`
 加上 **中括號** 等,
 可以取得
-`List.Name\$comp.name` 中的元素.
+`List.Name$comp.name` 中的元素.
 `[[i.number]]` 可以適用在計算指標,
 但 \$ 僅能使用在有設定的成分名的列表.
 若列表的單一成份內有多維度物件
@@ -503,8 +503,7 @@ xyz.list[["score"]][2, 3]
 
 {R} 可以使用函式
 `data.frame()`
-將資料儲存成
-資料框架物件.
+將資料儲存成資料框架物件.
 輸入時須注意每個變數之觀測值數目 (向量長度) 都必須相等,
 若有缺失值, 須先將缺失值符號輸入在向量內.
 ```{r}
@@ -539,7 +538,7 @@ x.df$disease
 操作,
 如同矩陣的下標與索引操作,
 可以輸入正整數, 負數, 整數向量, 欄位名等等.
-矩陣具有 $2$-維度下標向量,
+矩陣具有 2-維度下標向量,
 例如, 可以使用
 **中括號**
 `dataframe.name[i, j]`
@@ -561,22 +560,22 @@ x.df$disease
 若一個名為 `data.Name` 的資料框架,
 要取的其中的 第 ``i.number'' 變數 (成份),
 須使用 
-`data.Name[[3]]`.
+`data.Name[[i]]`.
 注意, 在資料框架物件的下標操作,
 `[[i.number]]`
 與 `[i.number]`
 是不一樣的.
 若資料框架中的變數命名為 `variable.name`,
 可以使用函式 
-`dataframe.Name\$variable.name` 取得變數資料,
+`dataframe.Name$variable.name` 取得變數資料,
 會與使用函式 
 `dataframe.Name[[variable.name]] 取得相同結果.
 在
-`dataframe.Name\$variable.name`
+`dataframe.Name$variable.name`
 或
 `dataframe.Name[[variable.name]]`
 加上 **中括號**
-`[i]` 等,
+`[k]` 等,
 可以取得
 `dataframe.Name\$variable.name` 中的元素. 
 `[[i.number]]` 可以適用在計算指標,

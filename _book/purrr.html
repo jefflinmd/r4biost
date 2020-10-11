@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 資料迭代處理 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 9 資料迭代處理 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 資料迭代處理 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 9 資料迭代處理 | R 資料科學與統計" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 資料迭代處理 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 9 資料迭代處理 | R 資料科學與統計" />
+  
+
+<meta name="author" content="Jeff Lin" />
+
+
+<meta name="date" content="2020-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basictidy.html"/>
+<link rel="next" href="stringr.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>2</b> 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector.html"><a href="vector.html#向量"><i class="fa fa-check"></i><b>2.1</b> 向量</a></li>
+<li class="chapter" data-level="2.2" data-path="vector.html"><a href="vector.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a></li>
+<li class="chapter" data-level="2.3" data-path="vector.html"><a href="vector.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.3</b> 向量產生函式 <code>c()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="vector.html"><a href="vector.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.4</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.5" data-path="vector.html"><a href="vector.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.5</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector.html"><a href="vector.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.6</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.7" data-path="vector.html"><a href="vector.html#向量邏輯操作"><i class="fa fa-check"></i><b>2.7</b> 向量邏輯操作</a></li>
+<li class="chapter" data-level="2.8" data-path="vector.html"><a href="vector.html#向量元素命名"><i class="fa fa-check"></i><b>2.8</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.9" data-path="vector.html"><a href="vector.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.9</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.10" data-path="vector.html"><a href="vector.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.10</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.11" data-path="vector.html"><a href="vector.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.11</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataobject.html"><a href="dataobject.html"><i class="fa fa-check"></i><b>3</b> 資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataobject.html"><a href="dataobject.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dataobject.html"><a href="dataobject.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dataobject.html"><a href="dataobject.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dataobject.html"><a href="dataobject.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a></li>
+<li class="chapter" data-level="3.3" data-path="dataobject.html"><a href="dataobject.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.3</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.4" data-path="dataobject.html"><a href="dataobject.html#陣列物件-array"><i class="fa fa-check"></i><b>3.4</b> 陣列物件 Array</a></li>
+<li class="chapter" data-level="3.5" data-path="dataobject.html"><a href="dataobject.html#列表物件-list"><i class="fa fa-check"></i><b>3.5</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="dataobject.html"><a href="dataobject.html#列表函式-list"><i class="fa fa-check"></i><b>3.5.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.5.2" data-path="dataobject.html"><a href="dataobject.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.5.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="dataobject.html"><a href="dataobject.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.6</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.7" data-path="dataobject.html"><a href="dataobject.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.7</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="dataobject.html"><a href="dataobject.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.7.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datainout.html"><a href="datainout.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datainout.html"><a href="datainout.html#資料框架"><i class="fa fa-check"></i><b>4.1</b> 資料框架</a></li>
+<li class="chapter" data-level="4.2" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-空白分隔"><i class="fa fa-check"></i><b>4.2</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔</a></li>
+<li class="chapter" data-level="4.3" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔"><i class="fa fa-check"></i><b>4.3</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</a></li>
+<li class="chapter" data-level="4.4" data-path="datainout.html"><a href="datainout.html#r-內建資料框架"><i class="fa fa-check"></i><b>4.4</b> R 內建資料框架</a></li>
+<li class="chapter" data-level="4.5" data-path="datainout.html"><a href="datainout.html#輸出-r-資料"><i class="fa fa-check"></i><b>4.5</b> 輸出 {R} 資料</a></li>
+<li class="chapter" data-level="4.6" data-path="datainout.html"><a href="datainout.html#儲存-r-格式資料檔"><i class="fa fa-check"></i><b>4.6</b> 儲存 {R} 格式資料檔</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>5</b> 資料視覺化分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataviz.html"><a href="dataviz.html#視覺化分析原則"><i class="fa fa-check"></i><b>5.1</b> 視覺化分析原則</a></li>
+<li class="chapter" data-level="5.2" data-path="dataviz.html"><a href="dataviz.html#繪圖套件-ggplot2"><i class="fa fa-check"></i><b>5.2</b> 繪圖套件 ggplot2</a></li>
+<li class="chapter" data-level="5.3" data-path="dataviz.html"><a href="dataviz.html#類別變數"><i class="fa fa-check"></i><b>5.3</b> 類別變數</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="dataviz.html"><a href="dataviz.html#單一類別變數"><i class="fa fa-check"></i><b>5.3.1</b> 單一類別變數</a></li>
+<li class="chapter" data-level="5.3.2" data-path="dataviz.html"><a href="dataviz.html#多類別變數"><i class="fa fa-check"></i><b>5.3.2</b> 多類別變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="dataviz.html"><a href="dataviz.html#連續變數"><i class="fa fa-check"></i><b>5.4</b> 連續變數</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dataviz.html"><a href="dataviz.html#單連續變數"><i class="fa fa-check"></i><b>5.4.1</b> 單連續變數</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dataviz.html"><a href="dataviz.html#二連續變數"><i class="fa fa-check"></i><b>5.4.2</b> 二連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dataviz.html"><a href="dataviz.html#混合變數"><i class="fa fa-check"></i><b>5.5</b> 混合變數</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="dataviz.html"><a href="dataviz.html#一連續-一類別"><i class="fa fa-check"></i><b>5.5.1</b> 一連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.2" data-path="dataviz.html"><a href="dataviz.html#二連續-一類別"><i class="fa fa-check"></i><b>5.5.2</b> 二連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.3" data-path="dataviz.html"><a href="dataviz.html#三連續變數"><i class="fa fa-check"></i><b>5.5.3</b> 三連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="dataviz.html"><a href="dataviz.html#分組繪圖"><i class="fa fa-check"></i><b>5.6</b> 分組繪圖</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html"><i class="fa fa-check"></i><b>6</b> 基本函式</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#函式語法"><i class="fa fa-check"></i><b>6.1</b> 函式語法</a></li>
+<li class="chapter" data-level="6.2" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#檢視的函式原始碼定義"><i class="fa fa-check"></i><b>6.2</b> 檢視的函式原始碼定義</a></li>
+<li class="chapter" data-level="6.3" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式"><i class="fa fa-check"></i><b>6.3</b> 數列函式</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式-seq-與-sequence"><i class="fa fa-check"></i><b>6.3.1</b> 數列函式: seq() 與 sequence()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#重複元素函式-rep"><i class="fa fa-check"></i><b>6.4</b> 重複元素函式: rep()</a></li>
+<li class="chapter" data-level="6.5" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#算數函式-arithmetic-computing-function"><i class="fa fa-check"></i><b>6.5</b> 算數函式 Arithmetic Computing Function</a></li>
+<li class="chapter" data-level="6.6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#組合與階乘函式-choose-與-factorial"><i class="fa fa-check"></i><b>6.6</b> 組合與階乘函式: choose() 與 factorial()</a></li>
+<li class="chapter" data-level="6.7" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#選擇資料函式-all-any-which"><i class="fa fa-check"></i><b>6.7</b> 選擇資料函式: all(), any(), which()</a></li>
+<li class="chapter" data-level="6.8" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#排序函式-ranking-and-sorting"><i class="fa fa-check"></i><b>6.8</b> 排序函式 Ranking and Sorting</a></li>
+<li class="chapter" data-level="6.9" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#物件查看與強制轉換函式"><i class="fa fa-check"></i><b>6.9</b> 物件查看與強制轉換函式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basicstat.html"><a href="basicstat.html"><i class="fa fa-check"></i><b>7</b> 基本統計函式</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basicstat.html"><a href="basicstat.html#敘述統計函式"><i class="fa fa-check"></i><b>7.1</b> 敘述統計函式</a></li>
+<li class="chapter" data-level="7.2" data-path="basicstat.html"><a href="basicstat.html#類別資料表格函數"><i class="fa fa-check"></i><b>7.2</b> 類別資料表格函數</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-table-xtabs"><i class="fa fa-check"></i><b>7.2.1</b> 列聯表函式: table(), xtabs()</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-ftable"><i class="fa fa-check"></i><b>7.2.2</b> 列聯表函式: ftable()</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-margin.table-prop.table"><i class="fa fa-check"></i><b>7.2.3</b> 列聯表函式: margin.table(), prop.table()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basicstat.html"><a href="basicstat.html#機率函式與亂數生成函式"><i class="fa fa-check"></i><b>7.3</b> 機率函式與亂數生成函式</a></li>
+<li class="chapter" data-level="7.4" data-path="basicstat.html"><a href="basicstat.html#隨機抽樣函式-sample"><i class="fa fa-check"></i><b>7.4</b> 隨機抽樣函式 sample()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basictidy.html"><a href="basictidy.html"><i class="fa fa-check"></i><b>8</b> 資料基本處理</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basictidy.html"><a href="basictidy.html#資料輸入套件-readr"><i class="fa fa-check"></i><b>8.1</b> 資料輸入套件 readr</a></li>
+<li class="chapter" data-level="8.2" data-path="basictidy.html"><a href="basictidy.html#整潔資料-tidy-data"><i class="fa fa-check"></i><b>8.2</b> 整潔資料 Tidy Data</a></li>
+<li class="chapter" data-level="8.3" data-path="basictidy.html"><a href="basictidy.html#tibble-與-data-frame"><i class="fa fa-check"></i><b>8.3</b> Tibble 與 Data Frame</a></li>
+<li class="chapter" data-level="8.4" data-path="basictidy.html"><a href="basictidy.html#資料流動管道運算指令-pipe"><i class="fa fa-check"></i><b>8.4</b> 資料流動管道運算指令 Pipe</a></li>
+<li class="chapter" data-level="8.5" data-path="basictidy.html"><a href="basictidy.html#資料檢視函式-glimpse"><i class="fa fa-check"></i><b>8.5</b> 資料檢視函式 glimpse()</a></li>
+<li class="chapter" data-level="8.6" data-path="basictidy.html"><a href="basictidy.html#資料處裡-dplyr-套件"><i class="fa fa-check"></i><b>8.6</b> 資料處裡 dplyr 套件</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="basictidy.html"><a href="basictidy.html#選擇個體函式-filter"><i class="fa fa-check"></i><b>8.6.1</b> 選擇個體函式 <code>filter()</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
+<li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
+<li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="purrr.html"><a href="purrr.html"><i class="fa fa-check"></i><b>9</b> 資料迭代處理</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="purrr.html"><a href="purrr.html#對資料變數欄位-columns-進行相同操作"><i class="fa fa-check"></i><b>9.1</b> 對資料變數欄位 (columns) 進行相同操作</a></li>
+<li class="chapter" data-level="9.2" data-path="purrr.html"><a href="purrr.html#對資料個體列位-rows-進行相同操作"><i class="fa fa-check"></i><b>9.2</b> 對資料個體列位 (rows) 進行相同操作</a></li>
+<li class="chapter" data-level="9.3" data-path="purrr.html"><a href="purrr.html#依據條件進行變數轉換"><i class="fa fa-check"></i><b>9.3</b> 依據條件進行變數轉換</a></li>
+<li class="chapter" data-level="9.4" data-path="purrr.html"><a href="purrr.html#r-資料物件操作函式-apply"><i class="fa fa-check"></i><b>9.4</b> {R} 資料物件操作函式: apply()</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>10</b> 文字與字串資料處理</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="stringr.html"><a href="stringr.html#文字與字串資料基礎"><i class="fa fa-check"></i><b>10.1</b> 文字與字串資料基礎</a></li>
+<li class="chapter" data-level="10.2" data-path="stringr.html"><a href="stringr.html#套件-stringr"><i class="fa fa-check"></i><b>10.2</b> 套件 stringr</a></li>
+<li class="chapter" data-level="10.3" data-path="stringr.html"><a href="stringr.html#合併文字或字串-str_c"><i class="fa fa-check"></i><b>10.3</b> 合併文字或字串 str_c()</a></li>
+<li class="chapter" data-level="10.4" data-path="stringr.html"><a href="stringr.html#取出文字或字串向量中的部分元素-str_sub"><i class="fa fa-check"></i><b>10.4</b> 取出文字或字串向量中的部分元素 str_sub()</a></li>
+<li class="chapter" data-level="10.5" data-path="stringr.html"><a href="stringr.html#語言設定地區與文字大小寫排序"><i class="fa fa-check"></i><b>10.5</b> 語言設定地區與文字大小寫排序</a></li>
+<li class="chapter" data-level="10.6" data-path="stringr.html"><a href="stringr.html#移除空白-加入空白-截斷文字-str_trim-與-str_pad"><i class="fa fa-check"></i><b>10.6</b> 移除空白, 加入空白, 截斷文字 <code>str_trim()</code> 與 <code>str_pad()</code></a></li>
+<li class="chapter" data-level="10.7" data-path="stringr.html"><a href="stringr.html#尋找特定形式文字或字串"><i class="fa fa-check"></i><b>10.7</b> 尋找特定形式文字或字串</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="stringr.html"><a href="stringr.html#偵測函式-str_detect"><i class="fa fa-check"></i><b>10.7.1</b> 偵測函式 <code>str_detect()</code></a></li>
+<li class="chapter" data-level="10.7.2" data-path="stringr.html"><a href="stringr.html#確認位置函式-str_detect"><i class="fa fa-check"></i><b>10.7.2</b> 確認位置函式 <code>str_detect()</code></a></li>
+<li class="chapter" data-level="10.7.3" data-path="stringr.html"><a href="stringr.html#確認索引函式-str_subset-與-str_which"><i class="fa fa-check"></i><b>10.7.3</b> 確認索引函式 <code>str_subset()</code> 與 <code>str_which()</code></a></li>
+<li class="chapter" data-level="10.7.4" data-path="stringr.html"><a href="stringr.html#取出函式-str_extract"><i class="fa fa-check"></i><b>10.7.4</b> 取出函式 <code>str_extract()</code></a></li>
+<li class="chapter" data-level="10.7.5" data-path="stringr.html"><a href="stringr.html#配對函式-str_match"><i class="fa fa-check"></i><b>10.7.5</b> 配對函式 <code>str_match()</code></a></li>
+<li class="chapter" data-level="10.7.6" data-path="stringr.html"><a href="stringr.html#替代置換函式-str_replace"><i class="fa fa-check"></i><b>10.7.6</b> 替代置換函式 <code>str_replace()</code></a></li>
+<li class="chapter" data-level="10.7.7" data-path="stringr.html"><a href="stringr.html#分割函式-str_split"><i class="fa fa-check"></i><b>10.7.7</b> 分割函式 <code>str_split()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="stringr.html"><a href="stringr.html#群組尋找特定形式的文字與字串"><i class="fa fa-check"></i><b>10.8</b> 群組尋找特定形式的文字與字串</a></li>
+<li class="chapter" data-level="10.9" data-path="stringr.html"><a href="stringr.html#尋找連續重覆特定形式的文字與字串"><i class="fa fa-check"></i><b>10.9</b> 尋找連續重覆特定形式的文字與字串</a></li>
+<li class="chapter" data-level="10.10" data-path="stringr.html"><a href="stringr.html#正規表示文字與字串-萬用字元"><i class="fa fa-check"></i><b>10.10</b> 正規表示文字與字串 (萬用字元)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>11</b> Applications</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>11.1</b> Example one</a></li>
+<li class="chapter" data-level="11.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>11.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>12</b> Final Words</a></li>
+<li class="chapter" data-level="13" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>13</b> Temp</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="purrr" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> 資料迭代處理</h1>
+<p>統計分析的第一步就是資料清理與資料處理,
+通常可佔據整體統計分析的 70%-80% 時間.
+資料清理包含同一個體重覆輸入觀測值,
+錯誤輸入觀測值, 缺失值檢視與處理,
+連續變數語類別變數的區分, 選取適當的個體,
+資料排序與分組等等,
+{R} 有許多資料處理的函式與套件,
+但是 {R} 資料儲存有許多不同類型與格式,
+包含 向量, 矩陣, 陣列, 列表等,
+且 {R} 個別函式與套件, 統計模型接受的資料類型與格式各不相同,
+因此讓使用者容易混淆而造成困擾.
+{R} 提供 <code>apply()</code> 系列函式, 參見表 1.
+功能強大, 但因接受的資料類型與格式各不相同,
+讓初學者相當困惑.
+套件 <code>plyr</code>, <code>dplyr</code>,
+<code>reshape</code>, <code>reshape2</code>, <code>purrr</code>,
+<code>tidyr</code>, <code>tidyverse</code> 等,
+提供較 {R} 容易理解的資料處理函式,
+但是計算速度有差異, 且經常更新與改名,
+也讓初學者相當困惑.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Output object</strong></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Input object</strong></td>
+<td><strong>array</strong></td>
+<td><strong>data frame</strong></td>
+<td><strong>list</strong></td>
+<td><strong>nothing</strong></td>
+</tr>
+<tr class="even">
+<td>array</td>
+<td>apply</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr class="odd">
+<td>data frame</td>
+<td>.</td>
+<td>aggregate</td>
+<td>by</td>
+<td>.</td>
+</tr>
+<tr class="even">
+<td>list</td>
+<td>sapply</td>
+<td>.</td>
+<td>lapply</td>
+<td>.</td>
+</tr>
+<tr class="odd">
+<td>replicates</td>
+<td>replicate</td>
+<td>.</td>
+<td>replicate</td>
+<td>.</td>
+</tr>
+<tr class="even">
+<td>function</td>
+<td>arguments</td>
+<td>mapply</td>
+<td>mapply</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<p>Table 1: {R} 常見資料物件操作 <code>apply()</code> 函式</p>
+<p>資料清理與整理, 以及變數轉換, 包含對同一資料的許多變數進行相同操作,
+例如, 對所有連續變數計算平均值與標準差,
+包含對同一資料的許多個體進行相同操作,
+例如, 對所有個體計算 5 次考試成績的總分, 平均值與標準差等等.
+這些通常須進行迴圈迭代運算.
+{R} 套件 <code>plyr</code>, <code>dplyr</code>,
+<code>reshape</code>, <code>reshape2</code>, <code>purrr</code> 等有多些函式可讓使用者方便進行相同操作.
+以下以資料 <strong>糖尿病防治臨床試驗</strong> 進行實例說明.</p>
+<p><strong>糖尿病防治臨床試驗</strong></p>
+<p>一位研究者進行一個大型糖尿病防治的臨床試驗,
+比較 標準治療 (standard) 與 實驗治療 (experimental)
+對長期控制平穩的血糖 與 預防嚴重糖尿病腎病變的療效.
+研究主要目的是分析長期控制平穩的血糖, 主要反應變數以測量糖化血色素 (HbA1c) 為代表,
+研究的次要目的是預防嚴重糖尿病腎病變,
+次要目的反應變數以是否出現 顯微蛋白尿 (microalbuminuris) 的時間為代表.
+研究在臨床試驗開始時,
+紀錄受試者的一些基本資料,
+例如年紀, 性別等,
+同時紀錄可能會影響結果的一些臨床測量,
+例如, 臨床試驗開始時的 糖化血色素,
+及受試者內生胰島素的 C-peptide 測量等.
+研究資料在檔案 <code>DMDCCThba1c6.csv</code>,
+變數說明在表 2.</p>
+<table>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>受試者編碼, 依照進入試驗的時間順序而編碼.</td>
+</tr>
+<tr class="even">
+<td>treat</td>
+<td>治療組別: 0 = 傳統型治療; 1 = 加強型治療.</td>
+</tr>
+<tr class="odd">
+<td>etdrs0</td>
+<td>試驗開始時視網膜病變嚴重程度指數: ETDRS grade.</td>
+</tr>
+<tr class="even">
+<td>neur0</td>
+<td>試驗開始時神經病變: 0 = 無; 1 = 有.</td>
+</tr>
+<tr class="odd">
+<td>aer0</td>
+<td>試驗開始時蛋白尿測量: albumin excretion rate (mg/24 h).</td>
+</tr>
+<tr class="even">
+<td>microalb</td>
+<td>治療後是否出現顯微蛋白尿: 0 = 無; 1 = 有.</td>
+</tr>
+<tr class="odd">
+<td>quart</td>
+<td>治療後出現顯微蛋白尿的追蹤時間的季數或最後追蹤時間, 單位: 季. (quarterly visit number).</td>
+</tr>
+<tr class="even">
+<td>duration</td>
+<td>治療後出現顯微蛋白尿的時間或最後追蹤的時間, 單位: 月.</td>
+</tr>
+<tr class="odd">
+<td>female</td>
+<td>性別: 0 = 男性; 1 = 女性.</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td>試驗開始時的年紀, 單位: 年.</td>
+</tr>
+<tr class="odd">
+<td>adult</td>
+<td>試驗開始時是否成年, 0 = <span class="math inline">\(\le 17\)</span>, 1 = 是.</td>
+</tr>
+<tr class="even">
+<td>cpeptide</td>
+<td>試驗開始時, 受試者內生胰島素的 C-peptide 測量.</td>
+</tr>
+<tr class="odd">
+<td>bmi</td>
+<td>試驗開始時的 BMI (身體質量指數).</td>
+</tr>
+<tr class="even">
+<td>hba1c0</td>
+<td>試驗開始時的 HBA1c 測量.</td>
+</tr>
+<tr class="odd">
+<td>hba1c1-hba1c6</td>
+<td>治療後 1-6 年, 每年 HBA1c 測量.</td>
+</tr>
+</tbody>
+</table>
+<p>Table 2: 糖尿病防治臨床試驗變數說明</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="purrr.html#cb173-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb173-2"><a href="purrr.html#cb173-2" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;C:/RData/DMDCCThba1c6.csv&quot;</span>,</span>
+<span id="cb173-3"><a href="purrr.html#cb173-3" aria-hidden="true"></a>                      <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb173-4"><a href="purrr.html#cb173-4" aria-hidden="true"></a>                      <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb173-5"><a href="purrr.html#cb173-5" aria-hidden="true"></a><span class="co"># glimpse(dd)</span></span>
+<span id="cb173-6"><a href="purrr.html#cb173-6" aria-hidden="true"></a>dd<span class="op">$</span>treat =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
+<span id="cb173-7"><a href="purrr.html#cb173-7" aria-hidden="true"></a>dd<span class="op">$</span>neur0 =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>neur0, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb173-8"><a href="purrr.html#cb173-8" aria-hidden="true"></a>dd<span class="op">$</span>microalb =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>microalb, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb173-9"><a href="purrr.html#cb173-9" aria-hidden="true"></a>dd<span class="op">$</span>adult =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>adult, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb173-10"><a href="purrr.html#cb173-10" aria-hidden="true"></a>dd<span class="op">$</span>female =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>female, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb173-11"><a href="purrr.html#cb173-11" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb173-12"><a href="purrr.html#cb173-12" aria-hidden="true"></a><span class="co">## # A tibble: 1,441 x 21</span></span>
+<span id="cb173-13"><a href="purrr.html#cb173-13" aria-hidden="true"></a><span class="co">##      id treat   etdrs0 neur0  aer0 microalb quart duration female   age</span></span>
+<span id="cb173-14"><a href="purrr.html#cb173-14" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;  &lt;dbl&gt;</span></span>
+<span id="cb173-15"><a href="purrr.html#cb173-15" aria-hidden="true"></a><span class="co">## 1     1 test         3 no    15.8  no          36      178 female    17</span></span>
+<span id="cb173-16"><a href="purrr.html#cb173-16" aria-hidden="true"></a><span class="co">## 2     2 placebo      8 no    11.5  yes         20      142 male      29</span></span>
+<span id="cb173-17"><a href="purrr.html#cb173-17" aria-hidden="true"></a><span class="co">## 3     3 placebo      7 yes   36    yes         12      175 male      35</span></span>
+<span id="cb173-18"><a href="purrr.html#cb173-18" aria-hidden="true"></a><span class="co">## 4     4 test         1 no     4.32 no          36       31 female    14</span></span>
+<span id="cb173-19"><a href="purrr.html#cb173-19" aria-hidden="true"></a><span class="co">## 5     5 test         2 no     7.2  no          36       72 male      32</span></span>
+<span id="cb173-20"><a href="purrr.html#cb173-20" aria-hidden="true"></a><span class="co">##   adult cpeptide   bmi hba1cbase hba1c0 hba1c1 hba1c2 hba1c3 hba1c4 hba1c5</span></span>
+<span id="cb173-21"><a href="purrr.html#cb173-21" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb173-22"><a href="purrr.html#cb173-22" aria-hidden="true"></a><span class="co">## 1 no        0.09  21.2      9.63   9.63   8.91   8.72   8.87   8.81   8.76</span></span>
+<span id="cb173-23"><a href="purrr.html#cb173-23" aria-hidden="true"></a><span class="co">## 2 yes       0.17  22.9      8.76   8.76   9.30   9.36   9.39   9.30   9.15</span></span>
+<span id="cb173-24"><a href="purrr.html#cb173-24" aria-hidden="true"></a><span class="co">## 3 yes       0.01  26.6      7.93   7.93   8.28   7.92   7.96   7.97   7.94</span></span>
+<span id="cb173-25"><a href="purrr.html#cb173-25" aria-hidden="true"></a><span class="co">## 4 no        0.18  16.2      7.62   7.62   8.65   8.75   8.88   8.85   8.82</span></span>
+<span id="cb173-26"><a href="purrr.html#cb173-26" aria-hidden="true"></a><span class="co">## 5 yes       0.03  26.3      8.53   8.53   7.04   7.40   7.49   7.72   7.83</span></span>
+<span id="cb173-27"><a href="purrr.html#cb173-27" aria-hidden="true"></a><span class="co">##   hba1c6</span></span>
+<span id="cb173-28"><a href="purrr.html#cb173-28" aria-hidden="true"></a><span class="co">##    &lt;dbl&gt;</span></span>
+<span id="cb173-29"><a href="purrr.html#cb173-29" aria-hidden="true"></a><span class="co">## 1   8.62</span></span>
+<span id="cb173-30"><a href="purrr.html#cb173-30" aria-hidden="true"></a><span class="co">## 2   9.10</span></span>
+<span id="cb173-31"><a href="purrr.html#cb173-31" aria-hidden="true"></a><span class="co">## 3   7.95</span></span>
+<span id="cb173-32"><a href="purrr.html#cb173-32" aria-hidden="true"></a><span class="co">## 4   8.56</span></span>
+<span id="cb173-33"><a href="purrr.html#cb173-33" aria-hidden="true"></a><span class="co">## 5   7.81</span></span>
+<span id="cb173-34"><a href="purrr.html#cb173-34" aria-hidden="true"></a><span class="co">## # ... with 1,436 more rows</span></span></code></pre></div>
+<div id="對資料變數欄位-columns-進行相同操作" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> 對資料變數欄位 (columns) 進行相同操作</h2>
+<p>{R} 套見 <code>purrr</code> 內函式群 <code>map()</code>
+可對對同一資料的許多變數進行相同操作,
+例如, 對所有連續變數計算平均值與標準差.
+函式群 <code>map()</code> 包含</p>
+<ul>
+<li><code>map()</code> 回傳列表 list, 與 {R} base 函式 <code>lapply()</code> 類似.</li>
+<li><code>map_lgl()</code> 回傳邏輯向量 logical vector.</li>
+<li><code>map_int()</code> 回傳整數向量 integer vector.</li>
+<li><code>map_dbl()</code> 回傳實數向量 double vector.</li>
+<li><code>map_chr()</code> 回傳文字向量 character vector.</li>
+<li><code>map_df()</code> 回傳資料框架 data.frame.</li>
+</ul>
+<p>以 <strong>糖尿病防治臨床試驗</strong> 的 <code>DMDCCThba1c6.csv</code> 為例.
+對連續變數 <code>bia1c4</code> – <code>hbac16</code> 計算算平均值與標準差.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="purrr.html#cb174-1" aria-hidden="true"></a>dd.con &lt;-<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb174-2"><a href="purrr.html#cb174-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(hba1c4<span class="op">:</span>hba1c6) </span>
+<span id="cb174-3"><a href="purrr.html#cb174-3" aria-hidden="true"></a>dd.con <span class="op">%&gt;%</span></span>
+<span id="cb174-4"><a href="purrr.html#cb174-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">map</span>(mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb174-5"><a href="purrr.html#cb174-5" aria-hidden="true"></a><span class="co">## $hba1c4</span></span>
+<span id="cb174-6"><a href="purrr.html#cb174-6" aria-hidden="true"></a><span class="co">## [1] 8.163</span></span>
+<span id="cb174-7"><a href="purrr.html#cb174-7" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb174-8"><a href="purrr.html#cb174-8" aria-hidden="true"></a><span class="co">## $hba1c5</span></span>
+<span id="cb174-9"><a href="purrr.html#cb174-9" aria-hidden="true"></a><span class="co">## [1] 8.183</span></span>
+<span id="cb174-10"><a href="purrr.html#cb174-10" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb174-11"><a href="purrr.html#cb174-11" aria-hidden="true"></a><span class="co">## $hba1c6</span></span>
+<span id="cb174-12"><a href="purrr.html#cb174-12" aria-hidden="true"></a><span class="co">## [1] 8.193</span></span>
+<span id="cb174-13"><a href="purrr.html#cb174-13" aria-hidden="true"></a>dd.con <span class="op">%&gt;%</span></span>
+<span id="cb174-14"><a href="purrr.html#cb174-14" aria-hidden="true"></a><span class="st">  </span><span class="kw">map_dbl</span>(mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb174-15"><a href="purrr.html#cb174-15" aria-hidden="true"></a><span class="co">## hba1c4 hba1c5 hba1c6 </span></span>
+<span id="cb174-16"><a href="purrr.html#cb174-16" aria-hidden="true"></a><span class="co">##  8.163  8.183  8.193</span></span>
+<span id="cb174-17"><a href="purrr.html#cb174-17" aria-hidden="true"></a>dd.con <span class="op">%&gt;%</span></span>
+<span id="cb174-18"><a href="purrr.html#cb174-18" aria-hidden="true"></a><span class="st">  </span><span class="kw">map_dbl</span>(sd, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb174-19"><a href="purrr.html#cb174-19" aria-hidden="true"></a><span class="co">## hba1c4 hba1c5 hba1c6 </span></span>
+<span id="cb174-20"><a href="purrr.html#cb174-20" aria-hidden="true"></a><span class="co">##  1.492  1.466  1.467</span></span>
+<span id="cb174-21"><a href="purrr.html#cb174-21" aria-hidden="true"></a>dd.con <span class="op">%&gt;%</span></span>
+<span id="cb174-22"><a href="purrr.html#cb174-22" aria-hidden="true"></a><span class="st">  </span><span class="kw">map_df</span>(mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb174-23"><a href="purrr.html#cb174-23" aria-hidden="true"></a><span class="co">## # A tibble: 1 x 3</span></span>
+<span id="cb174-24"><a href="purrr.html#cb174-24" aria-hidden="true"></a><span class="co">##   hba1c4 hba1c5 hba1c6</span></span>
+<span id="cb174-25"><a href="purrr.html#cb174-25" aria-hidden="true"></a><span class="co">##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb174-26"><a href="purrr.html#cb174-26" aria-hidden="true"></a><span class="co">## 1   8.16   8.18   8.19</span></span></code></pre></div>
+</div>
+<div id="對資料個體列位-rows-進行相同操作" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> 對資料個體列位 (rows) 進行相同操作</h2>
+<p>套見 <code>dplyr</code> 函式 <code>mutate()</code> 可以對資料個體列位 (rows) 進行相同操作,
+產生新的變數與變數值,
+但只能以向量進行操作, 若使用 {R} 函式, 有時無法接受向量,
+有時無法產生向量.
+此時可以使用 <code>rowise()</code> 函式,
+對資料個體列位 (rows) 進行相同操作函式.
+例如, 對所有個體計算 5 次考試成績的總分, 平均值與標準差等等.
+以 <strong>糖尿病防治臨床試驗</strong> 的 <code>DMDCCThba1c6.csv</code> 為例.
+對連續變數 <code>bia1c4</code> – <code>hbac16</code> 計算算平均值與標準差.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="purrr.html#cb175-1" aria-hidden="true"></a>dd.con &lt;-<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-2"><a href="purrr.html#cb175-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(hba1c4<span class="op">:</span>hba1c6)</span>
+<span id="cb175-3"><a href="purrr.html#cb175-3" aria-hidden="true"></a>dd.row_mean &lt;-<span class="st"> </span>dd.con <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-4"><a href="purrr.html#cb175-4" aria-hidden="true"></a><span class="st">  </span>rowwise <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-5"><a href="purrr.html#cb175-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">hba1c_row_mean =</span> <span class="kw">mean</span>(<span class="kw">c</span>(hba1c4, hba1c5, hba1c6), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb175-6"><a href="purrr.html#cb175-6" aria-hidden="true"></a><span class="kw">print</span>(dd.row_mean, <span class="dt">n =</span> <span class="dv">5</span>)</span>
+<span id="cb175-7"><a href="purrr.html#cb175-7" aria-hidden="true"></a><span class="co">## # A tibble: 1,441 x 4</span></span>
+<span id="cb175-8"><a href="purrr.html#cb175-8" aria-hidden="true"></a><span class="co">## # Rowwise: </span></span>
+<span id="cb175-9"><a href="purrr.html#cb175-9" aria-hidden="true"></a><span class="co">##   hba1c4 hba1c5 hba1c6 hba1c_row_mean</span></span>
+<span id="cb175-10"><a href="purrr.html#cb175-10" aria-hidden="true"></a><span class="co">##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span id="cb175-11"><a href="purrr.html#cb175-11" aria-hidden="true"></a><span class="co">## 1   8.81   8.76   8.62           8.73</span></span>
+<span id="cb175-12"><a href="purrr.html#cb175-12" aria-hidden="true"></a><span class="co">## 2   9.30   9.15   9.10           9.18</span></span>
+<span id="cb175-13"><a href="purrr.html#cb175-13" aria-hidden="true"></a><span class="co">## 3   7.97   7.94   7.95           7.96</span></span>
+<span id="cb175-14"><a href="purrr.html#cb175-14" aria-hidden="true"></a><span class="co">## 4   8.85   8.82   8.56           8.74</span></span>
+<span id="cb175-15"><a href="purrr.html#cb175-15" aria-hidden="true"></a><span class="co">## 5   7.72   7.83   7.81           7.79</span></span>
+<span id="cb175-16"><a href="purrr.html#cb175-16" aria-hidden="true"></a><span class="co">## # ... with 1,436 more rows</span></span>
+<span id="cb175-17"><a href="purrr.html#cb175-17" aria-hidden="true"></a><span class="co">## compare simple mutate</span></span>
+<span id="cb175-18"><a href="purrr.html#cb175-18" aria-hidden="true"></a>dd.var_mean &lt;-<span class="st"> </span>dd.con <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb175-19"><a href="purrr.html#cb175-19" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">hba1c_row_mean =</span> <span class="kw">mean</span>(<span class="kw">c</span>(hba1c4, hba1c5, hba1c6), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb175-20"><a href="purrr.html#cb175-20" aria-hidden="true"></a><span class="kw">print</span>(dd.var_mean, <span class="dt">n =</span> <span class="dv">5</span>)</span>
+<span id="cb175-21"><a href="purrr.html#cb175-21" aria-hidden="true"></a><span class="co">## # A tibble: 1,441 x 4</span></span>
+<span id="cb175-22"><a href="purrr.html#cb175-22" aria-hidden="true"></a><span class="co">##   hba1c4 hba1c5 hba1c6 hba1c_row_mean</span></span>
+<span id="cb175-23"><a href="purrr.html#cb175-23" aria-hidden="true"></a><span class="co">##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span id="cb175-24"><a href="purrr.html#cb175-24" aria-hidden="true"></a><span class="co">## 1   8.81   8.76   8.62           8.18</span></span>
+<span id="cb175-25"><a href="purrr.html#cb175-25" aria-hidden="true"></a><span class="co">## 2   9.30   9.15   9.10           8.18</span></span>
+<span id="cb175-26"><a href="purrr.html#cb175-26" aria-hidden="true"></a><span class="co">## 3   7.97   7.94   7.95           8.18</span></span>
+<span id="cb175-27"><a href="purrr.html#cb175-27" aria-hidden="true"></a><span class="co">## 4   8.85   8.82   8.56           8.18</span></span>
+<span id="cb175-28"><a href="purrr.html#cb175-28" aria-hidden="true"></a><span class="co">## 5   7.72   7.83   7.81           8.18</span></span>
+<span id="cb175-29"><a href="purrr.html#cb175-29" aria-hidden="true"></a><span class="co">## # ... with 1,436 more rows</span></span></code></pre></div>
+</div>
+<div id="依據條件進行變數轉換" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> 依據條件進行變數轉換</h2>
+<p>套見 <code>dplyr</code> 函式 <code>mutate()</code> 可以並用 函式 <code>case_when</code>,
+當個體列位 (row) 的變數值符合特定條件時, 進行不同的變數轉換.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="purrr.html#cb176-1" aria-hidden="true"></a>df <span class="op">%&gt;%</span></span>
+<span id="cb176-2"><a href="purrr.html#cb176-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
+<span id="cb176-3"><a href="purrr.html#cb176-3" aria-hidden="true"></a>    <span class="dt">new_field =</span> <span class="kw">case_when</span>(my_field <span class="op">==</span><span class="st"> &quot;something&quot;</span> <span class="op">~</span><span class="st"> &quot;result&quot;</span>, </span>
+<span id="cb176-4"><a href="purrr.html#cb176-4" aria-hidden="true"></a>                          my_field <span class="op">!=</span><span class="st"> &quot;something else&quot;</span> <span class="op">~</span><span class="st"> &quot;other result&quot;</span>, </span>
+<span id="cb176-5"><a href="purrr.html#cb176-5" aria-hidden="true"></a>                          <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;all other results&quot;</span>)</span>
+<span id="cb176-6"><a href="purrr.html#cb176-6" aria-hidden="true"></a>  )</span></code></pre></div>
+<p>以 <strong>糖尿病防治臨床試驗</strong> 的 <code>DMDCCThba1c6.csv</code> 為例.
+對順序變數 <code>etdrs0</code> (試驗開始時視網膜病變嚴重程度指),
+簡化成 3 組, mild, moderate, severe.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="purrr.html#cb177-1" aria-hidden="true"></a>dd.et &lt;-<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</span>
+<span id="cb177-2"><a href="purrr.html#cb177-2" aria-hidden="true"></a>  <span class="dt">et0cat3 =</span> <span class="kw">case_when</span>(etdrs0 <span class="op">&lt;=</span><span class="st"> </span><span class="dv">2</span>  <span class="op">~</span><span class="st"> &quot;mild&quot;</span>,</span>
+<span id="cb177-3"><a href="purrr.html#cb177-3" aria-hidden="true"></a>                      etdrs0 <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&amp;</span><span class="st"> </span>etdrs0 <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;moderate&quot;</span>,</span>
+<span id="cb177-4"><a href="purrr.html#cb177-4" aria-hidden="true"></a>                      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;severe&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb177-5"><a href="purrr.html#cb177-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(etdrs0, et0cat3)</span>
+<span id="cb177-6"><a href="purrr.html#cb177-6" aria-hidden="true"></a><span class="kw">print</span>(dd.et, <span class="dt">n =</span> <span class="dv">5</span>)</span>
+<span id="cb177-7"><a href="purrr.html#cb177-7" aria-hidden="true"></a><span class="co">## # A tibble: 1,441 x 2</span></span>
+<span id="cb177-8"><a href="purrr.html#cb177-8" aria-hidden="true"></a><span class="co">##   etdrs0 et0cat3 </span></span>
+<span id="cb177-9"><a href="purrr.html#cb177-9" aria-hidden="true"></a><span class="co">##    &lt;dbl&gt; &lt;chr&gt;   </span></span>
+<span id="cb177-10"><a href="purrr.html#cb177-10" aria-hidden="true"></a><span class="co">## 1      3 moderate</span></span>
+<span id="cb177-11"><a href="purrr.html#cb177-11" aria-hidden="true"></a><span class="co">## 2      8 severe  </span></span>
+<span id="cb177-12"><a href="purrr.html#cb177-12" aria-hidden="true"></a><span class="co">## 3      7 severe  </span></span>
+<span id="cb177-13"><a href="purrr.html#cb177-13" aria-hidden="true"></a><span class="co">## 4      1 mild    </span></span>
+<span id="cb177-14"><a href="purrr.html#cb177-14" aria-hidden="true"></a><span class="co">## 5      2 mild    </span></span>
+<span id="cb177-15"><a href="purrr.html#cb177-15" aria-hidden="true"></a><span class="co">## # ... with 1,436 more rows</span></span></code></pre></div>
+</div>
+<div id="r-資料物件操作函式-apply" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> {R} 資料物件操作函式: apply()</h2>
+<p>使用函式
+<code>apply()</code>
+對一個 資料框架 (data frame), 矩陣 (matrix) 陣列物件 (array)
+內之任一維度的邊際 (margins of an array) 執行同一個函式運算,
+並回傳一向量, 陣列或列表.
+函式指令為</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="purrr.html#cb178-1" aria-hidden="true"></a><span class="kw">apply</span>(X, MARGIN, FUN, ...)</span></code></pre></div>
+<p>其中的主要引數分別為:</p>
+<ul>
+<li><code>X</code> 為所要執行之陣列物件,
+若資料物件 <code>X</code> 為 矩陣 或 資料框架,
+則函式 <code>apply()</code>
+會將該 矩陣 或 資料框架 轉換成 2-維度 陣列 (array).</li>
+<li><code>MARGIN</code> 為陣列物件 <code>X</code> 的邊際維度序號.
+<ul>
+<li><code>MARGIN = 1</code> 會對陣列 <code>X</code> 的第 1 個維度 (row) 執行函式,
+例如, 對 矩陣 或 資料框架 的每一列 (row) 做運算.</li>
+<li><code>MARGIN = 2</code> 會對陣列 <code>X</code> 的第 2 個維度 (column) 執行函式,
+例如, 對 矩陣 或 資料框架 的每一欄 (行, column) 做運算等等.</li>
+<li><code>MARGIN = k</code> 會對陣列 <code>X</code> 的第 <span class="math inline">\(k\)</span>-維度 執行函式.</li>
+</ul></li>
+<li><code>FUN</code> 為執行同一函式的名稱.</li>
+</ul>
+<p>以 <strong>糖尿病防治臨床試驗</strong> 的 <code>DMDCCThba1c6.csv</code> 為例.
+對連續變數 <code>bia1c4</code> – <code>hbac16</code> 計算算平均值與標準差.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="purrr.html#cb179-1" aria-hidden="true"></a>dd.con &lt;-<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb179-2"><a href="purrr.html#cb179-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(hba1c4<span class="op">:</span>hba1c6) </span>
+<span id="cb179-3"><a href="purrr.html#cb179-3" aria-hidden="true"></a><span class="kw">apply</span>(dd.con, <span class="dv">2</span>, mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb179-4"><a href="purrr.html#cb179-4" aria-hidden="true"></a><span class="co">## hba1c4 hba1c5 hba1c6 </span></span>
+<span id="cb179-5"><a href="purrr.html#cb179-5" aria-hidden="true"></a><span class="co">##  8.163  8.183  8.193</span></span></code></pre></div>
+<p>以 <strong>糖尿病防治臨床試驗</strong> 的 <code>DMDCCThba1c6.csv</code> 為例.
+對連續變數 <code>bia1c4</code> – <code>hbac16</code> 計算算平均值與標準差.
+個體列位 (row) 的 <code>bia1c4</code> – <code>hbac16</code> 計算算平均值與標準差.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="purrr.html#cb180-1" aria-hidden="true"></a>dd.con &lt;-<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb180-2"><a href="purrr.html#cb180-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(hba1c4<span class="op">:</span>hba1c6) </span>
+<span id="cb180-3"><a href="purrr.html#cb180-3" aria-hidden="true"></a>dd.row_mean &lt;-<span class="st"> </span><span class="kw">apply</span>(dd.con, <span class="dv">1</span>, mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb180-4"><a href="purrr.html#cb180-4" aria-hidden="true"></a><span class="kw">head</span>(dd.row_mean)</span>
+<span id="cb180-5"><a href="purrr.html#cb180-5" aria-hidden="true"></a><span class="co">## [1] 8.733 9.184 7.956 8.743 7.786 8.136</span></span></code></pre></div>
+<p>{R} 函式 <code>colMeans()</code> 與 <code>rowMeans()</code> 也可進行快速計算平均值.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="purrr.html#cb181-1" aria-hidden="true"></a>dd.con &lt;-<span class="st"> </span>dd <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb181-2"><a href="purrr.html#cb181-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(hba1c4<span class="op">:</span>hba1c6) </span>
+<span id="cb181-3"><a href="purrr.html#cb181-3" aria-hidden="true"></a><span class="kw">colMeans</span>(dd.con, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb181-4"><a href="purrr.html#cb181-4" aria-hidden="true"></a><span class="co">## hba1c4 hba1c5 hba1c6 </span></span>
+<span id="cb181-5"><a href="purrr.html#cb181-5" aria-hidden="true"></a><span class="co">##  8.163  8.183  8.193</span></span>
+<span id="cb181-6"><a href="purrr.html#cb181-6" aria-hidden="true"></a>dd.row_mean &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(dd.con, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb181-7"><a href="purrr.html#cb181-7" aria-hidden="true"></a><span class="kw">head</span>(dd.row_mean)</span>
+<span id="cb181-8"><a href="purrr.html#cb181-8" aria-hidden="true"></a><span class="co">## [1] 8.733 9.184 7.956 8.743 7.786 8.136</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basictidy.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stringr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "PMingLiU",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r4biost.pdf", "r4biost.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

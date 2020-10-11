@@ -351,13 +351,13 @@ x.vec != (y.vec - 2)
 ## Logical Operator: AND OR XOR
 x.vec <- 1:5
 y.vec <- c(0, 2, 4, 6, 8)
-(x.vec > 0) &  (y.vec > 0)  # return vector AND
+(x.vec > 0) & (y.vec > 0)  # return vector AND
 (x.vec > 0) && (y.vec > 0)  # return scalar AND
 #
-(x.vec > 0) &  ((y.vec - 3) > 0)     # return vector AND
+(x.vec > 0) & ((y.vec - 3) > 0)     # return vector AND
 ((x.vec-2) > 0) && ((y.vec - 3) > 0) # return scalar AND
 #
-(x.vec > 0) &  ((y.vec + 3) > 0)     # return vector AND
+(x.vec > 0) & ((y.vec + 3) > 0)     # return vector AND
 ((x.vec-2) > 0) && ((y.vec + 3) > 0) # return scalar AND
 #
 (x.vec > 0) | (y.vec > 0) # return vector OR
@@ -481,9 +481,9 @@ R 還有另外有
 `NULL`
 是指物件的長度是 $0$.
 任何對遺失值
-(`NA`) 的算數操作,
+`(NA)` 的算數操作,
 會得到遺失值
-(`NA`)
+`(NA)`
 結果.
 使用函式
 `is.na()`,
@@ -513,22 +513,29 @@ Inf - Inf
 is.na(z.vec)
 is.nan(z.vec)
 is.nan(0 / 0)
+is.na(0 / 0)
 #
 x.vec  <-  c(1, 2, NA, 4, NA, 5, 6)
 bad  <-  is.na(x.vec)
 x.vec[!bad]
+complete.cases(x.vec)
+x.vec[complete.cases(x.vec)]
 #
-x.vec  <-  c(1, 2, NA, 4, NA, 5, 6)
-y.vec  <-  c("a", "b", NA, "d", NA, "f", "g")
-good  <-  complete.cases(x.vec, y.vec)
+x.vec <- c(1, 2, NA, 4, NA, 5, 6)
+y.vec <- c("a", "b", NA, "d", NA, "f", "g")
+good <- complete.cases(x.vec, y.vec)
 good
 x.vec[good]
 y.vec[good]
+x.vec <- c(1, 2, 3, NA, NA, 5, 6)
+y.vec <- c("a", "b", NA, "d", NA, "f", "g")
+good <- complete.cases(x.vec, y.vec)
+good
 #
 data(airquality)
-airquality[1:6,]
-good  <-  complete.cases(airquality)
-airquality[good,][1:6,]
+airquality[1:6, ]
+good <- complete.cases(airquality)
+airquality[good,][1:6, ]
 ```
 
 
@@ -560,8 +567,8 @@ airquality[good,][1:6,]
 名目尺度將變數值分成互斥的類別水準,
 同一變數內的類別水準並無量化大小的差別.
 名目尺度用文字或數字表示或標記, 這些數字本身並無任何意義,
-例如 `左側` 為 1, `右側` 為 0;
-1 $=$ `拇指`, 2 $=$ `食指`, 3 $=$ `中指`, 4 $=$ `無名指`, 5 $=$ `小指`.
+例如 左側為 1, 右側為 0;
+`1 = 拇指`, `2 = 食指`, `3 = 中指`, `4 = 無名指`, `5 = 小指`.
 在名目尺度中,
 特別的情形是變數內只有 2 個類別水準,
 如存活或死亡, 統計習慣上會分別標記為 0 或 1,
@@ -592,9 +599,9 @@ airquality[good,][1:6,]
 因子是一種特殊的文字向量,
 文字向量中的每一個元素, 取一個離散值,
 因子物件 有一個特殊屬性, 稱為
-**層次*,
-**水平*,
-**水準*
+**層次**,
+**水平**,
+**水準**
 或
 **類別水準**
 (**levels**),
@@ -659,7 +666,7 @@ pain # mild and NA are NOT levels.
 **無序因子**
 (**unordered factor**),
 類似於統計分析中的
-**名義變數**
+**名目變數**
 (**nominal variable**),
 **無序因子**
 中的類別水準 (level),
@@ -706,6 +713,18 @@ hypertension <- factor(hypertension)
 hypertension
 # relevel()
 relevel(hypertension, ref = "Lo") # reset a reference level
+## correct
+hypertension <- c("Lo", "Mod", "Hi", 
+                  "Mod", "Lo", "Hi", "Lo")
+hypertension <- factor(hypertension,
+                       levels = c("Lo", "Mod", "Hi"))
+hypertension
+## error, we will see the correct method later 
+hypertension <- c("Lo", "Mod", "Hi", 
+                  "Mod", "Lo", "Hi", "Lo")
+hypertension <- factor(hypertension)
+levels(hypertension) <- c("Lo", "Mod", "Hi")
+hypertension
 ```
 
 使用 `as.integer()`

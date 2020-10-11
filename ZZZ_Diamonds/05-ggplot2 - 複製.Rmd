@@ -1,6 +1,38 @@
 # 資料視覺化分析
 
 
+兒童血中鉛過量臨床試驗
+
+鉛廣泛使用在工業上, 因職業上接觸造成慢性鉛中毒.
+也可能因空氣與水汙染, 食物等暴露於高濃度鉛環境,
+兒童常因兒童用品, 玩具,文具之漆色造成鉛中毒.
+留在體內的鉛多數存於骨與牙齒中, 
+鉛中毒對許多器官皆有影響, 長見血液和神經系統異常,
+兒童常因體內鉛過量而造成行為認知異常.
+常見治療為住院注射離結合劑 Chelation 或口服 Succimer.
+一個早期兒童血中鉛過量臨床試驗,
+受試者隨機指派 2 組: pacebo 與 Succimer.
+在治療前次測量
+開始治療後, 在
+
+
+函式群 `map()` 中的 `map_if()` 只有在一個條件下成立時, 才對變數 (columns) 進行操作.
+以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
+對所連續變數計算算平均值與標準差.
+
+
+其早期診斷不易
+Lead exposure during infancy and cognitive ability
+Randomized trial
+Treatments
+
+Chelation: injections and hospitalization
+Succimer: oral
+
+100 children randomized to placebo or Succimer
+Measure blood lead level at time 0 (baseline), 1, 4 and 6 weeks
+The data file is {\sf tlc.csv}.
+
 
 
 繪圖文法是讓一個圖形容易思考, 合理討論與溝通的抽像規則. \\

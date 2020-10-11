@@ -1,0 +1,238 @@
+# 資料迭代處理 {#purrr}
+
+
+統計分析的第一步就是資料清理與資料處理,
+通常可佔據整體統計分析的 70%-80% 時間.
+資料清理包含同一個體重覆輸入觀測值,
+錯誤輸入觀測值, 缺失值檢視與處理,
+連續變數語類別變數的區分, 選取適當的個體,
+資料排序與分組等等,
+{R} 有許多資料處理的函式與套件,
+但是 {R} 資料儲存有許多不同類型與格式,
+包含 向量, 矩陣, 陣列, 列表等,
+且 {R} 個別函式與套件, 統計模型接受的資料類型與格式各不相同,
+因此讓使用者容易混淆而造成困擾.
+{R} 提供 `apply()` 系列函式, 參見表 1.
+功能強大, 但因接受的資料類型與格式各不相同,
+讓初學者相當困惑.
+套件 `plyr`, `dplyr`, 
+`reshape`, `reshape2`, `purrr`,
+`tidyr`, `tidyverse` 等,
+提供較 {R} 容易理解的資料處理函式,
+但是計算速度有差異, 且經常更新與改名,
+也讓初學者相當困惑.
+
+
+|              | **Output object** |            |           |         |  
+|--------------|-----------|------------|-----------|---------|
+| **Input object** | **array** | **data frame** | **list**| **nothing** |
+| array        | apply     | .          | .         |  .      |
+| data frame   |  .        | aggregate  | by        |  .      |
+| list         | sapply    |  .         | lapply    |  .      |
+| replicates   | replicate |  .         | replicate |  .      |
+| function     | arguments | mapply     | mapply    |  .      |
+
+Table 1: {R} 常見資料物件操作 `apply()` 函式
+
+
+資料清理與整理, 以及變數轉換, 包含對同一資料的許多變數進行相同操作,
+例如, 對所有連續變數計算平均值與標準差,
+包含對同一資料的許多個體進行相同操作,
+例如, 對所有個體計算 5 次考試成績的總分, 平均值與標準差等等.
+這些通常須進行迴圈迭代運算.
+{R} 套件 `plyr`, `dplyr`, 
+`reshape`, `reshape2`, `purrr` 等有多些函式可讓使用者方便進行相同操作.
+以下以資料 **糖尿病防治臨床試驗** 進行實例說明.
+
+
+**糖尿病防治臨床試驗**
+
+一位研究者進行一個大型糖尿病防治的臨床試驗,
+比較 標準治療 (standard) 與 實驗治療 (experimental) 
+對長期控制平穩的血糖 與 預防嚴重糖尿病腎病變的療效.
+研究主要目的是分析長期控制平穩的血糖, 主要反應變數以測量糖化血色素 (HbA1c) 為代表,
+研究的次要目的是預防嚴重糖尿病腎病變, 
+次要目的反應變數以是否出現 顯微蛋白尿 (microalbuminuris) 的時間為代表.
+研究在臨床試驗開始時,
+紀錄受試者的一些基本資料,
+例如年紀, 性別等,
+同時紀錄可能會影響結果的一些臨床測量,
+例如, 臨床試驗開始時的 糖化血色素,
+及受試者內生胰島素的 C-peptide 測量等.
+研究資料在檔案 `DMDCCThba1c6.csv`,
+變數說明在表 2.
+
+
+| 變數           | 描述                                                              |
+|----------------|-----------------------------------------------------------------|
+| id             | 受試者編碼, 依照進入試驗的時間順序而編碼.                    |
+| treat          | 治療組別: 0 = 傳統型治療; 1 = 加強型治療.               |
+| etdrs0         | 試驗開始時視網膜病變嚴重程度指數: ETDRS grade.              |
+| neur0          | 試驗開始時神經病變: 0 = 無; 1 = 有.                   |
+| aer0           | 試驗開始時蛋白尿測量: albumin excretion rate (mg/24 h).     |
+| microalb       | 治療後是否出現顯微蛋白尿: 0 = 無; 1 = 有.                |
+| quart          | 治療後出現顯微蛋白尿的追蹤時間的季數或最後追蹤時間, 單位: 季. (quarterly visit number). |
+| duration       | 治療後出現顯微蛋白尿的時間或最後追蹤的時間, 單位: 月.       |
+| female         | 性別: 0 = 男性; 1 = 女性.                           |
+| age            | 試驗開始時的年紀, 單位: 年.                             |
+| adult         | 試驗開始時是否成年, 0 = $\le 17$, 1 = 是.                  |
+| cpeptide       | 試驗開始時, 受試者內生胰島素的 C-peptide 測量.                |
+| bmi            | 試驗開始時的 BMI (身體質量指數).                      |
+| hba1c0         | 試驗開始時的 HBA1c 測量.                            |
+| hba1c1-hba1c6 | 治療後 1-6 年, 每年 HBA1c 測量.                      |
+
+
+Table 2: 糖尿病防治臨床試驗變數說明
+
+
+```{r}
+library(tidyverse)
+dd <- readr::read_csv("C:/RData/DMDCCThba1c6.csv",
+                      na = c(".", "", "NA"),
+                      trim_ws = TRUE)
+# glimpse(dd)
+dd$treat = factor(dd$treat, labels = c("placebo", "test"))
+dd$neur0 = factor(dd$neur0, labels = c("no", "yes"))
+dd$microalb = factor(dd$microalb, labels = c("no", "yes"))
+dd$adult = factor(dd$adult, labels = c("no", "yes"))
+dd$female = factor(dd$female, labels = c("male", "female"))
+print(dd, n = 5, width = Inf)
+```
+
+## 對資料變數欄位 (columns) 進行相同操作
+
+{R} 套見 `purrr` 內函式群 `map()` 
+可對對同一資料的許多變數進行相同操作,
+例如, 對所有連續變數計算平均值與標準差.
+函式群 `map()` 包含
+
+* `map()` 回傳列表 list, 與 {R} base 函式 `lapply()` 類似.
+* `map_lgl()` 回傳邏輯向量 logical vector.
+* `map_int()` 回傳整數向量 integer vector.
+* `map_dbl()` 回傳實數向量 double vector.
+* `map_chr()` 回傳文字向量 character vector.
+* `map_df()` 回傳資料框架 data.frame.
+
+
+以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
+對連續變數 `bia1c4` -- `hbac16` 計算算平均值與標準差.
+
+```{r}
+dd.con <- dd %>% 
+  select(hba1c4:hba1c6) 
+dd.con %>%
+  map(mean, na.rm = TRUE)
+dd.con %>%
+  map_dbl(mean, na.rm = TRUE)
+dd.con %>%
+  map_dbl(sd, na.rm = TRUE)
+dd.con %>%
+  map_df(mean, na.rm = TRUE)
+```
+
+
+## 對資料個體列位 (rows) 進行相同操作
+
+套見 `dplyr` 函式 `mutate()` 可以對資料個體列位 (rows) 進行相同操作,
+產生新的變數與變數值,
+但只能以向量進行操作, 若使用 {R} 函式, 有時無法接受向量, 
+有時無法產生向量.
+此時可以使用 `rowise()` 函式,
+對資料個體列位 (rows) 進行相同操作函式.
+例如, 對所有個體計算 5 次考試成績的總分, 平均值與標準差等等.
+以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
+對連續變數 `bia1c4` -- `hbac16` 計算算平均值與標準差.
+
+
+```{r}
+dd.con <- dd %>% 
+  select(hba1c4:hba1c6)
+dd.row_mean <- dd.con %>% 
+  rowwise %>% 
+  mutate(hba1c_row_mean = mean(c(hba1c4, hba1c5, hba1c6), na.rm = TRUE))
+print(dd.row_mean, n = 5)
+## compare simple mutate
+dd.var_mean <- dd.con %>% 
+  mutate(hba1c_row_mean = mean(c(hba1c4, hba1c5, hba1c6), na.rm = TRUE))
+print(dd.var_mean, n = 5)
+```
+
+## 依據條件進行變數轉換
+
+套見 `dplyr` 函式 `mutate()` 可以並用 函式 `case_when`, 
+當個體列位 (row) 的變數值符合特定條件時, 進行不同的變數轉換.
+```{r, eval=FALSE}
+df %>%
+  mutate(
+    new_field = case_when(my_field == "something" ~ "result", 
+                          my_field != "something else" ~ "other result", 
+                          TRUE ~ "all other results")
+  )
+```
+以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
+對順序變數 `etdrs0` (試驗開始時視網膜病變嚴重程度指),
+簡化成 3 組, mild, moderate, severe.
+```{r}
+dd.et <- dd %>% mutate(
+  et0cat3 = case_when(etdrs0 <= 2  ~ "mild",
+                      etdrs0 > 2 & etdrs0 <= 4 ~ "moderate",
+                      TRUE ~ "severe")) %>%
+  select(etdrs0, et0cat3)
+print(dd.et, n = 5)
+```
+
+
+
+
+## {R} 資料物件操作函式: apply()
+
+使用函式
+`apply()`
+對一個 資料框架 (data frame), 矩陣 (matrix) 陣列物件 (array)
+內之任一維度的邊際 (margins of an array) 執行同一個函式運算,
+並回傳一向量, 陣列或列表.
+函式指令為
+```{r eval=FALSE}
+apply(X, MARGIN, FUN, ...)
+```
+其中的主要引數分別為:
+
+* `X` 為所要執行之陣列物件,
+若資料物件 `X` 為 矩陣 或 資料框架,
+則函式 `apply()`
+會將該 矩陣 或 資料框架 轉換成 2-維度 陣列 (array).
+* `MARGIN` 為陣列物件 `X` 的邊際維度序號.
+  * `MARGIN = 1` 會對陣列 `X` 的第 1 個維度 (row) 執行函式,
+例如, 對 矩陣 或 資料框架 的每一列 (row) 做運算.
+  * `MARGIN = 2` 會對陣列 `X` 的第 2 個維度 (column) 執行函式,
+例如, 對 矩陣 或 資料框架 的每一欄 (行, column) 做運算等等.
+  * `MARGIN = k` 會對陣列 `X` 的第 $k$-維度 執行函式.
+* `FUN` 為執行同一函式的名稱.
+
+以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
+對連續變數 `bia1c4` -- `hbac16` 計算算平均值與標準差.
+```{r}
+dd.con <- dd %>% 
+  select(hba1c4:hba1c6) 
+apply(dd.con, 2, mean, na.rm = TRUE)
+```
+以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
+對連續變數 `bia1c4` -- `hbac16` 計算算平均值與標準差.
+個體列位 (row) 的 `bia1c4` -- `hbac16` 計算算平均值與標準差.
+```{r}
+dd.con <- dd %>% 
+  select(hba1c4:hba1c6) 
+dd.row_mean <- apply(dd.con, 1, mean, na.rm = TRUE)
+head(dd.row_mean)
+```
+{R} 函式 `colMeans()` 與 `rowMeans()` 也可進行快速計算平均值.
+```{r}
+dd.con <- dd %>% 
+  select(hba1c4:hba1c6) 
+colMeans(dd.con, na.rm = TRUE)
+dd.row_mean <- rowMeans(dd.con, na.rm = TRUE)
+head(dd.row_mean)
+```
+
+
+

@@ -3,7 +3,7 @@
 
 
 
-繪圖文法是讓一個圖形容易思考, 合理討論與溝通的抽像規則. \\
+繪圖文法是讓一個圖形容易思考, 合理討論與溝通的抽像規則. 
 Leland Wilkinson (1999), 
 **The Grammar of Graphics**.
 {R} 內建許多繪圖工具函式,
@@ -27,7 +27,7 @@ Leland Wilkinson (1999),
 無法指定成物件,
 必須送到
 **圖形裝置**
-**graphic device**),
+(**graphic device**),
 圖形裝置可以是一個視窗或某一特定格式之圖形檔案,
 {R} 可以將圖形儲存在各種圖形裝置,
 包含 `pdf`, `ps`, `jpg`, `png` 檔案等等.
@@ -106,14 +106,13 @@ ggplot(data = data_name,
        aes(x = variable_name,
            y = variable_name,
            ... <other variable_name mappings>)) +
-  geom_<type}() + 
+  geom_<type>() + 
   ...
 ```
 
 
 Prentice (1973) 報告一個研究,
 關於年長退伍軍人罹患肺癌, 且無法接受手術之臨床試驗,
-%病患在 Veteran's Administration 醫院隨機接受標準治療或新的化學療法,
 病患在榮民醫院隨機接受標準治療方法或新的化學治療方法,
 比較治療的主要結果變數為死亡時間,
 變數名稱列在表. 
@@ -127,7 +126,7 @@ Prentice (1973) 報告一個研究,
 | cellcode        | 細胞型態; 1 = 鱗狀細胞; 2 = 小細胞; 3 = 腺體細胞; 4 = 大細胞   |
 | time            | 存活時間, 診斷日期至死亡日期, 單位以日計                       |
 | censor          | 設限狀態: 0 = 設限; 1 = 死亡                                   |
-| diagtime             | Karnofsky performance score, 診斷時身體狀態表現的分數          |
+| kps             | Karnofsky performance score, 診斷時身體狀態表現的分數          |
 | diagtime        | 診斷到隨機分配的時間, 以月計                                   |
 | age             | 診斷時的年齡 (以年計)                                          |
 | prior           | 先前是否接受治療; 0 = 無; 1 = 有                               |
@@ -178,9 +177,9 @@ str(dd)
 使用頻率表 (Table) 或長條圖較佳.
 
 
-### 單類別變數
+### 單一類別變數
 
-* 單類別變數: 檢視類別水準的頻率大小.
+* 單一類別變數: 檢視類別水準的頻率大小.
 
 ```{r eval=TRUE, message=FALSE}
 ## pie chart: ggplot2 do not have a simple geom_pie()
@@ -188,8 +187,8 @@ str(dd)
 cellcode.tab <- table(dd$cellcode)
 cellcode.tab
 prop.table(cellcode.tab)
+round(prop.table(cellcode.tab), 3)
 barplot(cellcode.tab)
-round(barplot(cellcode.tab), 4)
 pie(cellcode.tab)
 
 library(ggplot2)
@@ -227,7 +226,7 @@ table(dd$cellcode)
 twoway.tab <- table(dd$treat, dd$cellcode)
 twoway.tab
 ## # cell proportion
-cell.prop <- prop.table(twoway.tab, margin=NULL) 
+cell.prop <- prop.table(twoway.tab, margin = NULL) 
 round(cell.prop, 3)
 ## conditional on row sum to 1
 cond_row_prop <- prop.table(twoway.tab, margin = 1) 
@@ -241,12 +240,12 @@ apply(cond_col_prop, 2, sum) # cols sum to 1
 barplot(twoway.tab, 
         beside = TRUE, 
         main = "treat By cellcode",
-        xlab = "clarty")
+        xlab = "cell type")
 # Stacked Bar Plot
 barplot(twoway.tab,
         beside = FALSE, 
         main = "treat By cellcode",
-        xlab = "treat")
+        xlab = "cell type")
 ## ggplot2
 ## Automatically stack
 library(ggplot2)

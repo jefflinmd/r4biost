@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 文字與字串資料處理 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 10 文字與字串資料處理 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 文字與字串資料處理 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 10 文字與字串資料處理 | R 資料科學與統計" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 文字與字串資料處理 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 10 文字與字串資料處理 | R 資料科學與統計" />
+  
+
+<meta name="author" content="Jeff Lin" />
+
+
+<meta name="date" content="2020-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="purrr.html"/>
+<link rel="next" href="applications.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>2</b> 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector.html"><a href="vector.html#向量"><i class="fa fa-check"></i><b>2.1</b> 向量</a></li>
+<li class="chapter" data-level="2.2" data-path="vector.html"><a href="vector.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a></li>
+<li class="chapter" data-level="2.3" data-path="vector.html"><a href="vector.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.3</b> 向量產生函式 <code>c()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="vector.html"><a href="vector.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.4</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.5" data-path="vector.html"><a href="vector.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.5</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector.html"><a href="vector.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.6</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.7" data-path="vector.html"><a href="vector.html#向量邏輯操作"><i class="fa fa-check"></i><b>2.7</b> 向量邏輯操作</a></li>
+<li class="chapter" data-level="2.8" data-path="vector.html"><a href="vector.html#向量元素命名"><i class="fa fa-check"></i><b>2.8</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.9" data-path="vector.html"><a href="vector.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.9</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.10" data-path="vector.html"><a href="vector.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.10</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.11" data-path="vector.html"><a href="vector.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.11</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataobject.html"><a href="dataobject.html"><i class="fa fa-check"></i><b>3</b> 資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataobject.html"><a href="dataobject.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dataobject.html"><a href="dataobject.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dataobject.html"><a href="dataobject.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dataobject.html"><a href="dataobject.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a></li>
+<li class="chapter" data-level="3.3" data-path="dataobject.html"><a href="dataobject.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.3</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.4" data-path="dataobject.html"><a href="dataobject.html#陣列物件-array"><i class="fa fa-check"></i><b>3.4</b> 陣列物件 Array</a></li>
+<li class="chapter" data-level="3.5" data-path="dataobject.html"><a href="dataobject.html#列表物件-list"><i class="fa fa-check"></i><b>3.5</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="dataobject.html"><a href="dataobject.html#列表函式-list"><i class="fa fa-check"></i><b>3.5.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.5.2" data-path="dataobject.html"><a href="dataobject.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.5.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="dataobject.html"><a href="dataobject.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.6</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.7" data-path="dataobject.html"><a href="dataobject.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.7</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="dataobject.html"><a href="dataobject.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.7.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datainout.html"><a href="datainout.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datainout.html"><a href="datainout.html#資料框架"><i class="fa fa-check"></i><b>4.1</b> 資料框架</a></li>
+<li class="chapter" data-level="4.2" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-空白分隔"><i class="fa fa-check"></i><b>4.2</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔</a></li>
+<li class="chapter" data-level="4.3" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔"><i class="fa fa-check"></i><b>4.3</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</a></li>
+<li class="chapter" data-level="4.4" data-path="datainout.html"><a href="datainout.html#r-內建資料框架"><i class="fa fa-check"></i><b>4.4</b> R 內建資料框架</a></li>
+<li class="chapter" data-level="4.5" data-path="datainout.html"><a href="datainout.html#輸出-r-資料"><i class="fa fa-check"></i><b>4.5</b> 輸出 {R} 資料</a></li>
+<li class="chapter" data-level="4.6" data-path="datainout.html"><a href="datainout.html#儲存-r-格式資料檔"><i class="fa fa-check"></i><b>4.6</b> 儲存 {R} 格式資料檔</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>5</b> 資料視覺化分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataviz.html"><a href="dataviz.html#視覺化分析原則"><i class="fa fa-check"></i><b>5.1</b> 視覺化分析原則</a></li>
+<li class="chapter" data-level="5.2" data-path="dataviz.html"><a href="dataviz.html#繪圖套件-ggplot2"><i class="fa fa-check"></i><b>5.2</b> 繪圖套件 ggplot2</a></li>
+<li class="chapter" data-level="5.3" data-path="dataviz.html"><a href="dataviz.html#類別變數"><i class="fa fa-check"></i><b>5.3</b> 類別變數</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="dataviz.html"><a href="dataviz.html#單一類別變數"><i class="fa fa-check"></i><b>5.3.1</b> 單一類別變數</a></li>
+<li class="chapter" data-level="5.3.2" data-path="dataviz.html"><a href="dataviz.html#多類別變數"><i class="fa fa-check"></i><b>5.3.2</b> 多類別變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="dataviz.html"><a href="dataviz.html#連續變數"><i class="fa fa-check"></i><b>5.4</b> 連續變數</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dataviz.html"><a href="dataviz.html#單連續變數"><i class="fa fa-check"></i><b>5.4.1</b> 單連續變數</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dataviz.html"><a href="dataviz.html#二連續變數"><i class="fa fa-check"></i><b>5.4.2</b> 二連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dataviz.html"><a href="dataviz.html#混合變數"><i class="fa fa-check"></i><b>5.5</b> 混合變數</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="dataviz.html"><a href="dataviz.html#一連續-一類別"><i class="fa fa-check"></i><b>5.5.1</b> 一連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.2" data-path="dataviz.html"><a href="dataviz.html#二連續-一類別"><i class="fa fa-check"></i><b>5.5.2</b> 二連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.3" data-path="dataviz.html"><a href="dataviz.html#三連續變數"><i class="fa fa-check"></i><b>5.5.3</b> 三連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="dataviz.html"><a href="dataviz.html#分組繪圖"><i class="fa fa-check"></i><b>5.6</b> 分組繪圖</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html"><i class="fa fa-check"></i><b>6</b> 基本函式</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#函式語法"><i class="fa fa-check"></i><b>6.1</b> 函式語法</a></li>
+<li class="chapter" data-level="6.2" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#檢視的函式原始碼定義"><i class="fa fa-check"></i><b>6.2</b> 檢視的函式原始碼定義</a></li>
+<li class="chapter" data-level="6.3" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式"><i class="fa fa-check"></i><b>6.3</b> 數列函式</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式-seq-與-sequence"><i class="fa fa-check"></i><b>6.3.1</b> 數列函式: seq() 與 sequence()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#重複元素函式-rep"><i class="fa fa-check"></i><b>6.4</b> 重複元素函式: rep()</a></li>
+<li class="chapter" data-level="6.5" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#算數函式-arithmetic-computing-function"><i class="fa fa-check"></i><b>6.5</b> 算數函式 Arithmetic Computing Function</a></li>
+<li class="chapter" data-level="6.6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#組合與階乘函式-choose-與-factorial"><i class="fa fa-check"></i><b>6.6</b> 組合與階乘函式: choose() 與 factorial()</a></li>
+<li class="chapter" data-level="6.7" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#選擇資料函式-all-any-which"><i class="fa fa-check"></i><b>6.7</b> 選擇資料函式: all(), any(), which()</a></li>
+<li class="chapter" data-level="6.8" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#排序函式-ranking-and-sorting"><i class="fa fa-check"></i><b>6.8</b> 排序函式 Ranking and Sorting</a></li>
+<li class="chapter" data-level="6.9" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#物件查看與強制轉換函式"><i class="fa fa-check"></i><b>6.9</b> 物件查看與強制轉換函式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basicstat.html"><a href="basicstat.html"><i class="fa fa-check"></i><b>7</b> 基本統計函式</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basicstat.html"><a href="basicstat.html#敘述統計函式"><i class="fa fa-check"></i><b>7.1</b> 敘述統計函式</a></li>
+<li class="chapter" data-level="7.2" data-path="basicstat.html"><a href="basicstat.html#類別資料表格函數"><i class="fa fa-check"></i><b>7.2</b> 類別資料表格函數</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-table-xtabs"><i class="fa fa-check"></i><b>7.2.1</b> 列聯表函式: table(), xtabs()</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-ftable"><i class="fa fa-check"></i><b>7.2.2</b> 列聯表函式: ftable()</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-margin.table-prop.table"><i class="fa fa-check"></i><b>7.2.3</b> 列聯表函式: margin.table(), prop.table()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basicstat.html"><a href="basicstat.html#機率函式與亂數生成函式"><i class="fa fa-check"></i><b>7.3</b> 機率函式與亂數生成函式</a></li>
+<li class="chapter" data-level="7.4" data-path="basicstat.html"><a href="basicstat.html#隨機抽樣函式-sample"><i class="fa fa-check"></i><b>7.4</b> 隨機抽樣函式 sample()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basictidy.html"><a href="basictidy.html"><i class="fa fa-check"></i><b>8</b> 資料基本處理</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basictidy.html"><a href="basictidy.html#資料輸入套件-readr"><i class="fa fa-check"></i><b>8.1</b> 資料輸入套件 readr</a></li>
+<li class="chapter" data-level="8.2" data-path="basictidy.html"><a href="basictidy.html#整潔資料-tidy-data"><i class="fa fa-check"></i><b>8.2</b> 整潔資料 Tidy Data</a></li>
+<li class="chapter" data-level="8.3" data-path="basictidy.html"><a href="basictidy.html#tibble-與-data-frame"><i class="fa fa-check"></i><b>8.3</b> Tibble 與 Data Frame</a></li>
+<li class="chapter" data-level="8.4" data-path="basictidy.html"><a href="basictidy.html#資料流動管道運算指令-pipe"><i class="fa fa-check"></i><b>8.4</b> 資料流動管道運算指令 Pipe</a></li>
+<li class="chapter" data-level="8.5" data-path="basictidy.html"><a href="basictidy.html#資料檢視函式-glimpse"><i class="fa fa-check"></i><b>8.5</b> 資料檢視函式 glimpse()</a></li>
+<li class="chapter" data-level="8.6" data-path="basictidy.html"><a href="basictidy.html#資料處裡-dplyr-套件"><i class="fa fa-check"></i><b>8.6</b> 資料處裡 dplyr 套件</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="basictidy.html"><a href="basictidy.html#選擇個體函式-filter"><i class="fa fa-check"></i><b>8.6.1</b> 選擇個體函式 <code>filter()</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
+<li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
+<li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="purrr.html"><a href="purrr.html"><i class="fa fa-check"></i><b>9</b> 資料迭代處理</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="purrr.html"><a href="purrr.html#對資料變數欄位-columns-進行相同操作"><i class="fa fa-check"></i><b>9.1</b> 對資料變數欄位 (columns) 進行相同操作</a></li>
+<li class="chapter" data-level="9.2" data-path="purrr.html"><a href="purrr.html#對資料個體列位-rows-進行相同操作"><i class="fa fa-check"></i><b>9.2</b> 對資料個體列位 (rows) 進行相同操作</a></li>
+<li class="chapter" data-level="9.3" data-path="purrr.html"><a href="purrr.html#依據條件進行變數轉換"><i class="fa fa-check"></i><b>9.3</b> 依據條件進行變數轉換</a></li>
+<li class="chapter" data-level="9.4" data-path="purrr.html"><a href="purrr.html#r-資料物件操作函式-apply"><i class="fa fa-check"></i><b>9.4</b> {R} 資料物件操作函式: apply()</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>10</b> 文字與字串資料處理</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="stringr.html"><a href="stringr.html#文字與字串資料基礎"><i class="fa fa-check"></i><b>10.1</b> 文字與字串資料基礎</a></li>
+<li class="chapter" data-level="10.2" data-path="stringr.html"><a href="stringr.html#套件-stringr"><i class="fa fa-check"></i><b>10.2</b> 套件 stringr</a></li>
+<li class="chapter" data-level="10.3" data-path="stringr.html"><a href="stringr.html#合併文字或字串-str_c"><i class="fa fa-check"></i><b>10.3</b> 合併文字或字串 str_c()</a></li>
+<li class="chapter" data-level="10.4" data-path="stringr.html"><a href="stringr.html#取出文字或字串向量中的部分元素-str_sub"><i class="fa fa-check"></i><b>10.4</b> 取出文字或字串向量中的部分元素 str_sub()</a></li>
+<li class="chapter" data-level="10.5" data-path="stringr.html"><a href="stringr.html#語言設定地區與文字大小寫排序"><i class="fa fa-check"></i><b>10.5</b> 語言設定地區與文字大小寫排序</a></li>
+<li class="chapter" data-level="10.6" data-path="stringr.html"><a href="stringr.html#移除空白-加入空白-截斷文字-str_trim-與-str_pad"><i class="fa fa-check"></i><b>10.6</b> 移除空白, 加入空白, 截斷文字 <code>str_trim()</code> 與 <code>str_pad()</code></a></li>
+<li class="chapter" data-level="10.7" data-path="stringr.html"><a href="stringr.html#尋找特定形式文字或字串"><i class="fa fa-check"></i><b>10.7</b> 尋找特定形式文字或字串</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="stringr.html"><a href="stringr.html#偵測函式-str_detect"><i class="fa fa-check"></i><b>10.7.1</b> 偵測函式 <code>str_detect()</code></a></li>
+<li class="chapter" data-level="10.7.2" data-path="stringr.html"><a href="stringr.html#確認位置函式-str_detect"><i class="fa fa-check"></i><b>10.7.2</b> 確認位置函式 <code>str_detect()</code></a></li>
+<li class="chapter" data-level="10.7.3" data-path="stringr.html"><a href="stringr.html#確認索引函式-str_subset-與-str_which"><i class="fa fa-check"></i><b>10.7.3</b> 確認索引函式 <code>str_subset()</code> 與 <code>str_which()</code></a></li>
+<li class="chapter" data-level="10.7.4" data-path="stringr.html"><a href="stringr.html#取出函式-str_extract"><i class="fa fa-check"></i><b>10.7.4</b> 取出函式 <code>str_extract()</code></a></li>
+<li class="chapter" data-level="10.7.5" data-path="stringr.html"><a href="stringr.html#配對函式-str_match"><i class="fa fa-check"></i><b>10.7.5</b> 配對函式 <code>str_match()</code></a></li>
+<li class="chapter" data-level="10.7.6" data-path="stringr.html"><a href="stringr.html#替代置換函式-str_replace"><i class="fa fa-check"></i><b>10.7.6</b> 替代置換函式 <code>str_replace()</code></a></li>
+<li class="chapter" data-level="10.7.7" data-path="stringr.html"><a href="stringr.html#分割函式-str_split"><i class="fa fa-check"></i><b>10.7.7</b> 分割函式 <code>str_split()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="stringr.html"><a href="stringr.html#群組尋找特定形式的文字與字串"><i class="fa fa-check"></i><b>10.8</b> 群組尋找特定形式的文字與字串</a></li>
+<li class="chapter" data-level="10.9" data-path="stringr.html"><a href="stringr.html#尋找連續重覆特定形式的文字與字串"><i class="fa fa-check"></i><b>10.9</b> 尋找連續重覆特定形式的文字與字串</a></li>
+<li class="chapter" data-level="10.10" data-path="stringr.html"><a href="stringr.html#正規表示文字與字串-萬用字元"><i class="fa fa-check"></i><b>10.10</b> 正規表示文字與字串 (萬用字元)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>11</b> Applications</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>11.1</b> Example one</a></li>
+<li class="chapter" data-level="11.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>11.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>12</b> Final Words</a></li>
+<li class="chapter" data-level="13" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>13</b> Temp</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stringr" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> 文字與字串資料處理</h1>
+<p>傳統上, 統計人員較少直接處裡文字或字串資料,
+多數時候是由資料管理人元處理後, 轉換成數值資料, 然後交由統計人員進行後續分析.
+由於大數據時代來臨包含者多樣性的資料型態,
+統計人員必須必須直接處裡文字或字串資料的機會也越來越多.
+{R} 內有許多函數可以處理文字型態的資料物件 或 文字資料 (Character Data),
+常用之文字函式有
+<code>paste()</code>,
+<code>substr()</code>,
+<code>substring()</code>,
+<code>grep()</code>,
+<code>gsub()</code>,
+<code>strsplit()</code> 等.
+{R} 套件 <code>stringr</code> 有更多處理文字或字串資料函式.</p>
+<div id="文字與字串資料基礎" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> 文字與字串資料基礎</h2>
+<p>輸入文字遠比數字複雜, 必須考慮大小寫, 空格或 <code>Tab</code>,
+單引號或雙引號, 特殊符號與字元等等.
+{R} 輸入特殊符號的顯示與實際想要輸入的特殊符號有些差別.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="stringr.html#cb182-1" aria-hidden="true"></a>st1 &lt;-<span class="st"> &quot;This is a book&quot;</span></span>
+<span id="cb182-2"><a href="stringr.html#cb182-2" aria-hidden="true"></a>st1</span>
+<span id="cb182-3"><a href="stringr.html#cb182-3" aria-hidden="true"></a><span class="co">## [1] &quot;This is a book&quot;</span></span>
+<span id="cb182-4"><a href="stringr.html#cb182-4" aria-hidden="true"></a>st2 &lt;-<span class="st"> &#39;To include a double &quot;quote&quot; inside a string, use single quotes&#39;</span></span>
+<span id="cb182-5"><a href="stringr.html#cb182-5" aria-hidden="true"></a>st2</span>
+<span id="cb182-6"><a href="stringr.html#cb182-6" aria-hidden="true"></a><span class="co">## [1] &quot;To include a double \&quot;quote\&quot; inside a string, use single quotes&quot;</span></span>
+<span id="cb182-7"><a href="stringr.html#cb182-7" aria-hidden="true"></a>st3 &lt;-<span class="st"> &quot;To include a single &#39;quote&#39; inside a string, use double quotes&quot;</span></span>
+<span id="cb182-8"><a href="stringr.html#cb182-8" aria-hidden="true"></a>st3</span>
+<span id="cb182-9"><a href="stringr.html#cb182-9" aria-hidden="true"></a><span class="co">## [1] &quot;To include a single &#39;quote&#39; inside a string, use double quotes&quot;</span></span>
+<span id="cb182-10"><a href="stringr.html#cb182-10" aria-hidden="true"></a>double_quote &lt;-<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span> <span class="co"># or &#39;&quot;&#39;</span></span>
+<span id="cb182-11"><a href="stringr.html#cb182-11" aria-hidden="true"></a>double_quote</span>
+<span id="cb182-12"><a href="stringr.html#cb182-12" aria-hidden="true"></a><span class="co">## [1] &quot;\&quot;&quot;</span></span>
+<span id="cb182-13"><a href="stringr.html#cb182-13" aria-hidden="true"></a>single_quote &lt;-<span class="st"> &#39;</span><span class="ch">\&#39;</span><span class="st">&#39;</span> <span class="co"># or &quot;&#39;&quot;</span></span>
+<span id="cb182-14"><a href="stringr.html#cb182-14" aria-hidden="true"></a>single_quote</span>
+<span id="cb182-15"><a href="stringr.html#cb182-15" aria-hidden="true"></a><span class="co">## [1] &quot;&#39;&quot;</span></span></code></pre></div>
+<p>類似情形, 若要輸入反斜線 <code>\</code>, 則須輸入連續 2 個反斜線: <code>\\</code>.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="stringr.html#cb183-1" aria-hidden="true"></a>backslash &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">&quot;</span>)</span>
+<span id="cb183-2"><a href="stringr.html#cb183-2" aria-hidden="true"></a>backslash</span>
+<span id="cb183-3"><a href="stringr.html#cb183-3" aria-hidden="true"></a><span class="co">## [1] &quot;\\&quot;</span></span></code></pre></div>
+<p>{R} 輸入特殊符號反斜線 <code>\</code> 的顯示 <code>"\\" 與實際想要輸入的單一個反斜線有些差別</code>`.
+若要呈現實際想要輸入的特殊符號,
+可使用函式 <code>writeLines()</code>.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="stringr.html#cb184-1" aria-hidden="true"></a>x.char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">&quot;</span>)</span>
+<span id="cb184-2"><a href="stringr.html#cb184-2" aria-hidden="true"></a>x.char</span>
+<span id="cb184-3"><a href="stringr.html#cb184-3" aria-hidden="true"></a><span class="co">## [1] &quot;\&quot;&quot; &quot;\\&quot;</span></span>
+<span id="cb184-4"><a href="stringr.html#cb184-4" aria-hidden="true"></a><span class="kw">writeLines</span>(x.char)</span>
+<span id="cb184-5"><a href="stringr.html#cb184-5" aria-hidden="true"></a><span class="co">## &quot;</span></span>
+<span id="cb184-6"><a href="stringr.html#cb184-6" aria-hidden="true"></a><span class="co">## \</span></span></code></pre></div>
+<p>利用指令 <code>?'"'</code> 或 <code>?"'"</code> 可以得到特殊符號的輸入方式.</p>
+<ul>
+<li><code>\n</code> newline<br />
+</li>
+<li><code>\r</code> carriage return<br />
+</li>
+<li><code>\t</code> tab<br />
+</li>
+<li><code>\b</code> backspace<br />
+</li>
+<li><code>\a</code> alert (bell)<br />
+</li>
+<li><code>\f</code> form feed<br />
+</li>
+<li><code>\v</code> vertical tab<br />
+</li>
+<li><code>\\</code> backslash <code>\</code><br />
+</li>
+<li><code>\'</code> ASCII apostrophe <code>'</code><br />
+</li>
+<li><code>\"</code> ASCII quotation mark <code>"</code><br />
+</li>
+<li><code>\</code>` ASCII grave accent (backtick) `</li>
+<li><code>\nnn</code> character with given octal code (1, 2 or 3 digits)<br />
+</li>
+<li><code>\xnn</code> character with given hex code (1 or 2 hex digits)<br />
+</li>
+<li><code>\unnnn</code> Unicode character with given code (1–4 hex digits)<br />
+</li>
+<li><code>\Unnnnnnnn</code> Unicode character with given code (1–8 hex digits)</li>
+</ul>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="stringr.html#cb185-1" aria-hidden="true"></a>x.utf &lt;-<span class="st"> &quot;\u00b5&quot;</span></span>
+<span id="cb185-2"><a href="stringr.html#cb185-2" aria-hidden="true"></a>x.utf</span>
+<span id="cb185-3"><a href="stringr.html#cb185-3" aria-hidden="true"></a><span class="co">## [1] &quot;μ&quot;</span></span></code></pre></div>
+</div>
+<div id="套件-stringr" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> 套件 stringr</h2>
+<p>{R} base 有許多函式處理文字或字串, 但函式的引數並不具有一致性, 容易混淆,
+因此 <code>tidyverse</code> 系列的套件 <code>stringr</code> 內的函式都以 <code>str_</code> 為起始,
+例如, <code>str_length()</code> 回傳文字向量內的文字字數.</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="stringr.html#cb186-1" aria-hidden="true"></a><span class="kw">library</span>(stringr)</span>
+<span id="cb186-2"><a href="stringr.html#cb186-2" aria-hidden="true"></a><span class="kw">str_length</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;Biostatistics&quot;</span>, <span class="st">&quot;Medical Statistics&quot;</span>, <span class="st">&quot;</span><span class="ch">\&#39;\b\t</span><span class="st">&quot;</span>, <span class="ot">NA</span>))</span>
+<span id="cb186-3"><a href="stringr.html#cb186-3" aria-hidden="true"></a><span class="co">## [1]  1 13 18  3 NA</span></span></code></pre></div>
+</div>
+<div id="合併文字或字串-str_c" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> 合併文字或字串 str_c()</h2>
+<p>函式 <code>str_c()</code> 可以合併文字或字串, 類似 {R} base 函式 <code>paste()</code>.
+使用引數 <code>sep</code> 設定合併的中間字元.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="stringr.html#cb187-1" aria-hidden="true"></a><span class="kw">str_c</span>(<span class="st">&quot;medical&quot;</span>, <span class="st">&quot;statistics&quot;</span>)</span>
+<span id="cb187-2"><a href="stringr.html#cb187-2" aria-hidden="true"></a><span class="co">## [1] &quot;medicalstatistics&quot;</span></span>
+<span id="cb187-3"><a href="stringr.html#cb187-3" aria-hidden="true"></a><span class="kw">str_c</span>(<span class="st">&quot;medical&quot;</span>, <span class="st">&quot;statistics&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb187-4"><a href="stringr.html#cb187-4" aria-hidden="true"></a><span class="co">## [1] &quot;medical statistics&quot;</span></span>
+<span id="cb187-5"><a href="stringr.html#cb187-5" aria-hidden="true"></a><span class="kw">str_c</span>(<span class="st">&quot;medical&quot;</span>, <span class="st">&quot;statistics&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb187-6"><a href="stringr.html#cb187-6" aria-hidden="true"></a><span class="co">## [1] &quot;medical-statistics&quot;</span></span>
+<span id="cb187-7"><a href="stringr.html#cb187-7" aria-hidden="true"></a><span class="kw">str_c</span>(<span class="st">&quot;medical&quot;</span>, <span class="st">&quot;statistics&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; + &quot;</span>)</span>
+<span id="cb187-8"><a href="stringr.html#cb187-8" aria-hidden="true"></a><span class="co">## [1] &quot;medical + statistics&quot;</span></span>
+<span id="cb187-9"><a href="stringr.html#cb187-9" aria-hidden="true"></a><span class="kw">str_c</span>(<span class="st">&quot;|-&quot;</span>, <span class="st">&quot;medical&quot;</span>, <span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;-|&quot;</span>)</span>
+<span id="cb187-10"><a href="stringr.html#cb187-10" aria-hidden="true"></a><span class="co">## [1] &quot;|-medicalstatistics-|&quot;</span></span></code></pre></div>
+<p>若是遇到缺失值 NA, 則仍回傳 NA,
+若要改變遇到缺失值 NA, 回傳列印 <code>NA</code>,
+可以使用加用函式 <code>str_replace_na()</code>.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="stringr.html#cb188-1" aria-hidden="true"></a>x.char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;bio&quot;</span>, <span class="ot">NA</span>, <span class="st">&quot;statistics&quot;</span>)</span>
+<span id="cb188-2"><a href="stringr.html#cb188-2" aria-hidden="true"></a><span class="kw">str_c</span>(<span class="st">&quot;pre-&quot;</span>, x.char, <span class="st">&quot;-end&quot;</span>)</span>
+<span id="cb188-3"><a href="stringr.html#cb188-3" aria-hidden="true"></a><span class="co">## [1] &quot;pre-bio-end&quot;        NA                   &quot;pre-statistics-end&quot;</span></span>
+<span id="cb188-4"><a href="stringr.html#cb188-4" aria-hidden="true"></a><span class="kw">str_c</span>(<span class="st">&quot;pre-&quot;</span>, <span class="kw">str_replace_na</span>(x.char), <span class="st">&quot;-end&quot;</span>)</span>
+<span id="cb188-5"><a href="stringr.html#cb188-5" aria-hidden="true"></a><span class="co">## [1] &quot;pre-bio-end&quot;        &quot;pre-NA-end&quot;         &quot;pre-statistics-end&quot;</span></span></code></pre></div>
+<p>若要合併 2 個字串向量為單一字串, 可以使用引數 <code>collpse</code>.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="stringr.html#cb189-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;love&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>)</span>
+<span id="cb189-2"><a href="stringr.html#cb189-2" aria-hidden="true"></a><span class="kw">str_c</span>(char.vec, <span class="dt">collapse =</span> <span class="st">&quot;, &quot;</span>)</span>
+<span id="cb189-3"><a href="stringr.html#cb189-3" aria-hidden="true"></a><span class="co">## [1] &quot;I, love, biostatistics&quot;</span></span>
+<span id="cb189-4"><a href="stringr.html#cb189-4" aria-hidden="true"></a><span class="kw">str_c</span>(char.vec, <span class="dt">collapse =</span> <span class="st">&quot;+&quot;</span>)</span>
+<span id="cb189-5"><a href="stringr.html#cb189-5" aria-hidden="true"></a><span class="co">## [1] &quot;I+love+biostatistics&quot;</span></span>
+<span id="cb189-6"><a href="stringr.html#cb189-6" aria-hidden="true"></a><span class="kw">str_c</span>(char.vec, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb189-7"><a href="stringr.html#cb189-7" aria-hidden="true"></a><span class="co">## [1] &quot;I love biostatistics&quot;</span></span>
+<span id="cb189-8"><a href="stringr.html#cb189-8" aria-hidden="true"></a><span class="kw">str_c</span>(char.vec, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb189-9"><a href="stringr.html#cb189-9" aria-hidden="true"></a><span class="co">## [1] &quot;I&quot;             &quot;love&quot;          &quot;biostatistics&quot;</span></span>
+<span id="cb189-10"><a href="stringr.html#cb189-10" aria-hidden="true"></a><span class="kw">str_c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;love&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb189-11"><a href="stringr.html#cb189-11" aria-hidden="true"></a><span class="co">## [1] &quot;I love biostatistics&quot;</span></span></code></pre></div>
+</div>
+<div id="取出文字或字串向量中的部分元素-str_sub" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> 取出文字或字串向量中的部分元素 str_sub()</h2>
+<p>函式 <code>str_sub()</code> 可以取出取出文字或字串向量中元素的部分文字.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="stringr.html#cb190-1" aria-hidden="true"></a><span class="kw">str_sub</span>(string, <span class="dt">start =</span> 1L, <span class="dt">end =</span> <span class="op">-</span>1L)</span></code></pre></div>
+<p>引數 <code>start</code> 與 <code>end</code> 分別為向量中元素內文字之起始位置與結束位置.
+即使向量長度不足仍會回傳.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="stringr.html#cb191-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;love&quot;</span>, <span class="st">&quot;medical&quot;</span>, <span class="st">&quot;statistics&quot;</span>)</span>
+<span id="cb191-2"><a href="stringr.html#cb191-2" aria-hidden="true"></a><span class="kw">str_sub</span>(char.vec, <span class="dt">start =</span> <span class="dv">1</span>, <span class="dt">end =</span> <span class="dv">3</span>)</span>
+<span id="cb191-3"><a href="stringr.html#cb191-3" aria-hidden="true"></a><span class="co">## [1] &quot;I&quot;   &quot;lov&quot; &quot;med&quot; &quot;sta&quot;</span></span></code></pre></div>
+</div>
+<div id="語言設定地區與文字大小寫排序" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> 語言設定地區與文字大小寫排序</h2>
+<p>不同地區的文字, 可能有類似文字,
+在大小寫轉換實常會出現轉換錯誤,
+若要確保大小寫轉換或排序正確,
+套件 <code>stringr</code> 內的函式可改設定 {R} 程式使用文字的地區.
+例如, 大小寫轉換函式
+<code>str_to_lower(),</code>str_to_upper()<code>或</code>str_to_title()` 的使用.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="stringr.html#cb192-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;Love&quot;</span>, <span class="st">&quot;Medical&quot;</span>, <span class="st">&quot;Statistics&quot;</span>)</span>
+<span id="cb192-2"><a href="stringr.html#cb192-2" aria-hidden="true"></a><span class="kw">str_to_upper</span>(char.vec)</span>
+<span id="cb192-3"><a href="stringr.html#cb192-3" aria-hidden="true"></a><span class="co">## [1] &quot;I&quot;          &quot;LOVE&quot;       &quot;MEDICAL&quot;    &quot;STATISTICS&quot;</span></span>
+<span id="cb192-4"><a href="stringr.html#cb192-4" aria-hidden="true"></a><span class="kw">str_to_lower</span>(char.vec)</span>
+<span id="cb192-5"><a href="stringr.html#cb192-5" aria-hidden="true"></a><span class="co">## [1] &quot;i&quot;          &quot;love&quot;       &quot;medical&quot;    &quot;statistics&quot;</span></span>
+<span id="cb192-6"><a href="stringr.html#cb192-6" aria-hidden="true"></a><span class="kw">str_to_title</span>(<span class="kw">str_to_upper</span>(char.vec))</span>
+<span id="cb192-7"><a href="stringr.html#cb192-7" aria-hidden="true"></a><span class="co">## [1] &quot;I&quot;          &quot;Love&quot;       &quot;Medical&quot;    &quot;Statistics&quot;</span></span>
+<span id="cb192-8"><a href="stringr.html#cb192-8" aria-hidden="true"></a><span class="kw">str_to_title</span>(<span class="kw">str_to_lower</span>(char.vec))</span>
+<span id="cb192-9"><a href="stringr.html#cb192-9" aria-hidden="true"></a><span class="co">## [1] &quot;I&quot;          &quot;Love&quot;       &quot;Medical&quot;    &quot;Statistics&quot;</span></span></code></pre></div>
+<p>{R} base 函式 <code>sort()</code> 與 <code>order()</code> 定 {R} 程式登入使用文字的地區</p>
+<p>套件 <code>stringr</code> 內的函式 <code>str_sort()</code> 與 <code>str_order(), 可以使用引數</code>locale` 設定使用文字的地區.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="stringr.html#cb193-1" aria-hidden="true"></a>veg.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;eggplant&quot;</span>, <span class="st">&quot;banana&quot;</span>)</span>
+<span id="cb193-2"><a href="stringr.html#cb193-2" aria-hidden="true"></a><span class="kw">sort</span>(veg.vec)</span>
+<span id="cb193-3"><a href="stringr.html#cb193-3" aria-hidden="true"></a><span class="co">## [1] &quot;apple&quot;    &quot;banana&quot;   &quot;eggplant&quot;</span></span>
+<span id="cb193-4"><a href="stringr.html#cb193-4" aria-hidden="true"></a><span class="kw">order</span>(veg.vec)</span>
+<span id="cb193-5"><a href="stringr.html#cb193-5" aria-hidden="true"></a><span class="co">## [1] 1 3 2</span></span>
+<span id="cb193-6"><a href="stringr.html#cb193-6" aria-hidden="true"></a><span class="kw">str_sort</span>(veg.vec, <span class="dt">locale =</span> <span class="st">&quot;en&quot;</span>)  <span class="co"># English</span></span>
+<span id="cb193-7"><a href="stringr.html#cb193-7" aria-hidden="true"></a><span class="co">## [1] &quot;apple&quot;    &quot;banana&quot;   &quot;eggplant&quot;</span></span>
+<span id="cb193-8"><a href="stringr.html#cb193-8" aria-hidden="true"></a><span class="kw">str_sort</span>(veg.vec, <span class="dt">locale =</span> <span class="st">&quot;haw&quot;</span>) <span class="co"># Hawaiian</span></span>
+<span id="cb193-9"><a href="stringr.html#cb193-9" aria-hidden="true"></a><span class="co">## [1] &quot;apple&quot;    &quot;eggplant&quot; &quot;banana&quot;</span></span></code></pre></div>
+</div>
+<div id="移除空白-加入空白-截斷文字-str_trim-與-str_pad" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> 移除空白, 加入空白, 截斷文字 <code>str_trim()</code> 與 <code>str_pad()</code></h2>
+<p>套件 <code>stringr</code> 內的函式 <code>str_trim()</code> 與 <code>str_pad()</code>
+可以對文字或字串向量內的首尾之空白 (white space) 移除,
+或是加入.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="stringr.html#cb194-1" aria-hidden="true"></a><span class="kw">str_trim</span>(string, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;both&quot;</span>, <span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>))</span>
+<span id="cb194-2"><a href="stringr.html#cb194-2" aria-hidden="true"></a><span class="kw">str_pad</span>(string, width, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;right&quot;</span>, <span class="st">&quot;both&quot;</span>), <span class="dt">pad =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb194-3"><a href="stringr.html#cb194-3" aria-hidden="true"></a><span class="kw">str_trunc</span>(string, width, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>, <span class="st">&quot;left&quot;</span>, <span class="st">&quot;center&quot;</span>), <span class="dt">ellipsis =</span> <span class="st">&quot;...&quot;</span>)</span></code></pre></div>
+<p>引數 <code>both</code>, <code>left</code>, <code>right</code> 分別處理在首尾二端, 左端, 右端之空白.
+<code>width</code> 為加入空白後字串的長度, <code>pad</code> 為替代加入空白的文字或符號.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="stringr.html#cb195-1" aria-hidden="true"></a>veg.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple   &quot;</span>, <span class="st">&quot;   eggplant   &quot;</span>, <span class="st">&quot;   banana&quot;</span>)</span>
+<span id="cb195-2"><a href="stringr.html#cb195-2" aria-hidden="true"></a><span class="kw">str_trim</span>(veg.vec, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;both&quot;</span>))</span>
+<span id="cb195-3"><a href="stringr.html#cb195-3" aria-hidden="true"></a><span class="co">## [1] &quot;apple&quot;    &quot;eggplant&quot; &quot;banana&quot;</span></span>
+<span id="cb195-4"><a href="stringr.html#cb195-4" aria-hidden="true"></a><span class="kw">str_trim</span>(veg.vec, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;left&quot;</span>))</span>
+<span id="cb195-5"><a href="stringr.html#cb195-5" aria-hidden="true"></a><span class="co">## [1] &quot;apple   &quot;    &quot;eggplant   &quot; &quot;banana&quot;</span></span>
+<span id="cb195-6"><a href="stringr.html#cb195-6" aria-hidden="true"></a><span class="kw">str_trim</span>(veg.vec, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>))</span>
+<span id="cb195-7"><a href="stringr.html#cb195-7" aria-hidden="true"></a><span class="co">## [1] &quot;apple&quot;       &quot;   eggplant&quot; &quot;   banana&quot;</span></span>
+<span id="cb195-8"><a href="stringr.html#cb195-8" aria-hidden="true"></a>veg.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple &quot;</span>, <span class="st">&quot; eggplant &quot;</span>, <span class="st">&quot; banana&quot;</span>)</span>
+<span id="cb195-9"><a href="stringr.html#cb195-9" aria-hidden="true"></a><span class="kw">str_pad</span>(<span class="st">&quot;a&quot;</span>, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;both&quot;</span>), <span class="dt">pad =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb195-10"><a href="stringr.html#cb195-10" aria-hidden="true"></a><span class="co">## [1] &quot;       a       &quot;</span></span>
+<span id="cb195-11"><a href="stringr.html#cb195-11" aria-hidden="true"></a><span class="kw">str_pad</span>(<span class="st">&quot;a&quot;</span>, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;both&quot;</span>), <span class="dt">pad =</span> <span class="kw">c</span>(<span class="st">&quot;_&quot;</span>))</span>
+<span id="cb195-12"><a href="stringr.html#cb195-12" aria-hidden="true"></a><span class="co">## [1] &quot;_______a_______&quot;</span></span>
+<span id="cb195-13"><a href="stringr.html#cb195-13" aria-hidden="true"></a><span class="kw">str_pad</span>(veg.vec, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;both&quot;</span>))</span>
+<span id="cb195-14"><a href="stringr.html#cb195-14" aria-hidden="true"></a><span class="co">## [1] &quot;    apple      &quot; &quot;   eggplant    &quot; &quot;     banana    &quot;</span></span>
+<span id="cb195-15"><a href="stringr.html#cb195-15" aria-hidden="true"></a><span class="kw">str_pad</span>(veg.vec, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;left&quot;</span>))</span>
+<span id="cb195-16"><a href="stringr.html#cb195-16" aria-hidden="true"></a><span class="co">## [1] &quot;         apple &quot; &quot;      eggplant &quot; &quot;         banana&quot;</span></span>
+<span id="cb195-17"><a href="stringr.html#cb195-17" aria-hidden="true"></a><span class="kw">str_pad</span>(veg.vec, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>))</span>
+<span id="cb195-18"><a href="stringr.html#cb195-18" aria-hidden="true"></a><span class="co">## [1] &quot;apple          &quot; &quot; eggplant      &quot; &quot; banana        &quot;</span></span>
+<span id="cb195-19"><a href="stringr.html#cb195-19" aria-hidden="true"></a><span class="kw">str_pad</span>(veg.vec, <span class="dt">width =</span> <span class="dv">15</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;both&quot;</span>), <span class="dt">pad =</span> <span class="kw">c</span>(<span class="st">&quot;_&quot;</span>))</span>
+<span id="cb195-20"><a href="stringr.html#cb195-20" aria-hidden="true"></a><span class="co">## [1] &quot;____apple _____&quot; &quot;__ eggplant ___&quot; &quot;____ banana____&quot;</span></span>
+<span id="cb195-21"><a href="stringr.html#cb195-21" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I love biostatistics&quot;</span>)</span>
+<span id="cb195-22"><a href="stringr.html#cb195-22" aria-hidden="true"></a><span class="kw">str_trunc</span>(char.vec, <span class="dt">width =</span> <span class="dv">10</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>))</span>
+<span id="cb195-23"><a href="stringr.html#cb195-23" aria-hidden="true"></a><span class="co">## [1] &quot;I lo...ics&quot;</span></span>
+<span id="cb195-24"><a href="stringr.html#cb195-24" aria-hidden="true"></a><span class="kw">str_trunc</span>(char.vec, <span class="dt">width =</span> <span class="dv">10</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;left&quot;</span>))</span>
+<span id="cb195-25"><a href="stringr.html#cb195-25" aria-hidden="true"></a><span class="co">## [1] &quot;...tistics&quot;</span></span>
+<span id="cb195-26"><a href="stringr.html#cb195-26" aria-hidden="true"></a><span class="kw">str_trunc</span>(char.vec, <span class="dt">width =</span> <span class="dv">10</span>, <span class="dt">side =</span> <span class="kw">c</span>(<span class="st">&quot;right&quot;</span>))</span>
+<span id="cb195-27"><a href="stringr.html#cb195-27" aria-hidden="true"></a><span class="co">## [1] &quot;I love ...&quot;</span></span></code></pre></div>
+</div>
+<div id="尋找特定形式文字或字串" class="section level2" number="10.7">
+<h2><span class="header-section-number">10.7</span> 尋找特定形式文字或字串</h2>
+<p>文字或字串處理中一項重要的工作是尋找特定形式文字或字串 (pattern),
+然後進行 detect (偵測), locate (確認位置),
+extract (取出), match (配對), replace (替代置換) 與 split (分割).</p>
+<div id="偵測函式-str_detect" class="section level3" number="10.7.1">
+<h3><span class="header-section-number">10.7.1</span> 偵測函式 <code>str_detect()</code></h3>
+<p>套件 <code>stringr</code> 內的函式 <code>str_detect()</code> 偵測字串向量是否包含特定形式文字,
+回傳邏輯向量.
+這與 {R} base 函式 <code>grep(pattern, x)</code> 類似.
+函式 <code>str_count()</code> 計算字串內配對成功的次數.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="stringr.html#cb196-1" aria-hidden="true"></a><span class="kw">str_detect</span>(string, pattern, <span class="dt">negate =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb196-2"><a href="stringr.html#cb196-2" aria-hidden="true"></a><span class="kw">str_count</span>(string, <span class="dt">pattern =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>引數 <code>pattern</code> 定義所要尋找特定形式的文字,
+若 <code>negate = TRUE</code> 同時回傳沒有配對成功的邏輯向量.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="stringr.html#cb197-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb197-2"><a href="stringr.html#cb197-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb197-3"><a href="stringr.html#cb197-3" aria-hidden="true"></a><span class="kw">str_detect</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;statistics&quot;</span>, <span class="dt">negate =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb197-4"><a href="stringr.html#cb197-4" aria-hidden="true"></a><span class="co">## [1]  TRUE  TRUE FALSE FALSE</span></span>
+<span id="cb197-5"><a href="stringr.html#cb197-5" aria-hidden="true"></a><span class="kw">str_detect</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;statistics&quot;</span>, <span class="dt">negate =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb197-6"><a href="stringr.html#cb197-6" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE  TRUE  TRUE</span></span>
+<span id="cb197-7"><a href="stringr.html#cb197-7" aria-hidden="true"></a><span class="kw">str_detect</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>, <span class="dt">negate =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb197-8"><a href="stringr.html#cb197-8" aria-hidden="true"></a><span class="co">## [1]  TRUE  TRUE FALSE  TRUE</span></span>
+<span id="cb197-9"><a href="stringr.html#cb197-9" aria-hidden="true"></a><span class="kw">str_detect</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;function&quot;</span>, <span class="dt">negate =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb197-10"><a href="stringr.html#cb197-10" aria-hidden="true"></a><span class="co">## [1] FALSE FALSE FALSE FALSE</span></span>
+<span id="cb197-11"><a href="stringr.html#cb197-11" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb197-12"><a href="stringr.html#cb197-12" aria-hidden="true"></a><span class="kw">str_count</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>)</span>
+<span id="cb197-13"><a href="stringr.html#cb197-13" aria-hidden="true"></a><span class="co">## [1] 2 2 0 1</span></span>
+<span id="cb197-14"><a href="stringr.html#cb197-14" aria-hidden="true"></a><span class="kw">str_count</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb197-15"><a href="stringr.html#cb197-15" aria-hidden="true"></a><span class="co">## [1] 0 1 2 1</span></span></code></pre></div>
+</div>
+<div id="確認位置函式-str_detect" class="section level3" number="10.7.2">
+<h3><span class="header-section-number">10.7.2</span> 確認位置函式 <code>str_detect()</code></h3>
+<p>函式 <code>str_locate()</code> 尋找配對成功的字串之第 1 次位置,
+回傳矩陣, 包含起始以末端的位置.
+這與 {R} base 函式 <code>regexpr()</code> 與 <code>gregexpr()</code> 類似.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="stringr.html#cb198-1" aria-hidden="true"></a><span class="kw">str_locate</span>(string, pattern)</span>
+<span id="cb198-2"><a href="stringr.html#cb198-2" aria-hidden="true"></a><span class="kw">str_locate_all</span>(string, pattern)</span></code></pre></div>
+<p>另外函式 <code>str_locate_all()</code> 尋找配對成功的字串之所有位置,
+回傳列表.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="stringr.html#cb199-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb199-2"><a href="stringr.html#cb199-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb199-3"><a href="stringr.html#cb199-3" aria-hidden="true"></a><span class="kw">str_locate</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>)</span>
+<span id="cb199-4"><a href="stringr.html#cb199-4" aria-hidden="true"></a><span class="co">##      start end</span></span>
+<span id="cb199-5"><a href="stringr.html#cb199-5" aria-hidden="true"></a><span class="co">## [1,]     4   5</span></span>
+<span id="cb199-6"><a href="stringr.html#cb199-6" aria-hidden="true"></a><span class="co">## [2,]     7   8</span></span>
+<span id="cb199-7"><a href="stringr.html#cb199-7" aria-hidden="true"></a><span class="co">## [3,]    NA  NA</span></span>
+<span id="cb199-8"><a href="stringr.html#cb199-8" aria-hidden="true"></a><span class="co">## [4,]     9  10</span></span>
+<span id="cb199-9"><a href="stringr.html#cb199-9" aria-hidden="true"></a><span class="kw">str_locate_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>)</span>
+<span id="cb199-10"><a href="stringr.html#cb199-10" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb199-11"><a href="stringr.html#cb199-11" aria-hidden="true"></a><span class="co">##      start end</span></span>
+<span id="cb199-12"><a href="stringr.html#cb199-12" aria-hidden="true"></a><span class="co">## [1,]     4   5</span></span>
+<span id="cb199-13"><a href="stringr.html#cb199-13" aria-hidden="true"></a><span class="co">## [2,]     7   8</span></span>
+<span id="cb199-14"><a href="stringr.html#cb199-14" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb199-15"><a href="stringr.html#cb199-15" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb199-16"><a href="stringr.html#cb199-16" aria-hidden="true"></a><span class="co">##      start end</span></span>
+<span id="cb199-17"><a href="stringr.html#cb199-17" aria-hidden="true"></a><span class="co">## [1,]     7   8</span></span>
+<span id="cb199-18"><a href="stringr.html#cb199-18" aria-hidden="true"></a><span class="co">## [2,]    10  11</span></span>
+<span id="cb199-19"><a href="stringr.html#cb199-19" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb199-20"><a href="stringr.html#cb199-20" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb199-21"><a href="stringr.html#cb199-21" aria-hidden="true"></a><span class="co">##      start end</span></span>
+<span id="cb199-22"><a href="stringr.html#cb199-22" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb199-23"><a href="stringr.html#cb199-23" aria-hidden="true"></a><span class="co">## [[4]]</span></span>
+<span id="cb199-24"><a href="stringr.html#cb199-24" aria-hidden="true"></a><span class="co">##      start end</span></span>
+<span id="cb199-25"><a href="stringr.html#cb199-25" aria-hidden="true"></a><span class="co">## [1,]     9  10</span></span></code></pre></div>
+</div>
+<div id="確認索引函式-str_subset-與-str_which" class="section level3" number="10.7.3">
+<h3><span class="header-section-number">10.7.3</span> 確認索引函式 <code>str_subset()</code> 與 <code>str_which()</code></h3>
+<p>函式 <code>str_subset()</code> 尋找字串向量內配對成功的之第 1 次的元素內容,
+而函式 <code>str_which()</code> 尋找字串向量內配對成功的之第 1 次索引 (index).</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="stringr.html#cb200-1" aria-hidden="true"></a><span class="kw">str_subset</span>(string, pattern, <span class="dt">negate =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb200-2"><a href="stringr.html#cb200-2" aria-hidden="true"></a><span class="kw">str_which</span>(string, pattern, <span class="dt">negate =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p>若引數 <code>negate = TRUE</code> 回傳沒有配對成功的元素內容或索引.
+函式 <code>str_subset()</code> 與函式 <code>x[str_detect(x, pattern)]</code> 類似功能,
+等同於 R base 函式 <code>grep(pattern, x, value = TRUE)</code>.
+而函式 <code>str_which()</code> 與函式 <code>which(str_detect(x, pattern))</code> 類似功能,
+等同於 R base 函式 <code>grep(pattern, x)</code>,
+如同函式 <code>str_detect()</code> 同於 R base 函式 <code>grepl(pattern, x)</code>.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="stringr.html#cb201-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb201-2"><a href="stringr.html#cb201-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb201-3"><a href="stringr.html#cb201-3" aria-hidden="true"></a><span class="kw">str_subset</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>)</span>
+<span id="cb201-4"><a href="stringr.html#cb201-4" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;    &quot;biostatistics&quot; &quot;distribution&quot;</span></span>
+<span id="cb201-5"><a href="stringr.html#cb201-5" aria-hidden="true"></a><span class="kw">str_which</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>)</span>
+<span id="cb201-6"><a href="stringr.html#cb201-6" aria-hidden="true"></a><span class="co">## [1] 1 2 4</span></span></code></pre></div>
+</div>
+<div id="取出函式-str_extract" class="section level3" number="10.7.4">
+<h3><span class="header-section-number">10.7.4</span> 取出函式 <code>str_extract()</code></h3>
+<p>函式 <code>str_extract()</code> 尋找配對成功的字串之第 1 次位置,
+回傳字串向量.</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="stringr.html#cb202-1" aria-hidden="true"></a><span class="kw">str_extract</span>(string, pattern)</span>
+<span id="cb202-2"><a href="stringr.html#cb202-2" aria-hidden="true"></a><span class="kw">str_extract_all</span>(string, pattern, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p>另外函式 <code>str_extract_all()</code> 尋找配對成功的字串之所有位置,
+回傳所有字串向量形成列表.
+引數 <code>simplify = TRUE</code> 簡化成文字矩陣.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="stringr.html#cb203-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb203-2"><a href="stringr.html#cb203-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb203-3"><a href="stringr.html#cb203-3" aria-hidden="true"></a><span class="kw">str_extract</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>)</span>
+<span id="cb203-4"><a href="stringr.html#cb203-4" aria-hidden="true"></a><span class="co">## [1] &quot;ti&quot; &quot;ti&quot; NA   &quot;ti&quot;</span></span>
+<span id="cb203-5"><a href="stringr.html#cb203-5" aria-hidden="true"></a><span class="kw">str_extract_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>)</span>
+<span id="cb203-6"><a href="stringr.html#cb203-6" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb203-7"><a href="stringr.html#cb203-7" aria-hidden="true"></a><span class="co">## [1] &quot;ti&quot; &quot;ti&quot;</span></span>
+<span id="cb203-8"><a href="stringr.html#cb203-8" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb203-9"><a href="stringr.html#cb203-9" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb203-10"><a href="stringr.html#cb203-10" aria-hidden="true"></a><span class="co">## [1] &quot;ti&quot; &quot;ti&quot;</span></span>
+<span id="cb203-11"><a href="stringr.html#cb203-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb203-12"><a href="stringr.html#cb203-12" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb203-13"><a href="stringr.html#cb203-13" aria-hidden="true"></a><span class="co">## character(0)</span></span>
+<span id="cb203-14"><a href="stringr.html#cb203-14" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb203-15"><a href="stringr.html#cb203-15" aria-hidden="true"></a><span class="co">## [[4]]</span></span>
+<span id="cb203-16"><a href="stringr.html#cb203-16" aria-hidden="true"></a><span class="co">## [1] &quot;ti&quot;</span></span></code></pre></div>
+</div>
+<div id="配對函式-str_match" class="section level3" number="10.7.5">
+<h3><span class="header-section-number">10.7.5</span> 配對函式 <code>str_match()</code></h3>
+<p>函式 <code>str_match()</code> 使用在群組尋找特定形式文字或字串,
+若尋到找配對成功的字串之第 1 次位置,
+回傳文字矩陣,第一欄位為完全配對成功的文字,
+其餘欄位為群組內個別配對成功的文字.</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="stringr.html#cb204-1" aria-hidden="true"></a><span class="kw">str_match</span>(string, pattern)</span>
+<span id="cb204-2"><a href="stringr.html#cb204-2" aria-hidden="true"></a><span class="kw">str_match_all</span>(string, pattern)</span></code></pre></div>
+<p>另外函式 <code>str_match_all()</code> 尋找配對成功的字串之所有位置.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="stringr.html#cb205-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb205-2"><a href="stringr.html#cb205-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb205-3"><a href="stringr.html#cb205-3" aria-hidden="true"></a><span class="kw">str_match</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;(a|ti)&quot;</span>)</span>
+<span id="cb205-4"><a href="stringr.html#cb205-4" aria-hidden="true"></a><span class="co">##      [,1] [,2]</span></span>
+<span id="cb205-5"><a href="stringr.html#cb205-5" aria-hidden="true"></a><span class="co">## [1,] &quot;a&quot;  &quot;a&quot; </span></span>
+<span id="cb205-6"><a href="stringr.html#cb205-6" aria-hidden="true"></a><span class="co">## [2,] &quot;a&quot;  &quot;a&quot; </span></span>
+<span id="cb205-7"><a href="stringr.html#cb205-7" aria-hidden="true"></a><span class="co">## [3,] &quot;a&quot;  &quot;a&quot; </span></span>
+<span id="cb205-8"><a href="stringr.html#cb205-8" aria-hidden="true"></a><span class="co">## [4,] &quot;ti&quot; &quot;ti&quot;</span></span>
+<span id="cb205-9"><a href="stringr.html#cb205-9" aria-hidden="true"></a><span class="kw">str_match_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;(a|ti)&quot;</span>)</span>
+<span id="cb205-10"><a href="stringr.html#cb205-10" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb205-11"><a href="stringr.html#cb205-11" aria-hidden="true"></a><span class="co">##      [,1] [,2]</span></span>
+<span id="cb205-12"><a href="stringr.html#cb205-12" aria-hidden="true"></a><span class="co">## [1,] &quot;a&quot;  &quot;a&quot; </span></span>
+<span id="cb205-13"><a href="stringr.html#cb205-13" aria-hidden="true"></a><span class="co">## [2,] &quot;ti&quot; &quot;ti&quot;</span></span>
+<span id="cb205-14"><a href="stringr.html#cb205-14" aria-hidden="true"></a><span class="co">## [3,] &quot;ti&quot; &quot;ti&quot;</span></span>
+<span id="cb205-15"><a href="stringr.html#cb205-15" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb205-16"><a href="stringr.html#cb205-16" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb205-17"><a href="stringr.html#cb205-17" aria-hidden="true"></a><span class="co">##      [,1] [,2]</span></span>
+<span id="cb205-18"><a href="stringr.html#cb205-18" aria-hidden="true"></a><span class="co">## [1,] &quot;a&quot;  &quot;a&quot; </span></span>
+<span id="cb205-19"><a href="stringr.html#cb205-19" aria-hidden="true"></a><span class="co">## [2,] &quot;ti&quot; &quot;ti&quot;</span></span>
+<span id="cb205-20"><a href="stringr.html#cb205-20" aria-hidden="true"></a><span class="co">## [3,] &quot;ti&quot; &quot;ti&quot;</span></span>
+<span id="cb205-21"><a href="stringr.html#cb205-21" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb205-22"><a href="stringr.html#cb205-22" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb205-23"><a href="stringr.html#cb205-23" aria-hidden="true"></a><span class="co">##      [,1] [,2]</span></span>
+<span id="cb205-24"><a href="stringr.html#cb205-24" aria-hidden="true"></a><span class="co">## [1,] &quot;a&quot;  &quot;a&quot; </span></span>
+<span id="cb205-25"><a href="stringr.html#cb205-25" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb205-26"><a href="stringr.html#cb205-26" aria-hidden="true"></a><span class="co">## [[4]]</span></span>
+<span id="cb205-27"><a href="stringr.html#cb205-27" aria-hidden="true"></a><span class="co">##      [,1] [,2]</span></span>
+<span id="cb205-28"><a href="stringr.html#cb205-28" aria-hidden="true"></a><span class="co">## [1,] &quot;ti&quot; &quot;ti&quot;</span></span></code></pre></div>
+</div>
+<div id="替代置換函式-str_replace" class="section level3" number="10.7.6">
+<h3><span class="header-section-number">10.7.6</span> 替代置換函式 <code>str_replace()</code></h3>
+<p>函式 <code>str_match()</code> 使用在群組尋找特定形式文字或字串,
+若尋找到配對成功的字串之第 1 次位置,
+則使用其他特定字串替代置換.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="stringr.html#cb206-1" aria-hidden="true"></a><span class="kw">str_replace</span>(string, pattern, replacement)</span>
+<span id="cb206-2"><a href="stringr.html#cb206-2" aria-hidden="true"></a><span class="kw">str_replace_all</span>(string, pattern, replacement)</span></code></pre></div>
+<p>引數 <code>replacement</code> 設定新的替代字串置換原有尋找特定形式文字或字串.
+另外函式 <code>str_replace_all()</code> 尋找配對成功的字串之所有位置,
+同時使用其他特定字串替代置換.</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="stringr.html#cb207-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb207-2"><a href="stringr.html#cb207-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb207-3"><a href="stringr.html#cb207-3" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;ti&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb207-4"><a href="stringr.html#cb207-4" aria-hidden="true"></a><span class="co">## [1] &quot;sta--stics&quot;    &quot;biosta--stics&quot; &quot;probability&quot;   &quot;distribu--on&quot;</span></span>
+<span id="cb207-5"><a href="stringr.html#cb207-5" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;+++&quot;</span>)</span>
+<span id="cb207-6"><a href="stringr.html#cb207-6" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;      &quot;+++iostatistics&quot; &quot;pro+++a+++ility&quot; &quot;distri+++ution&quot;</span></span></code></pre></div>
+</div>
+<div id="分割函式-str_split" class="section level3" number="10.7.7">
+<h3><span class="header-section-number">10.7.7</span> 分割函式 <code>str_split()</code></h3>
+<p>函式 <code>str_split()</code> 使用在群組尋找特定形式文字或字串,
+若尋找到配對成功的字串之第 1 次位置,
+則從特定形式文字或字串分割字串向量,
+回傳分割結果為列表物件.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="stringr.html#cb208-1" aria-hidden="true"></a><span class="kw">str_split</span>(string, pattern, <span class="dt">n =</span> <span class="ot">Inf</span>, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb208-2"><a href="stringr.html#cb208-2" aria-hidden="true"></a><span class="kw">str_split_fixed</span>(string, pattern, n)</span>
+<span id="cb208-3"><a href="stringr.html#cb208-3" aria-hidden="true"></a><span class="kw">str_split_n</span>(string, pattern, n)</span></code></pre></div>
+<p>其中引數 <code>n</code> 設定回傳物件的數目,
+<code>simplify = TRUE</code> 回傳物件簡化成文字矩陣.
+另外函式 <code>str_split_fixed()</code>
+回傳物件簡化成文字矩陣且欄位 (column) 數目為 <code>n</code>.
+<code>str_split_n()</code> 回傳物件簡化成文字向量, 長度為 <code>n</code>.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="stringr.html#cb209-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a b c&quot;</span>, <span class="st">&quot;d e&quot;</span>, <span class="st">&quot;bio-statistics required-courses&quot;</span>)</span>
+<span id="cb209-2"><a href="stringr.html#cb209-2" aria-hidden="true"></a><span class="kw">str_split</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot; &quot;</span>, <span class="dt">n =</span> <span class="ot">Inf</span>, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb209-3"><a href="stringr.html#cb209-3" aria-hidden="true"></a><span class="co">## [[1]]</span></span>
+<span id="cb209-4"><a href="stringr.html#cb209-4" aria-hidden="true"></a><span class="co">## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</span></span>
+<span id="cb209-5"><a href="stringr.html#cb209-5" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb209-6"><a href="stringr.html#cb209-6" aria-hidden="true"></a><span class="co">## [[2]]</span></span>
+<span id="cb209-7"><a href="stringr.html#cb209-7" aria-hidden="true"></a><span class="co">## [1] &quot;d&quot; &quot;e&quot;</span></span>
+<span id="cb209-8"><a href="stringr.html#cb209-8" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb209-9"><a href="stringr.html#cb209-9" aria-hidden="true"></a><span class="co">## [[3]]</span></span>
+<span id="cb209-10"><a href="stringr.html#cb209-10" aria-hidden="true"></a><span class="co">## [1] &quot;bio-statistics&quot;   &quot;required-courses&quot;</span></span>
+<span id="cb209-11"><a href="stringr.html#cb209-11" aria-hidden="true"></a><span class="kw">str_split</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot; &quot;</span>, <span class="dt">n =</span> <span class="ot">Inf</span>, <span class="dt">simplify =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb209-12"><a href="stringr.html#cb209-12" aria-hidden="true"></a><span class="co">##      [,1]             [,2]               [,3]</span></span>
+<span id="cb209-13"><a href="stringr.html#cb209-13" aria-hidden="true"></a><span class="co">## [1,] &quot;a&quot;              &quot;b&quot;                &quot;c&quot; </span></span>
+<span id="cb209-14"><a href="stringr.html#cb209-14" aria-hidden="true"></a><span class="co">## [2,] &quot;d&quot;              &quot;e&quot;                &quot;&quot;  </span></span>
+<span id="cb209-15"><a href="stringr.html#cb209-15" aria-hidden="true"></a><span class="co">## [3,] &quot;bio-statistics&quot; &quot;required-courses&quot; &quot;&quot;</span></span>
+<span id="cb209-16"><a href="stringr.html#cb209-16" aria-hidden="true"></a><span class="kw">str_split_fixed</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot; &quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>)</span>
+<span id="cb209-17"><a href="stringr.html#cb209-17" aria-hidden="true"></a><span class="co">##      [,1]             [,2]              </span></span>
+<span id="cb209-18"><a href="stringr.html#cb209-18" aria-hidden="true"></a><span class="co">## [1,] &quot;a&quot;              &quot;b c&quot;             </span></span>
+<span id="cb209-19"><a href="stringr.html#cb209-19" aria-hidden="true"></a><span class="co">## [2,] &quot;d&quot;              &quot;e&quot;               </span></span>
+<span id="cb209-20"><a href="stringr.html#cb209-20" aria-hidden="true"></a><span class="co">## [3,] &quot;bio-statistics&quot; &quot;required-courses&quot;</span></span>
+<span id="cb209-21"><a href="stringr.html#cb209-21" aria-hidden="true"></a><span class="kw">str_split_fixed</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;-&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>)</span>
+<span id="cb209-22"><a href="stringr.html#cb209-22" aria-hidden="true"></a><span class="co">##      [,1]    [,2]                         </span></span>
+<span id="cb209-23"><a href="stringr.html#cb209-23" aria-hidden="true"></a><span class="co">## [1,] &quot;a b c&quot; &quot;&quot;                           </span></span>
+<span id="cb209-24"><a href="stringr.html#cb209-24" aria-hidden="true"></a><span class="co">## [2,] &quot;d e&quot;   &quot;&quot;                           </span></span>
+<span id="cb209-25"><a href="stringr.html#cb209-25" aria-hidden="true"></a><span class="co">## [3,] &quot;bio&quot;   &quot;statistics required-courses&quot;</span></span></code></pre></div>
+</div>
+</div>
+<div id="群組尋找特定形式的文字與字串" class="section level2" number="10.8">
+<h2><span class="header-section-number">10.8</span> 群組尋找特定形式的文字與字串</h2>
+<p>有些時候在尋找特定形式的文字與字串, 須要尋找不只一種特定的形式,
+此時須藉由 <code>alternate</code>, <code>anchor</code> 與 <code>look around</code> 概念處理.
+例如, 同時尋找 <code>b</code> 或 <code>ti</code>, 可以輸入 <code>b|ti</code>.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="stringr.html#cb210-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb210-2"><a href="stringr.html#cb210-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb210-3"><a href="stringr.html#cb210-3" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b|ti&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb210-4"><a href="stringr.html#cb210-4" aria-hidden="true"></a><span class="co">## [1] &quot;sta--stics&quot;     &quot;--iostatistics&quot; &quot;pro--ability&quot;   &quot;distri--ution&quot;</span></span>
+<span id="cb210-5"><a href="stringr.html#cb210-5" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b|ti&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;+++&quot;</span>)</span>
+<span id="cb210-6"><a href="stringr.html#cb210-6" aria-hidden="true"></a><span class="co">## [1] &quot;sta+++s+++cs&quot;      &quot;+++iosta+++s+++cs&quot; &quot;pro+++a+++ility&quot;  </span></span>
+<span id="cb210-7"><a href="stringr.html#cb210-7" aria-hidden="true"></a><span class="co">## [4] &quot;distri+++u+++on&quot;</span></span></code></pre></div>
+<p><code>anchor</code> 起始符號 <code>^</code> 可以尋找字串的起始具有特定形式,
+尾端符號 <code>$</code> 可以尋找字串的尾端具有特定形式.
+例如, <code>^b</code>, 尋找字串的起始具有 <code>b</code>,
+或 <code>n$</code>, 尋找字串的尾端具 <code>n</code>.</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="stringr.html#cb211-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb211-2"><a href="stringr.html#cb211-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb211-3"><a href="stringr.html#cb211-3" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;^b&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb211-4"><a href="stringr.html#cb211-4" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;     &quot;--iostatistics&quot; &quot;probability&quot;    &quot;distribution&quot;</span></span>
+<span id="cb211-5"><a href="stringr.html#cb211-5" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;n$&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;+++&quot;</span>)</span>
+<span id="cb211-6"><a href="stringr.html#cb211-6" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;     &quot;biostatistics&quot;  &quot;probability&quot;    &quot;distributio+++&quot;</span></span></code></pre></div>
+<p>有些時候需要尋找字串前後具有特定形式的文字與字串,
+例如, 尋找在 <code>ti</code> 之前的字元, 在 <code>p</code> 之後的字元等等.
+使用小括號 <code>()</code> 代表特定形式的前後順序.
+輸入 <code>a(?=c)</code> 表示在 <code>a</code> 之後有 <code>c</code> 字元,
+輸入 <code>a(?!c)</code> 表示在 <code>a</code> 之後無 <code>c</code> 字元,
+輸入 <code>(?&lt;=b)a</code> 表示在 <code>a</code> 之前有 <code>b</code> 字元,
+輸入 <code>(?&lt;!b)a</code> 表示在 <code>a</code> 之前無 <code>b</code> 字元.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="stringr.html#cb212-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb212-2"><a href="stringr.html#cb212-2" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb212-3"><a href="stringr.html#cb212-3" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;t(?=i)&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb212-4"><a href="stringr.html#cb212-4" aria-hidden="true"></a><span class="co">## [1] &quot;sta--istics&quot;    &quot;biosta--istics&quot; &quot;probability&quot;    &quot;distribu--ion&quot;</span></span>
+<span id="cb212-5"><a href="stringr.html#cb212-5" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;t(?!i)&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb212-6"><a href="stringr.html#cb212-6" aria-hidden="true"></a><span class="co">## [1] &quot;s--atistics&quot;    &quot;bios--atistics&quot; &quot;probabili--y&quot;   &quot;dis--ribution&quot;</span></span>
+<span id="cb212-7"><a href="stringr.html#cb212-7" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;(?&lt;=i)o&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb212-8"><a href="stringr.html#cb212-8" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;     &quot;bi--statistics&quot; &quot;probability&quot;    &quot;distributi--n&quot;</span></span>
+<span id="cb212-9"><a href="stringr.html#cb212-9" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;(?&lt;=t)i&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb212-10"><a href="stringr.html#cb212-10" aria-hidden="true"></a><span class="co">## [1] &quot;stat--st--cs&quot;    &quot;biostat--st--cs&quot; &quot;probability&quot;     &quot;distribut--on&quot;</span></span>
+<span id="cb212-11"><a href="stringr.html#cb212-11" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;(?&lt;!t)i&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb212-12"><a href="stringr.html#cb212-12" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;     &quot;b--ostatistics&quot; &quot;probab--lity&quot;   &quot;d--stribution&quot;</span></span>
+<span id="cb212-13"><a href="stringr.html#cb212-13" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;(?&lt;!t)i&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
+<span id="cb212-14"><a href="stringr.html#cb212-14" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;     &quot;b--ostatistics&quot; &quot;probab--l--ty&quot;  &quot;d--str--bution&quot;</span></span></code></pre></div>
+</div>
+<div id="尋找連續重覆特定形式的文字與字串" class="section level2" number="10.9">
+<h2><span class="header-section-number">10.9</span> 尋找連續重覆特定形式的文字與字串</h2>
+<p>一個字串可能不只一個特定形式的文字與字串連續重覆出現,
+套件 <code>stringr</code> 尋找特定形式的文字與字串, 可以合併考量連續重覆出現次數.
+其中 <code>{}</code> 內不可有空格.
+<code>stringr</code> 在群組 <code>()</code> 之後加上 <code>\\1</code>, <code>\\2</code>, … 等,
+如同
+可以設定尋找連續重覆出現次數.</p>
+<table>
+<thead>
+<tr class="header">
+<th>stringr 輸入</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a?</td>
+<td>zero or one</td>
+</tr>
+<tr class="even">
+<td>a*</td>
+<td>zero or more</td>
+</tr>
+<tr class="odd">
+<td>a+</td>
+<td>one or more</td>
+</tr>
+<tr class="even">
+<td>a{n}</td>
+<td>exactly n</td>
+</tr>
+<tr class="odd">
+<td>a{n, }</td>
+<td>n or more</td>
+</tr>
+<tr class="even">
+<td>a{n, m}</td>
+<td>between n and m</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="stringr.html#cb213-1" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;.a.aa.aaa.aaaa&quot;</span>)</span>
+<span id="cb213-2"><a href="stringr.html#cb213-2" aria-hidden="true"></a><span class="kw">str_replace</span>(x.vec, <span class="dt">pattern =</span> <span class="st">&quot;a?&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-3"><a href="stringr.html#cb213-3" aria-hidden="true"></a><span class="co">## [1] &quot;-.a.aa.aaa.aaaa&quot;</span></span>
+<span id="cb213-4"><a href="stringr.html#cb213-4" aria-hidden="true"></a><span class="kw">str_replace</span>(x.vec, <span class="dt">pattern =</span> <span class="st">&quot;a*&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-5"><a href="stringr.html#cb213-5" aria-hidden="true"></a><span class="co">## [1] &quot;-.a.aa.aaa.aaaa&quot;</span></span>
+<span id="cb213-6"><a href="stringr.html#cb213-6" aria-hidden="true"></a><span class="kw">str_replace</span>(x.vec, <span class="dt">pattern =</span> <span class="st">&quot;a+&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-7"><a href="stringr.html#cb213-7" aria-hidden="true"></a><span class="co">## [1] &quot;.-.aa.aaa.aaaa&quot;</span></span>
+<span id="cb213-8"><a href="stringr.html#cb213-8" aria-hidden="true"></a><span class="kw">str_replace</span>(x.vec, <span class="dt">pattern =</span> <span class="st">&quot;a{2}&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-9"><a href="stringr.html#cb213-9" aria-hidden="true"></a><span class="co">## [1] &quot;.a.-.aaa.aaaa&quot;</span></span>
+<span id="cb213-10"><a href="stringr.html#cb213-10" aria-hidden="true"></a><span class="kw">str_replace</span>(x.vec, <span class="dt">pattern =</span> <span class="st">&quot;a{2,}&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-11"><a href="stringr.html#cb213-11" aria-hidden="true"></a><span class="co">## [1] &quot;.a.-.aaa.aaaa&quot;</span></span>
+<span id="cb213-12"><a href="stringr.html#cb213-12" aria-hidden="true"></a><span class="kw">str_replace</span>(x.vec, <span class="dt">pattern =</span> <span class="st">&quot;a{2,3}&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-13"><a href="stringr.html#cb213-13" aria-hidden="true"></a><span class="co">## [1] &quot;.a.-.aaa.aaaa&quot;</span></span>
+<span id="cb213-14"><a href="stringr.html#cb213-14" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics&quot;</span>, <span class="st">&quot;biostatistics&quot;</span>, </span>
+<span id="cb213-15"><a href="stringr.html#cb213-15" aria-hidden="true"></a>              <span class="st">&quot;probability&quot;</span>, <span class="st">&quot;distribution&quot;</span>)</span>
+<span id="cb213-16"><a href="stringr.html#cb213-16" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;i?&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-17"><a href="stringr.html#cb213-17" aria-hidden="true"></a><span class="co">## [1] &quot;-statistics&quot;    &quot;-biostatistics&quot; &quot;-probability&quot;   &quot;-distribution&quot;</span></span>
+<span id="cb213-18"><a href="stringr.html#cb213-18" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;i*&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-19"><a href="stringr.html#cb213-19" aria-hidden="true"></a><span class="co">## [1] &quot;-statistics&quot;    &quot;-biostatistics&quot; &quot;-probability&quot;   &quot;-distribution&quot;</span></span>
+<span id="cb213-20"><a href="stringr.html#cb213-20" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;i+&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-21"><a href="stringr.html#cb213-21" aria-hidden="true"></a><span class="co">## [1] &quot;stat-stics&quot;    &quot;b-ostatistics&quot; &quot;probab-lity&quot;   &quot;d-stribution&quot;</span></span>
+<span id="cb213-22"><a href="stringr.html#cb213-22" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;i{2}&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-23"><a href="stringr.html#cb213-23" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;    &quot;biostatistics&quot; &quot;probability&quot;   &quot;distribution&quot;</span></span>
+<span id="cb213-24"><a href="stringr.html#cb213-24" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;i{2}&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-25"><a href="stringr.html#cb213-25" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;    &quot;biostatistics&quot; &quot;probability&quot;   &quot;distribution&quot;</span></span>
+<span id="cb213-26"><a href="stringr.html#cb213-26" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;i{2,3}&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb213-27"><a href="stringr.html#cb213-27" aria-hidden="true"></a><span class="co">## [1] &quot;statistics&quot;    &quot;biostatistics&quot; &quot;probability&quot;   &quot;distribution&quot;</span></span></code></pre></div>
+</div>
+<div id="正規表示文字與字串-萬用字元" class="section level2" number="10.10">
+<h2><span class="header-section-number">10.10</span> 正規表示文字與字串 (萬用字元)</h2>
+<p>{R} 尋找特定形式的文字與字串, 可以使用程式語言通用的正規表示 (regular expression),
+在使用套件 <code>stringr</code> 輸入時有些差異, 以下表摘要說明.</p>
+<table>
+<thead>
+<tr class="header">
+<th>stringr 輸入</th>
+<th>正規表示</th>
+<th>真實的文字與字串</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>\\.</td>
+<td>\.</td>
+<td>.</td>
+</tr>
+<tr class="even">
+<td>\\!</td>
+<td>\!</td>
+<td>!</td>
+</tr>
+<tr class="odd">
+<td>\\?</td>
+<td>\?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>\\\\</td>
+<td>\\</td>
+<td>\</td>
+</tr>
+<tr class="odd">
+<td>\\(</td>
+<td>\(</td>
+<td>(</td>
+</tr>
+<tr class="even">
+<td>\\)</td>
+<td>\)</td>
+<td>)</td>
+</tr>
+<tr class="odd">
+<td>\\{</td>
+<td>\{</td>
+<td>{</td>
+</tr>
+<tr class="even">
+<td>\\}</td>
+<td>\}</td>
+<td>}</td>
+</tr>
+<tr class="odd">
+<td>\\n</td>
+<td>\n</td>
+<td>new line (return)</td>
+</tr>
+<tr class="even">
+<td>\t</td>
+<td>\t</td>
+<td>tab</td>
+</tr>
+<tr class="odd">
+<td>\\s</td>
+<td>\s</td>
+<td>any whitespace (\S for non-whitespaces)</td>
+</tr>
+<tr class="even">
+<td>\\d</td>
+<td>\d</td>
+<td>any digit (\D for non-digits)</td>
+</tr>
+<tr class="odd">
+<td>\\w</td>
+<td>\w</td>
+<td>any word character (\W for non-word chars)</td>
+</tr>
+<tr class="even">
+<td>\\b</td>
+<td>\b</td>
+<td>word boundaries</td>
+</tr>
+<tr class="odd">
+<td>\\k</td>
+<td>\k</td>
+<td>k = integer, repeated number</td>
+</tr>
+<tr class="even">
+<td>[:digit:]</td>
+<td></td>
+<td>digits</td>
+</tr>
+<tr class="odd">
+<td>[:alpha:]</td>
+<td></td>
+<td>letters</td>
+</tr>
+<tr class="even">
+<td>[:lower:]</td>
+<td></td>
+<td>lowercase letters</td>
+</tr>
+<tr class="odd">
+<td>[:upper:]</td>
+<td></td>
+<td>uppercase letters</td>
+</tr>
+<tr class="even">
+<td>[:alnum:]</td>
+<td></td>
+<td>letters and numbers</td>
+</tr>
+<tr class="odd">
+<td>[:punct:]</td>
+<td></td>
+<td>punctuation</td>
+</tr>
+<tr class="even">
+<td>[:graph:]</td>
+<td></td>
+<td>letters, numbers, and punctuation</td>
+</tr>
+<tr class="odd">
+<td>[:space:]</td>
+<td></td>
+<td>space characters (i.e. \s)</td>
+</tr>
+<tr class="even">
+<td>[:blank:]</td>
+<td></td>
+<td>space and tab (but not new line)</td>
+</tr>
+<tr class="odd">
+<td>.</td>
+<td></td>
+<td>every character except a new line</td>
+</tr>
+</tbody>
+</table>
+<p>Table 3: 正規表示文字與字串 (萬用字元)</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="stringr.html#cb214-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics.123&quot;</span>, <span class="st">&quot;biostatistics.a.b.c&quot;</span>, </span>
+<span id="cb214-2"><a href="stringr.html#cb214-2" aria-hidden="true"></a>              <span class="st">&quot;probability.a.c&quot;</span>, <span class="st">&quot;distribution.a c&quot;</span>)</span>
+<span id="cb214-3"><a href="stringr.html#cb214-3" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;.i.&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-4"><a href="stringr.html#cb214-4" aria-hidden="true"></a><span class="co">## [1] &quot;sta-tics.123&quot;      &quot;-statistics.a.b.c&quot; &quot;proba-ity.a.c&quot;    </span></span>
+<span id="cb214-5"><a href="stringr.html#cb214-5" aria-hidden="true"></a><span class="co">## [4] &quot;-tribution.a c&quot;</span></span>
+<span id="cb214-6"><a href="stringr.html#cb214-6" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;.i.&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-7"><a href="stringr.html#cb214-7" aria-hidden="true"></a><span class="co">## [1] &quot;sta--s.123&quot;    &quot;-sta--s.a.b.c&quot; &quot;proba-ity.a.c&quot; &quot;-t-u-n.a c&quot;</span></span>
+<span id="cb214-8"><a href="stringr.html#cb214-8" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;y</span><span class="ch">\\</span><span class="st">.a&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-9"><a href="stringr.html#cb214-9" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probabilit-.c&quot;      </span></span>
+<span id="cb214-10"><a href="stringr.html#cb214-10" aria-hidden="true"></a><span class="co">## [4] &quot;distribution.a c&quot;</span></span>
+<span id="cb214-11"><a href="stringr.html#cb214-11" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;a[.]c&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-12"><a href="stringr.html#cb214-12" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probability.-&quot;      </span></span>
+<span id="cb214-13"><a href="stringr.html#cb214-13" aria-hidden="true"></a><span class="co">## [4] &quot;distribution.a c&quot;</span></span>
+<span id="cb214-14"><a href="stringr.html#cb214-14" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;a[ ]&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-15"><a href="stringr.html#cb214-15" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probability.a.c&quot;    </span></span>
+<span id="cb214-16"><a href="stringr.html#cb214-16" aria-hidden="true"></a><span class="co">## [4] &quot;distribution.-c&quot;</span></span>
+<span id="cb214-17"><a href="stringr.html#cb214-17" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b[ab]+&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-18"><a href="stringr.html#cb214-18" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;pro-ility.a.c&quot;      </span></span>
+<span id="cb214-19"><a href="stringr.html#cb214-19" aria-hidden="true"></a><span class="co">## [4] &quot;distribution.a c&quot;</span></span>
+<span id="cb214-20"><a href="stringr.html#cb214-20" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;set&quot;</span>, <span class="st">&quot;sat&quot;</span>, <span class="st">&quot;sit&quot;</span>, <span class="st">&quot;sout&quot;</span>)</span>
+<span id="cb214-21"><a href="stringr.html#cb214-21" aria-hidden="true"></a><span class="kw">str_replace</span>(y.vec, <span class="dt">pattern =</span> <span class="st">&quot;s(a|i)t&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-22"><a href="stringr.html#cb214-22" aria-hidden="true"></a><span class="co">## [1] &quot;set&quot;  &quot;-&quot;    &quot;-&quot;    &quot;sout&quot;</span></span>
+<span id="cb214-23"><a href="stringr.html#cb214-23" aria-hidden="true"></a>fruits.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;banana&quot;</span>, <span class="st">&quot;coconut&quot;</span>, <span class="st">&quot;cucumber&quot;</span>, <span class="st">&quot;jujube&quot;</span>, <span class="st">&quot;papaya&quot;</span>, <span class="st">&quot;berry&quot;</span>)</span>
+<span id="cb214-24"><a href="stringr.html#cb214-24" aria-hidden="true"></a><span class="kw">str_replace</span>(fruits.vec, <span class="dt">pattern =</span> <span class="st">&quot;(..)</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-25"><a href="stringr.html#cb214-25" aria-hidden="true"></a><span class="co">## [1] &quot;b-a&quot;   &quot;-nut&quot;  &quot;-mber&quot; &quot;-be&quot;   &quot;-ya&quot;   &quot;berry&quot;</span></span>
+<span id="cb214-26"><a href="stringr.html#cb214-26" aria-hidden="true"></a><span class="kw">str_replace</span>(fruits.vec, <span class="dt">pattern =</span> <span class="st">&quot;(.)(.)</span><span class="ch">\\</span><span class="st">2</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-27"><a href="stringr.html#cb214-27" aria-hidden="true"></a><span class="co">## [1] &quot;banana&quot;   &quot;coconut&quot;  &quot;cucumber&quot; &quot;jujube&quot;   &quot;papaya&quot;   &quot;berry&quot;</span></span>
+<span id="cb214-28"><a href="stringr.html#cb214-28" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;3 house&quot;</span>, <span class="st">&quot;4 cars&quot;</span>, <span class="st">&quot;5 dogs&quot;</span>)</span>
+<span id="cb214-29"><a href="stringr.html#cb214-29" aria-hidden="true"></a><span class="kw">str_replace_all</span>(z.vec, <span class="kw">c</span>(<span class="st">&quot;3&quot;</span> =<span class="st"> &quot;three&quot;</span>, <span class="st">&quot;4&quot;</span> =<span class="st"> &quot;four&quot;</span>, <span class="st">&quot;5&quot;</span> =<span class="st"> &quot;five&quot;</span>))</span>
+<span id="cb214-30"><a href="stringr.html#cb214-30" aria-hidden="true"></a><span class="co">## [1] &quot;three house&quot; &quot;four cars&quot;   &quot;five dogs&quot;</span></span>
+<span id="cb214-31"><a href="stringr.html#cb214-31" aria-hidden="true"></a>sent.vec &lt;-<span class="st"> </span>sentences[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb214-32"><a href="stringr.html#cb214-32" aria-hidden="true"></a>sent.vec</span>
+<span id="cb214-33"><a href="stringr.html#cb214-33" aria-hidden="true"></a><span class="co">## [1] &quot;The birch canoe slid on the smooth planks.&quot; </span></span>
+<span id="cb214-34"><a href="stringr.html#cb214-34" aria-hidden="true"></a><span class="co">## [2] &quot;Glue the sheet to the dark blue background.&quot;</span></span>
+<span id="cb214-35"><a href="stringr.html#cb214-35" aria-hidden="true"></a><span class="co">## [3] &quot;It&#39;s easy to tell the depth of a well.&quot;     </span></span>
+<span id="cb214-36"><a href="stringr.html#cb214-36" aria-hidden="true"></a><span class="co">## [4] &quot;These days a chicken leg is a rare dish.&quot;   </span></span>
+<span id="cb214-37"><a href="stringr.html#cb214-37" aria-hidden="true"></a><span class="co">## [5] &quot;Rice is often served in round bowls.&quot;</span></span>
+<span id="cb214-38"><a href="stringr.html#cb214-38" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_subset</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb214-39"><a href="stringr.html#cb214-39" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_extract</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>)</span>
+<span id="cb214-40"><a href="stringr.html#cb214-40" aria-hidden="true"></a><span class="co">## [1] &quot;the smooth&quot; &quot;the sheet&quot;  &quot;the depth&quot;  &quot;a chicken&quot;</span></span>
+<span id="cb214-41"><a href="stringr.html#cb214-41" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_subset</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb214-42"><a href="stringr.html#cb214-42" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_match</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>)</span>
+<span id="cb214-43"><a href="stringr.html#cb214-43" aria-hidden="true"></a><span class="co">##      [,1]         [,2]  [,3]     </span></span>
+<span id="cb214-44"><a href="stringr.html#cb214-44" aria-hidden="true"></a><span class="co">## [1,] &quot;the smooth&quot; &quot;the&quot; &quot;smooth&quot; </span></span>
+<span id="cb214-45"><a href="stringr.html#cb214-45" aria-hidden="true"></a><span class="co">## [2,] &quot;the sheet&quot;  &quot;the&quot; &quot;sheet&quot;  </span></span>
+<span id="cb214-46"><a href="stringr.html#cb214-46" aria-hidden="true"></a><span class="co">## [3,] &quot;the depth&quot;  &quot;the&quot; &quot;depth&quot;  </span></span>
+<span id="cb214-47"><a href="stringr.html#cb214-47" aria-hidden="true"></a><span class="co">## [4,] &quot;a chicken&quot;  &quot;a&quot;   &quot;chicken&quot;</span></span>
+<span id="cb214-48"><a href="stringr.html#cb214-48" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb214-49"><a href="stringr.html#cb214-49" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_replace</span>(<span class="st">&quot;([^ ]+) ([^ ]+) ([^ ]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">3 </span><span class="ch">\\</span><span class="st">2&quot;</span>)</span>
+<span id="cb214-50"><a href="stringr.html#cb214-50" aria-hidden="true"></a><span class="co">## [1] &quot;The canoe birch slid on the smooth planks.&quot; </span></span>
+<span id="cb214-51"><a href="stringr.html#cb214-51" aria-hidden="true"></a><span class="co">## [2] &quot;Glue sheet the to the dark blue background.&quot;</span></span>
+<span id="cb214-52"><a href="stringr.html#cb214-52" aria-hidden="true"></a><span class="co">## [3] &quot;It&#39;s to easy tell the depth of a well.&quot;     </span></span>
+<span id="cb214-53"><a href="stringr.html#cb214-53" aria-hidden="true"></a><span class="co">## [4] &quot;These a days chicken leg is a rare dish.&quot;   </span></span>
+<span id="cb214-54"><a href="stringr.html#cb214-54" aria-hidden="true"></a><span class="co">## [5] &quot;Rice often is served in round bowls.&quot;</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="purrr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "PMingLiU",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r4biost.pdf", "r4biost.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -430,7 +430,7 @@ dd %>% slice_sample(n = 3)
  期常用引數有
  
 * Center: `mean()`, `median()`
-* Spread: `sd()`, `IQR()`, `mad()`. `range()`
+* Spread: `var()`, `sd()`, `IQR()`, `mad()`. `range()`
 * Range: `min()`, `max()`, `quantile()`
 * Position: `first()`, `last()`, `nth()`
 * Count: `n()`, `n_distinct()`
