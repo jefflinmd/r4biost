@@ -69,10 +69,9 @@ mean(x = x.vec) # function mean() calculate mean, return a scalar
 var(x = x.vec)  # function mean() calculate variance
 sd(x.vec)       # function mean() calculate standard deviation
 summary(x.vec)  # summarized statistics
-log(x = x.vec)  # take log for all elements in vector x.vec
 ## log function
 x.vec <- c(1, 2, 3, 4, 5)
-log(x = x.vec)
+log(x = x.vec)  # take log for all elements in vector x.vec
 log(x = x.vec, base = 2)
 ```
 
@@ -148,7 +147,7 @@ download.packages(pkgs = "package.name",
 ## :
 1:5
 5:1
-- 1:3
+-1:3
 ```
 
 數列函式
@@ -239,12 +238,12 @@ Gamma 函數, Beta 函數,
 | `abs(x)` | 求 `x` 的絕對值                                    |
 | `sqrt(x)` | $\sqrt{x}$                                         |
 | `exp(x)` | $e^x$                                             |
-| `expm1(x)` |  當 $\vert x \vert << 1$, 計算 $e^{x}-1$          |
+| `expm1(x)` |  當 $\vert x \vert \ll 1$, 計算 $e^{x}-1$          |
 | `log(x)` | $\log (x)$                                          |
-| `log10(x)` | $log_{10} (x)$                                   |
+| `log10(x)` | $\log_{10} (x)$                                   |
 | `log2(x)` | $\log_2 (x)$                               |
 | `logb(x, base = z)` | $\log_z (x)$                           |
-| `log1p(x)` |  當 $\vert x \vert << 1$, 計算 $\log(1+x)$                    |
+| `log1p(x)` |  當 $\vert x \vert \ll 1$, 計算 $\log(1+x)$                    |
 | `gamma(x)` | $\Gamma (x) = (x-1)! = \int_0^\infty t^{(x-1)} \exp (-t) d t$  |
 | `lgamma(x)` |   $\log_e [\Gamma (x)]$                                 |
 | `beta(a, b)` | $B (a,b) = (\Gamma (a) \Gamma (b))\,/\, (\Gamma(a+b))$          |
@@ -299,11 +298,12 @@ abs(-2:3)
 ## log(), exp() calculation
 (x.vec <- 1:3)
 log(exp(x.vec))
-(y.vec <- 10 ^ (x.vec))
+(y.vec <- 10^(x.vec))
 log10(y.vec)
 log10(1e7) # = 7
 #
 ## options(digits, scipen)
+(z.vec <- pi * 100 ^ (-1:3)) # without change options
 options(digits = 4, scipen = 0)
 z.vec <- pi * 100^(-1:3)
 print(z.vec / 1000, digits = 4)

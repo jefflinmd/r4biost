@@ -201,13 +201,13 @@ ggplot(data = dd, aes(x = cellcode)) +
 ggplot(data = dd, aes(y = cellcode)) +
   geom_bar(fill = "red") 
 # pie chart: no simple solution
-clar.freq <- data.frame(cellcode.tab)
-names(clar.freq)[1] <- "cellcode"
-clar.freq
-ggplot(data = clar.freq, aes(x = "", y = Freq, fill = cellcode)) +
+cell.freq <- data.frame(cellcode.tab)
+names(cell.freq)[1] <- "cellcode"
+cell.freq
+ggplot(data = cell.freq, aes(x = "", y = Freq, fill = cellcode)) +
   geom_bar(width = 1, stat = "identity") + 
   coord_polar("y", start = 0)
-ggplot(data = clar.freq, aes(x = "", y = Freq, fill = cellcode)) +
+ggplot(data = cell.freq, aes(x = "", y = Freq, fill = cellcode)) +
   geom_bar(stat = "identity", width = 1) +
   coord_polar(theta = "y", start = 0) +
   theme_void() # remove background
@@ -239,12 +239,12 @@ apply(cond_col_prop, 2, sum) # cols sum to 1
 ## side-by-side bar plot
 barplot(twoway.tab, 
         beside = TRUE, 
-        main = "treat By cellcode",
+        main = "treat by cellcode",
         xlab = "cell type")
 # Stacked Bar Plot
 barplot(twoway.tab,
         beside = FALSE, 
-        main = "treat By cellcode",
+        main = "treat by cellcode",
         xlab = "cell type")
 ## ggplot2
 ## Automatically stack
@@ -346,7 +346,7 @@ ggplot(data = dd, aes(x = time)) +
 ## scatter plot
 ## basic
 plot(x = dd$diagtime, y = dd$time)
-## formulat y ~ x, data = data_name)
+## formula y ~ x, data = data_name)
 plot(time ~ diagtime, data = dd)
 ## ggplot
 ggplot(data = dd, aes(x = diagtime, y = time)) + 
@@ -386,86 +386,6 @@ ggMarginal(p, type = "boxplot")
 ```
 
 
-## 混合變數
-
-多變量視覺化分析
-
-* 一連續 + 一類別
-* 二連續 + 一類別
-* 二類別 + 一連續 = 一連續 + 一類別
-* 多變數 
-
-
-
-### 一連續 + 一類別
-
-```{r message=FALSE, warning=FALSE}
-# one continuous + one categorical
-ggplot(data = dd, aes(x = time)) + 
-  geom_histogram(aes(fill = treat))
-ggplot(data = dd, aes(x = time, fill = treat)) +
-    geom_histogram( color = "#e9ecef", 
-                    alpha = 0.6, 
-                    position = 'identity')
-ggplot(data = dd, aes(x = time, color = treat, fill = treat)) +
-    geom_histogram()
-#
-ggplot(data = dd, aes(x = treat, y = time, fill = treat)) +
-    geom_boxplot()
-ggplot(data = dd, aes(x = treat, y = time, fill = treat)) +
-    geom_boxplot() +
-    geom_jitter(color = "purple", size = 2, alpha = 0.8)
-#
-ggplot(data = dd, aes(x = treat, y = time, fill = treat)) +
-    geom_violin()
-ggplot(data = dd, aes(x = treat, y = time, fill = treat)) +
-    geom_violin() +
-    geom_jitter(color = "purple", size = 2, alpha = 0.8) + 
-  ggtitle("Violin chart by treatment") +
-    xlab("treatment")
-```
-
-
-### 二連續 + 一類別
-
-
-```{r message=FALSE, warning=FALSE}
-## ggplot2
-## two continuous + one categorical
-ggplot(data = dd, aes(x = diagtime, y = time, color = treat)) + 
-  geom_point(size = 4)
-ggplot(data = dd, aes(x = diagtime, y = time, color = treat)) + 
-  geom_jitter(size = 4)
-ggplot(data = dd, aes(x = diagtime, y = time, 
-                      color = treat, shape = treat)) + 
-  geom_jitter(alpha = 1/2) 
-# add linear line or smoothing line
-ggplot(data = dd, aes(x = diagtime, y = time, 
-                      color = treat, shape = treat)) + 
-  geom_point() + 
-  geom_smooth(method = "lm")
-ggplot(data = dd, aes(x = diagtime, y = time, 
-                      color = treat, shape = treat)) + 
-  geom_point() + 
-  geom_smooth(method = "lm", se = FALSE)
-#
-ggplot(data = dd, aes(x = diagtime, y = time,
-                      color = treat, shape = treat)) + 
-  geom_point() + 
-  geom_smooth(se = FALSE)
-# BAD! too many lines
-ggplot(data = dd, aes(x = diagtime, y = time,
-                      color = treat, shape = treat)) + 
-  geom_point() + 
-  geom_smooth(method = "lm", se = FALSE) + 
-  geom_smooth(se = FALSE)
-# classical
-p <- ggplot(dd, aes(x = diagtime, y = time, color = treat)) +
-      geom_point(size = 5) 
-# scatter plot + marginal histogram
-ggExtra::ggMarginal(p, type = "histogram", color = "purple")
-```
-
 ### 三連續變數
 
 * 多連續變數: 檢視成對變數關聯性, 大小, 方向, 趨勢.
@@ -504,6 +424,86 @@ corrgram(x = dd,
          text.panel = panel.txt, 
          main = "3. VA Lung Cancer Trial")
 
+```
+
+## 混合變數
+
+多變量視覺化分析
+
+* 一連續 + 一類別
+* 二連續 + 一類別
+* 二類別 + 一連續 = 一連續 + 一類別
+* 多變數 
+
+
+
+### 一連續 + 一類別
+
+```{r message=FALSE, warning=FALSE}
+# one continuous + one categorical
+ggplot(data = dd, aes(x = time)) + 
+  geom_histogram(aes(fill = treat))
+ggplot(data = dd, aes(x = time, fill = treat)) +
+    geom_histogram( color = "#e9ecef", 
+                    alpha = 0.6, 
+                    position = 'identity')
+ggplot(data = dd, aes(x = time, color = treat, fill = treat)) +
+    geom_histogram()
+# side-by-side boxplot
+ggplot(data = dd, aes(x = treat, y = time, fill = treat)) +
+    geom_boxplot()
+ggplot(data = dd, aes(x = treat, y = time, fill = treat)) +
+    geom_boxplot() +
+    geom_jitter(color = "purple", size = 2, alpha = 0.8)
+#
+ggplot(data = dd, aes(x = treat, y = time, fill = treat)) +
+    geom_violin()
+ggplot(data = dd, aes(x = treat, y = time, fill = treat)) +
+    geom_violin() +
+    geom_jitter(color = "purple", size = 2, alpha = 0.8) + 
+  ggtitle("Violin chart by treatment") +
+    xlab("treatment")
+```
+
+
+### 二連續 + 一類別
+
+
+```{r message=FALSE, warning=FALSE}
+## ggplot2
+## two continuous + one categorical
+ggplot(data = dd, aes(x = diagtime, y = time, color = treat)) + 
+  geom_point(size = 4)
+ggplot(data = dd, aes(x = diagtime, y = time, color = treat)) + 
+  geom_jitter(size = 4)
+ggplot(data = dd, aes(x = diagtime, y = time, 
+                      color = treat, shape = treat)) + 
+  geom_jitter(alpha = 1/2,  size = 3) 
+# add linear line or smoothing line
+ggplot(data = dd, aes(x = diagtime, y = time, 
+                      color = treat, shape = treat)) + 
+  geom_jitter(alpha = 1/2, size = 3) + 
+  geom_smooth(method = "lm")
+ggplot(data = dd, aes(x = diagtime, y = time, 
+                      color = treat, shape = treat)) + 
+  geom_jitter(alpha = 1/2, size = 3) + 
+  geom_smooth(method = "lm", se = FALSE)
+#
+ggplot(data = dd, aes(x = diagtime, y = time,
+                      color = treat, shape = treat)) + 
+  geom_jitter(alpha = 1/2, size = 3) + 
+  geom_smooth(se = FALSE)
+# BAD! too many lines
+ggplot(data = dd, aes(x = diagtime, y = time,
+                      color = treat, shape = treat)) + 
+  geom_jitter(alpha = 1/2, size = 3) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  geom_smooth(se = FALSE)
+# classical
+p <- ggplot(dd, aes(x = diagtime, y = time, color = treat)) +
+      geom_point(size = 5) 
+# scatter plot + marginal histogram
+ggExtra::ggMarginal(p, type = "histogram", color = "purple")
 ```
 
 
