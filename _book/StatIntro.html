@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R 資料科學與統計</title>
-  <meta name="description" content="R 資料科學與統計" />
+  <title>Chapter 13 統計與醫學 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 13 統計與醫學 | R 資料科學與統計" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R 資料科學與統計" />
+  <meta property="og:title" content="Chapter 13 統計與醫學 | R 資料科學與統計" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="R 資料科學與統計" />
+  <meta property="og:description" content="Chapter 13 統計與醫學 | R 資料科學與統計" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R 資料科學與統計" />
+  <meta name="twitter:title" content="Chapter 13 統計與醫學 | R 資料科學與統計" />
   
-  <meta name="twitter:description" content="R 資料科學與統計" />
+  <meta name="twitter:description" content="Chapter 13 統計與醫學 | R 資料科學與統計" />
   
 
 <meta name="author" content="林建甫 Jeff Lin" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="lubridate.html"/>
+<link rel="next" href="applications.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -358,50 +358,471 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R 資料科學與統計</h1>
-<p class="author"><em>林建甫 Jeff Lin</em></p>
-<p class="date"><em>2020-10-17</em></p>
+<div id="StatIntro" class="section level1" number="13">
+<h1><span class="header-section-number">Chapter 13</span> 統計與醫學</h1>
+<p>我們每天都會接觸到許多訊息或常稱為
+<strong>資料</strong>
+(<strong>data</strong>),
+資料可以完全是以一般文字敘述, 也可以完全是以數字呈現,
+而大多數的資料則是混合著文字或數字呈現,
+資料使用數字呈現常稱為
+<strong>統計數字</strong>
+(<strong>statistical number</strong>).
+因此統計的原始概念是
+<strong>數值摘要</strong>
+(<strong>numerical summary</strong>).</p>
+<p><strong>統計</strong>
+(<strong>statistics</strong>)
+的廣義定義是指對一特定研究問題, 進行研究設計, 蒐集資料,
+處理資料與分析資料,
+並依據資料內容,
+回答此特定研究問題或做結論.
+在這進行統計過程中,
+研究者的大多數時間是面對以數字組成的
+<strong>量化資料</strong>
+(<strong>quantitative data</strong>),
+並以量化的方式處理與分析資料.
+簡單的說,
+<strong>統計</strong>
+是從資料中學習的一種科學與藝術.</p>
+<div id="醫學統計" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> 醫學統計</h2>
+<p>醫學統計是指將統計方法應用在生物或醫學的研究資料,
+醫學統計包含研究設計, 資料蒐集, 資料處理與資料分析.
+每一組量化資料,
+可以有許多不同分析的統計方法,
+沒有絕對正確且單一統計分析方法,
+而是有一些合理的統計分析方法,
+可以在所合理的分析方法中,
+選擇相對適合的統計分析方法,
+但對於任一組量化資料,
+確是有些絕對錯誤的分析方法.</p>
+<p>基本統計學常將統計分析資料分成
+描述性統計與推論性統計,
+但這些類別之間並沒有明顯的界線.
+<strong>描述性統計</strong>
+(<strong>descriptive statistics</strong>)
+是以數字, 圖表說明資料的特徵, 將資料作最佳的呈現.
+而
+<strong>推論性統計</strong>
+(<strong>inferential statistics</strong>)
+是從資料中對群體取得一般化的結論.
+另外,
+統計分析資料的結果,
+經常使用來預測與決策,
+<strong>預測</strong>
+(<strong>prediction</strong>),
+是從資料中預測各種事件可能發生的機會或數值.
+<strong>決策</strong>
+(<strong>decision making</strong>)
+則是依據統計資料, 做出決策,
+<strong>決策</strong>
+或
+<strong>預測</strong>
+常歸類成
+<strong>推論性統計</strong>.
+預測與決策通常針對更大的群體,
+而不只限於資料樣本.</p>
+<p>統計的描述性統計與推論性統計主要是分析資料的方法,
+研究者利用這些分析資料的方法, 進行研究與回答研究的問題.
+在分析資料前, 研究者必須仔細思考研究問題的本質是什麼?
+研究問題的本質, 將會深深地對影響研究設計, 描述與推論.
+例如, 研究標靶藥物治療肺癌的結果,
+研究者必須思考研究問題的本質是
+(a) 標靶藥物治療肺癌的結果會顯現在減少腫瘤體積?
+(b) 顯現在延長沒有肺癌的時間?
+或 (c) 顯現在延長肺癌的存活時間?
+同一疾病但不同的研究問題, 不同的病期或病程,
+則會有不同的研究設計, 描述與推論.</p>
 </div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>R 可視為統計數學軟體, 也是一種程式語言,
-而近年來的發展, R 更成為資料科學的熱門的工具之一.
-R 是一個免費的統計分析軟體 (open-source, GNU General Public License),
-R 由一群跨國際的志工人員組成的 {R} 核心發展組織 (R core-development team) 所維持, 運作與持續更新發展.</p>
-<p>目前對初學者的 R 入門學習有二大主要論點,
-一為學習使用 R Base 原始語言與原始套件,
-二為直接學習外部套件, 如 ggplot2, tidyverse 系統.
-無論哪一種方式各有其優缺點.
-個人認為對未來必須經常性使用 R 進行資料分析工作的初學者,
-則建議先學習使用 R Base 原始語言.
-對於未來僅在少數時間必須使用 R 進行資料分析工作,
-或是僅在統計學上課使用,
-則建議學習 ggplot2, tidyverse 等外部套件.
-至於已經具有其他程式語言基礎, 則二者學習方式無多大差別.
-作者個人對學習使用 R Base 原始語言與原始套件的介紹, 可參考
-<a href="https://www.jefflinmd.com/book/rintro/">R 程式語言與醫學統計</a>.</p>
-<p>目前有許多 R 書籍, 寫作本書主要是為了個人上課方便使用,
-假設讀者沒有太多統計資料分析概念或經驗,
-也無程式語言寫作經驗.
-本書的主要寫作對象為醫師或醫學研究人員,
-以及使用 R 輔助學習統計的大學生為主.
-本書使用 R <strong>bookdown</strong> package 寫作 <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>, 方便隨時更新內容.</p>
-<p>本書前面章節資料使用醫學相關資料或是基礎統計學相關資料,
-先降低資料的複雜性有助於了解 R 統計程式語言的核心,
-後面章節再導入大數據分析.
-本書關於 R base 多數摘取本人 R base 內容,
-<a href="https://www.jefflinmd.com/book/rintro/">R 程式語言與醫學統計</a>,
-後面章節主要介紹使用 ggplot2, tidyverse 系統套件進資料分析工作,
-主要參考來源 <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a> 與 <a href="https://rstudio-education.github.io/hopr/" class="uri">https://rstudio-education.github.io/hopr/</a>.
-但學習歷程很難將二者完全切割,
-通常會交錯並進.</p>
+<div id="統計與數學" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> 統計與數學</h2>
+<p>統計學的起源在於處理與分析量化資料,
+因此,
+就歷史而言, 是先有以數字量化的資料, 為了處理與分析量化資料,
+才發展出特定的統計方法,
+將這些常見的統計方法歸納與收集, 便成為所謂的
+<strong>應用統計</strong>
+(<strong>applied statistics</strong>).
+所以, 統計並不是數學的分支,
+也不是起源於數學.
+但在處理與分析量化資料時,
+常需利用到許多數學的知識.
+例如,
+<strong>推論性統計</strong>
+方法的基礎是架構在
+<strong>機率</strong>
+(<strong>probability</strong>),
+機率是將機會的概念, 轉化成 0-1 之間的數值,
+例如, 對治療肺癌的結果,
+標靶藥物治療是否比傳統化學抗癌藥物, 會延長肺癌的存活,
+統計推論對此研究問題,
+則是以標靶藥物治療比傳統化學抗癌藥物,
+會延長肺癌的存活時間的相對機率作為答案.</p>
+<p>另外, 為了說明常見統計方法的合理性,
+統計學也利用到許多數學嚴謹的証明,
+尤其是大量使用機率理論, 線性代數與數學分析等進行推導,
+因而將這些統計方法的數學証明歸納與收集,
+便成為所謂的
+<strong>數理統計</strong>
+(<strong>mathematical statistics</strong>),
+因此統計學常被認為是數學的分支.
+許多時候是先有研究所收集到的量化資料,
+才有應用統計方法, 然後才有嚴謹的數理統計證明,
+例如存活分析與生物資訊統計的發展,
+便是先有研究所收集到的量化資料,
+才有應用統計方法與數理統計的發展.</p>
+</div>
+<div id="醫學研究資料" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> 醫學研究資料</h2>
+<p>了解醫學統計方法的最好的方式是先了解已經完成的醫學研究,
+從了解醫學資料所要回答的研究問題, 研究如何設計,
+資料如何收集, 如何分析, 如何撰寫論文報告等開始,
+進而了解醫學統計方法的術語, 定義 與 操作.
+在此提供一個簡化的醫學研究實例,
+作為本章討論的參考例題.</p>
+<p><strong>糖尿病防治臨床試驗</strong></p>
+<p>一位研究者進行一個大型糖尿病防治的臨床試驗,
+比較 標準治療 (standard) 與 實驗治療 (experimental)
+對長期控制平穩的血糖 與 預防嚴重糖尿病腎病變的療效.
+研究主要目的是分析長期控制平穩的血糖, 主要反應變數以測量糖化血色素 (HbA1c) 為代表,
+研究的次要目的是預防嚴重糖尿病腎病變,
+次要目的反應變數以是否出現 顯微蛋白尿 (microalbuminuris) 的時間為代表.
+研究在臨床試驗開始時,
+紀錄受試者的一些基本資料,
+例如年紀, 性別等,
+同時紀錄可能會影響結果的一些臨床測量,
+例如, 臨床試驗開始時的 糖化血色素,
+及受試者內生胰島素的 C-peptide 測量等.
+研究資料在檔案 <code>DMDCCThba1c6.csv</code>,
+變數說明在表 1.</p>
+<table>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>受試者編碼, 依照進入試驗的時間順序而編碼.</td>
+</tr>
+<tr class="even">
+<td>treat</td>
+<td>治療組別: 0 = 傳統型治療; 1 = 加強型治療.</td>
+</tr>
+<tr class="odd">
+<td>etdrs0</td>
+<td>試驗開始時視網膜病變嚴重程度指數: ETDRS grade.</td>
+</tr>
+<tr class="even">
+<td>neur0</td>
+<td>試驗開始時神經病變: 0 = 無; 1 = 有.</td>
+</tr>
+<tr class="odd">
+<td>aer0</td>
+<td>試驗開始時蛋白尿測量: albumin excretion rate (mg/24 h).</td>
+</tr>
+<tr class="even">
+<td>microalb</td>
+<td>治療後是否出現顯微蛋白尿: 0 = 無; 1 = 有.</td>
+</tr>
+<tr class="odd">
+<td>quart</td>
+<td>治療後出現顯微蛋白尿的追蹤時間的季數或最後追蹤時間, 單位: 季. (quarterly visit number).</td>
+</tr>
+<tr class="even">
+<td>duration</td>
+<td>治療後出現顯微蛋白尿的時間或最後追蹤的時間, 單位: 月.</td>
+</tr>
+<tr class="odd">
+<td>female</td>
+<td>性別: 0 = 男性; 1 = 女性.</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td>試驗開始時的年紀, 單位: 年.</td>
+</tr>
+<tr class="odd">
+<td>adult</td>
+<td>試驗開始時是否成年, 0 = <span class="math inline">\(\le 17\)</span>, 1 = 是.</td>
+</tr>
+<tr class="even">
+<td>cpeptide</td>
+<td>試驗開始時, 受試者內生胰島素的 C-peptide 測量.</td>
+</tr>
+<tr class="odd">
+<td>bmi</td>
+<td>試驗開始時的 BMI (身體質量指數).</td>
+</tr>
+<tr class="even">
+<td>hba1c0</td>
+<td>試驗開始時的 HBA1c 測量.</td>
+</tr>
+<tr class="odd">
+<td>hba1c1-hba1c6</td>
+<td>治療後 1-6 年, 每年 HBA1c 測量.</td>
+</tr>
+</tbody>
+</table>
+<p>Table 1: 糖尿病防治臨床試驗變數說明</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="StatIntro.html#cb247-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb247-2"><a href="StatIntro.html#cb247-2" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;C:/RData/DMDCCThba1c6.csv&quot;</span>,</span>
+<span id="cb247-3"><a href="StatIntro.html#cb247-3" aria-hidden="true"></a>                      <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb247-4"><a href="StatIntro.html#cb247-4" aria-hidden="true"></a>                      <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb247-5"><a href="StatIntro.html#cb247-5" aria-hidden="true"></a><span class="co"># glimpse(dd)</span></span>
+<span id="cb247-6"><a href="StatIntro.html#cb247-6" aria-hidden="true"></a>dd<span class="op">$</span>treat =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
+<span id="cb247-7"><a href="StatIntro.html#cb247-7" aria-hidden="true"></a>dd<span class="op">$</span>neur0 =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>neur0, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb247-8"><a href="StatIntro.html#cb247-8" aria-hidden="true"></a>dd<span class="op">$</span>microalb =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>microalb, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb247-9"><a href="StatIntro.html#cb247-9" aria-hidden="true"></a>dd<span class="op">$</span>adult =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>adult, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb247-10"><a href="StatIntro.html#cb247-10" aria-hidden="true"></a>dd<span class="op">$</span>female =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>female, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb247-11"><a href="StatIntro.html#cb247-11" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb247-12"><a href="StatIntro.html#cb247-12" aria-hidden="true"></a><span class="co">## # A tibble: 1,441 x 21</span></span>
+<span id="cb247-13"><a href="StatIntro.html#cb247-13" aria-hidden="true"></a><span class="co">##      id treat   etdrs0 neur0  aer0 microalb quart duration female   age adult cpeptide   bmi</span></span>
+<span id="cb247-14"><a href="StatIntro.html#cb247-14" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb247-15"><a href="StatIntro.html#cb247-15" aria-hidden="true"></a><span class="co">## 1     1 test         3 no    15.8  no          36      178 female    17 no        0.09  21.2</span></span>
+<span id="cb247-16"><a href="StatIntro.html#cb247-16" aria-hidden="true"></a><span class="co">## 2     2 placebo      8 no    11.5  yes         20      142 male      29 yes       0.17  22.9</span></span>
+<span id="cb247-17"><a href="StatIntro.html#cb247-17" aria-hidden="true"></a><span class="co">## 3     3 placebo      7 yes   36    yes         12      175 male      35 yes       0.01  26.6</span></span>
+<span id="cb247-18"><a href="StatIntro.html#cb247-18" aria-hidden="true"></a><span class="co">## 4     4 test         1 no     4.32 no          36       31 female    14 no        0.18  16.2</span></span>
+<span id="cb247-19"><a href="StatIntro.html#cb247-19" aria-hidden="true"></a><span class="co">## 5     5 test         2 no     7.2  no          36       72 male      32 yes       0.03  26.3</span></span>
+<span id="cb247-20"><a href="StatIntro.html#cb247-20" aria-hidden="true"></a><span class="co">##   hba1cbase hba1c0 hba1c1 hba1c2 hba1c3 hba1c4 hba1c5 hba1c6</span></span>
+<span id="cb247-21"><a href="StatIntro.html#cb247-21" aria-hidden="true"></a><span class="co">##       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb247-22"><a href="StatIntro.html#cb247-22" aria-hidden="true"></a><span class="co">## 1      9.63   9.63   8.91   8.72   8.87   8.81   8.76   8.62</span></span>
+<span id="cb247-23"><a href="StatIntro.html#cb247-23" aria-hidden="true"></a><span class="co">## 2      8.76   8.76   9.30   9.36   9.39   9.30   9.15   9.10</span></span>
+<span id="cb247-24"><a href="StatIntro.html#cb247-24" aria-hidden="true"></a><span class="co">## 3      7.93   7.93   8.28   7.92   7.96   7.97   7.94   7.95</span></span>
+<span id="cb247-25"><a href="StatIntro.html#cb247-25" aria-hidden="true"></a><span class="co">## 4      7.62   7.62   8.65   8.75   8.88   8.85   8.82   8.56</span></span>
+<span id="cb247-26"><a href="StatIntro.html#cb247-26" aria-hidden="true"></a><span class="co">## 5      8.53   8.53   7.04   7.40   7.49   7.72   7.83   7.81</span></span>
+<span id="cb247-27"><a href="StatIntro.html#cb247-27" aria-hidden="true"></a><span class="co">## # ... with 1,436 more rows</span></span></code></pre></div>
+<p>在醫學研究上,
+一個研究形成一組研究資料稱為一個
+<strong>樣本</strong>
+(<strong>sample</strong>).
+本章例題 <code>糖尿病防治臨床試驗</code>
+的資料, 就是一個樣本.
+一個研究資料內研究者觀察或測量的對像,
+稱為
+<strong>個體</strong>
+(<strong>subject</strong>),
+<strong>觀察單位</strong>
+(<strong>observational unit</strong>)
+或
+<strong>實驗單位</strong>
+(<strong>experimental unit</strong>),
+例如,
+單一個人或單一動物為
+<strong>個體</strong>,
+例如, 本章例題 <code>糖尿病防治臨床試驗</code>,
+資料的觀察單位或實驗單位是個別受試者.
+但是,
+<strong>觀察單位</strong>
+有可能是一個社區或一個國家.
+研究者通常測量或記錄個體的一些特徵,
+稱為
+<strong>變數</strong>
+(<strong>variable</strong>)
+如測量或記錄年齡, 體重, 身高, 或是喝酒與吸菸習慣等.
+研究者有時測量一個社區的疫苗接種率,
+一個國家的癌症健康照護支出費用等.</p>
+<p><strong>母體</strong>
+或
+<strong>群體</strong>,
+<strong>族群</strong>,
+(<strong>population</strong>)
+是指有共同特徵的一群個體, 一群人或事件的集合,
+醫學研究的母體通常是一群有共同特徵病患,
+例如所有糖尿病患者, 所有高血壓患者等.
+統計的
+<strong>目標母體</strong>
+(<strong>target population</strong>)
+是指研究資料背後真正代表的一群個體,
+是指從觀察的資料分析後所取得結論,
+可以將結論一般化推論到的一群人之集合.
+目標母體是觀察所得到的結論可以推廣或應用的母體,
+統計理論的推導, 通常將母體與目標母體是互用的.
+例如, 本章例題 <code>糖尿病防治臨床試驗</code>,
+資料的母體為糖尿病族群.</p>
+<p>一個醫學研究資料內,
+研究者紀錄著每位個體的一些特徵 (characteristics),
+例如, 年紀, 性別, 血壓,
+治療方式等,
+且每位個體的一些特徵也包含治療結果的測量,
+例如, 存活時間,
+是否治療成功, 血糖, 生活品質指標分數等.
+這些個體的特徵, 通稱為
+<strong>變數</strong>
+(<strong>variable</strong>),
+例如, 本章例題 <code>糖尿病防治臨床試驗</code>,
+資料的變數,
+年紀, 性別, 臨床試驗開始時的糖化血色素,
+受試者內生胰島素的 C-peptide 測量等等,
+參見表 \ref{tab:DMDCCTSimpleVar** 與 表 \ref{tab:DMDCCTSimpleData<strong>.
+而究資料內的一個
+</strong>單一觀測值<strong>
+(</strong>an observed value**),
+是指某一特定個體所觀察到或測量到的數值.</p>
+<p>研究資料內的變數,
+常分成
+<strong>反應變數</strong>
+(<strong>response variable</strong>)
+與
+<strong>解釋變數</strong>
+(<strong>explanatory variable</strong>),
+一個醫學研究資料的變數, 其中會有 1 個或多個
+<strong>主要結果</strong>
+(<strong>primary endpoints</strong>)
+與
+<strong>次要結果</strong>
+(<strong>secondary endpoints</strong>)
+的測量,
+稱為
+<strong>反應變數</strong>,
+<strong>依變數</strong>,
+<strong>結果變數</strong>,
+(<strong>response variable</strong>,
+<strong>dependent variable</strong>,
+<strong>outcome variable</strong>)
+等.
+其他用來解釋結果變化的變數,
+稱為
+<strong>共變數</strong>,
+<strong>獨立變數</strong>,
+<strong>解釋變數</strong>,
+<strong>干擾因子</strong>,
+<strong>風險因子</strong>,
+<strong>預後因子</strong>,
+(<strong>covariate</strong>,
+<strong>independent variable</strong>,
+<strong>explanatory variable</strong>,
+<strong>confounding factor</strong>,
+<strong>risk factor</strong>,
+<strong>predictor</strong>)
+等.
+例如, 本章例題 <code>糖尿病防治臨床試驗</code>,
+資料的反應變數為
+治療後的糖化血色素,
+受試者最早出現顯微蛋白尿的時間,
+而本章例題 <code>糖尿病防治臨床試驗</code>,
+資料的解釋變數為
+治療類型, 性別, 試驗開始時的年紀,
+試驗開始時的糖化血色素等.</p>
+<p>統計分析是將大量的資料, 以簡單的幾個數字進行摘要,
+這過程中, 將會移失部分內容, 或是將原本的內容扭曲,
+如何將大量的資料進行摘要, 且能儘量精準地說明原本的內容,
+則是統計分析的重點.
+<strong>統計推論</strong>
+(<strong>statistical inference</strong>)
+是指根據研究一個樣本的個體觀測資料,
+對母體做一特定的結論,
+一個研究樣本, 若要得到精準且有效的統計推論,
+其中一個方法是此研究樣本須是一個能夠代表母體的樣本.
+至於如何才能認定一個樣本足以表母體,
+則須要嚴謹的研究設計 (study design) 與完整的資料收集 (data collection).
+樣本中個體的測量值各自不同,
+統計方法就是協助分析個體變異,
+以其能對母體某些特徵做一特定的結論.
+統計推論對母體做一特定的結論,
+但是, 一個母體可以形成許多不同的研究樣本 (子集合),
+研究者只看到一個樣本,
+因此, 統計推論充滿著不確定的結論,
+統計方法可以對這不確定的結論提供一定程度的信心,
+統計方法可以對此結論提出
+<strong>估計</strong>
+(<strong>estimation</strong>)
+與估計範圍,
+如
+<strong>點估計</strong>
+(<strong>point estimator</strong>)
+與
+<strong>信賴區間</strong>
+(<strong>confidence interval</strong>)
+估計.
+例如, 點估計治療成功的機會為 70%,
+區間估計治療成功的機會為 63%–78%.
+統計方法也可以對這不確定的結論提供方法進行比較,
+稱為
+<strong>統計檢定</strong>
+(<strong>statistical test</strong>),
+統計藉由估計與檢定,
+考慮樣本的不確定性與變異性,
+將
+<strong>統計推論</strong>
+(<strong>statistical inference</strong>)
+的不確定性降低,
+讓研究者作決策時有一定的依據.
+例如, 本章例題 <code>糖尿病防治臨床試驗</code>,
+的資料,
+經由統計處理呈現 2 種治療類型在治療後的糖化血色素,
+代表這 2 種治療族群的在治療後的結果的估計,
+若研究的樣本資料,
+經由統計分析顯示的結論發現 2 種治療類型在治療後有差異,
+則認定 (推論) 這 2 種治療族群的在治療後的結果有差異.</p>
+<p>在本章例題 <code>糖尿病防治臨床試驗</code>,
+研究者在 1993 NEJM 期刊發表 DCCT 研究結果, 顯示
+加強型血糖監測組可以降低顯微蛋白尿發生率 39% (95% 信賴區間 21%–52%),
+但主要的不良反應為嚴重低血糖發生率增加 3 倍.
+在此, 降低顯微蛋白尿發生率 39% 為點估計值,
+21%–52% 為 95% 信賴區間, 表示一個研究樣本的抽樣誤差之不確定性.
+在這 21%–52% 區間, 並不包含 0%, 因此研究者推論 加強型血糖監測組
+比傳統組能有效地降低顯微蛋白尿發生率.</p>
+</div>
+<div id="統計計算與統計軟體" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> 統計計算與統計軟體</h2>
+<p>使用統計方法分析醫學資料, 總是需要計算.
+早期傳統的教科書, 有許多描述詳細的計算過程的地方,
+但是隨著時代進展,
+許多統計方法在電腦計算功能尚未成熟之前,
+是不可能應用在分析醫學資料.
+例如, 本章例題 <code>糖尿病防治臨床試驗</code>,
+資料共有 1,000 多位受試者,
+若沒有專業統計軟體的協助,
+即使計算一個年紀變數的平均值, 都須是不可能的任務.</p>
+<p>在近 30 年來, 現代醫學統計有著巨大的進步,
+這進步多數是因為統計計算與統計軟體的進步,
+使人們能夠深入了解龐大且複雜的醫學資料.
+統計軟體的的發展對資料分析的貢獻,
+如電子顯微鏡或分子醫學的的發展對現代醫學的貢獻.
+因此, 本書將大量採用統計軟體計算與說明.
+現今許多統計軟體問世, 有一些通過統計專業人員檢驗,
+然而更多統計軟體流通在醫學研究領域內,
+但卻不為統計專業人員所熟知.
+選擇適當的統計軟體分析醫學資料是必要的,
+統計軟體的可靠度, 費用, 學習與操作的方便性,
+更新速度等都必須納入考量.</p>
+<p>許多統計軟體備有表單點選方式, 提供研究人員方便使用,
+但單點複雜分析後, 若沒有將程式碼同時記錄下來,
+每隔一段時間或資料更新修正後, 再次執行表單點選常常無法得到相同的分析過程,
+沒有將程式碼也無法尋找砸分析過程的邏輯錯誤,
+2007–2010 年間, Duke 大學 Nevins 與 Potti,
+起始的問題在於研究人員使用表單分析發生錯誤,
+以致後續的研究結果無法與之前結果有一致性,
+導致後續研究資料與分析必須造假, 導致病患參與部必要的臨床試驗而受害.
+2007 年之前, 研究人員經常是 click, click, copy and paste,
+click 統計軟體分析表單, click 統計軟體分析內容的數據, copy 數據或表格, paste 到 WORLD,
+編修成期刊要求格式.
+將統計軟體分析內容的數據或報表拷貝到 EXCEL 與 WORD,
+這過程充滿著許多錯誤的陷阱,
+當每隔一段時間修改其中一項分析,
+或一段時間後資料更新修正後,
+再次執行 click, click, copy and paste,
+往往無法得到相同的結論.
+這是 Potti 最初在 copy and paste 中犯了所有研究人員都曾會犯的錯誤而無法察覺,
+然而德州大學安德森癌症中心(University of Texas MD Anderson Cancer Center)
+隨後二位統計人員 Baggerly 與 Coombes 公開指出錯誤之處,
+但 Nevins 與 Potti 不願承認錯誤, 造成後續無法收拾的結局.
+2007–2010 年後, 統計人員推行
+<strong>可重複性研究</strong>
+(<strong>reproducible research</strong>),
+將此列為科研最重要的原則之一,
+統計的可重複性研究是針對同一研究問題與資料,
+其他研究人員可借助原始研究人員提供的計劃書, 資料, 與分析程式碼與版本,
+可再次呈現原始研究報告相同的結果.
+有些醫學期刊開始要求投稿同時提供資料與分析程式碼作驗證,
+隨後其他領域包含經濟, 教育, 心理, 工程等也陸續要求可重複性研究的程式碼與文件.
+如同基礎研究人員必須保留實驗日誌, 臨床醫師必須保留病理組織,
+資料分析人員必須將分析資料的原始程式碼儲存與備份進行可重複性研究,
+這已是未來的趨勢.</p>
 
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
 </div>
 </div>
             </section>
@@ -409,8 +830,8 @@ R 由一群跨國際的志工人員組成的 {R} 核心發展組織 (R core-deve
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lubridate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

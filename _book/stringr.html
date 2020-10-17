@@ -21,10 +21,10 @@
   <meta name="twitter:description" content="Chapter 10 文字與字串資料處理 | R 資料科學與統計" />
   
 
-<meta name="author" content="Jeff Lin" />
+<meta name="author" content="林建甫 Jeff Lin" />
 
 
-<meta name="date" content="2020-10-15" />
+<meta name="date" content="2020-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="purrr.html"/>
-<link rel="next" href="lubridate.html"/>
+<link rel="next" href="forcats.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -295,32 +295,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.9" data-path="stringr.html"><a href="stringr.html#尋找連續重覆特定形式的文字與字串"><i class="fa fa-check"></i><b>10.9</b> 尋找連續重覆特定形式的文字與字串</a></li>
 <li class="chapter" data-level="10.10" data-path="stringr.html"><a href="stringr.html#正規表示文字與字串-萬用字元"><i class="fa fa-check"></i><b>10.10</b> 正規表示文字與字串 (萬用字元)</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>11</b> 日期時間處理</a>
+<li class="chapter" data-level="11" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>11</b> 因子資料處理</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="lubridate.html"><a href="lubridate.html#lubridate-套件的日期時間"><i class="fa fa-check"></i><b>11.1</b> lubridate 套件的日期時間</a>
+<li class="chapter" data-level="11.1" data-path="forcats.html"><a href="forcats.html#forcats-套件-基本函式"><i class="fa fa-check"></i><b>11.1</b> forcats 套件: 基本函式</a></li>
+<li class="chapter" data-level="11.2" data-path="forcats.html"><a href="forcats.html#移除或增加部分類別水準"><i class="fa fa-check"></i><b>11.2</b> 移除或增加部分類別水準</a></li>
+<li class="chapter" data-level="11.3" data-path="forcats.html"><a href="forcats.html#改變類別水準函式"><i class="fa fa-check"></i><b>11.3</b> 改變類別水準函式</a></li>
+<li class="chapter" data-level="11.4" data-path="forcats.html"><a href="forcats.html#改變或合併類別水準函式-fct_lump"><i class="fa fa-check"></i><b>11.4</b> 改變或合併類別水準函式 fct_lump()</a></li>
+<li class="chapter" data-level="11.5" data-path="forcats.html"><a href="forcats.html#類別水準的頻率排序函式-fct_infreq"><i class="fa fa-check"></i><b>11.5</b> 類別水準的頻率排序函式 fct_infreq()</a></li>
+<li class="chapter" data-level="11.6" data-path="forcats.html"><a href="forcats.html#依照其他變數將類別重新排序函式-fct_reorder"><i class="fa fa-check"></i><b>11.6</b> 依照其他變數將類別重新排序函式 fct_reorder()</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>12</b> 日期時間處理</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="lubridate.html"><a href="lubridate.html#從文字或字串轉換創件日期時間物件"><i class="fa fa-check"></i><b>11.1.1</b> 從文字或字串轉換創件日期時間物件</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="lubridate.html"><a href="lubridate.html#從date-time-資料個別成分-創件日期時間物件."><i class="fa fa-check"></i><b>11.2</b> 從date-time 資料個別成分, 創件日期時間物件.</a>
+<li class="chapter" data-level="12.1" data-path="lubridate.html"><a href="lubridate.html#lubridate-套件的日期時間"><i class="fa fa-check"></i><b>12.1</b> lubridate 套件的日期時間</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="lubridate.html"><a href="lubridate.html#從已經建立的其他資料物件創件日期時間物件"><i class="fa fa-check"></i><b>11.2.1</b> 從已經建立的其他資料物件創件日期時間物件</a></li>
+<li class="chapter" data-level="12.1.1" data-path="lubridate.html"><a href="lubridate.html#從文字或字串轉換創件日期時間物件"><i class="fa fa-check"></i><b>12.1.1</b> 從文字或字串轉換創件日期時間物件</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="lubridate.html"><a href="lubridate.html#時區轉換"><i class="fa fa-check"></i><b>11.3</b> 時區轉換</a></li>
-<li class="chapter" data-level="11.4" data-path="lubridate.html"><a href="lubridate.html#取出-date-time-資料的個別成分"><i class="fa fa-check"></i><b>11.4</b> 取出 date-time 資料的個別成分</a></li>
-<li class="chapter" data-level="11.5" data-path="lubridate.html"><a href="lubridate.html#計算時間長度"><i class="fa fa-check"></i><b>11.5</b> 計算時間長度</a>
+<li class="chapter" data-level="12.2" data-path="lubridate.html"><a href="lubridate.html#從date-time-資料個別成分-創件日期時間物件."><i class="fa fa-check"></i><b>12.2</b> 從date-time 資料個別成分, 創件日期時間物件.</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="lubridate.html"><a href="lubridate.html#duration-創建以秒計算的時間長度的物件"><i class="fa fa-check"></i><b>11.5.1</b> <code>duration</code> 創建以秒計算的時間長度的物件</a></li>
-<li class="chapter" data-level="11.5.2" data-path="lubridate.html"><a href="lubridate.html#period-創建以人類文明的時間單位計算時間長度"><i class="fa fa-check"></i><b>11.5.2</b> <code>period</code> 創建以人類文明的時間單位計算時間長度</a></li>
-<li class="chapter" data-level="11.5.3" data-path="lubridate.html"><a href="lubridate.html#interval-計算二個-date-time-物件之間的時間長度."><i class="fa fa-check"></i><b>11.5.3</b> <code>interval</code> 計算二個 date-time 物件之間的時間長度.</a></li>
+<li class="chapter" data-level="12.2.1" data-path="lubridate.html"><a href="lubridate.html#從已經建立的其他資料物件創件日期時間物件"><i class="fa fa-check"></i><b>12.2.1</b> 從已經建立的其他資料物件創件日期時間物件</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>12</b> Applications</a>
+<li class="chapter" data-level="12.3" data-path="lubridate.html"><a href="lubridate.html#時區轉換"><i class="fa fa-check"></i><b>12.3</b> 時區轉換</a></li>
+<li class="chapter" data-level="12.4" data-path="lubridate.html"><a href="lubridate.html#取出-date-time-資料的個別成分"><i class="fa fa-check"></i><b>12.4</b> 取出 date-time 資料的個別成分</a></li>
+<li class="chapter" data-level="12.5" data-path="lubridate.html"><a href="lubridate.html#計算時間長度"><i class="fa fa-check"></i><b>12.5</b> 計算時間長度</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>12.1</b> Example one</a></li>
-<li class="chapter" data-level="12.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>12.2</b> Example two</a></li>
+<li class="chapter" data-level="12.5.1" data-path="lubridate.html"><a href="lubridate.html#duration-創建以秒計算的時間長度的物件"><i class="fa fa-check"></i><b>12.5.1</b> <code>duration</code> 創建以秒計算的時間長度的物件</a></li>
+<li class="chapter" data-level="12.5.2" data-path="lubridate.html"><a href="lubridate.html#period-創建以人類文明的時間單位計算時間長度"><i class="fa fa-check"></i><b>12.5.2</b> <code>period</code> 創建以人類文明的時間單位計算時間長度</a></li>
+<li class="chapter" data-level="12.5.3" data-path="lubridate.html"><a href="lubridate.html#interval-計算二個-date-time-物件之間的時間長度."><i class="fa fa-check"></i><b>12.5.3</b> <code>interval</code> 計算二個 date-time 物件之間的時間長度.</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>13</b> Final Words</a></li>
-<li class="chapter" data-level="14" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>14</b> Temp</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="StatIntro.html"><a href="StatIntro.html"><i class="fa fa-check"></i><b>13</b> 統計與醫學</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="StatIntro.html"><a href="StatIntro.html#醫學統計"><i class="fa fa-check"></i><b>13.1</b> 醫學統計</a></li>
+<li class="chapter" data-level="13.2" data-path="StatIntro.html"><a href="StatIntro.html#統計與數學"><i class="fa fa-check"></i><b>13.2</b> 統計與數學</a></li>
+<li class="chapter" data-level="13.3" data-path="StatIntro.html"><a href="StatIntro.html#醫學研究資料"><i class="fa fa-check"></i><b>13.3</b> 醫學研究資料</a></li>
+<li class="chapter" data-level="13.4" data-path="StatIntro.html"><a href="StatIntro.html#統計計算與統計軟體"><i class="fa fa-check"></i><b>13.4</b> 統計計算與統計軟體</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>14</b> Applications</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>14.1</b> Example one</a></li>
+<li class="chapter" data-level="14.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>14.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>15</b> Final Words</a></li>
+<li class="chapter" data-level="16" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>16</b> Temp</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -763,8 +779,7 @@ extract (取出), match (配對), replace (替代置換) 與 split (分割).</p>
 <span id="cb210-3"><a href="stringr.html#cb210-3" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b|ti&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;--&quot;</span>)</span>
 <span id="cb210-4"><a href="stringr.html#cb210-4" aria-hidden="true"></a><span class="co">## [1] &quot;sta--stics&quot;     &quot;--iostatistics&quot; &quot;pro--ability&quot;   &quot;distri--ution&quot;</span></span>
 <span id="cb210-5"><a href="stringr.html#cb210-5" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b|ti&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;+++&quot;</span>)</span>
-<span id="cb210-6"><a href="stringr.html#cb210-6" aria-hidden="true"></a><span class="co">## [1] &quot;sta+++s+++cs&quot;      &quot;+++iosta+++s+++cs&quot; &quot;pro+++a+++ility&quot;  </span></span>
-<span id="cb210-7"><a href="stringr.html#cb210-7" aria-hidden="true"></a><span class="co">## [4] &quot;distri+++u+++on&quot;</span></span></code></pre></div>
+<span id="cb210-6"><a href="stringr.html#cb210-6" aria-hidden="true"></a><span class="co">## [1] &quot;sta+++s+++cs&quot;      &quot;+++iosta+++s+++cs&quot; &quot;pro+++a+++ility&quot;   &quot;distri+++u+++on&quot;</span></span></code></pre></div>
 <p><code>anchor</code> 起始符號 <code>^</code> 可以尋找字串的起始具有特定形式,
 尾端符號 <code>$</code> 可以尋找字串的尾端具有特定形式.
 例如, <code>^b</code>, 尋找字串的起始具有 <code>b</code>,
@@ -1011,57 +1026,52 @@ extract (取出), match (配對), replace (替代置換) 與 split (分割).</p>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="stringr.html#cb214-1" aria-hidden="true"></a>char.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;statistics.123&quot;</span>, <span class="st">&quot;biostatistics.a.b.c&quot;</span>, </span>
 <span id="cb214-2"><a href="stringr.html#cb214-2" aria-hidden="true"></a>              <span class="st">&quot;probability.a.c&quot;</span>, <span class="st">&quot;distribution.a c&quot;</span>)</span>
 <span id="cb214-3"><a href="stringr.html#cb214-3" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;.i.&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-4"><a href="stringr.html#cb214-4" aria-hidden="true"></a><span class="co">## [1] &quot;sta-tics.123&quot;      &quot;-statistics.a.b.c&quot; &quot;proba-ity.a.c&quot;    </span></span>
-<span id="cb214-5"><a href="stringr.html#cb214-5" aria-hidden="true"></a><span class="co">## [4] &quot;-tribution.a c&quot;</span></span>
-<span id="cb214-6"><a href="stringr.html#cb214-6" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;.i.&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-7"><a href="stringr.html#cb214-7" aria-hidden="true"></a><span class="co">## [1] &quot;sta--s.123&quot;    &quot;-sta--s.a.b.c&quot; &quot;proba-ity.a.c&quot; &quot;-t-u-n.a c&quot;</span></span>
-<span id="cb214-8"><a href="stringr.html#cb214-8" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;y</span><span class="ch">\\</span><span class="st">.a&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-9"><a href="stringr.html#cb214-9" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probabilit-.c&quot;      </span></span>
-<span id="cb214-10"><a href="stringr.html#cb214-10" aria-hidden="true"></a><span class="co">## [4] &quot;distribution.a c&quot;</span></span>
-<span id="cb214-11"><a href="stringr.html#cb214-11" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;a[.]c&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-12"><a href="stringr.html#cb214-12" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probability.-&quot;      </span></span>
-<span id="cb214-13"><a href="stringr.html#cb214-13" aria-hidden="true"></a><span class="co">## [4] &quot;distribution.a c&quot;</span></span>
-<span id="cb214-14"><a href="stringr.html#cb214-14" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;a[ ]&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-15"><a href="stringr.html#cb214-15" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probability.a.c&quot;    </span></span>
-<span id="cb214-16"><a href="stringr.html#cb214-16" aria-hidden="true"></a><span class="co">## [4] &quot;distribution.-c&quot;</span></span>
-<span id="cb214-17"><a href="stringr.html#cb214-17" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b[ab]+&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-18"><a href="stringr.html#cb214-18" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;pro-ility.a.c&quot;      </span></span>
-<span id="cb214-19"><a href="stringr.html#cb214-19" aria-hidden="true"></a><span class="co">## [4] &quot;distribution.a c&quot;</span></span>
-<span id="cb214-20"><a href="stringr.html#cb214-20" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;set&quot;</span>, <span class="st">&quot;sat&quot;</span>, <span class="st">&quot;sit&quot;</span>, <span class="st">&quot;sout&quot;</span>)</span>
-<span id="cb214-21"><a href="stringr.html#cb214-21" aria-hidden="true"></a><span class="kw">str_replace</span>(y.vec, <span class="dt">pattern =</span> <span class="st">&quot;s(a|i)t&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-22"><a href="stringr.html#cb214-22" aria-hidden="true"></a><span class="co">## [1] &quot;set&quot;  &quot;-&quot;    &quot;-&quot;    &quot;sout&quot;</span></span>
-<span id="cb214-23"><a href="stringr.html#cb214-23" aria-hidden="true"></a>fruits.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;banana&quot;</span>, <span class="st">&quot;coconut&quot;</span>, <span class="st">&quot;cucumber&quot;</span>, <span class="st">&quot;jujube&quot;</span>, <span class="st">&quot;papaya&quot;</span>, <span class="st">&quot;berry&quot;</span>)</span>
-<span id="cb214-24"><a href="stringr.html#cb214-24" aria-hidden="true"></a><span class="kw">str_replace</span>(fruits.vec, <span class="dt">pattern =</span> <span class="st">&quot;(..)</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-25"><a href="stringr.html#cb214-25" aria-hidden="true"></a><span class="co">## [1] &quot;b-a&quot;   &quot;-nut&quot;  &quot;-mber&quot; &quot;-be&quot;   &quot;-ya&quot;   &quot;berry&quot;</span></span>
-<span id="cb214-26"><a href="stringr.html#cb214-26" aria-hidden="true"></a><span class="kw">str_replace</span>(fruits.vec, <span class="dt">pattern =</span> <span class="st">&quot;(.)(.)</span><span class="ch">\\</span><span class="st">2</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb214-27"><a href="stringr.html#cb214-27" aria-hidden="true"></a><span class="co">## [1] &quot;banana&quot;   &quot;coconut&quot;  &quot;cucumber&quot; &quot;jujube&quot;   &quot;papaya&quot;   &quot;berry&quot;</span></span>
-<span id="cb214-28"><a href="stringr.html#cb214-28" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;3 house&quot;</span>, <span class="st">&quot;4 cars&quot;</span>, <span class="st">&quot;5 dogs&quot;</span>)</span>
-<span id="cb214-29"><a href="stringr.html#cb214-29" aria-hidden="true"></a><span class="kw">str_replace_all</span>(z.vec, <span class="kw">c</span>(<span class="st">&quot;3&quot;</span> =<span class="st"> &quot;three&quot;</span>, <span class="st">&quot;4&quot;</span> =<span class="st"> &quot;four&quot;</span>, <span class="st">&quot;5&quot;</span> =<span class="st"> &quot;five&quot;</span>))</span>
-<span id="cb214-30"><a href="stringr.html#cb214-30" aria-hidden="true"></a><span class="co">## [1] &quot;three house&quot; &quot;four cars&quot;   &quot;five dogs&quot;</span></span>
-<span id="cb214-31"><a href="stringr.html#cb214-31" aria-hidden="true"></a>sent.vec &lt;-<span class="st"> </span>sentences[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
-<span id="cb214-32"><a href="stringr.html#cb214-32" aria-hidden="true"></a>sent.vec</span>
-<span id="cb214-33"><a href="stringr.html#cb214-33" aria-hidden="true"></a><span class="co">## [1] &quot;The birch canoe slid on the smooth planks.&quot; </span></span>
-<span id="cb214-34"><a href="stringr.html#cb214-34" aria-hidden="true"></a><span class="co">## [2] &quot;Glue the sheet to the dark blue background.&quot;</span></span>
-<span id="cb214-35"><a href="stringr.html#cb214-35" aria-hidden="true"></a><span class="co">## [3] &quot;It&#39;s easy to tell the depth of a well.&quot;     </span></span>
-<span id="cb214-36"><a href="stringr.html#cb214-36" aria-hidden="true"></a><span class="co">## [4] &quot;These days a chicken leg is a rare dish.&quot;   </span></span>
-<span id="cb214-37"><a href="stringr.html#cb214-37" aria-hidden="true"></a><span class="co">## [5] &quot;Rice is often served in round bowls.&quot;</span></span>
-<span id="cb214-38"><a href="stringr.html#cb214-38" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_subset</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb214-39"><a href="stringr.html#cb214-39" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_extract</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>)</span>
-<span id="cb214-40"><a href="stringr.html#cb214-40" aria-hidden="true"></a><span class="co">## [1] &quot;the smooth&quot; &quot;the sheet&quot;  &quot;the depth&quot;  &quot;a chicken&quot;</span></span>
-<span id="cb214-41"><a href="stringr.html#cb214-41" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_subset</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb214-42"><a href="stringr.html#cb214-42" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_match</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>)</span>
-<span id="cb214-43"><a href="stringr.html#cb214-43" aria-hidden="true"></a><span class="co">##      [,1]         [,2]  [,3]     </span></span>
-<span id="cb214-44"><a href="stringr.html#cb214-44" aria-hidden="true"></a><span class="co">## [1,] &quot;the smooth&quot; &quot;the&quot; &quot;smooth&quot; </span></span>
-<span id="cb214-45"><a href="stringr.html#cb214-45" aria-hidden="true"></a><span class="co">## [2,] &quot;the sheet&quot;  &quot;the&quot; &quot;sheet&quot;  </span></span>
-<span id="cb214-46"><a href="stringr.html#cb214-46" aria-hidden="true"></a><span class="co">## [3,] &quot;the depth&quot;  &quot;the&quot; &quot;depth&quot;  </span></span>
-<span id="cb214-47"><a href="stringr.html#cb214-47" aria-hidden="true"></a><span class="co">## [4,] &quot;a chicken&quot;  &quot;a&quot;   &quot;chicken&quot;</span></span>
-<span id="cb214-48"><a href="stringr.html#cb214-48" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb214-49"><a href="stringr.html#cb214-49" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_replace</span>(<span class="st">&quot;([^ ]+) ([^ ]+) ([^ ]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">3 </span><span class="ch">\\</span><span class="st">2&quot;</span>)</span>
-<span id="cb214-50"><a href="stringr.html#cb214-50" aria-hidden="true"></a><span class="co">## [1] &quot;The canoe birch slid on the smooth planks.&quot; </span></span>
-<span id="cb214-51"><a href="stringr.html#cb214-51" aria-hidden="true"></a><span class="co">## [2] &quot;Glue sheet the to the dark blue background.&quot;</span></span>
-<span id="cb214-52"><a href="stringr.html#cb214-52" aria-hidden="true"></a><span class="co">## [3] &quot;It&#39;s to easy tell the depth of a well.&quot;     </span></span>
-<span id="cb214-53"><a href="stringr.html#cb214-53" aria-hidden="true"></a><span class="co">## [4] &quot;These a days chicken leg is a rare dish.&quot;   </span></span>
-<span id="cb214-54"><a href="stringr.html#cb214-54" aria-hidden="true"></a><span class="co">## [5] &quot;Rice often is served in round bowls.&quot;</span></span></code></pre></div>
+<span id="cb214-4"><a href="stringr.html#cb214-4" aria-hidden="true"></a><span class="co">## [1] &quot;sta-tics.123&quot;      &quot;-statistics.a.b.c&quot; &quot;proba-ity.a.c&quot;     &quot;-tribution.a c&quot;</span></span>
+<span id="cb214-5"><a href="stringr.html#cb214-5" aria-hidden="true"></a><span class="kw">str_replace_all</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;.i.&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-6"><a href="stringr.html#cb214-6" aria-hidden="true"></a><span class="co">## [1] &quot;sta--s.123&quot;    &quot;-sta--s.a.b.c&quot; &quot;proba-ity.a.c&quot; &quot;-t-u-n.a c&quot;</span></span>
+<span id="cb214-7"><a href="stringr.html#cb214-7" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;y</span><span class="ch">\\</span><span class="st">.a&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-8"><a href="stringr.html#cb214-8" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probabilit-.c&quot;       &quot;distribution.a c&quot;</span></span>
+<span id="cb214-9"><a href="stringr.html#cb214-9" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;a[.]c&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-10"><a href="stringr.html#cb214-10" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probability.-&quot;       &quot;distribution.a c&quot;</span></span>
+<span id="cb214-11"><a href="stringr.html#cb214-11" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;a[ ]&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-12"><a href="stringr.html#cb214-12" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;probability.a.c&quot;     &quot;distribution.-c&quot;</span></span>
+<span id="cb214-13"><a href="stringr.html#cb214-13" aria-hidden="true"></a><span class="kw">str_replace</span>(char.vec, <span class="dt">pattern =</span> <span class="st">&quot;b[ab]+&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-14"><a href="stringr.html#cb214-14" aria-hidden="true"></a><span class="co">## [1] &quot;statistics.123&quot;      &quot;biostatistics.a.b.c&quot; &quot;pro-ility.a.c&quot;       &quot;distribution.a c&quot;</span></span>
+<span id="cb214-15"><a href="stringr.html#cb214-15" aria-hidden="true"></a>y.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;set&quot;</span>, <span class="st">&quot;sat&quot;</span>, <span class="st">&quot;sit&quot;</span>, <span class="st">&quot;sout&quot;</span>)</span>
+<span id="cb214-16"><a href="stringr.html#cb214-16" aria-hidden="true"></a><span class="kw">str_replace</span>(y.vec, <span class="dt">pattern =</span> <span class="st">&quot;s(a|i)t&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-17"><a href="stringr.html#cb214-17" aria-hidden="true"></a><span class="co">## [1] &quot;set&quot;  &quot;-&quot;    &quot;-&quot;    &quot;sout&quot;</span></span>
+<span id="cb214-18"><a href="stringr.html#cb214-18" aria-hidden="true"></a>fruits.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;banana&quot;</span>, <span class="st">&quot;coconut&quot;</span>, <span class="st">&quot;cucumber&quot;</span>, <span class="st">&quot;jujube&quot;</span>, <span class="st">&quot;papaya&quot;</span>, <span class="st">&quot;berry&quot;</span>)</span>
+<span id="cb214-19"><a href="stringr.html#cb214-19" aria-hidden="true"></a><span class="kw">str_replace</span>(fruits.vec, <span class="dt">pattern =</span> <span class="st">&quot;(..)</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-20"><a href="stringr.html#cb214-20" aria-hidden="true"></a><span class="co">## [1] &quot;b-a&quot;   &quot;-nut&quot;  &quot;-mber&quot; &quot;-be&quot;   &quot;-ya&quot;   &quot;berry&quot;</span></span>
+<span id="cb214-21"><a href="stringr.html#cb214-21" aria-hidden="true"></a><span class="kw">str_replace</span>(fruits.vec, <span class="dt">pattern =</span> <span class="st">&quot;(.)(.)</span><span class="ch">\\</span><span class="st">2</span><span class="ch">\\</span><span class="st">1&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb214-22"><a href="stringr.html#cb214-22" aria-hidden="true"></a><span class="co">## [1] &quot;banana&quot;   &quot;coconut&quot;  &quot;cucumber&quot; &quot;jujube&quot;   &quot;papaya&quot;   &quot;berry&quot;</span></span>
+<span id="cb214-23"><a href="stringr.html#cb214-23" aria-hidden="true"></a>z.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;3 house&quot;</span>, <span class="st">&quot;4 cars&quot;</span>, <span class="st">&quot;5 dogs&quot;</span>)</span>
+<span id="cb214-24"><a href="stringr.html#cb214-24" aria-hidden="true"></a><span class="kw">str_replace_all</span>(z.vec, <span class="kw">c</span>(<span class="st">&quot;3&quot;</span> =<span class="st"> &quot;three&quot;</span>, <span class="st">&quot;4&quot;</span> =<span class="st"> &quot;four&quot;</span>, <span class="st">&quot;5&quot;</span> =<span class="st"> &quot;five&quot;</span>))</span>
+<span id="cb214-25"><a href="stringr.html#cb214-25" aria-hidden="true"></a><span class="co">## [1] &quot;three house&quot; &quot;four cars&quot;   &quot;five dogs&quot;</span></span>
+<span id="cb214-26"><a href="stringr.html#cb214-26" aria-hidden="true"></a>sent.vec &lt;-<span class="st"> </span>sentences[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb214-27"><a href="stringr.html#cb214-27" aria-hidden="true"></a>sent.vec</span>
+<span id="cb214-28"><a href="stringr.html#cb214-28" aria-hidden="true"></a><span class="co">## [1] &quot;The birch canoe slid on the smooth planks.&quot; </span></span>
+<span id="cb214-29"><a href="stringr.html#cb214-29" aria-hidden="true"></a><span class="co">## [2] &quot;Glue the sheet to the dark blue background.&quot;</span></span>
+<span id="cb214-30"><a href="stringr.html#cb214-30" aria-hidden="true"></a><span class="co">## [3] &quot;It&#39;s easy to tell the depth of a well.&quot;     </span></span>
+<span id="cb214-31"><a href="stringr.html#cb214-31" aria-hidden="true"></a><span class="co">## [4] &quot;These days a chicken leg is a rare dish.&quot;   </span></span>
+<span id="cb214-32"><a href="stringr.html#cb214-32" aria-hidden="true"></a><span class="co">## [5] &quot;Rice is often served in round bowls.&quot;</span></span>
+<span id="cb214-33"><a href="stringr.html#cb214-33" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_subset</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb214-34"><a href="stringr.html#cb214-34" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_extract</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>)</span>
+<span id="cb214-35"><a href="stringr.html#cb214-35" aria-hidden="true"></a><span class="co">## [1] &quot;the smooth&quot; &quot;the sheet&quot;  &quot;the depth&quot;  &quot;a chicken&quot;</span></span>
+<span id="cb214-36"><a href="stringr.html#cb214-36" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_subset</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb214-37"><a href="stringr.html#cb214-37" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_match</span>(<span class="dt">pattern =</span> <span class="st">&quot;(a|the) ([^ ]+)&quot;</span>)</span>
+<span id="cb214-38"><a href="stringr.html#cb214-38" aria-hidden="true"></a><span class="co">##      [,1]         [,2]  [,3]     </span></span>
+<span id="cb214-39"><a href="stringr.html#cb214-39" aria-hidden="true"></a><span class="co">## [1,] &quot;the smooth&quot; &quot;the&quot; &quot;smooth&quot; </span></span>
+<span id="cb214-40"><a href="stringr.html#cb214-40" aria-hidden="true"></a><span class="co">## [2,] &quot;the sheet&quot;  &quot;the&quot; &quot;sheet&quot;  </span></span>
+<span id="cb214-41"><a href="stringr.html#cb214-41" aria-hidden="true"></a><span class="co">## [3,] &quot;the depth&quot;  &quot;the&quot; &quot;depth&quot;  </span></span>
+<span id="cb214-42"><a href="stringr.html#cb214-42" aria-hidden="true"></a><span class="co">## [4,] &quot;a chicken&quot;  &quot;a&quot;   &quot;chicken&quot;</span></span>
+<span id="cb214-43"><a href="stringr.html#cb214-43" aria-hidden="true"></a>sent.vec <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb214-44"><a href="stringr.html#cb214-44" aria-hidden="true"></a><span class="st">  </span><span class="kw">str_replace</span>(<span class="st">&quot;([^ ]+) ([^ ]+) ([^ ]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">3 </span><span class="ch">\\</span><span class="st">2&quot;</span>)</span>
+<span id="cb214-45"><a href="stringr.html#cb214-45" aria-hidden="true"></a><span class="co">## [1] &quot;The canoe birch slid on the smooth planks.&quot; </span></span>
+<span id="cb214-46"><a href="stringr.html#cb214-46" aria-hidden="true"></a><span class="co">## [2] &quot;Glue sheet the to the dark blue background.&quot;</span></span>
+<span id="cb214-47"><a href="stringr.html#cb214-47" aria-hidden="true"></a><span class="co">## [3] &quot;It&#39;s to easy tell the depth of a well.&quot;     </span></span>
+<span id="cb214-48"><a href="stringr.html#cb214-48" aria-hidden="true"></a><span class="co">## [4] &quot;These a days chicken leg is a rare dish.&quot;   </span></span>
+<span id="cb214-49"><a href="stringr.html#cb214-49" aria-hidden="true"></a><span class="co">## [5] &quot;Rice often is served in round bowls.&quot;</span></span></code></pre></div>
 
 </div>
 </div>
@@ -1071,7 +1081,7 @@ extract (取出), match (配對), replace (替代置換) 與 split (分割).</p>
         </div>
       </div>
 <a href="purrr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lubridate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="forcats.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

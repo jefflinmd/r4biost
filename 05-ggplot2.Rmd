@@ -110,6 +110,7 @@ ggplot(data = data_name,
   ...
 ```
 
+**退伍軍人肺癌臨床試驗**     
 
 Prentice (1973) 報告一個研究,
 關於年長退伍軍人罹患肺癌, 且無法接受手術之臨床試驗,
@@ -139,6 +140,7 @@ Prentice (1973) 報告一個研究,
 dd <- read.table("./Data/survVATrial.csv",
                  header = TRUE,
                  sep = ",",
+                 strip.white = TRUE,
                  quote = "\"'",
                  dec = ".",
                  row.names = NULL,

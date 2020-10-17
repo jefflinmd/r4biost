@@ -1,0 +1,367 @@
+# 因子資料處理 {#forcats}
+
+
+**因子物件**
+(**factor**)
+為處理
+**類別資料**
+(**categorical data**),
+提供的一種有效的方法.
+**類別變數**
+將變數值分成互斥的類別水準,
+在類別變數定義中的特定幾種類別水準是否有大小差距,
+又可分類成
+**名目變數**
+(**nominal variable**)
+與
+**有序變數**
+(**ordinal variable**),
+或稱
+**名目尺度**
+與
+**順序尺度**.
+
+
+在 {R} 中特別使用
+**因子**
+(**factor**)
+來表示.
+因子是一種特殊的文字向量,
+文字向量中的每一個元素, 取一個離散值,
+因子物件有一個特殊屬性, 稱為
+**層次**,
+**水平**,
+**水準**
+或
+**類別水準**
+(**levels**),
+表示這組所有可能的離散值.
+因子常常是用文字或字串輸入,
+有時會使用數值或整數代表,
+一但變數設定為因素或因子向量,
+{R} 在列印或輸出時,
+並不會加上雙引號 `"`,
+且數值或有大小順序的文字, 
+{R} 在統計分析上都必須特別處理.
+
+在 {R} 中若要設定因子,
+可以簡單地用函式
+`factor()`
+產生無序因子物件.   
+`tidyverse` 套件系統提供 `forcats` 套件,
+主要用來處理因子變數與類別資料.
+
+
+
+## forcats 套件: 基本函式
+
+
+`forcats` 套件的基本函式包含
+
+* `fct_count(f, sort = FALSE, prop = FALSE)`: 計算類別水準數目.
+* `fct_unique(f)`: 呈現專一類別水準名稱.
+* `fct_c(f1, f2)`: 合併不同類別水準的 2 個因子物件.
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(forcats)
+library(kableExtra)
+set.seed(100)
+letters[1:5]
+f <- factor(sample(letters[1:5])[rpois(100, 5)])
+table(f)
+fct_count(f)
+fct_count(f, sort = TRUE)
+fct_count(f, sort = TRUE, prop = TRUE)
+##
+f1 <- factor(letters[1:3])
+f2 <- factor(letters[c(1, 2, 23)])
+f1
+f2
+fct_c(f1, f2)
+```
+
+
+
+
+
+## 移除或增加部分類別水準
+
+資料分析中常因抽樣 0 值, 而必須特別處理,
+例如必須移除部分類別水準或是必須增加因子變數中的類別水準.
+下列函式可以執行這些功能.
+```{r eval=FALSE}
+fct_drop(f, only) # R baes  base::droplevels()
+fct_expand(f, ...)
+fct_explicit_na(f, na_level = "(Missing)")
+```
+函式 `fct_drop()` 可以移除部分類別水準, 
+函式 `fct_expand()` 可以增加因子變數中的類別水準.
+函式 `fct_explicit_na` 可以明確設性缺失值為 1 項類別水準.
+
+
+```{r}
+f <- factor(c("F", "M"), levels = c("F", "M", "Other"))
+f
+fct_drop(f)
+# Set only to restrict which levels to drop
+fct_drop(f, only = "F")
+fct_drop(f, only = "Other")
+## 
+fct_expand(f, "B", "T")
+##
+f <- factor(c("F", "M", "M", "F", "F", "B", "T", NA, NA))
+f
+fct_explicit_na(f)
+fct_explicit_na(f, na_level = "Other")
+```
+
+
+ 
+## 改變類別水準函式
+
+因子變數中的類別水準的名稱呈現, 常常視需求而更改,
+例如, `H` 改成 `High`, `F` 改成 `female` 等等.
+函式 `fct_recode()` 可以改變的名稱呈現.
+```{r}
+x <- factor(c("apple", "bear", "banana", "dear"))
+x
+fct_recode(x, fruit = "apple", fruit = "banana")
+# If you name the level NULL it will be removed
+fct_recode(x, NULL = "apple", fruit = "banana")
+# When passing a named vector to rename levels use !!! to splice
+x <- factor(c("apple", "bear", "banana", "dear"))
+levels <- c(fruit = "apple", fruit = "banana")
+fct_recode(x, !!!levels)
+##
+x <- factor(c("F", "M", "M", "F", "F", "B", "T"))
+x
+fct_recode(x, Male = "M", Female = "F", Other = "B", Other = "T")
+```
+
+
+函式 `fct_collapse()` 可以改變的名稱呈現,
+將不同類別水準合併且更名.
+```{r}
+##
+x <- factor(c("F", "M", "M", "F", "F", "B", "T"))
+x
+fct_collapse(x, Biological = c("M", "F"),
+             Other = "B", Other = "T")
+```
+
+函式 `fct_other()` 可將部分類別水準合併或移除.
+```{r eval=FALSE}
+fct_other(f, keep, drop, other_level = "Other")` 
+```
+其中引數 `keep`, `drop` 保留或移除部分原有類別水準,
+將其餘類別水準合併成 `other_level`.
+```{r}
+x <- factor(rep(LETTERS[1:4], times = 3))
+x
+fct_other(x, keep = c("A", "B"))
+fct_other(x, drop = c("A", "B"), other_level = "change")
+```
+
+
+
+
+## 改變或合併類別水準函式  fct_lump()
+
+
+因子變數中的類別水準常常因頻率過低影響分析與推論,
+常常常須要合併類別水準.
+系列函式 `fct_lump()` 可將部分類別水準合併.
+
+* `fct_lump_min()`:  合併類別水準頻率計數低於設定的最小值.    
+* `fct_lump_prop():  合併類別水準相對頻率低於設定的最小值   
+* `fct_lump_n()`: 合併類別水準最多 n 種主要類別.
+* `fct_lump_lowfreq()`: 合併類別水準, 且確保 `other` 類別的頻率仍是最低.
+函式使用程式語言結構為
+```{r eval=FALSE}
+fct_lump(f, n, prop, w = NULL, other_level = "Other",
+         ties.method = c("min", "average", "first", "last", "random", "max"))
+fct_lump_min(f, min, w = NULL, other_level = "Other")
+fct_lump_prop(f, prop, w = NULL, other_level = "Other")
+fct_lump_n(f, n, w = NULL, other_level = "Other",
+  ties.method = c("min", "average", "first", "last", "random", "max"))
+fct_lump_lowfreq(f, other_level = "Other")
+```
+其中引數 `f` 為因子向量, 
+`n` 設定最多 n 種主要類別,
+`prop` 設定正值百分率, 合併小於 `prop` 的類別,
+設定負值百分率, 合併大於 `prop` 的類別.
+`w` 設定權重.
+`other_level` 設定合併後的類別名稱.
+`ties.method` 處理相同排序方式.
+`min` 保留至少出現 min 次類別.
+```{r}
+x <- factor(rep(LETTERS[1:9], times = c(40, 10, 5, 27, 1, 1, 1, 1, 1)))
+x %>% table()
+x %>% fct_lump_n(3) %>% table()
+x %>% fct_lump_prop(0.10) %>% table()
+x %>% fct_lump_min(5) %>% table()
+x %>% fct_lump_lowfreq() %>% table()
+##
+set.seed(123)
+x <- factor(letters[rpois(50, 5)])
+x
+table(x)
+table(fct_lump_lowfreq(x))
+## Use positive values to collapse the rarest
+fct_lump_n(x, n = 3)
+fct_lump_prop(x, prop = 0.1)
+## Use negative values to collapse the most common
+fct_lump_n(x, n = -3)
+fct_lump_prop(x, prop = -0.1)
+## Use weighted frequencies
+w <- c(rep(2, 25), rep(1, 25))
+fct_lump_n(x, n = 5, w = w)
+fct_lump_n(x, n = 6)
+fct_lump_n(x, n = 6, ties.method = "max")
+## Use fct_lump_min() to lump together all levels with fewer than `n` values
+table(fct_lump_min(x, min = 10))
+```
+
+
+以第 5 章中 **退伍軍人肺癌臨床試驗** 資料 (**survVATrial.csv**) 為例,
+細胞型態 `cellcode` 有 4 種類別.
+將類別水準合併成 2 種主要類別, 其餘類別合併.
+```{r}
+dd <- read.table("./Data/survVATrial.csv",
+                 header = TRUE,
+                 sep = ",",
+                 quote = "\"'",
+                 dec = ".",
+                 row.names = NULL,
+                 # col.names,
+                 as.is = TRUE,
+                 # as.is = !stringsAsFactors,
+                 na.strings = c(".", "NA"))
+head(dd)
+str(dd)
+dd$treat <- factor(dd$treat, labels = c("placebo", "test"))
+dd$cellcode <- factor(dd$cellcode, 
+                      labels = c("squamous", "small", "adeno", "large"))
+dd$censor <- factor(dd$censor, labels = c("survival", "dead"))
+dd$prior <- factor(dd$prior, labels = c("no", "yes"))
+head(dd)
+str(dd)
+##
+dd %>% select(cellcode) %>% table()
+dd %>% select(cellcode) %>% 
+  mutate(cellcode = fct_lump(cellcode, n = 1)) %>% 
+  table()
+```
+
+
+
+## 類別水準的頻率排序函式 fct_infreq()
+
+函式系列 `fct_infreq()` 可將類別水準的頻率排序記錄.
+
+* `fct_inorder()`: 依照類別水準出現的次序排序.      
+* `fct_infreq()`: 依照類別水準的頻率排序 (由多到少).     
+* `fct_inseq()`: 依照類別水準的儲存數值排序.      
+
+```{r}
+f <- factor(c("b", "b", "a", "c", "c", "c"))
+f
+fct_inorder(f)
+fct_infreq(f)
+##
+f <- factor(1:3, levels = c("3", "2", "1"))
+f
+#> Levels: 3 2 1
+fct_inseq(f)
+```
+
+以第 5 章中 **退伍軍人肺癌臨床試驗** 資料 (**survVATrial.csv**) 為例,
+細胞型態 `cellcode` 有 4 種類別.
+```{r}
+dd %>% select(cellcode) %>% table()
+## fct_inorder()
+dd %>% select(cellcode) %>% 
+  mutate(cellcode = fct_inorder(cellcode)) %>% 
+  table()
+## fct_infreq()
+dd %>% select(cellcode) %>% 
+  mutate(cellcode = fct_infreq(cellcode)) %>% 
+  table()
+## fct_inseq()
+dd %>% select(cellcode) %>% 
+  mutate(cellcode = fct_inseq(factor(as.numeric(cellcode)))) %>% table()
+```
+以第 5 章中 **退伍軍人肺癌臨床試驗** 資料 (**survVATrial.csv**) 為例,
+細胞型態 `cellcode` 有 4 種類別.
+首先繪製長條圖.
+```{r}
+## barplot
+ggplot(dd, aes(x = cellcode)) + 
+  geom_bar() + 
+  coord_flip()
+```
+圖中的類別出現並非照類別水準的頻率順序,
+函式 `fct_infreq()` 可將類別水準的頻率排序記錄.
+```{r}
+ggplot(dd, aes(x = fct_infreq(cellcode))) + 
+  geom_bar() + 
+  coord_flip()
+```
+
+
+
+
+
+## 依照其他變數將類別重新排序函式 fct_reorder()
+
+因子變數中的類別水準常常因其他變數而須將類別重新排序.
+
+* `fct_rev(f)`: 將反轉原有類別出現的排列順序.
+* `fct_shuffle(f, n = 1L)`: 將原有類別出現的排列順序隨機變更.
+* `fct_reorder(.f, .x, .fun = median, ..., .desc = FALSE)`
+* `fct_reorder2(.f, .x, .y, .fun = last2, ..., .desc = TRUE)`
+* `first2(.x, .y)` 
+* `last2(.x, .y)`
+
+`fct_reorder()` 將因子 `f` 類別出現的排列順序依照其他變數更動,
+`fct_reorder2()` 保留因子 `f` 原有類別出現的排列順序.
+當 `y` 變數依照 `x` 變數排序, 函式 `first2(.x, .y)` 與 `last2(.x, .y)`  
+可尋找 `y` 變數的最前與最後的 2 個數值.
+其中引數
+
+* `.f`: 為主要因子變數.
+* `.x, .y`: 為其他變數.
+* `.fun`: 為摘要函式.
+* `.desc = FALSE` 由小到大排序.
+
+```{r}
+f <- factor(c("a", "b", "c"))
+fct_rev(f)
+fct_shuffle(f)
+fct_shuffle(f)
+##
+df <- tibble::tribble(
+  ~color,     ~a, ~b,
+  "blue",      1,  2,
+  "green",     6,  2,
+  "purple",    3,  3,
+  "red",       2,  3,
+  "yellow",    5,  1
+)
+df$color <- factor(df$color)
+##
+fct_reorder(df$color, df$a, min)
+fct_reorder2(df$color, df$a, df$b)
+```
+
+以第 5 章中 **退伍軍人肺癌臨床試驗** 資料 (**survVATrial.csv**) 為例,
+細胞型態 `cellcode` 有 4 種類別.
+```{r}
+boxplot(time ~ cellcode, data = dd)
+boxplot(time ~ fct_reorder(cellcode, time), data = dd)
+boxplot(time ~ fct_reorder(cellcode, time, .desc = TRUE), data = dd)
+```
+
