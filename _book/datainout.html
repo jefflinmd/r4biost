@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 資料輸入與輸出 | R 資料科學與統計</title>
   <meta name="description" content="Chapter 4 資料輸入與輸出 | R 資料科學與統計" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 資料輸入與輸出 | R 資料科學與統計" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="林建甫 Jeff Lin" />
 
 
-<meta name="date" content="2020-10-17" />
+<meta name="date" content="2020-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="dataobject.html"/>
 <link rel="next" href="dataviz.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -256,12 +258,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
 <li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
 <li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
-<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
-<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
-<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
-<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
-<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
-<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#向量-if_else"><i class="fa fa-check"></i><b>8.6.5</b> 向量 <code>if_else()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#變數重新命名-rename"><i class="fa fa-check"></i><b>8.6.6</b> 變數重新命名 <code>rename()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#移除缺失資料-drop_na"><i class="fa fa-check"></i><b>8.6.7</b> 移除缺失資料 <code>drop_na()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.8</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.9</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.10</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.11" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.11</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.12" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.12</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.13" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.13</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
 <li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
@@ -330,13 +335,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="StatIntro.html"><a href="StatIntro.html#醫學研究資料"><i class="fa fa-check"></i><b>13.3</b> 醫學研究資料</a></li>
 <li class="chapter" data-level="13.4" data-path="StatIntro.html"><a href="StatIntro.html#統計計算與統計軟體"><i class="fa fa-check"></i><b>13.4</b> 統計計算與統計軟體</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>14</b> Applications</a>
+<li class="chapter" data-level="14" data-path="DataVariable.html"><a href="DataVariable.html"><i class="fa fa-check"></i><b>14</b> 資料與變數</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>14.1</b> Example one</a></li>
-<li class="chapter" data-level="14.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>14.2</b> Example two</a></li>
+<li class="chapter" data-level="14.1" data-path="DataVariable.html"><a href="DataVariable.html#醫學研究實例"><i class="fa fa-check"></i><b>14.1</b> 醫學研究實例</a></li>
+<li class="chapter" data-level="14.2" data-path="DataVariable.html"><a href="DataVariable.html#資料與變數-data-and-variables"><i class="fa fa-check"></i><b>14.2</b> 資料與變數 Data and Variables</a></li>
+<li class="chapter" data-level="14.3" data-path="DataVariable.html"><a href="DataVariable.html#變數分類"><i class="fa fa-check"></i><b>14.3</b> 變數分類</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="DataVariable.html"><a href="DataVariable.html#統計與變數分類"><i class="fa fa-check"></i><b>14.3.1</b> 統計與變數分類</a></li>
+<li class="chapter" data-level="14.3.2" data-path="DataVariable.html"><a href="DataVariable.html#資料數位化與變數分類"><i class="fa fa-check"></i><b>14.3.2</b> 資料數位化與變數分類</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>15</b> Final Words</a></li>
-<li class="chapter" data-level="16" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>16</b> Temp</a></li>
+<li class="chapter" data-level="14.4" data-path="DataVariable.html"><a href="DataVariable.html#單變量-雙變量與多變量"><i class="fa fa-check"></i><b>14.4</b> 單變量, 雙變量與多變量</a></li>
+<li class="chapter" data-level="14.5" data-path="DataVariable.html"><a href="DataVariable.html#資料輸入與儲存"><i class="fa fa-check"></i><b>14.5</b> 資料輸入與儲存</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>15</b> Applications</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>15.1</b> Example one</a></li>
+<li class="chapter" data-level="15.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>15.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>16</b> Final Words</a></li>
+<li class="chapter" data-level="17" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>17</b> Temp</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -411,8 +428,108 @@ image, texts, stock market, social media 等.
 實數變數, 整數變數, 文字類別變數, 邏輯變數等都可放在同一資料框架中,
 資料框架的基本架構如下表.
 但是矩陣物件只能有相同的變數 <strong>模式</strong> (<strong>mode</strong>) 的元素組成.</p>
+<p><strong>糖尿病與人工關節術後感染臨床試驗</strong> (糖尿病與人工全膝關節置換手術研究)</p>
+<p>退化性膝關節炎是人類關節疾病中最常見的一種,
+主要病變的地方是膝關節的的關節軟骨受到傷害與磨損,
+造成關節腔變窄以及產生骨刺, 變化與年紀有高度相關.
+年長者患有嚴重退化性膝關節炎, 常須進行人工全膝關節置換手術 (TKR),
+但是若是術後感染, 則有可能照造成截肢或因敗血症而死亡,
+且糖尿病 (DM) 患者是此全膝關節置換手術後感染的高危險群.
+因此一位骨科醫師進行一預防性臨床試驗,
+對患有嚴重退化性膝關節炎的糖尿病患者,
+隨機分配 2 組, 一組在全膝關節置換手術中, 使用的骨水泥內,
+加入預防性抗生素藥劑, 另一組為對照組.
+研究的主要目的是探討全膝關節置換手術中,
+在骨水泥內加入預防性抗生素藥劑, 是否可以預防術後感染.
+研究共收集了 78 位病患的資料,
+變數名稱列在表 1.
+部分個體資料在表 2.
+資料檔案為 <code>DMTKRcsv.csv</code>, <code>DMTKAInfMo.csv</code>,
+<code>DMTKRtabsep.txt</code> 與 <code>DMTKRblanksep.txt</code>.</p>
 <table>
-<caption>原始資料檔案 DMTKRtabsep.txt 與 DMTKRblanksep.txt: 以純文字空白分隔儲存</caption>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NO</td>
+<td>病患辨識碼</td>
+</tr>
+<tr class="even">
+<td>AGE</td>
+<td>年紀歲數 (單位: 年) (age)</td>
+</tr>
+<tr class="odd">
+<td>SEX</td>
+<td>性別: 1 = M = 男 (Male); 0 = F = 女 (female).</td>
+</tr>
+<tr class="even">
+<td>DM</td>
+<td>糖尿病形態: 1 = Type II (NIDDM); 2 = Type I (IDDM)</td>
+</tr>
+<tr class="odd">
+<td>DMYR</td>
+<td>手術前糖尿病病史 (單位: 年)</td>
+</tr>
+<tr class="even">
+<td>PREAC</td>
+<td>手術前空腹血糖 (mg/dL)</td>
+</tr>
+<tr class="odd">
+<td>PREPC</td>
+<td>手術前飯後血糖 (mg/dL)</td>
+</tr>
+<tr class="even">
+<td>POSTAC</td>
+<td>手術後空腹血糖 (mg/dL)</td>
+</tr>
+<tr class="odd">
+<td>POSTPC</td>
+<td>手術後飯後血糖 (mg/dL)</td>
+</tr>
+<tr class="even">
+<td>MEDICATION</td>
+<td>糖尿病治療方式:</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>0 = 口服降血糖藥劑; 1 = 胰島素注射; 2 = 飲食控制</td>
+</tr>
+<tr class="even">
+<td>SIDE</td>
+<td>患側: 0 = 左側; 1 = 右側</td>
+</tr>
+<tr class="odd">
+<td>PREKS</td>
+<td>手術前膝功能分數</td>
+</tr>
+<tr class="even">
+<td>POSTKS</td>
+<td>手術後膝功能分數</td>
+</tr>
+<tr class="odd">
+<td>ABS</td>
+<td>骨水泥是否加抗生素 1 = Yes; 0 = No</td>
+</tr>
+<tr class="even">
+<td>INFECT</td>
+<td>術後感染: 0 = No; 1 = Yes, 發現術後感染</td>
+</tr>
+<tr class="odd">
+<td>INFMO</td>
+<td>發現術後感染的時間 (單位: 月)</td>
+</tr>
+<tr class="even">
+<td>MISC</td>
+<td>註記</td>
+</tr>
+</tbody>
+</table>
+<p>Table 1. 糖尿病與人工關節術後感染臨床試驗: 變數說明</p>
+<table>
 <thead>
 <tr class="header">
 <th>No</th>
@@ -520,6 +637,7 @@ image, texts, stock market, social media 等.
 </tr>
 </tbody>
 </table>
+<p>Table 2: 原始資料檔案 DMTKRtabsep.txt 與 DMTKRblanksep.txt: 以純文字空白分隔儲存</p>
 <p>資料框架有一些特徵, 舉例如下.</p>
 <ul>
 <li><p>第 1 列 (橫列, row), 可以是變數的 <strong>變數名</strong> (<strong>variable names</strong>)<br />
@@ -603,50 +721,50 @@ image, texts, stock market, social media 等.
 不同軟體讀入這 2 種 ASCII 資料有所不同.
 這很難區分, 初學者盡量使用 <strong>CSV format</strong>.</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="datainout.html#cb58-1" aria-hidden="true"></a><span class="co"># DMTKRblanksep.txt = &quot; &quot; single space separate</span></span>
-<span id="cb58-2"><a href="datainout.html#cb58-2" aria-hidden="true"></a>Rblanksep.df =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/RData/DMTKRblanksep.txt&quot;</span>,</span>
-<span id="cb58-3"><a href="datainout.html#cb58-3" aria-hidden="true"></a>                          <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb58-4"><a href="datainout.html#cb58-4" aria-hidden="true"></a>                          <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
-<span id="cb58-5"><a href="datainout.html#cb58-5" aria-hidden="true"></a>                          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb58-6"><a href="datainout.html#cb58-6" aria-hidden="true"></a><span class="kw">head</span>(Rblanksep.df)</span>
-<span id="cb58-7"><a href="datainout.html#cb58-7" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb58-8"><a href="datainout.html#cb58-8" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb58-9"><a href="datainout.html#cb58-9" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb58-10"><a href="datainout.html#cb58-10" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span>
-<span id="cb58-11"><a href="datainout.html#cb58-11" aria-hidden="true"></a><span class="co">## 4  4  82   1  0    8   150   200    160    250   0    1    47    90   1      0</span></span>
-<span id="cb58-12"><a href="datainout.html#cb58-12" aria-hidden="true"></a><span class="co">## 5  5  73   1  0    3    85   110    140    200   0    0    44    88   0      0</span></span>
-<span id="cb58-13"><a href="datainout.html#cb58-13" aria-hidden="true"></a><span class="co">## 6  6  76   0  0    1   120   150    120    200   0    1    52    94   1      0</span></span>
-<span id="cb58-14"><a href="datainout.html#cb58-14" aria-hidden="true"></a><span class="kw">str</span>(Rblanksep.df)</span>
-<span id="cb58-15"><a href="datainout.html#cb58-15" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	78 obs. of  15 variables:</span></span>
-<span id="cb58-16"><a href="datainout.html#cb58-16" aria-hidden="true"></a><span class="co">##  $ No    : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span id="cb58-17"><a href="datainout.html#cb58-17" aria-hidden="true"></a><span class="co">##  $ age   : int  67 67 72 82 73 76 76 77 64 64 ...</span></span>
-<span id="cb58-18"><a href="datainout.html#cb58-18" aria-hidden="true"></a><span class="co">##  $ sex   : int  0 0 1 1 1 0 0 0 0 0 ...</span></span>
-<span id="cb58-19"><a href="datainout.html#cb58-19" aria-hidden="true"></a><span class="co">##  $ DM    : int  0 0 0 0 0 0 0 1 0 0 ...</span></span>
-<span id="cb58-20"><a href="datainout.html#cb58-20" aria-hidden="true"></a><span class="co">##  $ DMyr  : int  10 11 4 8 3 1 1 35 5 5 ...</span></span>
-<span id="cb58-21"><a href="datainout.html#cb58-21" aria-hidden="true"></a><span class="co">##  $ preAC : int  120 100 150 150 85 120 120 200 130 130 ...</span></span>
-<span id="cb58-22"><a href="datainout.html#cb58-22" aria-hidden="true"></a><span class="co">##  $ prePC : int  160 150 200 200 110 150 150 250 180 180 ...</span></span>
-<span id="cb58-23"><a href="datainout.html#cb58-23" aria-hidden="true"></a><span class="co">##  $ postAC: int  140 150 120 160 140 120 120 230 100 100 ...</span></span>
-<span id="cb58-24"><a href="datainout.html#cb58-24" aria-hidden="true"></a><span class="co">##  $ postPC: int  180 220 150 250 200 200 200 300 150 150 ...</span></span>
-<span id="cb58-25"><a href="datainout.html#cb58-25" aria-hidden="true"></a><span class="co">##  $ Med   : int  0 0 2 0 0 0 0 1 0 0 ...</span></span>
-<span id="cb58-26"><a href="datainout.html#cb58-26" aria-hidden="true"></a><span class="co">##  $ SIDE  : int  0 1 0 1 0 1 0 1 0 1 ...</span></span>
-<span id="cb58-27"><a href="datainout.html#cb58-27" aria-hidden="true"></a><span class="co">##  $ PREKS : int  56 62 60 47 44 52 48 42 40 45 ...</span></span>
-<span id="cb58-28"><a href="datainout.html#cb58-28" aria-hidden="true"></a><span class="co">##  $ POSKS : int  92 62 94 90 88 94 96 90 94 96 ...</span></span>
-<span id="cb58-29"><a href="datainout.html#cb58-29" aria-hidden="true"></a><span class="co">##  $ ABS   : int  1 0 1 1 0 1 0 1 1 0 ...</span></span>
-<span id="cb58-30"><a href="datainout.html#cb58-30" aria-hidden="true"></a><span class="co">##  $ INFECT: int  0 1 0 0 0 0 0 0 0 0 ...</span></span></code></pre></div>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="datainout.html#cb59-1" aria-hidden="true"></a><span class="co">## complete read.table</span></span>
-<span id="cb59-2"><a href="datainout.html#cb59-2" aria-hidden="true"></a><span class="co">## DMTKRblanksep.txt = &quot; &quot; single space separate</span></span>
-<span id="cb59-3"><a href="datainout.html#cb59-3" aria-hidden="true"></a>Rblanksep.df =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/RData/DMTKRblanksep.txt&quot;</span>,</span>
-<span id="cb59-4"><a href="datainout.html#cb59-4" aria-hidden="true"></a>                          <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb59-5"><a href="datainout.html#cb59-5" aria-hidden="true"></a>                          <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>,</span>
-<span id="cb59-6"><a href="datainout.html#cb59-6" aria-hidden="true"></a>                          <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
-<span id="cb59-7"><a href="datainout.html#cb59-7" aria-hidden="true"></a>                          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
-<span id="cb59-8"><a href="datainout.html#cb59-8" aria-hidden="true"></a>                          <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
-<span id="cb59-9"><a href="datainout.html#cb59-9" aria-hidden="true"></a>                          <span class="co"># col.names,</span></span>
-<span id="cb59-10"><a href="datainout.html#cb59-10" aria-hidden="true"></a>                          <span class="dt">as.is =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb59-11"><a href="datainout.html#cb59-11" aria-hidden="true"></a>                          <span class="co"># as.is = !stringsAsFactors,</span></span>
-<span id="cb59-12"><a href="datainout.html#cb59-12" aria-hidden="true"></a>                          <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
-<span id="cb59-13"><a href="datainout.html#cb59-13" aria-hidden="true"></a><span class="kw">head</span>(Rblanksep.df)</span>
-<span id="cb59-14"><a href="datainout.html#cb59-14" aria-hidden="true"></a><span class="kw">str</span>(Rblanksep.df)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="datainout.html#cb59-1" aria-hidden="true"></a><span class="co"># DMTKRblanksep.txt = &quot; &quot; single space separate</span></span>
+<span id="cb59-2"><a href="datainout.html#cb59-2" aria-hidden="true"></a>Rblanksep.df =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/RData/DMTKRblanksep.txt&quot;</span>,</span>
+<span id="cb59-3"><a href="datainout.html#cb59-3" aria-hidden="true"></a>                          <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb59-4"><a href="datainout.html#cb59-4" aria-hidden="true"></a>                          <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb59-5"><a href="datainout.html#cb59-5" aria-hidden="true"></a>                          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb59-6"><a href="datainout.html#cb59-6" aria-hidden="true"></a><span class="kw">head</span>(Rblanksep.df)</span>
+<span id="cb59-7"><a href="datainout.html#cb59-7" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSTKS ABS INFECT</span></span>
+<span id="cb59-8"><a href="datainout.html#cb59-8" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56     92   1      0</span></span>
+<span id="cb59-9"><a href="datainout.html#cb59-9" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62     62   0      1</span></span>
+<span id="cb59-10"><a href="datainout.html#cb59-10" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60     94   1      0</span></span>
+<span id="cb59-11"><a href="datainout.html#cb59-11" aria-hidden="true"></a><span class="co">## 4  4  82   1  0    8   150   200    160    250   0    1    47     90   1      0</span></span>
+<span id="cb59-12"><a href="datainout.html#cb59-12" aria-hidden="true"></a><span class="co">## 5  5  73   1  0    3    85   110    140    200   0    0    44     88   0      0</span></span>
+<span id="cb59-13"><a href="datainout.html#cb59-13" aria-hidden="true"></a><span class="co">## 6  6  76   0  0    1   120   150    120    200   0    1    52     94   1      0</span></span>
+<span id="cb59-14"><a href="datainout.html#cb59-14" aria-hidden="true"></a><span class="kw">str</span>(Rblanksep.df)</span>
+<span id="cb59-15"><a href="datainout.html#cb59-15" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:    78 obs. of  15 variables:</span></span>
+<span id="cb59-16"><a href="datainout.html#cb59-16" aria-hidden="true"></a><span class="co">##  $ No    : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span id="cb59-17"><a href="datainout.html#cb59-17" aria-hidden="true"></a><span class="co">##  $ age   : int  67 67 72 82 73 76 76 77 64 64 ...</span></span>
+<span id="cb59-18"><a href="datainout.html#cb59-18" aria-hidden="true"></a><span class="co">##  $ sex   : int  0 0 1 1 1 0 0 0 0 0 ...</span></span>
+<span id="cb59-19"><a href="datainout.html#cb59-19" aria-hidden="true"></a><span class="co">##  $ DM    : int  0 0 0 0 0 0 0 1 0 0 ...</span></span>
+<span id="cb59-20"><a href="datainout.html#cb59-20" aria-hidden="true"></a><span class="co">##  $ DMyr  : int  10 11 4 8 3 1 1 35 5 5 ...</span></span>
+<span id="cb59-21"><a href="datainout.html#cb59-21" aria-hidden="true"></a><span class="co">##  $ preAC : int  120 100 150 150 85 120 120 200 130 130 ...</span></span>
+<span id="cb59-22"><a href="datainout.html#cb59-22" aria-hidden="true"></a><span class="co">##  $ prePC : int  160 150 200 200 110 150 150 250 180 180 ...</span></span>
+<span id="cb59-23"><a href="datainout.html#cb59-23" aria-hidden="true"></a><span class="co">##  $ postAC: int  140 150 120 160 140 120 120 230 100 100 ...</span></span>
+<span id="cb59-24"><a href="datainout.html#cb59-24" aria-hidden="true"></a><span class="co">##  $ postPC: int  180 220 150 250 200 200 200 300 150 150 ...</span></span>
+<span id="cb59-25"><a href="datainout.html#cb59-25" aria-hidden="true"></a><span class="co">##  $ Med   : int  0 0 2 0 0 0 0 1 0 0 ...</span></span>
+<span id="cb59-26"><a href="datainout.html#cb59-26" aria-hidden="true"></a><span class="co">##  $ SIDE  : int  0 1 0 1 0 1 0 1 0 1 ...</span></span>
+<span id="cb59-27"><a href="datainout.html#cb59-27" aria-hidden="true"></a><span class="co">##  $ PREKS : int  56 62 60 47 44 52 48 42 40 45 ...</span></span>
+<span id="cb59-28"><a href="datainout.html#cb59-28" aria-hidden="true"></a><span class="co">##  $ POSTKS: int  92 62 94 90 88 94 96 90 94 96 ...</span></span>
+<span id="cb59-29"><a href="datainout.html#cb59-29" aria-hidden="true"></a><span class="co">##  $ ABS   : int  1 0 1 1 0 1 0 1 1 0 ...</span></span>
+<span id="cb59-30"><a href="datainout.html#cb59-30" aria-hidden="true"></a><span class="co">##  $ INFECT: int  0 1 0 0 0 0 0 0 0 0 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="datainout.html#cb60-1" aria-hidden="true"></a><span class="co">## complete read.table</span></span>
+<span id="cb60-2"><a href="datainout.html#cb60-2" aria-hidden="true"></a><span class="co">## DMTKRblanksep.txt = &quot; &quot; single space separate</span></span>
+<span id="cb60-3"><a href="datainout.html#cb60-3" aria-hidden="true"></a>Rblanksep.df =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/RData/DMTKRblanksep.txt&quot;</span>,</span>
+<span id="cb60-4"><a href="datainout.html#cb60-4" aria-hidden="true"></a>                          <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb60-5"><a href="datainout.html#cb60-5" aria-hidden="true"></a>                          <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>,</span>
+<span id="cb60-6"><a href="datainout.html#cb60-6" aria-hidden="true"></a>                          <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
+<span id="cb60-7"><a href="datainout.html#cb60-7" aria-hidden="true"></a>                          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb60-8"><a href="datainout.html#cb60-8" aria-hidden="true"></a>                          <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb60-9"><a href="datainout.html#cb60-9" aria-hidden="true"></a>                          <span class="co"># col.names,</span></span>
+<span id="cb60-10"><a href="datainout.html#cb60-10" aria-hidden="true"></a>                          <span class="dt">as.is =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb60-11"><a href="datainout.html#cb60-11" aria-hidden="true"></a>                          <span class="co"># as.is = !stringsAsFactors,</span></span>
+<span id="cb60-12"><a href="datainout.html#cb60-12" aria-hidden="true"></a>                          <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb60-13"><a href="datainout.html#cb60-13" aria-hidden="true"></a><span class="kw">head</span>(Rblanksep.df)</span>
+<span id="cb60-14"><a href="datainout.html#cb60-14" aria-hidden="true"></a><span class="kw">str</span>(Rblanksep.df)</span></code></pre></div>
 </div>
 <div id="輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</h2>
@@ -662,35 +780,35 @@ image, texts, stock market, social media 等.
 必須更改分開變數值符號為 <code>,</code>.
 使用函式 <code>read.csv()</code>
 自動內設以 <code>,</code> 分開變數值.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="datainout.html#cb60-1" aria-hidden="true"></a><span class="co">## read data file: DMTKRcsv.csv</span></span>
-<span id="cb60-2"><a href="datainout.html#cb60-2" aria-hidden="true"></a>read_table.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>,</span>
-<span id="cb60-3"><a href="datainout.html#cb60-3" aria-hidden="true"></a>                            <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb60-4"><a href="datainout.html#cb60-4" aria-hidden="true"></a>                            <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
-<span id="cb60-5"><a href="datainout.html#cb60-5" aria-hidden="true"></a>                            <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
-<span id="cb60-6"><a href="datainout.html#cb60-6" aria-hidden="true"></a>                            <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb60-7"><a href="datainout.html#cb60-7" aria-hidden="true"></a><span class="kw">head</span>(read_table.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
-<span id="cb60-8"><a href="datainout.html#cb60-8" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb60-9"><a href="datainout.html#cb60-9" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb60-10"><a href="datainout.html#cb60-10" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb60-11"><a href="datainout.html#cb60-11" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span>
-<span id="cb60-12"><a href="datainout.html#cb60-12" aria-hidden="true"></a><span class="co"># simple one</span></span>
-<span id="cb60-13"><a href="datainout.html#cb60-13" aria-hidden="true"></a>read_csv.df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>)</span>
-<span id="cb60-14"><a href="datainout.html#cb60-14" aria-hidden="true"></a><span class="kw">head</span>(read_csv.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
-<span id="cb60-15"><a href="datainout.html#cb60-15" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb60-16"><a href="datainout.html#cb60-16" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb60-17"><a href="datainout.html#cb60-17" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb60-18"><a href="datainout.html#cb60-18" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span>
-<span id="cb60-19"><a href="datainout.html#cb60-19" aria-hidden="true"></a><span class="co">#</span></span>
-<span id="cb60-20"><a href="datainout.html#cb60-20" aria-hidden="true"></a>read_csv.df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>,</span>
-<span id="cb60-21"><a href="datainout.html#cb60-21" aria-hidden="true"></a>                            <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb60-22"><a href="datainout.html#cb60-22" aria-hidden="true"></a>                            <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
-<span id="cb60-23"><a href="datainout.html#cb60-23" aria-hidden="true"></a>                            <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
-<span id="cb60-24"><a href="datainout.html#cb60-24" aria-hidden="true"></a>                            <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb60-25"><a href="datainout.html#cb60-25" aria-hidden="true"></a><span class="kw">head</span>(read_csv.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
-<span id="cb60-26"><a href="datainout.html#cb60-26" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSKS ABS INFECT</span></span>
-<span id="cb60-27"><a href="datainout.html#cb60-27" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56    92   1      0</span></span>
-<span id="cb60-28"><a href="datainout.html#cb60-28" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62    62   0      1</span></span>
-<span id="cb60-29"><a href="datainout.html#cb60-29" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60    94   1      0</span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="datainout.html#cb61-1" aria-hidden="true"></a><span class="co">## read data file: DMTKRcsv.csv</span></span>
+<span id="cb61-2"><a href="datainout.html#cb61-2" aria-hidden="true"></a>read_table.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>,</span>
+<span id="cb61-3"><a href="datainout.html#cb61-3" aria-hidden="true"></a>                            <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb61-4"><a href="datainout.html#cb61-4" aria-hidden="true"></a>                            <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb61-5"><a href="datainout.html#cb61-5" aria-hidden="true"></a>                            <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb61-6"><a href="datainout.html#cb61-6" aria-hidden="true"></a>                            <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb61-7"><a href="datainout.html#cb61-7" aria-hidden="true"></a><span class="kw">head</span>(read_table.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb61-8"><a href="datainout.html#cb61-8" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSTKS ABS INFECT</span></span>
+<span id="cb61-9"><a href="datainout.html#cb61-9" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56     92   1      0</span></span>
+<span id="cb61-10"><a href="datainout.html#cb61-10" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62     62   0      1</span></span>
+<span id="cb61-11"><a href="datainout.html#cb61-11" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60     94   1      0</span></span>
+<span id="cb61-12"><a href="datainout.html#cb61-12" aria-hidden="true"></a><span class="co"># simple one</span></span>
+<span id="cb61-13"><a href="datainout.html#cb61-13" aria-hidden="true"></a>read_csv.df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>)</span>
+<span id="cb61-14"><a href="datainout.html#cb61-14" aria-hidden="true"></a><span class="kw">head</span>(read_csv.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb61-15"><a href="datainout.html#cb61-15" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSTKS ABS INFECT</span></span>
+<span id="cb61-16"><a href="datainout.html#cb61-16" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56     92   1      0</span></span>
+<span id="cb61-17"><a href="datainout.html#cb61-17" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62     62   0      1</span></span>
+<span id="cb61-18"><a href="datainout.html#cb61-18" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60     94   1      0</span></span>
+<span id="cb61-19"><a href="datainout.html#cb61-19" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb61-20"><a href="datainout.html#cb61-20" aria-hidden="true"></a>read_csv.df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/RData/DMTKRcsv.csv&quot;</span>,</span>
+<span id="cb61-21"><a href="datainout.html#cb61-21" aria-hidden="true"></a>                            <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb61-22"><a href="datainout.html#cb61-22" aria-hidden="true"></a>                            <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb61-23"><a href="datainout.html#cb61-23" aria-hidden="true"></a>                            <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb61-24"><a href="datainout.html#cb61-24" aria-hidden="true"></a>                            <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb61-25"><a href="datainout.html#cb61-25" aria-hidden="true"></a><span class="kw">head</span>(read_csv.df, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb61-26"><a href="datainout.html#cb61-26" aria-hidden="true"></a><span class="co">##   No age sex DM DMyr preAC prePC postAC postPC Med SIDE PREKS POSTKS ABS INFECT</span></span>
+<span id="cb61-27"><a href="datainout.html#cb61-27" aria-hidden="true"></a><span class="co">## 1  1  67   0  0   10   120   160    140    180   0    0    56     92   1      0</span></span>
+<span id="cb61-28"><a href="datainout.html#cb61-28" aria-hidden="true"></a><span class="co">## 2  2  67   0  0   11   100   150    150    220   0    1    62     62   0      1</span></span>
+<span id="cb61-29"><a href="datainout.html#cb61-29" aria-hidden="true"></a><span class="co">## 3  3  72   1  0    4   150   200    120    150   2    0    60     94   1      0</span></span></code></pre></div>
 </div>
 <div id="r-內建資料框架" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> R 內建資料框架</h2>
@@ -716,32 +834,31 @@ image, texts, stock market, social media 等.
 <code>package.name</code> 套件中,
 名稱為
 <code>pack.data.name</code> 資料框架使用.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="datainout.html#cb61-1" aria-hidden="true"></a><span class="co"># data()     # check names of datasets </span></span>
-<span id="cb61-2"><a href="datainout.html#cb61-2" aria-hidden="true"></a><span class="kw">data</span>(Orange) <span class="co"># use {R} build-in dataset = Orange</span></span>
-<span id="cb61-3"><a href="datainout.html#cb61-3" aria-hidden="true"></a><span class="co"># help(Orange)</span></span>
-<span id="cb61-4"><a href="datainout.html#cb61-4" aria-hidden="true"></a><span class="kw">head</span>(Orange)</span>
-<span id="cb61-5"><a href="datainout.html#cb61-5" aria-hidden="true"></a><span class="co">## Grouped Data: circumference ~ age | Tree</span></span>
-<span id="cb61-6"><a href="datainout.html#cb61-6" aria-hidden="true"></a><span class="co">##   Tree  age circumference</span></span>
-<span id="cb61-7"><a href="datainout.html#cb61-7" aria-hidden="true"></a><span class="co">## 1    1  118            30</span></span>
-<span id="cb61-8"><a href="datainout.html#cb61-8" aria-hidden="true"></a><span class="co">## 2    1  484            58</span></span>
-<span id="cb61-9"><a href="datainout.html#cb61-9" aria-hidden="true"></a><span class="co">## 3    1  664            87</span></span>
-<span id="cb61-10"><a href="datainout.html#cb61-10" aria-hidden="true"></a><span class="co">## 4    1 1004           115</span></span>
-<span id="cb61-11"><a href="datainout.html#cb61-11" aria-hidden="true"></a><span class="co">## 5    1 1231           120</span></span>
-<span id="cb61-12"><a href="datainout.html#cb61-12" aria-hidden="true"></a><span class="co">## 6    1 1372           142</span></span>
-<span id="cb61-13"><a href="datainout.html#cb61-13" aria-hidden="true"></a><span class="co">#</span></span>
-<span id="cb61-14"><a href="datainout.html#cb61-14" aria-hidden="true"></a><span class="kw">library</span>(MASS)</span>
-<span id="cb61-15"><a href="datainout.html#cb61-15" aria-hidden="true"></a><span class="co"># help(package = MASS)</span></span>
-<span id="cb61-16"><a href="datainout.html#cb61-16" aria-hidden="true"></a><span class="co"># data(package = &quot;MASS&quot;)     # check MASS package data set</span></span>
-<span id="cb61-17"><a href="datainout.html#cb61-17" aria-hidden="true"></a><span class="kw">data</span>(VA, <span class="dt">package =</span> <span class="st">&quot;MASS&quot;</span>)   <span class="co"># use MASS package dataset = VA</span></span>
-<span id="cb61-18"><a href="datainout.html#cb61-18" aria-hidden="true"></a><span class="co"># help(VA)</span></span>
-<span id="cb61-19"><a href="datainout.html#cb61-19" aria-hidden="true"></a><span class="kw">head</span>(VA)</span>
-<span id="cb61-20"><a href="datainout.html#cb61-20" aria-hidden="true"></a><span class="co">##   stime status treat age Karn diag.time cell prior</span></span>
-<span id="cb61-21"><a href="datainout.html#cb61-21" aria-hidden="true"></a><span class="co">## 1    72      1     1  69   60         7    1     0</span></span>
-<span id="cb61-22"><a href="datainout.html#cb61-22" aria-hidden="true"></a><span class="co">## 2   411      1     1  64   70         5    1    10</span></span>
-<span id="cb61-23"><a href="datainout.html#cb61-23" aria-hidden="true"></a><span class="co">## 3   228      1     1  38   60         3    1     0</span></span>
-<span id="cb61-24"><a href="datainout.html#cb61-24" aria-hidden="true"></a><span class="co">## 4   126      1     1  63   60         9    1    10</span></span>
-<span id="cb61-25"><a href="datainout.html#cb61-25" aria-hidden="true"></a><span class="co">## 5   118      1     1  65   70        11    1    10</span></span>
-<span id="cb61-26"><a href="datainout.html#cb61-26" aria-hidden="true"></a><span class="co">## 6    10      1     1  49   20         5    1     0</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="datainout.html#cb62-1" aria-hidden="true"></a><span class="co"># data()     # check names of datasets </span></span>
+<span id="cb62-2"><a href="datainout.html#cb62-2" aria-hidden="true"></a><span class="kw">data</span>(Orange) <span class="co"># use {R} build-in dataset = Orange</span></span>
+<span id="cb62-3"><a href="datainout.html#cb62-3" aria-hidden="true"></a><span class="co"># help(Orange)</span></span>
+<span id="cb62-4"><a href="datainout.html#cb62-4" aria-hidden="true"></a><span class="kw">head</span>(Orange)</span>
+<span id="cb62-5"><a href="datainout.html#cb62-5" aria-hidden="true"></a><span class="co">##   Tree  age circumference</span></span>
+<span id="cb62-6"><a href="datainout.html#cb62-6" aria-hidden="true"></a><span class="co">## 1    1  118            30</span></span>
+<span id="cb62-7"><a href="datainout.html#cb62-7" aria-hidden="true"></a><span class="co">## 2    1  484            58</span></span>
+<span id="cb62-8"><a href="datainout.html#cb62-8" aria-hidden="true"></a><span class="co">## 3    1  664            87</span></span>
+<span id="cb62-9"><a href="datainout.html#cb62-9" aria-hidden="true"></a><span class="co">## 4    1 1004           115</span></span>
+<span id="cb62-10"><a href="datainout.html#cb62-10" aria-hidden="true"></a><span class="co">## 5    1 1231           120</span></span>
+<span id="cb62-11"><a href="datainout.html#cb62-11" aria-hidden="true"></a><span class="co">## 6    1 1372           142</span></span>
+<span id="cb62-12"><a href="datainout.html#cb62-12" aria-hidden="true"></a><span class="co">#</span></span>
+<span id="cb62-13"><a href="datainout.html#cb62-13" aria-hidden="true"></a><span class="kw">library</span>(MASS)</span>
+<span id="cb62-14"><a href="datainout.html#cb62-14" aria-hidden="true"></a><span class="co"># help(package = MASS)</span></span>
+<span id="cb62-15"><a href="datainout.html#cb62-15" aria-hidden="true"></a><span class="co"># data(package = &quot;MASS&quot;)     # check MASS package data set</span></span>
+<span id="cb62-16"><a href="datainout.html#cb62-16" aria-hidden="true"></a><span class="kw">data</span>(VA, <span class="dt">package =</span> <span class="st">&quot;MASS&quot;</span>)   <span class="co"># use MASS package dataset = VA</span></span>
+<span id="cb62-17"><a href="datainout.html#cb62-17" aria-hidden="true"></a><span class="co"># help(VA)</span></span>
+<span id="cb62-18"><a href="datainout.html#cb62-18" aria-hidden="true"></a><span class="kw">head</span>(VA)</span>
+<span id="cb62-19"><a href="datainout.html#cb62-19" aria-hidden="true"></a><span class="co">##   stime status treat age Karn diag.time cell prior</span></span>
+<span id="cb62-20"><a href="datainout.html#cb62-20" aria-hidden="true"></a><span class="co">## 1    72      1     1  69   60         7    1     0</span></span>
+<span id="cb62-21"><a href="datainout.html#cb62-21" aria-hidden="true"></a><span class="co">## 2   411      1     1  64   70         5    1    10</span></span>
+<span id="cb62-22"><a href="datainout.html#cb62-22" aria-hidden="true"></a><span class="co">## 3   228      1     1  38   60         3    1     0</span></span>
+<span id="cb62-23"><a href="datainout.html#cb62-23" aria-hidden="true"></a><span class="co">## 4   126      1     1  63   60         9    1    10</span></span>
+<span id="cb62-24"><a href="datainout.html#cb62-24" aria-hidden="true"></a><span class="co">## 5   118      1     1  65   70        11    1    10</span></span>
+<span id="cb62-25"><a href="datainout.html#cb62-25" aria-hidden="true"></a><span class="co">## 6    10      1     1  49   20         5    1     0</span></span></code></pre></div>
 </div>
 <div id="輸出-r-資料" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> 輸出 {R} 資料</h2>
@@ -775,20 +892,20 @@ image, texts, stock market, social media 等.
 只要使用函式 <code>readRDS()</code> 輸入, 可以節省許多時間.
 {R} 另外一組函式 <code>save()</code> 與函式 <code>load()</code> 有類似功能,
 較較不方便.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="datainout.html#cb62-1" aria-hidden="true"></a><span class="co">## saveRDS() and save()</span></span>
-<span id="cb62-2"><a href="datainout.html#cb62-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb62-3"><a href="datainout.html#cb62-3" aria-hidden="true"></a><span class="kw">saveRDS</span>(x, <span class="dt">file =</span> <span class="st">&quot;C:/RData/x.Rds&quot;</span>)</span>
-<span id="cb62-4"><a href="datainout.html#cb62-4" aria-hidden="true"></a><span class="kw">save</span>(x, <span class="dt">file =</span> <span class="st">&quot;C:/RData/x.Rda&quot;</span>)   <span class="co"># working directory</span></span>
-<span id="cb62-5"><a href="datainout.html#cb62-5" aria-hidden="true"></a><span class="co">## readRDS()</span></span>
-<span id="cb62-6"><a href="datainout.html#cb62-6" aria-hidden="true"></a>new_x &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file =</span> <span class="st">&quot;C:/RData/x.Rds&quot;</span>)</span>
-<span id="cb62-7"><a href="datainout.html#cb62-7" aria-hidden="true"></a>new_x</span>
-<span id="cb62-8"><a href="datainout.html#cb62-8" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4 5</span></span>
-<span id="cb62-9"><a href="datainout.html#cb62-9" aria-hidden="true"></a><span class="co">## load() -- note the result</span></span>
-<span id="cb62-10"><a href="datainout.html#cb62-10" aria-hidden="true"></a>new_x &lt;-<span class="st"> </span><span class="kw">load</span>(<span class="dt">file =</span> <span class="st">&quot;C:/RData/x.Rda&quot;</span>)</span>
-<span id="cb62-11"><a href="datainout.html#cb62-11" aria-hidden="true"></a>new_x</span>
-<span id="cb62-12"><a href="datainout.html#cb62-12" aria-hidden="true"></a><span class="co">## [1] &quot;x&quot;</span></span>
-<span id="cb62-13"><a href="datainout.html#cb62-13" aria-hidden="true"></a>x</span>
-<span id="cb62-14"><a href="datainout.html#cb62-14" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="datainout.html#cb63-1" aria-hidden="true"></a><span class="co">## saveRDS() and save()</span></span>
+<span id="cb63-2"><a href="datainout.html#cb63-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb63-3"><a href="datainout.html#cb63-3" aria-hidden="true"></a><span class="kw">saveRDS</span>(x, <span class="dt">file =</span> <span class="st">&quot;C:/RData/x.Rds&quot;</span>)</span>
+<span id="cb63-4"><a href="datainout.html#cb63-4" aria-hidden="true"></a><span class="kw">save</span>(x, <span class="dt">file =</span> <span class="st">&quot;C:/RData/x.Rda&quot;</span>)   <span class="co"># working directory</span></span>
+<span id="cb63-5"><a href="datainout.html#cb63-5" aria-hidden="true"></a><span class="co">## readRDS()</span></span>
+<span id="cb63-6"><a href="datainout.html#cb63-6" aria-hidden="true"></a>new_x &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file =</span> <span class="st">&quot;C:/RData/x.Rds&quot;</span>)</span>
+<span id="cb63-7"><a href="datainout.html#cb63-7" aria-hidden="true"></a>new_x</span>
+<span id="cb63-8"><a href="datainout.html#cb63-8" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4 5</span></span>
+<span id="cb63-9"><a href="datainout.html#cb63-9" aria-hidden="true"></a><span class="co">## load() -- note the result</span></span>
+<span id="cb63-10"><a href="datainout.html#cb63-10" aria-hidden="true"></a>new_x &lt;-<span class="st"> </span><span class="kw">load</span>(<span class="dt">file =</span> <span class="st">&quot;C:/RData/x.Rda&quot;</span>)</span>
+<span id="cb63-11"><a href="datainout.html#cb63-11" aria-hidden="true"></a>new_x</span>
+<span id="cb63-12"><a href="datainout.html#cb63-12" aria-hidden="true"></a><span class="co">## [1] &quot;x&quot;</span></span>
+<span id="cb63-13"><a href="datainout.html#cb63-13" aria-hidden="true"></a>x</span>
+<span id="cb63-14"><a href="datainout.html#cb63-14" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4 5</span></span></code></pre></div>
 
 </div>
 </div>

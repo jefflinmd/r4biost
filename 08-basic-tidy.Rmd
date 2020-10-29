@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # 資料基本處理 {#basictidy}
 
 
@@ -14,7 +19,7 @@
   - `tidyr` 精簡資料, 
   - `stringr` 字串整理. 
   - `readr` 資料輸入. 
-  - `forcats 處理類別變數 (factors).
+  - `forcats` 處理類別變數 (factors).
   
 tidyverse 套件系統的其他關聯套件包含
   
@@ -51,7 +56,27 @@ tidyverse 套件系統的其他關聯套件包含
 `read_excel` 輸入 `excel` 資料檔,
 `read_delim()` 輸入不同分隔符號資料檔.
 其中引數如下 (`help(read_delim)`).
-
+```{r eval=FALSE}
+read_delim(
+  file,
+  delim,
+  quote = "\"",
+  escape_backslash = FALSE,
+  escape_double = TRUE,
+  col_names = TRUE,
+  col_types = NULL,
+  locale = default_locale(),
+  na = c("", "NA"),
+  quoted_na = TRUE,
+  comment = "",
+  trim_ws = FALSE,
+  skip = 0,
+  n_max = Inf,
+  guess_max = min(1000, n_max),
+  progress = show_progress(),
+  skip_empty_rows = TRUE
+)
+```
 * `file` = 路徑與檔名
 * `delim` = 分隔符號
 * `quote` = 視同分隔符號 (資料的文字變數值常放在雙引號中)
@@ -66,11 +91,59 @@ tidyverse 套件系統的其他關聯套件包含
 * `n_max` = 最大輸入行數
 
 
+
+
+
+**糖尿病與人工關節術後感染臨床試驗**  (糖尿病與人工全膝關節置換手術研究)
+
+退化性膝關節炎是人類關節疾病中最常見的一種,
+主要病變的地方是膝關節的的關節軟骨受到傷害與磨損,
+造成關節腔變窄以及產生骨刺, 變化與年紀有高度相關.
+年長者患有嚴重退化性膝關節炎, 常須進行人工全膝關節置換手術 (TKR),
+但是若是術後感染, 則有可能照造成截肢或因敗血症而死亡,
+且糖尿病 (DM) 患者是此全膝關節置換手術後感染的高危險群.
+因此一位骨科醫師進行一預防性臨床試驗,
+對患有嚴重退化性膝關節炎的糖尿病患者,
+隨機分配 2 組, 一組在全膝關節置換手術中, 使用的骨水泥內,
+加入預防性抗生素藥劑, 另一組為對照組.
+研究的主要目的是探討全膝關節置換手術中,
+在骨水泥內加入預防性抗生素藥劑, 是否可以預防術後感染.
+另外一個研究目的是在骨水泥內加入預防性抗生素藥劑,
+研究共收集了 78 位病患的資料,
+變數名稱列在表 1.
+資料檔案為 `DMTKRcsv.csv`, `DMTKAInfMo.csv`,
+`DMTKRtabsep.txt` 與 `DMTKRblanksep.txt`.
+
+
+| 變數       | 說明                                                |
+|------------|---------------------------------------------------|
+| NO         | 病患辨識碼                                             |
+| AGE        | 年紀歲數 (單位: 年) (age)                            |
+| SEX        | 性別: 0 = F = 女 (female), 1 = M = 男 (Male).            |
+| DM         | 糖尿病形態: 0 = Type II (NIDDM); 1 = Type I (IDDM) |
+| DMYR       | 手術前糖尿病病史 (單位: 年)                                |
+| PREAC      | 手術前空腹血糖 (mg/dL)                                 |
+| PREPC      | 手術前飯後血糖 (mg/dL)                                 |
+| POSTAC     | 手術後空腹血糖 (mg/dL)                                 |
+| POSTPC     | 手術後飯後血糖 (mg/dL)                                 |
+| MEDICATION | 糖尿病治療方式:                                          |
+|            | 0 = 口服降血糖藥劑; 1 = 胰島素注射; 2 = 飲食控制                  |
+| SIDE       | 患側: 0 = 左側; 1 = 右側                                |
+| PREKS      | 手術前膝功能分數                                          |
+| POSTKS     | 手術後膝功能分數                                          |
+| ABS        | 骨水泥是否加抗生素 1 = Yes; 0 = No                         |
+| INFECT     | 術後感染: 0 = No; 1 = Yes, 發現術後感染                     |
+| INFMO      | 發現術後感染的時間 (單位: 月)                               |
+| MISC       | 註記                                                |
+
+Table 1. 糖尿病與人工關節術後感染臨床試驗: 變數說明
+
+
 ```{r, message=FALSE}
 # .csv
 library(tidyverse)
 library(readr)
-dd <- readr::read_csv("C:/RData/DMTKAInfMo.csv")
+dd <- readr::read_csv("./Data/DMTKAInfMo.csv")
 print(dd, n = 5, width = Inf)
 # .xls
 library(readxl)
@@ -177,7 +250,7 @@ options(tibble.print_min = Inf),  顯示所有 rows,
 
 
 `tidyverse` 系統中的 `magrittr` 套件提供一個非常實用的運算指令
-`%>%` 稱為 **pipe**, **管線**, **管道** **導管**.
+`%>%` 稱為 **pipe**, **管線**, **管道**, **導管**.
 此運算符號, 可將函式與運算串聯, 
 `%>%` 左側通常是資料物件, 資料框架, 矩陣, 向量等, 
 `%>%` 右側通常是函式 `fun_name()`,
@@ -264,7 +337,6 @@ glimpse(dd)
 * `slice()` = 利用橫列指標 (row index) 選出個體 (row)
 * `summarise()` = 計算常見統計量
 * `group_by()` = 資料分組操作
-* `%>%` = `pipe` 指令
 
 這些函式的第 1 個引數為資料物件, 
 後續只用為變數名 (不加雙引號),
@@ -281,13 +353,15 @@ glimpse(dd)
 選擇個體 `treat` 為 placebo, cellcode 為 large.
 ```{r message=FALSE}
 ## filter()
-dd %>% 
+dd.a <- dd %>% 
   filter(treat == 'placebo', cellcode == 'large')
+dd.a
 ```
 選擇個體 `treat` 為試驗藥組, age 大於 50, kps 小於或等於 7
 ```{r message=FALSE}
-dd %>% 
+dd.b <- dd %>% 
   filter(treat == 'test', age > 50, kps <= 7)
+dd.b
 ```
 
 
@@ -304,8 +378,9 @@ time 由大到小排序.
 這須與 {R} base 的 `order()`, `sort()` 或 `rank()` 進行比較.
 ```{r}
 ## arrange()
-dd %>% 
+dd.s <- dd %>% 
   arrange(age, desc(time))
+dd.s
 ```
 
 
@@ -319,8 +394,9 @@ dd %>%
 以資料在檔案第 5 章的 **survVATrial.csv** 為例,
 選擇 `treat`, `cellcode`, `censor` 等變數.
 ```{r message=FALSE}
-dd %>% 
+dd.c <- dd %>% 
   select(treat, cellcode, censor)
+dd.c
 ```
 
 
@@ -333,11 +409,70 @@ dd %>%
 對 `time` 取對數轉換, `diagtime * age / 100`.
 ```{r message=FALSE}
 ## mutate()
-dd %>% 
+dd.a <- dd %>% 
   mutate(
     log_age = log(age),
     diag_age = diagtime * age / 100
     )
+dd.a %>% 
+  select(age, diagtime, log_age, diag_age) %>% 
+  print(n = 5, width = Inf)
+```
+
+
+### 向量 `if_else()`
+
+`dplyr` 套件中的函式 `if_else()` 與 {R} base 函式 `ifelse()`  有類似功能,
+執行特殊的變數轉換.
+```{r eval=FALSE}
+if_else(condition, true, false, missing = NULL)
+```
+引數 `condition` 為邏輯向量, 
+`true` 與 `false` 為相同模式且相同長度的向量或相同模式的純量.
+當 `condition = TRUE`, 則回傳 `true`, 
+反之, 當 `condition = FALSE`, 則回傳 `false`. 
+```{r}
+x <- c(NA, -2:2, NA)
+x
+## R base 
+ifelse(x > 0, 1, 0)
+## if_else
+if_else(x > 0, 1, 0)
+if_else(x < 0, "negative", "positive", missing = "missing value")
+if_else(is.na(x), 1, 0) %>% mean()
+```
+
+
+
+### 變數重新命名 `rename()`
+
+`dplyr` 套件中的函式 `rename()` 可將變數重新命名.
+```{r eval=FALSE}
+rename(new_name = old_name)
+```
+以資料在檔案第 5 章的 **survVATrial.csv** 為例,
+將變數 `treat` 重新命名為 `drug`.
+```{r}
+## original
+print(dd, n = 5, width = Inf)
+## change
+dd.new <- dd %>% rename(drug = treat)
+print(dd.new, n = 5, width = Inf)
+```
+
+
+### 移除缺失資料 `drop_na()`
+
+
+`tidyr` 套件中的函式 `drop_na()` 可將資料內具有缺失值得個體移除,
+但這樣處理資料必須非常小心解讀.
+```{r}
+dd.mis <- tibble(age = c(30, 40, NA, 60),
+                 gender = c("M", "M", "F", NA))
+dd.mis
+dd.mis %>% drop_na()
+dd.mis %>% drop_na(age)
+dd.mis %>% drop_na(gender)
 ```
 
 
@@ -356,8 +491,11 @@ dd %>%
 由資料抽樣 5 位個體.
 ```{r message=FALSE}
 ## sample_n()
+set.seed(1)
 dd %>% sample_n(size = 5, replace = FALSE)
+set.seed(10)
 dd %>% sample_n(size = 5, replace = TRUE)
+set.seed(100)
 dd %>% sample_frac(size = 0.1)
 ```
 
@@ -372,7 +510,20 @@ dd %>% sample_frac(size = 0.1)
 函式 `n_distinct()` 計算明顯不同的個體數目,
 使用引數 `na.rm = FALSE` 決定是否納入缺失值.
 ```{r message=FALSE}
-## distict()
+## distinct()
+set.seed(1)
+df <- tibble(
+  x = sample(5, 100, rep = TRUE),
+  y = sample(5, 100, rep = TRUE)
+)
+print(df, n = 20)
+nrow(df)
+nrow(distinct(df))
+nrow(distinct(df, x, y))
+distinct(df, x)
+distinct(df, y)
+distinct(df, x, .keep_all = TRUE)
+##
 set.seed(1)
 df <- tibble(
   x = sample(10, 100, rep = TRUE),
@@ -418,6 +569,7 @@ dd %>% slice_head(n = 3)
 dd %>% slice_tail(n = 3)
 dd %>% slice_min(time, n = 3)
 dd %>% slice_max(time, n = 3)
+set.seed(1)
 dd %>% slice_sample(n = 3)
 ```
 
@@ -430,7 +582,7 @@ dd %>% slice_sample(n = 3)
  期常用引數有
  
 * Center: `mean()`, `median()`
-* Spread: `var()`, `sd()`, `IQR()`, `mad()`. `range()`
+* Spread: `var()`, `sd()`, `IQR()`, `mad()`, `range()`
 * Range: `min()`, `max()`, `quantile()`
 * Position: `first()`, `last()`, `nth()`
 * Count: `n()`, `n_distinct()`
@@ -460,14 +612,14 @@ dd %>%
 dd %>% 
   group_by(treat) %>% 
   summarise(
-    diagtime_mean = mean(diagtime),
-    diagtime_sd = sd(diagtime)
+    diagtime_mean = mean(diagtime, na.rm = TRUE),
+    diagtime_sd = sd(diagtime, na.rm = TRUE)
     )
 dd %>% 
   group_by(treat, cellcode) %>% 
   summarise(
-    diagtime_mean = mean(diagtime),
-    diagtime_sd = sd(diagtime)
+    diagtime_mean = mean(diagtime, na.rm = TRUE),
+    diagtime_sd = sd(diagtime, na.rm = TRUE)
     )
 ```
 
@@ -484,19 +636,39 @@ dd %>%
 
 ```{r message=FALSE}
 ## summarise_all()
-dd %>% 
+con.mean <- dd %>% 
   select(time, diagtime, kps, age) %>% 
   summarise_all(mean, na.rm = TRUE)
+con.mean
+#
+con.sd <- dd %>% 
+  select(time, diagtime, kps, age) %>% 
+  summarise_all(sd, na.rm = TRUE)
+con.sd
+id <- c("mean", "sd")
+comb <- rbind(con.mean, con.sd)
+comb <- cbind(id, comb)
+comb
+#
 dd %>% select(time, diagtime, kps, age) %>% 
   summarise_all(list(mean, sd), na.rm = TRUE)
+dd %>% select(time, diagtime, kps, age) %>% 
+  summarise_all(lst(mean, sd), na.rm = TRUE)
 dd %>%
   summarise_each(list(mean, sd), time, age) # not so useful
+dd %>%
+  summarise_each(lst(mean, sd), time, age) # not so useful
 dd %>% 
   summarise_at(c("time", "age"), mean, na.rm = TRUE)
 dd %>% 
-  summarise_at(vars(time, age), mean, na.rm = TRUE)
+  summarise_at(.vars = vars(time, age), mean, na.rm = TRUE)
+dd %>% 
+  summarise_at(.vars = vars(time, age),
+               .funs = c(Mean = "mean", SD = "sd"), na.rm = TRUE)
 dd %>% 
   summarise_if(is.numeric, list(mean, sd), na.rm = TRUE)
+dd %>% 
+  summarise_if(is.numeric, lst(mean, sd), na.rm = TRUE)
 ```
 
 
@@ -520,8 +692,8 @@ df <- dd %>%
   filter(id <= 10)
 df
 set.seed(1)
-x <- df %>% sample_n(size = 7, replace = TRUE)
-y <- df %>% sample_n(size = 7, replace = TRUE)
+x <- df %>% sample_n(size = 7, replace = FALSE)
+y <- df %>% sample_n(size = 7, replace = FALSE)
 x
 y
 intersect(x, y)
@@ -541,7 +713,7 @@ setdiff(x, y)
 用來連結不同資料的個體辨識碼或變數稱為
 **關鍵碼** 或 **所引鍵**
 (**key**),
-多數為個體辨識碼, 當有時為時間, 日期, 文見編號等,
+多數為個體辨識碼, 當有時為時間, 日期, 文件編號等,
 可能同時須使用 2 個變數才能成為單一辨識碼,
 例如, 同時須使用醫院與院內病歷號, 
 避免不同個體在不同醫院卻有有相同的病歷號.

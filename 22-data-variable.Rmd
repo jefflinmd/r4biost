@@ -1,0 +1,681 @@
+# 資料與變數 {#DataVariable}
+
+
+
+在醫學研究上,
+一個研究形成一組
+**資料**
+(**data**)
+稱為一個
+**樣本**
+(**sample**).
+一個研究資料內研究者觀察或測量的對像,
+稱為
+**個體**
+(**subject**),
+樣本內個體所代表的有共同特徵的一群個體,
+稱為
+**母體**
+(**population**)
+或
+**目標母體**
+(**target population**)
+是指有共同特徵的一群個體, 一群人或事件的集合,
+醫學研究的目的是希望將研究資料的結論,
+可以一般化地推論或應用到目標母體內所包含的個體,
+但研究者並未對目標母體內所有的個體收集資料,
+研究者只收集到目標母體內的一組樣本,
+研究者通常測量或記錄個體的一些特徵,
+稱為
+**變數**
+(**variable**),
+研究者在大多數時間是面對以數字組成的
+**量化資料**
+(**quantitative data**),
+本章主要介紹量化資料與變數的一些特性.
+
+
+
+## 醫學研究實例
+
+
+
+醫學研究通常主要討論 (a) 疾病與發生原因之關聯,
+(b) 疾病的預防與發生,
+(c) 疾病的治療與預後,
+或 (d) 疾病的診斷與預測.
+了解醫學研究資料的醫學統計方法,
+最好的方式是先了解已經完成的一些醫學研究.
+多數的時候是先有醫學研究收集到的量化資料,
+統計人員才介入分析資料,
+但最好的統計分析,
+是統計人員要參與醫學研究的研究設計, 資料收集,
+論文發表等整個過程,
+統計人員與研究者都要了解醫學資料所要回答的研究問題,
+研究如何設計,
+資料如何收集, 如何分析, 如何撰寫論文報告等.
+在此提供幾個簡化的醫學研究實例, 作為本章討論的參考例題.
+
+
+
+**抽菸, 膽固醇與血壓調查研究**
+
+
+一個早期大規模的抽樣調查,
+以問卷方式調查抽菸, 膽固醇與血壓的關聯性研究,
+隨機抽取了近 1.5 萬位成年人進行問卷訪問,
+資料變數在表 1.
+檔案在 **BPsurvey.csv**.
+研究主要描述一般族群的健康狀況, 探討疾病與發生原因之關聯性,
+例如, 分析 抽菸, 膽固醇與血壓的關聯性.
+這資料人數較多, 有時可作為一個小型母體使用.
+
+| 變數      | 描述                               |
+|-----------+--------------------------------|
+| ID  | 個體識別碼                                |
+| SEX | 性別: 1 = 男, 2 = 女                     |
+| RACE | 種族: 1 = 白人, 2 = 黑人, 3= 其它           |
+| SMOKE | 抽菸狀態: 1 = 從未抽菸, 2 = 過去抽菸, 3= 現在抽菸  |
+| AGE | 年齡, 單位: 年                            |
+| WT   | 體重, 單位: 公斤                          |
+| HT  | 身高, 單位: 公分                           |
+| SBP | 舒張壓                                  |
+| DBP | 收縮壓                                  |
+| CHOL | 血清膽固醇值, 單位: mg/dL                   |
+
+Table 1. 抽菸, 膽固醇與血壓調查研究: 變數說明
+
+```{r}
+library(tidyverse)
+library(readr)
+dd <- readr::read_csv("./Data/BPsurvey.csv",
+                      na = c(".", "", "NA"),
+                      trim_ws = TRUE)
+# glimpse(dd)
+names(dd) <- tolower(names(dd))
+dd$sex = factor(dd$sex, labels = c("male", "female"))
+dd$race = factor(dd$race, labels = c("white", "black", "other"))
+dd$smoke = factor(dd$smoke, labels = c("never", "past", "current"))
+print(dd, n = 5, width = Inf)
+```
+
+
+**新生兒出生體重過輕病例對照研究**
+
+
+一個醫學研究之目的是探討新生兒出生體重過輕 (low birth weight, LOW) 的危險因子,
+研究設計為病例對照研究,
+研究者分別蒐集體重過輕新生兒與體重正常新生兒資料,
+研究記錄了新生兒體重 (BWT),
+同時定義 新生兒體重過輕變數 (LOW),
+LOW = 1 代表 體重過輕 (Birth Weight $<$ 2500g),
+LOW = 0 代表 體重正常 (Birth Weight $\ge$ 2500g)
+研究同時記錄了一些可能的危險因子,
+資料變數說明參見表 2.
+資料檔案為 `LowBwt.csv`.
+
+| 變數    | 描述                                                                             |
+|-------|--------------------------------------------------------------------------------|
+| ID    | 個體識別碼                                                |
+| LOW   | 新生兒體重: 1 = 過輕 (Birth Weight $<$ 2500g), 0 = 正常 (Birth Weight $\ge$ 2500g) |
+| AGE   | 年齡, 單位: 年                                                |
+| LWT   | 母親在最後一次經期的體重: 單位 公斤 (Kg)                                          |
+| RACE  | 種族: 1 = 白人, 2 = 黑人, 3= 其它                                      |
+| SMOKE | 懷孕期間的抽菸狀態: 1 = 有抽菸, 0 = 沒有抽菸                                     |
+| PTL   | 母親過去早產的紀錄次數: 0 = 沒有, 1 = 1 次, 2 = 2 次, 等等以此類推       |
+| HT    | 母親是否有高血壓的紀錄: 1 = 有, 0 = 沒有                               |
+| UI    | 母親是否有子宮敏感性特質: 1 = 有, 0 = 沒有                               |
+| FTV   | 母親在懷孕的第一孕期接受產前檢查的次數:                                 |
+|       | 0 = 沒有, 1 = 1 次, 2 = 2 次, 等等以此類推                          |
+| BWT   | 新生兒體重, 單位: 公克 (g)               |
+
+Table 2. 新生兒出生體重過輕病例對照研究: 變數說明
+
+
+```{r}
+dd <- readr::read_csv("./Data/LowBwt.csv",
+                      na = c(".", "", "NA"),
+                      trim_ws = TRUE)
+# glimpse(dd)
+names(dd) <- tolower(names(dd))
+dd$low = factor(dd$low, labels = c("no", "yes"))
+dd$race = factor(dd$race, labels = c("white", "black", "other"))
+dd$smoke = factor(dd$smoke, labels = c("no", "yes"))
+dd$ui = factor(dd$ui, labels = c("no", "yes"))
+print(dd, n = 5, width = Inf)
+```
+
+
+
+**佛明罕研究** 
+
+研究目的是探索心臟冠狀動脈硬化疾病與高血壓心血管疾病的危險因子,
+研究從 1948 年起,
+%在美國麻州 Framingham, 6000 位居民,
+在美國麻州 Framingham 居民,
+每 2 年接受健康問卷調查與健康檢查,
+並進行長期追蹤.
+變數說明如表 3,
+資料檔案在 `FraminghamStudyLocalPY.csv`.
+
+
+
+| 變數              | 描述                                             |
+|-----------------|------------------------------------------------|
+| id              | 參與者代碼                                          |
+| female          | 性別: 1 = 女性, 0 = 男性                             |
+| totchol         | 血清總膽固醇量 (mg/dl)                              |
+| age             | 年紀 (年)                                       |
+| bmi             | 身體質量指數 (kg/m^2^)                    |
+| BPVar           | 平均血壓 (mmHg, (SBP - 120)/2 + (DBP - 80) |
+| heartrte        | 心跳速率 (beat/min)                              |
+| glucose         | 血糖值 (mg/dl)                                  |
+| cursmoke        | 是否抽菸: 0 = 否, 1 = 是                             |
+| cigpday         | 每天抽菸數量                                         |
+| outcome         | 最後追蹤: 0 = 存活, 1 = 死亡, 2 = 退出研究            |
+| time_outcome | 從進入研究到最後追蹤時間 (年)                             |
+
+Table 3. 佛明罕研究: 變數說明
+
+
+```{r}
+dd <- readr::read_csv("./Data/FraminghamStudyLocalPY.csv",
+                      na = c(".", "", "NA"),
+                      trim_ws = TRUE)
+# glimpse(dd)
+names(dd) <- tolower(names(dd))
+dd$female = factor(dd$female, labels = c("male", "female"))
+dd$cursmoke = factor(dd$cursmoke, labels = c("no", "yes"))
+dd$outcome = factor(dd$outcome, labels = c("alive", "dead", "other"))
+print(dd, n = 5, width = Inf)
+```
+
+
+
+**糖尿病防治臨床試驗**
+
+一位研究者進行一個大型糖尿病防治的臨床試驗,
+比較 標準治療 (standard) 與 實驗治療 (experimental) 
+對長期控制平穩的血糖 與 預防嚴重糖尿病腎病變的療效.
+研究主要目的是分析長期控制平穩的血糖, 主要反應變數以測量糖化血色素 (HbA1c) 為代表,
+研究的次要目的是預防嚴重糖尿病腎病變, 
+次要目的反應變數以是否出現 顯微蛋白尿 (microalbuminuris) 的時間為代表.
+研究在臨床試驗開始時,
+紀錄受試者的一些基本資料,
+例如年紀, 性別等,
+同時紀錄可能會影響結果的一些臨床測量,
+例如, 臨床試驗開始時的 糖化血色素,
+及受試者內生胰島素的 C-peptide 測量等.
+研究資料在檔案 `DMDCCThba1c6.csv`,
+變數說明在表 4.
+
+
+| 變數           | 描述                                                              |
+|----------------|-----------------------------------------------------------------|
+| id             | 受試者編碼, 依照進入試驗的時間順序而編碼.                    |
+| treat          | 治療組別: 0 = 傳統型治療; 1 = 加強型治療.               |
+| etdrs0         | 試驗開始時視網膜病變嚴重程度指數: ETDRS grade.              |
+| neur0          | 試驗開始時神經病變: 0 = 無; 1 = 有.                   |
+| aer0           | 試驗開始時蛋白尿測量: albumin excretion rate (mg/24 h).     |
+| microalb       | 治療後是否出現顯微蛋白尿: 0 = 無; 1 = 有.                |
+| quart          | 治療後出現顯微蛋白尿的追蹤時間的季數或最後追蹤時間, 單位: 季. (quarterly visit number). |
+| duration       | 治療後出現顯微蛋白尿的時間或最後追蹤的時間, 單位: 月.       |
+| female         | 性別: 0 = 男性; 1 = 女性.                           |
+| age            | 試驗開始時的年紀, 單位: 年.                             |
+| adult         | 試驗開始時是否成年, 0 = $\le 17$, 1 = 是.                  |
+| cpeptide       | 試驗開始時, 受試者內生胰島素的 C-peptide 測量.                |
+| bmi            | 試驗開始時的 BMI (身體質量指數).                      |
+| hba1c0         | 試驗開始時的 HBA1c 測量.                            |
+| hba1c1-hba1c6 | 治療後 1-6 年, 每年 HBA1c 測量.                      |
+
+
+Table 4. 糖尿病防治臨床試驗: 變數說明
+
+
+
+```{r eval=FALSE, echo=FALSE}
+dd.wide = read.csv("./Data/DMDCCThba1c6.csv",
+                   header = TRUE, 
+                   row.names = NULL,
+                   dec = ".", 
+                   na = c(".", "", "NA"),  
+                   skip = 0,
+                   nrows = -1,   
+                   as.is = TRUE,        
+                   # as.is = !stringsAsFactors,
+                   strip.white = TRUE)
+dim(dd.wide)
+names(dd.wide)
+head(dd.wide)
+str(dd.wide)
+##
+## wide to long
+# print(dd.long, n = 5, width = Inf)
+dd.long <- dd.wide %>% pivot_longer(
+  cols = hba1c0:hba1c6,
+  names_to = "time",
+  names_prefix = "hba1c",
+  values_to = "hba1c"
+  )
+write.table(dd.long, file = "./Data/DMDCCThba1c6Long.csv",
+            sep = ",", 
+            dec = ".", 
+            quote = FALSE,
+            eol = "\n", 
+            na = "NA", 
+            row.names = FALSE, 
+            col.names = TRUE, 
+            qmethod = c("escape", "double"))
+```
+
+
+
+
+```{r}
+library(tidyverse)
+dd <- readr::read_csv("C:/RData/DMDCCThba1c6.csv",
+                      na = c(".", "", "NA"),
+                      trim_ws = TRUE)
+# glimpse(dd)
+dd$treat = factor(dd$treat, labels = c("placebo", "test"))
+dd$neur0 = factor(dd$neur0, labels = c("no", "yes"))
+dd$microalb = factor(dd$microalb, labels = c("no", "yes"))
+dd$adult = factor(dd$adult, labels = c("no", "yes"))
+dd$female = factor(dd$female, labels = c("male", "female"))
+print(dd, n = 5, width = Inf)
+```
+
+
+
+**糖尿病與人工關節術後感染臨床試驗**  (糖尿病與人工全膝關節置換手術研究)
+
+退化性膝關節炎是人類關節疾病中最常見的一種,
+主要病變的地方是膝關節的的關節軟骨受到傷害與磨損,
+造成關節腔變窄以及產生骨刺, 變化與年紀有高度相關.
+年長者患有嚴重退化性膝關節炎, 常須進行人工全膝關節置換手術 (TKR),
+但是若是術後感染, 則有可能照造成截肢或因敗血症而死亡,
+且糖尿病 (DM) 患者是此全膝關節置換手術後感染的高危險群.
+因此一位骨科醫師進行一預防性臨床試驗,
+對患有嚴重退化性膝關節炎的糖尿病患者,
+隨機分配 2 組, 一組在全膝關節置換手術中, 使用的骨水泥內,
+加入預防性抗生素藥劑, 另一組為對照組.
+研究的主要目的是探討全膝關節置換手術中,
+在骨水泥內加入預防性抗生素藥劑, 是否可以預防術後感染.
+另外一個研究目的是在骨水泥內加入預防性抗生素藥劑,
+研究共收集了 78 位病患的資料,
+變數名稱列在表 5.
+資料檔案為 `DMTKRcsv.csv`, `DMTKAInfMo.csv`,
+`DMTKRtabsep.txt` 與 `DMTKRblanksep.txt`.
+
+| 變數       | 說明                                                |
+|------------|---------------------------------------------------|
+| NO         | 病患辨識碼                                             |
+| AGE        | 年紀歲數 (單位: 年) (age)                            |
+| SEX        | 性別: 0 = F = 女 (female), 1 = M = 男 (Male).            |
+| DM         | 糖尿病形態: 0 = Type II (NIDDM); 1 = Type I (IDDM) |
+| DMYR       | 手術前糖尿病病史 (單位: 年)                                |
+| PREAC      | 手術前空腹血糖 (mg/dL)                                 |
+| PREPC      | 手術前飯後血糖 (mg/dL)                                 |
+| POSTAC     | 手術後空腹血糖 (mg/dL)                                 |
+| POSTPC     | 手術後飯後血糖 (mg/dL)                                 |
+| MEDICATION | 糖尿病治療方式:                                          |
+|            | 0 = 口服降血糖藥劑; 1 = 胰島素注射; 2 = 飲食控制                  |
+| SIDE       | 患側: 0 = 左側; 1 = 右側                                |
+| PREKS      | 手術前膝功能分數                                          |
+| POSTKS     | 手術後膝功能分數                                          |
+| ABS        | 骨水泥是否加抗生素 1 = Yes; 0 = No                         |
+| INFECT     | 術後感染: 0 = No; 1 = Yes, 發現術後感染                     |
+| INFMO      | 發現術後感染的時間 (單位: 月)                               |
+| MISC       | 註記                                                |
+
+Table 5. 糖尿病與人工關節術後感染臨床試驗: 變數說明
+
+
+
+```{r eval=FALSE, echo=FALSE}
+dd <- readr::read_csv("./Data/DMTKAInfMo.csv",
+                      na = c(".", "", "NA"),
+                      trim_ws = TRUE)
+# glimpse(dd)
+names(dd) <- tolower(names(dd))
+dd$sex = factor(dd$sex, labels = c("female", "male"))
+dd$dm =  factor(dd$dm, labels = c("type_2", "type_1"))
+dd$medication = factor(dd$medication, labels = c("oral", "insulin", "diet"))
+dd$side =  factor(dd$side, labels = c("left", "right"))
+dd$abs =  factor(dd$abs, labels = c("placebo", "antibiotics"))
+dd$infect =  factor(dd$infect, labels = c("no", "yes"))
+print(dd, n = 5, width = Inf)
+```
+
+
+## 資料與變數 Data and Variables
+
+
+
+**資料**
+(**data**) 是指任何醫學研究中, 所觀察或測量的集合.
+個體資料資料內包含每一位 **個體** (**subject**, **individual**)
+的觀測之變數值.
+研究盡量使用每一位個體的測量值, 但有些時候, 無法得到每一位個體的測量值,
+例如研究者比較不同國家的死亡率,
+對任一個國家的資料而言,
+通常每一位死亡著的日期或年紀,
+也無法得到每一位的收入資料.
+只有得到國家衛生統計資料或經濟統計資料, 
+
+
+**變數**
+(**variable**)
+是指個體可以測量的一些特徵 (characteristics),
+如年齡, 體重, 身高, 或是喝酒與吸菸習慣等.
+**觀測值**,
+(**value**,
+**observed value**,
+**data value**,
+**variable value**),
+是指某一特定個體所觀察到或測量到的數值.
+例如, Table 5. 糖尿病與人工關節術後感染臨床試驗,
+中研究資料的變數為年紀 (age),
+性別 (sex), 糖尿病形態 (DM type);
+第 1 位個體所觀察到或測量到的數值為 $\text{age}=67$, $\text{sex}=0=F$ 等.
+
+
+一個醫學研究資料的變數, 其中會有 1 個或多個
+**主要結果**
+(**primary endpoint**)
+或
+**次要結果**
+(**secondary endpoint**)
+的測量,
+稱為
+**反應變數**,
+**依變數**,
+**結果變數**,
+(**response variable**,
+**dependent variable**,
+**outcome variable**)
+等.
+其他用來解釋結果變化的變數,
+稱為
+**共變數**,
+**獨立變數**,
+**解釋變數**,
+**干擾因子**,
+**風險因子**,
+**預後因子**,
+(**covariate**,
+**independent variable**,
+**explanatory variable**,
+**confounding factor**,
+**risk factor**,
+**predictor**)
+等.
+例如, Table 5. 糖尿病與人工關節術後感染臨床試驗,
+主要的反應變數是術後感染 (INFECT),
+次要的反應變數如手術後膝功能分數 (POSTKS).
+最主要的共變數是骨水泥是否加抗生素 (ABS),
+其他如年紀 (age),
+性別 (sex), 糖尿病形態 (DM type),
+手術前空腹血糖 (preopBS),
+手術後空腹血糖 (postBS),
+糖尿病治療方式 (medication),
+手術前膝功能分數 (PREKS) 等;
+這些變數會影響主要的反應變數.
+
+
+## 變數分類
+
+
+
+分析資料之前, 必須設定每一個變數的分類與屬性,
+以便選擇較適當的分析方法.
+根據不同的觀點, 變數分類方式也有所不同,
+在此討論 3 種常見觀點:
+**科學測量尺度**,
+**資料管理**,
+**統計**,
+不同的分類, 有不同的使用或分析之目的.
+
+
+
+
+
+
+依據科學測量尺度,
+變數可分為
+**類別尺度**
+(**categorical**)
+或
+**數量尺度**
+(**quantitative**,
+**numerical**).
+**類別尺度**
+(**categorical**)
+如變數觀察值只會落在特定幾種
+**類別水準**
+或稱為
+**水準**
+(**level**).
+例如, Table 5. 糖尿病與人工關節術後感染臨床試驗,
+性別只有男或女 2 種類別;
+糖尿病形態有 2 種類別, 青年型 (NIDDM) 或成年型 (IDDM);
+另外, 例如人類血型常分成 4 種類型, $A$, $B$, $AB$, $O$;
+研究者記錄病患的疼痛情形, 分成 4 種, 無, 輕度, 中度, 重度.
+
+
+
+**類別尺度**
+定義中的特定幾種類別水準是否有大小差距,
+又可分類成
+**名目尺度**
+(**nominal scale**)
+與
+**順序尺度**
+(**ordinal scale**).
+**名目尺度**
+(**nominal scale**)
+是最簡單的測量,
+名目尺度將變數值分成互斥的類別水準,
+同一變數內的類別水準並無量化大小的差別.
+
+在名目尺度中,
+特別的情形是變數內只有 2 個類別水準,
+如存活或死亡, 統計習慣上會分別標記為 0 或 1,
+感染或無感染, 這類變數常稱做
+**二元變數**
+(**dichotomous variable**,
+**binary variable**),
+二元變數通常有特殊的統計分析方法.
+
+
+**順序尺度**
+(**ordinal scale**)
+是指同一變數內的類別水準有
+輕重, 大小, 強弱, 好壞等級順序之資料.
+例如, 疼痛情形有 4 種情境: ``無'', ``輕度'', ``中度'', ``重度'',
+癌症分期為 I, II, III, IV 等 4 期.
+雖然順序尺度用數字表示或標記,
+但是數字本身通常不能用來做運算, 只能比較相對大小或高低次序,
+順序之間的實際差異並無法從標記的數字差異得知.
+
+
+**數量尺度**
+(**quantitative**,
+**numerical**)
+是指變數觀察值, 在數字之間的差異是有意義的,
+例如身高, 體重, 溫度等.
+可分成
+**等距尺度**
+(**interval scale**)
+與
+**比率尺度**
+(**ratio scale**).
+**等距尺度**
+測量值不限於離散的整數,
+可以測量數字間的距離,
+但沒有一個真正零點,
+沒有
+**絕對零值**
+(**absolute zero**),
+因此可以有負值,
+如溫度之測量, 攝氏 $- 16^\circ$.
+等距尺度無法真正表示成倍數,
+例如肢體功能表現評分為 0--100 分,
+則 50 分的表現,
+未必是為 25 分的 2 倍好.
+
+**比率尺度**
+(**ratio scale**)
+是指變數測量值有一個真正零點,
+或稱
+**真實零值**,
+(**true zero**),
+測量值不可以為負值,
+如身高, 體重, 血壓等;
+比率尺度可以表示或計算倍數,
+例如 80 公斤為 40 公斤的 2 倍.
+
+
+**計數尺度**
+(**count scale**)
+或稱
+**離散尺度**
+(**discrete scale**),
+是指變數測量值只有整數, 例如醫院內每一天死亡數目,
+高速公路上的每一天車禍次數
+
+
+
+### 統計與變數分類
+
+
+統計分析對變數的分類主要是根據統計理論與實務應用將變數分成 2 大類:
+**離散變數**
+(**discrete variable**)
+與
+**連續變數**
+(**continuous variable**).
+
+**離散變數**,
+或稱
+**類別變數**,
+**質性變數**,
+(**categorical variable**,
+**qualitative variable**).
+
+在統計分析的過程中, 統計人員對某一特定變數,
+可以設定為類別變數的型態或設定為連續變數的型態,
+設定的分類是根據研究的問題, 測量特性, 分析時選定的機率模型而定,
+通常須研究者與統計分析人員共同決.
+例如,
+**計數尺度**
+(**count scale**)
+在統計分析時, 有時候當成
+**類別變數**
+有時候當成
+**連續變數**.
+
+
+### 資料數位化與變數分類
+
+
+資料通常使用電腦輸入與管理, 一個好的資料庫軟體,
+通常不會是一個好的統計軟體,
+反之亦同.
+資料管理或電腦處裡資料變數值, 常將資料分成
+**邏輯變數**
+(**logical**,
+**Boolean**,
+**binary**),
+**離散變數**
+(**discrete variable**),
+與
+**連續變數**
+(**continuous variable**).
+**邏輯變數**
+只有 0 與 1, 所需記憶體或儲存空間最小.
+**離散變數**
+主要處理整數或文字變數.
+**連續變數**
+處理實數, 所需記憶體或儲存空間最大,
+為了增加精準度, 可增加所需記憶體的儲存位置數目.
+
+
+
+## 單變量, 雙變量與多變量
+
+
+在統計理論上,
+**單變量分析**
+(**univariate analysis**)
+是指資料以統計分析中,
+統計方法一次只探討 1 個主要反應變數 (依變數),
+**雙變量分析**
+(**bivariate analysis**)
+是指資料分析中,
+統計方法一次只探討 2 個主要反應變數,
+**多變量分析**
+(**multivariate analysis**)
+是指資料分析中,
+統計方法一次探討大於 2 個以上的反應變數.
+在醫學研究上,
+雙變量分析常指同時探討 2 個變數彼此之間的關聯性,
+而多變量分析是指同時探討多個共變數 (解釋變數) 對 1 個或多個反應變數的影響,
+或是使用
+**多變量分析**
+(**multiple variables analysis**),
+同一個名詞, 不同觀點有不同的定義.
+
+
+
+
+## 資料輸入與儲存
+
+
+
+資料通常使用試算表 (spreadsheat) 或資料庫軟體輸入,
+然後以 ASCII 格式, 固定欄位純文字,
+或其他特定檔型式輸出,
+以便統計軟體使用, 習慣上,
+使用
+**csv**
+(**comma separated variable**)
+格式,
+資料檔案的附檔名為
+**filename.csv**,
+或是資料使用空格作為分離的變數值的格式,
+資料檔案的附檔名為
+**filename.dat**,
+資料檔案的附檔名為
+**filename.txt**
+等,
+可以方便在不同作業系統交流.
+資料輸入有時使用統計軟體所提供的資料輸入介面,
+主要的統計軟體各自儲存成不同的格式,
+不同統計軟體格式的資料之間的轉換, 則須另外處裡.
+
+
+**資料編碼**
+(**coding**)
+是指將變數以文字或數字等代碼來表示, 以便於資料的整理與分析.
+變數的觀測值分類有許多種, 通常所有變數,
+無論類別或連續變數, 建議都用數字數輸入,
+另外再建立一個變數說明清單, 或加以格式化設定,
+數字在統計軟體內, 可以當數值的連續變數或文字的類別變數使用,
+輸入時較不易出錯且節省儲存空間.
+**資料編輯**
+(**editing**)
+是指對原始資料找出錯誤予以更正,
+或對遺漏值進行探究及處理的過程.
+
+
+任何醫學研究多少會有
+**缺失值**
+(**missing value**),
+缺失值須使用特別符號輸入設定成缺失值,
+最好不要使用數字, 如 99, 999 等設定為缺失值,
+以免統計軟體誤判數值,
+也不要使用空白,
+有些試算表軟體會對空白或空格自動補 0,
+形成有效數值.
+

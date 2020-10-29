@@ -53,10 +53,10 @@
 | `lag(x, k)`    |  `x[i-k]`      | $z_i = x_{i-k}$, 對應 `x[i]` 回傳 `x[i-k]`            |
 | `lead(x, k)`  |  `x[i+k]`      | $z_i = x_{i+k}$, 對應 `x[i]` 回傳 `x[i+k]`            |
 `prod(x)`      | 乘積 (product) |  $y = \prod_i x_i$                   |
-| `cumprod(x)`   | 累計乘積  | $z_j = \prod_{i \le j} x_i                        |
-| `mean(x)`      | 平均值 (mean)   | $\bar{x} = \frac{1}{n} \sum_i x_i$)    |
+| `cumprod(x)`   | 累計乘積  | $z_j = \prod_{i \le j} x_i$                        |
+| `mean(x)`      | 平均值 (mean)   | $\bar{x} = \frac{1}{n} \sum_i x_i$    |
 | `median(x)`    | 中位數 (median) |  $0.5$ quantile, $50^{th}$ percentile  |
-| `var(x)`       | 變異數, 共變異數 | $s^2 = \frac{1}{n-1} \sum_i (x_i - \bar{x})^2$    |
+| `var(x)`       | 變異數, 共變異數 | $s^2 = \frac{1}{n-1} \sum_i (x_i - bar{x})^2$    |
 | `sd(x)`        | 標準差 (SD) | $s = \sqrt{s^2}$                             |
 | `range(x)`     | 範圍 (range)  |  $(\min (x), \max (x))$                    |
 | `min(x)`       | 最小值 |   $\min (x)$                                        |
@@ -141,7 +141,7 @@ var(x, na.rm = T)
 {R} 還有一些關於列聯表的套件,
 例如,
 `xtable`,
-`vcd**,
+`vcd`,
 `reshape2`,
 `plyr`,
 `dplyr`,
@@ -206,7 +206,7 @@ var(x, na.rm = T)
 但是, 若遺失每一位個體的測量值, 只有聚集資料, 則無法回復原來的個別資料.
 因此, 研究盡量使用每一位個體的測量值, 但有些時候, 無法得到每一位個體的測量值,
 若資料內全是類別變數,
-則 個別資料 與 聚集資料 分析結論部會有差別,
+則個別資料與 聚集資料分析結論部會有差別,
 但資料內若有連續變數如年紀, BMI 等,
 將連續變數轉換成類別變數, 只呈現或分析聚集資料,
 則會造成所謂的
@@ -238,24 +238,15 @@ var(x, na.rm = T)
 之特殊物件.
 使用函式
 `as.table()`
-可用來強制將 矩陣 或 資料框架 形成列聯表物件.
-`as.matrix()` 強制將 列聯表物件 形成 矩陣.
-`as.data.frame()` 強制將 列聯表物件 形成 資料框架.
+可用來強制將矩陣或資料框架形成列聯表物件.
+`as.matrix()` 強制將列聯表物件形成矩陣.
+`as.data.frame()` 強制將列聯表物件形成資料框架.
 `as.data.frame()` 是 `xtabs()` 的反函式.
-使用函式
-`is.table()`
-可查看物件是否為列聯表物件.
-使用函式
-`table()` 
-須使用資料內個別變數或向量.
-使用函式
-`xtabs()`
-可以從資料框架中,
+使用函式 `is.table()` 可查看物件是否為列聯表物件.
+使用函式 `table()` 須使用資料內個別變數或向量.
+使用函式 `xtabs()` 可以從資料框架中,
 利用統計模型公式 (model formula) 創造一個列聯表.
-函式 `as.data.frame()`
-則是函式
-`xtabs()`
-的反函式,
+函式 `as.data.frame()` 則是函式 `xtabs()` 的反函式,
 從列聯表物件創造一個資料框架.
 ```{r eval=FALSE}
 table(variable_name, ...)
@@ -446,7 +437,7 @@ prop.table(dd.1xtabs)
 ## table()
 dd.2tab = table(dd$cellcode, dd$censor)
 dd.2tab 
-## cell count total and proportion 
+## individual's cell count total and cell proportion
 margin.table(dd.2tab)
 prop.table(dd.2tab)
 ## condition on row
@@ -485,7 +476,7 @@ prop.table(dd.2xtabs, margin = 2)
 p &  =   F(q) = P (X \le q) = \text{累積機率分配函數, cumulative distribution function}  \\
 q &  =   Q (u) = F^{-1} (p) = \text{分位數函數, quantile function}, \; \text{其中}\;  p \le P (X \le q) \\
 d &  =  f(x) = F' (x) = P (X = x) = \text{機率密度分配函數, probability density function} \\
-r &  =  R (r) = f^{-1} (x)  = \text{隨機亂數函數, random number}, 
+r &  =  R (r) = f^{-1} (x)  = \text{隨機亂數函數, random number} 
 \end{aligned}
 \]
 
@@ -535,7 +526,7 @@ Table: 機率函式
 * `qProbFun` 的第一個參數是 $p$.
 * `rProbFun` 的的第一個參數是 $n$, 生成亂數之數目.
 * `pProbFun` 和 `qProbFun` 函數 都有邏輯引數 `lower.tail** 和 `log.p`. 
-  * 若 `lower.tail = TRUE` (default), 機率計算為 $P (X < =  x)$. 
+  * 若 `lower.tail = TRUE` (default), 機率計算為 $P (X \lr x)$. 
   * 若 `lower.tail = FALSE` 機率計算為 $P (X > x)$. 
   * 若 `log.p = TRUE`, 機率 $p$ 是以 `log(p)` 輸入與輸出.
 * `dProbFun` 也有一個邏輯引數 `log`, 用來計算所要的對數機率值.
@@ -674,12 +665,12 @@ set.seed(1)
 sample(c(0, 1), size = 20, replace = TRUE)
 sample(2, size = 20, replace = TRUE)
 
-# random choose 10 subjects to group 1
+## random choose 10 subjects to group 1
 set.seed(1)
 sample(20, size = 10, replace = FALSE)
 
-# block randomization
-# total 5 blocks, block size 4, choose 2 subjects to group 1
+## block randomization
+## total 5 blocks, block size 4, choose 2 subjects to group 1
 set.seed(1)
 replicate(5, sample(c(1:4), size = 2, replace = FALSE))
 ```

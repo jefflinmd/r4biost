@@ -132,7 +132,7 @@ Prentice (1973) 報告一個研究,
 | age             | 診斷時的年齡 (以年計)                                          |
 | prior           | 先前是否接受治療; 0 = 無; 1 = 有                               |
 
-
+Table 1. 退伍軍人肺癌臨床試驗: 變數說明
 
 
 
@@ -528,9 +528,6 @@ GGally::ggpairs(data = con.df,
 
 ```{r message=FALSE, warning=FALSE}
 ## Bubble plot
-ggplot(data = dd, aes(x = diagtime, y = time, size = age)) + 
-  geom_point(alpha = 0.3) + 
-  scale_size(range = c(.1, 15), name = "Age Bubbles")
 ggplot(data = dd, aes(x = diagtime, y = time, size = age)) + 
   geom_point(alpha = 0.3) + 
   scale_size(range = c(.1, 15), name = "Age Bubbles")

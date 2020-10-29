@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 14 資料與變數 | R 資料科學與統計</title>
+  <meta name="description" content="Chapter 14 資料與變數 | R 資料科學與統計" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 14 資料與變數 | R 資料科學與統計" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 14 資料與變數 | R 資料科學與統計" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 14 資料與變數 | R 資料科學與統計" />
+  
+  <meta name="twitter:description" content="Chapter 14 資料與變數 | R 資料科學與統計" />
+  
+
+<meta name="author" content="林建甫 Jeff Lin" />
+
+
+<meta name="date" content="2020-10-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="StatIntro.html"/>
+<link rel="next" href="applications.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R 語言基本概論</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#下載與安裝-r"><i class="fa fa-check"></i><b>1.1</b> 下載與安裝 R</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#下載與安裝-rsudio"><i class="fa fa-check"></i><b>1.2</b> 下載與安裝 RSudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#簡單實例"><i class="fa fa-check"></i><b>1.3</b> 簡單實例</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#物件-object"><i class="fa fa-check"></i><b>1.4</b> 物件 Object</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#使用指令"><i class="fa fa-check"></i><b>1.5</b> 使用指令</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#查詢顯示物件與刪除物件"><i class="fa fa-check"></i><b>1.6</b> 查詢顯示物件與刪除物件</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#程式中止操作"><i class="fa fa-check"></i><b>1.7</b> 程式中止操作</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#工作目錄"><i class="fa fa-check"></i><b>1.8</b> 工作目錄</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#程式編輯軟體與整合系統-rstudio"><i class="fa fa-check"></i><b>1.9</b> 程式編輯軟體與整合系統 RStudio</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#函式-function"><i class="fa fa-check"></i><b>1.10</b> 函式 Function</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#套件-packages"><i class="fa fa-check"></i><b>1.11</b> 套件 Packages</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#解說與輔助文件"><i class="fa fa-check"></i><b>1.12</b> 解說與輔助文件</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#地區語系與時區"><i class="fa fa-check"></i><b>1.13</b> 地區語系與時區</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vector.html"><a href="vector.html"><i class="fa fa-check"></i><b>2</b> 向量</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vector.html"><a href="vector.html#向量"><i class="fa fa-check"></i><b>2.1</b> 向量</a></li>
+<li class="chapter" data-level="2.2" data-path="vector.html"><a href="vector.html#向量基本資料類型"><i class="fa fa-check"></i><b>2.2</b> 向量基本資料類型</a></li>
+<li class="chapter" data-level="2.3" data-path="vector.html"><a href="vector.html#向量產生函式-c"><i class="fa fa-check"></i><b>2.3</b> 向量產生函式 <code>c()</code></a></li>
+<li class="chapter" data-level="2.4" data-path="vector.html"><a href="vector.html#向量基本運算操作符號"><i class="fa fa-check"></i><b>2.4</b> 向量基本運算操作符號</a></li>
+<li class="chapter" data-level="2.5" data-path="vector.html"><a href="vector.html#向量基本算數操作"><i class="fa fa-check"></i><b>2.5</b> 向量基本算數操作</a></li>
+<li class="chapter" data-level="2.6" data-path="vector.html"><a href="vector.html#向量關係比較操作"><i class="fa fa-check"></i><b>2.6</b> 向量關係比較操作</a></li>
+<li class="chapter" data-level="2.7" data-path="vector.html"><a href="vector.html#向量邏輯操作"><i class="fa fa-check"></i><b>2.7</b> 向量邏輯操作</a></li>
+<li class="chapter" data-level="2.8" data-path="vector.html"><a href="vector.html#向量元素命名"><i class="fa fa-check"></i><b>2.8</b> 向量元素命名</a></li>
+<li class="chapter" data-level="2.9" data-path="vector.html"><a href="vector.html#向量下標與索引-inxex"><i class="fa fa-check"></i><b>2.9</b> 向量下標與索引 Inxex</a></li>
+<li class="chapter" data-level="2.10" data-path="vector.html"><a href="vector.html#遺失值-缺失值-missing-values"><i class="fa fa-check"></i><b>2.10</b> 遺失值 (缺失值) Missing Values</a></li>
+<li class="chapter" data-level="2.11" data-path="vector.html"><a href="vector.html#因子物件與類別變數-factor"><i class="fa fa-check"></i><b>2.11</b> 因子物件與類別變數 Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataobject.html"><a href="dataobject.html"><i class="fa fa-check"></i><b>3</b> 資料物件</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataobject.html"><a href="dataobject.html#矩陣物件-matrix"><i class="fa fa-check"></i><b>3.1</b> 矩陣物件 Matrix</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dataobject.html"><a href="dataobject.html#矩陣函式-matrix"><i class="fa fa-check"></i><b>3.1.1</b> 矩陣函式 matrix()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dataobject.html"><a href="dataobject.html#矩陣命名-dimnames"><i class="fa fa-check"></i><b>3.1.2</b> 矩陣命名 dimnames()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dataobject.html"><a href="dataobject.html#矩陣的下標與索引-matrix-index"><i class="fa fa-check"></i><b>3.2</b> 矩陣的下標與索引 Matrix Index</a></li>
+<li class="chapter" data-level="3.3" data-path="dataobject.html"><a href="dataobject.html#向量與矩陣的合併-rbind-與-cbind"><i class="fa fa-check"></i><b>3.3</b> 向量與矩陣的合併: rbind() 與 cbind()</a></li>
+<li class="chapter" data-level="3.4" data-path="dataobject.html"><a href="dataobject.html#陣列物件-array"><i class="fa fa-check"></i><b>3.4</b> 陣列物件 Array</a></li>
+<li class="chapter" data-level="3.5" data-path="dataobject.html"><a href="dataobject.html#列表物件-list"><i class="fa fa-check"></i><b>3.5</b> 列表物件 List</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="dataobject.html"><a href="dataobject.html#列表函式-list"><i class="fa fa-check"></i><b>3.5.1</b> 列表函式 list()</a></li>
+<li class="chapter" data-level="3.5.2" data-path="dataobject.html"><a href="dataobject.html#列表的下標與索引-list-index"><i class="fa fa-check"></i><b>3.5.2</b> 列表的下標與索引 List Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="dataobject.html"><a href="dataobject.html#資料框架-data-frame"><i class="fa fa-check"></i><b>3.6</b> 資料框架 Data Frame</a></li>
+<li class="chapter" data-level="3.7" data-path="dataobject.html"><a href="dataobject.html#資料框架函式-data.frame"><i class="fa fa-check"></i><b>3.7</b> 資料框架函式 data.frame()</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="dataobject.html"><a href="dataobject.html#資料框架的下標與索引-data-frame-index"><i class="fa fa-check"></i><b>3.7.1</b> 資料框架的下標與索引 Data Frame Index</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datainout.html"><a href="datainout.html"><i class="fa fa-check"></i><b>4</b> 資料輸入與輸出</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datainout.html"><a href="datainout.html#資料框架"><i class="fa fa-check"></i><b>4.1</b> 資料框架</a></li>
+<li class="chapter" data-level="4.2" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-空白分隔"><i class="fa fa-check"></i><b>4.2</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 空白分隔</a></li>
+<li class="chapter" data-level="4.3" data-path="datainout.html"><a href="datainout.html#輸入外部-ascii-資料檔案至-r-資料框架-逗號分隔"><i class="fa fa-check"></i><b>4.3</b> 輸入外部 ASCII 資料檔案至 R 資料框架: 逗號分隔</a></li>
+<li class="chapter" data-level="4.4" data-path="datainout.html"><a href="datainout.html#r-內建資料框架"><i class="fa fa-check"></i><b>4.4</b> R 內建資料框架</a></li>
+<li class="chapter" data-level="4.5" data-path="datainout.html"><a href="datainout.html#輸出-r-資料"><i class="fa fa-check"></i><b>4.5</b> 輸出 {R} 資料</a></li>
+<li class="chapter" data-level="4.6" data-path="datainout.html"><a href="datainout.html#儲存-r-格式資料檔"><i class="fa fa-check"></i><b>4.6</b> 儲存 {R} 格式資料檔</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>5</b> 資料視覺化分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataviz.html"><a href="dataviz.html#視覺化分析原則"><i class="fa fa-check"></i><b>5.1</b> 視覺化分析原則</a></li>
+<li class="chapter" data-level="5.2" data-path="dataviz.html"><a href="dataviz.html#繪圖套件-ggplot2"><i class="fa fa-check"></i><b>5.2</b> 繪圖套件 ggplot2</a></li>
+<li class="chapter" data-level="5.3" data-path="dataviz.html"><a href="dataviz.html#類別變數"><i class="fa fa-check"></i><b>5.3</b> 類別變數</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="dataviz.html"><a href="dataviz.html#單一類別變數"><i class="fa fa-check"></i><b>5.3.1</b> 單一類別變數</a></li>
+<li class="chapter" data-level="5.3.2" data-path="dataviz.html"><a href="dataviz.html#多類別變數"><i class="fa fa-check"></i><b>5.3.2</b> 多類別變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="dataviz.html"><a href="dataviz.html#連續變數"><i class="fa fa-check"></i><b>5.4</b> 連續變數</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dataviz.html"><a href="dataviz.html#單連續變數"><i class="fa fa-check"></i><b>5.4.1</b> 單連續變數</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dataviz.html"><a href="dataviz.html#二連續變數"><i class="fa fa-check"></i><b>5.4.2</b> 二連續變數</a></li>
+<li class="chapter" data-level="5.4.3" data-path="dataviz.html"><a href="dataviz.html#三連續變數"><i class="fa fa-check"></i><b>5.4.3</b> 三連續變數</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dataviz.html"><a href="dataviz.html#混合變數"><i class="fa fa-check"></i><b>5.5</b> 混合變數</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="dataviz.html"><a href="dataviz.html#一連續-一類別"><i class="fa fa-check"></i><b>5.5.1</b> 一連續 + 一類別</a></li>
+<li class="chapter" data-level="5.5.2" data-path="dataviz.html"><a href="dataviz.html#二連續-一類別"><i class="fa fa-check"></i><b>5.5.2</b> 二連續 + 一類別</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="dataviz.html"><a href="dataviz.html#分組繪圖"><i class="fa fa-check"></i><b>5.6</b> 分組繪圖</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html"><i class="fa fa-check"></i><b>6</b> 基本函式</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#函式語法"><i class="fa fa-check"></i><b>6.1</b> 函式語法</a></li>
+<li class="chapter" data-level="6.2" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#檢視的函式原始碼定義"><i class="fa fa-check"></i><b>6.2</b> 檢視的函式原始碼定義</a></li>
+<li class="chapter" data-level="6.3" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式"><i class="fa fa-check"></i><b>6.3</b> 數列函式</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#數列函式-seq-與-sequence"><i class="fa fa-check"></i><b>6.3.1</b> 數列函式: seq() 與 sequence()</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#重複元素函式-rep"><i class="fa fa-check"></i><b>6.4</b> 重複元素函式: rep()</a></li>
+<li class="chapter" data-level="6.5" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#算數函式-arithmetic-computing-function"><i class="fa fa-check"></i><b>6.5</b> 算數函式 Arithmetic Computing Function</a></li>
+<li class="chapter" data-level="6.6" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#組合與階乘函式-choose-與-factorial"><i class="fa fa-check"></i><b>6.6</b> 組合與階乘函式: choose() 與 factorial()</a></li>
+<li class="chapter" data-level="6.7" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#選擇資料函式-all-any-which"><i class="fa fa-check"></i><b>6.7</b> 選擇資料函式: all(), any(), which()</a></li>
+<li class="chapter" data-level="6.8" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#排序函式-ranking-and-sorting"><i class="fa fa-check"></i><b>6.8</b> 排序函式 Ranking and Sorting</a></li>
+<li class="chapter" data-level="6.9" data-path="basicfunctiuon.html"><a href="basicfunctiuon.html#物件查看與強制轉換函式"><i class="fa fa-check"></i><b>6.9</b> 物件查看與強制轉換函式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basicstat.html"><a href="basicstat.html"><i class="fa fa-check"></i><b>7</b> 基本統計函式</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basicstat.html"><a href="basicstat.html#敘述統計函式"><i class="fa fa-check"></i><b>7.1</b> 敘述統計函式</a></li>
+<li class="chapter" data-level="7.2" data-path="basicstat.html"><a href="basicstat.html#類別資料表格函數"><i class="fa fa-check"></i><b>7.2</b> 類別資料表格函數</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-table-xtabs"><i class="fa fa-check"></i><b>7.2.1</b> 列聯表函式: table(), xtabs()</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-ftable"><i class="fa fa-check"></i><b>7.2.2</b> 列聯表函式: ftable()</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basicstat.html"><a href="basicstat.html#列聯表函式-margin.table-prop.table"><i class="fa fa-check"></i><b>7.2.3</b> 列聯表函式: margin.table(), prop.table()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basicstat.html"><a href="basicstat.html#機率函式與亂數生成函式"><i class="fa fa-check"></i><b>7.3</b> 機率函式與亂數生成函式</a></li>
+<li class="chapter" data-level="7.4" data-path="basicstat.html"><a href="basicstat.html#隨機抽樣函式-sample"><i class="fa fa-check"></i><b>7.4</b> 隨機抽樣函式 sample()</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basictidy.html"><a href="basictidy.html"><i class="fa fa-check"></i><b>8</b> 資料基本處理</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basictidy.html"><a href="basictidy.html#資料輸入套件-readr"><i class="fa fa-check"></i><b>8.1</b> 資料輸入套件 readr</a></li>
+<li class="chapter" data-level="8.2" data-path="basictidy.html"><a href="basictidy.html#整潔資料-tidy-data"><i class="fa fa-check"></i><b>8.2</b> 整潔資料 Tidy Data</a></li>
+<li class="chapter" data-level="8.3" data-path="basictidy.html"><a href="basictidy.html#tibble-與-data-frame"><i class="fa fa-check"></i><b>8.3</b> Tibble 與 Data Frame</a></li>
+<li class="chapter" data-level="8.4" data-path="basictidy.html"><a href="basictidy.html#資料流動管道運算指令-pipe"><i class="fa fa-check"></i><b>8.4</b> 資料流動管道運算指令 Pipe</a></li>
+<li class="chapter" data-level="8.5" data-path="basictidy.html"><a href="basictidy.html#資料檢視函式-glimpse"><i class="fa fa-check"></i><b>8.5</b> 資料檢視函式 glimpse()</a></li>
+<li class="chapter" data-level="8.6" data-path="basictidy.html"><a href="basictidy.html#資料處裡-dplyr-套件"><i class="fa fa-check"></i><b>8.6</b> 資料處裡 dplyr 套件</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="basictidy.html"><a href="basictidy.html#選擇個體函式-filter"><i class="fa fa-check"></i><b>8.6.1</b> 選擇個體函式 <code>filter()</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
+<li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
+<li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#向量-if_else"><i class="fa fa-check"></i><b>8.6.5</b> 向量 <code>if_else()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#變數重新命名-rename"><i class="fa fa-check"></i><b>8.6.6</b> 變數重新命名 <code>rename()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#移除缺失資料-drop_na"><i class="fa fa-check"></i><b>8.6.7</b> 移除缺失資料 <code>drop_na()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.8</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.9</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.10</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.11" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.11</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.12" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.12</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.13" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.13</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
+<li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="purrr.html"><a href="purrr.html"><i class="fa fa-check"></i><b>9</b> 資料迭代處理</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="purrr.html"><a href="purrr.html#對資料變數欄位-columns-進行相同操作"><i class="fa fa-check"></i><b>9.1</b> 對資料變數欄位 (columns) 進行相同操作</a></li>
+<li class="chapter" data-level="9.2" data-path="purrr.html"><a href="purrr.html#對資料個體列位-rows-進行相同操作"><i class="fa fa-check"></i><b>9.2</b> 對資料個體列位 (rows) 進行相同操作</a></li>
+<li class="chapter" data-level="9.3" data-path="purrr.html"><a href="purrr.html#依據條件進行變數轉換"><i class="fa fa-check"></i><b>9.3</b> 依據條件進行變數轉換</a></li>
+<li class="chapter" data-level="9.4" data-path="purrr.html"><a href="purrr.html#r-資料物件操作函式-apply"><i class="fa fa-check"></i><b>9.4</b> {R} 資料物件操作函式: apply()</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>10</b> 文字與字串資料處理</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="stringr.html"><a href="stringr.html#文字與字串資料基礎"><i class="fa fa-check"></i><b>10.1</b> 文字與字串資料基礎</a></li>
+<li class="chapter" data-level="10.2" data-path="stringr.html"><a href="stringr.html#套件-stringr"><i class="fa fa-check"></i><b>10.2</b> 套件 stringr</a></li>
+<li class="chapter" data-level="10.3" data-path="stringr.html"><a href="stringr.html#合併文字或字串-str_c"><i class="fa fa-check"></i><b>10.3</b> 合併文字或字串 str_c()</a></li>
+<li class="chapter" data-level="10.4" data-path="stringr.html"><a href="stringr.html#取出文字或字串向量中的部分元素-str_sub"><i class="fa fa-check"></i><b>10.4</b> 取出文字或字串向量中的部分元素 str_sub()</a></li>
+<li class="chapter" data-level="10.5" data-path="stringr.html"><a href="stringr.html#語言設定地區與文字大小寫排序"><i class="fa fa-check"></i><b>10.5</b> 語言設定地區與文字大小寫排序</a></li>
+<li class="chapter" data-level="10.6" data-path="stringr.html"><a href="stringr.html#移除空白-加入空白-截斷文字-str_trim-與-str_pad"><i class="fa fa-check"></i><b>10.6</b> 移除空白, 加入空白, 截斷文字 <code>str_trim()</code> 與 <code>str_pad()</code></a></li>
+<li class="chapter" data-level="10.7" data-path="stringr.html"><a href="stringr.html#尋找特定形式文字或字串"><i class="fa fa-check"></i><b>10.7</b> 尋找特定形式文字或字串</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="stringr.html"><a href="stringr.html#偵測函式-str_detect"><i class="fa fa-check"></i><b>10.7.1</b> 偵測函式 <code>str_detect()</code></a></li>
+<li class="chapter" data-level="10.7.2" data-path="stringr.html"><a href="stringr.html#確認位置函式-str_detect"><i class="fa fa-check"></i><b>10.7.2</b> 確認位置函式 <code>str_detect()</code></a></li>
+<li class="chapter" data-level="10.7.3" data-path="stringr.html"><a href="stringr.html#確認索引函式-str_subset-與-str_which"><i class="fa fa-check"></i><b>10.7.3</b> 確認索引函式 <code>str_subset()</code> 與 <code>str_which()</code></a></li>
+<li class="chapter" data-level="10.7.4" data-path="stringr.html"><a href="stringr.html#取出函式-str_extract"><i class="fa fa-check"></i><b>10.7.4</b> 取出函式 <code>str_extract()</code></a></li>
+<li class="chapter" data-level="10.7.5" data-path="stringr.html"><a href="stringr.html#配對函式-str_match"><i class="fa fa-check"></i><b>10.7.5</b> 配對函式 <code>str_match()</code></a></li>
+<li class="chapter" data-level="10.7.6" data-path="stringr.html"><a href="stringr.html#替代置換函式-str_replace"><i class="fa fa-check"></i><b>10.7.6</b> 替代置換函式 <code>str_replace()</code></a></li>
+<li class="chapter" data-level="10.7.7" data-path="stringr.html"><a href="stringr.html#分割函式-str_split"><i class="fa fa-check"></i><b>10.7.7</b> 分割函式 <code>str_split()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="stringr.html"><a href="stringr.html#群組尋找特定形式的文字與字串"><i class="fa fa-check"></i><b>10.8</b> 群組尋找特定形式的文字與字串</a></li>
+<li class="chapter" data-level="10.9" data-path="stringr.html"><a href="stringr.html#尋找連續重覆特定形式的文字與字串"><i class="fa fa-check"></i><b>10.9</b> 尋找連續重覆特定形式的文字與字串</a></li>
+<li class="chapter" data-level="10.10" data-path="stringr.html"><a href="stringr.html#正規表示文字與字串-萬用字元"><i class="fa fa-check"></i><b>10.10</b> 正規表示文字與字串 (萬用字元)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>11</b> 因子資料處理</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="forcats.html"><a href="forcats.html#forcats-套件-基本函式"><i class="fa fa-check"></i><b>11.1</b> forcats 套件: 基本函式</a></li>
+<li class="chapter" data-level="11.2" data-path="forcats.html"><a href="forcats.html#移除或增加部分類別水準"><i class="fa fa-check"></i><b>11.2</b> 移除或增加部分類別水準</a></li>
+<li class="chapter" data-level="11.3" data-path="forcats.html"><a href="forcats.html#改變類別水準函式"><i class="fa fa-check"></i><b>11.3</b> 改變類別水準函式</a></li>
+<li class="chapter" data-level="11.4" data-path="forcats.html"><a href="forcats.html#改變或合併類別水準函式-fct_lump"><i class="fa fa-check"></i><b>11.4</b> 改變或合併類別水準函式 fct_lump()</a></li>
+<li class="chapter" data-level="11.5" data-path="forcats.html"><a href="forcats.html#類別水準的頻率排序函式-fct_infreq"><i class="fa fa-check"></i><b>11.5</b> 類別水準的頻率排序函式 fct_infreq()</a></li>
+<li class="chapter" data-level="11.6" data-path="forcats.html"><a href="forcats.html#依照其他變數將類別重新排序函式-fct_reorder"><i class="fa fa-check"></i><b>11.6</b> 依照其他變數將類別重新排序函式 fct_reorder()</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>12</b> 日期時間處理</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="lubridate.html"><a href="lubridate.html#lubridate-套件的日期時間"><i class="fa fa-check"></i><b>12.1</b> lubridate 套件的日期時間</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="lubridate.html"><a href="lubridate.html#從文字或字串轉換創件日期時間物件"><i class="fa fa-check"></i><b>12.1.1</b> 從文字或字串轉換創件日期時間物件</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="lubridate.html"><a href="lubridate.html#從date-time-資料個別成分-創件日期時間物件."><i class="fa fa-check"></i><b>12.2</b> 從date-time 資料個別成分, 創件日期時間物件.</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="lubridate.html"><a href="lubridate.html#從已經建立的其他資料物件創件日期時間物件"><i class="fa fa-check"></i><b>12.2.1</b> 從已經建立的其他資料物件創件日期時間物件</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="lubridate.html"><a href="lubridate.html#時區轉換"><i class="fa fa-check"></i><b>12.3</b> 時區轉換</a></li>
+<li class="chapter" data-level="12.4" data-path="lubridate.html"><a href="lubridate.html#取出-date-time-資料的個別成分"><i class="fa fa-check"></i><b>12.4</b> 取出 date-time 資料的個別成分</a></li>
+<li class="chapter" data-level="12.5" data-path="lubridate.html"><a href="lubridate.html#計算時間長度"><i class="fa fa-check"></i><b>12.5</b> 計算時間長度</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="lubridate.html"><a href="lubridate.html#duration-創建以秒計算的時間長度的物件"><i class="fa fa-check"></i><b>12.5.1</b> <code>duration</code> 創建以秒計算的時間長度的物件</a></li>
+<li class="chapter" data-level="12.5.2" data-path="lubridate.html"><a href="lubridate.html#period-創建以人類文明的時間單位計算時間長度"><i class="fa fa-check"></i><b>12.5.2</b> <code>period</code> 創建以人類文明的時間單位計算時間長度</a></li>
+<li class="chapter" data-level="12.5.3" data-path="lubridate.html"><a href="lubridate.html#interval-計算二個-date-time-物件之間的時間長度."><i class="fa fa-check"></i><b>12.5.3</b> <code>interval</code> 計算二個 date-time 物件之間的時間長度.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="StatIntro.html"><a href="StatIntro.html"><i class="fa fa-check"></i><b>13</b> 統計與醫學</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="StatIntro.html"><a href="StatIntro.html#醫學統計"><i class="fa fa-check"></i><b>13.1</b> 醫學統計</a></li>
+<li class="chapter" data-level="13.2" data-path="StatIntro.html"><a href="StatIntro.html#統計與數學"><i class="fa fa-check"></i><b>13.2</b> 統計與數學</a></li>
+<li class="chapter" data-level="13.3" data-path="StatIntro.html"><a href="StatIntro.html#醫學研究資料"><i class="fa fa-check"></i><b>13.3</b> 醫學研究資料</a></li>
+<li class="chapter" data-level="13.4" data-path="StatIntro.html"><a href="StatIntro.html#統計計算與統計軟體"><i class="fa fa-check"></i><b>13.4</b> 統計計算與統計軟體</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="DataVariable.html"><a href="DataVariable.html"><i class="fa fa-check"></i><b>14</b> 資料與變數</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="DataVariable.html"><a href="DataVariable.html#醫學研究實例"><i class="fa fa-check"></i><b>14.1</b> 醫學研究實例</a></li>
+<li class="chapter" data-level="14.2" data-path="DataVariable.html"><a href="DataVariable.html#資料與變數-data-and-variables"><i class="fa fa-check"></i><b>14.2</b> 資料與變數 Data and Variables</a></li>
+<li class="chapter" data-level="14.3" data-path="DataVariable.html"><a href="DataVariable.html#變數分類"><i class="fa fa-check"></i><b>14.3</b> 變數分類</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="DataVariable.html"><a href="DataVariable.html#統計與變數分類"><i class="fa fa-check"></i><b>14.3.1</b> 統計與變數分類</a></li>
+<li class="chapter" data-level="14.3.2" data-path="DataVariable.html"><a href="DataVariable.html#資料數位化與變數分類"><i class="fa fa-check"></i><b>14.3.2</b> 資料數位化與變數分類</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="DataVariable.html"><a href="DataVariable.html#單變量-雙變量與多變量"><i class="fa fa-check"></i><b>14.4</b> 單變量, 雙變量與多變量</a></li>
+<li class="chapter" data-level="14.5" data-path="DataVariable.html"><a href="DataVariable.html#資料輸入與儲存"><i class="fa fa-check"></i><b>14.5</b> 資料輸入與儲存</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>15</b> Applications</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>15.1</b> Example one</a></li>
+<li class="chapter" data-level="15.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>15.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>16</b> Final Words</a></li>
+<li class="chapter" data-level="17" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>17</b> Temp</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 資料科學與統計</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="DataVariable" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> 資料與變數</h1>
+<p>在醫學研究上,
+一個研究形成一組
+<strong>資料</strong>
+(<strong>data</strong>)
+稱為一個
+<strong>樣本</strong>
+(<strong>sample</strong>).
+一個研究資料內研究者觀察或測量的對像,
+稱為
+<strong>個體</strong>
+(<strong>subject</strong>),
+樣本內個體所代表的有共同特徵的一群個體,
+稱為
+<strong>母體</strong>
+(<strong>population</strong>)
+或
+<strong>目標母體</strong>
+(<strong>target population</strong>)
+是指有共同特徵的一群個體, 一群人或事件的集合,
+醫學研究的目的是希望將研究資料的結論,
+可以一般化地推論或應用到目標母體內所包含的個體,
+但研究者並未對目標母體內所有的個體收集資料,
+研究者只收集到目標母體內的一組樣本,
+研究者通常測量或記錄個體的一些特徵,
+稱為
+<strong>變數</strong>
+(<strong>variable</strong>),
+研究者在大多數時間是面對以數字組成的
+<strong>量化資料</strong>
+(<strong>quantitative data</strong>),
+本章主要介紹量化資料與變數的一些特性.</p>
+<div id="醫學研究實例" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> 醫學研究實例</h2>
+<p>醫學研究通常主要討論 (a) 疾病與發生原因之關聯,
+(b) 疾病的預防與發生,
+(c) 疾病的治療與預後,
+或 (d) 疾病的診斷與預測.
+了解醫學研究資料的醫學統計方法,
+最好的方式是先了解已經完成的一些醫學研究.
+多數的時候是先有醫學研究收集到的量化資料,
+統計人員才介入分析資料,
+但最好的統計分析,
+是統計人員要參與醫學研究的研究設計, 資料收集,
+論文發表等整個過程,
+統計人員與研究者都要了解醫學資料所要回答的研究問題,
+研究如何設計,
+資料如何收集, 如何分析, 如何撰寫論文報告等.
+在此提供幾個簡化的醫學研究實例, 作為本章討論的參考例題.</p>
+<p><strong>抽菸, 膽固醇與血壓調查研究</strong></p>
+<p>一個早期大規模的抽樣調查,
+以問卷方式調查抽菸, 膽固醇與血壓的關聯性研究,
+隨機抽取了近 1.5 萬位成年人進行問卷訪問,
+資料變數在表 1.
+檔案在 <strong>BPsurvey.csv</strong>.
+研究主要描述一般族群的健康狀況, 探討疾病與發生原因之關聯性,
+例如, 分析 抽菸, 膽固醇與血壓的關聯性.
+這資料人數較多, 有時可作為一個小型母體使用.</p>
+<table>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>個體識別碼</td>
+</tr>
+<tr class="even">
+<td>SEX</td>
+<td>性別: 1 = 男, 2 = 女</td>
+</tr>
+<tr class="odd">
+<td>RACE</td>
+<td>種族: 1 = 白人, 2 = 黑人, 3= 其它</td>
+</tr>
+<tr class="even">
+<td>SMOKE</td>
+<td>抽菸狀態: 1 = 從未抽菸, 2 = 過去抽菸, 3= 現在抽菸</td>
+</tr>
+<tr class="odd">
+<td>AGE</td>
+<td>年齡, 單位: 年</td>
+</tr>
+<tr class="even">
+<td>WT</td>
+<td>體重, 單位: 公斤</td>
+</tr>
+<tr class="odd">
+<td>HT</td>
+<td>身高, 單位: 公分</td>
+</tr>
+<tr class="even">
+<td>SBP</td>
+<td>舒張壓</td>
+</tr>
+<tr class="odd">
+<td>DBP</td>
+<td>收縮壓</td>
+</tr>
+<tr class="even">
+<td>CHOL</td>
+<td>血清膽固醇值, 單位: mg/dL</td>
+</tr>
+</tbody>
+</table>
+<p>Table 1. 抽菸, 膽固醇與血壓調查研究: 變數說明</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="DataVariable.html#cb254-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb254-2"><a href="DataVariable.html#cb254-2" aria-hidden="true"></a><span class="kw">library</span>(readr)</span>
+<span id="cb254-3"><a href="DataVariable.html#cb254-3" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;./Data/BPsurvey.csv&quot;</span>,</span>
+<span id="cb254-4"><a href="DataVariable.html#cb254-4" aria-hidden="true"></a>                      <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb254-5"><a href="DataVariable.html#cb254-5" aria-hidden="true"></a>                      <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb254-6"><a href="DataVariable.html#cb254-6" aria-hidden="true"></a><span class="co"># glimpse(dd)</span></span>
+<span id="cb254-7"><a href="DataVariable.html#cb254-7" aria-hidden="true"></a><span class="kw">names</span>(dd) &lt;-<span class="st"> </span><span class="kw">tolower</span>(<span class="kw">names</span>(dd))</span>
+<span id="cb254-8"><a href="DataVariable.html#cb254-8" aria-hidden="true"></a>dd<span class="op">$</span>sex =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>sex, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb254-9"><a href="DataVariable.html#cb254-9" aria-hidden="true"></a>dd<span class="op">$</span>race =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>race, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;other&quot;</span>))</span>
+<span id="cb254-10"><a href="DataVariable.html#cb254-10" aria-hidden="true"></a>dd<span class="op">$</span>smoke =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>smoke, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;never&quot;</span>, <span class="st">&quot;past&quot;</span>, <span class="st">&quot;current&quot;</span>))</span>
+<span id="cb254-11"><a href="DataVariable.html#cb254-11" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb254-12"><a href="DataVariable.html#cb254-12" aria-hidden="true"></a><span class="co">## # A tibble: 15,643 x 10</span></span>
+<span id="cb254-13"><a href="DataVariable.html#cb254-13" aria-hidden="true"></a><span class="co">##      id sex    race  smoke   age    wt    ht   sbp   dbp  chol</span></span>
+<span id="cb254-14"><a href="DataVariable.html#cb254-14" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb254-15"><a href="DataVariable.html#cb254-15" aria-hidden="true"></a><span class="co">## 1     3 female white never    21    81   179   120    67   268</span></span>
+<span id="cb254-16"><a href="DataVariable.html#cb254-16" aria-hidden="true"></a><span class="co">## 2     4 male   white never    32    61   162   126    86   160</span></span>
+<span id="cb254-17"><a href="DataVariable.html#cb254-17" aria-hidden="true"></a><span class="co">## 3     9 male   white past     48    68   157   131    73   236</span></span>
+<span id="cb254-18"><a href="DataVariable.html#cb254-18" aria-hidden="true"></a><span class="co">## 4    10 female white never    35    92   177   130    82   225</span></span>
+<span id="cb254-19"><a href="DataVariable.html#cb254-19" aria-hidden="true"></a><span class="co">## 5    11 female white past     48    70   168   120    70   260</span></span>
+<span id="cb254-20"><a href="DataVariable.html#cb254-20" aria-hidden="true"></a><span class="co">## # ... with 15,638 more rows</span></span></code></pre></div>
+<p><strong>新生兒出生體重過輕病例對照研究</strong></p>
+<p>一個醫學研究之目的是探討新生兒出生體重過輕 (low birth weight, LOW) 的危險因子,
+研究設計為病例對照研究,
+研究者分別蒐集體重過輕新生兒與體重正常新生兒資料,
+研究記錄了新生兒體重 (BWT),
+同時定義 新生兒體重過輕變數 (LOW),
+LOW = 1 代表 體重過輕 (Birth Weight <span class="math inline">\(&lt;\)</span> 2500g),
+LOW = 0 代表 體重正常 (Birth Weight <span class="math inline">\(\ge\)</span> 2500g)
+研究同時記錄了一些可能的危險因子,
+資料變數說明參見表 2.
+資料檔案為 <code>LowBwt.csv</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>個體識別碼</td>
+</tr>
+<tr class="even">
+<td>LOW</td>
+<td>新生兒體重: 1 = 過輕 (Birth Weight <span class="math inline">\(&lt;\)</span> 2500g), 0 = 正常 (Birth Weight <span class="math inline">\(\ge\)</span> 2500g)</td>
+</tr>
+<tr class="odd">
+<td>AGE</td>
+<td>年齡, 單位: 年</td>
+</tr>
+<tr class="even">
+<td>LWT</td>
+<td>母親在最後一次經期的體重: 單位 公斤 (Kg)</td>
+</tr>
+<tr class="odd">
+<td>RACE</td>
+<td>種族: 1 = 白人, 2 = 黑人, 3= 其它</td>
+</tr>
+<tr class="even">
+<td>SMOKE</td>
+<td>懷孕期間的抽菸狀態: 1 = 有抽菸, 0 = 沒有抽菸</td>
+</tr>
+<tr class="odd">
+<td>PTL</td>
+<td>母親過去早產的紀錄次數: 0 = 沒有, 1 = 1 次, 2 = 2 次, 等等以此類推</td>
+</tr>
+<tr class="even">
+<td>HT</td>
+<td>母親是否有高血壓的紀錄: 1 = 有, 0 = 沒有</td>
+</tr>
+<tr class="odd">
+<td>UI</td>
+<td>母親是否有子宮敏感性特質: 1 = 有, 0 = 沒有</td>
+</tr>
+<tr class="even">
+<td>FTV</td>
+<td>母親在懷孕的第一孕期接受產前檢查的次數:</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>0 = 沒有, 1 = 1 次, 2 = 2 次, 等等以此類推</td>
+</tr>
+<tr class="even">
+<td>BWT</td>
+<td>新生兒體重, 單位: 公克 (g)</td>
+</tr>
+</tbody>
+</table>
+<p>Table 2. 新生兒出生體重過輕病例對照研究: 變數說明</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="DataVariable.html#cb255-1" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;./Data/LowBwt.csv&quot;</span>,</span>
+<span id="cb255-2"><a href="DataVariable.html#cb255-2" aria-hidden="true"></a>                      <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb255-3"><a href="DataVariable.html#cb255-3" aria-hidden="true"></a>                      <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb255-4"><a href="DataVariable.html#cb255-4" aria-hidden="true"></a><span class="co"># glimpse(dd)</span></span>
+<span id="cb255-5"><a href="DataVariable.html#cb255-5" aria-hidden="true"></a><span class="kw">names</span>(dd) &lt;-<span class="st"> </span><span class="kw">tolower</span>(<span class="kw">names</span>(dd))</span>
+<span id="cb255-6"><a href="DataVariable.html#cb255-6" aria-hidden="true"></a>dd<span class="op">$</span>low =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>low, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb255-7"><a href="DataVariable.html#cb255-7" aria-hidden="true"></a>dd<span class="op">$</span>race =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>race, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;other&quot;</span>))</span>
+<span id="cb255-8"><a href="DataVariable.html#cb255-8" aria-hidden="true"></a>dd<span class="op">$</span>smoke =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>smoke, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb255-9"><a href="DataVariable.html#cb255-9" aria-hidden="true"></a>dd<span class="op">$</span>ui =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>ui, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb255-10"><a href="DataVariable.html#cb255-10" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb255-11"><a href="DataVariable.html#cb255-11" aria-hidden="true"></a><span class="co">## # A tibble: 189 x 11</span></span>
+<span id="cb255-12"><a href="DataVariable.html#cb255-12" aria-hidden="true"></a><span class="co">##      id low     age   lwt race  smoke   ptl    ht ui      ftv   bwt</span></span>
+<span id="cb255-13"><a href="DataVariable.html#cb255-13" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb255-14"><a href="DataVariable.html#cb255-14" aria-hidden="true"></a><span class="co">## 1    85 no       19    83 black no        0     0 yes       0  2523</span></span>
+<span id="cb255-15"><a href="DataVariable.html#cb255-15" aria-hidden="true"></a><span class="co">## 2    86 no       33    70 other no        0     0 no        3  2551</span></span>
+<span id="cb255-16"><a href="DataVariable.html#cb255-16" aria-hidden="true"></a><span class="co">## 3    87 no       20    48 white yes       0     0 no        1  2557</span></span>
+<span id="cb255-17"><a href="DataVariable.html#cb255-17" aria-hidden="true"></a><span class="co">## 4    88 no       21    49 white yes       0     0 yes       2  2594</span></span>
+<span id="cb255-18"><a href="DataVariable.html#cb255-18" aria-hidden="true"></a><span class="co">## 5    89 no       18    49 white yes       0     0 yes       0  2600</span></span>
+<span id="cb255-19"><a href="DataVariable.html#cb255-19" aria-hidden="true"></a><span class="co">## # ... with 184 more rows</span></span></code></pre></div>
+<p><strong>佛明罕研究</strong></p>
+<p>研究目的是探索心臟冠狀動脈硬化疾病與高血壓心血管疾病的危險因子,
+研究從 1948 年起,
+%在美國麻州 Framingham, 6000 位居民,
+在美國麻州 Framingham 居民,
+每 2 年接受健康問卷調查與健康檢查,
+並進行長期追蹤.
+變數說明如表 3,
+資料檔案在 <code>FraminghamStudyLocalPY.csv</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>參與者代碼</td>
+</tr>
+<tr class="even">
+<td>female</td>
+<td>性別: 1 = 女性, 0 = 男性</td>
+</tr>
+<tr class="odd">
+<td>totchol</td>
+<td>血清總膽固醇量 (mg/dl)</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td>年紀 (年)</td>
+</tr>
+<tr class="odd">
+<td>bmi</td>
+<td>身體質量指數 (kg/m<sup>2</sup>)</td>
+</tr>
+<tr class="even">
+<td>BPVar</td>
+<td>平均血壓 (mmHg, (SBP - 120)/2 + (DBP - 80)</td>
+</tr>
+<tr class="odd">
+<td>heartrte</td>
+<td>心跳速率 (beat/min)</td>
+</tr>
+<tr class="even">
+<td>glucose</td>
+<td>血糖值 (mg/dl)</td>
+</tr>
+<tr class="odd">
+<td>cursmoke</td>
+<td>是否抽菸: 0 = 否, 1 = 是</td>
+</tr>
+<tr class="even">
+<td>cigpday</td>
+<td>每天抽菸數量</td>
+</tr>
+<tr class="odd">
+<td>outcome</td>
+<td>最後追蹤: 0 = 存活, 1 = 死亡, 2 = 退出研究</td>
+</tr>
+<tr class="even">
+<td>time_outcome</td>
+<td>從進入研究到最後追蹤時間 (年)</td>
+</tr>
+</tbody>
+</table>
+<p>Table 3. 佛明罕研究: 變數說明</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="DataVariable.html#cb256-1" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;./Data/FraminghamStudyLocalPY.csv&quot;</span>,</span>
+<span id="cb256-2"><a href="DataVariable.html#cb256-2" aria-hidden="true"></a>                      <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb256-3"><a href="DataVariable.html#cb256-3" aria-hidden="true"></a>                      <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb256-4"><a href="DataVariable.html#cb256-4" aria-hidden="true"></a><span class="co"># glimpse(dd)</span></span>
+<span id="cb256-5"><a href="DataVariable.html#cb256-5" aria-hidden="true"></a><span class="kw">names</span>(dd) &lt;-<span class="st"> </span><span class="kw">tolower</span>(<span class="kw">names</span>(dd))</span>
+<span id="cb256-6"><a href="DataVariable.html#cb256-6" aria-hidden="true"></a>dd<span class="op">$</span>female =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>female, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb256-7"><a href="DataVariable.html#cb256-7" aria-hidden="true"></a>dd<span class="op">$</span>cursmoke =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>cursmoke, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb256-8"><a href="DataVariable.html#cb256-8" aria-hidden="true"></a>dd<span class="op">$</span>outcome =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>outcome, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;alive&quot;</span>, <span class="st">&quot;dead&quot;</span>, <span class="st">&quot;other&quot;</span>))</span>
+<span id="cb256-9"><a href="DataVariable.html#cb256-9" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb256-10"><a href="DataVariable.html#cb256-10" aria-hidden="true"></a><span class="co">## # A tibble: 2,316 x 12</span></span>
+<span id="cb256-11"><a href="DataVariable.html#cb256-11" aria-hidden="true"></a><span class="co">##   female totchol   age   bmi  bpvar heartrte glucose cursmoke outcome time_outcome</span></span>
+<span id="cb256-12"><a href="DataVariable.html#cb256-12" aria-hidden="true"></a><span class="co">##   &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;          &lt;dbl&gt;</span></span>
+<span id="cb256-13"><a href="DataVariable.html#cb256-13" aria-hidden="true"></a><span class="co">## 1 male       195    39  27.0 -17          80      77 no       alive          24   </span></span>
+<span id="cb256-14"><a href="DataVariable.html#cb256-14" aria-hidden="true"></a><span class="co">## 2 female     250    46  28.7   1.5        95      76 no       alive          24   </span></span>
+<span id="cb256-15"><a href="DataVariable.html#cb256-15" aria-hidden="true"></a><span class="co">## 3 male       245    48  25.3   3.75       75      70 yes      alive          24   </span></span>
+<span id="cb256-16"><a href="DataVariable.html#cb256-16" aria-hidden="true"></a><span class="co">## 4 female     285    46  23.1   9          85      85 yes      dead           11.7 </span></span>
+<span id="cb256-17"><a href="DataVariable.html#cb256-17" aria-hidden="true"></a><span class="co">## 5 female     205    63  33.1   0          60      85 no       dead            6.06</span></span>
+<span id="cb256-18"><a href="DataVariable.html#cb256-18" aria-hidden="true"></a><span class="co">##   cigpday    id</span></span>
+<span id="cb256-19"><a href="DataVariable.html#cb256-19" aria-hidden="true"></a><span class="co">##     &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb256-20"><a href="DataVariable.html#cb256-20" aria-hidden="true"></a><span class="co">## 1       0     1</span></span>
+<span id="cb256-21"><a href="DataVariable.html#cb256-21" aria-hidden="true"></a><span class="co">## 2       0     2</span></span>
+<span id="cb256-22"><a href="DataVariable.html#cb256-22" aria-hidden="true"></a><span class="co">## 3      20     3</span></span>
+<span id="cb256-23"><a href="DataVariable.html#cb256-23" aria-hidden="true"></a><span class="co">## 4      23     4</span></span>
+<span id="cb256-24"><a href="DataVariable.html#cb256-24" aria-hidden="true"></a><span class="co">## 5       0     5</span></span>
+<span id="cb256-25"><a href="DataVariable.html#cb256-25" aria-hidden="true"></a><span class="co">## # ... with 2,311 more rows</span></span></code></pre></div>
+<p><strong>糖尿病防治臨床試驗</strong></p>
+<p>一位研究者進行一個大型糖尿病防治的臨床試驗,
+比較 標準治療 (standard) 與 實驗治療 (experimental)
+對長期控制平穩的血糖 與 預防嚴重糖尿病腎病變的療效.
+研究主要目的是分析長期控制平穩的血糖, 主要反應變數以測量糖化血色素 (HbA1c) 為代表,
+研究的次要目的是預防嚴重糖尿病腎病變,
+次要目的反應變數以是否出現 顯微蛋白尿 (microalbuminuris) 的時間為代表.
+研究在臨床試驗開始時,
+紀錄受試者的一些基本資料,
+例如年紀, 性別等,
+同時紀錄可能會影響結果的一些臨床測量,
+例如, 臨床試驗開始時的 糖化血色素,
+及受試者內生胰島素的 C-peptide 測量等.
+研究資料在檔案 <code>DMDCCThba1c6.csv</code>,
+變數說明在表 4.</p>
+<table>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>受試者編碼, 依照進入試驗的時間順序而編碼.</td>
+</tr>
+<tr class="even">
+<td>treat</td>
+<td>治療組別: 0 = 傳統型治療; 1 = 加強型治療.</td>
+</tr>
+<tr class="odd">
+<td>etdrs0</td>
+<td>試驗開始時視網膜病變嚴重程度指數: ETDRS grade.</td>
+</tr>
+<tr class="even">
+<td>neur0</td>
+<td>試驗開始時神經病變: 0 = 無; 1 = 有.</td>
+</tr>
+<tr class="odd">
+<td>aer0</td>
+<td>試驗開始時蛋白尿測量: albumin excretion rate (mg/24 h).</td>
+</tr>
+<tr class="even">
+<td>microalb</td>
+<td>治療後是否出現顯微蛋白尿: 0 = 無; 1 = 有.</td>
+</tr>
+<tr class="odd">
+<td>quart</td>
+<td>治療後出現顯微蛋白尿的追蹤時間的季數或最後追蹤時間, 單位: 季. (quarterly visit number).</td>
+</tr>
+<tr class="even">
+<td>duration</td>
+<td>治療後出現顯微蛋白尿的時間或最後追蹤的時間, 單位: 月.</td>
+</tr>
+<tr class="odd">
+<td>female</td>
+<td>性別: 0 = 男性; 1 = 女性.</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td>試驗開始時的年紀, 單位: 年.</td>
+</tr>
+<tr class="odd">
+<td>adult</td>
+<td>試驗開始時是否成年, 0 = <span class="math inline">\(\le 17\)</span>, 1 = 是.</td>
+</tr>
+<tr class="even">
+<td>cpeptide</td>
+<td>試驗開始時, 受試者內生胰島素的 C-peptide 測量.</td>
+</tr>
+<tr class="odd">
+<td>bmi</td>
+<td>試驗開始時的 BMI (身體質量指數).</td>
+</tr>
+<tr class="even">
+<td>hba1c0</td>
+<td>試驗開始時的 HBA1c 測量.</td>
+</tr>
+<tr class="odd">
+<td>hba1c1-hba1c6</td>
+<td>治療後 1-6 年, 每年 HBA1c 測量.</td>
+</tr>
+</tbody>
+</table>
+<p>Table 4. 糖尿病防治臨床試驗: 變數說明</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="DataVariable.html#cb257-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb257-2"><a href="DataVariable.html#cb257-2" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;C:/RData/DMDCCThba1c6.csv&quot;</span>,</span>
+<span id="cb257-3"><a href="DataVariable.html#cb257-3" aria-hidden="true"></a>                      <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb257-4"><a href="DataVariable.html#cb257-4" aria-hidden="true"></a>                      <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb257-5"><a href="DataVariable.html#cb257-5" aria-hidden="true"></a><span class="co"># glimpse(dd)</span></span>
+<span id="cb257-6"><a href="DataVariable.html#cb257-6" aria-hidden="true"></a>dd<span class="op">$</span>treat =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
+<span id="cb257-7"><a href="DataVariable.html#cb257-7" aria-hidden="true"></a>dd<span class="op">$</span>neur0 =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>neur0, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb257-8"><a href="DataVariable.html#cb257-8" aria-hidden="true"></a>dd<span class="op">$</span>microalb =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>microalb, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb257-9"><a href="DataVariable.html#cb257-9" aria-hidden="true"></a>dd<span class="op">$</span>adult =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>adult, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb257-10"><a href="DataVariable.html#cb257-10" aria-hidden="true"></a>dd<span class="op">$</span>female =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>female, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb257-11"><a href="DataVariable.html#cb257-11" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb257-12"><a href="DataVariable.html#cb257-12" aria-hidden="true"></a><span class="co">## # A tibble: 1,441 x 21</span></span>
+<span id="cb257-13"><a href="DataVariable.html#cb257-13" aria-hidden="true"></a><span class="co">##      id treat   etdrs0 neur0  aer0 microalb quart duration female   age adult cpeptide</span></span>
+<span id="cb257-14"><a href="DataVariable.html#cb257-14" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt;</span></span>
+<span id="cb257-15"><a href="DataVariable.html#cb257-15" aria-hidden="true"></a><span class="co">## 1     1 test         3 no    15.8  no          36      178 female    17 no        0.09</span></span>
+<span id="cb257-16"><a href="DataVariable.html#cb257-16" aria-hidden="true"></a><span class="co">## 2     2 placebo      8 no    11.5  yes         20      142 male      29 yes       0.17</span></span>
+<span id="cb257-17"><a href="DataVariable.html#cb257-17" aria-hidden="true"></a><span class="co">## 3     3 placebo      7 yes   36    yes         12      175 male      35 yes       0.01</span></span>
+<span id="cb257-18"><a href="DataVariable.html#cb257-18" aria-hidden="true"></a><span class="co">## 4     4 test         1 no     4.32 no          36       31 female    14 no        0.18</span></span>
+<span id="cb257-19"><a href="DataVariable.html#cb257-19" aria-hidden="true"></a><span class="co">## 5     5 test         2 no     7.2  no          36       72 male      32 yes       0.03</span></span>
+<span id="cb257-20"><a href="DataVariable.html#cb257-20" aria-hidden="true"></a><span class="co">##     bmi hba1cbase hba1c0 hba1c1 hba1c2 hba1c3 hba1c4 hba1c5 hba1c6</span></span>
+<span id="cb257-21"><a href="DataVariable.html#cb257-21" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb257-22"><a href="DataVariable.html#cb257-22" aria-hidden="true"></a><span class="co">## 1  21.2      9.63   9.63   8.91   8.72   8.87   8.81   8.76   8.62</span></span>
+<span id="cb257-23"><a href="DataVariable.html#cb257-23" aria-hidden="true"></a><span class="co">## 2  22.9      8.76   8.76   9.30   9.36   9.39   9.30   9.15   9.10</span></span>
+<span id="cb257-24"><a href="DataVariable.html#cb257-24" aria-hidden="true"></a><span class="co">## 3  26.6      7.93   7.93   8.28   7.92   7.96   7.97   7.94   7.95</span></span>
+<span id="cb257-25"><a href="DataVariable.html#cb257-25" aria-hidden="true"></a><span class="co">## 4  16.2      7.62   7.62   8.65   8.75   8.88   8.85   8.82   8.56</span></span>
+<span id="cb257-26"><a href="DataVariable.html#cb257-26" aria-hidden="true"></a><span class="co">## 5  26.3      8.53   8.53   7.04   7.40   7.49   7.72   7.83   7.81</span></span>
+<span id="cb257-27"><a href="DataVariable.html#cb257-27" aria-hidden="true"></a><span class="co">## # ... with 1,436 more rows</span></span></code></pre></div>
+<p><strong>糖尿病與人工關節術後感染臨床試驗</strong> (糖尿病與人工全膝關節置換手術研究)</p>
+<p>退化性膝關節炎是人類關節疾病中最常見的一種,
+主要病變的地方是膝關節的的關節軟骨受到傷害與磨損,
+造成關節腔變窄以及產生骨刺, 變化與年紀有高度相關.
+年長者患有嚴重退化性膝關節炎, 常須進行人工全膝關節置換手術 (TKR),
+但是若是術後感染, 則有可能照造成截肢或因敗血症而死亡,
+且糖尿病 (DM) 患者是此全膝關節置換手術後感染的高危險群.
+因此一位骨科醫師進行一預防性臨床試驗,
+對患有嚴重退化性膝關節炎的糖尿病患者,
+隨機分配 2 組, 一組在全膝關節置換手術中, 使用的骨水泥內,
+加入預防性抗生素藥劑, 另一組為對照組.
+研究的主要目的是探討全膝關節置換手術中,
+在骨水泥內加入預防性抗生素藥劑, 是否可以預防術後感染.
+另外一個研究目的是在骨水泥內加入預防性抗生素藥劑,
+研究共收集了 78 位病患的資料,
+變數名稱列在表 5.
+資料檔案為 <code>DMTKRcsv.csv</code>, <code>DMTKAInfMo.csv</code>,
+<code>DMTKRtabsep.txt</code> 與 <code>DMTKRblanksep.txt</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>變數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NO</td>
+<td>病患辨識碼</td>
+</tr>
+<tr class="even">
+<td>AGE</td>
+<td>年紀歲數 (單位: 年) (age)</td>
+</tr>
+<tr class="odd">
+<td>SEX</td>
+<td>性別: 0 = F = 女 (female), 1 = M = 男 (Male).</td>
+</tr>
+<tr class="even">
+<td>DM</td>
+<td>糖尿病形態: 0 = Type II (NIDDM); 1 = Type I (IDDM)</td>
+</tr>
+<tr class="odd">
+<td>DMYR</td>
+<td>手術前糖尿病病史 (單位: 年)</td>
+</tr>
+<tr class="even">
+<td>PREAC</td>
+<td>手術前空腹血糖 (mg/dL)</td>
+</tr>
+<tr class="odd">
+<td>PREPC</td>
+<td>手術前飯後血糖 (mg/dL)</td>
+</tr>
+<tr class="even">
+<td>POSTAC</td>
+<td>手術後空腹血糖 (mg/dL)</td>
+</tr>
+<tr class="odd">
+<td>POSTPC</td>
+<td>手術後飯後血糖 (mg/dL)</td>
+</tr>
+<tr class="even">
+<td>MEDICATION</td>
+<td>糖尿病治療方式:</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>0 = 口服降血糖藥劑; 1 = 胰島素注射; 2 = 飲食控制</td>
+</tr>
+<tr class="even">
+<td>SIDE</td>
+<td>患側: 0 = 左側; 1 = 右側</td>
+</tr>
+<tr class="odd">
+<td>PREKS</td>
+<td>手術前膝功能分數</td>
+</tr>
+<tr class="even">
+<td>POSTKS</td>
+<td>手術後膝功能分數</td>
+</tr>
+<tr class="odd">
+<td>ABS</td>
+<td>骨水泥是否加抗生素 1 = Yes; 0 = No</td>
+</tr>
+<tr class="even">
+<td>INFECT</td>
+<td>術後感染: 0 = No; 1 = Yes, 發現術後感染</td>
+</tr>
+<tr class="odd">
+<td>INFMO</td>
+<td>發現術後感染的時間 (單位: 月)</td>
+</tr>
+<tr class="even">
+<td>MISC</td>
+<td>註記</td>
+</tr>
+</tbody>
+</table>
+<p>Table 5. 糖尿病與人工關節術後感染臨床試驗: 變數說明</p>
+</div>
+<div id="資料與變數-data-and-variables" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> 資料與變數 Data and Variables</h2>
+<p><strong>資料</strong>
+(<strong>data</strong>) 是指任何醫學研究中, 所觀察或測量的集合.
+個體資料資料內包含每一位 <strong>個體</strong> (<strong>subject</strong>, <strong>individual</strong>)
+的觀測之變數值.
+研究盡量使用每一位個體的測量值, 但有些時候, 無法得到每一位個體的測量值,
+例如研究者比較不同國家的死亡率,
+對任一個國家的資料而言,
+通常每一位死亡著的日期或年紀,
+也無法得到每一位的收入資料.
+只有得到國家衛生統計資料或經濟統計資料,</p>
+<p><strong>變數</strong>
+(<strong>variable</strong>)
+是指個體可以測量的一些特徵 (characteristics),
+如年齡, 體重, 身高, 或是喝酒與吸菸習慣等.
+<strong>觀測值</strong>,
+(<strong>value</strong>,
+<strong>observed value</strong>,
+<strong>data value</strong>,
+<strong>variable value</strong>),
+是指某一特定個體所觀察到或測量到的數值.
+例如, Table 5. 糖尿病與人工關節術後感染臨床試驗,
+中研究資料的變數為年紀 (age),
+性別 (sex), 糖尿病形態 (DM type);
+第 1 位個體所觀察到或測量到的數值為 <span class="math inline">\(\text{age}=67\)</span>, <span class="math inline">\(\text{sex}=0=F\)</span> 等.</p>
+<p>一個醫學研究資料的變數, 其中會有 1 個或多個
+<strong>主要結果</strong>
+(<strong>primary endpoint</strong>)
+或
+<strong>次要結果</strong>
+(<strong>secondary endpoint</strong>)
+的測量,
+稱為
+<strong>反應變數</strong>,
+<strong>依變數</strong>,
+<strong>結果變數</strong>,
+(<strong>response variable</strong>,
+<strong>dependent variable</strong>,
+<strong>outcome variable</strong>)
+等.
+其他用來解釋結果變化的變數,
+稱為
+<strong>共變數</strong>,
+<strong>獨立變數</strong>,
+<strong>解釋變數</strong>,
+<strong>干擾因子</strong>,
+<strong>風險因子</strong>,
+<strong>預後因子</strong>,
+(<strong>covariate</strong>,
+<strong>independent variable</strong>,
+<strong>explanatory variable</strong>,
+<strong>confounding factor</strong>,
+<strong>risk factor</strong>,
+<strong>predictor</strong>)
+等.
+例如, Table 5. 糖尿病與人工關節術後感染臨床試驗,
+主要的反應變數是術後感染 (INFECT),
+次要的反應變數如手術後膝功能分數 (POSTKS).
+最主要的共變數是骨水泥是否加抗生素 (ABS),
+其他如年紀 (age),
+性別 (sex), 糖尿病形態 (DM type),
+手術前空腹血糖 (preopBS),
+手術後空腹血糖 (postBS),
+糖尿病治療方式 (medication),
+手術前膝功能分數 (PREKS) 等;
+這些變數會影響主要的反應變數.</p>
+</div>
+<div id="變數分類" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> 變數分類</h2>
+<p>分析資料之前, 必須設定每一個變數的分類與屬性,
+以便選擇較適當的分析方法.
+根據不同的觀點, 變數分類方式也有所不同,
+在此討論 3 種常見觀點:
+<strong>科學測量尺度</strong>,
+<strong>資料管理</strong>,
+<strong>統計</strong>,
+不同的分類, 有不同的使用或分析之目的.</p>
+<p>依據科學測量尺度,
+變數可分為
+<strong>類別尺度</strong>
+(<strong>categorical</strong>)
+或
+<strong>數量尺度</strong>
+(<strong>quantitative</strong>,
+<strong>numerical</strong>).
+<strong>類別尺度</strong>
+(<strong>categorical</strong>)
+如變數觀察值只會落在特定幾種
+<strong>類別水準</strong>
+或稱為
+<strong>水準</strong>
+(<strong>level</strong>).
+例如, Table 5. 糖尿病與人工關節術後感染臨床試驗,
+性別只有男或女 2 種類別;
+糖尿病形態有 2 種類別, 青年型 (NIDDM) 或成年型 (IDDM);
+另外, 例如人類血型常分成 4 種類型, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(AB\)</span>, <span class="math inline">\(O\)</span>;
+研究者記錄病患的疼痛情形, 分成 4 種, 無, 輕度, 中度, 重度.</p>
+<p><strong>類別尺度</strong>
+定義中的特定幾種類別水準是否有大小差距,
+又可分類成
+<strong>名目尺度</strong>
+(<strong>nominal scale</strong>)
+與
+<strong>順序尺度</strong>
+(<strong>ordinal scale</strong>).
+<strong>名目尺度</strong>
+(<strong>nominal scale</strong>)
+是最簡單的測量,
+名目尺度將變數值分成互斥的類別水準,
+同一變數內的類別水準並無量化大小的差別.</p>
+<p>在名目尺度中,
+特別的情形是變數內只有 2 個類別水準,
+如存活或死亡, 統計習慣上會分別標記為 0 或 1,
+感染或無感染, 這類變數常稱做
+<strong>二元變數</strong>
+(<strong>dichotomous variable</strong>,
+<strong>binary variable</strong>),
+二元變數通常有特殊的統計分析方法.</p>
+<p><strong>順序尺度</strong>
+(<strong>ordinal scale</strong>)
+是指同一變數內的類別水準有
+輕重, 大小, 強弱, 好壞等級順序之資料.
+例如, 疼痛情形有 4 種情境: <code>無'',</code>輕度’‘, <code>中度'',</code>重度’’,
+癌症分期為 I, II, III, IV 等 4 期.
+雖然順序尺度用數字表示或標記,
+但是數字本身通常不能用來做運算, 只能比較相對大小或高低次序,
+順序之間的實際差異並無法從標記的數字差異得知.</p>
+<p><strong>數量尺度</strong>
+(<strong>quantitative</strong>,
+<strong>numerical</strong>)
+是指變數觀察值, 在數字之間的差異是有意義的,
+例如身高, 體重, 溫度等.
+可分成
+<strong>等距尺度</strong>
+(<strong>interval scale</strong>)
+與
+<strong>比率尺度</strong>
+(<strong>ratio scale</strong>).
+<strong>等距尺度</strong>
+測量值不限於離散的整數,
+可以測量數字間的距離,
+但沒有一個真正零點,
+沒有
+<strong>絕對零值</strong>
+(<strong>absolute zero</strong>),
+因此可以有負值,
+如溫度之測量, 攝氏 <span class="math inline">\(- 16^\circ\)</span>.
+等距尺度無法真正表示成倍數,
+例如肢體功能表現評分為 0–100 分,
+則 50 分的表現,
+未必是為 25 分的 2 倍好.</p>
+<p><strong>比率尺度</strong>
+(<strong>ratio scale</strong>)
+是指變數測量值有一個真正零點,
+或稱
+<strong>真實零值</strong>,
+(<strong>true zero</strong>),
+測量值不可以為負值,
+如身高, 體重, 血壓等;
+比率尺度可以表示或計算倍數,
+例如 80 公斤為 40 公斤的 2 倍.</p>
+<p><strong>計數尺度</strong>
+(<strong>count scale</strong>)
+或稱
+<strong>離散尺度</strong>
+(<strong>discrete scale</strong>),
+是指變數測量值只有整數, 例如醫院內每一天死亡數目,
+高速公路上的每一天車禍次數</p>
+<div id="統計與變數分類" class="section level3" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> 統計與變數分類</h3>
+<p>統計分析對變數的分類主要是根據統計理論與實務應用將變數分成 2 大類:
+<strong>離散變數</strong>
+(<strong>discrete variable</strong>)
+與
+<strong>連續變數</strong>
+(<strong>continuous variable</strong>).</p>
+<p><strong>離散變數</strong>,
+或稱
+<strong>類別變數</strong>,
+<strong>質性變數</strong>,
+(<strong>categorical variable</strong>,
+<strong>qualitative variable</strong>).</p>
+<p>在統計分析的過程中, 統計人員對某一特定變數,
+可以設定為類別變數的型態或設定為連續變數的型態,
+設定的分類是根據研究的問題, 測量特性, 分析時選定的機率模型而定,
+通常須研究者與統計分析人員共同決.
+例如,
+<strong>計數尺度</strong>
+(<strong>count scale</strong>)
+在統計分析時, 有時候當成
+<strong>類別變數</strong>
+有時候當成
+<strong>連續變數</strong>.</p>
+</div>
+<div id="資料數位化與變數分類" class="section level3" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> 資料數位化與變數分類</h3>
+<p>資料通常使用電腦輸入與管理, 一個好的資料庫軟體,
+通常不會是一個好的統計軟體,
+反之亦同.
+資料管理或電腦處裡資料變數值, 常將資料分成
+<strong>邏輯變數</strong>
+(<strong>logical</strong>,
+<strong>Boolean</strong>,
+<strong>binary</strong>),
+<strong>離散變數</strong>
+(<strong>discrete variable</strong>),
+與
+<strong>連續變數</strong>
+(<strong>continuous variable</strong>).
+<strong>邏輯變數</strong>
+只有 0 與 1, 所需記憶體或儲存空間最小.
+<strong>離散變數</strong>
+主要處理整數或文字變數.
+<strong>連續變數</strong>
+處理實數, 所需記憶體或儲存空間最大,
+為了增加精準度, 可增加所需記憶體的儲存位置數目.</p>
+</div>
+</div>
+<div id="單變量-雙變量與多變量" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> 單變量, 雙變量與多變量</h2>
+<p>在統計理論上,
+<strong>單變量分析</strong>
+(<strong>univariate analysis</strong>)
+是指資料以統計分析中,
+統計方法一次只探討 1 個主要反應變數 (依變數),
+<strong>雙變量分析</strong>
+(<strong>bivariate analysis</strong>)
+是指資料分析中,
+統計方法一次只探討 2 個主要反應變數,
+<strong>多變量分析</strong>
+(<strong>multivariate analysis</strong>)
+是指資料分析中,
+統計方法一次探討大於 2 個以上的反應變數.
+在醫學研究上,
+雙變量分析常指同時探討 2 個變數彼此之間的關聯性,
+而多變量分析是指同時探討多個共變數 (解釋變數) 對 1 個或多個反應變數的影響,
+或是使用
+<strong>多變量分析</strong>
+(<strong>multiple variables analysis</strong>),
+同一個名詞, 不同觀點有不同的定義.</p>
+</div>
+<div id="資料輸入與儲存" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> 資料輸入與儲存</h2>
+<p>資料通常使用試算表 (spreadsheat) 或資料庫軟體輸入,
+然後以 ASCII 格式, 固定欄位純文字,
+或其他特定檔型式輸出,
+以便統計軟體使用, 習慣上,
+使用
+<strong>csv</strong>
+(<strong>comma separated variable</strong>)
+格式,
+資料檔案的附檔名為
+<strong>filename.csv</strong>,
+或是資料使用空格作為分離的變數值的格式,
+資料檔案的附檔名為
+<strong>filename.dat</strong>,
+資料檔案的附檔名為
+<strong>filename.txt</strong>
+等,
+可以方便在不同作業系統交流.
+資料輸入有時使用統計軟體所提供的資料輸入介面,
+主要的統計軟體各自儲存成不同的格式,
+不同統計軟體格式的資料之間的轉換, 則須另外處裡.</p>
+<p><strong>資料編碼</strong>
+(<strong>coding</strong>)
+是指將變數以文字或數字等代碼來表示, 以便於資料的整理與分析.
+變數的觀測值分類有許多種, 通常所有變數,
+無論類別或連續變數, 建議都用數字數輸入,
+另外再建立一個變數說明清單, 或加以格式化設定,
+數字在統計軟體內, 可以當數值的連續變數或文字的類別變數使用,
+輸入時較不易出錯且節省儲存空間.
+<strong>資料編輯</strong>
+(<strong>editing</strong>)
+是指對原始資料找出錯誤予以更正,
+或對遺漏值進行探究及處理的過程.</p>
+<p>任何醫學研究多少會有
+<strong>缺失值</strong>
+(<strong>missing value</strong>),
+缺失值須使用特別符號輸入設定成缺失值,
+最好不要使用數字, 如 99, 999 等設定為缺失值,
+以免統計軟體誤判數值,
+也不要使用空白,
+有些試算表軟體會對空白或空格自動補 0,
+形成有效數值.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="StatIntro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "PMingLiU",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r4biost.pdf", "r4biost.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

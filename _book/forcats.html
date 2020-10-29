@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 因子資料處理 | R 資料科學與統計</title>
   <meta name="description" content="Chapter 11 因子資料處理 | R 資料科學與統計" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 因子資料處理 | R 資料科學與統計" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="林建甫 Jeff Lin" />
 
 
-<meta name="date" content="2020-10-17" />
+<meta name="date" content="2020-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="stringr.html"/>
 <link rel="next" href="lubridate.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -256,12 +258,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
 <li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
 <li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
-<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
-<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
-<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
-<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
-<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
-<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#向量-if_else"><i class="fa fa-check"></i><b>8.6.5</b> 向量 <code>if_else()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#變數重新命名-rename"><i class="fa fa-check"></i><b>8.6.6</b> 變數重新命名 <code>rename()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#移除缺失資料-drop_na"><i class="fa fa-check"></i><b>8.6.7</b> 移除缺失資料 <code>drop_na()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.8</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.9</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.10</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.11" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.11</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.12" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.12</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.13" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.13</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
 <li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
@@ -330,13 +335,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="StatIntro.html"><a href="StatIntro.html#醫學研究資料"><i class="fa fa-check"></i><b>13.3</b> 醫學研究資料</a></li>
 <li class="chapter" data-level="13.4" data-path="StatIntro.html"><a href="StatIntro.html#統計計算與統計軟體"><i class="fa fa-check"></i><b>13.4</b> 統計計算與統計軟體</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>14</b> Applications</a>
+<li class="chapter" data-level="14" data-path="DataVariable.html"><a href="DataVariable.html"><i class="fa fa-check"></i><b>14</b> 資料與變數</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>14.1</b> Example one</a></li>
-<li class="chapter" data-level="14.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>14.2</b> Example two</a></li>
+<li class="chapter" data-level="14.1" data-path="DataVariable.html"><a href="DataVariable.html#醫學研究實例"><i class="fa fa-check"></i><b>14.1</b> 醫學研究實例</a></li>
+<li class="chapter" data-level="14.2" data-path="DataVariable.html"><a href="DataVariable.html#資料與變數-data-and-variables"><i class="fa fa-check"></i><b>14.2</b> 資料與變數 Data and Variables</a></li>
+<li class="chapter" data-level="14.3" data-path="DataVariable.html"><a href="DataVariable.html#變數分類"><i class="fa fa-check"></i><b>14.3</b> 變數分類</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="DataVariable.html"><a href="DataVariable.html#統計與變數分類"><i class="fa fa-check"></i><b>14.3.1</b> 統計與變數分類</a></li>
+<li class="chapter" data-level="14.3.2" data-path="DataVariable.html"><a href="DataVariable.html#資料數位化與變數分類"><i class="fa fa-check"></i><b>14.3.2</b> 資料數位化與變數分類</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>15</b> Final Words</a></li>
-<li class="chapter" data-level="16" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>16</b> Temp</a></li>
+<li class="chapter" data-level="14.4" data-path="DataVariable.html"><a href="DataVariable.html#單變量-雙變量與多變量"><i class="fa fa-check"></i><b>14.4</b> 單變量, 雙變量與多變量</a></li>
+<li class="chapter" data-level="14.5" data-path="DataVariable.html"><a href="DataVariable.html#資料輸入與儲存"><i class="fa fa-check"></i><b>14.5</b> 資料輸入與儲存</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>15</b> Applications</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>15.1</b> Example one</a></li>
+<li class="chapter" data-level="15.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>15.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>16</b> Final Words</a></li>
+<li class="chapter" data-level="17" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>17</b> Temp</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -414,157 +431,159 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>fct_unique(f)</code>: 呈現專一類別水準名稱.</li>
 <li><code>fct_c(f1, f2)</code>: 合併不同類別水準的 2 個因子物件.</li>
 </ul>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="forcats.html#cb215-1" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb215-2"><a href="forcats.html#cb215-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb215-3"><a href="forcats.html#cb215-3" aria-hidden="true"></a><span class="kw">library</span>(forcats)</span>
-<span id="cb215-4"><a href="forcats.html#cb215-4" aria-hidden="true"></a><span class="kw">library</span>(kableExtra)</span>
-<span id="cb215-5"><a href="forcats.html#cb215-5" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">100</span>)</span>
-<span id="cb215-6"><a href="forcats.html#cb215-6" aria-hidden="true"></a>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
-<span id="cb215-7"><a href="forcats.html#cb215-7" aria-hidden="true"></a><span class="co">## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</span></span>
-<span id="cb215-8"><a href="forcats.html#cb215-8" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])[<span class="kw">rpois</span>(<span class="dv">100</span>, <span class="dv">5</span>)])</span>
-<span id="cb215-9"><a href="forcats.html#cb215-9" aria-hidden="true"></a><span class="kw">table</span>(f)</span>
-<span id="cb215-10"><a href="forcats.html#cb215-10" aria-hidden="true"></a><span class="co">## f</span></span>
-<span id="cb215-11"><a href="forcats.html#cb215-11" aria-hidden="true"></a><span class="co">##  a  b  c  d  e </span></span>
-<span id="cb215-12"><a href="forcats.html#cb215-12" aria-hidden="true"></a><span class="co">## 21  2  3 21 15</span></span>
-<span id="cb215-13"><a href="forcats.html#cb215-13" aria-hidden="true"></a><span class="kw">fct_count</span>(f)</span>
-<span id="cb215-14"><a href="forcats.html#cb215-14" aria-hidden="true"></a><span class="co">## # A tibble: 6 x 2</span></span>
-<span id="cb215-15"><a href="forcats.html#cb215-15" aria-hidden="true"></a><span class="co">##   f         n</span></span>
-<span id="cb215-16"><a href="forcats.html#cb215-16" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;int&gt;</span></span>
-<span id="cb215-17"><a href="forcats.html#cb215-17" aria-hidden="true"></a><span class="co">## 1 a        21</span></span>
-<span id="cb215-18"><a href="forcats.html#cb215-18" aria-hidden="true"></a><span class="co">## 2 b         2</span></span>
-<span id="cb215-19"><a href="forcats.html#cb215-19" aria-hidden="true"></a><span class="co">## 3 c         3</span></span>
-<span id="cb215-20"><a href="forcats.html#cb215-20" aria-hidden="true"></a><span class="co">## 4 d        21</span></span>
-<span id="cb215-21"><a href="forcats.html#cb215-21" aria-hidden="true"></a><span class="co">## 5 e        15</span></span>
-<span id="cb215-22"><a href="forcats.html#cb215-22" aria-hidden="true"></a><span class="co">## 6 &lt;NA&gt;     38</span></span>
-<span id="cb215-23"><a href="forcats.html#cb215-23" aria-hidden="true"></a><span class="kw">fct_count</span>(f, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb215-24"><a href="forcats.html#cb215-24" aria-hidden="true"></a><span class="co">## # A tibble: 6 x 2</span></span>
-<span id="cb215-25"><a href="forcats.html#cb215-25" aria-hidden="true"></a><span class="co">##   f         n</span></span>
-<span id="cb215-26"><a href="forcats.html#cb215-26" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;int&gt;</span></span>
-<span id="cb215-27"><a href="forcats.html#cb215-27" aria-hidden="true"></a><span class="co">## 1 &lt;NA&gt;     38</span></span>
-<span id="cb215-28"><a href="forcats.html#cb215-28" aria-hidden="true"></a><span class="co">## 2 a        21</span></span>
-<span id="cb215-29"><a href="forcats.html#cb215-29" aria-hidden="true"></a><span class="co">## 3 d        21</span></span>
-<span id="cb215-30"><a href="forcats.html#cb215-30" aria-hidden="true"></a><span class="co">## 4 e        15</span></span>
-<span id="cb215-31"><a href="forcats.html#cb215-31" aria-hidden="true"></a><span class="co">## 5 c         3</span></span>
-<span id="cb215-32"><a href="forcats.html#cb215-32" aria-hidden="true"></a><span class="co">## 6 b         2</span></span>
-<span id="cb215-33"><a href="forcats.html#cb215-33" aria-hidden="true"></a><span class="kw">fct_count</span>(f, <span class="dt">sort =</span> <span class="ot">TRUE</span>, <span class="dt">prop =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb215-34"><a href="forcats.html#cb215-34" aria-hidden="true"></a><span class="co">## # A tibble: 6 x 3</span></span>
-<span id="cb215-35"><a href="forcats.html#cb215-35" aria-hidden="true"></a><span class="co">##   f         n     p</span></span>
-<span id="cb215-36"><a href="forcats.html#cb215-36" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
-<span id="cb215-37"><a href="forcats.html#cb215-37" aria-hidden="true"></a><span class="co">## 1 &lt;NA&gt;     38  0.38</span></span>
-<span id="cb215-38"><a href="forcats.html#cb215-38" aria-hidden="true"></a><span class="co">## 2 a        21  0.21</span></span>
-<span id="cb215-39"><a href="forcats.html#cb215-39" aria-hidden="true"></a><span class="co">## 3 d        21  0.21</span></span>
-<span id="cb215-40"><a href="forcats.html#cb215-40" aria-hidden="true"></a><span class="co">## 4 e        15  0.15</span></span>
-<span id="cb215-41"><a href="forcats.html#cb215-41" aria-hidden="true"></a><span class="co">## 5 c         3  0.03</span></span>
-<span id="cb215-42"><a href="forcats.html#cb215-42" aria-hidden="true"></a><span class="co">## 6 b         2  0.02</span></span>
-<span id="cb215-43"><a href="forcats.html#cb215-43" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb215-44"><a href="forcats.html#cb215-44" aria-hidden="true"></a>f1 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</span>
-<span id="cb215-45"><a href="forcats.html#cb215-45" aria-hidden="true"></a>f2 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">23</span>)])</span>
-<span id="cb215-46"><a href="forcats.html#cb215-46" aria-hidden="true"></a>f1</span>
-<span id="cb215-47"><a href="forcats.html#cb215-47" aria-hidden="true"></a><span class="co">## [1] a b c</span></span>
-<span id="cb215-48"><a href="forcats.html#cb215-48" aria-hidden="true"></a><span class="co">## Levels: a b c</span></span>
-<span id="cb215-49"><a href="forcats.html#cb215-49" aria-hidden="true"></a>f2</span>
-<span id="cb215-50"><a href="forcats.html#cb215-50" aria-hidden="true"></a><span class="co">## [1] a b w</span></span>
-<span id="cb215-51"><a href="forcats.html#cb215-51" aria-hidden="true"></a><span class="co">## Levels: a b w</span></span>
-<span id="cb215-52"><a href="forcats.html#cb215-52" aria-hidden="true"></a><span class="kw">fct_c</span>(f1, f2)</span>
-<span id="cb215-53"><a href="forcats.html#cb215-53" aria-hidden="true"></a><span class="co">## [1] a b c a b w</span></span>
-<span id="cb215-54"><a href="forcats.html#cb215-54" aria-hidden="true"></a><span class="co">## Levels: a b c w</span></span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="forcats.html#cb221-1" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb221-2"><a href="forcats.html#cb221-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb221-3"><a href="forcats.html#cb221-3" aria-hidden="true"></a><span class="kw">library</span>(forcats)</span>
+<span id="cb221-4"><a href="forcats.html#cb221-4" aria-hidden="true"></a><span class="kw">library</span>(kableExtra)</span>
+<span id="cb221-5"><a href="forcats.html#cb221-5" aria-hidden="true"></a><span class="co">## Warning: package &#39;kableExtra&#39; was built under R version 4.0.3</span></span>
+<span id="cb221-6"><a href="forcats.html#cb221-6" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb221-7"><a href="forcats.html#cb221-7" aria-hidden="true"></a>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb221-8"><a href="forcats.html#cb221-8" aria-hidden="true"></a><span class="co">## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</span></span>
+<span id="cb221-9"><a href="forcats.html#cb221-9" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])[<span class="kw">rpois</span>(<span class="dv">100</span>, <span class="dv">5</span>)])</span>
+<span id="cb221-10"><a href="forcats.html#cb221-10" aria-hidden="true"></a><span class="kw">table</span>(f)</span>
+<span id="cb221-11"><a href="forcats.html#cb221-11" aria-hidden="true"></a><span class="co">## f</span></span>
+<span id="cb221-12"><a href="forcats.html#cb221-12" aria-hidden="true"></a><span class="co">##  a  b  c  d  e </span></span>
+<span id="cb221-13"><a href="forcats.html#cb221-13" aria-hidden="true"></a><span class="co">## 21  2  3 21 15</span></span>
+<span id="cb221-14"><a href="forcats.html#cb221-14" aria-hidden="true"></a><span class="kw">fct_count</span>(f)</span>
+<span id="cb221-15"><a href="forcats.html#cb221-15" aria-hidden="true"></a><span class="co">## # A tibble: 6 x 2</span></span>
+<span id="cb221-16"><a href="forcats.html#cb221-16" aria-hidden="true"></a><span class="co">##   f         n</span></span>
+<span id="cb221-17"><a href="forcats.html#cb221-17" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;int&gt;</span></span>
+<span id="cb221-18"><a href="forcats.html#cb221-18" aria-hidden="true"></a><span class="co">## 1 a        21</span></span>
+<span id="cb221-19"><a href="forcats.html#cb221-19" aria-hidden="true"></a><span class="co">## 2 b         2</span></span>
+<span id="cb221-20"><a href="forcats.html#cb221-20" aria-hidden="true"></a><span class="co">## 3 c         3</span></span>
+<span id="cb221-21"><a href="forcats.html#cb221-21" aria-hidden="true"></a><span class="co">## 4 d        21</span></span>
+<span id="cb221-22"><a href="forcats.html#cb221-22" aria-hidden="true"></a><span class="co">## 5 e        15</span></span>
+<span id="cb221-23"><a href="forcats.html#cb221-23" aria-hidden="true"></a><span class="co">## 6 &lt;NA&gt;     38</span></span>
+<span id="cb221-24"><a href="forcats.html#cb221-24" aria-hidden="true"></a><span class="kw">fct_count</span>(f, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb221-25"><a href="forcats.html#cb221-25" aria-hidden="true"></a><span class="co">## # A tibble: 6 x 2</span></span>
+<span id="cb221-26"><a href="forcats.html#cb221-26" aria-hidden="true"></a><span class="co">##   f         n</span></span>
+<span id="cb221-27"><a href="forcats.html#cb221-27" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;int&gt;</span></span>
+<span id="cb221-28"><a href="forcats.html#cb221-28" aria-hidden="true"></a><span class="co">## 1 &lt;NA&gt;     38</span></span>
+<span id="cb221-29"><a href="forcats.html#cb221-29" aria-hidden="true"></a><span class="co">## 2 a        21</span></span>
+<span id="cb221-30"><a href="forcats.html#cb221-30" aria-hidden="true"></a><span class="co">## 3 d        21</span></span>
+<span id="cb221-31"><a href="forcats.html#cb221-31" aria-hidden="true"></a><span class="co">## 4 e        15</span></span>
+<span id="cb221-32"><a href="forcats.html#cb221-32" aria-hidden="true"></a><span class="co">## 5 c         3</span></span>
+<span id="cb221-33"><a href="forcats.html#cb221-33" aria-hidden="true"></a><span class="co">## 6 b         2</span></span>
+<span id="cb221-34"><a href="forcats.html#cb221-34" aria-hidden="true"></a><span class="kw">fct_count</span>(f, <span class="dt">sort =</span> <span class="ot">TRUE</span>, <span class="dt">prop =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb221-35"><a href="forcats.html#cb221-35" aria-hidden="true"></a><span class="co">## # A tibble: 6 x 3</span></span>
+<span id="cb221-36"><a href="forcats.html#cb221-36" aria-hidden="true"></a><span class="co">##   f         n     p</span></span>
+<span id="cb221-37"><a href="forcats.html#cb221-37" aria-hidden="true"></a><span class="co">##   &lt;fct&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb221-38"><a href="forcats.html#cb221-38" aria-hidden="true"></a><span class="co">## 1 &lt;NA&gt;     38  0.38</span></span>
+<span id="cb221-39"><a href="forcats.html#cb221-39" aria-hidden="true"></a><span class="co">## 2 a        21  0.21</span></span>
+<span id="cb221-40"><a href="forcats.html#cb221-40" aria-hidden="true"></a><span class="co">## 3 d        21  0.21</span></span>
+<span id="cb221-41"><a href="forcats.html#cb221-41" aria-hidden="true"></a><span class="co">## 4 e        15  0.15</span></span>
+<span id="cb221-42"><a href="forcats.html#cb221-42" aria-hidden="true"></a><span class="co">## 5 c         3  0.03</span></span>
+<span id="cb221-43"><a href="forcats.html#cb221-43" aria-hidden="true"></a><span class="co">## 6 b         2  0.02</span></span>
+<span id="cb221-44"><a href="forcats.html#cb221-44" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb221-45"><a href="forcats.html#cb221-45" aria-hidden="true"></a>f1 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</span>
+<span id="cb221-46"><a href="forcats.html#cb221-46" aria-hidden="true"></a>f2 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">23</span>)])</span>
+<span id="cb221-47"><a href="forcats.html#cb221-47" aria-hidden="true"></a>f1</span>
+<span id="cb221-48"><a href="forcats.html#cb221-48" aria-hidden="true"></a><span class="co">## [1] a b c</span></span>
+<span id="cb221-49"><a href="forcats.html#cb221-49" aria-hidden="true"></a><span class="co">## Levels: a b c</span></span>
+<span id="cb221-50"><a href="forcats.html#cb221-50" aria-hidden="true"></a>f2</span>
+<span id="cb221-51"><a href="forcats.html#cb221-51" aria-hidden="true"></a><span class="co">## [1] a b w</span></span>
+<span id="cb221-52"><a href="forcats.html#cb221-52" aria-hidden="true"></a><span class="co">## Levels: a b w</span></span>
+<span id="cb221-53"><a href="forcats.html#cb221-53" aria-hidden="true"></a><span class="kw">fct_c</span>(f1, f2)</span>
+<span id="cb221-54"><a href="forcats.html#cb221-54" aria-hidden="true"></a><span class="co">## [1] a b c a b w</span></span>
+<span id="cb221-55"><a href="forcats.html#cb221-55" aria-hidden="true"></a><span class="co">## Levels: a b c w</span></span></code></pre></div>
 </div>
 <div id="移除或增加部分類別水準" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> 移除或增加部分類別水準</h2>
 <p>資料分析中常因抽樣 0 值, 而必須特別處理,
 例如必須移除部分類別水準或是必須增加因子變數中的類別水準.
 下列函式可以執行這些功能.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="forcats.html#cb216-1" aria-hidden="true"></a><span class="kw">fct_drop</span>(f, only) <span class="co"># R baes  base::droplevels()</span></span>
-<span id="cb216-2"><a href="forcats.html#cb216-2" aria-hidden="true"></a><span class="kw">fct_expand</span>(f, ...)</span>
-<span id="cb216-3"><a href="forcats.html#cb216-3" aria-hidden="true"></a><span class="kw">fct_explicit_na</span>(f, <span class="dt">na_level =</span> <span class="st">&quot;(Missing)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="forcats.html#cb222-1" aria-hidden="true"></a><span class="kw">fct_drop</span>(f, only) <span class="co"># R baes  base::droplevels()</span></span>
+<span id="cb222-2"><a href="forcats.html#cb222-2" aria-hidden="true"></a><span class="kw">fct_expand</span>(f, ...)</span>
+<span id="cb222-3"><a href="forcats.html#cb222-3" aria-hidden="true"></a><span class="kw">fct_explicit_na</span>(f, <span class="dt">na_level =</span> <span class="st">&quot;(Missing)&quot;</span>)</span></code></pre></div>
 <p>函式 <code>fct_drop()</code> 可以移除部分類別水準,
 函式 <code>fct_expand()</code> 可以增加因子變數中的類別水準.
 函式 <code>fct_explicit_na</code> 可以明確設性缺失值為 1 項類別水準.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="forcats.html#cb217-1" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span>
-<span id="cb217-2"><a href="forcats.html#cb217-2" aria-hidden="true"></a>f</span>
-<span id="cb217-3"><a href="forcats.html#cb217-3" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
-<span id="cb217-4"><a href="forcats.html#cb217-4" aria-hidden="true"></a><span class="co">## Levels: F M Other</span></span>
-<span id="cb217-5"><a href="forcats.html#cb217-5" aria-hidden="true"></a><span class="kw">fct_drop</span>(f)</span>
-<span id="cb217-6"><a href="forcats.html#cb217-6" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
-<span id="cb217-7"><a href="forcats.html#cb217-7" aria-hidden="true"></a><span class="co">## Levels: F M</span></span>
-<span id="cb217-8"><a href="forcats.html#cb217-8" aria-hidden="true"></a><span class="co"># Set only to restrict which levels to drop</span></span>
-<span id="cb217-9"><a href="forcats.html#cb217-9" aria-hidden="true"></a><span class="kw">fct_drop</span>(f, <span class="dt">only =</span> <span class="st">&quot;F&quot;</span>)</span>
-<span id="cb217-10"><a href="forcats.html#cb217-10" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
-<span id="cb217-11"><a href="forcats.html#cb217-11" aria-hidden="true"></a><span class="co">## Levels: F M Other</span></span>
-<span id="cb217-12"><a href="forcats.html#cb217-12" aria-hidden="true"></a><span class="kw">fct_drop</span>(f, <span class="dt">only =</span> <span class="st">&quot;Other&quot;</span>)</span>
-<span id="cb217-13"><a href="forcats.html#cb217-13" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
-<span id="cb217-14"><a href="forcats.html#cb217-14" aria-hidden="true"></a><span class="co">## Levels: F M</span></span>
-<span id="cb217-15"><a href="forcats.html#cb217-15" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb217-16"><a href="forcats.html#cb217-16" aria-hidden="true"></a><span class="kw">fct_expand</span>(f, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
-<span id="cb217-17"><a href="forcats.html#cb217-17" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
-<span id="cb217-18"><a href="forcats.html#cb217-18" aria-hidden="true"></a><span class="co">## Levels: F M Other B T</span></span>
-<span id="cb217-19"><a href="forcats.html#cb217-19" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb217-20"><a href="forcats.html#cb217-20" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="ot">NA</span>, <span class="ot">NA</span>))</span>
-<span id="cb217-21"><a href="forcats.html#cb217-21" aria-hidden="true"></a>f</span>
-<span id="cb217-22"><a href="forcats.html#cb217-22" aria-hidden="true"></a><span class="co">## [1] F    M    M    F    F    B    T    &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb217-23"><a href="forcats.html#cb217-23" aria-hidden="true"></a><span class="co">## Levels: B F M T</span></span>
-<span id="cb217-24"><a href="forcats.html#cb217-24" aria-hidden="true"></a><span class="kw">fct_explicit_na</span>(f)</span>
-<span id="cb217-25"><a href="forcats.html#cb217-25" aria-hidden="true"></a><span class="co">## [1] F         M         M         F         F         B         T         (Missing) (Missing)</span></span>
-<span id="cb217-26"><a href="forcats.html#cb217-26" aria-hidden="true"></a><span class="co">## Levels: B F M T (Missing)</span></span>
-<span id="cb217-27"><a href="forcats.html#cb217-27" aria-hidden="true"></a><span class="kw">fct_explicit_na</span>(f, <span class="dt">na_level =</span> <span class="st">&quot;Other&quot;</span>)</span>
-<span id="cb217-28"><a href="forcats.html#cb217-28" aria-hidden="true"></a><span class="co">## [1] F     M     M     F     F     B     T     Other Other</span></span>
-<span id="cb217-29"><a href="forcats.html#cb217-29" aria-hidden="true"></a><span class="co">## Levels: B F M T Other</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="forcats.html#cb223-1" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span>
+<span id="cb223-2"><a href="forcats.html#cb223-2" aria-hidden="true"></a>f</span>
+<span id="cb223-3"><a href="forcats.html#cb223-3" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
+<span id="cb223-4"><a href="forcats.html#cb223-4" aria-hidden="true"></a><span class="co">## Levels: F M Other</span></span>
+<span id="cb223-5"><a href="forcats.html#cb223-5" aria-hidden="true"></a><span class="kw">fct_drop</span>(f)</span>
+<span id="cb223-6"><a href="forcats.html#cb223-6" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
+<span id="cb223-7"><a href="forcats.html#cb223-7" aria-hidden="true"></a><span class="co">## Levels: F M</span></span>
+<span id="cb223-8"><a href="forcats.html#cb223-8" aria-hidden="true"></a><span class="co"># Set only to restrict which levels to drop</span></span>
+<span id="cb223-9"><a href="forcats.html#cb223-9" aria-hidden="true"></a><span class="kw">fct_drop</span>(f, <span class="dt">only =</span> <span class="st">&quot;F&quot;</span>)</span>
+<span id="cb223-10"><a href="forcats.html#cb223-10" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
+<span id="cb223-11"><a href="forcats.html#cb223-11" aria-hidden="true"></a><span class="co">## Levels: F M Other</span></span>
+<span id="cb223-12"><a href="forcats.html#cb223-12" aria-hidden="true"></a><span class="kw">fct_drop</span>(f, <span class="dt">only =</span> <span class="st">&quot;Other&quot;</span>)</span>
+<span id="cb223-13"><a href="forcats.html#cb223-13" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
+<span id="cb223-14"><a href="forcats.html#cb223-14" aria-hidden="true"></a><span class="co">## Levels: F M</span></span>
+<span id="cb223-15"><a href="forcats.html#cb223-15" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb223-16"><a href="forcats.html#cb223-16" aria-hidden="true"></a><span class="kw">fct_expand</span>(f, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb223-17"><a href="forcats.html#cb223-17" aria-hidden="true"></a><span class="co">## [1] F M</span></span>
+<span id="cb223-18"><a href="forcats.html#cb223-18" aria-hidden="true"></a><span class="co">## Levels: F M Other B T</span></span>
+<span id="cb223-19"><a href="forcats.html#cb223-19" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb223-20"><a href="forcats.html#cb223-20" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="ot">NA</span>, <span class="ot">NA</span>))</span>
+<span id="cb223-21"><a href="forcats.html#cb223-21" aria-hidden="true"></a>f</span>
+<span id="cb223-22"><a href="forcats.html#cb223-22" aria-hidden="true"></a><span class="co">## [1] F    M    M    F    F    B    T    &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb223-23"><a href="forcats.html#cb223-23" aria-hidden="true"></a><span class="co">## Levels: B F M T</span></span>
+<span id="cb223-24"><a href="forcats.html#cb223-24" aria-hidden="true"></a><span class="kw">fct_explicit_na</span>(f)</span>
+<span id="cb223-25"><a href="forcats.html#cb223-25" aria-hidden="true"></a><span class="co">## [1] F         M         M         F         F         B         T         (Missing)</span></span>
+<span id="cb223-26"><a href="forcats.html#cb223-26" aria-hidden="true"></a><span class="co">## [9] (Missing)</span></span>
+<span id="cb223-27"><a href="forcats.html#cb223-27" aria-hidden="true"></a><span class="co">## Levels: B F M T (Missing)</span></span>
+<span id="cb223-28"><a href="forcats.html#cb223-28" aria-hidden="true"></a><span class="kw">fct_explicit_na</span>(f, <span class="dt">na_level =</span> <span class="st">&quot;Other&quot;</span>)</span>
+<span id="cb223-29"><a href="forcats.html#cb223-29" aria-hidden="true"></a><span class="co">## [1] F     M     M     F     F     B     T     Other Other</span></span>
+<span id="cb223-30"><a href="forcats.html#cb223-30" aria-hidden="true"></a><span class="co">## Levels: B F M T Other</span></span></code></pre></div>
 </div>
 <div id="改變類別水準函式" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> 改變類別水準函式</h2>
 <p>因子變數中的類別水準的名稱呈現, 常常視需求而更改,
 例如, <code>H</code> 改成 <code>High</code>, <code>F</code> 改成 <code>female</code> 等等.
 函式 <code>fct_recode()</code> 可以改變的名稱呈現.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="forcats.html#cb218-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;bear&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;dear&quot;</span>))</span>
-<span id="cb218-2"><a href="forcats.html#cb218-2" aria-hidden="true"></a>x</span>
-<span id="cb218-3"><a href="forcats.html#cb218-3" aria-hidden="true"></a><span class="co">## [1] apple  bear   banana dear  </span></span>
-<span id="cb218-4"><a href="forcats.html#cb218-4" aria-hidden="true"></a><span class="co">## Levels: apple banana bear dear</span></span>
-<span id="cb218-5"><a href="forcats.html#cb218-5" aria-hidden="true"></a><span class="kw">fct_recode</span>(x, <span class="dt">fruit =</span> <span class="st">&quot;apple&quot;</span>, <span class="dt">fruit =</span> <span class="st">&quot;banana&quot;</span>)</span>
-<span id="cb218-6"><a href="forcats.html#cb218-6" aria-hidden="true"></a><span class="co">## [1] fruit bear  fruit dear </span></span>
-<span id="cb218-7"><a href="forcats.html#cb218-7" aria-hidden="true"></a><span class="co">## Levels: fruit bear dear</span></span>
-<span id="cb218-8"><a href="forcats.html#cb218-8" aria-hidden="true"></a><span class="co"># If you name the level NULL it will be removed</span></span>
-<span id="cb218-9"><a href="forcats.html#cb218-9" aria-hidden="true"></a><span class="kw">fct_recode</span>(x, <span class="dt">NULL =</span> <span class="st">&quot;apple&quot;</span>, <span class="dt">fruit =</span> <span class="st">&quot;banana&quot;</span>)</span>
-<span id="cb218-10"><a href="forcats.html#cb218-10" aria-hidden="true"></a><span class="co">## [1] &lt;NA&gt;  bear  fruit dear </span></span>
-<span id="cb218-11"><a href="forcats.html#cb218-11" aria-hidden="true"></a><span class="co">## Levels: fruit bear dear</span></span>
-<span id="cb218-12"><a href="forcats.html#cb218-12" aria-hidden="true"></a><span class="co"># When passing a named vector to rename levels use !!! to splice</span></span>
-<span id="cb218-13"><a href="forcats.html#cb218-13" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;bear&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;dear&quot;</span>))</span>
-<span id="cb218-14"><a href="forcats.html#cb218-14" aria-hidden="true"></a>levels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">fruit =</span> <span class="st">&quot;apple&quot;</span>, <span class="dt">fruit =</span> <span class="st">&quot;banana&quot;</span>)</span>
-<span id="cb218-15"><a href="forcats.html#cb218-15" aria-hidden="true"></a><span class="kw">fct_recode</span>(x, <span class="op">!!!</span>levels)</span>
-<span id="cb218-16"><a href="forcats.html#cb218-16" aria-hidden="true"></a><span class="co">## [1] fruit bear  fruit dear </span></span>
-<span id="cb218-17"><a href="forcats.html#cb218-17" aria-hidden="true"></a><span class="co">## Levels: fruit bear dear</span></span>
-<span id="cb218-18"><a href="forcats.html#cb218-18" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb218-19"><a href="forcats.html#cb218-19" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;T&quot;</span>))</span>
-<span id="cb218-20"><a href="forcats.html#cb218-20" aria-hidden="true"></a>x</span>
-<span id="cb218-21"><a href="forcats.html#cb218-21" aria-hidden="true"></a><span class="co">## [1] F M M F F B T</span></span>
-<span id="cb218-22"><a href="forcats.html#cb218-22" aria-hidden="true"></a><span class="co">## Levels: B F M T</span></span>
-<span id="cb218-23"><a href="forcats.html#cb218-23" aria-hidden="true"></a><span class="kw">fct_recode</span>(x, <span class="dt">Male =</span> <span class="st">&quot;M&quot;</span>, <span class="dt">Female =</span> <span class="st">&quot;F&quot;</span>, <span class="dt">Other =</span> <span class="st">&quot;B&quot;</span>, <span class="dt">Other =</span> <span class="st">&quot;T&quot;</span>)</span>
-<span id="cb218-24"><a href="forcats.html#cb218-24" aria-hidden="true"></a><span class="co">## [1] Female Male   Male   Female Female Other  Other </span></span>
-<span id="cb218-25"><a href="forcats.html#cb218-25" aria-hidden="true"></a><span class="co">## Levels: Other Female Male</span></span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="forcats.html#cb224-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;bear&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;dear&quot;</span>))</span>
+<span id="cb224-2"><a href="forcats.html#cb224-2" aria-hidden="true"></a>x</span>
+<span id="cb224-3"><a href="forcats.html#cb224-3" aria-hidden="true"></a><span class="co">## [1] apple  bear   banana dear  </span></span>
+<span id="cb224-4"><a href="forcats.html#cb224-4" aria-hidden="true"></a><span class="co">## Levels: apple banana bear dear</span></span>
+<span id="cb224-5"><a href="forcats.html#cb224-5" aria-hidden="true"></a><span class="kw">fct_recode</span>(x, <span class="dt">fruit =</span> <span class="st">&quot;apple&quot;</span>, <span class="dt">fruit =</span> <span class="st">&quot;banana&quot;</span>)</span>
+<span id="cb224-6"><a href="forcats.html#cb224-6" aria-hidden="true"></a><span class="co">## [1] fruit bear  fruit dear </span></span>
+<span id="cb224-7"><a href="forcats.html#cb224-7" aria-hidden="true"></a><span class="co">## Levels: fruit bear dear</span></span>
+<span id="cb224-8"><a href="forcats.html#cb224-8" aria-hidden="true"></a><span class="co"># If you name the level NULL it will be removed</span></span>
+<span id="cb224-9"><a href="forcats.html#cb224-9" aria-hidden="true"></a><span class="kw">fct_recode</span>(x, <span class="dt">NULL =</span> <span class="st">&quot;apple&quot;</span>, <span class="dt">fruit =</span> <span class="st">&quot;banana&quot;</span>)</span>
+<span id="cb224-10"><a href="forcats.html#cb224-10" aria-hidden="true"></a><span class="co">## [1] &lt;NA&gt;  bear  fruit dear </span></span>
+<span id="cb224-11"><a href="forcats.html#cb224-11" aria-hidden="true"></a><span class="co">## Levels: fruit bear dear</span></span>
+<span id="cb224-12"><a href="forcats.html#cb224-12" aria-hidden="true"></a><span class="co"># When passing a named vector to rename levels use !!! to splice</span></span>
+<span id="cb224-13"><a href="forcats.html#cb224-13" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;bear&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;dear&quot;</span>))</span>
+<span id="cb224-14"><a href="forcats.html#cb224-14" aria-hidden="true"></a>levels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">fruit =</span> <span class="st">&quot;apple&quot;</span>, <span class="dt">fruit =</span> <span class="st">&quot;banana&quot;</span>)</span>
+<span id="cb224-15"><a href="forcats.html#cb224-15" aria-hidden="true"></a><span class="kw">fct_recode</span>(x, <span class="op">!!!</span>levels)</span>
+<span id="cb224-16"><a href="forcats.html#cb224-16" aria-hidden="true"></a><span class="co">## [1] fruit bear  fruit dear </span></span>
+<span id="cb224-17"><a href="forcats.html#cb224-17" aria-hidden="true"></a><span class="co">## Levels: fruit bear dear</span></span>
+<span id="cb224-18"><a href="forcats.html#cb224-18" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb224-19"><a href="forcats.html#cb224-19" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;T&quot;</span>))</span>
+<span id="cb224-20"><a href="forcats.html#cb224-20" aria-hidden="true"></a>x</span>
+<span id="cb224-21"><a href="forcats.html#cb224-21" aria-hidden="true"></a><span class="co">## [1] F M M F F B T</span></span>
+<span id="cb224-22"><a href="forcats.html#cb224-22" aria-hidden="true"></a><span class="co">## Levels: B F M T</span></span>
+<span id="cb224-23"><a href="forcats.html#cb224-23" aria-hidden="true"></a><span class="kw">fct_recode</span>(x, <span class="dt">Male =</span> <span class="st">&quot;M&quot;</span>, <span class="dt">Female =</span> <span class="st">&quot;F&quot;</span>, <span class="dt">Other =</span> <span class="st">&quot;B&quot;</span>, <span class="dt">Other =</span> <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb224-24"><a href="forcats.html#cb224-24" aria-hidden="true"></a><span class="co">## [1] Female Male   Male   Female Female Other  Other </span></span>
+<span id="cb224-25"><a href="forcats.html#cb224-25" aria-hidden="true"></a><span class="co">## Levels: Other Female Male</span></span></code></pre></div>
 <p>函式 <code>fct_collapse()</code> 可以改變的名稱呈現,
 將不同類別水準合併且更名.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="forcats.html#cb219-1" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb219-2"><a href="forcats.html#cb219-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;T&quot;</span>))</span>
-<span id="cb219-3"><a href="forcats.html#cb219-3" aria-hidden="true"></a>x</span>
-<span id="cb219-4"><a href="forcats.html#cb219-4" aria-hidden="true"></a><span class="co">## [1] F M M F F B T</span></span>
-<span id="cb219-5"><a href="forcats.html#cb219-5" aria-hidden="true"></a><span class="co">## Levels: B F M T</span></span>
-<span id="cb219-6"><a href="forcats.html#cb219-6" aria-hidden="true"></a><span class="kw">fct_collapse</span>(x, <span class="dt">Biological =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
-<span id="cb219-7"><a href="forcats.html#cb219-7" aria-hidden="true"></a>             <span class="dt">Other =</span> <span class="st">&quot;B&quot;</span>, <span class="dt">Other =</span> <span class="st">&quot;T&quot;</span>)</span>
-<span id="cb219-8"><a href="forcats.html#cb219-8" aria-hidden="true"></a><span class="co">## [1] Biological Biological Biological Biological Biological Other      Other     </span></span>
-<span id="cb219-9"><a href="forcats.html#cb219-9" aria-hidden="true"></a><span class="co">## Levels: Other Biological</span></span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="forcats.html#cb225-1" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb225-2"><a href="forcats.html#cb225-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;T&quot;</span>))</span>
+<span id="cb225-3"><a href="forcats.html#cb225-3" aria-hidden="true"></a>x</span>
+<span id="cb225-4"><a href="forcats.html#cb225-4" aria-hidden="true"></a><span class="co">## [1] F M M F F B T</span></span>
+<span id="cb225-5"><a href="forcats.html#cb225-5" aria-hidden="true"></a><span class="co">## Levels: B F M T</span></span>
+<span id="cb225-6"><a href="forcats.html#cb225-6" aria-hidden="true"></a><span class="kw">fct_collapse</span>(x, <span class="dt">Biological =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
+<span id="cb225-7"><a href="forcats.html#cb225-7" aria-hidden="true"></a>             <span class="dt">Other =</span> <span class="st">&quot;B&quot;</span>, <span class="dt">Other =</span> <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb225-8"><a href="forcats.html#cb225-8" aria-hidden="true"></a><span class="co">## [1] Biological Biological Biological Biological Biological Other      Other     </span></span>
+<span id="cb225-9"><a href="forcats.html#cb225-9" aria-hidden="true"></a><span class="co">## Levels: Other Biological</span></span></code></pre></div>
 <p>函式 <code>fct_other()</code> 可將部分類別水準合併或移除.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="forcats.html#cb220-1" aria-hidden="true"></a><span class="kw">fct_other</span>(f, keep, drop, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>)<span class="st">`</span><span class="dt"> </span></span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="forcats.html#cb226-1" aria-hidden="true"></a><span class="kw">fct_other</span>(f, keep, drop, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>)<span class="st">`</span><span class="dt"> </span></span></code></pre></div>
 <p>其中引數 <code>keep</code>, <code>drop</code> 保留或移除部分原有類別水準,
 將其餘類別水準合併成 <code>other_level</code>.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="forcats.html#cb221-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">times =</span> <span class="dv">3</span>))</span>
-<span id="cb221-2"><a href="forcats.html#cb221-2" aria-hidden="true"></a>x</span>
-<span id="cb221-3"><a href="forcats.html#cb221-3" aria-hidden="true"></a><span class="co">##  [1] A B C D A B C D A B C D</span></span>
-<span id="cb221-4"><a href="forcats.html#cb221-4" aria-hidden="true"></a><span class="co">## Levels: A B C D</span></span>
-<span id="cb221-5"><a href="forcats.html#cb221-5" aria-hidden="true"></a><span class="kw">fct_other</span>(x, <span class="dt">keep =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb221-6"><a href="forcats.html#cb221-6" aria-hidden="true"></a><span class="co">##  [1] A     B     Other Other A     B     Other Other A     B     Other Other</span></span>
-<span id="cb221-7"><a href="forcats.html#cb221-7" aria-hidden="true"></a><span class="co">## Levels: A B Other</span></span>
-<span id="cb221-8"><a href="forcats.html#cb221-8" aria-hidden="true"></a><span class="kw">fct_other</span>(x, <span class="dt">drop =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="dt">other_level =</span> <span class="st">&quot;change&quot;</span>)</span>
-<span id="cb221-9"><a href="forcats.html#cb221-9" aria-hidden="true"></a><span class="co">##  [1] change change C      D      change change C      D      change change C      D     </span></span>
-<span id="cb221-10"><a href="forcats.html#cb221-10" aria-hidden="true"></a><span class="co">## Levels: C D change</span></span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="forcats.html#cb227-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">times =</span> <span class="dv">3</span>))</span>
+<span id="cb227-2"><a href="forcats.html#cb227-2" aria-hidden="true"></a>x</span>
+<span id="cb227-3"><a href="forcats.html#cb227-3" aria-hidden="true"></a><span class="co">##  [1] A B C D A B C D A B C D</span></span>
+<span id="cb227-4"><a href="forcats.html#cb227-4" aria-hidden="true"></a><span class="co">## Levels: A B C D</span></span>
+<span id="cb227-5"><a href="forcats.html#cb227-5" aria-hidden="true"></a><span class="kw">fct_other</span>(x, <span class="dt">keep =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb227-6"><a href="forcats.html#cb227-6" aria-hidden="true"></a><span class="co">##  [1] A     B     Other Other A     B     Other Other A     B     Other Other</span></span>
+<span id="cb227-7"><a href="forcats.html#cb227-7" aria-hidden="true"></a><span class="co">## Levels: A B Other</span></span>
+<span id="cb227-8"><a href="forcats.html#cb227-8" aria-hidden="true"></a><span class="kw">fct_other</span>(x, <span class="dt">drop =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="dt">other_level =</span> <span class="st">&quot;change&quot;</span>)</span>
+<span id="cb227-9"><a href="forcats.html#cb227-9" aria-hidden="true"></a><span class="co">##  [1] change change C      D      change change C      D      change change C      D     </span></span>
+<span id="cb227-10"><a href="forcats.html#cb227-10" aria-hidden="true"></a><span class="co">## Levels: C D change</span></span></code></pre></div>
 </div>
 <div id="改變或合併類別水準函式-fct_lump" class="section level2" number="11.4">
 <h2><span class="header-section-number">11.4</span> 改變或合併類別水準函式 fct_lump()</h2>
@@ -580,13 +599,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>fct_lump_lowfreq()</code>: 合併類別水準, 且確保 <code>other</code> 類別的頻率仍是最低.
 函式使用程式語言結構為</li>
 </ul>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="forcats.html#cb222-1" aria-hidden="true"></a><span class="kw">fct_lump</span>(f, n, prop, <span class="dt">w =</span> <span class="ot">NULL</span>, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>,</span>
-<span id="cb222-2"><a href="forcats.html#cb222-2" aria-hidden="true"></a>         <span class="dt">ties.method =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>))</span>
-<span id="cb222-3"><a href="forcats.html#cb222-3" aria-hidden="true"></a><span class="kw">fct_lump_min</span>(f, min, <span class="dt">w =</span> <span class="ot">NULL</span>, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>)</span>
-<span id="cb222-4"><a href="forcats.html#cb222-4" aria-hidden="true"></a><span class="kw">fct_lump_prop</span>(f, prop, <span class="dt">w =</span> <span class="ot">NULL</span>, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>)</span>
-<span id="cb222-5"><a href="forcats.html#cb222-5" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(f, n, <span class="dt">w =</span> <span class="ot">NULL</span>, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>,</span>
-<span id="cb222-6"><a href="forcats.html#cb222-6" aria-hidden="true"></a>  <span class="dt">ties.method =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>))</span>
-<span id="cb222-7"><a href="forcats.html#cb222-7" aria-hidden="true"></a><span class="kw">fct_lump_lowfreq</span>(f, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="forcats.html#cb228-1" aria-hidden="true"></a><span class="kw">fct_lump</span>(f, n, prop, <span class="dt">w =</span> <span class="ot">NULL</span>, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>,</span>
+<span id="cb228-2"><a href="forcats.html#cb228-2" aria-hidden="true"></a>         <span class="dt">ties.method =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>))</span>
+<span id="cb228-3"><a href="forcats.html#cb228-3" aria-hidden="true"></a><span class="kw">fct_lump_min</span>(f, min, <span class="dt">w =</span> <span class="ot">NULL</span>, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>)</span>
+<span id="cb228-4"><a href="forcats.html#cb228-4" aria-hidden="true"></a><span class="kw">fct_lump_prop</span>(f, prop, <span class="dt">w =</span> <span class="ot">NULL</span>, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>)</span>
+<span id="cb228-5"><a href="forcats.html#cb228-5" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(f, n, <span class="dt">w =</span> <span class="ot">NULL</span>, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>,</span>
+<span id="cb228-6"><a href="forcats.html#cb228-6" aria-hidden="true"></a>  <span class="dt">ties.method =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>))</span>
+<span id="cb228-7"><a href="forcats.html#cb228-7" aria-hidden="true"></a><span class="kw">fct_lump_lowfreq</span>(f, <span class="dt">other_level =</span> <span class="st">&quot;Other&quot;</span>)</span></code></pre></div>
 <p>其中引數 <code>f</code> 為因子向量,
 <code>n</code> 設定最多 n 種主要類別,
 <code>prop</code> 設定正值百分率, 合併小於 <code>prop</code> 的類別,
@@ -595,158 +614,158 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>other_level</code> 設定合併後的類別名稱.
 <code>ties.method</code> 處理相同排序方式.
 <code>min</code> 保留至少出現 min 次類別.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="forcats.html#cb223-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>], <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">27</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)))</span>
-<span id="cb223-2"><a href="forcats.html#cb223-2" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
-<span id="cb223-3"><a href="forcats.html#cb223-3" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb223-4"><a href="forcats.html#cb223-4" aria-hidden="true"></a><span class="co">##  A  B  C  D  E  F  G  H  I </span></span>
-<span id="cb223-5"><a href="forcats.html#cb223-5" aria-hidden="true"></a><span class="co">## 40 10  5 27  1  1  1  1  1</span></span>
-<span id="cb223-6"><a href="forcats.html#cb223-6" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_lump_n</span>(<span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
-<span id="cb223-7"><a href="forcats.html#cb223-7" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb223-8"><a href="forcats.html#cb223-8" aria-hidden="true"></a><span class="co">##     A     B     D Other </span></span>
-<span id="cb223-9"><a href="forcats.html#cb223-9" aria-hidden="true"></a><span class="co">##    40    10    27    10</span></span>
-<span id="cb223-10"><a href="forcats.html#cb223-10" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_lump_prop</span>(<span class="fl">0.10</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
-<span id="cb223-11"><a href="forcats.html#cb223-11" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb223-12"><a href="forcats.html#cb223-12" aria-hidden="true"></a><span class="co">##     A     B     D Other </span></span>
-<span id="cb223-13"><a href="forcats.html#cb223-13" aria-hidden="true"></a><span class="co">##    40    10    27    10</span></span>
-<span id="cb223-14"><a href="forcats.html#cb223-14" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_lump_min</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
-<span id="cb223-15"><a href="forcats.html#cb223-15" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb223-16"><a href="forcats.html#cb223-16" aria-hidden="true"></a><span class="co">##     A     B     C     D Other </span></span>
-<span id="cb223-17"><a href="forcats.html#cb223-17" aria-hidden="true"></a><span class="co">##    40    10     5    27     5</span></span>
-<span id="cb223-18"><a href="forcats.html#cb223-18" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_lump_lowfreq</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
-<span id="cb223-19"><a href="forcats.html#cb223-19" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb223-20"><a href="forcats.html#cb223-20" aria-hidden="true"></a><span class="co">##     A     D Other </span></span>
-<span id="cb223-21"><a href="forcats.html#cb223-21" aria-hidden="true"></a><span class="co">##    40    27    20</span></span>
-<span id="cb223-22"><a href="forcats.html#cb223-22" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb223-23"><a href="forcats.html#cb223-23" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb223-24"><a href="forcats.html#cb223-24" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(letters[<span class="kw">rpois</span>(<span class="dv">50</span>, <span class="dv">5</span>)])</span>
-<span id="cb223-25"><a href="forcats.html#cb223-25" aria-hidden="true"></a>x</span>
-<span id="cb223-26"><a href="forcats.html#cb223-26" aria-hidden="true"></a><span class="co">##  [1] d g d h i b e h e e i e f e b h c b d i h f f k f f e e d c i h f g a e f c d c c d d d</span></span>
-<span id="cb223-27"><a href="forcats.html#cb223-27" aria-hidden="true"></a><span class="co">## [45] c c c e d g</span></span>
-<span id="cb223-28"><a href="forcats.html#cb223-28" aria-hidden="true"></a><span class="co">## Levels: a b c d e f g h i k</span></span>
-<span id="cb223-29"><a href="forcats.html#cb223-29" aria-hidden="true"></a><span class="kw">table</span>(x)</span>
-<span id="cb223-30"><a href="forcats.html#cb223-30" aria-hidden="true"></a><span class="co">## x</span></span>
-<span id="cb223-31"><a href="forcats.html#cb223-31" aria-hidden="true"></a><span class="co">## a b c d e f g h i k </span></span>
-<span id="cb223-32"><a href="forcats.html#cb223-32" aria-hidden="true"></a><span class="co">## 1 3 8 9 9 7 3 5 4 1</span></span>
-<span id="cb223-33"><a href="forcats.html#cb223-33" aria-hidden="true"></a><span class="kw">table</span>(<span class="kw">fct_lump_lowfreq</span>(x))</span>
-<span id="cb223-34"><a href="forcats.html#cb223-34" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb223-35"><a href="forcats.html#cb223-35" aria-hidden="true"></a><span class="co">##     b     c     d     e     f     g     h     i Other </span></span>
-<span id="cb223-36"><a href="forcats.html#cb223-36" aria-hidden="true"></a><span class="co">##     3     8     9     9     7     3     5     4     2</span></span>
-<span id="cb223-37"><a href="forcats.html#cb223-37" aria-hidden="true"></a><span class="co">## Use positive values to collapse the rarest</span></span>
-<span id="cb223-38"><a href="forcats.html#cb223-38" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">3</span>)</span>
-<span id="cb223-39"><a href="forcats.html#cb223-39" aria-hidden="true"></a><span class="co">##  [1] d     Other d     Other Other Other e     Other e     e     Other e     Other e    </span></span>
-<span id="cb223-40"><a href="forcats.html#cb223-40" aria-hidden="true"></a><span class="co">## [15] Other Other c     Other d     Other Other Other Other Other Other Other e     e    </span></span>
-<span id="cb223-41"><a href="forcats.html#cb223-41" aria-hidden="true"></a><span class="co">## [29] d     c     Other Other Other Other Other e     Other c     d     c     c     d    </span></span>
-<span id="cb223-42"><a href="forcats.html#cb223-42" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
-<span id="cb223-43"><a href="forcats.html#cb223-43" aria-hidden="true"></a><span class="co">## Levels: c d e Other</span></span>
-<span id="cb223-44"><a href="forcats.html#cb223-44" aria-hidden="true"></a><span class="kw">fct_lump_prop</span>(x, <span class="dt">prop =</span> <span class="fl">0.1</span>)</span>
-<span id="cb223-45"><a href="forcats.html#cb223-45" aria-hidden="true"></a><span class="co">##  [1] d     Other d     Other Other Other e     Other e     e     Other e     f     e    </span></span>
-<span id="cb223-46"><a href="forcats.html#cb223-46" aria-hidden="true"></a><span class="co">## [15] Other Other c     Other d     Other Other f     f     Other f     f     e     e    </span></span>
-<span id="cb223-47"><a href="forcats.html#cb223-47" aria-hidden="true"></a><span class="co">## [29] d     c     Other Other f     Other Other e     f     c     d     c     c     d    </span></span>
-<span id="cb223-48"><a href="forcats.html#cb223-48" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
-<span id="cb223-49"><a href="forcats.html#cb223-49" aria-hidden="true"></a><span class="co">## Levels: c d e f Other</span></span>
-<span id="cb223-50"><a href="forcats.html#cb223-50" aria-hidden="true"></a><span class="co">## Use negative values to collapse the most common</span></span>
-<span id="cb223-51"><a href="forcats.html#cb223-51" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">-3</span>)</span>
-<span id="cb223-52"><a href="forcats.html#cb223-52" aria-hidden="true"></a><span class="co">##  [1] Other g     Other Other Other b     Other Other Other Other Other Other Other Other</span></span>
-<span id="cb223-53"><a href="forcats.html#cb223-53" aria-hidden="true"></a><span class="co">## [15] b     Other Other b     Other Other Other Other Other k     Other Other Other Other</span></span>
-<span id="cb223-54"><a href="forcats.html#cb223-54" aria-hidden="true"></a><span class="co">## [29] Other Other Other Other Other g     a     Other Other Other Other Other Other Other</span></span>
-<span id="cb223-55"><a href="forcats.html#cb223-55" aria-hidden="true"></a><span class="co">## [43] Other Other Other Other Other Other Other g    </span></span>
-<span id="cb223-56"><a href="forcats.html#cb223-56" aria-hidden="true"></a><span class="co">## Levels: a b g k Other</span></span>
-<span id="cb223-57"><a href="forcats.html#cb223-57" aria-hidden="true"></a><span class="kw">fct_lump_prop</span>(x, <span class="dt">prop =</span> <span class="fl">-0.1</span>)</span>
-<span id="cb223-58"><a href="forcats.html#cb223-58" aria-hidden="true"></a><span class="co">##  [1] Other g     Other h     i     b     Other h     Other Other i     Other Other Other</span></span>
-<span id="cb223-59"><a href="forcats.html#cb223-59" aria-hidden="true"></a><span class="co">## [15] b     h     Other b     Other i     h     Other Other k     Other Other Other Other</span></span>
-<span id="cb223-60"><a href="forcats.html#cb223-60" aria-hidden="true"></a><span class="co">## [29] Other Other i     h     Other g     a     Other Other Other Other Other Other Other</span></span>
-<span id="cb223-61"><a href="forcats.html#cb223-61" aria-hidden="true"></a><span class="co">## [43] Other Other Other Other Other Other Other g    </span></span>
-<span id="cb223-62"><a href="forcats.html#cb223-62" aria-hidden="true"></a><span class="co">## Levels: a b g h i k Other</span></span>
-<span id="cb223-63"><a href="forcats.html#cb223-63" aria-hidden="true"></a><span class="co">## Use weighted frequencies</span></span>
-<span id="cb223-64"><a href="forcats.html#cb223-64" aria-hidden="true"></a>w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">25</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">25</span>))</span>
-<span id="cb223-65"><a href="forcats.html#cb223-65" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">w =</span> w)</span>
-<span id="cb223-66"><a href="forcats.html#cb223-66" aria-hidden="true"></a><span class="co">##  [1] d     Other d     h     Other Other e     h     e     e     Other e     f     e    </span></span>
-<span id="cb223-67"><a href="forcats.html#cb223-67" aria-hidden="true"></a><span class="co">## [15] Other h     c     Other d     Other h     f     f     Other f     f     e     e    </span></span>
-<span id="cb223-68"><a href="forcats.html#cb223-68" aria-hidden="true"></a><span class="co">## [29] d     c     Other h     f     Other Other e     f     c     d     c     c     d    </span></span>
-<span id="cb223-69"><a href="forcats.html#cb223-69" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
-<span id="cb223-70"><a href="forcats.html#cb223-70" aria-hidden="true"></a><span class="co">## Levels: c d e f h Other</span></span>
-<span id="cb223-71"><a href="forcats.html#cb223-71" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">6</span>)</span>
-<span id="cb223-72"><a href="forcats.html#cb223-72" aria-hidden="true"></a><span class="co">##  [1] d     Other d     h     i     Other e     h     e     e     i     e     f     e    </span></span>
-<span id="cb223-73"><a href="forcats.html#cb223-73" aria-hidden="true"></a><span class="co">## [15] Other h     c     Other d     i     h     f     f     Other f     f     e     e    </span></span>
-<span id="cb223-74"><a href="forcats.html#cb223-74" aria-hidden="true"></a><span class="co">## [29] d     c     i     h     f     Other Other e     f     c     d     c     c     d    </span></span>
-<span id="cb223-75"><a href="forcats.html#cb223-75" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
-<span id="cb223-76"><a href="forcats.html#cb223-76" aria-hidden="true"></a><span class="co">## Levels: c d e f h i Other</span></span>
-<span id="cb223-77"><a href="forcats.html#cb223-77" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">6</span>, <span class="dt">ties.method =</span> <span class="st">&quot;max&quot;</span>)</span>
-<span id="cb223-78"><a href="forcats.html#cb223-78" aria-hidden="true"></a><span class="co">##  [1] d     Other d     h     i     Other e     h     e     e     i     e     f     e    </span></span>
-<span id="cb223-79"><a href="forcats.html#cb223-79" aria-hidden="true"></a><span class="co">## [15] Other h     c     Other d     i     h     f     f     Other f     f     e     e    </span></span>
-<span id="cb223-80"><a href="forcats.html#cb223-80" aria-hidden="true"></a><span class="co">## [29] d     c     i     h     f     Other Other e     f     c     d     c     c     d    </span></span>
-<span id="cb223-81"><a href="forcats.html#cb223-81" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
-<span id="cb223-82"><a href="forcats.html#cb223-82" aria-hidden="true"></a><span class="co">## Levels: c d e f h i Other</span></span>
-<span id="cb223-83"><a href="forcats.html#cb223-83" aria-hidden="true"></a><span class="co">## Use fct_lump_min() to lump together all levels with fewer than `n` values</span></span>
-<span id="cb223-84"><a href="forcats.html#cb223-84" aria-hidden="true"></a><span class="kw">table</span>(<span class="kw">fct_lump_min</span>(x, <span class="dt">min =</span> <span class="dv">10</span>))</span>
-<span id="cb223-85"><a href="forcats.html#cb223-85" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb223-86"><a href="forcats.html#cb223-86" aria-hidden="true"></a><span class="co">## Other </span></span>
-<span id="cb223-87"><a href="forcats.html#cb223-87" aria-hidden="true"></a><span class="co">##    50</span></span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="forcats.html#cb229-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>], <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">27</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)))</span>
+<span id="cb229-2"><a href="forcats.html#cb229-2" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
+<span id="cb229-3"><a href="forcats.html#cb229-3" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb229-4"><a href="forcats.html#cb229-4" aria-hidden="true"></a><span class="co">##  A  B  C  D  E  F  G  H  I </span></span>
+<span id="cb229-5"><a href="forcats.html#cb229-5" aria-hidden="true"></a><span class="co">## 40 10  5 27  1  1  1  1  1</span></span>
+<span id="cb229-6"><a href="forcats.html#cb229-6" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_lump_n</span>(<span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
+<span id="cb229-7"><a href="forcats.html#cb229-7" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb229-8"><a href="forcats.html#cb229-8" aria-hidden="true"></a><span class="co">##     A     B     D Other </span></span>
+<span id="cb229-9"><a href="forcats.html#cb229-9" aria-hidden="true"></a><span class="co">##    40    10    27    10</span></span>
+<span id="cb229-10"><a href="forcats.html#cb229-10" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_lump_prop</span>(<span class="fl">0.10</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
+<span id="cb229-11"><a href="forcats.html#cb229-11" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb229-12"><a href="forcats.html#cb229-12" aria-hidden="true"></a><span class="co">##     A     B     D Other </span></span>
+<span id="cb229-13"><a href="forcats.html#cb229-13" aria-hidden="true"></a><span class="co">##    40    10    27    10</span></span>
+<span id="cb229-14"><a href="forcats.html#cb229-14" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_lump_min</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
+<span id="cb229-15"><a href="forcats.html#cb229-15" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb229-16"><a href="forcats.html#cb229-16" aria-hidden="true"></a><span class="co">##     A     B     C     D Other </span></span>
+<span id="cb229-17"><a href="forcats.html#cb229-17" aria-hidden="true"></a><span class="co">##    40    10     5    27     5</span></span>
+<span id="cb229-18"><a href="forcats.html#cb229-18" aria-hidden="true"></a>x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_lump_lowfreq</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
+<span id="cb229-19"><a href="forcats.html#cb229-19" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb229-20"><a href="forcats.html#cb229-20" aria-hidden="true"></a><span class="co">##     A     D Other </span></span>
+<span id="cb229-21"><a href="forcats.html#cb229-21" aria-hidden="true"></a><span class="co">##    40    27    20</span></span>
+<span id="cb229-22"><a href="forcats.html#cb229-22" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb229-23"><a href="forcats.html#cb229-23" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb229-24"><a href="forcats.html#cb229-24" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(letters[<span class="kw">rpois</span>(<span class="dv">50</span>, <span class="dv">5</span>)])</span>
+<span id="cb229-25"><a href="forcats.html#cb229-25" aria-hidden="true"></a>x</span>
+<span id="cb229-26"><a href="forcats.html#cb229-26" aria-hidden="true"></a><span class="co">##  [1] d g d h i b e h e e i e f e b h c b d i h f f k f f e e d c i h f g a e f c d c c d</span></span>
+<span id="cb229-27"><a href="forcats.html#cb229-27" aria-hidden="true"></a><span class="co">## [43] d d c c c e d g</span></span>
+<span id="cb229-28"><a href="forcats.html#cb229-28" aria-hidden="true"></a><span class="co">## Levels: a b c d e f g h i k</span></span>
+<span id="cb229-29"><a href="forcats.html#cb229-29" aria-hidden="true"></a><span class="kw">table</span>(x)</span>
+<span id="cb229-30"><a href="forcats.html#cb229-30" aria-hidden="true"></a><span class="co">## x</span></span>
+<span id="cb229-31"><a href="forcats.html#cb229-31" aria-hidden="true"></a><span class="co">## a b c d e f g h i k </span></span>
+<span id="cb229-32"><a href="forcats.html#cb229-32" aria-hidden="true"></a><span class="co">## 1 3 8 9 9 7 3 5 4 1</span></span>
+<span id="cb229-33"><a href="forcats.html#cb229-33" aria-hidden="true"></a><span class="kw">table</span>(<span class="kw">fct_lump_lowfreq</span>(x))</span>
+<span id="cb229-34"><a href="forcats.html#cb229-34" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb229-35"><a href="forcats.html#cb229-35" aria-hidden="true"></a><span class="co">##     b     c     d     e     f     g     h     i Other </span></span>
+<span id="cb229-36"><a href="forcats.html#cb229-36" aria-hidden="true"></a><span class="co">##     3     8     9     9     7     3     5     4     2</span></span>
+<span id="cb229-37"><a href="forcats.html#cb229-37" aria-hidden="true"></a><span class="co">## Use positive values to collapse the rarest</span></span>
+<span id="cb229-38"><a href="forcats.html#cb229-38" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">3</span>)</span>
+<span id="cb229-39"><a href="forcats.html#cb229-39" aria-hidden="true"></a><span class="co">##  [1] d     Other d     Other Other Other e     Other e     e     Other e     Other e    </span></span>
+<span id="cb229-40"><a href="forcats.html#cb229-40" aria-hidden="true"></a><span class="co">## [15] Other Other c     Other d     Other Other Other Other Other Other Other e     e    </span></span>
+<span id="cb229-41"><a href="forcats.html#cb229-41" aria-hidden="true"></a><span class="co">## [29] d     c     Other Other Other Other Other e     Other c     d     c     c     d    </span></span>
+<span id="cb229-42"><a href="forcats.html#cb229-42" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
+<span id="cb229-43"><a href="forcats.html#cb229-43" aria-hidden="true"></a><span class="co">## Levels: c d e Other</span></span>
+<span id="cb229-44"><a href="forcats.html#cb229-44" aria-hidden="true"></a><span class="kw">fct_lump_prop</span>(x, <span class="dt">prop =</span> <span class="fl">0.1</span>)</span>
+<span id="cb229-45"><a href="forcats.html#cb229-45" aria-hidden="true"></a><span class="co">##  [1] d     Other d     Other Other Other e     Other e     e     Other e     f     e    </span></span>
+<span id="cb229-46"><a href="forcats.html#cb229-46" aria-hidden="true"></a><span class="co">## [15] Other Other c     Other d     Other Other f     f     Other f     f     e     e    </span></span>
+<span id="cb229-47"><a href="forcats.html#cb229-47" aria-hidden="true"></a><span class="co">## [29] d     c     Other Other f     Other Other e     f     c     d     c     c     d    </span></span>
+<span id="cb229-48"><a href="forcats.html#cb229-48" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
+<span id="cb229-49"><a href="forcats.html#cb229-49" aria-hidden="true"></a><span class="co">## Levels: c d e f Other</span></span>
+<span id="cb229-50"><a href="forcats.html#cb229-50" aria-hidden="true"></a><span class="co">## Use negative values to collapse the most common</span></span>
+<span id="cb229-51"><a href="forcats.html#cb229-51" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">-3</span>)</span>
+<span id="cb229-52"><a href="forcats.html#cb229-52" aria-hidden="true"></a><span class="co">##  [1] Other g     Other Other Other b     Other Other Other Other Other Other Other Other</span></span>
+<span id="cb229-53"><a href="forcats.html#cb229-53" aria-hidden="true"></a><span class="co">## [15] b     Other Other b     Other Other Other Other Other k     Other Other Other Other</span></span>
+<span id="cb229-54"><a href="forcats.html#cb229-54" aria-hidden="true"></a><span class="co">## [29] Other Other Other Other Other g     a     Other Other Other Other Other Other Other</span></span>
+<span id="cb229-55"><a href="forcats.html#cb229-55" aria-hidden="true"></a><span class="co">## [43] Other Other Other Other Other Other Other g    </span></span>
+<span id="cb229-56"><a href="forcats.html#cb229-56" aria-hidden="true"></a><span class="co">## Levels: a b g k Other</span></span>
+<span id="cb229-57"><a href="forcats.html#cb229-57" aria-hidden="true"></a><span class="kw">fct_lump_prop</span>(x, <span class="dt">prop =</span> <span class="fl">-0.1</span>)</span>
+<span id="cb229-58"><a href="forcats.html#cb229-58" aria-hidden="true"></a><span class="co">##  [1] Other g     Other h     i     b     Other h     Other Other i     Other Other Other</span></span>
+<span id="cb229-59"><a href="forcats.html#cb229-59" aria-hidden="true"></a><span class="co">## [15] b     h     Other b     Other i     h     Other Other k     Other Other Other Other</span></span>
+<span id="cb229-60"><a href="forcats.html#cb229-60" aria-hidden="true"></a><span class="co">## [29] Other Other i     h     Other g     a     Other Other Other Other Other Other Other</span></span>
+<span id="cb229-61"><a href="forcats.html#cb229-61" aria-hidden="true"></a><span class="co">## [43] Other Other Other Other Other Other Other g    </span></span>
+<span id="cb229-62"><a href="forcats.html#cb229-62" aria-hidden="true"></a><span class="co">## Levels: a b g h i k Other</span></span>
+<span id="cb229-63"><a href="forcats.html#cb229-63" aria-hidden="true"></a><span class="co">## Use weighted frequencies</span></span>
+<span id="cb229-64"><a href="forcats.html#cb229-64" aria-hidden="true"></a>w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">25</span>), <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">25</span>))</span>
+<span id="cb229-65"><a href="forcats.html#cb229-65" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">w =</span> w)</span>
+<span id="cb229-66"><a href="forcats.html#cb229-66" aria-hidden="true"></a><span class="co">##  [1] d     Other d     h     Other Other e     h     e     e     Other e     f     e    </span></span>
+<span id="cb229-67"><a href="forcats.html#cb229-67" aria-hidden="true"></a><span class="co">## [15] Other h     c     Other d     Other h     f     f     Other f     f     e     e    </span></span>
+<span id="cb229-68"><a href="forcats.html#cb229-68" aria-hidden="true"></a><span class="co">## [29] d     c     Other h     f     Other Other e     f     c     d     c     c     d    </span></span>
+<span id="cb229-69"><a href="forcats.html#cb229-69" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
+<span id="cb229-70"><a href="forcats.html#cb229-70" aria-hidden="true"></a><span class="co">## Levels: c d e f h Other</span></span>
+<span id="cb229-71"><a href="forcats.html#cb229-71" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">6</span>)</span>
+<span id="cb229-72"><a href="forcats.html#cb229-72" aria-hidden="true"></a><span class="co">##  [1] d     Other d     h     i     Other e     h     e     e     i     e     f     e    </span></span>
+<span id="cb229-73"><a href="forcats.html#cb229-73" aria-hidden="true"></a><span class="co">## [15] Other h     c     Other d     i     h     f     f     Other f     f     e     e    </span></span>
+<span id="cb229-74"><a href="forcats.html#cb229-74" aria-hidden="true"></a><span class="co">## [29] d     c     i     h     f     Other Other e     f     c     d     c     c     d    </span></span>
+<span id="cb229-75"><a href="forcats.html#cb229-75" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
+<span id="cb229-76"><a href="forcats.html#cb229-76" aria-hidden="true"></a><span class="co">## Levels: c d e f h i Other</span></span>
+<span id="cb229-77"><a href="forcats.html#cb229-77" aria-hidden="true"></a><span class="kw">fct_lump_n</span>(x, <span class="dt">n =</span> <span class="dv">6</span>, <span class="dt">ties.method =</span> <span class="st">&quot;max&quot;</span>)</span>
+<span id="cb229-78"><a href="forcats.html#cb229-78" aria-hidden="true"></a><span class="co">##  [1] d     Other d     h     i     Other e     h     e     e     i     e     f     e    </span></span>
+<span id="cb229-79"><a href="forcats.html#cb229-79" aria-hidden="true"></a><span class="co">## [15] Other h     c     Other d     i     h     f     f     Other f     f     e     e    </span></span>
+<span id="cb229-80"><a href="forcats.html#cb229-80" aria-hidden="true"></a><span class="co">## [29] d     c     i     h     f     Other Other e     f     c     d     c     c     d    </span></span>
+<span id="cb229-81"><a href="forcats.html#cb229-81" aria-hidden="true"></a><span class="co">## [43] d     d     c     c     c     e     d     Other</span></span>
+<span id="cb229-82"><a href="forcats.html#cb229-82" aria-hidden="true"></a><span class="co">## Levels: c d e f h i Other</span></span>
+<span id="cb229-83"><a href="forcats.html#cb229-83" aria-hidden="true"></a><span class="co">## Use fct_lump_min() to lump together all levels with fewer than `n` values</span></span>
+<span id="cb229-84"><a href="forcats.html#cb229-84" aria-hidden="true"></a><span class="kw">table</span>(<span class="kw">fct_lump_min</span>(x, <span class="dt">min =</span> <span class="dv">10</span>))</span>
+<span id="cb229-85"><a href="forcats.html#cb229-85" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb229-86"><a href="forcats.html#cb229-86" aria-hidden="true"></a><span class="co">## Other </span></span>
+<span id="cb229-87"><a href="forcats.html#cb229-87" aria-hidden="true"></a><span class="co">##    50</span></span></code></pre></div>
 <p>以第 5 章中 <strong>退伍軍人肺癌臨床試驗</strong> 資料 (<strong>survVATrial.csv</strong>) 為例,
 細胞型態 <code>cellcode</code> 有 4 種類別.
 將類別水準合併成 2 種主要類別, 其餘類別合併.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="forcats.html#cb224-1" aria-hidden="true"></a>dd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./Data/survVATrial.csv&quot;</span>,</span>
-<span id="cb224-2"><a href="forcats.html#cb224-2" aria-hidden="true"></a>                 <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb224-3"><a href="forcats.html#cb224-3" aria-hidden="true"></a>                 <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
-<span id="cb224-4"><a href="forcats.html#cb224-4" aria-hidden="true"></a>                 <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
-<span id="cb224-5"><a href="forcats.html#cb224-5" aria-hidden="true"></a>                 <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
-<span id="cb224-6"><a href="forcats.html#cb224-6" aria-hidden="true"></a>                 <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
-<span id="cb224-7"><a href="forcats.html#cb224-7" aria-hidden="true"></a>                 <span class="co"># col.names,</span></span>
-<span id="cb224-8"><a href="forcats.html#cb224-8" aria-hidden="true"></a>                 <span class="dt">as.is =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb224-9"><a href="forcats.html#cb224-9" aria-hidden="true"></a>                 <span class="co"># as.is = !stringsAsFactors,</span></span>
-<span id="cb224-10"><a href="forcats.html#cb224-10" aria-hidden="true"></a>                 <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
-<span id="cb224-11"><a href="forcats.html#cb224-11" aria-hidden="true"></a><span class="kw">head</span>(dd)</span>
-<span id="cb224-12"><a href="forcats.html#cb224-12" aria-hidden="true"></a><span class="co">##   treat cellcode time censor diagtime kps age prior</span></span>
-<span id="cb224-13"><a href="forcats.html#cb224-13" aria-hidden="true"></a><span class="co">## 1     0        1   72      1       60   7  69     0</span></span>
-<span id="cb224-14"><a href="forcats.html#cb224-14" aria-hidden="true"></a><span class="co">## 2     0        1  411      1       70   5  64    10</span></span>
-<span id="cb224-15"><a href="forcats.html#cb224-15" aria-hidden="true"></a><span class="co">## 3     0        1  228      1       60   3  38     0</span></span>
-<span id="cb224-16"><a href="forcats.html#cb224-16" aria-hidden="true"></a><span class="co">## 4     0        1  126      1       60   9  63    10</span></span>
-<span id="cb224-17"><a href="forcats.html#cb224-17" aria-hidden="true"></a><span class="co">## 5     0        1  118      1       70  11  65    10</span></span>
-<span id="cb224-18"><a href="forcats.html#cb224-18" aria-hidden="true"></a><span class="co">## 6     0        1   10      1       20   5  49     0</span></span>
-<span id="cb224-19"><a href="forcats.html#cb224-19" aria-hidden="true"></a><span class="kw">str</span>(dd)</span>
-<span id="cb224-20"><a href="forcats.html#cb224-20" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	137 obs. of  8 variables:</span></span>
-<span id="cb224-21"><a href="forcats.html#cb224-21" aria-hidden="true"></a><span class="co">##  $ treat   : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb224-22"><a href="forcats.html#cb224-22" aria-hidden="true"></a><span class="co">##  $ cellcode: int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb224-23"><a href="forcats.html#cb224-23" aria-hidden="true"></a><span class="co">##  $ time    : int  72 411 228 126 118 10 82 110 314 100 ...</span></span>
-<span id="cb224-24"><a href="forcats.html#cb224-24" aria-hidden="true"></a><span class="co">##  $ censor  : int  1 1 1 1 1 1 1 1 1 0 ...</span></span>
-<span id="cb224-25"><a href="forcats.html#cb224-25" aria-hidden="true"></a><span class="co">##  $ diagtime: int  60 70 60 60 70 20 40 80 50 70 ...</span></span>
-<span id="cb224-26"><a href="forcats.html#cb224-26" aria-hidden="true"></a><span class="co">##  $ kps     : int  7 5 3 9 11 5 10 29 18 6 ...</span></span>
-<span id="cb224-27"><a href="forcats.html#cb224-27" aria-hidden="true"></a><span class="co">##  $ age     : int  69 64 38 63 65 49 69 68 43 70 ...</span></span>
-<span id="cb224-28"><a href="forcats.html#cb224-28" aria-hidden="true"></a><span class="co">##  $ prior   : int  0 10 0 10 10 0 10 0 0 0 ...</span></span>
-<span id="cb224-29"><a href="forcats.html#cb224-29" aria-hidden="true"></a>dd<span class="op">$</span>treat &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
-<span id="cb224-30"><a href="forcats.html#cb224-30" aria-hidden="true"></a>dd<span class="op">$</span>cellcode &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>cellcode, </span>
-<span id="cb224-31"><a href="forcats.html#cb224-31" aria-hidden="true"></a>                      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;squamous&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;adeno&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
-<span id="cb224-32"><a href="forcats.html#cb224-32" aria-hidden="true"></a>dd<span class="op">$</span>censor &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>censor, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;survival&quot;</span>, <span class="st">&quot;dead&quot;</span>))</span>
-<span id="cb224-33"><a href="forcats.html#cb224-33" aria-hidden="true"></a>dd<span class="op">$</span>prior &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>prior, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
-<span id="cb224-34"><a href="forcats.html#cb224-34" aria-hidden="true"></a><span class="kw">head</span>(dd)</span>
-<span id="cb224-35"><a href="forcats.html#cb224-35" aria-hidden="true"></a><span class="co">##     treat cellcode time censor diagtime kps age prior</span></span>
-<span id="cb224-36"><a href="forcats.html#cb224-36" aria-hidden="true"></a><span class="co">## 1 placebo squamous   72   dead       60   7  69    no</span></span>
-<span id="cb224-37"><a href="forcats.html#cb224-37" aria-hidden="true"></a><span class="co">## 2 placebo squamous  411   dead       70   5  64   yes</span></span>
-<span id="cb224-38"><a href="forcats.html#cb224-38" aria-hidden="true"></a><span class="co">## 3 placebo squamous  228   dead       60   3  38    no</span></span>
-<span id="cb224-39"><a href="forcats.html#cb224-39" aria-hidden="true"></a><span class="co">## 4 placebo squamous  126   dead       60   9  63   yes</span></span>
-<span id="cb224-40"><a href="forcats.html#cb224-40" aria-hidden="true"></a><span class="co">## 5 placebo squamous  118   dead       70  11  65   yes</span></span>
-<span id="cb224-41"><a href="forcats.html#cb224-41" aria-hidden="true"></a><span class="co">## 6 placebo squamous   10   dead       20   5  49    no</span></span>
-<span id="cb224-42"><a href="forcats.html#cb224-42" aria-hidden="true"></a><span class="kw">str</span>(dd)</span>
-<span id="cb224-43"><a href="forcats.html#cb224-43" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	137 obs. of  8 variables:</span></span>
-<span id="cb224-44"><a href="forcats.html#cb224-44" aria-hidden="true"></a><span class="co">##  $ treat   : Factor w/ 2 levels &quot;placebo&quot;,&quot;test&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb224-45"><a href="forcats.html#cb224-45" aria-hidden="true"></a><span class="co">##  $ cellcode: Factor w/ 4 levels &quot;squamous&quot;,&quot;small&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb224-46"><a href="forcats.html#cb224-46" aria-hidden="true"></a><span class="co">##  $ time    : int  72 411 228 126 118 10 82 110 314 100 ...</span></span>
-<span id="cb224-47"><a href="forcats.html#cb224-47" aria-hidden="true"></a><span class="co">##  $ censor  : Factor w/ 2 levels &quot;survival&quot;,&quot;dead&quot;: 2 2 2 2 2 2 2 2 2 1 ...</span></span>
-<span id="cb224-48"><a href="forcats.html#cb224-48" aria-hidden="true"></a><span class="co">##  $ diagtime: int  60 70 60 60 70 20 40 80 50 70 ...</span></span>
-<span id="cb224-49"><a href="forcats.html#cb224-49" aria-hidden="true"></a><span class="co">##  $ kps     : int  7 5 3 9 11 5 10 29 18 6 ...</span></span>
-<span id="cb224-50"><a href="forcats.html#cb224-50" aria-hidden="true"></a><span class="co">##  $ age     : int  69 64 38 63 65 49 69 68 43 70 ...</span></span>
-<span id="cb224-51"><a href="forcats.html#cb224-51" aria-hidden="true"></a><span class="co">##  $ prior   : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 2 1 2 2 1 2 1 1 1 ...</span></span>
-<span id="cb224-52"><a href="forcats.html#cb224-52" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb224-53"><a href="forcats.html#cb224-53" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
-<span id="cb224-54"><a href="forcats.html#cb224-54" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb224-55"><a href="forcats.html#cb224-55" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
-<span id="cb224-56"><a href="forcats.html#cb224-56" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
-<span id="cb224-57"><a href="forcats.html#cb224-57" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb224-58"><a href="forcats.html#cb224-58" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cellcode =</span> <span class="kw">fct_lump</span>(cellcode, <span class="dt">n =</span> <span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb224-59"><a href="forcats.html#cb224-59" aria-hidden="true"></a><span class="st">  </span><span class="kw">table</span>()</span>
-<span id="cb224-60"><a href="forcats.html#cb224-60" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb224-61"><a href="forcats.html#cb224-61" aria-hidden="true"></a><span class="co">## small Other </span></span>
-<span id="cb224-62"><a href="forcats.html#cb224-62" aria-hidden="true"></a><span class="co">##    48    89</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="forcats.html#cb230-1" aria-hidden="true"></a>dd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./Data/survVATrial.csv&quot;</span>,</span>
+<span id="cb230-2"><a href="forcats.html#cb230-2" aria-hidden="true"></a>                 <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb230-3"><a href="forcats.html#cb230-3" aria-hidden="true"></a>                 <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb230-4"><a href="forcats.html#cb230-4" aria-hidden="true"></a>                 <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
+<span id="cb230-5"><a href="forcats.html#cb230-5" aria-hidden="true"></a>                 <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb230-6"><a href="forcats.html#cb230-6" aria-hidden="true"></a>                 <span class="dt">row.names =</span> <span class="ot">NULL</span>,</span>
+<span id="cb230-7"><a href="forcats.html#cb230-7" aria-hidden="true"></a>                 <span class="co"># col.names,</span></span>
+<span id="cb230-8"><a href="forcats.html#cb230-8" aria-hidden="true"></a>                 <span class="dt">as.is =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb230-9"><a href="forcats.html#cb230-9" aria-hidden="true"></a>                 <span class="co"># as.is = !stringsAsFactors,</span></span>
+<span id="cb230-10"><a href="forcats.html#cb230-10" aria-hidden="true"></a>                 <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb230-11"><a href="forcats.html#cb230-11" aria-hidden="true"></a><span class="kw">head</span>(dd)</span>
+<span id="cb230-12"><a href="forcats.html#cb230-12" aria-hidden="true"></a><span class="co">##   treat cellcode time censor diagtime kps age prior</span></span>
+<span id="cb230-13"><a href="forcats.html#cb230-13" aria-hidden="true"></a><span class="co">## 1     0        1   72      1       60   7  69     0</span></span>
+<span id="cb230-14"><a href="forcats.html#cb230-14" aria-hidden="true"></a><span class="co">## 2     0        1  411      1       70   5  64    10</span></span>
+<span id="cb230-15"><a href="forcats.html#cb230-15" aria-hidden="true"></a><span class="co">## 3     0        1  228      1       60   3  38     0</span></span>
+<span id="cb230-16"><a href="forcats.html#cb230-16" aria-hidden="true"></a><span class="co">## 4     0        1  126      1       60   9  63    10</span></span>
+<span id="cb230-17"><a href="forcats.html#cb230-17" aria-hidden="true"></a><span class="co">## 5     0        1  118      1       70  11  65    10</span></span>
+<span id="cb230-18"><a href="forcats.html#cb230-18" aria-hidden="true"></a><span class="co">## 6     0        1   10      1       20   5  49     0</span></span>
+<span id="cb230-19"><a href="forcats.html#cb230-19" aria-hidden="true"></a><span class="kw">str</span>(dd)</span>
+<span id="cb230-20"><a href="forcats.html#cb230-20" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:    137 obs. of  8 variables:</span></span>
+<span id="cb230-21"><a href="forcats.html#cb230-21" aria-hidden="true"></a><span class="co">##  $ treat   : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb230-22"><a href="forcats.html#cb230-22" aria-hidden="true"></a><span class="co">##  $ cellcode: int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb230-23"><a href="forcats.html#cb230-23" aria-hidden="true"></a><span class="co">##  $ time    : int  72 411 228 126 118 10 82 110 314 100 ...</span></span>
+<span id="cb230-24"><a href="forcats.html#cb230-24" aria-hidden="true"></a><span class="co">##  $ censor  : int  1 1 1 1 1 1 1 1 1 0 ...</span></span>
+<span id="cb230-25"><a href="forcats.html#cb230-25" aria-hidden="true"></a><span class="co">##  $ diagtime: int  60 70 60 60 70 20 40 80 50 70 ...</span></span>
+<span id="cb230-26"><a href="forcats.html#cb230-26" aria-hidden="true"></a><span class="co">##  $ kps     : int  7 5 3 9 11 5 10 29 18 6 ...</span></span>
+<span id="cb230-27"><a href="forcats.html#cb230-27" aria-hidden="true"></a><span class="co">##  $ age     : int  69 64 38 63 65 49 69 68 43 70 ...</span></span>
+<span id="cb230-28"><a href="forcats.html#cb230-28" aria-hidden="true"></a><span class="co">##  $ prior   : int  0 10 0 10 10 0 10 0 0 0 ...</span></span>
+<span id="cb230-29"><a href="forcats.html#cb230-29" aria-hidden="true"></a>dd<span class="op">$</span>treat &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
+<span id="cb230-30"><a href="forcats.html#cb230-30" aria-hidden="true"></a>dd<span class="op">$</span>cellcode &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>cellcode, </span>
+<span id="cb230-31"><a href="forcats.html#cb230-31" aria-hidden="true"></a>                      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;squamous&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;adeno&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
+<span id="cb230-32"><a href="forcats.html#cb230-32" aria-hidden="true"></a>dd<span class="op">$</span>censor &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>censor, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;survival&quot;</span>, <span class="st">&quot;dead&quot;</span>))</span>
+<span id="cb230-33"><a href="forcats.html#cb230-33" aria-hidden="true"></a>dd<span class="op">$</span>prior &lt;-<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>prior, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb230-34"><a href="forcats.html#cb230-34" aria-hidden="true"></a><span class="kw">head</span>(dd)</span>
+<span id="cb230-35"><a href="forcats.html#cb230-35" aria-hidden="true"></a><span class="co">##     treat cellcode time censor diagtime kps age prior</span></span>
+<span id="cb230-36"><a href="forcats.html#cb230-36" aria-hidden="true"></a><span class="co">## 1 placebo squamous   72   dead       60   7  69    no</span></span>
+<span id="cb230-37"><a href="forcats.html#cb230-37" aria-hidden="true"></a><span class="co">## 2 placebo squamous  411   dead       70   5  64   yes</span></span>
+<span id="cb230-38"><a href="forcats.html#cb230-38" aria-hidden="true"></a><span class="co">## 3 placebo squamous  228   dead       60   3  38    no</span></span>
+<span id="cb230-39"><a href="forcats.html#cb230-39" aria-hidden="true"></a><span class="co">## 4 placebo squamous  126   dead       60   9  63   yes</span></span>
+<span id="cb230-40"><a href="forcats.html#cb230-40" aria-hidden="true"></a><span class="co">## 5 placebo squamous  118   dead       70  11  65   yes</span></span>
+<span id="cb230-41"><a href="forcats.html#cb230-41" aria-hidden="true"></a><span class="co">## 6 placebo squamous   10   dead       20   5  49    no</span></span>
+<span id="cb230-42"><a href="forcats.html#cb230-42" aria-hidden="true"></a><span class="kw">str</span>(dd)</span>
+<span id="cb230-43"><a href="forcats.html#cb230-43" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:    137 obs. of  8 variables:</span></span>
+<span id="cb230-44"><a href="forcats.html#cb230-44" aria-hidden="true"></a><span class="co">##  $ treat   : Factor w/ 2 levels &quot;placebo&quot;,&quot;test&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb230-45"><a href="forcats.html#cb230-45" aria-hidden="true"></a><span class="co">##  $ cellcode: Factor w/ 4 levels &quot;squamous&quot;,&quot;small&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb230-46"><a href="forcats.html#cb230-46" aria-hidden="true"></a><span class="co">##  $ time    : int  72 411 228 126 118 10 82 110 314 100 ...</span></span>
+<span id="cb230-47"><a href="forcats.html#cb230-47" aria-hidden="true"></a><span class="co">##  $ censor  : Factor w/ 2 levels &quot;survival&quot;,&quot;dead&quot;: 2 2 2 2 2 2 2 2 2 1 ...</span></span>
+<span id="cb230-48"><a href="forcats.html#cb230-48" aria-hidden="true"></a><span class="co">##  $ diagtime: int  60 70 60 60 70 20 40 80 50 70 ...</span></span>
+<span id="cb230-49"><a href="forcats.html#cb230-49" aria-hidden="true"></a><span class="co">##  $ kps     : int  7 5 3 9 11 5 10 29 18 6 ...</span></span>
+<span id="cb230-50"><a href="forcats.html#cb230-50" aria-hidden="true"></a><span class="co">##  $ age     : int  69 64 38 63 65 49 69 68 43 70 ...</span></span>
+<span id="cb230-51"><a href="forcats.html#cb230-51" aria-hidden="true"></a><span class="co">##  $ prior   : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 2 1 2 2 1 2 1 1 1 ...</span></span>
+<span id="cb230-52"><a href="forcats.html#cb230-52" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb230-53"><a href="forcats.html#cb230-53" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
+<span id="cb230-54"><a href="forcats.html#cb230-54" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb230-55"><a href="forcats.html#cb230-55" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
+<span id="cb230-56"><a href="forcats.html#cb230-56" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
+<span id="cb230-57"><a href="forcats.html#cb230-57" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb230-58"><a href="forcats.html#cb230-58" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cellcode =</span> <span class="kw">fct_lump</span>(cellcode, <span class="dt">n =</span> <span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb230-59"><a href="forcats.html#cb230-59" aria-hidden="true"></a><span class="st">  </span><span class="kw">table</span>()</span>
+<span id="cb230-60"><a href="forcats.html#cb230-60" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb230-61"><a href="forcats.html#cb230-61" aria-hidden="true"></a><span class="co">## small Other </span></span>
+<span id="cb230-62"><a href="forcats.html#cb230-62" aria-hidden="true"></a><span class="co">##    48    89</span></span></code></pre></div>
 </div>
 <div id="類別水準的頻率排序函式-fct_infreq" class="section level2" number="11.5">
 <h2><span class="header-section-number">11.5</span> 類別水準的頻率排序函式 fct_infreq()</h2>
@@ -758,65 +777,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li><code>fct_inseq()</code>: 依照類別水準的儲存數值排序.</li>
 </ul>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="forcats.html#cb225-1" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>))</span>
-<span id="cb225-2"><a href="forcats.html#cb225-2" aria-hidden="true"></a>f</span>
-<span id="cb225-3"><a href="forcats.html#cb225-3" aria-hidden="true"></a><span class="co">## [1] b b a c c c</span></span>
-<span id="cb225-4"><a href="forcats.html#cb225-4" aria-hidden="true"></a><span class="co">## Levels: a b c</span></span>
-<span id="cb225-5"><a href="forcats.html#cb225-5" aria-hidden="true"></a><span class="kw">fct_inorder</span>(f)</span>
-<span id="cb225-6"><a href="forcats.html#cb225-6" aria-hidden="true"></a><span class="co">## [1] b b a c c c</span></span>
-<span id="cb225-7"><a href="forcats.html#cb225-7" aria-hidden="true"></a><span class="co">## Levels: b a c</span></span>
-<span id="cb225-8"><a href="forcats.html#cb225-8" aria-hidden="true"></a><span class="kw">fct_infreq</span>(f)</span>
-<span id="cb225-9"><a href="forcats.html#cb225-9" aria-hidden="true"></a><span class="co">## [1] b b a c c c</span></span>
-<span id="cb225-10"><a href="forcats.html#cb225-10" aria-hidden="true"></a><span class="co">## Levels: c b a</span></span>
-<span id="cb225-11"><a href="forcats.html#cb225-11" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb225-12"><a href="forcats.html#cb225-12" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;3&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;1&quot;</span>))</span>
-<span id="cb225-13"><a href="forcats.html#cb225-13" aria-hidden="true"></a>f</span>
-<span id="cb225-14"><a href="forcats.html#cb225-14" aria-hidden="true"></a><span class="co">## [1] 1 2 3</span></span>
-<span id="cb225-15"><a href="forcats.html#cb225-15" aria-hidden="true"></a><span class="co">## Levels: 3 2 1</span></span>
-<span id="cb225-16"><a href="forcats.html#cb225-16" aria-hidden="true"></a><span class="co">#&gt; Levels: 3 2 1</span></span>
-<span id="cb225-17"><a href="forcats.html#cb225-17" aria-hidden="true"></a><span class="kw">fct_inseq</span>(f)</span>
-<span id="cb225-18"><a href="forcats.html#cb225-18" aria-hidden="true"></a><span class="co">## [1] 1 2 3</span></span>
-<span id="cb225-19"><a href="forcats.html#cb225-19" aria-hidden="true"></a><span class="co">## Levels: 1 2 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="forcats.html#cb231-1" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>))</span>
+<span id="cb231-2"><a href="forcats.html#cb231-2" aria-hidden="true"></a>f</span>
+<span id="cb231-3"><a href="forcats.html#cb231-3" aria-hidden="true"></a><span class="co">## [1] b b a c c c</span></span>
+<span id="cb231-4"><a href="forcats.html#cb231-4" aria-hidden="true"></a><span class="co">## Levels: a b c</span></span>
+<span id="cb231-5"><a href="forcats.html#cb231-5" aria-hidden="true"></a><span class="kw">fct_inorder</span>(f)</span>
+<span id="cb231-6"><a href="forcats.html#cb231-6" aria-hidden="true"></a><span class="co">## [1] b b a c c c</span></span>
+<span id="cb231-7"><a href="forcats.html#cb231-7" aria-hidden="true"></a><span class="co">## Levels: b a c</span></span>
+<span id="cb231-8"><a href="forcats.html#cb231-8" aria-hidden="true"></a><span class="kw">fct_infreq</span>(f)</span>
+<span id="cb231-9"><a href="forcats.html#cb231-9" aria-hidden="true"></a><span class="co">## [1] b b a c c c</span></span>
+<span id="cb231-10"><a href="forcats.html#cb231-10" aria-hidden="true"></a><span class="co">## Levels: c b a</span></span>
+<span id="cb231-11"><a href="forcats.html#cb231-11" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb231-12"><a href="forcats.html#cb231-12" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;3&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;1&quot;</span>))</span>
+<span id="cb231-13"><a href="forcats.html#cb231-13" aria-hidden="true"></a>f</span>
+<span id="cb231-14"><a href="forcats.html#cb231-14" aria-hidden="true"></a><span class="co">## [1] 1 2 3</span></span>
+<span id="cb231-15"><a href="forcats.html#cb231-15" aria-hidden="true"></a><span class="co">## Levels: 3 2 1</span></span>
+<span id="cb231-16"><a href="forcats.html#cb231-16" aria-hidden="true"></a><span class="co">#&gt; Levels: 3 2 1</span></span>
+<span id="cb231-17"><a href="forcats.html#cb231-17" aria-hidden="true"></a><span class="kw">fct_inseq</span>(f)</span>
+<span id="cb231-18"><a href="forcats.html#cb231-18" aria-hidden="true"></a><span class="co">## [1] 1 2 3</span></span>
+<span id="cb231-19"><a href="forcats.html#cb231-19" aria-hidden="true"></a><span class="co">## Levels: 1 2 3</span></span></code></pre></div>
 <p>以第 5 章中 <strong>退伍軍人肺癌臨床試驗</strong> 資料 (<strong>survVATrial.csv</strong>) 為例,
 細胞型態 <code>cellcode</code> 有 4 種類別.</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="forcats.html#cb226-1" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
-<span id="cb226-2"><a href="forcats.html#cb226-2" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb226-3"><a href="forcats.html#cb226-3" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
-<span id="cb226-4"><a href="forcats.html#cb226-4" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
-<span id="cb226-5"><a href="forcats.html#cb226-5" aria-hidden="true"></a><span class="co">## fct_inorder()</span></span>
-<span id="cb226-6"><a href="forcats.html#cb226-6" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb226-7"><a href="forcats.html#cb226-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cellcode =</span> <span class="kw">fct_inorder</span>(cellcode)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb226-8"><a href="forcats.html#cb226-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">table</span>()</span>
-<span id="cb226-9"><a href="forcats.html#cb226-9" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb226-10"><a href="forcats.html#cb226-10" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
-<span id="cb226-11"><a href="forcats.html#cb226-11" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
-<span id="cb226-12"><a href="forcats.html#cb226-12" aria-hidden="true"></a><span class="co">## fct_infreq()</span></span>
-<span id="cb226-13"><a href="forcats.html#cb226-13" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb226-14"><a href="forcats.html#cb226-14" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cellcode =</span> <span class="kw">fct_infreq</span>(cellcode)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb226-15"><a href="forcats.html#cb226-15" aria-hidden="true"></a><span class="st">  </span><span class="kw">table</span>()</span>
-<span id="cb226-16"><a href="forcats.html#cb226-16" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb226-17"><a href="forcats.html#cb226-17" aria-hidden="true"></a><span class="co">##    small squamous    adeno    large </span></span>
-<span id="cb226-18"><a href="forcats.html#cb226-18" aria-hidden="true"></a><span class="co">##       48       35       27       27</span></span>
-<span id="cb226-19"><a href="forcats.html#cb226-19" aria-hidden="true"></a><span class="co">## fct_inseq()</span></span>
-<span id="cb226-20"><a href="forcats.html#cb226-20" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb226-21"><a href="forcats.html#cb226-21" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cellcode =</span> <span class="kw">fct_inseq</span>(<span class="kw">factor</span>(<span class="kw">as.numeric</span>(cellcode)))) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
-<span id="cb226-22"><a href="forcats.html#cb226-22" aria-hidden="true"></a><span class="co">## .</span></span>
-<span id="cb226-23"><a href="forcats.html#cb226-23" aria-hidden="true"></a><span class="co">##  1  2  3  4 </span></span>
-<span id="cb226-24"><a href="forcats.html#cb226-24" aria-hidden="true"></a><span class="co">## 35 48 27 27</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="forcats.html#cb232-1" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
+<span id="cb232-2"><a href="forcats.html#cb232-2" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb232-3"><a href="forcats.html#cb232-3" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
+<span id="cb232-4"><a href="forcats.html#cb232-4" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
+<span id="cb232-5"><a href="forcats.html#cb232-5" aria-hidden="true"></a><span class="co">## fct_inorder()</span></span>
+<span id="cb232-6"><a href="forcats.html#cb232-6" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb232-7"><a href="forcats.html#cb232-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cellcode =</span> <span class="kw">fct_inorder</span>(cellcode)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb232-8"><a href="forcats.html#cb232-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">table</span>()</span>
+<span id="cb232-9"><a href="forcats.html#cb232-9" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb232-10"><a href="forcats.html#cb232-10" aria-hidden="true"></a><span class="co">## squamous    small    adeno    large </span></span>
+<span id="cb232-11"><a href="forcats.html#cb232-11" aria-hidden="true"></a><span class="co">##       35       48       27       27</span></span>
+<span id="cb232-12"><a href="forcats.html#cb232-12" aria-hidden="true"></a><span class="co">## fct_infreq()</span></span>
+<span id="cb232-13"><a href="forcats.html#cb232-13" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb232-14"><a href="forcats.html#cb232-14" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cellcode =</span> <span class="kw">fct_infreq</span>(cellcode)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb232-15"><a href="forcats.html#cb232-15" aria-hidden="true"></a><span class="st">  </span><span class="kw">table</span>()</span>
+<span id="cb232-16"><a href="forcats.html#cb232-16" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb232-17"><a href="forcats.html#cb232-17" aria-hidden="true"></a><span class="co">##    small squamous    adeno    large </span></span>
+<span id="cb232-18"><a href="forcats.html#cb232-18" aria-hidden="true"></a><span class="co">##       48       35       27       27</span></span>
+<span id="cb232-19"><a href="forcats.html#cb232-19" aria-hidden="true"></a><span class="co">## fct_inseq()</span></span>
+<span id="cb232-20"><a href="forcats.html#cb232-20" aria-hidden="true"></a>dd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(cellcode) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb232-21"><a href="forcats.html#cb232-21" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cellcode =</span> <span class="kw">fct_inseq</span>(<span class="kw">factor</span>(<span class="kw">as.numeric</span>(cellcode)))) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</span>
+<span id="cb232-22"><a href="forcats.html#cb232-22" aria-hidden="true"></a><span class="co">## .</span></span>
+<span id="cb232-23"><a href="forcats.html#cb232-23" aria-hidden="true"></a><span class="co">##  1  2  3  4 </span></span>
+<span id="cb232-24"><a href="forcats.html#cb232-24" aria-hidden="true"></a><span class="co">## 35 48 27 27</span></span></code></pre></div>
 <p>以第 5 章中 <strong>退伍軍人肺癌臨床試驗</strong> 資料 (<strong>survVATrial.csv</strong>) 為例,
 細胞型態 <code>cellcode</code> 有 4 種類別.
 首先繪製長條圖.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="forcats.html#cb227-1" aria-hidden="true"></a><span class="co">## barplot</span></span>
-<span id="cb227-2"><a href="forcats.html#cb227-2" aria-hidden="true"></a><span class="kw">ggplot</span>(dd, <span class="kw">aes</span>(<span class="dt">x =</span> cellcode)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb227-3"><a href="forcats.html#cb227-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb227-4"><a href="forcats.html#cb227-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
-<p><img src="r4biost_files/figure-html/unnamed-chunk-156-1.png" width="432" />
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="forcats.html#cb233-1" aria-hidden="true"></a><span class="co">## barplot</span></span>
+<span id="cb233-2"><a href="forcats.html#cb233-2" aria-hidden="true"></a><span class="kw">ggplot</span>(dd, <span class="kw">aes</span>(<span class="dt">x =</span> cellcode)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb233-3"><a href="forcats.html#cb233-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb233-4"><a href="forcats.html#cb233-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<p><img src="r4biost_files/figure-html/unnamed-chunk-162-1.png" width="432" />
 圖中的類別出現並非照類別水準的頻率順序,
 函式 <code>fct_infreq()</code> 可將類別水準的頻率排序記錄.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="forcats.html#cb228-1" aria-hidden="true"></a><span class="kw">ggplot</span>(dd, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_infreq</span>(cellcode))) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb228-2"><a href="forcats.html#cb228-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb228-3"><a href="forcats.html#cb228-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
-<p><img src="r4biost_files/figure-html/unnamed-chunk-157-1.png" width="432" /></p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="forcats.html#cb234-1" aria-hidden="true"></a><span class="kw">ggplot</span>(dd, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_infreq</span>(cellcode))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb234-2"><a href="forcats.html#cb234-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb234-3"><a href="forcats.html#cb234-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<p><img src="r4biost_files/figure-html/unnamed-chunk-163-1.png" width="432" /></p>
 </div>
 <div id="依照其他變數將類別重新排序函式-fct_reorder" class="section level2" number="11.6">
 <h2><span class="header-section-number">11.6</span> 依照其他變數將類別重新排序函式 fct_reorder()</h2>
@@ -840,41 +859,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>.fun</code>: 為摘要函式.</li>
 <li><code>.desc = FALSE</code> 由小到大排序.</li>
 </ul>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="forcats.html#cb229-1" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</span>
-<span id="cb229-2"><a href="forcats.html#cb229-2" aria-hidden="true"></a><span class="kw">fct_rev</span>(f)</span>
-<span id="cb229-3"><a href="forcats.html#cb229-3" aria-hidden="true"></a><span class="co">## [1] a b c</span></span>
-<span id="cb229-4"><a href="forcats.html#cb229-4" aria-hidden="true"></a><span class="co">## Levels: c b a</span></span>
-<span id="cb229-5"><a href="forcats.html#cb229-5" aria-hidden="true"></a><span class="kw">fct_shuffle</span>(f)</span>
-<span id="cb229-6"><a href="forcats.html#cb229-6" aria-hidden="true"></a><span class="co">## [1] a b c</span></span>
-<span id="cb229-7"><a href="forcats.html#cb229-7" aria-hidden="true"></a><span class="co">## Levels: a c b</span></span>
-<span id="cb229-8"><a href="forcats.html#cb229-8" aria-hidden="true"></a><span class="kw">fct_shuffle</span>(f)</span>
-<span id="cb229-9"><a href="forcats.html#cb229-9" aria-hidden="true"></a><span class="co">## [1] a b c</span></span>
-<span id="cb229-10"><a href="forcats.html#cb229-10" aria-hidden="true"></a><span class="co">## Levels: c b a</span></span>
-<span id="cb229-11"><a href="forcats.html#cb229-11" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb229-12"><a href="forcats.html#cb229-12" aria-hidden="true"></a>df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">tribble</span>(</span>
-<span id="cb229-13"><a href="forcats.html#cb229-13" aria-hidden="true"></a>  <span class="op">~</span>color,     <span class="op">~</span>a, <span class="op">~</span>b,</span>
-<span id="cb229-14"><a href="forcats.html#cb229-14" aria-hidden="true"></a>  <span class="st">&quot;blue&quot;</span>,      <span class="dv">1</span>,  <span class="dv">2</span>,</span>
-<span id="cb229-15"><a href="forcats.html#cb229-15" aria-hidden="true"></a>  <span class="st">&quot;green&quot;</span>,     <span class="dv">6</span>,  <span class="dv">2</span>,</span>
-<span id="cb229-16"><a href="forcats.html#cb229-16" aria-hidden="true"></a>  <span class="st">&quot;purple&quot;</span>,    <span class="dv">3</span>,  <span class="dv">3</span>,</span>
-<span id="cb229-17"><a href="forcats.html#cb229-17" aria-hidden="true"></a>  <span class="st">&quot;red&quot;</span>,       <span class="dv">2</span>,  <span class="dv">3</span>,</span>
-<span id="cb229-18"><a href="forcats.html#cb229-18" aria-hidden="true"></a>  <span class="st">&quot;yellow&quot;</span>,    <span class="dv">5</span>,  <span class="dv">1</span></span>
-<span id="cb229-19"><a href="forcats.html#cb229-19" aria-hidden="true"></a>)</span>
-<span id="cb229-20"><a href="forcats.html#cb229-20" aria-hidden="true"></a>df<span class="op">$</span>color &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>color)</span>
-<span id="cb229-21"><a href="forcats.html#cb229-21" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb229-22"><a href="forcats.html#cb229-22" aria-hidden="true"></a><span class="kw">fct_reorder</span>(df<span class="op">$</span>color, df<span class="op">$</span>a, min)</span>
-<span id="cb229-23"><a href="forcats.html#cb229-23" aria-hidden="true"></a><span class="co">## [1] blue   green  purple red    yellow</span></span>
-<span id="cb229-24"><a href="forcats.html#cb229-24" aria-hidden="true"></a><span class="co">## Levels: blue red purple yellow green</span></span>
-<span id="cb229-25"><a href="forcats.html#cb229-25" aria-hidden="true"></a><span class="kw">fct_reorder2</span>(df<span class="op">$</span>color, df<span class="op">$</span>a, df<span class="op">$</span>b)</span>
-<span id="cb229-26"><a href="forcats.html#cb229-26" aria-hidden="true"></a><span class="co">## [1] blue   green  purple red    yellow</span></span>
-<span id="cb229-27"><a href="forcats.html#cb229-27" aria-hidden="true"></a><span class="co">## Levels: purple red blue green yellow</span></span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="forcats.html#cb235-1" aria-hidden="true"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</span>
+<span id="cb235-2"><a href="forcats.html#cb235-2" aria-hidden="true"></a><span class="kw">fct_rev</span>(f)</span>
+<span id="cb235-3"><a href="forcats.html#cb235-3" aria-hidden="true"></a><span class="co">## [1] a b c</span></span>
+<span id="cb235-4"><a href="forcats.html#cb235-4" aria-hidden="true"></a><span class="co">## Levels: c b a</span></span>
+<span id="cb235-5"><a href="forcats.html#cb235-5" aria-hidden="true"></a><span class="kw">fct_shuffle</span>(f)</span>
+<span id="cb235-6"><a href="forcats.html#cb235-6" aria-hidden="true"></a><span class="co">## [1] a b c</span></span>
+<span id="cb235-7"><a href="forcats.html#cb235-7" aria-hidden="true"></a><span class="co">## Levels: a c b</span></span>
+<span id="cb235-8"><a href="forcats.html#cb235-8" aria-hidden="true"></a><span class="kw">fct_shuffle</span>(f)</span>
+<span id="cb235-9"><a href="forcats.html#cb235-9" aria-hidden="true"></a><span class="co">## [1] a b c</span></span>
+<span id="cb235-10"><a href="forcats.html#cb235-10" aria-hidden="true"></a><span class="co">## Levels: c b a</span></span>
+<span id="cb235-11"><a href="forcats.html#cb235-11" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb235-12"><a href="forcats.html#cb235-12" aria-hidden="true"></a>df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">tribble</span>(</span>
+<span id="cb235-13"><a href="forcats.html#cb235-13" aria-hidden="true"></a>  <span class="op">~</span>color,     <span class="op">~</span>a, <span class="op">~</span>b,</span>
+<span id="cb235-14"><a href="forcats.html#cb235-14" aria-hidden="true"></a>  <span class="st">&quot;blue&quot;</span>,      <span class="dv">1</span>,  <span class="dv">2</span>,</span>
+<span id="cb235-15"><a href="forcats.html#cb235-15" aria-hidden="true"></a>  <span class="st">&quot;green&quot;</span>,     <span class="dv">6</span>,  <span class="dv">2</span>,</span>
+<span id="cb235-16"><a href="forcats.html#cb235-16" aria-hidden="true"></a>  <span class="st">&quot;purple&quot;</span>,    <span class="dv">3</span>,  <span class="dv">3</span>,</span>
+<span id="cb235-17"><a href="forcats.html#cb235-17" aria-hidden="true"></a>  <span class="st">&quot;red&quot;</span>,       <span class="dv">2</span>,  <span class="dv">3</span>,</span>
+<span id="cb235-18"><a href="forcats.html#cb235-18" aria-hidden="true"></a>  <span class="st">&quot;yellow&quot;</span>,    <span class="dv">5</span>,  <span class="dv">1</span></span>
+<span id="cb235-19"><a href="forcats.html#cb235-19" aria-hidden="true"></a>)</span>
+<span id="cb235-20"><a href="forcats.html#cb235-20" aria-hidden="true"></a>df<span class="op">$</span>color &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>color)</span>
+<span id="cb235-21"><a href="forcats.html#cb235-21" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb235-22"><a href="forcats.html#cb235-22" aria-hidden="true"></a><span class="kw">fct_reorder</span>(df<span class="op">$</span>color, df<span class="op">$</span>a, min)</span>
+<span id="cb235-23"><a href="forcats.html#cb235-23" aria-hidden="true"></a><span class="co">## [1] blue   green  purple red    yellow</span></span>
+<span id="cb235-24"><a href="forcats.html#cb235-24" aria-hidden="true"></a><span class="co">## Levels: blue red purple yellow green</span></span>
+<span id="cb235-25"><a href="forcats.html#cb235-25" aria-hidden="true"></a><span class="kw">fct_reorder2</span>(df<span class="op">$</span>color, df<span class="op">$</span>a, df<span class="op">$</span>b)</span>
+<span id="cb235-26"><a href="forcats.html#cb235-26" aria-hidden="true"></a><span class="co">## [1] blue   green  purple red    yellow</span></span>
+<span id="cb235-27"><a href="forcats.html#cb235-27" aria-hidden="true"></a><span class="co">## Levels: purple red blue green yellow</span></span></code></pre></div>
 <p>以第 5 章中 <strong>退伍軍人肺癌臨床試驗</strong> 資料 (<strong>survVATrial.csv</strong>) 為例,
 細胞型態 <code>cellcode</code> 有 4 種類別.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="forcats.html#cb230-1" aria-hidden="true"></a><span class="kw">boxplot</span>(time <span class="op">~</span><span class="st"> </span>cellcode, <span class="dt">data =</span> dd)</span></code></pre></div>
-<p><img src="r4biost_files/figure-html/unnamed-chunk-159-1.png" width="432" /></p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="forcats.html#cb231-1" aria-hidden="true"></a><span class="kw">boxplot</span>(time <span class="op">~</span><span class="st"> </span><span class="kw">fct_reorder</span>(cellcode, time), <span class="dt">data =</span> dd)</span></code></pre></div>
-<p><img src="r4biost_files/figure-html/unnamed-chunk-159-2.png" width="432" /></p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="forcats.html#cb232-1" aria-hidden="true"></a><span class="kw">boxplot</span>(time <span class="op">~</span><span class="st"> </span><span class="kw">fct_reorder</span>(cellcode, time, <span class="dt">.desc =</span> <span class="ot">TRUE</span>), <span class="dt">data =</span> dd)</span></code></pre></div>
-<p><img src="r4biost_files/figure-html/unnamed-chunk-159-3.png" width="432" /></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="forcats.html#cb236-1" aria-hidden="true"></a><span class="kw">boxplot</span>(time <span class="op">~</span><span class="st"> </span>cellcode, <span class="dt">data =</span> dd)</span></code></pre></div>
+<p><img src="r4biost_files/figure-html/unnamed-chunk-165-1.png" width="432" /></p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="forcats.html#cb237-1" aria-hidden="true"></a><span class="kw">boxplot</span>(time <span class="op">~</span><span class="st"> </span><span class="kw">fct_reorder</span>(cellcode, time), <span class="dt">data =</span> dd)</span></code></pre></div>
+<p><img src="r4biost_files/figure-html/unnamed-chunk-165-2.png" width="432" /></p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="forcats.html#cb238-1" aria-hidden="true"></a><span class="kw">boxplot</span>(time <span class="op">~</span><span class="st"> </span><span class="kw">fct_reorder</span>(cellcode, time, <span class="dt">.desc =</span> <span class="ot">TRUE</span>), <span class="dt">data =</span> dd)</span></code></pre></div>
+<p><img src="r4biost_files/figure-html/unnamed-chunk-165-3.png" width="432" /></p>
 
 </div>
 </div>

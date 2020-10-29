@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 13 統計與醫學 | R 資料科學與統計</title>
   <meta name="description" content="Chapter 13 統計與醫學 | R 資料科學與統計" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 13 統計與醫學 | R 資料科學與統計" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="林建甫 Jeff Lin" />
 
 
-<meta name="date" content="2020-10-17" />
+<meta name="date" content="2020-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +32,8 @@
   
   
 <link rel="prev" href="lubridate.html"/>
-<link rel="next" href="applications.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<link rel="next" href="DataVariable.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -256,12 +258,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
 <li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
 <li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
-<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
-<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
-<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
-<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
-<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
-<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#向量-if_else"><i class="fa fa-check"></i><b>8.6.5</b> 向量 <code>if_else()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#變數重新命名-rename"><i class="fa fa-check"></i><b>8.6.6</b> 變數重新命名 <code>rename()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#移除缺失資料-drop_na"><i class="fa fa-check"></i><b>8.6.7</b> 移除缺失資料 <code>drop_na()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.8</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.9</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.10</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.11" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.11</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.12" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.12</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.13" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.13</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
 <li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
@@ -330,13 +335,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="StatIntro.html"><a href="StatIntro.html#醫學研究資料"><i class="fa fa-check"></i><b>13.3</b> 醫學研究資料</a></li>
 <li class="chapter" data-level="13.4" data-path="StatIntro.html"><a href="StatIntro.html#統計計算與統計軟體"><i class="fa fa-check"></i><b>13.4</b> 統計計算與統計軟體</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>14</b> Applications</a>
+<li class="chapter" data-level="14" data-path="DataVariable.html"><a href="DataVariable.html"><i class="fa fa-check"></i><b>14</b> 資料與變數</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>14.1</b> Example one</a></li>
-<li class="chapter" data-level="14.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>14.2</b> Example two</a></li>
+<li class="chapter" data-level="14.1" data-path="DataVariable.html"><a href="DataVariable.html#醫學研究實例"><i class="fa fa-check"></i><b>14.1</b> 醫學研究實例</a></li>
+<li class="chapter" data-level="14.2" data-path="DataVariable.html"><a href="DataVariable.html#資料與變數-data-and-variables"><i class="fa fa-check"></i><b>14.2</b> 資料與變數 Data and Variables</a></li>
+<li class="chapter" data-level="14.3" data-path="DataVariable.html"><a href="DataVariable.html#變數分類"><i class="fa fa-check"></i><b>14.3</b> 變數分類</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="DataVariable.html"><a href="DataVariable.html#統計與變數分類"><i class="fa fa-check"></i><b>14.3.1</b> 統計與變數分類</a></li>
+<li class="chapter" data-level="14.3.2" data-path="DataVariable.html"><a href="DataVariable.html#資料數位化與變數分類"><i class="fa fa-check"></i><b>14.3.2</b> 資料數位化與變數分類</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>15</b> Final Words</a></li>
-<li class="chapter" data-level="16" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>16</b> Temp</a></li>
+<li class="chapter" data-level="14.4" data-path="DataVariable.html"><a href="DataVariable.html#單變量-雙變量與多變量"><i class="fa fa-check"></i><b>14.4</b> 單變量, 雙變量與多變量</a></li>
+<li class="chapter" data-level="14.5" data-path="DataVariable.html"><a href="DataVariable.html#資料輸入與儲存"><i class="fa fa-check"></i><b>14.5</b> 資料輸入與儲存</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>15</b> Applications</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>15.1</b> Example one</a></li>
+<li class="chapter" data-level="15.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>15.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>16</b> Final Words</a></li>
+<li class="chapter" data-level="17" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>17</b> Temp</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -567,33 +584,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Table 1: 糖尿病防治臨床試驗變數說明</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="StatIntro.html#cb247-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb247-2"><a href="StatIntro.html#cb247-2" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;C:/RData/DMDCCThba1c6.csv&quot;</span>,</span>
-<span id="cb247-3"><a href="StatIntro.html#cb247-3" aria-hidden="true"></a>                      <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
-<span id="cb247-4"><a href="StatIntro.html#cb247-4" aria-hidden="true"></a>                      <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb247-5"><a href="StatIntro.html#cb247-5" aria-hidden="true"></a><span class="co"># glimpse(dd)</span></span>
-<span id="cb247-6"><a href="StatIntro.html#cb247-6" aria-hidden="true"></a>dd<span class="op">$</span>treat =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
-<span id="cb247-7"><a href="StatIntro.html#cb247-7" aria-hidden="true"></a>dd<span class="op">$</span>neur0 =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>neur0, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
-<span id="cb247-8"><a href="StatIntro.html#cb247-8" aria-hidden="true"></a>dd<span class="op">$</span>microalb =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>microalb, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
-<span id="cb247-9"><a href="StatIntro.html#cb247-9" aria-hidden="true"></a>dd<span class="op">$</span>adult =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>adult, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
-<span id="cb247-10"><a href="StatIntro.html#cb247-10" aria-hidden="true"></a>dd<span class="op">$</span>female =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>female, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
-<span id="cb247-11"><a href="StatIntro.html#cb247-11" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
-<span id="cb247-12"><a href="StatIntro.html#cb247-12" aria-hidden="true"></a><span class="co">## # A tibble: 1,441 x 21</span></span>
-<span id="cb247-13"><a href="StatIntro.html#cb247-13" aria-hidden="true"></a><span class="co">##      id treat   etdrs0 neur0  aer0 microalb quart duration female   age adult cpeptide   bmi</span></span>
-<span id="cb247-14"><a href="StatIntro.html#cb247-14" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb247-15"><a href="StatIntro.html#cb247-15" aria-hidden="true"></a><span class="co">## 1     1 test         3 no    15.8  no          36      178 female    17 no        0.09  21.2</span></span>
-<span id="cb247-16"><a href="StatIntro.html#cb247-16" aria-hidden="true"></a><span class="co">## 2     2 placebo      8 no    11.5  yes         20      142 male      29 yes       0.17  22.9</span></span>
-<span id="cb247-17"><a href="StatIntro.html#cb247-17" aria-hidden="true"></a><span class="co">## 3     3 placebo      7 yes   36    yes         12      175 male      35 yes       0.01  26.6</span></span>
-<span id="cb247-18"><a href="StatIntro.html#cb247-18" aria-hidden="true"></a><span class="co">## 4     4 test         1 no     4.32 no          36       31 female    14 no        0.18  16.2</span></span>
-<span id="cb247-19"><a href="StatIntro.html#cb247-19" aria-hidden="true"></a><span class="co">## 5     5 test         2 no     7.2  no          36       72 male      32 yes       0.03  26.3</span></span>
-<span id="cb247-20"><a href="StatIntro.html#cb247-20" aria-hidden="true"></a><span class="co">##   hba1cbase hba1c0 hba1c1 hba1c2 hba1c3 hba1c4 hba1c5 hba1c6</span></span>
-<span id="cb247-21"><a href="StatIntro.html#cb247-21" aria-hidden="true"></a><span class="co">##       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span id="cb247-22"><a href="StatIntro.html#cb247-22" aria-hidden="true"></a><span class="co">## 1      9.63   9.63   8.91   8.72   8.87   8.81   8.76   8.62</span></span>
-<span id="cb247-23"><a href="StatIntro.html#cb247-23" aria-hidden="true"></a><span class="co">## 2      8.76   8.76   9.30   9.36   9.39   9.30   9.15   9.10</span></span>
-<span id="cb247-24"><a href="StatIntro.html#cb247-24" aria-hidden="true"></a><span class="co">## 3      7.93   7.93   8.28   7.92   7.96   7.97   7.94   7.95</span></span>
-<span id="cb247-25"><a href="StatIntro.html#cb247-25" aria-hidden="true"></a><span class="co">## 4      7.62   7.62   8.65   8.75   8.88   8.85   8.82   8.56</span></span>
-<span id="cb247-26"><a href="StatIntro.html#cb247-26" aria-hidden="true"></a><span class="co">## 5      8.53   8.53   7.04   7.40   7.49   7.72   7.83   7.81</span></span>
-<span id="cb247-27"><a href="StatIntro.html#cb247-27" aria-hidden="true"></a><span class="co">## # ... with 1,436 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="StatIntro.html#cb253-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb253-2"><a href="StatIntro.html#cb253-2" aria-hidden="true"></a>dd &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;./Data/DMDCCThba1c6.csv&quot;</span>,</span>
+<span id="cb253-3"><a href="StatIntro.html#cb253-3" aria-hidden="true"></a>                      <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb253-4"><a href="StatIntro.html#cb253-4" aria-hidden="true"></a>                      <span class="dt">trim_ws =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb253-5"><a href="StatIntro.html#cb253-5" aria-hidden="true"></a><span class="co"># glimpse(dd)</span></span>
+<span id="cb253-6"><a href="StatIntro.html#cb253-6" aria-hidden="true"></a>dd<span class="op">$</span>treat =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>treat, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;test&quot;</span>))</span>
+<span id="cb253-7"><a href="StatIntro.html#cb253-7" aria-hidden="true"></a>dd<span class="op">$</span>neur0 =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>neur0, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb253-8"><a href="StatIntro.html#cb253-8" aria-hidden="true"></a>dd<span class="op">$</span>microalb =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>microalb, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb253-9"><a href="StatIntro.html#cb253-9" aria-hidden="true"></a>dd<span class="op">$</span>adult =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>adult, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb253-10"><a href="StatIntro.html#cb253-10" aria-hidden="true"></a>dd<span class="op">$</span>female =<span class="st"> </span><span class="kw">factor</span>(dd<span class="op">$</span>female, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb253-11"><a href="StatIntro.html#cb253-11" aria-hidden="true"></a><span class="kw">print</span>(dd, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">width =</span> <span class="ot">Inf</span>)</span>
+<span id="cb253-12"><a href="StatIntro.html#cb253-12" aria-hidden="true"></a><span class="co">## # A tibble: 1,441 x 21</span></span>
+<span id="cb253-13"><a href="StatIntro.html#cb253-13" aria-hidden="true"></a><span class="co">##      id treat   etdrs0 neur0  aer0 microalb quart duration female   age adult cpeptide</span></span>
+<span id="cb253-14"><a href="StatIntro.html#cb253-14" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt;</span></span>
+<span id="cb253-15"><a href="StatIntro.html#cb253-15" aria-hidden="true"></a><span class="co">## 1     1 test         3 no    15.8  no          36      178 female    17 no        0.09</span></span>
+<span id="cb253-16"><a href="StatIntro.html#cb253-16" aria-hidden="true"></a><span class="co">## 2     2 placebo      8 no    11.5  yes         20      142 male      29 yes       0.17</span></span>
+<span id="cb253-17"><a href="StatIntro.html#cb253-17" aria-hidden="true"></a><span class="co">## 3     3 placebo      7 yes   36    yes         12      175 male      35 yes       0.01</span></span>
+<span id="cb253-18"><a href="StatIntro.html#cb253-18" aria-hidden="true"></a><span class="co">## 4     4 test         1 no     4.32 no          36       31 female    14 no        0.18</span></span>
+<span id="cb253-19"><a href="StatIntro.html#cb253-19" aria-hidden="true"></a><span class="co">## 5     5 test         2 no     7.2  no          36       72 male      32 yes       0.03</span></span>
+<span id="cb253-20"><a href="StatIntro.html#cb253-20" aria-hidden="true"></a><span class="co">##     bmi hba1cbase hba1c0 hba1c1 hba1c2 hba1c3 hba1c4 hba1c5 hba1c6</span></span>
+<span id="cb253-21"><a href="StatIntro.html#cb253-21" aria-hidden="true"></a><span class="co">##   &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb253-22"><a href="StatIntro.html#cb253-22" aria-hidden="true"></a><span class="co">## 1  21.2      9.63   9.63   8.91   8.72   8.87   8.81   8.76   8.62</span></span>
+<span id="cb253-23"><a href="StatIntro.html#cb253-23" aria-hidden="true"></a><span class="co">## 2  22.9      8.76   8.76   9.30   9.36   9.39   9.30   9.15   9.10</span></span>
+<span id="cb253-24"><a href="StatIntro.html#cb253-24" aria-hidden="true"></a><span class="co">## 3  26.6      7.93   7.93   8.28   7.92   7.96   7.97   7.94   7.95</span></span>
+<span id="cb253-25"><a href="StatIntro.html#cb253-25" aria-hidden="true"></a><span class="co">## 4  16.2      7.62   7.62   8.65   8.75   8.88   8.85   8.82   8.56</span></span>
+<span id="cb253-26"><a href="StatIntro.html#cb253-26" aria-hidden="true"></a><span class="co">## 5  26.3      8.53   8.53   7.04   7.40   7.49   7.72   7.83   7.81</span></span>
+<span id="cb253-27"><a href="StatIntro.html#cb253-27" aria-hidden="true"></a><span class="co">## # ... with 1,436 more rows</span></span></code></pre></div>
 <p>在醫學研究上,
 一個研究形成一組研究資料稱為一個
 <strong>樣本</strong>
@@ -831,7 +848,7 @@ click 統計軟體分析表單, click 統計軟體分析內容的數據, copy �
         </div>
       </div>
 <a href="lubridate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="DataVariable.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

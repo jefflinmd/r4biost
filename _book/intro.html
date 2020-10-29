@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 R 語言基本概論 | R 資料科學與統計</title>
   <meta name="description" content="Chapter 1 R 語言基本概論 | R 資料科學與統計" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 R 語言基本概論 | R 資料科學與統計" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="林建甫 Jeff Lin" />
 
 
-<meta name="date" content="2020-10-17" />
+<meta name="date" content="2020-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="vector.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -256,12 +258,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
 <li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
 <li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
-<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
-<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
-<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
-<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
-<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
-<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#向量-if_else"><i class="fa fa-check"></i><b>8.6.5</b> 向量 <code>if_else()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#變數重新命名-rename"><i class="fa fa-check"></i><b>8.6.6</b> 變數重新命名 <code>rename()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#移除缺失資料-drop_na"><i class="fa fa-check"></i><b>8.6.7</b> 移除缺失資料 <code>drop_na()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.8</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.9</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.10</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.11" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.11</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.12" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.12</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.13" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.13</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
 <li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
@@ -330,13 +335,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="StatIntro.html"><a href="StatIntro.html#醫學研究資料"><i class="fa fa-check"></i><b>13.3</b> 醫學研究資料</a></li>
 <li class="chapter" data-level="13.4" data-path="StatIntro.html"><a href="StatIntro.html#統計計算與統計軟體"><i class="fa fa-check"></i><b>13.4</b> 統計計算與統計軟體</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>14</b> Applications</a>
+<li class="chapter" data-level="14" data-path="DataVariable.html"><a href="DataVariable.html"><i class="fa fa-check"></i><b>14</b> 資料與變數</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>14.1</b> Example one</a></li>
-<li class="chapter" data-level="14.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>14.2</b> Example two</a></li>
+<li class="chapter" data-level="14.1" data-path="DataVariable.html"><a href="DataVariable.html#醫學研究實例"><i class="fa fa-check"></i><b>14.1</b> 醫學研究實例</a></li>
+<li class="chapter" data-level="14.2" data-path="DataVariable.html"><a href="DataVariable.html#資料與變數-data-and-variables"><i class="fa fa-check"></i><b>14.2</b> 資料與變數 Data and Variables</a></li>
+<li class="chapter" data-level="14.3" data-path="DataVariable.html"><a href="DataVariable.html#變數分類"><i class="fa fa-check"></i><b>14.3</b> 變數分類</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="DataVariable.html"><a href="DataVariable.html#統計與變數分類"><i class="fa fa-check"></i><b>14.3.1</b> 統計與變數分類</a></li>
+<li class="chapter" data-level="14.3.2" data-path="DataVariable.html"><a href="DataVariable.html#資料數位化與變數分類"><i class="fa fa-check"></i><b>14.3.2</b> 資料數位化與變數分類</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>15</b> Final Words</a></li>
-<li class="chapter" data-level="16" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>16</b> Temp</a></li>
+<li class="chapter" data-level="14.4" data-path="DataVariable.html"><a href="DataVariable.html#單變量-雙變量與多變量"><i class="fa fa-check"></i><b>14.4</b> 單變量, 雙變量與多變量</a></li>
+<li class="chapter" data-level="14.5" data-path="DataVariable.html"><a href="DataVariable.html#資料輸入與儲存"><i class="fa fa-check"></i><b>14.5</b> 資料輸入與儲存</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>15</b> Applications</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>15.1</b> Example one</a></li>
+<li class="chapter" data-level="15.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>15.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>16</b> Final Words</a></li>
+<li class="chapter" data-level="17" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>17</b> Temp</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -450,44 +467,44 @@ RStudio 原始是 {R} 的一種操作介面,
 <p>學習 {R} 最好的方法, 就是要開始使用 {R}, 初學者要了解 {R}, 可先進行一些簡單實例的演練,
 首先須注意的是, 在 {R} 程式語言所使用的文字, 大小寫是有差別的.
 直接在 {R} 或 RStudio console 視窗輸入指令都會得到相同的結果.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>       <span class="co"># calculator</span></span>
-<span id="cb1-2"><a href="intro.html#cb1-2" aria-hidden="true"></a><span class="kw">log</span>(<span class="fl">3.14</span>)   <span class="co"># log function</span></span>
-<span id="cb1-3"><a href="intro.html#cb1-3" aria-hidden="true"></a>x =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>   <span class="co"># one plus two assign to x</span></span>
-<span id="cb1-4"><a href="intro.html#cb1-4" aria-hidden="true"></a>x           <span class="co"># print x</span></span>
-<span id="cb1-5"><a href="intro.html#cb1-5" aria-hidden="true"></a>x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>) <span class="co"># get a vector</span></span>
-<span id="cb1-6"><a href="intro.html#cb1-6" aria-hidden="true"></a><span class="kw">mean</span>(x)     <span class="co"># mean function</span></span>
-<span id="cb1-7"><a href="intro.html#cb1-7" aria-hidden="true"></a><span class="kw">log</span>(x)      <span class="co"># log function</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" aria-hidden="true"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>       <span class="co"># calculator</span></span>
+<span id="cb2-2"><a href="intro.html#cb2-2" aria-hidden="true"></a><span class="kw">log</span>(<span class="fl">3.14</span>)   <span class="co"># log function</span></span>
+<span id="cb2-3"><a href="intro.html#cb2-3" aria-hidden="true"></a>x =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>   <span class="co"># one plus two assign to x</span></span>
+<span id="cb2-4"><a href="intro.html#cb2-4" aria-hidden="true"></a>x           <span class="co"># print x</span></span>
+<span id="cb2-5"><a href="intro.html#cb2-5" aria-hidden="true"></a>x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>) <span class="co"># get a vector</span></span>
+<span id="cb2-6"><a href="intro.html#cb2-6" aria-hidden="true"></a><span class="kw">mean</span>(x)     <span class="co"># mean function</span></span>
+<span id="cb2-7"><a href="intro.html#cb2-7" aria-hidden="true"></a><span class="kw">log</span>(x)      <span class="co"># log function</span></span></code></pre></div>
 <p>若要自學基本 {R} 或 進階 {R},
 利用 google 搜尋 R Introduction, R Tutorial 等,
 或搜尋與觀看 YouTube 影片.
 請繼續練習下列指令.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" aria-hidden="true"></a><span class="kw">factorial</span>(<span class="dv">4</span>)</span>
-<span id="cb2-2"><a href="intro.html#cb2-2" aria-hidden="true"></a><span class="kw">sin</span>(pi)</span>
-<span id="cb2-3"><a href="intro.html#cb2-3" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb2-4"><a href="intro.html#cb2-4" aria-hidden="true"></a><span class="kw">exp</span>(x.vec)</span>
-<span id="cb2-5"><a href="intro.html#cb2-5" aria-hidden="true"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb2-6"><a href="intro.html#cb2-6" aria-hidden="true"></a>weight =<span class="st"> </span><span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">45</span>, <span class="dv">67</span>, <span class="dv">53</span>)</span>
-<span id="cb2-7"><a href="intro.html#cb2-7" aria-hidden="true"></a><span class="kw">mean</span>(weight)</span>
-<span id="cb2-8"><a href="intro.html#cb2-8" aria-hidden="true"></a><span class="kw">sd</span>(weight)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" aria-hidden="true"></a><span class="kw">factorial</span>(<span class="dv">4</span>)</span>
+<span id="cb3-2"><a href="intro.html#cb3-2" aria-hidden="true"></a><span class="kw">sin</span>(pi)</span>
+<span id="cb3-3"><a href="intro.html#cb3-3" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb3-4"><a href="intro.html#cb3-4" aria-hidden="true"></a><span class="kw">exp</span>(x.vec)</span>
+<span id="cb3-5"><a href="intro.html#cb3-5" aria-hidden="true"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb3-6"><a href="intro.html#cb3-6" aria-hidden="true"></a>weight =<span class="st"> </span><span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">45</span>, <span class="dv">67</span>, <span class="dv">53</span>)</span>
+<span id="cb3-7"><a href="intro.html#cb3-7" aria-hidden="true"></a><span class="kw">mean</span>(weight)</span>
+<span id="cb3-8"><a href="intro.html#cb3-8" aria-hidden="true"></a><span class="kw">sd</span>(weight)</span></code></pre></div>
 <p>{R} 具有強大的繪圖功能, 可將程式語言與繪圖函數緊密結合,
 控制標題, 顏色, 說明文字等, 繪製高品質的統計圖並可儲存於不同格式,
 提供不同文書處裡軟體使用.
 練習以下指令可以體會一些 {R} 的繪圖功能.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" aria-hidden="true"></a><span class="co">## demo</span></span>
-<span id="cb3-2"><a href="intro.html#cb3-2" aria-hidden="true"></a><span class="kw">demo</span>(graphics)</span>
-<span id="cb3-3"><a href="intro.html#cb3-3" aria-hidden="true"></a><span class="kw">demo</span>(image)</span>
-<span id="cb3-4"><a href="intro.html#cb3-4" aria-hidden="true"></a><span class="kw">example</span>(contour)</span>
-<span id="cb3-5"><a href="intro.html#cb3-5" aria-hidden="true"></a><span class="kw">demo</span>(persp)</span>
-<span id="cb3-6"><a href="intro.html#cb3-6" aria-hidden="true"></a><span class="kw">example</span>(persp3d)</span>
-<span id="cb3-7"><a href="intro.html#cb3-7" aria-hidden="true"></a><span class="kw">demo</span>(plotmath)</span>
-<span id="cb3-8"><a href="intro.html#cb3-8" aria-hidden="true"></a><span class="kw">demo</span>(Hershey)</span>
-<span id="cb3-9"><a href="intro.html#cb3-9" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;lattice&quot;</span>) <span class="co"># install package</span></span>
-<span id="cb3-10"><a href="intro.html#cb3-10" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;lattice&quot;</span>)          <span class="co"># load package</span></span>
-<span id="cb3-11"><a href="intro.html#cb3-11" aria-hidden="true"></a><span class="kw">demo</span>(lattice)</span>
-<span id="cb3-12"><a href="intro.html#cb3-12" aria-hidden="true"></a><span class="kw">example</span>(wireframe)</span>
-<span id="cb3-13"><a href="intro.html#cb3-13" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;rgl&quot;</span>)</span>
-<span id="cb3-14"><a href="intro.html#cb3-14" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;rgl&quot;</span>)</span>
-<span id="cb3-15"><a href="intro.html#cb3-15" aria-hidden="true"></a><span class="kw">demo</span>(rgl)                   <span class="co"># Interact using your mouse.</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="intro.html#cb4-1" aria-hidden="true"></a><span class="co">## demo</span></span>
+<span id="cb4-2"><a href="intro.html#cb4-2" aria-hidden="true"></a><span class="kw">demo</span>(graphics)</span>
+<span id="cb4-3"><a href="intro.html#cb4-3" aria-hidden="true"></a><span class="kw">demo</span>(image)</span>
+<span id="cb4-4"><a href="intro.html#cb4-4" aria-hidden="true"></a><span class="kw">example</span>(contour)</span>
+<span id="cb4-5"><a href="intro.html#cb4-5" aria-hidden="true"></a><span class="kw">demo</span>(persp)</span>
+<span id="cb4-6"><a href="intro.html#cb4-6" aria-hidden="true"></a><span class="kw">example</span>(persp3d)</span>
+<span id="cb4-7"><a href="intro.html#cb4-7" aria-hidden="true"></a><span class="kw">demo</span>(plotmath)</span>
+<span id="cb4-8"><a href="intro.html#cb4-8" aria-hidden="true"></a><span class="kw">demo</span>(Hershey)</span>
+<span id="cb4-9"><a href="intro.html#cb4-9" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;lattice&quot;</span>) <span class="co"># install package</span></span>
+<span id="cb4-10"><a href="intro.html#cb4-10" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;lattice&quot;</span>)          <span class="co"># load package</span></span>
+<span id="cb4-11"><a href="intro.html#cb4-11" aria-hidden="true"></a><span class="kw">demo</span>(lattice)</span>
+<span id="cb4-12"><a href="intro.html#cb4-12" aria-hidden="true"></a><span class="kw">example</span>(wireframe)</span>
+<span id="cb4-13"><a href="intro.html#cb4-13" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;rgl&quot;</span>)</span>
+<span id="cb4-14"><a href="intro.html#cb4-14" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;rgl&quot;</span>)</span>
+<span id="cb4-15"><a href="intro.html#cb4-15" aria-hidden="true"></a><span class="kw">demo</span>(rgl)                   <span class="co"># Interact using your mouse.</span></span></code></pre></div>
 <p>{R} 是統計程式語言,
 程式語言是語言的一種,
 程式語言是人與電腦溝通的工具, 任命令電腦做事的語言.
@@ -598,15 +615,15 @@ x = 4 - 5</code></pre>
 可以輸入物件名,
 使用函式 <code>print()</code>,
 或在賦值運算時, 前後加上小括號顯示賦值運算的結果.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro.html#cb8-1" aria-hidden="true"></a><span class="co">## asign          </span></span>
-<span id="cb8-2"><a href="intro.html#cb8-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span>   <span class="co"># assign object x           </span></span>
-<span id="cb8-3"><a href="intro.html#cb8-3" aria-hidden="true"></a>x        <span class="co"># show x             </span></span>
-<span id="cb8-4"><a href="intro.html#cb8-4" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
-<span id="cb8-5"><a href="intro.html#cb8-5" aria-hidden="true"></a><span class="kw">print</span>(x) <span class="co"># print()                  </span></span>
-<span id="cb8-6"><a href="intro.html#cb8-6" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
-<span id="cb8-7"><a href="intro.html#cb8-7" aria-hidden="true"></a>msg &lt;-<span class="st"> &quot;hello&quot;</span>                   </span>
-<span id="cb8-8"><a href="intro.html#cb8-8" aria-hidden="true"></a>msg     <span class="co"># show x                     </span></span>
-<span id="cb8-9"><a href="intro.html#cb8-9" aria-hidden="true"></a><span class="co">## [1] &quot;hello&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" aria-hidden="true"></a><span class="co">## asign          </span></span>
+<span id="cb9-2"><a href="intro.html#cb9-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span>   <span class="co"># assign object x           </span></span>
+<span id="cb9-3"><a href="intro.html#cb9-3" aria-hidden="true"></a>x        <span class="co"># show x             </span></span>
+<span id="cb9-4"><a href="intro.html#cb9-4" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
+<span id="cb9-5"><a href="intro.html#cb9-5" aria-hidden="true"></a><span class="kw">print</span>(x) <span class="co"># print()                  </span></span>
+<span id="cb9-6"><a href="intro.html#cb9-6" aria-hidden="true"></a><span class="co">## [1] 1</span></span>
+<span id="cb9-7"><a href="intro.html#cb9-7" aria-hidden="true"></a>msg &lt;-<span class="st"> &quot;hello&quot;</span>                   </span>
+<span id="cb9-8"><a href="intro.html#cb9-8" aria-hidden="true"></a>msg     <span class="co"># show x                     </span></span>
+<span id="cb9-9"><a href="intro.html#cb9-9" aria-hidden="true"></a><span class="co">## [1] &quot;hello&quot;</span></span></code></pre></div>
 <p>如果一條輸入的指令在第一行結束的時候,
 在 {R} 語法上還不完整,
 若用鍵盤上 <code>&lt;Enter&gt;</code> 按鍵時,
@@ -643,25 +660,25 @@ y &lt;- 3 + 4</code></pre>
 注釋幾乎可以放在任何地方的任何一行之中.
 習慣上, 整行的注釋使用雙井號作為開始, ##,
 運算式尾端注釋使用單井號開始 #.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro.html#cb10-1" aria-hidden="true"></a><span class="co">## This is my R code</span></span>
-<span id="cb10-2"><a href="intro.html#cb10-2" aria-hidden="true"></a><span class="kw">log</span>(pi)</span>
-<span id="cb10-3"><a href="intro.html#cb10-3" aria-hidden="true"></a><span class="co">## [1] 1.145</span></span>
-<span id="cb10-4"><a href="intro.html#cb10-4" aria-hidden="true"></a><span class="co">## simple calculation</span></span>
-<span id="cb10-5"><a href="intro.html#cb10-5" aria-hidden="true"></a><span class="dv">3</span><span class="op">+</span><span class="dv">4</span> <span class="co"># calculator: two plus one</span></span>
-<span id="cb10-6"><a href="intro.html#cb10-6" aria-hidden="true"></a><span class="co">## [1] 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true"></a><span class="co">## This is my R code</span></span>
+<span id="cb11-2"><a href="intro.html#cb11-2" aria-hidden="true"></a><span class="kw">log</span>(pi)</span>
+<span id="cb11-3"><a href="intro.html#cb11-3" aria-hidden="true"></a><span class="co">## [1] 1.14473</span></span>
+<span id="cb11-4"><a href="intro.html#cb11-4" aria-hidden="true"></a><span class="co">## simple calculation</span></span>
+<span id="cb11-5"><a href="intro.html#cb11-5" aria-hidden="true"></a><span class="dv">3</span><span class="op">+</span><span class="dv">4</span> <span class="co"># calculator: two plus one</span></span>
+<span id="cb11-6"><a href="intro.html#cb11-6" aria-hidden="true"></a><span class="co">## [1] 7</span></span></code></pre></div>
 <p>在 {R} 互動式窗 Console 中, 若要重複一個指令, 或是叫回之前輸入的指令,
 可以用鍵盤上的 <span class="math inline">\(\uparrow\)</span> (向上) 箭頭按鍵,
 調出之前已經輸入的指令, 視窗中便可顯示之前的輸入指令,
 再利用鍵盤上 <code>&lt;DEL&gt;</code> 按鍵更改成所要輸入的指令.
 可以再次練習以下指令, 檢視 {R} 會傳結果.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true"></a><span class="co"># This is my R code</span></span>
-<span id="cb11-2"><a href="intro.html#cb11-2" aria-hidden="true"></a>x =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>  <span class="co"># one plus two</span></span>
-<span id="cb11-3"><a href="intro.html#cb11-3" aria-hidden="true"></a>x</span>
-<span id="cb11-4"><a href="intro.html#cb11-4" aria-hidden="true"></a><span class="co">## [1] 3</span></span>
-<span id="cb11-5"><a href="intro.html#cb11-5" aria-hidden="true"></a>x <span class="op">+</span><span class="st"> </span><span class="dv">4</span></span>
-<span id="cb11-6"><a href="intro.html#cb11-6" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
-<span id="cb11-7"><a href="intro.html#cb11-7" aria-hidden="true"></a>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb11-8"><a href="intro.html#cb11-8" aria-hidden="true"></a><span class="co">## [1] 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro.html#cb12-1" aria-hidden="true"></a><span class="co"># This is my R code</span></span>
+<span id="cb12-2"><a href="intro.html#cb12-2" aria-hidden="true"></a>x =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>  <span class="co"># one plus two</span></span>
+<span id="cb12-3"><a href="intro.html#cb12-3" aria-hidden="true"></a>x</span>
+<span id="cb12-4"><a href="intro.html#cb12-4" aria-hidden="true"></a><span class="co">## [1] 3</span></span>
+<span id="cb12-5"><a href="intro.html#cb12-5" aria-hidden="true"></a>x <span class="op">+</span><span class="st"> </span><span class="dv">4</span></span>
+<span id="cb12-6"><a href="intro.html#cb12-6" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
+<span id="cb12-7"><a href="intro.html#cb12-7" aria-hidden="true"></a>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb12-8"><a href="intro.html#cb12-8" aria-hidden="true"></a><span class="co">## [1] 2</span></span></code></pre></div>
 </div>
 <div id="查詢顯示物件與刪除物件" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> 查詢顯示物件與刪除物件</h2>
@@ -781,15 +798,15 @@ getwd()</code></pre>
 <li>上述操作部分指令有捷徑可使用.</li>
 </ul>
 <p>以下撰寫第一個 R 程式, 並完成存檔.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="intro.html#cb17-1" aria-hidden="true"></a><span class="co">## Rlab00.r</span></span>
-<span id="cb17-2"><a href="intro.html#cb17-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb17-3"><a href="intro.html#cb17-3" aria-hidden="true"></a><span class="kw">print</span>(x)</span>
-<span id="cb17-4"><a href="intro.html#cb17-4" aria-hidden="true"></a>x</span>
-<span id="cb17-5"><a href="intro.html#cb17-5" aria-hidden="true"></a>msg &lt;-<span class="st"> &quot;hello&quot;</span></span>
-<span id="cb17-6"><a href="intro.html#cb17-6" aria-hidden="true"></a>msg</span>
-<span id="cb17-7"><a href="intro.html#cb17-7" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">20</span></span>
-<span id="cb17-8"><a href="intro.html#cb17-8" aria-hidden="true"></a>y</span>
-<span id="cb17-9"><a href="intro.html#cb17-9" aria-hidden="true"></a><span class="kw">rm</span>(x, msg, y)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="intro.html#cb18-1" aria-hidden="true"></a><span class="co">## Rlab00.r</span></span>
+<span id="cb18-2"><a href="intro.html#cb18-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb18-3"><a href="intro.html#cb18-3" aria-hidden="true"></a><span class="kw">print</span>(x)</span>
+<span id="cb18-4"><a href="intro.html#cb18-4" aria-hidden="true"></a>x</span>
+<span id="cb18-5"><a href="intro.html#cb18-5" aria-hidden="true"></a>msg &lt;-<span class="st"> &quot;hello&quot;</span></span>
+<span id="cb18-6"><a href="intro.html#cb18-6" aria-hidden="true"></a>msg</span>
+<span id="cb18-7"><a href="intro.html#cb18-7" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">20</span></span>
+<span id="cb18-8"><a href="intro.html#cb18-8" aria-hidden="true"></a>y</span>
+<span id="cb18-9"><a href="intro.html#cb18-9" aria-hidden="true"></a><span class="kw">rm</span>(x, msg, y)</span></code></pre></div>
 <p>將程式輸入在 R 程式檔案內,
 將要執行的程式行列, 以滑鼠反白,
 複製 (copy) 到 {RSudio} Console 視窗, 執行程式.
@@ -835,17 +852,17 @@ plot(x.vec, y.vec)<br />
 例如, 統計常用函式
 <code>mean()</code>, <code>var()</code>, <code>sd()</code>, <code>log()</code> 等.
 請練習以下 R 程式.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="intro.html#cb18-1" aria-hidden="true"></a><span class="co">## function</span></span>
-<span id="cb18-2"><a href="intro.html#cb18-2" aria-hidden="true"></a><span class="co">## function c() = concatenate elements, return a vector x.vec</span></span>
-<span id="cb18-3"><a href="intro.html#cb18-3" aria-hidden="true"></a>x.vec =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) </span>
-<span id="cb18-4"><a href="intro.html#cb18-4" aria-hidden="true"></a>x.vec <span class="co"># show x.vec </span></span>
-<span id="cb18-5"><a href="intro.html#cb18-5" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4 5</span></span>
-<span id="cb18-6"><a href="intro.html#cb18-6" aria-hidden="true"></a><span class="kw">mean</span>(<span class="dt">x =</span> x.vec) <span class="co"># function mean() calculate mean, return a scalar</span></span>
-<span id="cb18-7"><a href="intro.html#cb18-7" aria-hidden="true"></a><span class="co">## [1] 3</span></span>
-<span id="cb18-8"><a href="intro.html#cb18-8" aria-hidden="true"></a><span class="kw">var</span>(<span class="dt">x =</span> x.vec)  <span class="co"># function mean() calculate variance</span></span>
-<span id="cb18-9"><a href="intro.html#cb18-9" aria-hidden="true"></a><span class="co">## [1] 2.5</span></span>
-<span id="cb18-10"><a href="intro.html#cb18-10" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)  <span class="co"># take log for all elements in vector x.vec</span></span>
-<span id="cb18-11"><a href="intro.html#cb18-11" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931 1.0986 1.3863 1.6094</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="intro.html#cb19-1" aria-hidden="true"></a><span class="co">## function</span></span>
+<span id="cb19-2"><a href="intro.html#cb19-2" aria-hidden="true"></a><span class="co">## function c() = concatenate elements, return a vector x.vec</span></span>
+<span id="cb19-3"><a href="intro.html#cb19-3" aria-hidden="true"></a>x.vec =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) </span>
+<span id="cb19-4"><a href="intro.html#cb19-4" aria-hidden="true"></a>x.vec <span class="co"># show x.vec </span></span>
+<span id="cb19-5"><a href="intro.html#cb19-5" aria-hidden="true"></a><span class="co">## [1] 1 2 3 4 5</span></span>
+<span id="cb19-6"><a href="intro.html#cb19-6" aria-hidden="true"></a><span class="kw">mean</span>(<span class="dt">x =</span> x.vec) <span class="co"># function mean() calculate mean, return a scalar</span></span>
+<span id="cb19-7"><a href="intro.html#cb19-7" aria-hidden="true"></a><span class="co">## [1] 3</span></span>
+<span id="cb19-8"><a href="intro.html#cb19-8" aria-hidden="true"></a><span class="kw">var</span>(<span class="dt">x =</span> x.vec)  <span class="co"># function mean() calculate variance</span></span>
+<span id="cb19-9"><a href="intro.html#cb19-9" aria-hidden="true"></a><span class="co">## [1] 2.5</span></span>
+<span id="cb19-10"><a href="intro.html#cb19-10" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)  <span class="co"># take log for all elements in vector x.vec</span></span>
+<span id="cb19-11"><a href="intro.html#cb19-11" aria-hidden="true"></a><span class="co">## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></span></code></pre></div>
 <p>一個函式內通常需輸入
 <strong>引數</strong>
 (<strong>argument</strong>)
@@ -879,12 +896,12 @@ plot(x.vec, y.vec)<br />
 當然, 使用者可以更動底數的設定值,
 例如更動為以 <span class="math inline">\(2\)</span> 為底的獨度對數運算,
 <code>log(x, base = 2)</code>.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="intro.html#cb20-1" aria-hidden="true"></a><span class="co">## log function</span></span>
-<span id="cb20-2"><a href="intro.html#cb20-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb20-3"><a href="intro.html#cb20-3" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)</span>
-<span id="cb20-4"><a href="intro.html#cb20-4" aria-hidden="true"></a><span class="co">## [1] 0.0000 0.6931 1.0986 1.3863 1.6094</span></span>
-<span id="cb20-5"><a href="intro.html#cb20-5" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec, <span class="dt">base =</span> <span class="dv">2</span>)</span>
-<span id="cb20-6"><a href="intro.html#cb20-6" aria-hidden="true"></a><span class="co">## [1] 0.000 1.000 1.585 2.000 2.322</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="intro.html#cb21-1" aria-hidden="true"></a><span class="co">## log function</span></span>
+<span id="cb21-2"><a href="intro.html#cb21-2" aria-hidden="true"></a>x.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb21-3"><a href="intro.html#cb21-3" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec)</span>
+<span id="cb21-4"><a href="intro.html#cb21-4" aria-hidden="true"></a><span class="co">## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></span>
+<span id="cb21-5"><a href="intro.html#cb21-5" aria-hidden="true"></a><span class="kw">log</span>(<span class="dt">x =</span> x.vec, <span class="dt">base =</span> <span class="dv">2</span>)</span>
+<span id="cb21-6"><a href="intro.html#cb21-6" aria-hidden="true"></a><span class="co">## [1] 0.000000 1.000000 1.584963 2.000000 2.321928</span></span></code></pre></div>
 </div>
 <div id="套件-packages" class="section level2" number="1.11">
 <h2><span class="header-section-number">1.11</span> 套件 Packages</h2>
@@ -1005,12 +1022,12 @@ Asia/Taipei.
 如此改成 UTC 時區 (Universal Time, Coordinated).
 或是使用 ISO 時間格式.
 若要更動語系可使用</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="intro.html#cb28-1" aria-hidden="true"></a><span class="co"># 中文 -&gt; 英文</span></span>
-<span id="cb28-2"><a href="intro.html#cb28-2" aria-hidden="true"></a><span class="kw">Sys.setlocale</span>(<span class="st">&quot;LC_CTYPE&quot;</span>, <span class="st">&quot;en_US.UTF-8&quot;</span>)</span>
-<span id="cb28-3"><a href="intro.html#cb28-3" aria-hidden="true"></a><span class="co"># system(&quot;defaults write org.R-project.R force.LANG en_US.UTF-8&quot;) # linux/mac</span></span>
-<span id="cb28-4"><a href="intro.html#cb28-4" aria-hidden="true"></a><span class="co"># 英文 -&gt; 中文</span></span>
-<span id="cb28-5"><a href="intro.html#cb28-5" aria-hidden="true"></a><span class="kw">Sys.setlocale</span>(<span class="dt">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="dt">locale =</span> <span class="st">&quot;cht&quot;</span>)</span>
-<span id="cb28-6"><a href="intro.html#cb28-6" aria-hidden="true"></a><span class="co"># system(&quot;defaults write org.R-project.R force.LANG zh_TW.UTF-8&quot;) # linux/mac</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="intro.html#cb29-1" aria-hidden="true"></a><span class="co"># 中文 -&gt; 英文</span></span>
+<span id="cb29-2"><a href="intro.html#cb29-2" aria-hidden="true"></a><span class="kw">Sys.setlocale</span>(<span class="st">&quot;LC_CTYPE&quot;</span>, <span class="st">&quot;en_US.UTF-8&quot;</span>)</span>
+<span id="cb29-3"><a href="intro.html#cb29-3" aria-hidden="true"></a><span class="co"># system(&quot;defaults write org.R-project.R force.LANG en_US.UTF-8&quot;) # linux/mac</span></span>
+<span id="cb29-4"><a href="intro.html#cb29-4" aria-hidden="true"></a><span class="co"># 英文 -&gt; 中文</span></span>
+<span id="cb29-5"><a href="intro.html#cb29-5" aria-hidden="true"></a><span class="kw">Sys.setlocale</span>(<span class="dt">category =</span> <span class="st">&quot;LC_ALL&quot;</span>, <span class="dt">locale =</span> <span class="st">&quot;cht&quot;</span>)</span>
+<span id="cb29-6"><a href="intro.html#cb29-6" aria-hidden="true"></a><span class="co"># system(&quot;defaults write org.R-project.R force.LANG zh_TW.UTF-8&quot;) # linux/mac</span></span></code></pre></div>
 <p>上述方式暫時有效, 重新啟動 {R} 後此設定就會消失.</p>
 
 </div>

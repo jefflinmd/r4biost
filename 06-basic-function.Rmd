@@ -481,7 +481,7 @@ order(x, ..., na.last = TRUE, decreasing = FALSE,
 `sort(x)`
 回傳一個向量 $\mathbf{z}$,
 是將向量 $\mathbf{x}$ 的元素從小到大排序的結果列出.
-* 函式 %使用函式指令
+* 函式 
 `rank(x)`
 回傳一個向量 $\mathbf{z}$, 是將向量
 $\mathbf{x}$ 每一個元素從小到大排序之後, $\mathbf{x}$ 元素之相對順序 (rank).
@@ -545,7 +545,7 @@ x[x.ord] # = sort(x)
 `as.object()`,
 例如函式
 `as.vector()`,
-`as.matrix(()`
+`as.matrix()`
 等,
 可以用來某強制轉換一特定物件到所指定的物件類別.
 ```{r}

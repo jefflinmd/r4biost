@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 日期時間處理 | R 資料科學與統計</title>
   <meta name="description" content="Chapter 12 日期時間處理 | R 資料科學與統計" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 日期時間處理 | R 資料科學與統計" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="林建甫 Jeff Lin" />
 
 
-<meta name="date" content="2020-10-17" />
+<meta name="date" content="2020-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="forcats.html"/>
 <link rel="next" href="StatIntro.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -256,12 +258,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.2" data-path="basictidy.html"><a href="basictidy.html#依據變數值排序函式-arrange"><i class="fa fa-check"></i><b>8.6.2</b> 依據變數值排序函式 <code>arrange()</code></a></li>
 <li class="chapter" data-level="8.6.3" data-path="basictidy.html"><a href="basictidy.html#選擇變數或欄位子集函式-select"><i class="fa fa-check"></i><b>8.6.3</b> 選擇變數或欄位子集函式 <code>select()</code></a></li>
 <li class="chapter" data-level="8.6.4" data-path="basictidy.html"><a href="basictidy.html#變數轉換函式-mutate"><i class="fa fa-check"></i><b>8.6.4</b> 變數轉換函式 <code>mutate()</code></a></li>
-<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.5</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
-<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.6</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
-<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.7</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
-<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.8</b> 計算常見統計量函式 <code>summarise()</code></a></li>
-<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.9</b> 資料分組操作函式 <code>group_by()</code></a></li>
-<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.10</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
+<li class="chapter" data-level="8.6.5" data-path="basictidy.html"><a href="basictidy.html#向量-if_else"><i class="fa fa-check"></i><b>8.6.5</b> 向量 <code>if_else()</code></a></li>
+<li class="chapter" data-level="8.6.6" data-path="basictidy.html"><a href="basictidy.html#變數重新命名-rename"><i class="fa fa-check"></i><b>8.6.6</b> 變數重新命名 <code>rename()</code></a></li>
+<li class="chapter" data-level="8.6.7" data-path="basictidy.html"><a href="basictidy.html#移除缺失資料-drop_na"><i class="fa fa-check"></i><b>8.6.7</b> 移除缺失資料 <code>drop_na()</code></a></li>
+<li class="chapter" data-level="8.6.8" data-path="basictidy.html"><a href="basictidy.html#隨機抽樣函式-sample_n-與-sample_frac"><i class="fa fa-check"></i><b>8.6.8</b> 隨機抽樣函式 <code>sample_n()</code> 與 <code>sample_frac()</code></a></li>
+<li class="chapter" data-level="8.6.9" data-path="basictidy.html"><a href="basictidy.html#選出明顯不同個體函式-distinct-與-n_distinct"><i class="fa fa-check"></i><b>8.6.9</b> 選出明顯不同個體函式 <code>distinct()</code> 與 <code>n_distinct()</code></a></li>
+<li class="chapter" data-level="8.6.10" data-path="basictidy.html"><a href="basictidy.html#利用橫列指標選出個體函式-slice"><i class="fa fa-check"></i><b>8.6.10</b> 利用橫列指標選出個體函式 <code>slice()</code></a></li>
+<li class="chapter" data-level="8.6.11" data-path="basictidy.html"><a href="basictidy.html#計算常見統計量函式-summarise"><i class="fa fa-check"></i><b>8.6.11</b> 計算常見統計量函式 <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.6.12" data-path="basictidy.html"><a href="basictidy.html#資料分組操作函式-group_by"><i class="fa fa-check"></i><b>8.6.12</b> 資料分組操作函式 <code>group_by()</code></a></li>
+<li class="chapter" data-level="8.6.13" data-path="basictidy.html"><a href="basictidy.html#多變數計算統計量函式-summarise_all"><i class="fa fa-check"></i><b>8.6.13</b> 多變數計算統計量函式 <code>summarise_all()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="basictidy.html"><a href="basictidy.html#資料聯集與交集函式"><i class="fa fa-check"></i><b>8.7</b> 資料聯集與交集函式</a></li>
 <li class="chapter" data-level="8.8" data-path="basictidy.html"><a href="basictidy.html#資料合併函式"><i class="fa fa-check"></i><b>8.8</b> 資料合併函式</a></li>
@@ -330,13 +335,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="StatIntro.html"><a href="StatIntro.html#醫學研究資料"><i class="fa fa-check"></i><b>13.3</b> 醫學研究資料</a></li>
 <li class="chapter" data-level="13.4" data-path="StatIntro.html"><a href="StatIntro.html#統計計算與統計軟體"><i class="fa fa-check"></i><b>13.4</b> 統計計算與統計軟體</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>14</b> Applications</a>
+<li class="chapter" data-level="14" data-path="DataVariable.html"><a href="DataVariable.html"><i class="fa fa-check"></i><b>14</b> 資料與變數</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>14.1</b> Example one</a></li>
-<li class="chapter" data-level="14.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>14.2</b> Example two</a></li>
+<li class="chapter" data-level="14.1" data-path="DataVariable.html"><a href="DataVariable.html#醫學研究實例"><i class="fa fa-check"></i><b>14.1</b> 醫學研究實例</a></li>
+<li class="chapter" data-level="14.2" data-path="DataVariable.html"><a href="DataVariable.html#資料與變數-data-and-variables"><i class="fa fa-check"></i><b>14.2</b> 資料與變數 Data and Variables</a></li>
+<li class="chapter" data-level="14.3" data-path="DataVariable.html"><a href="DataVariable.html#變數分類"><i class="fa fa-check"></i><b>14.3</b> 變數分類</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="DataVariable.html"><a href="DataVariable.html#統計與變數分類"><i class="fa fa-check"></i><b>14.3.1</b> 統計與變數分類</a></li>
+<li class="chapter" data-level="14.3.2" data-path="DataVariable.html"><a href="DataVariable.html#資料數位化與變數分類"><i class="fa fa-check"></i><b>14.3.2</b> 資料數位化與變數分類</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>15</b> Final Words</a></li>
-<li class="chapter" data-level="16" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>16</b> Temp</a></li>
+<li class="chapter" data-level="14.4" data-path="DataVariable.html"><a href="DataVariable.html#單變量-雙變量與多變量"><i class="fa fa-check"></i><b>14.4</b> 單變量, 雙變量與多變量</a></li>
+<li class="chapter" data-level="14.5" data-path="DataVariable.html"><a href="DataVariable.html#資料輸入與儲存"><i class="fa fa-check"></i><b>14.5</b> 資料輸入與儲存</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>15</b> Applications</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>15.1</b> Example one</a></li>
+<li class="chapter" data-level="15.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>15.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>16</b> Final Words</a></li>
+<li class="chapter" data-level="17" data-path="temp.html"><a href="temp.html"><i class="fa fa-check"></i><b>17</b> Temp</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -413,31 +430,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>使用 <code>lubridate</code> 套件的函式 <code>today()</code> 或 <code>now()</code> 取得今日的日期時間.
 {R} base 函式 <code>Sys.time()</code> 取得今日的日期時間之絕對數值為 <code>POSIXct</code> 物件, 可依照時區進行轉喚.
 而函式 <code>Sys.Date()</code> 則依照電腦使用時區傳回 <code>Date</code> 物件.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="lubridate.html#cb233-1" aria-hidden="true"></a>op &lt;-<span class="st"> </span><span class="kw">options</span>(<span class="dt">digits.secs =</span> <span class="dv">6</span>)</span>
-<span id="cb233-2"><a href="lubridate.html#cb233-2" aria-hidden="true"></a><span class="kw">Sys.time</span>()</span>
-<span id="cb233-3"><a href="lubridate.html#cb233-3" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-17 15:41:17.081562 CST&quot;</span></span>
-<span id="cb233-4"><a href="lubridate.html#cb233-4" aria-hidden="true"></a><span class="kw">Sys.Date</span>()</span>
-<span id="cb233-5"><a href="lubridate.html#cb233-5" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-17&quot;</span></span>
-<span id="cb233-6"><a href="lubridate.html#cb233-6" aria-hidden="true"></a><span class="kw">class</span>(<span class="kw">Sys.time</span>())</span>
-<span id="cb233-7"><a href="lubridate.html#cb233-7" aria-hidden="true"></a><span class="co">## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</span></span>
-<span id="cb233-8"><a href="lubridate.html#cb233-8" aria-hidden="true"></a><span class="kw">class</span>(<span class="kw">Sys.Date</span>())</span>
-<span id="cb233-9"><a href="lubridate.html#cb233-9" aria-hidden="true"></a><span class="co">## [1] &quot;Date&quot;</span></span>
-<span id="cb233-10"><a href="lubridate.html#cb233-10" aria-hidden="true"></a><span class="co">## locale-specific version of date()</span></span>
-<span id="cb233-11"><a href="lubridate.html#cb233-11" aria-hidden="true"></a><span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%a %b %d %X %Y&quot;</span>)</span>
-<span id="cb233-12"><a href="lubridate.html#cb233-12" aria-hidden="true"></a><span class="co">## [1] &quot;週六 十月 17 下午 03:41:17 2020&quot;</span></span>
-<span id="cb233-13"><a href="lubridate.html#cb233-13" aria-hidden="true"></a><span class="kw">Sys.Date</span>()</span>
-<span id="cb233-14"><a href="lubridate.html#cb233-14" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-17&quot;</span></span>
-<span id="cb233-15"><a href="lubridate.html#cb233-15" aria-hidden="true"></a><span class="co">## lubriate package</span></span>
-<span id="cb233-16"><a href="lubridate.html#cb233-16" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb233-17"><a href="lubridate.html#cb233-17" aria-hidden="true"></a><span class="kw">library</span>(lubridate)</span>
-<span id="cb233-18"><a href="lubridate.html#cb233-18" aria-hidden="true"></a><span class="kw">today</span>()</span>
-<span id="cb233-19"><a href="lubridate.html#cb233-19" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-17&quot;</span></span>
-<span id="cb233-20"><a href="lubridate.html#cb233-20" aria-hidden="true"></a><span class="kw">now</span>()</span>
-<span id="cb233-21"><a href="lubridate.html#cb233-21" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-17 15:41:17.357578 CST&quot;</span></span>
-<span id="cb233-22"><a href="lubridate.html#cb233-22" aria-hidden="true"></a><span class="kw">class</span>(<span class="kw">today</span>())</span>
-<span id="cb233-23"><a href="lubridate.html#cb233-23" aria-hidden="true"></a><span class="co">## [1] &quot;Date&quot;</span></span>
-<span id="cb233-24"><a href="lubridate.html#cb233-24" aria-hidden="true"></a><span class="kw">class</span>(<span class="kw">now</span>())</span>
-<span id="cb233-25"><a href="lubridate.html#cb233-25" aria-hidden="true"></a><span class="co">## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="lubridate.html#cb239-1" aria-hidden="true"></a>op &lt;-<span class="st"> </span><span class="kw">options</span>(<span class="dt">digits.secs =</span> <span class="dv">6</span>)</span>
+<span id="cb239-2"><a href="lubridate.html#cb239-2" aria-hidden="true"></a><span class="kw">Sys.time</span>()</span>
+<span id="cb239-3"><a href="lubridate.html#cb239-3" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-29 14:53:21.91146 CST&quot;</span></span>
+<span id="cb239-4"><a href="lubridate.html#cb239-4" aria-hidden="true"></a><span class="kw">Sys.Date</span>()</span>
+<span id="cb239-5"><a href="lubridate.html#cb239-5" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-29&quot;</span></span>
+<span id="cb239-6"><a href="lubridate.html#cb239-6" aria-hidden="true"></a><span class="kw">class</span>(<span class="kw">Sys.time</span>())</span>
+<span id="cb239-7"><a href="lubridate.html#cb239-7" aria-hidden="true"></a><span class="co">## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</span></span>
+<span id="cb239-8"><a href="lubridate.html#cb239-8" aria-hidden="true"></a><span class="kw">class</span>(<span class="kw">Sys.Date</span>())</span>
+<span id="cb239-9"><a href="lubridate.html#cb239-9" aria-hidden="true"></a><span class="co">## [1] &quot;Date&quot;</span></span>
+<span id="cb239-10"><a href="lubridate.html#cb239-10" aria-hidden="true"></a><span class="co">## locale-specific version of date()</span></span>
+<span id="cb239-11"><a href="lubridate.html#cb239-11" aria-hidden="true"></a><span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%a %b %d %X %Y&quot;</span>)</span>
+<span id="cb239-12"><a href="lubridate.html#cb239-12" aria-hidden="true"></a><span class="co">## [1] &quot;週四 十月 29 下午 02:53:21 2020&quot;</span></span>
+<span id="cb239-13"><a href="lubridate.html#cb239-13" aria-hidden="true"></a><span class="kw">Sys.Date</span>()</span>
+<span id="cb239-14"><a href="lubridate.html#cb239-14" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-29&quot;</span></span>
+<span id="cb239-15"><a href="lubridate.html#cb239-15" aria-hidden="true"></a><span class="co">## lubriate package</span></span>
+<span id="cb239-16"><a href="lubridate.html#cb239-16" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb239-17"><a href="lubridate.html#cb239-17" aria-hidden="true"></a><span class="kw">library</span>(lubridate)</span>
+<span id="cb239-18"><a href="lubridate.html#cb239-18" aria-hidden="true"></a><span class="kw">today</span>()</span>
+<span id="cb239-19"><a href="lubridate.html#cb239-19" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-29&quot;</span></span>
+<span id="cb239-20"><a href="lubridate.html#cb239-20" aria-hidden="true"></a><span class="kw">now</span>()</span>
+<span id="cb239-21"><a href="lubridate.html#cb239-21" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-29 14:53:21.985474 CST&quot;</span></span>
+<span id="cb239-22"><a href="lubridate.html#cb239-22" aria-hidden="true"></a><span class="kw">class</span>(<span class="kw">today</span>())</span>
+<span id="cb239-23"><a href="lubridate.html#cb239-23" aria-hidden="true"></a><span class="co">## [1] &quot;Date&quot;</span></span>
+<span id="cb239-24"><a href="lubridate.html#cb239-24" aria-hidden="true"></a><span class="kw">class</span>(<span class="kw">now</span>())</span>
+<span id="cb239-25"><a href="lubridate.html#cb239-25" aria-hidden="true"></a><span class="co">## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</span></span></code></pre></div>
 <p>不同程式語言系統的時間日期參照個不相同,
 {R} 是以 UTC 時區 (Universal Time, Coordinated)
 January 1, 1970, 0 時, UTC 0 分 0 秒 為 `<code>{0</code>’’ (origin),
@@ -454,54 +471,54 @@ UTC 以國際原子時為計算基準, 修正了一些時間微小的飄移,
 <h3><span class="header-section-number">12.1.1</span> 從文字或字串轉換創件日期時間物件</h3>
 <p>只要文字輸入時, 依照適當的日期時間順序即可創件日期時間物件.
 也可加入時區.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="lubridate.html#cb234-1" aria-hidden="true"></a><span class="kw">ymd</span>(..., <span class="dt">quiet =</span> <span class="ot">FALSE</span>, <span class="dt">tz =</span> <span class="ot">NULL</span>, </span>
-<span id="cb234-2"><a href="lubridate.html#cb234-2" aria-hidden="true"></a>    <span class="dt">locale =</span> <span class="kw">Sys.getlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>), <span class="dt">truncated =</span> <span class="dv">0</span></span>
-<span id="cb234-3"><a href="lubridate.html#cb234-3" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="lubridate.html#cb240-1" aria-hidden="true"></a><span class="kw">ymd</span>(..., <span class="dt">quiet =</span> <span class="ot">FALSE</span>, <span class="dt">tz =</span> <span class="ot">NULL</span>, </span>
+<span id="cb240-2"><a href="lubridate.html#cb240-2" aria-hidden="true"></a>    <span class="dt">locale =</span> <span class="kw">Sys.getlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>), <span class="dt">truncated =</span> <span class="dv">0</span></span>
+<span id="cb240-3"><a href="lubridate.html#cb240-3" aria-hidden="true"></a>)</span></code></pre></div>
 <p>其中引數 <code>tz</code> 為時區識別, <code>locale</code> 為地區識別.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="lubridate.html#cb235-1" aria-hidden="true"></a><span class="co">## strings -&gt; date-time </span></span>
-<span id="cb235-2"><a href="lubridate.html#cb235-2" aria-hidden="true"></a><span class="co">## date</span></span>
-<span id="cb235-3"><a href="lubridate.html#cb235-3" aria-hidden="true"></a><span class="kw">library</span>(lubridate)</span>
-<span id="cb235-4"><a href="lubridate.html#cb235-4" aria-hidden="true"></a><span class="kw">ymd</span>(<span class="st">&quot;2017-01-31&quot;</span>)</span>
-<span id="cb235-5"><a href="lubridate.html#cb235-5" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31&quot;</span></span>
-<span id="cb235-6"><a href="lubridate.html#cb235-6" aria-hidden="true"></a><span class="kw">mdy</span>(<span class="st">&quot;January 31st, 2017&quot;</span>)</span>
-<span id="cb235-7"><a href="lubridate.html#cb235-7" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31&quot;</span></span>
-<span id="cb235-8"><a href="lubridate.html#cb235-8" aria-hidden="true"></a><span class="kw">dmy</span>(<span class="st">&quot;31-Jan-2017&quot;</span>)</span>
-<span id="cb235-9"><a href="lubridate.html#cb235-9" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31&quot;</span></span>
-<span id="cb235-10"><a href="lubridate.html#cb235-10" aria-hidden="true"></a><span class="co">## date and time</span></span>
-<span id="cb235-11"><a href="lubridate.html#cb235-11" aria-hidden="true"></a><span class="kw">ymd_hms</span>(<span class="st">&quot;2017-01-31 20:11:59&quot;</span>)</span>
-<span id="cb235-12"><a href="lubridate.html#cb235-12" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31 20:11:59 UTC&quot;</span></span>
-<span id="cb235-13"><a href="lubridate.html#cb235-13" aria-hidden="true"></a><span class="kw">mdy_hm</span>(<span class="st">&quot;01/31/2017 08:01&quot;</span>)</span>
-<span id="cb235-14"><a href="lubridate.html#cb235-14" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31 08:01:00 UTC&quot;</span></span>
-<span id="cb235-15"><a href="lubridate.html#cb235-15" aria-hidden="true"></a><span class="co">## without quotation</span></span>
-<span id="cb235-16"><a href="lubridate.html#cb235-16" aria-hidden="true"></a><span class="kw">ymd</span>(<span class="dv">20170131</span>)</span>
-<span id="cb235-17"><a href="lubridate.html#cb235-17" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31&quot;</span></span>
-<span id="cb235-18"><a href="lubridate.html#cb235-18" aria-hidden="true"></a><span class="co">## add time-zone</span></span>
-<span id="cb235-19"><a href="lubridate.html#cb235-19" aria-hidden="true"></a><span class="kw">ymd</span>(<span class="dv">20170131</span>, <span class="dt">tz =</span> <span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb235-20"><a href="lubridate.html#cb235-20" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31 UTC&quot;</span></span>
-<span id="cb235-21"><a href="lubridate.html#cb235-21" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb235-22"><a href="lubridate.html#cb235-22" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;09-01-01&quot;</span>, <span class="st">&quot;09-01-02&quot;</span>, <span class="st">&quot;09-01-03&quot;</span>)</span>
-<span id="cb235-23"><a href="lubridate.html#cb235-23" aria-hidden="true"></a><span class="kw">ymd</span>(x)</span>
-<span id="cb235-24"><a href="lubridate.html#cb235-24" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01&quot; &quot;2009-01-02&quot; &quot;2009-01-03&quot;</span></span>
-<span id="cb235-25"><a href="lubridate.html#cb235-25" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;2009-01-01&quot;</span>, <span class="st">&quot;2009-01-02&quot;</span>, <span class="st">&quot;2009-01-03&quot;</span>)</span>
-<span id="cb235-26"><a href="lubridate.html#cb235-26" aria-hidden="true"></a><span class="kw">ymd</span>(x)</span>
-<span id="cb235-27"><a href="lubridate.html#cb235-27" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01&quot; &quot;2009-01-02&quot; &quot;2009-01-03&quot;</span></span>
-<span id="cb235-28"><a href="lubridate.html#cb235-28" aria-hidden="true"></a><span class="kw">ymd</span>(<span class="dv">090101</span>, <span class="dv">90102</span>)</span>
-<span id="cb235-29"><a href="lubridate.html#cb235-29" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01&quot; &quot;2009-01-02&quot;</span></span>
-<span id="cb235-30"><a href="lubridate.html#cb235-30" aria-hidden="true"></a><span class="kw">now</span>() <span class="op">&gt;</span><span class="st"> </span><span class="kw">ymd</span>(<span class="dv">20090101</span>)</span>
-<span id="cb235-31"><a href="lubridate.html#cb235-31" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
-<span id="cb235-32"><a href="lubridate.html#cb235-32" aria-hidden="true"></a><span class="kw">dmy</span>(<span class="dv">010210</span>)</span>
-<span id="cb235-33"><a href="lubridate.html#cb235-33" aria-hidden="true"></a><span class="co">## [1] &quot;2010-02-01&quot;</span></span>
-<span id="cb235-34"><a href="lubridate.html#cb235-34" aria-hidden="true"></a><span class="kw">mdy</span>(<span class="dv">010210</span>)</span>
-<span id="cb235-35"><a href="lubridate.html#cb235-35" aria-hidden="true"></a><span class="co">## [1] &quot;2010-01-02&quot;</span></span>
-<span id="cb235-36"><a href="lubridate.html#cb235-36" aria-hidden="true"></a><span class="kw">yq</span>(<span class="st">&#39;2014.2&#39;</span>)</span>
-<span id="cb235-37"><a href="lubridate.html#cb235-37" aria-hidden="true"></a><span class="co">## [1] &quot;2014-04-01&quot;</span></span>
-<span id="cb235-38"><a href="lubridate.html#cb235-38" aria-hidden="true"></a><span class="co">##</span></span>
-<span id="cb235-39"><a href="lubridate.html#cb235-39" aria-hidden="true"></a><span class="co">## heterogeneous formats in a single vector:</span></span>
-<span id="cb235-40"><a href="lubridate.html#cb235-40" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">20090101</span>, <span class="st">&quot;2009-01-02&quot;</span>, <span class="st">&quot;2009 01 03&quot;</span>, <span class="st">&quot;2009-1-4&quot;</span>,</span>
-<span id="cb235-41"><a href="lubridate.html#cb235-41" aria-hidden="true"></a>       <span class="st">&quot;2009-1, 5&quot;</span>, <span class="st">&quot;Created on 2009 1 6&quot;</span>, <span class="st">&quot;200901 !!! 07&quot;</span>)</span>
-<span id="cb235-42"><a href="lubridate.html#cb235-42" aria-hidden="true"></a><span class="kw">ymd</span>(x)</span>
-<span id="cb235-43"><a href="lubridate.html#cb235-43" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01&quot; &quot;2009-01-02&quot; &quot;2009-01-03&quot; &quot;2009-01-04&quot; &quot;2009-01-05&quot; &quot;2009-01-06&quot;</span></span>
-<span id="cb235-44"><a href="lubridate.html#cb235-44" aria-hidden="true"></a><span class="co">## [7] &quot;2009-01-07&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="lubridate.html#cb241-1" aria-hidden="true"></a><span class="co">## strings -&gt; date-time </span></span>
+<span id="cb241-2"><a href="lubridate.html#cb241-2" aria-hidden="true"></a><span class="co">## date</span></span>
+<span id="cb241-3"><a href="lubridate.html#cb241-3" aria-hidden="true"></a><span class="kw">library</span>(lubridate)</span>
+<span id="cb241-4"><a href="lubridate.html#cb241-4" aria-hidden="true"></a><span class="kw">ymd</span>(<span class="st">&quot;2017-01-31&quot;</span>)</span>
+<span id="cb241-5"><a href="lubridate.html#cb241-5" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31&quot;</span></span>
+<span id="cb241-6"><a href="lubridate.html#cb241-6" aria-hidden="true"></a><span class="kw">mdy</span>(<span class="st">&quot;January 31st, 2017&quot;</span>)</span>
+<span id="cb241-7"><a href="lubridate.html#cb241-7" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31&quot;</span></span>
+<span id="cb241-8"><a href="lubridate.html#cb241-8" aria-hidden="true"></a><span class="kw">dmy</span>(<span class="st">&quot;31-Jan-2017&quot;</span>)</span>
+<span id="cb241-9"><a href="lubridate.html#cb241-9" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31&quot;</span></span>
+<span id="cb241-10"><a href="lubridate.html#cb241-10" aria-hidden="true"></a><span class="co">## date and time</span></span>
+<span id="cb241-11"><a href="lubridate.html#cb241-11" aria-hidden="true"></a><span class="kw">ymd_hms</span>(<span class="st">&quot;2017-01-31 20:11:59&quot;</span>)</span>
+<span id="cb241-12"><a href="lubridate.html#cb241-12" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31 20:11:59 UTC&quot;</span></span>
+<span id="cb241-13"><a href="lubridate.html#cb241-13" aria-hidden="true"></a><span class="kw">mdy_hm</span>(<span class="st">&quot;01/31/2017 08:01&quot;</span>)</span>
+<span id="cb241-14"><a href="lubridate.html#cb241-14" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31 08:01:00 UTC&quot;</span></span>
+<span id="cb241-15"><a href="lubridate.html#cb241-15" aria-hidden="true"></a><span class="co">## without quotation</span></span>
+<span id="cb241-16"><a href="lubridate.html#cb241-16" aria-hidden="true"></a><span class="kw">ymd</span>(<span class="dv">20170131</span>)</span>
+<span id="cb241-17"><a href="lubridate.html#cb241-17" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31&quot;</span></span>
+<span id="cb241-18"><a href="lubridate.html#cb241-18" aria-hidden="true"></a><span class="co">## add time-zone</span></span>
+<span id="cb241-19"><a href="lubridate.html#cb241-19" aria-hidden="true"></a><span class="kw">ymd</span>(<span class="dv">20170131</span>, <span class="dt">tz =</span> <span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb241-20"><a href="lubridate.html#cb241-20" aria-hidden="true"></a><span class="co">## [1] &quot;2017-01-31 UTC&quot;</span></span>
+<span id="cb241-21"><a href="lubridate.html#cb241-21" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb241-22"><a href="lubridate.html#cb241-22" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;09-01-01&quot;</span>, <span class="st">&quot;09-01-02&quot;</span>, <span class="st">&quot;09-01-03&quot;</span>)</span>
+<span id="cb241-23"><a href="lubridate.html#cb241-23" aria-hidden="true"></a><span class="kw">ymd</span>(x)</span>
+<span id="cb241-24"><a href="lubridate.html#cb241-24" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01&quot; &quot;2009-01-02&quot; &quot;2009-01-03&quot;</span></span>
+<span id="cb241-25"><a href="lubridate.html#cb241-25" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;2009-01-01&quot;</span>, <span class="st">&quot;2009-01-02&quot;</span>, <span class="st">&quot;2009-01-03&quot;</span>)</span>
+<span id="cb241-26"><a href="lubridate.html#cb241-26" aria-hidden="true"></a><span class="kw">ymd</span>(x)</span>
+<span id="cb241-27"><a href="lubridate.html#cb241-27" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01&quot; &quot;2009-01-02&quot; &quot;2009-01-03&quot;</span></span>
+<span id="cb241-28"><a href="lubridate.html#cb241-28" aria-hidden="true"></a><span class="kw">ymd</span>(<span class="dv">090101</span>, <span class="dv">90102</span>)</span>
+<span id="cb241-29"><a href="lubridate.html#cb241-29" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01&quot; &quot;2009-01-02&quot;</span></span>
+<span id="cb241-30"><a href="lubridate.html#cb241-30" aria-hidden="true"></a><span class="kw">now</span>() <span class="op">&gt;</span><span class="st"> </span><span class="kw">ymd</span>(<span class="dv">20090101</span>)</span>
+<span id="cb241-31"><a href="lubridate.html#cb241-31" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb241-32"><a href="lubridate.html#cb241-32" aria-hidden="true"></a><span class="kw">dmy</span>(<span class="dv">010210</span>)</span>
+<span id="cb241-33"><a href="lubridate.html#cb241-33" aria-hidden="true"></a><span class="co">## [1] &quot;2010-02-01&quot;</span></span>
+<span id="cb241-34"><a href="lubridate.html#cb241-34" aria-hidden="true"></a><span class="kw">mdy</span>(<span class="dv">010210</span>)</span>
+<span id="cb241-35"><a href="lubridate.html#cb241-35" aria-hidden="true"></a><span class="co">## [1] &quot;2010-01-02&quot;</span></span>
+<span id="cb241-36"><a href="lubridate.html#cb241-36" aria-hidden="true"></a><span class="kw">yq</span>(<span class="st">&#39;2014.2&#39;</span>)</span>
+<span id="cb241-37"><a href="lubridate.html#cb241-37" aria-hidden="true"></a><span class="co">## [1] &quot;2014-04-01&quot;</span></span>
+<span id="cb241-38"><a href="lubridate.html#cb241-38" aria-hidden="true"></a><span class="co">##</span></span>
+<span id="cb241-39"><a href="lubridate.html#cb241-39" aria-hidden="true"></a><span class="co">## heterogeneous formats in a single vector:</span></span>
+<span id="cb241-40"><a href="lubridate.html#cb241-40" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">20090101</span>, <span class="st">&quot;2009-01-02&quot;</span>, <span class="st">&quot;2009 01 03&quot;</span>, <span class="st">&quot;2009-1-4&quot;</span>,</span>
+<span id="cb241-41"><a href="lubridate.html#cb241-41" aria-hidden="true"></a>       <span class="st">&quot;2009-1, 5&quot;</span>, <span class="st">&quot;Created on 2009 1 6&quot;</span>, <span class="st">&quot;200901 !!! 07&quot;</span>)</span>
+<span id="cb241-42"><a href="lubridate.html#cb241-42" aria-hidden="true"></a><span class="kw">ymd</span>(x)</span>
+<span id="cb241-43"><a href="lubridate.html#cb241-43" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01&quot; &quot;2009-01-02&quot; &quot;2009-01-03&quot; &quot;2009-01-04&quot; &quot;2009-01-05&quot; &quot;2009-01-06&quot;</span></span>
+<span id="cb241-44"><a href="lubridate.html#cb241-44" aria-hidden="true"></a><span class="co">## [7] &quot;2009-01-07&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div id="從date-time-資料個別成分-創件日期時間物件." class="section level2" number="12.2">
@@ -511,60 +528,60 @@ UTC 以國際原子時為計算基準, 修正了一些時間微小的飄移,
 例如 {R} 的 <code>nycflights13</code> 套件的 <code>flights</code> 資料,
 此資料是有關紐約機場班機起降時間記錄.
 可使用函式 <code>make_datetime()</code> 創件日期時間物件.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="lubridate.html#cb236-1" aria-hidden="true"></a><span class="co">## nycflights13 package</span></span>
-<span id="cb236-2"><a href="lubridate.html#cb236-2" aria-hidden="true"></a><span class="kw">library</span>(nycflights13)</span>
-<span id="cb236-3"><a href="lubridate.html#cb236-3" aria-hidden="true"></a><span class="co">## store as separate variables</span></span>
-<span id="cb236-4"><a href="lubridate.html#cb236-4" aria-hidden="true"></a>flights <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb236-5"><a href="lubridate.html#cb236-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(year, month, day, hour, minute)</span>
-<span id="cb236-6"><a href="lubridate.html#cb236-6" aria-hidden="true"></a><span class="co">## # A tibble: 336,776 x 5</span></span>
-<span id="cb236-7"><a href="lubridate.html#cb236-7" aria-hidden="true"></a><span class="co">##     year month   day  hour minute</span></span>
-<span id="cb236-8"><a href="lubridate.html#cb236-8" aria-hidden="true"></a><span class="co">##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span id="cb236-9"><a href="lubridate.html#cb236-9" aria-hidden="true"></a><span class="co">##  1  2013     1     1     5     15</span></span>
-<span id="cb236-10"><a href="lubridate.html#cb236-10" aria-hidden="true"></a><span class="co">##  2  2013     1     1     5     29</span></span>
-<span id="cb236-11"><a href="lubridate.html#cb236-11" aria-hidden="true"></a><span class="co">##  3  2013     1     1     5     40</span></span>
-<span id="cb236-12"><a href="lubridate.html#cb236-12" aria-hidden="true"></a><span class="co">##  4  2013     1     1     5     45</span></span>
-<span id="cb236-13"><a href="lubridate.html#cb236-13" aria-hidden="true"></a><span class="co">##  5  2013     1     1     6      0</span></span>
-<span id="cb236-14"><a href="lubridate.html#cb236-14" aria-hidden="true"></a><span class="co">##  6  2013     1     1     5     58</span></span>
-<span id="cb236-15"><a href="lubridate.html#cb236-15" aria-hidden="true"></a><span class="co">##  7  2013     1     1     6      0</span></span>
-<span id="cb236-16"><a href="lubridate.html#cb236-16" aria-hidden="true"></a><span class="co">##  8  2013     1     1     6      0</span></span>
-<span id="cb236-17"><a href="lubridate.html#cb236-17" aria-hidden="true"></a><span class="co">##  9  2013     1     1     6      0</span></span>
-<span id="cb236-18"><a href="lubridate.html#cb236-18" aria-hidden="true"></a><span class="co">## 10  2013     1     1     6      0</span></span>
-<span id="cb236-19"><a href="lubridate.html#cb236-19" aria-hidden="true"></a><span class="co">## # ... with 336,766 more rows</span></span>
-<span id="cb236-20"><a href="lubridate.html#cb236-20" aria-hidden="true"></a><span class="co">## create date-time</span></span>
-<span id="cb236-21"><a href="lubridate.html#cb236-21" aria-hidden="true"></a>flights <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb236-22"><a href="lubridate.html#cb236-22" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(year, month, day, hour, minute) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb236-23"><a href="lubridate.html#cb236-23" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">departure =</span> <span class="kw">make_datetime</span>(year, month, day, hour, minute))</span>
-<span id="cb236-24"><a href="lubridate.html#cb236-24" aria-hidden="true"></a><span class="co">## # A tibble: 336,776 x 6</span></span>
-<span id="cb236-25"><a href="lubridate.html#cb236-25" aria-hidden="true"></a><span class="co">##     year month   day  hour minute departure                 </span></span>
-<span id="cb236-26"><a href="lubridate.html#cb236-26" aria-hidden="true"></a><span class="co">##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;                    </span></span>
-<span id="cb236-27"><a href="lubridate.html#cb236-27" aria-hidden="true"></a><span class="co">##  1  2013     1     1     5     15 2013-01-01 05:15:00.000000</span></span>
-<span id="cb236-28"><a href="lubridate.html#cb236-28" aria-hidden="true"></a><span class="co">##  2  2013     1     1     5     29 2013-01-01 05:29:00.000000</span></span>
-<span id="cb236-29"><a href="lubridate.html#cb236-29" aria-hidden="true"></a><span class="co">##  3  2013     1     1     5     40 2013-01-01 05:40:00.000000</span></span>
-<span id="cb236-30"><a href="lubridate.html#cb236-30" aria-hidden="true"></a><span class="co">##  4  2013     1     1     5     45 2013-01-01 05:45:00.000000</span></span>
-<span id="cb236-31"><a href="lubridate.html#cb236-31" aria-hidden="true"></a><span class="co">##  5  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
-<span id="cb236-32"><a href="lubridate.html#cb236-32" aria-hidden="true"></a><span class="co">##  6  2013     1     1     5     58 2013-01-01 05:58:00.000000</span></span>
-<span id="cb236-33"><a href="lubridate.html#cb236-33" aria-hidden="true"></a><span class="co">##  7  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
-<span id="cb236-34"><a href="lubridate.html#cb236-34" aria-hidden="true"></a><span class="co">##  8  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
-<span id="cb236-35"><a href="lubridate.html#cb236-35" aria-hidden="true"></a><span class="co">##  9  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
-<span id="cb236-36"><a href="lubridate.html#cb236-36" aria-hidden="true"></a><span class="co">## 10  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
-<span id="cb236-37"><a href="lubridate.html#cb236-37" aria-hidden="true"></a><span class="co">## # ... with 336,766 more rows</span></span>
-<span id="cb236-38"><a href="lubridate.html#cb236-38" aria-hidden="true"></a><span class="co">##</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="lubridate.html#cb242-1" aria-hidden="true"></a><span class="co">## nycflights13 package</span></span>
+<span id="cb242-2"><a href="lubridate.html#cb242-2" aria-hidden="true"></a><span class="kw">library</span>(nycflights13)</span>
+<span id="cb242-3"><a href="lubridate.html#cb242-3" aria-hidden="true"></a><span class="co">## store as separate variables</span></span>
+<span id="cb242-4"><a href="lubridate.html#cb242-4" aria-hidden="true"></a>flights <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb242-5"><a href="lubridate.html#cb242-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(year, month, day, hour, minute)</span>
+<span id="cb242-6"><a href="lubridate.html#cb242-6" aria-hidden="true"></a><span class="co">## # A tibble: 336,776 x 5</span></span>
+<span id="cb242-7"><a href="lubridate.html#cb242-7" aria-hidden="true"></a><span class="co">##     year month   day  hour minute</span></span>
+<span id="cb242-8"><a href="lubridate.html#cb242-8" aria-hidden="true"></a><span class="co">##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb242-9"><a href="lubridate.html#cb242-9" aria-hidden="true"></a><span class="co">##  1  2013     1     1     5     15</span></span>
+<span id="cb242-10"><a href="lubridate.html#cb242-10" aria-hidden="true"></a><span class="co">##  2  2013     1     1     5     29</span></span>
+<span id="cb242-11"><a href="lubridate.html#cb242-11" aria-hidden="true"></a><span class="co">##  3  2013     1     1     5     40</span></span>
+<span id="cb242-12"><a href="lubridate.html#cb242-12" aria-hidden="true"></a><span class="co">##  4  2013     1     1     5     45</span></span>
+<span id="cb242-13"><a href="lubridate.html#cb242-13" aria-hidden="true"></a><span class="co">##  5  2013     1     1     6      0</span></span>
+<span id="cb242-14"><a href="lubridate.html#cb242-14" aria-hidden="true"></a><span class="co">##  6  2013     1     1     5     58</span></span>
+<span id="cb242-15"><a href="lubridate.html#cb242-15" aria-hidden="true"></a><span class="co">##  7  2013     1     1     6      0</span></span>
+<span id="cb242-16"><a href="lubridate.html#cb242-16" aria-hidden="true"></a><span class="co">##  8  2013     1     1     6      0</span></span>
+<span id="cb242-17"><a href="lubridate.html#cb242-17" aria-hidden="true"></a><span class="co">##  9  2013     1     1     6      0</span></span>
+<span id="cb242-18"><a href="lubridate.html#cb242-18" aria-hidden="true"></a><span class="co">## 10  2013     1     1     6      0</span></span>
+<span id="cb242-19"><a href="lubridate.html#cb242-19" aria-hidden="true"></a><span class="co">## # ... with 336,766 more rows</span></span>
+<span id="cb242-20"><a href="lubridate.html#cb242-20" aria-hidden="true"></a><span class="co">## create date-time</span></span>
+<span id="cb242-21"><a href="lubridate.html#cb242-21" aria-hidden="true"></a>flights <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb242-22"><a href="lubridate.html#cb242-22" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(year, month, day, hour, minute) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb242-23"><a href="lubridate.html#cb242-23" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">departure =</span> <span class="kw">make_datetime</span>(year, month, day, hour, minute))</span>
+<span id="cb242-24"><a href="lubridate.html#cb242-24" aria-hidden="true"></a><span class="co">## # A tibble: 336,776 x 6</span></span>
+<span id="cb242-25"><a href="lubridate.html#cb242-25" aria-hidden="true"></a><span class="co">##     year month   day  hour minute departure                 </span></span>
+<span id="cb242-26"><a href="lubridate.html#cb242-26" aria-hidden="true"></a><span class="co">##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;                    </span></span>
+<span id="cb242-27"><a href="lubridate.html#cb242-27" aria-hidden="true"></a><span class="co">##  1  2013     1     1     5     15 2013-01-01 05:15:00.000000</span></span>
+<span id="cb242-28"><a href="lubridate.html#cb242-28" aria-hidden="true"></a><span class="co">##  2  2013     1     1     5     29 2013-01-01 05:29:00.000000</span></span>
+<span id="cb242-29"><a href="lubridate.html#cb242-29" aria-hidden="true"></a><span class="co">##  3  2013     1     1     5     40 2013-01-01 05:40:00.000000</span></span>
+<span id="cb242-30"><a href="lubridate.html#cb242-30" aria-hidden="true"></a><span class="co">##  4  2013     1     1     5     45 2013-01-01 05:45:00.000000</span></span>
+<span id="cb242-31"><a href="lubridate.html#cb242-31" aria-hidden="true"></a><span class="co">##  5  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
+<span id="cb242-32"><a href="lubridate.html#cb242-32" aria-hidden="true"></a><span class="co">##  6  2013     1     1     5     58 2013-01-01 05:58:00.000000</span></span>
+<span id="cb242-33"><a href="lubridate.html#cb242-33" aria-hidden="true"></a><span class="co">##  7  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
+<span id="cb242-34"><a href="lubridate.html#cb242-34" aria-hidden="true"></a><span class="co">##  8  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
+<span id="cb242-35"><a href="lubridate.html#cb242-35" aria-hidden="true"></a><span class="co">##  9  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
+<span id="cb242-36"><a href="lubridate.html#cb242-36" aria-hidden="true"></a><span class="co">## 10  2013     1     1     6      0 2013-01-01 06:00:00.000000</span></span>
+<span id="cb242-37"><a href="lubridate.html#cb242-37" aria-hidden="true"></a><span class="co">## # ... with 336,766 more rows</span></span>
+<span id="cb242-38"><a href="lubridate.html#cb242-38" aria-hidden="true"></a><span class="co">##</span></span></code></pre></div>
 <div id="從已經建立的其他資料物件創件日期時間物件" class="section level3" number="12.2.1">
 <h3><span class="header-section-number">12.2.1</span> 從已經建立的其他資料物件創件日期時間物件</h3>
 <p>若資料以其他的物件形式儲存在 {R} 系統內,
 常使用函式 <code>as_datetime()</code> 與 <code>as_date()</code> 創件日期時間物件.
 若是以數值輸入, 可分成以秒為單位或以日為單位輸入.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="lubridate.html#cb237-1" aria-hidden="true"></a><span class="kw">as_datetime</span>(<span class="kw">today</span>())</span>
-<span id="cb237-2"><a href="lubridate.html#cb237-2" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-17 UTC&quot;</span></span>
-<span id="cb237-3"><a href="lubridate.html#cb237-3" aria-hidden="true"></a><span class="kw">as_date</span>(<span class="kw">now</span>())</span>
-<span id="cb237-4"><a href="lubridate.html#cb237-4" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-17&quot;</span></span>
-<span id="cb237-5"><a href="lubridate.html#cb237-5" aria-hidden="true"></a><span class="co">## import as numeric values</span></span>
-<span id="cb237-6"><a href="lubridate.html#cb237-6" aria-hidden="true"></a><span class="co">## import as seconds from 1970-01-01 0:00:00</span></span>
-<span id="cb237-7"><a href="lubridate.html#cb237-7" aria-hidden="true"></a><span class="kw">as_datetime</span>(<span class="dv">60</span> <span class="op">*</span><span class="st"> </span><span class="dv">60</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span>) </span>
-<span id="cb237-8"><a href="lubridate.html#cb237-8" aria-hidden="true"></a><span class="co">## [1] &quot;1970-01-01 10:00:00 UTC&quot;</span></span>
-<span id="cb237-9"><a href="lubridate.html#cb237-9" aria-hidden="true"></a><span class="co">## import days from 1970-01-01</span></span>
-<span id="cb237-10"><a href="lubridate.html#cb237-10" aria-hidden="true"></a><span class="kw">as_date</span>(<span class="dv">365</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) </span>
-<span id="cb237-11"><a href="lubridate.html#cb237-11" aria-hidden="true"></a><span class="co">## [1] &quot;1980-01-01&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="lubridate.html#cb243-1" aria-hidden="true"></a><span class="kw">as_datetime</span>(<span class="kw">today</span>())</span>
+<span id="cb243-2"><a href="lubridate.html#cb243-2" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-29 UTC&quot;</span></span>
+<span id="cb243-3"><a href="lubridate.html#cb243-3" aria-hidden="true"></a><span class="kw">as_date</span>(<span class="kw">now</span>())</span>
+<span id="cb243-4"><a href="lubridate.html#cb243-4" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-29&quot;</span></span>
+<span id="cb243-5"><a href="lubridate.html#cb243-5" aria-hidden="true"></a><span class="co">## import as numeric values</span></span>
+<span id="cb243-6"><a href="lubridate.html#cb243-6" aria-hidden="true"></a><span class="co">## import as seconds from 1970-01-01 0:00:00</span></span>
+<span id="cb243-7"><a href="lubridate.html#cb243-7" aria-hidden="true"></a><span class="kw">as_datetime</span>(<span class="dv">60</span> <span class="op">*</span><span class="st"> </span><span class="dv">60</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span>) </span>
+<span id="cb243-8"><a href="lubridate.html#cb243-8" aria-hidden="true"></a><span class="co">## [1] &quot;1970-01-01 10:00:00 UTC&quot;</span></span>
+<span id="cb243-9"><a href="lubridate.html#cb243-9" aria-hidden="true"></a><span class="co">## import days from 1970-01-01</span></span>
+<span id="cb243-10"><a href="lubridate.html#cb243-10" aria-hidden="true"></a><span class="kw">as_date</span>(<span class="dv">365</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) </span>
+<span id="cb243-11"><a href="lubridate.html#cb243-11" aria-hidden="true"></a><span class="co">## [1] &quot;1980-01-01&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div id="時區轉換" class="section level2" number="12.3">
@@ -575,16 +592,16 @@ UTC 以國際原子時為計算基準, 修正了一些時間微小的飄移,
 例如台北時區為 2011-07-01 09:00:00 <code>Asia/Taipei</code>,
 轉換成美國 Hawaii時區為 <code>HST</code>.
 時區可參考 (<a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" class="uri">https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</a>).</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="lubridate.html#cb238-1" aria-hidden="true"></a><span class="co">## change time zone</span></span>
-<span id="cb238-2"><a href="lubridate.html#cb238-2" aria-hidden="true"></a>meeting &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2020-10-10 09:00:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;Asia/Taipei&quot;</span>)</span>
-<span id="cb238-3"><a href="lubridate.html#cb238-3" aria-hidden="true"></a><span class="kw">with_tz</span>(meeting, <span class="st">&quot;HST&quot;</span>)</span>
-<span id="cb238-4"><a href="lubridate.html#cb238-4" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-09 15:00:00 HST&quot;</span></span>
-<span id="cb238-5"><a href="lubridate.html#cb238-5" aria-hidden="true"></a><span class="co">## force change </span></span>
-<span id="cb238-6"><a href="lubridate.html#cb238-6" aria-hidden="true"></a>mistake &lt;-<span class="st"> </span><span class="kw">force_tz</span>(meeting, <span class="st">&quot;America/Chicago&quot;</span>)</span>
-<span id="cb238-7"><a href="lubridate.html#cb238-7" aria-hidden="true"></a>mistake</span>
-<span id="cb238-8"><a href="lubridate.html#cb238-8" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-10 09:00:00 CDT&quot;</span></span>
-<span id="cb238-9"><a href="lubridate.html#cb238-9" aria-hidden="true"></a><span class="kw">with_tz</span>(mistake, <span class="st">&quot;Asia/Taipei&quot;</span>) </span>
-<span id="cb238-10"><a href="lubridate.html#cb238-10" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-10 22:00:00 CST&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="lubridate.html#cb244-1" aria-hidden="true"></a><span class="co">## change time zone</span></span>
+<span id="cb244-2"><a href="lubridate.html#cb244-2" aria-hidden="true"></a>meeting &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2020-10-10 09:00:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;Asia/Taipei&quot;</span>)</span>
+<span id="cb244-3"><a href="lubridate.html#cb244-3" aria-hidden="true"></a><span class="kw">with_tz</span>(meeting, <span class="st">&quot;HST&quot;</span>)</span>
+<span id="cb244-4"><a href="lubridate.html#cb244-4" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-09 15:00:00 HST&quot;</span></span>
+<span id="cb244-5"><a href="lubridate.html#cb244-5" aria-hidden="true"></a><span class="co">## force change </span></span>
+<span id="cb244-6"><a href="lubridate.html#cb244-6" aria-hidden="true"></a>mistake &lt;-<span class="st"> </span><span class="kw">force_tz</span>(meeting, <span class="st">&quot;America/Chicago&quot;</span>)</span>
+<span id="cb244-7"><a href="lubridate.html#cb244-7" aria-hidden="true"></a>mistake</span>
+<span id="cb244-8"><a href="lubridate.html#cb244-8" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-10 09:00:00 CDT&quot;</span></span>
+<span id="cb244-9"><a href="lubridate.html#cb244-9" aria-hidden="true"></a><span class="kw">with_tz</span>(mistake, <span class="st">&quot;Asia/Taipei&quot;</span>) </span>
+<span id="cb244-10"><a href="lubridate.html#cb244-10" aria-hidden="true"></a><span class="co">## [1] &quot;2020-10-10 22:00:00 CST&quot;</span></span></code></pre></div>
 </div>
 <div id="取出-date-time-資料的個別成分" class="section level2" number="12.4">
 <h2><span class="header-section-number">12.4</span> 取出 date-time 資料的個別成分</h2>
@@ -596,65 +613,65 @@ UTC 以國際原子時為計算基準, 修正了一些時間微小的飄移,
 <code>wday()</code> (一週內的天數 1–7),
 <code>hour()</code>, <code>minute(),</code>second()<code>. 其中</code>month()<code>與</code>wday()<code>可使用引數</code>label = TRUE<code>回傳簡寫標註文字, 如 Jan, Mon. 而使用引數</code>bbr = FALSE` 回傳完整標註文字, 如 January, Monday.
 這些函式也可用來更動 date-time 物件部分成分.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="lubridate.html#cb239-1" aria-hidden="true"></a>datetime &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>)</span>
-<span id="cb239-2"><a href="lubridate.html#cb239-2" aria-hidden="true"></a><span class="kw">year</span>(datetime)</span>
-<span id="cb239-3"><a href="lubridate.html#cb239-3" aria-hidden="true"></a><span class="co">## [1] 2016</span></span>
-<span id="cb239-4"><a href="lubridate.html#cb239-4" aria-hidden="true"></a><span class="kw">month</span>(datetime)</span>
-<span id="cb239-5"><a href="lubridate.html#cb239-5" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
-<span id="cb239-6"><a href="lubridate.html#cb239-6" aria-hidden="true"></a><span class="kw">mday</span>(datetime)</span>
-<span id="cb239-7"><a href="lubridate.html#cb239-7" aria-hidden="true"></a><span class="co">## [1] 8</span></span>
-<span id="cb239-8"><a href="lubridate.html#cb239-8" aria-hidden="true"></a><span class="kw">yday</span>(datetime)</span>
-<span id="cb239-9"><a href="lubridate.html#cb239-9" aria-hidden="true"></a><span class="co">## [1] 190</span></span>
-<span id="cb239-10"><a href="lubridate.html#cb239-10" aria-hidden="true"></a><span class="kw">wday</span>(datetime)</span>
-<span id="cb239-11"><a href="lubridate.html#cb239-11" aria-hidden="true"></a><span class="co">## [1] 6</span></span>
-<span id="cb239-12"><a href="lubridate.html#cb239-12" aria-hidden="true"></a><span class="co">## labels </span></span>
-<span id="cb239-13"><a href="lubridate.html#cb239-13" aria-hidden="true"></a><span class="kw">month</span>(datetime, <span class="dt">label =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb239-14"><a href="lubridate.html#cb239-14" aria-hidden="true"></a><span class="co">## [1] 七月</span></span>
-<span id="cb239-15"><a href="lubridate.html#cb239-15" aria-hidden="true"></a><span class="co">## 12 Levels: 一月 &lt; 二月 &lt; 三月 &lt; 四月 &lt; 五月 &lt; 六月 &lt; 七月 &lt; 八月 &lt; 九月 &lt; ... &lt; 十二月</span></span>
-<span id="cb239-16"><a href="lubridate.html#cb239-16" aria-hidden="true"></a><span class="kw">wday</span>(datetime, <span class="dt">label =</span> <span class="ot">TRUE</span>, <span class="dt">abbr =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb239-17"><a href="lubridate.html#cb239-17" aria-hidden="true"></a><span class="co">## [1] 星期五</span></span>
-<span id="cb239-18"><a href="lubridate.html#cb239-18" aria-hidden="true"></a><span class="co">## Levels: 星期日 &lt; 星期一 &lt; 星期二 &lt; 星期三 &lt; 星期四 &lt; 星期五 &lt; 星期六</span></span>
-<span id="cb239-19"><a href="lubridate.html#cb239-19" aria-hidden="true"></a><span class="co">## change components</span></span>
-<span id="cb239-20"><a href="lubridate.html#cb239-20" aria-hidden="true"></a>(datetime &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>))</span>
-<span id="cb239-21"><a href="lubridate.html#cb239-21" aria-hidden="true"></a><span class="co">## [1] &quot;2016-07-08 12:34:56 UTC&quot;</span></span>
-<span id="cb239-22"><a href="lubridate.html#cb239-22" aria-hidden="true"></a><span class="kw">year</span>(datetime) &lt;-<span class="st"> </span><span class="dv">2020</span></span>
-<span id="cb239-23"><a href="lubridate.html#cb239-23" aria-hidden="true"></a>datetime</span>
-<span id="cb239-24"><a href="lubridate.html#cb239-24" aria-hidden="true"></a><span class="co">## [1] &quot;2020-07-08 12:34:56 UTC&quot;</span></span>
-<span id="cb239-25"><a href="lubridate.html#cb239-25" aria-hidden="true"></a><span class="kw">month</span>(datetime) &lt;-<span class="st"> </span><span class="dv">01</span></span>
-<span id="cb239-26"><a href="lubridate.html#cb239-26" aria-hidden="true"></a>datetime</span>
-<span id="cb239-27"><a href="lubridate.html#cb239-27" aria-hidden="true"></a><span class="co">## [1] &quot;2020-01-08 12:34:56 UTC&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="lubridate.html#cb245-1" aria-hidden="true"></a>datetime &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>)</span>
+<span id="cb245-2"><a href="lubridate.html#cb245-2" aria-hidden="true"></a><span class="kw">year</span>(datetime)</span>
+<span id="cb245-3"><a href="lubridate.html#cb245-3" aria-hidden="true"></a><span class="co">## [1] 2016</span></span>
+<span id="cb245-4"><a href="lubridate.html#cb245-4" aria-hidden="true"></a><span class="kw">month</span>(datetime)</span>
+<span id="cb245-5"><a href="lubridate.html#cb245-5" aria-hidden="true"></a><span class="co">## [1] 7</span></span>
+<span id="cb245-6"><a href="lubridate.html#cb245-6" aria-hidden="true"></a><span class="kw">mday</span>(datetime)</span>
+<span id="cb245-7"><a href="lubridate.html#cb245-7" aria-hidden="true"></a><span class="co">## [1] 8</span></span>
+<span id="cb245-8"><a href="lubridate.html#cb245-8" aria-hidden="true"></a><span class="kw">yday</span>(datetime)</span>
+<span id="cb245-9"><a href="lubridate.html#cb245-9" aria-hidden="true"></a><span class="co">## [1] 190</span></span>
+<span id="cb245-10"><a href="lubridate.html#cb245-10" aria-hidden="true"></a><span class="kw">wday</span>(datetime)</span>
+<span id="cb245-11"><a href="lubridate.html#cb245-11" aria-hidden="true"></a><span class="co">## [1] 6</span></span>
+<span id="cb245-12"><a href="lubridate.html#cb245-12" aria-hidden="true"></a><span class="co">## labels </span></span>
+<span id="cb245-13"><a href="lubridate.html#cb245-13" aria-hidden="true"></a><span class="kw">month</span>(datetime, <span class="dt">label =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb245-14"><a href="lubridate.html#cb245-14" aria-hidden="true"></a><span class="co">## [1] 七月</span></span>
+<span id="cb245-15"><a href="lubridate.html#cb245-15" aria-hidden="true"></a><span class="co">## 12 Levels: 一月 &lt; 二月 &lt; 三月 &lt; 四月 &lt; 五月 &lt; 六月 &lt; 七月 &lt; 八月 &lt; 九月 &lt; ... &lt; 十二月</span></span>
+<span id="cb245-16"><a href="lubridate.html#cb245-16" aria-hidden="true"></a><span class="kw">wday</span>(datetime, <span class="dt">label =</span> <span class="ot">TRUE</span>, <span class="dt">abbr =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb245-17"><a href="lubridate.html#cb245-17" aria-hidden="true"></a><span class="co">## [1] 星期五</span></span>
+<span id="cb245-18"><a href="lubridate.html#cb245-18" aria-hidden="true"></a><span class="co">## Levels: 星期日 &lt; 星期一 &lt; 星期二 &lt; 星期三 &lt; 星期四 &lt; 星期五 &lt; 星期六</span></span>
+<span id="cb245-19"><a href="lubridate.html#cb245-19" aria-hidden="true"></a><span class="co">## change components</span></span>
+<span id="cb245-20"><a href="lubridate.html#cb245-20" aria-hidden="true"></a>(datetime &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>))</span>
+<span id="cb245-21"><a href="lubridate.html#cb245-21" aria-hidden="true"></a><span class="co">## [1] &quot;2016-07-08 12:34:56 UTC&quot;</span></span>
+<span id="cb245-22"><a href="lubridate.html#cb245-22" aria-hidden="true"></a><span class="kw">year</span>(datetime) &lt;-<span class="st"> </span><span class="dv">2020</span></span>
+<span id="cb245-23"><a href="lubridate.html#cb245-23" aria-hidden="true"></a>datetime</span>
+<span id="cb245-24"><a href="lubridate.html#cb245-24" aria-hidden="true"></a><span class="co">## [1] &quot;2020-07-08 12:34:56 UTC&quot;</span></span>
+<span id="cb245-25"><a href="lubridate.html#cb245-25" aria-hidden="true"></a><span class="kw">month</span>(datetime) &lt;-<span class="st"> </span><span class="dv">01</span></span>
+<span id="cb245-26"><a href="lubridate.html#cb245-26" aria-hidden="true"></a>datetime</span>
+<span id="cb245-27"><a href="lubridate.html#cb245-27" aria-hidden="true"></a><span class="co">## [1] &quot;2020-01-08 12:34:56 UTC&quot;</span></span></code></pre></div>
 <p>函式 <code>floor_date()</code>, <code>round_date()</code>, <code>ceiling_date()</code>
 可將 date-time 物件簡化成最近的時間單位.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="lubridate.html#cb240-1" aria-hidden="true"></a><span class="kw">round_date</span>(x, <span class="dt">unit =</span> <span class="st">&quot;second&quot;</span>, <span class="dt">week_start =</span> <span class="kw">getOption</span>(<span class="st">&quot;lubridate.week.start&quot;</span>, <span class="dv">7</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="lubridate.html#cb246-1" aria-hidden="true"></a><span class="kw">round_date</span>(x, <span class="dt">unit =</span> <span class="st">&quot;second&quot;</span>, <span class="dt">week_start =</span> <span class="kw">getOption</span>(<span class="st">&quot;lubridate.week.start&quot;</span>, <span class="dv">7</span>))</span></code></pre></div>
 <p>其中引數 <code>unit</code> 可為
 <code>second</code>, <code>minute</code>, <code>hour</code>, <code>day</code>, <code>week</code>, <code>month</code>, <code>bimonth</code>,
 <code>quarter</code>, <code>season</code>, <code>halfyear</code> <code>year</code>.
 引數 <code>week_start</code> 為每週起始計算, 1 = Monday, 7 = Sunday.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="lubridate.html#cb241-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2009-08-03 12:01:59.23&quot;</span>)</span>
-<span id="cb241-2"><a href="lubridate.html#cb241-2" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;.1s&quot;</span>)</span>
-<span id="cb241-3"><a href="lubridate.html#cb241-3" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 12:01:59.2 UTC&quot;</span></span>
-<span id="cb241-4"><a href="lubridate.html#cb241-4" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;second&quot;</span>)</span>
-<span id="cb241-5"><a href="lubridate.html#cb241-5" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 12:01:59 UTC&quot;</span></span>
-<span id="cb241-6"><a href="lubridate.html#cb241-6" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;minute&quot;</span>)</span>
-<span id="cb241-7"><a href="lubridate.html#cb241-7" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 12:01:00 UTC&quot;</span></span>
-<span id="cb241-8"><a href="lubridate.html#cb241-8" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;hour&quot;</span>)</span>
-<span id="cb241-9"><a href="lubridate.html#cb241-9" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 12:00:00 UTC&quot;</span></span>
-<span id="cb241-10"><a href="lubridate.html#cb241-10" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;day&quot;</span>)</span>
-<span id="cb241-11"><a href="lubridate.html#cb241-11" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 UTC&quot;</span></span>
-<span id="cb241-12"><a href="lubridate.html#cb241-12" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;week&quot;</span>)</span>
-<span id="cb241-13"><a href="lubridate.html#cb241-13" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-02 UTC&quot;</span></span>
-<span id="cb241-14"><a href="lubridate.html#cb241-14" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;month&quot;</span>)</span>
-<span id="cb241-15"><a href="lubridate.html#cb241-15" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-01 UTC&quot;</span></span>
-<span id="cb241-16"><a href="lubridate.html#cb241-16" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;bimonth&quot;</span>)</span>
-<span id="cb241-17"><a href="lubridate.html#cb241-17" aria-hidden="true"></a><span class="co">## [1] &quot;2009-07-01 UTC&quot;</span></span>
-<span id="cb241-18"><a href="lubridate.html#cb241-18" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;quarter&quot;</span>)</span>
-<span id="cb241-19"><a href="lubridate.html#cb241-19" aria-hidden="true"></a><span class="co">## [1] &quot;2009-07-01 UTC&quot;</span></span>
-<span id="cb241-20"><a href="lubridate.html#cb241-20" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;season&quot;</span>)</span>
-<span id="cb241-21"><a href="lubridate.html#cb241-21" aria-hidden="true"></a><span class="co">## [1] &quot;2009-06-01 UTC&quot;</span></span>
-<span id="cb241-22"><a href="lubridate.html#cb241-22" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;halfyear&quot;</span>)</span>
-<span id="cb241-23"><a href="lubridate.html#cb241-23" aria-hidden="true"></a><span class="co">## [1] &quot;2009-07-01 UTC&quot;</span></span>
-<span id="cb241-24"><a href="lubridate.html#cb241-24" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;year&quot;</span>)</span>
-<span id="cb241-25"><a href="lubridate.html#cb241-25" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01 UTC&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="lubridate.html#cb247-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2009-08-03 12:01:59.23&quot;</span>)</span>
+<span id="cb247-2"><a href="lubridate.html#cb247-2" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;.1s&quot;</span>)</span>
+<span id="cb247-3"><a href="lubridate.html#cb247-3" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 12:01:59.2 UTC&quot;</span></span>
+<span id="cb247-4"><a href="lubridate.html#cb247-4" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;second&quot;</span>)</span>
+<span id="cb247-5"><a href="lubridate.html#cb247-5" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 12:01:59 UTC&quot;</span></span>
+<span id="cb247-6"><a href="lubridate.html#cb247-6" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;minute&quot;</span>)</span>
+<span id="cb247-7"><a href="lubridate.html#cb247-7" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 12:01:00 UTC&quot;</span></span>
+<span id="cb247-8"><a href="lubridate.html#cb247-8" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;hour&quot;</span>)</span>
+<span id="cb247-9"><a href="lubridate.html#cb247-9" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 12:00:00 UTC&quot;</span></span>
+<span id="cb247-10"><a href="lubridate.html#cb247-10" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;day&quot;</span>)</span>
+<span id="cb247-11"><a href="lubridate.html#cb247-11" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03 UTC&quot;</span></span>
+<span id="cb247-12"><a href="lubridate.html#cb247-12" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;week&quot;</span>)</span>
+<span id="cb247-13"><a href="lubridate.html#cb247-13" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-02 UTC&quot;</span></span>
+<span id="cb247-14"><a href="lubridate.html#cb247-14" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;month&quot;</span>)</span>
+<span id="cb247-15"><a href="lubridate.html#cb247-15" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-01 UTC&quot;</span></span>
+<span id="cb247-16"><a href="lubridate.html#cb247-16" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;bimonth&quot;</span>)</span>
+<span id="cb247-17"><a href="lubridate.html#cb247-17" aria-hidden="true"></a><span class="co">## [1] &quot;2009-07-01 UTC&quot;</span></span>
+<span id="cb247-18"><a href="lubridate.html#cb247-18" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;quarter&quot;</span>)</span>
+<span id="cb247-19"><a href="lubridate.html#cb247-19" aria-hidden="true"></a><span class="co">## [1] &quot;2009-07-01 UTC&quot;</span></span>
+<span id="cb247-20"><a href="lubridate.html#cb247-20" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;season&quot;</span>)</span>
+<span id="cb247-21"><a href="lubridate.html#cb247-21" aria-hidden="true"></a><span class="co">## [1] &quot;2009-06-01 UTC&quot;</span></span>
+<span id="cb247-22"><a href="lubridate.html#cb247-22" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;halfyear&quot;</span>)</span>
+<span id="cb247-23"><a href="lubridate.html#cb247-23" aria-hidden="true"></a><span class="co">## [1] &quot;2009-07-01 UTC&quot;</span></span>
+<span id="cb247-24"><a href="lubridate.html#cb247-24" aria-hidden="true"></a><span class="kw">floor_date</span>(x, <span class="st">&quot;year&quot;</span>)</span>
+<span id="cb247-25"><a href="lubridate.html#cb247-25" aria-hidden="true"></a><span class="co">## [1] &quot;2009-01-01 UTC&quot;</span></span></code></pre></div>
 <p>可自行比較 <code>round_date()</code>, <code>ceiling_date()</code> 的差異.</p>
 </div>
 <div id="計算時間長度" class="section level2" number="12.5">
@@ -669,7 +686,7 @@ UTC 以國際原子時為計算基準, 修正了一些時間微小的飄移,
 <div id="duration-創建以秒計算的時間長度的物件" class="section level3" number="12.5.1">
 <h3><span class="header-section-number">12.5.1</span> <code>duration</code> 創建以秒計算的時間長度的物件</h3>
 <p><code>duration()</code> 系列函式用來輸入持續時間長度, 創建以秒計算的時間長度的物件</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="lubridate.html#cb242-1" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">num =</span> <span class="ot">NULL</span>, <span class="dt">units =</span> <span class="st">&quot;seconds&quot;</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="lubridate.html#cb248-1" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">num =</span> <span class="ot">NULL</span>, <span class="dt">units =</span> <span class="st">&quot;seconds&quot;</span>, ...)</span></code></pre></div>
 <p>其中引數 <code>num</code> 為數值, <code>units</code> 為計算時間的單位.
 <code>duration</code> 物件的時間計算是固定的, 例如,
 Minutes = 60 seconds, hours = 3600 seconds, days = 86400 seconds, weeks = 604800.
@@ -686,25 +703,25 @@ Minutes = 60 seconds, hours = 3600 seconds, days = 86400 seconds, weeks = 604800
 <code>dnanoseconds(x = 1)</code>,
 <code>dpicoseconds(x = 1)</code>,
 <code>is.duration(x)</code> 等.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="lubridate.html#cb243-1" aria-hidden="true"></a><span class="co">## </span><span class="al">###</span><span class="co"> Separate period and units vectors</span></span>
-<span id="cb243-2"><a href="lubridate.html#cb243-2" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">num =</span> <span class="dv">90</span>, <span class="dt">units =</span> <span class="st">&quot;seconds&quot;</span>)</span>
-<span id="cb243-3"><a href="lubridate.html#cb243-3" aria-hidden="true"></a><span class="co">## [1] &quot;90s (~1.5 minutes)&quot;</span></span>
-<span id="cb243-4"><a href="lubridate.html#cb243-4" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">num =</span> <span class="fl">1.5</span>, <span class="dt">units =</span> <span class="st">&quot;minutes&quot;</span>)</span>
-<span id="cb243-5"><a href="lubridate.html#cb243-5" aria-hidden="true"></a><span class="co">## [1] &quot;90s (~1.5 minutes)&quot;</span></span>
-<span id="cb243-6"><a href="lubridate.html#cb243-6" aria-hidden="true"></a><span class="co">## Units as arguments</span></span>
-<span id="cb243-7"><a href="lubridate.html#cb243-7" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">day =</span> <span class="dv">-1</span>)</span>
-<span id="cb243-8"><a href="lubridate.html#cb243-8" aria-hidden="true"></a><span class="co">## [1] &quot;-86400s (~-1 days)&quot;</span></span>
-<span id="cb243-9"><a href="lubridate.html#cb243-9" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">second =</span> <span class="dv">90</span>)</span>
-<span id="cb243-10"><a href="lubridate.html#cb243-10" aria-hidden="true"></a><span class="co">## [1] &quot;90s (~1.5 minutes)&quot;</span></span>
-<span id="cb243-11"><a href="lubridate.html#cb243-11" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">second =</span> <span class="dv">3</span>, <span class="dt">minute =</span> <span class="fl">1.5</span>, <span class="dt">hour =</span> <span class="dv">2</span>, <span class="dt">day =</span> <span class="dv">6</span>, <span class="dt">week =</span> <span class="dv">1</span>)</span>
-<span id="cb243-12"><a href="lubridate.html#cb243-12" aria-hidden="true"></a><span class="co">## [1] &quot;1130493s (~1.87 weeks)&quot;</span></span>
-<span id="cb243-13"><a href="lubridate.html#cb243-13" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">hour =</span> <span class="dv">1</span>, <span class="dt">minute =</span> <span class="dv">-60</span>)</span>
-<span id="cb243-14"><a href="lubridate.html#cb243-14" aria-hidden="true"></a><span class="co">## [1] &quot;0s&quot;</span></span>
-<span id="cb243-15"><a href="lubridate.html#cb243-15" aria-hidden="true"></a><span class="co">## Elementary construction</span></span>
-<span id="cb243-16"><a href="lubridate.html#cb243-16" aria-hidden="true"></a><span class="kw">dseconds</span>(<span class="dt">x =</span> <span class="dv">1</span>)</span>
-<span id="cb243-17"><a href="lubridate.html#cb243-17" aria-hidden="true"></a><span class="co">## [1] &quot;1s&quot;</span></span>
-<span id="cb243-18"><a href="lubridate.html#cb243-18" aria-hidden="true"></a><span class="kw">dminutes</span>(<span class="dt">x =</span> <span class="fl">3.5</span>)</span>
-<span id="cb243-19"><a href="lubridate.html#cb243-19" aria-hidden="true"></a><span class="co">## [1] &quot;210s (~3.5 minutes)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="lubridate.html#cb249-1" aria-hidden="true"></a><span class="co">## </span><span class="al">###</span><span class="co"> Separate period and units vectors</span></span>
+<span id="cb249-2"><a href="lubridate.html#cb249-2" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">num =</span> <span class="dv">90</span>, <span class="dt">units =</span> <span class="st">&quot;seconds&quot;</span>)</span>
+<span id="cb249-3"><a href="lubridate.html#cb249-3" aria-hidden="true"></a><span class="co">## [1] &quot;90s (~1.5 minutes)&quot;</span></span>
+<span id="cb249-4"><a href="lubridate.html#cb249-4" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">num =</span> <span class="fl">1.5</span>, <span class="dt">units =</span> <span class="st">&quot;minutes&quot;</span>)</span>
+<span id="cb249-5"><a href="lubridate.html#cb249-5" aria-hidden="true"></a><span class="co">## [1] &quot;90s (~1.5 minutes)&quot;</span></span>
+<span id="cb249-6"><a href="lubridate.html#cb249-6" aria-hidden="true"></a><span class="co">## Units as arguments</span></span>
+<span id="cb249-7"><a href="lubridate.html#cb249-7" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">day =</span> <span class="dv">-1</span>)</span>
+<span id="cb249-8"><a href="lubridate.html#cb249-8" aria-hidden="true"></a><span class="co">## [1] &quot;-86400s (~-1 days)&quot;</span></span>
+<span id="cb249-9"><a href="lubridate.html#cb249-9" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">second =</span> <span class="dv">90</span>)</span>
+<span id="cb249-10"><a href="lubridate.html#cb249-10" aria-hidden="true"></a><span class="co">## [1] &quot;90s (~1.5 minutes)&quot;</span></span>
+<span id="cb249-11"><a href="lubridate.html#cb249-11" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">second =</span> <span class="dv">3</span>, <span class="dt">minute =</span> <span class="fl">1.5</span>, <span class="dt">hour =</span> <span class="dv">2</span>, <span class="dt">day =</span> <span class="dv">6</span>, <span class="dt">week =</span> <span class="dv">1</span>)</span>
+<span id="cb249-12"><a href="lubridate.html#cb249-12" aria-hidden="true"></a><span class="co">## [1] &quot;1130493s (~1.87 weeks)&quot;</span></span>
+<span id="cb249-13"><a href="lubridate.html#cb249-13" aria-hidden="true"></a><span class="kw">duration</span>(<span class="dt">hour =</span> <span class="dv">1</span>, <span class="dt">minute =</span> <span class="dv">-60</span>)</span>
+<span id="cb249-14"><a href="lubridate.html#cb249-14" aria-hidden="true"></a><span class="co">## [1] &quot;0s&quot;</span></span>
+<span id="cb249-15"><a href="lubridate.html#cb249-15" aria-hidden="true"></a><span class="co">## Elementary construction</span></span>
+<span id="cb249-16"><a href="lubridate.html#cb249-16" aria-hidden="true"></a><span class="kw">dseconds</span>(<span class="dt">x =</span> <span class="dv">1</span>)</span>
+<span id="cb249-17"><a href="lubridate.html#cb249-17" aria-hidden="true"></a><span class="co">## [1] &quot;1s&quot;</span></span>
+<span id="cb249-18"><a href="lubridate.html#cb249-18" aria-hidden="true"></a><span class="kw">dminutes</span>(<span class="dt">x =</span> <span class="fl">3.5</span>)</span>
+<span id="cb249-19"><a href="lubridate.html#cb249-19" aria-hidden="true"></a><span class="co">## [1] &quot;210s (~3.5 minutes)&quot;</span></span></code></pre></div>
 </div>
 <div id="period-創建以人類文明的時間單位計算時間長度" class="section level3" number="12.5.2">
 <h3><span class="header-section-number">12.5.2</span> <code>period</code> 創建以人類文明的時間單位計算時間長度</h3>
@@ -726,42 +743,42 @@ Minutes = 60 seconds, hours = 3600 seconds, days = 86400 seconds, weeks = 604800
 <code>milliseconds()</code>,
 <code>microseconds()</code>,
 nanoseconds()<code>,</code>picoseconds()<code>,</code>period_to_seconds()<code>,</code>seconds_to_period()` 等.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="lubridate.html#cb244-1" aria-hidden="true"></a><span class="kw">period</span>(<span class="dt">num =</span> <span class="dv">1</span>, <span class="dt">units =</span> <span class="st">&quot;days&quot;</span>)</span>
-<span id="cb244-2"><a href="lubridate.html#cb244-2" aria-hidden="true"></a><span class="co">## [1] &quot;1d 0H 0M 0S&quot;</span></span>
-<span id="cb244-3"><a href="lubridate.html#cb244-3" aria-hidden="true"></a><span class="kw">period</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="st">&quot;second&quot;</span>, <span class="st">&quot;minute&quot;</span>, <span class="st">&quot;hour&quot;</span>, <span class="st">&quot;day&quot;</span>, <span class="st">&quot;week&quot;</span>))</span>
-<span id="cb244-4"><a href="lubridate.html#cb244-4" aria-hidden="true"></a><span class="co">## [1] &quot;20d 2H 1M 3S&quot;</span></span>
-<span id="cb244-5"><a href="lubridate.html#cb244-5" aria-hidden="true"></a><span class="co">## Units as arguments</span></span>
-<span id="cb244-6"><a href="lubridate.html#cb244-6" aria-hidden="true"></a><span class="kw">period</span> (<span class="dt">second =</span> <span class="dv">90</span>, <span class="dt">minute =</span> <span class="dv">5</span>)</span>
-<span id="cb244-7"><a href="lubridate.html#cb244-7" aria-hidden="true"></a><span class="co">## [1] &quot;5M 90S&quot;</span></span>
-<span id="cb244-8"><a href="lubridate.html#cb244-8" aria-hidden="true"></a><span class="kw">period</span>(<span class="dt">second =</span> <span class="dv">3</span>, <span class="dt">minute =</span> <span class="dv">1</span>, <span class="dt">hour =</span> <span class="dv">2</span>, <span class="dt">day =</span> <span class="dv">13</span>, <span class="dt">week =</span> <span class="dv">1</span>)</span>
-<span id="cb244-9"><a href="lubridate.html#cb244-9" aria-hidden="true"></a><span class="co">## [1] &quot;20d 2H 1M 3S&quot;</span></span>
-<span id="cb244-10"><a href="lubridate.html#cb244-10" aria-hidden="true"></a><span class="co">## Elementary Construction</span></span>
-<span id="cb244-11"><a href="lubridate.html#cb244-11" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;2009-08-03&quot;</span>)</span>
-<span id="cb244-12"><a href="lubridate.html#cb244-12" aria-hidden="true"></a>x</span>
-<span id="cb244-13"><a href="lubridate.html#cb244-13" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03&quot;</span></span>
-<span id="cb244-14"><a href="lubridate.html#cb244-14" aria-hidden="true"></a>x <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">hours</span>(<span class="dv">6</span>) <span class="op">+</span><span class="st"> </span><span class="kw">minutes</span>(<span class="dv">30</span>)</span>
-<span id="cb244-15"><a href="lubridate.html#cb244-15" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-04 06:30:00 UTC&quot;</span></span>
-<span id="cb244-16"><a href="lubridate.html#cb244-16" aria-hidden="true"></a>x <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">100</span>) <span class="op">-</span><span class="st"> </span><span class="kw">hours</span>(<span class="dv">8</span>)</span>
-<span id="cb244-17"><a href="lubridate.html#cb244-17" aria-hidden="true"></a><span class="co">## [1] &quot;2009-11-10 16:00:00 UTC&quot;</span></span>
-<span id="cb244-18"><a href="lubridate.html#cb244-18" aria-hidden="true"></a><span class="co">## compare DST handling to durations</span></span>
-<span id="cb244-19"><a href="lubridate.html#cb244-19" aria-hidden="true"></a>boundary &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2009-03-08 01:59:59&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;America/Chicago&quot;</span>)</span>
-<span id="cb244-20"><a href="lubridate.html#cb244-20" aria-hidden="true"></a>boundary <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>) <span class="co"># period</span></span>
-<span id="cb244-21"><a href="lubridate.html#cb244-21" aria-hidden="true"></a><span class="co">## [1] &quot;2009-03-09 01:59:59 CDT&quot;</span></span>
-<span id="cb244-22"><a href="lubridate.html#cb244-22" aria-hidden="true"></a>boundary <span class="op">+</span><span class="st"> </span><span class="kw">ddays</span>(<span class="dv">1</span>) <span class="co"># duration</span></span>
-<span id="cb244-23"><a href="lubridate.html#cb244-23" aria-hidden="true"></a><span class="co">## [1] &quot;2009-03-09 02:59:59 CDT&quot;</span></span>
-<span id="cb244-24"><a href="lubridate.html#cb244-24" aria-hidden="true"></a><span class="kw">is.duration</span>(<span class="kw">as.Date</span>(<span class="st">&quot;2009-08-03&quot;</span>)) <span class="co"># FALSE</span></span>
-<span id="cb244-25"><a href="lubridate.html#cb244-25" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
-<span id="cb244-26"><a href="lubridate.html#cb244-26" aria-hidden="true"></a><span class="kw">is.duration</span>(<span class="kw">duration</span>(<span class="dt">days =</span> <span class="fl">12.4</span>)) <span class="co"># TRUE</span></span>
-<span id="cb244-27"><a href="lubridate.html#cb244-27" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
-<span id="cb244-28"><a href="lubridate.html#cb244-28" aria-hidden="true"></a><span class="kw">is.period</span>(<span class="kw">as.Date</span>(<span class="st">&quot;2009-08-03&quot;</span>)) <span class="co"># FALSE</span></span>
-<span id="cb244-29"><a href="lubridate.html#cb244-29" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
-<span id="cb244-30"><a href="lubridate.html#cb244-30" aria-hidden="true"></a><span class="kw">is.period</span>(<span class="kw">period</span>(<span class="dt">months=</span> <span class="dv">1</span>, <span class="dt">days =</span> <span class="dv">15</span>)) <span class="co"># TRUE</span></span>
-<span id="cb244-31"><a href="lubridate.html#cb244-31" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="lubridate.html#cb250-1" aria-hidden="true"></a><span class="kw">period</span>(<span class="dt">num =</span> <span class="dv">1</span>, <span class="dt">units =</span> <span class="st">&quot;days&quot;</span>)</span>
+<span id="cb250-2"><a href="lubridate.html#cb250-2" aria-hidden="true"></a><span class="co">## [1] &quot;1d 0H 0M 0S&quot;</span></span>
+<span id="cb250-3"><a href="lubridate.html#cb250-3" aria-hidden="true"></a><span class="kw">period</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="st">&quot;second&quot;</span>, <span class="st">&quot;minute&quot;</span>, <span class="st">&quot;hour&quot;</span>, <span class="st">&quot;day&quot;</span>, <span class="st">&quot;week&quot;</span>))</span>
+<span id="cb250-4"><a href="lubridate.html#cb250-4" aria-hidden="true"></a><span class="co">## [1] &quot;20d 2H 1M 3S&quot;</span></span>
+<span id="cb250-5"><a href="lubridate.html#cb250-5" aria-hidden="true"></a><span class="co">## Units as arguments</span></span>
+<span id="cb250-6"><a href="lubridate.html#cb250-6" aria-hidden="true"></a><span class="kw">period</span> (<span class="dt">second =</span> <span class="dv">90</span>, <span class="dt">minute =</span> <span class="dv">5</span>)</span>
+<span id="cb250-7"><a href="lubridate.html#cb250-7" aria-hidden="true"></a><span class="co">## [1] &quot;5M 90S&quot;</span></span>
+<span id="cb250-8"><a href="lubridate.html#cb250-8" aria-hidden="true"></a><span class="kw">period</span>(<span class="dt">second =</span> <span class="dv">3</span>, <span class="dt">minute =</span> <span class="dv">1</span>, <span class="dt">hour =</span> <span class="dv">2</span>, <span class="dt">day =</span> <span class="dv">13</span>, <span class="dt">week =</span> <span class="dv">1</span>)</span>
+<span id="cb250-9"><a href="lubridate.html#cb250-9" aria-hidden="true"></a><span class="co">## [1] &quot;20d 2H 1M 3S&quot;</span></span>
+<span id="cb250-10"><a href="lubridate.html#cb250-10" aria-hidden="true"></a><span class="co">## Elementary Construction</span></span>
+<span id="cb250-11"><a href="lubridate.html#cb250-11" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;2009-08-03&quot;</span>)</span>
+<span id="cb250-12"><a href="lubridate.html#cb250-12" aria-hidden="true"></a>x</span>
+<span id="cb250-13"><a href="lubridate.html#cb250-13" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-03&quot;</span></span>
+<span id="cb250-14"><a href="lubridate.html#cb250-14" aria-hidden="true"></a>x <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">hours</span>(<span class="dv">6</span>) <span class="op">+</span><span class="st"> </span><span class="kw">minutes</span>(<span class="dv">30</span>)</span>
+<span id="cb250-15"><a href="lubridate.html#cb250-15" aria-hidden="true"></a><span class="co">## [1] &quot;2009-08-04 06:30:00 UTC&quot;</span></span>
+<span id="cb250-16"><a href="lubridate.html#cb250-16" aria-hidden="true"></a>x <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">100</span>) <span class="op">-</span><span class="st"> </span><span class="kw">hours</span>(<span class="dv">8</span>)</span>
+<span id="cb250-17"><a href="lubridate.html#cb250-17" aria-hidden="true"></a><span class="co">## [1] &quot;2009-11-10 16:00:00 UTC&quot;</span></span>
+<span id="cb250-18"><a href="lubridate.html#cb250-18" aria-hidden="true"></a><span class="co">## compare DST handling to durations</span></span>
+<span id="cb250-19"><a href="lubridate.html#cb250-19" aria-hidden="true"></a>boundary &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2009-03-08 01:59:59&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;America/Chicago&quot;</span>)</span>
+<span id="cb250-20"><a href="lubridate.html#cb250-20" aria-hidden="true"></a>boundary <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>) <span class="co"># period</span></span>
+<span id="cb250-21"><a href="lubridate.html#cb250-21" aria-hidden="true"></a><span class="co">## [1] &quot;2009-03-09 01:59:59 CDT&quot;</span></span>
+<span id="cb250-22"><a href="lubridate.html#cb250-22" aria-hidden="true"></a>boundary <span class="op">+</span><span class="st"> </span><span class="kw">ddays</span>(<span class="dv">1</span>) <span class="co"># duration</span></span>
+<span id="cb250-23"><a href="lubridate.html#cb250-23" aria-hidden="true"></a><span class="co">## [1] &quot;2009-03-09 02:59:59 CDT&quot;</span></span>
+<span id="cb250-24"><a href="lubridate.html#cb250-24" aria-hidden="true"></a><span class="kw">is.duration</span>(<span class="kw">as.Date</span>(<span class="st">&quot;2009-08-03&quot;</span>)) <span class="co"># FALSE</span></span>
+<span id="cb250-25"><a href="lubridate.html#cb250-25" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb250-26"><a href="lubridate.html#cb250-26" aria-hidden="true"></a><span class="kw">is.duration</span>(<span class="kw">duration</span>(<span class="dt">days =</span> <span class="fl">12.4</span>)) <span class="co"># TRUE</span></span>
+<span id="cb250-27"><a href="lubridate.html#cb250-27" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb250-28"><a href="lubridate.html#cb250-28" aria-hidden="true"></a><span class="kw">is.period</span>(<span class="kw">as.Date</span>(<span class="st">&quot;2009-08-03&quot;</span>)) <span class="co"># FALSE</span></span>
+<span id="cb250-29"><a href="lubridate.html#cb250-29" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb250-30"><a href="lubridate.html#cb250-30" aria-hidden="true"></a><span class="kw">is.period</span>(<span class="kw">period</span>(<span class="dt">months=</span> <span class="dv">1</span>, <span class="dt">days =</span> <span class="dv">15</span>)) <span class="co"># TRUE</span></span>
+<span id="cb250-31"><a href="lubridate.html#cb250-31" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span></code></pre></div>
 </div>
 <div id="interval-計算二個-date-time-物件之間的時間長度." class="section level3" number="12.5.3">
 <h3><span class="header-section-number">12.5.3</span> <code>interval</code> 計算二個 date-time 物件之間的時間長度.</h3>
 <p><code>interval()</code> 系列函式用來計算二個 date-time 物件之間的時間長度.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="lubridate.html#cb245-1" aria-hidden="true"></a><span class="kw">interval</span>(<span class="dt">start =</span> <span class="ot">NULL</span>, <span class="dt">end =</span> <span class="ot">NULL</span>, <span class="dt">tzone =</span> <span class="kw">tz</span>(start))</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="lubridate.html#cb251-1" aria-hidden="true"></a><span class="kw">interval</span>(<span class="dt">start =</span> <span class="ot">NULL</span>, <span class="dt">end =</span> <span class="ot">NULL</span>, <span class="dt">tzone =</span> <span class="kw">tz</span>(start))</span></code></pre></div>
 <p>若起始 date-time 物件早發生於結束 date-time 物件,
 則 <code>interval</code> 物件計算為正值.
 <code>interval</code> 物件計算依照日歷的 years, months, days 計算.
@@ -779,63 +796,63 @@ nanoseconds()<code>,</code>picoseconds()<code>,</code>period_to_seconds()<code>,
 <code>int_aligns(int1, int2)</code>檢查二個 <code>interval</code> 物件是否有相同起始與結束時間點,
 <code>int_diff(times)</code> 類似 {R} base <code>POSIXt</code> 與 <code>Date</code> 的 diff() 函式,
 但回傳 <code>interval</code> 物件, 而不是 {R} base 的 <code>difftime</code> 物件.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="lubridate.html#cb246-1" aria-hidden="true"></a><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="dv">20090201</span>), <span class="kw">ymd</span>(<span class="dv">20090101</span>))</span>
-<span id="cb246-2"><a href="lubridate.html#cb246-2" aria-hidden="true"></a><span class="co">## [1] 2009-02-01 UTC--2009-01-01 UTC</span></span>
-<span id="cb246-3"><a href="lubridate.html#cb246-3" aria-hidden="true"></a>date1 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2009-03-08 01:59:59&quot;</span>)</span>
-<span id="cb246-4"><a href="lubridate.html#cb246-4" aria-hidden="true"></a>date2 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2000-02-29 12:00:00&quot;</span>)</span>
-<span id="cb246-5"><a href="lubridate.html#cb246-5" aria-hidden="true"></a><span class="kw">interval</span>(date2, date1)</span>
-<span id="cb246-6"><a href="lubridate.html#cb246-6" aria-hidden="true"></a><span class="co">## [1] 2000-02-29 12:00:00 UTC--2009-03-08 01:59:59 UTC</span></span>
-<span id="cb246-7"><a href="lubridate.html#cb246-7" aria-hidden="true"></a><span class="kw">interval</span>(date1, date2)</span>
-<span id="cb246-8"><a href="lubridate.html#cb246-8" aria-hidden="true"></a><span class="co">## [1] 2009-03-08 01:59:59 UTC--2000-02-29 12:00:00 UTC</span></span>
-<span id="cb246-9"><a href="lubridate.html#cb246-9" aria-hidden="true"></a><span class="co">## Elementary Construction</span></span>
-<span id="cb246-10"><a href="lubridate.html#cb246-10" aria-hidden="true"></a><span class="kw">is.interval</span>(<span class="kw">period</span>(<span class="dt">months =</span> <span class="dv">1</span>, <span class="dt">days =</span> <span class="dv">15</span>)) <span class="co"># FALSE</span></span>
-<span id="cb246-11"><a href="lubridate.html#cb246-11" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
-<span id="cb246-12"><a href="lubridate.html#cb246-12" aria-hidden="true"></a><span class="kw">is.interval</span>(<span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="dv">20090801</span>), <span class="kw">ymd</span>(<span class="dv">20090809</span>))) <span class="co"># TRUE</span></span>
-<span id="cb246-13"><a href="lubridate.html#cb246-13" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
-<span id="cb246-14"><a href="lubridate.html#cb246-14" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
-<span id="cb246-15"><a href="lubridate.html#cb246-15" aria-hidden="true"></a><span class="kw">int_start</span>(int)</span>
-<span id="cb246-16"><a href="lubridate.html#cb246-16" aria-hidden="true"></a><span class="co">## [1] &quot;2001-01-01 UTC&quot;</span></span>
-<span id="cb246-17"><a href="lubridate.html#cb246-17" aria-hidden="true"></a><span class="kw">int_start</span>(int) &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;2001-06-01&quot;</span>)</span>
-<span id="cb246-18"><a href="lubridate.html#cb246-18" aria-hidden="true"></a>int</span>
-<span id="cb246-19"><a href="lubridate.html#cb246-19" aria-hidden="true"></a><span class="co">## [1] 2001-06-01 UTC--2002-01-01 UTC</span></span>
-<span id="cb246-20"><a href="lubridate.html#cb246-20" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
-<span id="cb246-21"><a href="lubridate.html#cb246-21" aria-hidden="true"></a><span class="kw">int_end</span>(int)</span>
-<span id="cb246-22"><a href="lubridate.html#cb246-22" aria-hidden="true"></a><span class="co">## [1] &quot;2002-01-01 UTC&quot;</span></span>
-<span id="cb246-23"><a href="lubridate.html#cb246-23" aria-hidden="true"></a><span class="kw">int_end</span>(int) &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;2002-06-01&quot;</span>)</span>
-<span id="cb246-24"><a href="lubridate.html#cb246-24" aria-hidden="true"></a>int</span>
-<span id="cb246-25"><a href="lubridate.html#cb246-25" aria-hidden="true"></a><span class="co">## [1] 2001-01-01 UTC--2002-06-01 UTC</span></span>
-<span id="cb246-26"><a href="lubridate.html#cb246-26" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
-<span id="cb246-27"><a href="lubridate.html#cb246-27" aria-hidden="true"></a><span class="kw">int_length</span>(int)</span>
-<span id="cb246-28"><a href="lubridate.html#cb246-28" aria-hidden="true"></a><span class="co">## [1] 31536000</span></span>
-<span id="cb246-29"><a href="lubridate.html#cb246-29" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
-<span id="cb246-30"><a href="lubridate.html#cb246-30" aria-hidden="true"></a><span class="kw">int_flip</span>(int)</span>
-<span id="cb246-31"><a href="lubridate.html#cb246-31" aria-hidden="true"></a><span class="co">## [1] 2002-01-01 UTC--2001-01-01 UTC</span></span>
-<span id="cb246-32"><a href="lubridate.html#cb246-32" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
-<span id="cb246-33"><a href="lubridate.html#cb246-33" aria-hidden="true"></a><span class="kw">int_shift</span>(int, <span class="kw">duration</span>(<span class="dt">days =</span> <span class="dv">11</span>))</span>
-<span id="cb246-34"><a href="lubridate.html#cb246-34" aria-hidden="true"></a><span class="co">## [1] 2001-01-12 UTC--2002-01-12 UTC</span></span>
-<span id="cb246-35"><a href="lubridate.html#cb246-35" aria-hidden="true"></a><span class="kw">int_shift</span>(int, <span class="kw">duration</span>(<span class="dt">hours =</span> <span class="dv">-1</span>))</span>
-<span id="cb246-36"><a href="lubridate.html#cb246-36" aria-hidden="true"></a><span class="co">## [1] 2000-12-31 23:00:00 UTC--2001-12-31 23:00:00 UTC</span></span>
-<span id="cb246-37"><a href="lubridate.html#cb246-37" aria-hidden="true"></a>int1 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
-<span id="cb246-38"><a href="lubridate.html#cb246-38" aria-hidden="true"></a>int2 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-06-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-06-01&quot;</span>))</span>
-<span id="cb246-39"><a href="lubridate.html#cb246-39" aria-hidden="true"></a>int3 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2003-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2004-01-01&quot;</span>))</span>
-<span id="cb246-40"><a href="lubridate.html#cb246-40" aria-hidden="true"></a><span class="kw">int_overlaps</span>(int1, int2) <span class="co"># TRUE</span></span>
-<span id="cb246-41"><a href="lubridate.html#cb246-41" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
-<span id="cb246-42"><a href="lubridate.html#cb246-42" aria-hidden="true"></a><span class="kw">int_overlaps</span>(int1, int3) <span class="co"># FALSE</span></span>
-<span id="cb246-43"><a href="lubridate.html#cb246-43" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
-<span id="cb246-44"><a href="lubridate.html#cb246-44" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>))</span>
-<span id="cb246-45"><a href="lubridate.html#cb246-45" aria-hidden="true"></a><span class="kw">int_standardize</span>(int)</span>
-<span id="cb246-46"><a href="lubridate.html#cb246-46" aria-hidden="true"></a><span class="co">## [1] 2001-01-01 UTC--2002-01-01 UTC</span></span>
-<span id="cb246-47"><a href="lubridate.html#cb246-47" aria-hidden="true"></a>int1 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
-<span id="cb246-48"><a href="lubridate.html#cb246-48" aria-hidden="true"></a>int2 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-06-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
-<span id="cb246-49"><a href="lubridate.html#cb246-49" aria-hidden="true"></a>int3 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2003-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2004-01-01&quot;</span>))</span>
-<span id="cb246-50"><a href="lubridate.html#cb246-50" aria-hidden="true"></a><span class="kw">int_aligns</span>(int1, int2) <span class="co"># TRUE</span></span>
-<span id="cb246-51"><a href="lubridate.html#cb246-51" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
-<span id="cb246-52"><a href="lubridate.html#cb246-52" aria-hidden="true"></a><span class="kw">int_aligns</span>(int1, int3) <span class="co"># FALSE</span></span>
-<span id="cb246-53"><a href="lubridate.html#cb246-53" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
-<span id="cb246-54"><a href="lubridate.html#cb246-54" aria-hidden="true"></a>dates &lt;-<span class="st"> </span><span class="kw">now</span>() <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
-<span id="cb246-55"><a href="lubridate.html#cb246-55" aria-hidden="true"></a><span class="kw">int_diff</span>(dates)</span>
-<span id="cb246-56"><a href="lubridate.html#cb246-56" aria-hidden="true"></a><span class="co">## [1] 2020-10-18 15:41:18.371637 CST--2020-10-19 15:41:18.371637 CST</span></span>
-<span id="cb246-57"><a href="lubridate.html#cb246-57" aria-hidden="true"></a><span class="co">## [2] 2020-10-19 15:41:18.371637 CST--2020-10-20 15:41:18.371637 CST</span></span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="lubridate.html#cb252-1" aria-hidden="true"></a><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="dv">20090201</span>), <span class="kw">ymd</span>(<span class="dv">20090101</span>))</span>
+<span id="cb252-2"><a href="lubridate.html#cb252-2" aria-hidden="true"></a><span class="co">## [1] 2009-02-01 UTC--2009-01-01 UTC</span></span>
+<span id="cb252-3"><a href="lubridate.html#cb252-3" aria-hidden="true"></a>date1 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2009-03-08 01:59:59&quot;</span>)</span>
+<span id="cb252-4"><a href="lubridate.html#cb252-4" aria-hidden="true"></a>date2 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2000-02-29 12:00:00&quot;</span>)</span>
+<span id="cb252-5"><a href="lubridate.html#cb252-5" aria-hidden="true"></a><span class="kw">interval</span>(date2, date1)</span>
+<span id="cb252-6"><a href="lubridate.html#cb252-6" aria-hidden="true"></a><span class="co">## [1] 2000-02-29 12:00:00 UTC--2009-03-08 01:59:59 UTC</span></span>
+<span id="cb252-7"><a href="lubridate.html#cb252-7" aria-hidden="true"></a><span class="kw">interval</span>(date1, date2)</span>
+<span id="cb252-8"><a href="lubridate.html#cb252-8" aria-hidden="true"></a><span class="co">## [1] 2009-03-08 01:59:59 UTC--2000-02-29 12:00:00 UTC</span></span>
+<span id="cb252-9"><a href="lubridate.html#cb252-9" aria-hidden="true"></a><span class="co">## Elementary Construction</span></span>
+<span id="cb252-10"><a href="lubridate.html#cb252-10" aria-hidden="true"></a><span class="kw">is.interval</span>(<span class="kw">period</span>(<span class="dt">months =</span> <span class="dv">1</span>, <span class="dt">days =</span> <span class="dv">15</span>)) <span class="co"># FALSE</span></span>
+<span id="cb252-11"><a href="lubridate.html#cb252-11" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb252-12"><a href="lubridate.html#cb252-12" aria-hidden="true"></a><span class="kw">is.interval</span>(<span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="dv">20090801</span>), <span class="kw">ymd</span>(<span class="dv">20090809</span>))) <span class="co"># TRUE</span></span>
+<span id="cb252-13"><a href="lubridate.html#cb252-13" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb252-14"><a href="lubridate.html#cb252-14" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
+<span id="cb252-15"><a href="lubridate.html#cb252-15" aria-hidden="true"></a><span class="kw">int_start</span>(int)</span>
+<span id="cb252-16"><a href="lubridate.html#cb252-16" aria-hidden="true"></a><span class="co">## [1] &quot;2001-01-01 UTC&quot;</span></span>
+<span id="cb252-17"><a href="lubridate.html#cb252-17" aria-hidden="true"></a><span class="kw">int_start</span>(int) &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;2001-06-01&quot;</span>)</span>
+<span id="cb252-18"><a href="lubridate.html#cb252-18" aria-hidden="true"></a>int</span>
+<span id="cb252-19"><a href="lubridate.html#cb252-19" aria-hidden="true"></a><span class="co">## [1] 2001-06-01 UTC--2002-01-01 UTC</span></span>
+<span id="cb252-20"><a href="lubridate.html#cb252-20" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
+<span id="cb252-21"><a href="lubridate.html#cb252-21" aria-hidden="true"></a><span class="kw">int_end</span>(int)</span>
+<span id="cb252-22"><a href="lubridate.html#cb252-22" aria-hidden="true"></a><span class="co">## [1] &quot;2002-01-01 UTC&quot;</span></span>
+<span id="cb252-23"><a href="lubridate.html#cb252-23" aria-hidden="true"></a><span class="kw">int_end</span>(int) &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;2002-06-01&quot;</span>)</span>
+<span id="cb252-24"><a href="lubridate.html#cb252-24" aria-hidden="true"></a>int</span>
+<span id="cb252-25"><a href="lubridate.html#cb252-25" aria-hidden="true"></a><span class="co">## [1] 2001-01-01 UTC--2002-06-01 UTC</span></span>
+<span id="cb252-26"><a href="lubridate.html#cb252-26" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
+<span id="cb252-27"><a href="lubridate.html#cb252-27" aria-hidden="true"></a><span class="kw">int_length</span>(int)</span>
+<span id="cb252-28"><a href="lubridate.html#cb252-28" aria-hidden="true"></a><span class="co">## [1] 31536000</span></span>
+<span id="cb252-29"><a href="lubridate.html#cb252-29" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
+<span id="cb252-30"><a href="lubridate.html#cb252-30" aria-hidden="true"></a><span class="kw">int_flip</span>(int)</span>
+<span id="cb252-31"><a href="lubridate.html#cb252-31" aria-hidden="true"></a><span class="co">## [1] 2002-01-01 UTC--2001-01-01 UTC</span></span>
+<span id="cb252-32"><a href="lubridate.html#cb252-32" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
+<span id="cb252-33"><a href="lubridate.html#cb252-33" aria-hidden="true"></a><span class="kw">int_shift</span>(int, <span class="kw">duration</span>(<span class="dt">days =</span> <span class="dv">11</span>))</span>
+<span id="cb252-34"><a href="lubridate.html#cb252-34" aria-hidden="true"></a><span class="co">## [1] 2001-01-12 UTC--2002-01-12 UTC</span></span>
+<span id="cb252-35"><a href="lubridate.html#cb252-35" aria-hidden="true"></a><span class="kw">int_shift</span>(int, <span class="kw">duration</span>(<span class="dt">hours =</span> <span class="dv">-1</span>))</span>
+<span id="cb252-36"><a href="lubridate.html#cb252-36" aria-hidden="true"></a><span class="co">## [1] 2000-12-31 23:00:00 UTC--2001-12-31 23:00:00 UTC</span></span>
+<span id="cb252-37"><a href="lubridate.html#cb252-37" aria-hidden="true"></a>int1 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
+<span id="cb252-38"><a href="lubridate.html#cb252-38" aria-hidden="true"></a>int2 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-06-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-06-01&quot;</span>))</span>
+<span id="cb252-39"><a href="lubridate.html#cb252-39" aria-hidden="true"></a>int3 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2003-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2004-01-01&quot;</span>))</span>
+<span id="cb252-40"><a href="lubridate.html#cb252-40" aria-hidden="true"></a><span class="kw">int_overlaps</span>(int1, int2) <span class="co"># TRUE</span></span>
+<span id="cb252-41"><a href="lubridate.html#cb252-41" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb252-42"><a href="lubridate.html#cb252-42" aria-hidden="true"></a><span class="kw">int_overlaps</span>(int1, int3) <span class="co"># FALSE</span></span>
+<span id="cb252-43"><a href="lubridate.html#cb252-43" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb252-44"><a href="lubridate.html#cb252-44" aria-hidden="true"></a>int &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>))</span>
+<span id="cb252-45"><a href="lubridate.html#cb252-45" aria-hidden="true"></a><span class="kw">int_standardize</span>(int)</span>
+<span id="cb252-46"><a href="lubridate.html#cb252-46" aria-hidden="true"></a><span class="co">## [1] 2001-01-01 UTC--2002-01-01 UTC</span></span>
+<span id="cb252-47"><a href="lubridate.html#cb252-47" aria-hidden="true"></a>int1 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
+<span id="cb252-48"><a href="lubridate.html#cb252-48" aria-hidden="true"></a>int2 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2001-06-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2002-01-01&quot;</span>))</span>
+<span id="cb252-49"><a href="lubridate.html#cb252-49" aria-hidden="true"></a>int3 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2003-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2004-01-01&quot;</span>))</span>
+<span id="cb252-50"><a href="lubridate.html#cb252-50" aria-hidden="true"></a><span class="kw">int_aligns</span>(int1, int2) <span class="co"># TRUE</span></span>
+<span id="cb252-51"><a href="lubridate.html#cb252-51" aria-hidden="true"></a><span class="co">## [1] TRUE</span></span>
+<span id="cb252-52"><a href="lubridate.html#cb252-52" aria-hidden="true"></a><span class="kw">int_aligns</span>(int1, int3) <span class="co"># FALSE</span></span>
+<span id="cb252-53"><a href="lubridate.html#cb252-53" aria-hidden="true"></a><span class="co">## [1] FALSE</span></span>
+<span id="cb252-54"><a href="lubridate.html#cb252-54" aria-hidden="true"></a>dates &lt;-<span class="st"> </span><span class="kw">now</span>() <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb252-55"><a href="lubridate.html#cb252-55" aria-hidden="true"></a><span class="kw">int_diff</span>(dates)</span>
+<span id="cb252-56"><a href="lubridate.html#cb252-56" aria-hidden="true"></a><span class="co">## [1] 2020-10-30 14:53:24.003588 CST--2020-10-31 14:53:24.003588 CST</span></span>
+<span id="cb252-57"><a href="lubridate.html#cb252-57" aria-hidden="true"></a><span class="co">## [2] 2020-10-31 14:53:24.003588 CST--2020-11-01 14:53:24.003588 CST</span></span></code></pre></div>
 
 </div>
 </div>

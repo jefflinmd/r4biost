@@ -180,7 +180,7 @@ Table 1: 糖尿病防治臨床試驗變數說明
 
 ```{r}
 library(tidyverse)
-dd <- readr::read_csv("C:/RData/DMDCCThba1c6.csv",
+dd <- readr::read_csv("./Data/DMDCCThba1c6.csv",
                       na = c(".", "", "NA"),
                       trim_ws = TRUE)
 # glimpse(dd)

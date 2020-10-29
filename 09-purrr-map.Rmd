@@ -48,16 +48,16 @@ Table 1: {R} 常見資料物件操作 `apply()` 函式
 **糖尿病防治臨床試驗**
 
 一位研究者進行一個大型糖尿病防治的臨床試驗,
-比較 標準治療 (standard) 與 實驗治療 (experimental) 
-對長期控制平穩的血糖 與 預防嚴重糖尿病腎病變的療效.
+比較標準治療 (standard) 與實驗治療 (experimental) 
+對長期控制平穩的血糖與 預防嚴重糖尿病腎病變的療效.
 研究主要目的是分析長期控制平穩的血糖, 主要反應變數以測量糖化血色素 (HbA1c) 為代表,
 研究的次要目的是預防嚴重糖尿病腎病變, 
-次要目的反應變數以是否出現 顯微蛋白尿 (microalbuminuris) 的時間為代表.
+次要目的反應變數以是否出現顯微蛋白尿 (microalbuminuris) 的時間為代表.
 研究在臨床試驗開始時,
 紀錄受試者的一些基本資料,
 例如年紀, 性別等,
 同時紀錄可能會影響結果的一些臨床測量,
-例如, 臨床試驗開始時的 糖化血色素,
+例如, 臨床試驗開始時的糖化血色素,
 及受試者內生胰島素的 C-peptide 測量等.
 研究資料在檔案 `DMDCCThba1c6.csv`,
 變數說明在表 2.
@@ -82,12 +82,12 @@ Table 1: {R} 常見資料物件操作 `apply()` 函式
 | hba1c1-hba1c6 | 治療後 1-6 年, 每年 HBA1c 測量.                      |
 
 
-Table 2: 糖尿病防治臨床試驗變數說明
+Table 2. 糖尿病防治臨床試驗: 變數說明
 
 
 ```{r}
 library(tidyverse)
-dd <- readr::read_csv("C:/RData/DMDCCThba1c6.csv",
+dd <- readr::read_csv("./Data/DMDCCThba1c6.csv",
                       na = c(".", "", "NA"),
                       trim_ws = TRUE)
 # glimpse(dd)
@@ -115,7 +115,7 @@ print(dd, n = 5, width = Inf)
 
 
 以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
-對連續變數 `bia1c4` -- `hbac16` 計算算平均值與標準差.
+對連續變數 `bba1c4` -- `hba1c6` 計算算平均值與標準差.
 
 ```{r}
 dd.con <- dd %>% 
@@ -141,7 +141,7 @@ dd.con %>%
 對資料個體列位 (rows) 進行相同操作函式.
 例如, 對所有個體計算 5 次考試成績的總分, 平均值與標準差等等.
 以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
-對連續變數 `bia1c4` -- `hbac16` 計算算平均值與標準差.
+對連續變數 `bba1c4` -- `hba1c6` 計算算平均值與標準差.
 
 
 ```{r}
@@ -210,11 +210,16 @@ apply(X, MARGIN, FUN, ...)
 * `FUN` 為執行同一函式的名稱.
 
 以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
-對連續變數 `bia1c4` -- `hbac16` 計算算平均值與標準差.
+對連續變數 `bba1c4` -- `hba1c6` 計算算平均值與標準差.
 ```{r}
 dd.con <- dd %>% 
   select(hba1c4:hba1c6) 
-apply(dd.con, 2, mean, na.rm = TRUE)
+con.mean = apply(dd.con, 2, mean, na.rm = TRUE)
+con.sd = apply(dd.con, 2, sd, na.rm = TRUE)
+con.mean
+con.sd
+cbind(con.mean, con.sd)
+rbind(con.mean, con.sd)
 ```
 以 **糖尿病防治臨床試驗** 的 `DMDCCThba1c6.csv` 為例.
 對連續變數 `bia1c4` -- `hbac16` 計算算平均值與標準差.
